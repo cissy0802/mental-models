@@ -77,7 +77,7 @@ HTML 要求：
 - 4 张卡片，border-left 颜色依次为：#6c5ce7, #00b894, #fdcb6e, #e17055
 - 每张卡片包含：
   * 模型名称（中文）+ 英文副标题（含一句画龙点睛的破折号短语）
-  * 【中文详解】：3 段，涵盖机制原理、非平凡洞见、实践方法，末尾有 .scenario 块（场景·BigCat）
+  * 【中文详解】：3 段，涵盖机制原理、非平凡洞见、实践方法；末尾有两个示例：①最经典的通用例子（帮助任何人理解该模型），②一个贴近 BigCat 兴趣的例子（AI/神经科学/佛学/教育/投资/领导力等）；最后有 .scenario 块（场景·BigCat）
   * 【English Summary】：3-5 句精炼英文
   * 【AI Prompts】：一个中文模板 + 一个英文模板（用[方括号]标注填空项）
 - 页面顶部：标题"思维模型详解：{topic_name}" + "{date_str} · Day {day_index}"
@@ -210,12 +210,12 @@ def main():
         f.write(html)
     print(f"Written: {filepath}")
 
-    # Rebuild index with all entries (new entry first)
+    # Rebuild index with all entries (oldest first)
     entries = scan_existing_entries(repo_dir)
     # Ensure today's entry is in the list
     if not any(e[2] == filename for e in entries):
         entries.insert(0, (date_str, topic_name, filename, models))
-    entries.sort(key=lambda e: e[0], reverse=True)
+    entries.sort(key=lambda e: e[0], reverse=False)  # oldest first
 
     index_path = os.path.join(repo_dir, "index.html")
     with open(index_path, "w", encoding="utf-8") as f:
