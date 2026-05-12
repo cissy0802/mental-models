@@ -1,0 +1,33 @@
+name: Daily Mental Models
+
+on:
+  schedule:
+    # 1 AM PST = 09:00 UTC (UTC-8); during PDT (Mar–Nov) = 08:00 UTC
+    # Running at 09:00 UTC covers 1 AM PST year-round
+    - cron: '0 9 * * *'
+  workflow_dispatch:  # allow manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Generate today's mental models
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python generate.py
