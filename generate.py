@@ -44,11 +44,11 @@ TOPICS = {
 USER_BACKGROUND = """
 用户叫 BigCat，以下背景信息用于生成贴近用户的例子：
 - 深度关注 AI 与人机协同，追求成为"AI 超级个体"（用 AI 杠杆放大个人产出）
-- 对第一性原理、意识/科学/佛学/量子力学/AI 等领域的交叉有深入兴趣
-- 有领导力、投资和商业思维的兴趣
+- 对第一性原理、AI/意识/神经科学/心理学/科学/佛学/量子力学/生物进化学/mental model 等领域有深入兴趣
+- 有领导力、教育、投资和商业思维的兴趣
 - 重视跨学科思维
 - 是一位妈妈，有学龄儿童
-- 使用 CLI 工具，偏好高效、精确的做事方式
+- 偏好高效、精确的做事方式
 - 沟通风格：正式、精练
 """
 
@@ -96,6 +96,7 @@ HTML 要求：
 
 
 def build_index(entries: list[tuple[str, str, str, list[str]]]) -> str:
+    """Build index.html from list of (date, topic_name, filename, models) tuples."""
     rows = ""
     for date_str, topic_name, filename, models in entries:
         model_str = " · ".join(models)
@@ -147,6 +148,7 @@ footer{{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}}
 
 
 def scan_existing_entries(repo_dir: str) -> list[tuple[str, str, str, list[str]]]:
+    """Scan repo for existing HTML files and extract metadata from filenames."""
     entries = []
     pattern = re.compile(r'^(.+)-(\d{4}-\d{2}-\d{2})\.html$')
     for fname in sorted(os.listdir(repo_dir), reverse=True):
@@ -156,6 +158,7 @@ def scan_existing_entries(repo_dir: str) -> list[tuple[str, str, str, list[str]]
         if not m:
             continue
         slug, date_str = m.group(1), m.group(2)
+        # Find matching topic
         topic_name = slug
         models = []
         for _, (tname, tslug, tmodels) in TOPICS.items():
@@ -181,6 +184,7 @@ def main():
     if day_index in TOPICS:
         topic_name, slug, models = TOPICS[day_index]
     else:
+        # Day 31+: generate a new topic via Opus
         existing = [v[0] for v in TOPICS.values()]
         resp = client.messages.create(
             model="claude-opus-4-6",
@@ -206,7 +210,9 @@ def main():
         f.write(html)
     print(f"Written: {filepath}")
 
+    # Rebuild index with all entries (new entry first)
     entries = scan_existing_entries(repo_dir)
+    # Ensure today's entry is in the list
     if not any(e[2] == filename for e in entries):
         entries.insert(0, (date_str, topic_name, filename, models))
     entries.sort(key=lambda e: e[0], reverse=True)
@@ -216,6 +222,7 @@ def main():
         f.write(build_index(entries))
     print("Updated index.html")
 
+    # Git commit
     subprocess.run(["git", "config", "user.email", "chengchen0802@gmail.com"], cwd=repo_dir, check=True)
     subprocess.run(["git", "config", "user.name", "BigCat"], cwd=repo_dir, check=True)
     subprocess.run(["git", "add", filename, "index.html"], cwd=repo_dir, check=True)
