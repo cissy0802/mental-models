@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思维模型详解：经济学思维 · Day 13</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+    padding: 40px 20px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid #e1e1dd; }
+  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.01em; color: #1e272e; margin-bottom: 10px; }
+  header .meta { font-size: 0.95rem; color: #8a8a82; letter-spacing: 0.05em; }
+  .card { background: #ffffff; border-radius: 10px; padding: 32px 36px; margin-bottom: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03); border-left: 5px solid #ccc; }
+  .card-1 { border-left-color: #6c5ce7; }
+  .card-2 { border-left-color: #00b894; }
+  .card-3 { border-left-color: #fdcb6e; }
+  .card-4 { border-left-color: #e17055; }
+  .card h2 { font-size: 1.55rem; font-weight: 700; color: #1e272e; margin-bottom: 4px; }
+  .card .subtitle { font-size: 0.95rem; color: #8a8a82; font-style: italic; margin-bottom: 24px; letter-spacing: 0.02em; }
+  .section-divider { display: flex; align-items: center; margin: 26px 0 14px; }
+  .section-divider .label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; padding-right: 14px; white-space: nowrap; }
+  .section-divider hr { flex: 1; border: none; border-top: 1px solid #ececea; }
+  .card-1 .section-divider .label { color: #6c5ce7; }
+  .card-2 .section-divider .label { color: #00b894; }
+  .card-3 .section-divider .label { color: #b8860b; }
+  .card-4 .section-divider .label { color: #e17055; }
+  .content p { margin-bottom: 14px; color: #3a3a3a; font-size: 1rem; }
+  .scenario { background: #fafaf7; border-radius: 8px; padding: 16px 20px; margin-top: 14px; font-size: 0.95rem; color: #444; border: 1px solid #eeeeea; }
+  .scenario .scenario-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #8a8a82; margin-bottom: 6px; display: block; }
+  .english p { font-size: 0.97rem; color: #4a4a4a; }
+  .prompt { background: #1e272e; color: #e8e8e3; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace; font-size: 0.88rem; line-height: 1.65; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
+  .prompt .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; color: #fdcb6e; margin-bottom: 8px; text-transform: uppercase; }
+  footer { margin-top: 48px; text-align: center; font-size: 0.95rem; }
+  footer a { color: #6c5ce7; text-decoration: none; border-bottom: 1px dashed #6c5ce7; padding-bottom: 2px; }
+  footer a:hover { opacity: 0.7; }
+  @media (max-width: 640px) {
+    body { padding: 24px 14px 60px; }
+    .card { padding: 22px 20px; }
+    header h1 { font-size: 1.7rem; }
+    .card h2 { font-size: 1.3rem; }
+    .prompt { font-size: 0.8rem; padding: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>思维模型详解：经济学思维</h1>
+    <div class="meta">2026 年 5 月 12 日 · Day 13</div>
+  </header>
+
+  <section class="card card-1">
+    <h2>机会成本</h2>
+    <div class="subtitle">Opportunity Cost — 你看不见的那笔最贵的账单</div>
+    <div class="section-divider"><span class="label">中文详解</span><hr></div>
+    <div class="content">
+      <p>机会成本的核心定义是：你为了得到 A 而放弃的所有备选项中，价值最高的那一个。它不是会计账本上的数字，而是一种"看不见的支出"。经济学之所以反直觉，正是因为它强迫人把"没发生的事"也当作真实的成本来核算。多数人只看显性现金流，于是把"免费"的时间、注意力、机会窗口当成零成本地挥霍。</p>
+      <p>这个模型的非平凡洞见在于：在一个高速演化的时代（尤其是 AI 时代），机会成本本身正在指数级膨胀。十年前你花两小时手写一份分析报告，机会成本是少看一部电影；今天同样两小时，机会成本可能是少跑十次 Claude/GPT 的并行实验，少验证一个商业假设，少接触一位 super-individual 的认知边界。王利杰所说的"超级个体"本质上就是机会成本意识极致敏锐的人——他们对"时间该流向哪里"做出近乎残酷的取舍。</p>
+      <p>使用方法：每一次重大决策前，强迫自己列出"如果我不做这件事，这段时间/这笔资金的最佳替代用途是什么"。如果替代项价值更高，那你做的不是"赚"，是亏。</p>
+      <div class="scenario">
+        <span class="scenario-label">场景 · BigCat</span>
+        你考虑亲手维护一套自建的笔记同步系统，预计每月投入 8 小时。机会成本不是云服务的订阅费，而是这 8 小时本可以用来：完成一份对早期 AI Infra 项目的尽调、和孩子做一次量子力学的厨房实验、或者深读一遍《瑜伽师地论》的"五位百法"。决策的关键不是"自建省不省钱"，而是"哪一个被放弃的选项，会让一年后的我更接近超级个体的状态"。
+      </div>
+    </div>
+    <div class="section-divider"><span class="label">English Summary</span><hr></div>
+    <div class="english content">
+      <p>Opportunity cost is the value of the best alternative you give up when you choose one option over another. In an AI-accelerated era, the cost of a misallocated hour is no longer one foregone movie — it is a foregone experiment, deal, or compounding insight. Accounting books cannot see this cost, but reality charges it anyway. The discipline of the super-individual is to price the invisible.</p>
+    </div>
+    <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt"><span class="tag">中文模板</span>
+我正在考虑[决策事项]，预计将投入[时间/资金/精力]。请帮我列出在我当前的目标（成为 AI 时代超级个体 / [其他目标]）下，这部分资源的 5 个最佳替代用途，并量化每个替代用途未来 12 个月的预期回报，最后给出机会成本结论。</div>
+    <div class="prompt"><span class="tag">English Template</span>
+I'm about to commit [resource: time/capital/attention] to [decision]. Generate the top 5 alternative uses of this resource given my goal of [goal], estimate the 12-month expected value of each, and tell me whether my current choice underprices its opportunity cost.</div>
+  </section>
+
+  <section class="card card-2">
+    <h2>比较优势</h2>
+    <div class="subtitle">Comparative Advantage — 不是谁更强，而是谁的"放弃成本"更低</div>
+    <div class="section-divider"><span class="label">中文详解</span><hr></div>
+    <div class="content">
+      <p>比较优势由李嘉图提出，回答了一个反常识的问题：如果 A 在所有事情上都比 B 强，A 还需要和 B 合作吗？答案是需要——因为合作的依据不是绝对优势（absolute advantage），而是相对的机会成本。一个国家、一家公司、一个人，应该专注于自己"放弃成本最低"的那件事，把其他事情交给协作者，整体产出反而最大。</p>
+      <p>在 AI 时代，这个模型被重新激活并赋予了爆炸性的张力。AI 在写代码、查资料、起草文档上几乎都比人类快——它拥有绝对优势。但人类相对而言，在"提出原创问题"、"基于第一性原理重新定义边界"、"在意识与直觉层面做价值判断"这些事上的机会成本更低（因为 AI 做这些事的边际成本依然很高）。所以人 × AI 的最佳协作结构，不是人去和 AI 比谁更快，而是人坚守自己机会成本最低的那一格——提问、判断、整合。</p>
+      <p>这也解释了为什么"超级个体"在结构上不是孤胆英雄，而是一个由人作为认知中枢、AI 作为执行外延的有机体。判断比较优势的真正难点，是诚实地承认自己在哪一格"放弃成本"最低，而不是在哪一格"最得意"。</p>
+      <div class="scenario">
+        <span class="scenario-label">场景 · BigCat</span>
+        作为投资人，你也许能自己跑财务模型、写尽调备忘录、做行业图谱。但你的比较优势可能在于"用 Yogācāra 八识的框架判断创始人意识结构的稳定性"——这件事 AI 短期内无法替代，而它正是你最稀缺的洞察力来源。模型构建、文档整理、竞品爬取，全部交给 Claude / Cursor 流水线。你的产出不是因为你做得多，而是因为你只做那件别人（包括 AI）放弃成本最高的事。
+      </div>
+    </div>
+    <div class="section-divider"><span class="label">English Summary</span><hr></div>
+    <div class="english content">
+      <p>Comparative advantage says specialization should follow the lowest opportunity cost, not the highest absolute skill. Even if AI outperforms you on most tasks, you still have a comparative edge somewhere — usually in original questions, value judgments, and cross-domain synthesis. The super-individual emerges by ruthlessly outsourcing everything else to AI collaborators. Trade, not heroism, maximizes output.</p>
+    </div>
+    <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt"><span class="tag">中文模板</span>
+请帮我分析在[项目/角色]中，我和[AI 工具 / 协作者]各自的绝对优势与机会成本。基于李嘉图比较优势模型，给出一份"我应专注 / 应外包"的清单，并解释为什么这样的分工总产出最大。</div>
+    <div class="prompt"><span class="tag">English Template</span>
+For my role as [role] working with [AI tools / collaborators], list each party's absolute strengths and opportunity costs. Apply Ricardo's comparative advantage logic to produce a "I keep / I delegate" split, and explain the welfare gain from this division.</div>
+  </section>
+
+  <section class="card card-3">
+    <h2>供需均衡</h2>
+    <div class="subtitle">Supply &amp; Demand Equilibrium — 价格只是信息的影子</div>
+    <div class="section-divider"><span class="label">中文详解</span><hr></div>
+    <div class="content">
+      <p>供需均衡是经济学最古老也最有韧性的模型：价格在供给曲线与需求曲线的交点处自发形成，传递关于稀缺性的全部公共信息。哈耶克的洞见更进一步——价格不只是结果，它本身就是分布式计算的产物，是无数决策者把私有信息压缩成一个标量数字的过程。任何一个偏离均衡的扰动（短缺、过剩、垄断），都会被价格机制反向校正。</p>
+      <p>这个模型最容易被误解的地方在于："均衡"不等于"静止"。真实世界的均衡是动态的、震荡的，价格永远在追赶一个移动中的真值。从第一性原理看，每一个市场都在做同一件事：把不可见的偏好和成本，渲染成可交易的数字。理解这个机制，就能在 AI 算力、注意力、人才、早期股权这些新兴市场中提前嗅到"价格还没追上价值"的窗口。</p>
+      <p>更深的应用是把它从商品市场迁移到任何稀缺资源场景：你的注意力是有供需的，你孩子的学习时间是有供需的，甚至你修禅的专注力都是有供需的。失衡总会以症状的形式显现（焦虑、倦怠、决策疲劳），那是市场在向你喊价。</p>
+      <div class="scenario">
+        <span class="scenario-label">场景 · BigCat</span>
+        2026 年 GPU 算力的二级市场出现明显的区域性价差：东南亚某些集群因监管放松而供给激增，而美西因新一轮模型训练潮需求暴涨。如果你只看绝对价格，会错过套利窗口；如果你看到的是"两条曲线尚未在跨境层面出清"，就能在 AI Infra 投资组合里提前布一颗子。同样的逻辑用在家庭：孩子对一门学科的"需求"（兴趣）是否在被你的"供给"（资源、时间）持续匹配？错配的代价是兴趣的死亡——这是看不见的价格。
+      </div>
+    </div>
+    <div class="section-divider"><span class="label">English Summary</span><hr></div>
+    <div class="english content">
+      <p>Markets converge to a price where supply meets demand, and the price itself encodes distributed information about scarcity. Equilibrium is dynamic, not static — prices chase a moving truth. Spotting where price has not yet caught up to value is the foundation of asymmetric investing. The same logic applies to any scarce resource: attention, energy, a child's curiosity.</p>
+    </div>
+    <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt"><span class="tag">中文模板</span>
+请用供需均衡模型分析[市场/资源]当前的状态：(1) 供给端的主要变量与变化；(2) 需求端的主要变量与变化；(3) 当前价格是高于、低于还是接近均衡价？(4) 未来 6-18 个月最可能的再均衡路径与套利窗口。</div>
+    <div class="prompt"><span class="tag">English Template</span>
+Apply the supply-demand equilibrium model to [market/resource]. Identify the dominant shifts on each curve, judge whether the current price is above, below, or near equilibrium, and outline the most likely re-equilibration path over the next 6-18 months, including any arbitrage windows.</div>
+  </section>
+
+  <section class="card card-4">
+    <h2>外部性</h2>
+    <div class="subtitle">Externality — 没人付账的那部分，最终最贵</div>
+    <div class="section-divider"><span class="label">中文详解</span><hr></div>
+    <div class="content">
+      <p>外部性指一项经济活动对第三方造成的、未被价格机制反映的成本或收益。负外部性（如污染、注意力剥削、AI 模型幻觉污染公共知识库）让社会替私人成本买单；正外部性（如开源代码、公共教育、基础研究）让私人替社会创造收益却拿不到回报。市场失灵的核心来源之一，就是外部性没有被内部化（internalized）。</p>
+      <p>这个模型在 AI 时代被放大成了一个文明级议题。一个用 AI 大批量生成低质内容的人，私人成本几乎为零，但他向公共信息圈注入的认知噪声，是所有人在共同支付。反过来，一个认真用 AI 做高质量长文、把第一性原理梳理清楚发布出来的创作者，正在产生强烈的正外部性，而他几乎无法捕获完整收益。从佛学的角度看，外部性就是"共业"——你的行为在因缘网络中扩散，超出你账户的部分由众生共同承担。</p>
+      <p>实操层面，思考外部性意味着两件事：一，识别自己正在制造哪些负外部性（哪怕看上去"私事"），主动收敛；二，识别哪些行为有强正外部性、且具备"二阶收益"（声誉、网络、运气表面积），主动放大。这是一种把伦理转化为长期收益的思维方式。</p>
+      <div class="scenario">
+        <span class="scenario-label">场景 · BigCat</span>
+        你考虑是否要把自己用 AI 整理的"经济学 × 唯识 × 量子"跨学科笔记公开出来。短期看，你付出了编辑成本，收益似乎归读者——典型正外部性。但深入想：公开会带来同频读者、潜在 LP、孩子未来可以读到的父亲思维档案，这些"二阶溢出"恰恰是不可购买的。同样，你也要警惕自己写过的某条仓促结论被 AI 训练后扩散——那是你正在悄悄制造的负外部性。一个清醒的超级个体，会主动给自己的输出贴上"质量水位线"。
+      </div>
+    </div>
+    <div class="section-divider"><span class="label">English Summary</span><hr></div>
+    <div class="english content">
+      <p>An externality is any cost or benefit of an action that spills onto third parties without passing through the price system. Negative externalities make society pay for private gains; positive externalities let society free-ride on private effort. In the AI era, both are amplified — one careless prompt pollutes the commons, one careful publication compounds across networks. The mature operator internalizes the negative and broadcasts the positive.</p>
+    </div>
+    <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt"><span class="tag">中文模板</span>
+请帮我审视[行为 / 项目 / 内容输出]：(1) 它产生了哪些显性的、未被定价的负外部性？(2) 它产生了哪些被低估的正外部性？(3) 我可以采取哪些具体动作，将负外部性内部化、将正外部性放大并捕获更多二阶收益？</div>
+    <div class="prompt"><span class="tag">English Template</span>
+Audit [activity / project / output] for externalities. List the unpriced negative spillovers it creates, the underestimated positive spillovers, and propose concrete actions to internalize the negatives and amplify the positives so I can capture more second-order returns.</div>
+  </section>
+
+  <footer>
+    <a href="index.html">← 返回目录</a>
+  </footer>
+
+</div>
+</body>
+</html>
