@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026-05-08 · 心理与行为 — Mental Models Daily</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f0f2f5;
+    font-family: -apple-system, "Noto Sans SC", sans-serif;
+    color: #2d3436;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+  header {
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  header h1 {
+    font-size: 1.8rem;
+    color: #1a1a2e;
+    font-weight: 700;
+  }
+  header .meta {
+    color: #636e72;
+    font-size: 0.9rem;
+    margin-top: 6px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 28px;
+  }
+  .card.c1 { border-left: 5px solid #6c5ce7; }
+  .card.c2 { border-left: 5px solid #00b894; }
+  .card.c3 { border-left: 5px solid #fdcb6e; }
+  .card.c4 { border-left: 5px solid #e17055; }
+  .card h2 {
+    font-size: 1.25rem;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .card .tag {
+    font-size: 0.75rem;
+    background: #f0f2f5;
+    color: #636e72;
+    padding: 2px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #b2bec3;
+    margin: 18px 0 6px;
+  }
+  .detail {
+    font-size: 0.95rem;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .detail p {
+    margin-bottom: 10px;
+  }
+  .example-box {
+    background: #f8f9ff;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .example-box.bigcat {
+    background: #f0faf6;
+  }
+  .example-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+  }
+  .example-label.bigcat-label {
+    color: #00b894;
+  }
+  .summary {
+    background: #fafafa;
+    border-left: 3px solid #dfe6e9;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    color: #636e72;
+    margin-top: 10px;
+    line-height: 1.65;
+  }
+  .prompts {
+    margin-top: 10px;
+  }
+  .prompt-item {
+    background: #2d3436;
+    color: #dfe6e9;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    font-family: monospace;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  footer {
+    text-align: center;
+    color: #b2bec3;
+    font-size: 0.8rem;
+    padding-top: 40px;
+  }
+  @media (max-width: 640px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+    .page {
+      padding: 20px 14px 40px;
+    }
+    header h1 {
+      font-size: 1.45rem;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>每日心智模型 · 心理与行为</h1>
+    <div class="meta">2026-05-08 · 损失厌恶 / 峰终定律 / 心流理论 / 习惯回路</div>
+  </header>
+
+  <div class="cards">
+
+    <!-- ============ CARD 1: 损失厌恶 ============ -->
+    <div class="card c1">
+      <h2>损失厌恶 (Loss Aversion)</h2>
+      <span class="tag">心理学 · 行为经济学</span>
+
+      <div class="section-title">中文详解</div>
+      <div class="detail">
+        <p>损失厌恶由 Kahneman 与 Tversky 在前景理论中提出：人对"失去 100 元"的痛苦，约是"得到 100 元"快乐的 2-2.5 倍。这并非理性偏差，而是进化烙印——在远古资源稀缺的环境里，对损失敏感者活下来的概率显著更高。大脑的杏仁核会把"潜在损失"标记为生存级威胁，绕过前额叶直接触发回避反应。</p>
+        <p>多数人忽略的反直觉点是：损失厌恶并不只来自"已经拥有的东西"，更来自"心理上已经默认拥有"的东西。一旦你在脑中预演过"得到"，它就被记为基准线，未能得到 = 损失。这解释了为什么免费试用、预售排队、"已为你保留"的话术如此有效——它们在你尚未付出任何代价时，就把心理所有权偷偷转移给了你。</p>
+        <p>应用方法可分两层：对外，要么用"避免损失"的措辞替代"获得收益"（"不做这件事你将损失……"通常比"做这件事你将得到……"更有效），要么主动赋予对方"心理所有权"再让 ta 自由选择放弃；对内，识别自己的损失厌恶——区分"真实沉没成本"与"想象中的所有权"，对后者快速止损。一个简单的逆向问句是：如果我此刻没有这个东西，我会用现在的价格买回来吗？</p>
+
+        <div class="example-box">
+          <div class="example-label">① 经典案例</div>
+          买一只股票后浮亏 30%，明知基本面已变坏，却怎么也下不了手割肉，反而幻想"等回本就卖"。同样是 30% 仓位的现金，重新让你买入这只股，你根本不会买。这就是损失厌恶——执着的不是公司，而是"承认亏损"这件事本身的痛感。
+        </div>
+
+        <div class="example-box bigcat">
+          <div class="example-label bigcat-label">② 场景 · BigCat</div>
+          作为追求"AI 超级个体"的实践者，你可能已经为某个工作流投入大量 Prompt 调优、私有知识库构建、自动化脚本——当新一代模型或更优范式出现时，损失厌恶会让你死守旧栈。对策：每季度做一次"AI 工具零基预算"——假设今天从零开始，我还会选这套栈吗？同样适用于辅导孩子学习：你为某个学习方法投入了大量陪伴时间，但若已不奏效，及时切换比"硬撑到回本"更理性。
+        </div>
+      </div>
+
+      <div class="section-title">English Summary</div>
+      <div class="summary">
+        Loss aversion means losses feel roughly twice as painful as equivalent gains feel good — a survival-wired bias, not a rational one. Crucially, "loss" includes things you only mentally own (free trials, default endowments), which is why reframing choices around what someone stands to lose is far more persuasive than framing them around gain.
+      </div>
+
+      <div class="section-title">AI 提示词</div>
+      <div class="prompts">
+        <div class="prompt-item">你是行为经济学顾问。我正在考虑放弃 [项目/资产/习惯]，已投入 [时间/金钱/精力]。请用损失厌恶视角帮我区分：哪些是真实沉没成本、哪些是想象中的所有权？给出"如果今天从零开始我是否会重新投入"的判断框架，并指出我最可能掉入的 3 个认知陷阱。</div>
+        <div class="prompt-item">Act as a loss-aversion coach. I'm deciding whether to quit [project/asset/habit] after investing [resources]. Separate genuine sunk cost from imagined ownership. Apply the "would I buy in again today at current price?" test, and flag the 3 most likely cognitive traps holding me back.</div>
+      </div>
+    </div>
+
+    <!-- ============ CARD 2: 峰终定律 ============ -->
+    <div class="card c2">
+      <h2>峰终定律 (Peak-End Rule)</h2>
+      <span class="tag">心理学 · 记忆 & 体验设计</span>
+
+      <div class="section-title">中文详解</div>
+      <div class="detail">
+        <p>峰终定律同样源自 Kahneman 的研究：人对一段经历的整体评价，几乎只取决于两个时刻——情绪强度最高的那个"峰"（无论好坏）和体验的"终点"。中间的平淡部分、甚至总时长都被记忆系统大幅折扣。这是因为大脑不存储连续的体验流，只存储几个稀疏的快照来构建可被未来调用的"故事"。</p>
+        <p>非显而易见的洞见在于：人的"两个自我"是分离的——经历自我 (experiencing self) 实时感受每一秒，记忆自我 (remembering self) 决定下次要不要再来。两者经常打架。Kahneman 的肠镜实验证明：一个总长 8 分钟、结尾很痛的检查，比一个总长 24 分钟但末段缓和的检查，让病人更不愿再来——尽管后者的"痛苦总积分"更高。换句话说，你为孩子设计的暑假是不是难忘，不取决于你做了多少事，而取决于有没有一个高峰、以及怎么收尾。</p>
+        <p>应用方法可以总结为"投资两端、合并平淡"：主动设计一个高强度正向峰（惊喜、心流、突破时刻），同时刻意打磨结尾——会议最后 2 分钟、旅行最后一天、产品退款流程，往往决定整体口碑。反过来，痛苦的事要么集中爆发（避免拖长）、要么把痛苦放在前段而非末段。</p>
+
+        <div class="example-box">
+          <div class="example-label">① 经典案例</div>
+          迪士尼乐园的排队体验臭名昭著，但游客离场时仍觉得"棒极了"——因为园方刻意制造了至少一个情绪峰（烟花、与玩偶合影），并在出园前安排温馨告别桥段。同样的 8 小时，如果以排队结尾，记忆会全盘崩塌。
+        </div>
+
+        <div class="example-box bigcat">
+          <div class="example-label bigcat-label">② 场景 · BigCat</div>
+          养育学龄孩子时，"今天过得开不开心"几乎只由两个时刻决定：当天最高兴的瞬间、以及睡前最后 10 分钟。再丰富的内容若以批评作业、催促刷牙收尾，孩子记住的就是"今天不开心"。对策：每天主动制造一个 30 秒的小高峰（一个意外拥抱、一个共同发现），并把睡前最后 10 分钟变成不可侵犯的"温柔仪式"。同理可用于团队 1:1——你给同事的反馈，他记住的是最尖锐那句和结束语，而不是整段的客观分析。
+        </div>
+      </div>
+
+      <div class="section-title">English Summary</div>
+      <div class="summary">
+        We judge experiences not by their average or duration, but by the emotional peak and the ending. The "experiencing self" lives through every moment; the "remembering self" decides whether to come back — and only the latter holds the pen when writing the story. Design the peak, perfect the ending, compress the rest.
+      </div>
+
+      <div class="section-title">AI 提示词</div>
+      <div class="prompts">
+        <div class="prompt-item">你是体验设计师。请用峰终定律重新设计 [场景：例如孩子的生日 / 团队 offsite / 产品 onboarding]。先列出当前体验的情绪曲线，标出现有的峰与终；再给出 3 个低成本制造正向峰的方案，以及 2 个优化结尾的具体动作。</div>
+        <div class="prompt-item">Act as an experience designer. Apply the peak-end rule to redesign [scenario]. Map the current emotional curve, mark existing peaks and the ending, then propose 3 low-cost ways to engineer a positive peak and 2 concrete moves to upgrade the ending.</div>
+      </div>
+    </div>
+
+    <!-- ============ CARD 3: 心流理论 ============ -->
+    <div class="card c3">
+      <h2>心流理论 (Flow Theory)</h2>
+      <span class="tag">积极心理学 · 神经科学</span>
+
+      <div class="section-title">中文详解</div>
+      <div class="detail">
+        <p>心流由 Csikszentmihalyi 提出，描述一种"挑战略高于技能、注意力被完全吸收、自我意识消失、时间感扭曲"的最佳体验状态。神经科学上，心流伴随前额叶的"瞬态低活跃"（transient hypofrontality）——负责自我监控、批判与反思的脑区暂时静音，让默认模式网络让位给任务网络，多巴胺、去甲肾上腺素、内啡肽等神经递质共同涌入，效率与愉悦同时拉满。</p>
+        <p>反直觉的地方是：心流的敌人不是难度太大，而是"轻微分心"。一次切屏、一个微信提示、一句"我先看一眼"——平均要花 23 分钟才能重回相同的认知深度。这意味着 8 小时被切碎成 16 个 30 分钟，几乎无法产生任何心流；而 2 小时不被打断的深度块，可能等价于一整天的浮于表面工作。换句话说，决定你产出的不是工作时长，而是不被打断块的"最大单块时长"。</p>
+        <p>应用方法的核心是工程化制造心流的四个前提：(1) 明确的目标 + 即时反馈；(2) 挑战与技能精确匹配（在能力边缘 4%-15% 的甜区）；(3) 物理与数字环境无打断；(4) 启动仪式降低进入摩擦。心流不能"硬来"，但可以"被引诱"——固定时间、固定地点、固定启动动作，大脑会在 5 分钟内自动进入状态。</p>
+
+        <div class="example-box">
+          <div class="example-label">① 经典案例</div>
+          打游戏时不知不觉过了 3 小时——这是最普遍的心流体验：清晰目标（通关）、即时反馈（每秒画面反应）、难度自动适配（动态匹配机制）、外界被屏蔽。游戏公司本质上是世界上最大的"心流工程师"，他们用神经科学反向工程了人类的注意力。
+        </div>
+
+        <div class="example-box bigcat">
+          <div class="example-label bigcat-label">② 场景 · BigCat</div>
+          作为追求 AI 杠杆的超级个体，你最稀缺的不是 token，而是"无打断的深度块"。建议：每天保留一段 90-120 分钟的"AI 协同心流时段"——关闭所有通知，明确单一目标（如"完成 X 思考"），让 Claude/GPT 充当即时反馈与外挂工作记忆。这与神经科学完美呼应：人脑提供前额叶的高层意图与跨学科直觉，AI 提供执行与即时反馈，二者共同满足心流四前提。你也可以用同样原理帮孩子设计作业环境——单一目标 + 即时反馈 + 难度甜区，比任何"专注力训练"都管用。
+        </div>
+      </div>
+
+      <div class="section-title">English Summary</div>
+      <div class="summary">
+        Flow is the state where challenge slightly exceeds skill, self-awareness dissolves, and output peaks — neurologically it's a transient quieting of the prefrontal cortex. Its real enemy isn't difficulty but interruption: a single ping costs ~23 minutes of depth. Protect uninterrupted blocks, not total hours.
+      </div>
+
+      <div class="section-title">AI 提示词</div>
+      <div class="prompts">
+        <div class="prompt-item">你是心流教练。我每天能投入 [X] 小时做 [任务]，但产出感薄弱。请基于 Csikszentmihalyi 的四前提（清晰目标 / 即时反馈 / 难度技能匹配 / 无打断环境）诊断我的工作流，找出当前最大的"心流杀手"，并设计一个可执行的 90 分钟心流块协议。</div>
+        <div class="prompt-item">Act as a flow coach. I spend [X] hours daily on [task] but output feels shallow. Diagnose my workflow against Csikszentmihalyi's four conditions (clear goal / instant feedback / skill-challenge match / no interruption). Identify my biggest flow killer and design a concrete 90-minute deep-work protocol.</div>
+      </div>
+    </div>
+
+    <!-- ============ CARD 4: 习惯回路 ============ -->
+    <div class="card c4">
+      <h2>习惯回路 (Habit Loop)</h2>
+      <span class="tag">行为心理学 · 神经科学</span>
+
+      <div class="section-title">中文详解</div>
+      <div class="detail">
+        <p>习惯回路由 Duhigg 在《习惯的力量》中系统化，结构为：触发 (cue) → 行为 (routine) → 奖励 (reward)，反复执行后，基底神经节 (basal ganglia) 会把这条神经通路"打包"，从此该行为绕开前额叶、自动执行。这就是为什么你一坐到沙发上手就去摸手机——不是你"决定"摸的，是基底神经节执行的子程序。</p>
+        <p>反直觉的关键在于：习惯不可被"删除"，只能被"替换"。神经通路一旦建立就永远存在，意志力试图压制它，等价于试图压住一个被踩了油门的弹簧——一旦你疲惫、有压力或喝了酒，前额叶松懈，旧习惯立刻满血复活。这解释了为什么戒酒者复发率极高、为什么"我要少刷手机"几乎从不奏效。真正有效的方式是保留同一个触发与奖励，把中间的行为换成新的——比如把"压力 → 刷手机 → 短暂放松"替换为"压力 → 4-7-8 呼吸 → 短暂放松"。</p>
+        <p>应用方法：先做"习惯审计"——记录一周内每个被卡住的行为，反推它们的 cue（时间？地点？情绪？前一动作？）和 reward（多巴胺？社交认同？逃避痛苦？）。然后用 Atomic Habits 的四定律设计新回路：让触发显眼、让行为容易、让过程有趣、让奖励即时。环境设计永远比意志力可靠——把要做的事放在视线内、把不想做的事增加 3 步摩擦。</p>
+
+        <div class="example-box">
+          <div class="example-label">① 经典案例</div>
+          牙膏在 20 世纪初销量惨淡，直到 Pepsodent 引入"清凉刺感"作为即时奖励——其实它对清洁没什么用，但用户每次刷牙都能感受到，于是养成了每天刷牙的全民习惯。这是历史上最经典的"用即时奖励工程化全民习惯"案例。
+        </div>
+
+        <div class="example-box bigcat">
+          <div class="example-label bigcat-label">② 场景 · BigCat</div>
+          想养成"每天与 AI 共同思考 30 分钟"的习惯？不要靠意志力。设计回路：触发 = 早晨第一杯咖啡端到桌上（已有的稳定 cue）→ 行为 = 打开预置好的 Claude 工作台 + 当日待解决问题（提前一晚写好，零摩擦）→ 奖励 = 思考被显著推进的小高潮 + 完成感打勾。同样的回路可以教给孩子：放学回家放下书包 (cue) → 写一道她最喜欢的题目作为"开胃菜" (routine) → 一颗 M&M + 你的微笑 (reward)，三周后写作业的启动摩擦会消失。从佛学视角看，习惯就是"业 (karma) 的微观结构"——每一次重复都在加深一条心智沟渠，所以改变一个习惯，本质是在重塑你的心相续。
+        </div>
+      </div>
+
+      <div class="section-title">English Summary</div>
+      <div class="summary">
+        Habits follow a cue → routine → reward loop encoded in the basal ganglia. They cannot be deleted, only replaced — keep the cue and reward, swap the routine in the middle. Environment design beats willpower; make the desired behavior obvious, easy, attractive, and immediately rewarding.
+      </div>
+
+      <div class="section-title">AI 提示词</div>
+      <div class="prompts">
+        <div class="prompt-item">你是习惯设计教练。我想 [建立/戒除] 一个习惯：[具体行为]。请先帮我识别这个习惯背后的真实 cue 和 reward（提出 5 个诊断问题），然后基于"保留 cue+reward，替换 routine"的原则设计一个新回路，并用 Atomic Habits 四定律检查可执行性。</div>
+        <div class="prompt-item">Act as a habit-design coach. I want to [build/break] the habit of [specific behavior]. First identify the real cue and reward (ask 5 diagnostic questions). Then design a replacement loop that keeps the cue and reward but swaps the routine, and stress-test it against the four laws of Atomic Habits.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Mental Models Daily · 2026-05-08 · 心理与行为类<br>
+    用心智模型，把每一天活得更清醒一点。
+  </footer>
+</div>
+</body>
+</html>
