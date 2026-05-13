@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思维模型详解：科学方法 — 2026-05-11</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.8}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 40px;border-bottom:1px solid #eee;margin-bottom:40px}
+header .category{font-size:0.85rem;font-weight:600;letter-spacing:3px;color:#00b894;text-transform:uppercase;margin-bottom:12px}
+header h1{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:1px;line-height:1.3}
+header .date{margin-top:10px;font-size:0.92rem;color:#b2bec3}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:32px;overflow:hidden}
+.card-header{background:linear-gradient(135deg,#00b894 0%,#55efc4 100%);padding:24px 28px}
+.card-header .num{font-size:0.78rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.card-header h2{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.3}
+.card-header .en{font-size:0.92rem;color:rgba(255,255,255,0.85);margin-top:4px;font-style:italic}
+.card-body{padding:28px}
+.section{margin-bottom:24px}
+.section:last-child{margin-bottom:0}
+.section-label{display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:2px;color:#00b894;background:#e8faf5;padding:3px 10px;border-radius:4px;margin-bottom:12px}
+.section p{font-size:0.97rem;color:#2d3436;line-height:1.9}
+.example{background:#f0faf7;border-left:3px solid #00b894;padding:14px 18px;border-radius:0 8px 8px 0;margin-top:12px}
+.example .label{font-size:0.78rem;font-weight:700;color:#00b894;margin-bottom:6px;letter-spacing:1px}
+.prompts{display:flex;flex-direction:column;gap:12px}
+.prompt-item{background:#f0faf7;border-radius:8px;padding:14px 16px}
+.prompt-item .lang{font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#00b894;margin-bottom:6px}
+.prompt-item p{font-size:0.9rem;color:#2d3436;line-height:1.7}
+.prompt-item strong{color:#00b894}
+nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee}
+nav a{color:#00b894;text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a:hover{text-decoration:underline}
+@media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="category">Day 12 · 思维模型详解</div>
+  <h1>科学方法</h1>
+  <div class="date">2026-05-11 &nbsp;|&nbsp; Scientific Method</div>
+</header>
+
+<div class="card">
+  <div class="card-header">
+    <div class="num">MODEL 01</div>
+    <h2>假说-验证</h2>
+    <div class="en">Hypothesis-Testing</div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">中文详解</div>
+      <p>假说-验证是科学方法的核心循环：先提出一个可测试的假设，再设计实验收集数据，最后根据证据判断假设是被支持还是被推翻。这个循环的价值不在于"证明正确"，而在于通过不断的证伪，逼近真相。</p>
+      <p>在商业和投资决策中，假说-验证意味着在投入大量资源之前，先以最低成本测试核心假设。这与 MVP（最小可行产品）思维同出一辙：与其花三个月打造完整产品，不如先用两周验证"用户真的有这个痛点吗？"</p>
+      <div class="example">
+        <div class="label">例子</div>
+        <p>BigCat 考虑用一套 AI 工作流替代团队中某个手动流程。与其直接全面替换，假说-验证的做法是：<br>
+        假说："AI 工作流可以将这个任务的处理时间缩短 60%，同时不降低质量。"<br>
+        实验：选取1周的真实任务，双轨并行（人工 vs AI），记录时间和错误率。<br>
+        验证：对比数据，如果提升不足 30%，则重新检视假说——是工具选择有误，还是任务本身不适合 AI 处理？</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">English Summary</div>
+      <p>Hypothesis-Testing is the engine of scientific progress: form a specific, falsifiable prediction, design an experiment, collect data, and update your beliefs accordingly. In business and investment contexts, it translates to disciplined small-scale testing before committing major resources — replacing "I think this will work" with "here's how we'll know if it works."</p>
+    </div>
+    <div class="section">
+      <div class="section-label">AI Prompts</div>
+      <div class="prompts">
+        <div class="prompt-item">
+          <div class="lang">中文提示词</div>
+          <p>我想验证这个商业/技术假设：<strong>[你的假设]</strong>。请帮我设计一个最小成本的验证实验，包括：(1) 将假设转化为可量化的预测指标，(2) 设计最简洁的测试方案，(3) 定义"通过"和"未通过"的明确标准，(4) 列出最可能导致结果失真的变量。</p>
+        </div>
+        <div class="prompt-item">
+          <div class="lang">English Prompt</div>
+          <p>I need to test this hypothesis: <strong>[your hypothesis]</strong>. Design the minimum viable experiment: (1) convert the hypothesis into a measurable, specific prediction, (2) outline the simplest possible test, (3) define clear pass/fail criteria in advance, and (4) identify the confounding variables most likely to corrupt the results.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="num">MODEL 02</div>
+    <h2>可证伪性</h2>
+    <div class="en">Falsifiability (Popper's Criterion)</div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">中文详解</div>
+      <p>哲学家卡尔·波普尔提出，一个理论要具有科学价值，必须是"可证伪的"——即存在某种可能的观察结果能够推翻它。无法被任何证据反驳的理论，不是科学，而是信仰。这也解释了为什么"明天可能涨也可能跌"的市场预测毫无价值。</p>
+      <p>可证伪性思维要求我们在形成信念之前先问："什么样的证据会让我改变想法？"如果一个人找不到任何能推翻自己观点的可能性，这本身就是一个危险信号——这意味着他的信念是封闭的，已经脱离了理性讨论的范畴。</p>
+      <div class="example">
+        <div class="label">例子</div>
+        <p>BigCat 对某 AI 芯片公司持长期看涨立场。可证伪性思维要求他明确陈述："如果接下来两个季度中，该公司数据中心业务增速低于25%，且竞争对手市占率提升超过5个百分点，则我的核心论点需要重新评估。"这个声明是可证伪的——它为信念划定了边界，防止"无论发生什么都能自圆其说"的确认偏误陷阱。</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">English Summary</div>
+      <p>Falsifiability, proposed by Karl Popper, is the criterion that separates science from pseudoscience: a genuine theory must make predictions that could, in principle, be proven wrong. In investing, strategy, and everyday reasoning, falsifiability forces you to define in advance what evidence would change your mind — preventing the intellectual trap of theories that can explain everything and therefore predict nothing.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">AI Prompts</div>
+      <div class="prompts">
+        <div class="prompt-item">
+          <div class="lang">中文提示词</div>
+          <p>我持有一个观点：<strong>[你的观点/投资论点/判断]</strong>。请帮我进行可证伪性检验：(1) 将这个观点转化为可测试的预测，(2) 列出3个能推翻这个观点的具体可观察指标，(3) 评估这个观点是否具有真正的预测价值，还是只是事后解释的"叙事"。</p>
+        </div>
+        <div class="prompt-item">
+          <div class="lang">English Prompt</div>
+          <p>I hold this view or thesis: <strong>[your view/investment thesis/belief]</strong>. Apply Popper's falsifiability test: (1) restate it as a concrete, testable prediction, (2) specify 3 observable outcomes that would force me to abandon or significantly revise this view, and (3) assess whether this belief has genuine predictive power or is merely an unfalsifiable narrative.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="num">MODEL 03</div>
+    <h2>控制变量</h2>
+    <div class="en">Controlled Variables</div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">中文详解</div>
+      <p>控制变量是实验科学的基础操作：当你想了解 A 对 B 的影响时，必须确保除 A 以外的所有其他因素保持不变，否则你无法区分变化的原因究竟是 A 还是其他因素。这一原则在日常决策中往往被忽视，导致"虚假因果"大量存在。</p>
+      <p>在商业实践中，控制变量对应 A/B 测试的核心逻辑——同时变更多个变量，你就永远不知道哪个变量才是真正的驱动因素。精确的因果推断，需要"其他条件不变"（ceteris paribus）作为前提。</p>
+      <div class="example">
+        <div class="label">例子</div>
+        <p>BigCat 观察到孩子在使用某款学习 App 后，数学成绩在一个月内提升了 15 分。如果同期还换了数学老师、减少了游戏时间，又新增了每日练习习惯，那么这 15 分的提升到底是 App 的功劳，还是老师的功劳，还是练习习惯的效果？没有控制变量，这个"实验"只能说明相关性，无法归因。真正的判断需要隔离变量，单独测试。</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">English Summary</div>
+      <p>Controlled Variables is the experimental principle of isolating cause from effect: to understand the impact of variable A on outcome B, everything else must be held constant. Without this discipline, we mistake correlation for causation and attribute effects to the wrong causes. In product testing, investing, and parenting — wherever you're trying to learn what actually works — controlling variables is the difference between knowledge and noise.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">AI Prompts</div>
+      <div class="prompts">
+        <div class="prompt-item">
+          <div class="lang">中文提示词</div>
+          <p>我正在分析<strong>[某个结果/现象]</strong>，希望找出真正的驱动因素。请帮我：(1) 列出所有可能影响这个结果的变量，(2) 设计一个控制变量的实验方案，隔离出关键变量，(3) 指出在我的当前分析中，哪些变量被混淆了，可能导致错误归因。</p>
+        </div>
+        <div class="prompt-item">
+          <div class="lang">English Prompt</div>
+          <p>I'm trying to understand what's driving <strong>[outcome/phenomenon]</strong>. Help me apply controlled variable thinking: (1) list all variables that could plausibly influence the outcome, (2) design an experiment that isolates the key variable, and (3) identify which confounding variables in my current analysis might be leading me to the wrong causal conclusion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <div class="num">MODEL 04</div>
+    <h2>相关 ≠ 因果</h2>
+    <div class="en">Correlation ≠ Causation</div>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">中文详解</div>
+      <p>两个变量同时变化，不代表其中一个导致了另一个。"冰淇淋销量与溺水率高度相关"——背后的真实原因是夏天（共同原因）同时推高了两者。相关性是数据给出的提示，因果性需要机制解释和实验验证。</p>
+      <p>这个误区在投资、医学研究、教育政策中极为常见。大数据时代更让这一问题变得严峻：当你有足够大的数据集，几乎任何两个变量之间都能找到统计显著的相关性，但绝大多数是噪声而非信号。建立因果判断的方法包括：随机对照实验（RCT）、工具变量法、差异中的差异（DiD）分析。</p>
+      <div class="example">
+        <div class="label">例子</div>
+        <p>BigCat 发现，坚持每天冥想打坐的人，投资决策质量往往更高。这是冥想提高了决策质量（因果），还是本来就具有自律性格的人既倾向于冥想、又倾向于做出更理性的投资决策（第三变量：自律性）？在将"冥想训练计划"引入个人修炼体系之前，BigCat 需要问：这里的相关性是否已有随机对照实验的支撑？</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">English Summary</div>
+      <p>Correlation ≠ Causation is perhaps the most important statistical principle for clear thinking. Just because two variables move together doesn't mean one causes the other — there may be a third confounding variable, or the relationship may be pure coincidence. In the age of big data, distinguishing genuine causal signals from spurious correlations is one of the highest-value cognitive skills.</p>
+    </div>
+    <div class="section">
+      <div class="section-label">AI Prompts</div>
+      <div class="prompts">
+        <div class="prompt-item">
+          <div class="lang">中文提示词</div>
+          <p>我观察到<strong>[A 和 B 之间的相关现象]</strong>，并倾向于认为 A 导致了 B。请帮我严格检验这个因果推断：(1) 列出3种可能解释这个相关性的替代假说（包括第三变量、反向因果等），(2) 提出区分真正因果与虚假相关的检验方法，(3) 评估目前有哪些证据支持或反对因果关系的存在。</p>
+        </div>
+        <div class="prompt-item">
+          <div class="lang">English Prompt</div>
+          <p>I've observed a correlation between <strong>[A and B]</strong> and am tempted to conclude that A causes B. Rigorously challenge this causal inference: (1) propose 3 alternative explanations (confounders, reverse causation, coincidence), (2) describe the empirical tests that could distinguish true causation from mere correlation, and (3) assess the current state of evidence for and against a causal relationship.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html">← 返回目录 / Back to Index</a>
+</nav>
+</div>
+</body>
+</html>
