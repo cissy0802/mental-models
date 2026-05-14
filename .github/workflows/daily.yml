@@ -2,9 +2,8 @@ name: Daily Mental Models
 
 on:
   schedule:
-    # 1 AM PST = 09:00 UTC (UTC-8); during PDT (Mar–Nov) = 08:00 UTC
-    # Running at 09:00 UTC covers 1 AM PST year-round
-    - cron: '0 9 * * *'
+    # 1 AM PDT = 08:00 UTC (UTC-7, Mar–Nov); 1 AM PST = 09:00 UTC (UTC-8, Nov–Mar)
+    - cron: '0 8 * * *'
   workflow_dispatch:  # allow manual trigger
 
 jobs:
