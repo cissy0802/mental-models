@@ -28,8 +28,6 @@
   .examples { background: #fafaf7; border-radius: 6px; padding: 14px 18px; margin: 12px 0; font-size: 14.5px; }
   .examples p { margin: 0 0 8px; }
   .examples p:last-child { margin-bottom: 0; }
-  .scenario { background: #fff8ef; border: 1px dashed #e0c890; border-radius: 6px; padding: 12px 16px; margin: 14px 0 8px; font-size: 14.5px; color: #4a3d20; }
-  .scenario strong { color: #b8860b; letter-spacing: 0.5px; }
   .en { font-size: 14.5px; color: #3a3a3a; background: #f4f6f8; border-radius: 6px; padding: 14px 18px; font-family: "Georgia", serif; }
   pre.prompt { background: #1e272e; color: #dfe6e9; border-radius: 8px; padding: 16px 18px 18px; overflow-x: auto; font-family: "SF Mono", "Menlo", "Consolas", monospace; font-size: 13px; line-height: 1.65; margin: 10px 0 16px; white-space: pre-wrap; word-wrap: break-word; }
   pre.prompt .tag { display: inline-block; background: #fdcb6e; color: #1e272e; font-weight: 700; font-size: 11px; letter-spacing: 1.5px; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px; }
@@ -54,10 +52,12 @@
     <p>非显然的洞察是：80/20 是可递归的——20% 的 20%（约 4%）通常贡献 64% 的结果。这意味着真正的"超级杠杆点"远比你想象的稀少；同时，长尾的 80% 并非"无用"，它们是系统的稳定底座与可选性来源，不能简单砍掉。识别关键 20% 的难点在于：人们倾向于按"努力感"而非"输出感"分配注意力。</p>
     <p>实操方法：①每周做一次"输出审计"，把所有任务按结果而非耗时排序，找出真正驱动结果的 1-3 项；②对剩余 80% 采取"自动化、外包、降级、删除"四象限处理；③警惕"伪 20%"——那些看似重要但只满足你情绪的高频小事。</p>
     <div class="examples">
-      <p><strong>① 经典例子：</strong>微软发现 Windows 中 20% 的 Bug 导致 80% 的崩溃。集中修复这 20%，用户体验改善的边际效应远大于均匀修复。</p>
-      <p><strong>② 贴近你的例子：</strong>在 AI 工作流中，你可能维护着 30 多个提示词模板，但实际产出价值的往往只有 5-6 个。把这 5-6 个打磨到 S 级，并配上评测集与版本控制，远胜过把 30 个都做到 B 级。</p>
+      <p><strong>经典例子：</strong>微软发现 Windows 中 20% 的 Bug 导致 80% 的崩溃。集中修复这 20%，用户体验改善的边际效应远大于均匀修复。</p>
     </div>
-    <div class="scenario"><strong>场景 · BigCat：</strong>本周你计划做 12 件事——三场客户沟通、两个投资尽调、孩子家长会、两篇行业研报、四个 AI Agent 调试。先问自己：哪 2-3 件做完会让"本周值得"？把它们放进上午的高能量窗口；其余的，敢不敢直接砍掉一半？</div>
+    <div class="examples">
+      <p><strong>场景 · BigCat：</strong>在 AI 工作流中，你可能维护着 30 多个提示词模板，但实际产出价值的往往只有 5-6 个。把这 5-6 个打磨到 S 级，并配上评测集与版本控制，远胜过把 30 个都做到 B 级。</p>
+      <p>本周你计划做 12 件事——三场客户沟通、两个投资尽调、孩子家长会、两篇行业研报、四个 AI Agent 调试。先问自己：哪 2-3 件做完会让"本周值得"？把它们放进上午的高能量窗口；其余的，敢不敢直接砍掉一半？</p>
+    </div>
     <div class="section-label">English Summary</div><hr />
     <div class="en">The Pareto Principle states that roughly 80% of outcomes come from 20% of inputs, due to power-law dynamics in feedback-rich systems. The principle is recursive—20% of the 20% often drives most of the leverage. The hardest part is detection: people optimize for effort, not output. Practically, run a weekly output audit, ruthlessly demote the trivial many, and double down on the vital few.</div>
     <div class="section-label">AI Prompts</div><hr />
@@ -85,10 +85,12 @@ Apply the Pareto Principle to:
     <p>非显然的洞察是：截止日期不仅是约束，更是创造性催化剂。一个被压缩的时间盒迫使大脑跳过"穷举式思考"，直接进入"启发式决策"，这与神经科学中"认知预算紧张时前额叶切换到快速通道"一致。但极端压缩也会触发应激与质量塌陷，最优时长通常是"你直觉估计的 60-70%"。</p>
     <p>实操方法：①给每个任务设"挑战截止时间"而非"舒适截止时间"；②采用"时间盒倒计时"——开始前可见的物理计时器比模糊的"两小时左右"有效得多；③定期做"如果只给一半时间，我会怎么做？"思维实验，强行暴露隐藏的低效环节。</p>
     <div class="examples">
-      <p><strong>① 经典例子：</strong>一个学生有一周写一篇 3000 字论文，往往拖到最后一晚熬夜完成；若老师改成两天交，质量并不一定下降，反而早交。</p>
-      <p><strong>② 贴近你的例子：</strong>训练一个 LLM 微调任务，团队估算"两周"。若强制改为"5 个工作日 MVP + 1 周打磨"，团队会被迫先选最小可用数据集、跳过非关键超参搜索，反而更早拿到反馈信号。</p>
+      <p><strong>经典例子：</strong>一个学生有一周写一篇 3000 字论文，往往拖到最后一晚熬夜完成；若老师改成两天交，质量并不一定下降，反而早交。</p>
     </div>
-    <div class="scenario"><strong>场景 · BigCat：</strong>你准备写一份 AI 行业季度复盘，原计划"周末两天"。试试改为"周六上午 90 分钟，一气呵成出 v1"。把闹钟可见地放在桌上。你会发现，被砍掉的恰好是反复打磨的废话段落。</div>
+    <div class="examples">
+      <p><strong>场景 · BigCat：</strong>训练一个 LLM 微调任务，团队估算"两周"。若强制改为"5 个工作日 MVP + 1 周打磨"，团队会被迫先选最小可用数据集、跳过非关键超参搜索，反而更早拿到反馈信号。</p>
+      <p>你准备写一份 AI 行业季度复盘，原计划"周末两天"。试试改为"周六上午 90 分钟，一气呵成出 v1"。把闹钟可见地放在桌上。你会发现，被砍掉的恰好是反复打磨的废话段落。</p>
+    </div>
     <div class="section-label">English Summary</div><hr />
     <div class="en">Parkinson's Law observes that work expands to fill whatever time you allocate to it. Tight deadlines are catalysts that force the brain into heuristic mode. Use challenge deadlines set at roughly 60-70% of your gut estimate, make timers visible, and periodically run a "half-time" thought experiment to expose hidden inefficiency. The risk is over-compression which collapses quality—calibration matters.</div>
     <div class="section-label">AI Prompts</div><hr />
@@ -114,10 +116,12 @@ Using Parkinson's Law, please:
     <p>非显然的洞察来自神经科学：人脑对"未完成任务"持有持续的认知负荷（Zeigarnik 效应），而把它写入日历的瞬间，大脑会暂时释放工作记忆——因为它信任未来的自己会在那个时间点接管。此外，时间块对抗"决策疲劳"：你不再每隔 15 分钟问一次"下一步做啥"，那部分前额叶预算被释放到任务本身。</p>
     <p>实操方法：①区分"深度块"（90-120 分钟，无干扰）、"浅度块"（30-45 分钟，处理沟通/小事）、"过渡块"（15 分钟，复盘+切换）；②给每个块标注能量等级（高/中/低），匹配你昼夜节律的峰谷；③接受"块会失败"——预留 20% 缓冲块用于追赶，不要密铺。</p>
     <div class="examples">
-      <p><strong>① 经典例子：</strong>比尔·盖茨的"思考周"——一年两次把整整一周时间块化为"只读书+思考"，不接待任何人。结果是若干公司级战略转折点都在那两周内诞生。</p>
-      <p><strong>② 贴近你的例子：</strong>把"AI 学习"模糊地写在 to-do 上等于不做。改成：周二 6:30-8:00 = 深度块·读一篇 paper + 用 Claude 跑一次对照实验；周四 21:00-21:30 = 浅度块·整理本周提示词版本。</p>
+      <p><strong>经典例子：</strong>比尔·盖茨的"思考周"——一年两次把整整一周时间块化为"只读书+思考"，不接待任何人。结果是若干公司级战略转折点都在那两周内诞生。</p>
     </div>
-    <div class="scenario"><strong>场景 · BigCat：</strong>作为妈妈，你的高能量窗口可能是孩子上学后到中午的三小时。把这三小时锁死为"创造块"——只做需要前额叶峰值的事（写作、决策、AI 编排）。任何回消息、报销、家务，一律推到 14:00 后的浅度块。</div>
+    <div class="examples">
+      <p><strong>场景 · BigCat：</strong>把"AI 学习"模糊地写在 to-do 上等于不做。改成：周二 6:30-8:00 = 深度块·读一篇 paper + 用 Claude 跑一次对照实验；周四 21:00-21:30 = 浅度块·整理本周提示词版本。</p>
+      <p>作为妈妈，你的高能量窗口可能是孩子上学后到中午的三小时。把这三小时锁死为"创造块"——只做需要前额叶峰值的事（写作、决策、AI 编排）。任何回消息、报销、家务，一律推到 14:00 后的浅度块。</p>
+    </div>
     <div class="section-label">English Summary</div><hr />
     <div class="en">Time blocking replaces task lists with calendar appointments: every task gets a start, an end, and an energy tag. This leverages the Zeigarnik effect—once scheduled, the brain offloads it from working memory. It also conserves decision-making budget by eliminating constant "what's next" queries. Distinguish deep blocks, shallow blocks, and transition blocks; align them with your circadian energy curve; and leave ~20% buffer. Done well, time blocking is the operating system for deep work.</div>
     <div class="section-label">AI Prompts</div><hr />
@@ -145,10 +149,12 @@ Design my time-block schedule with:
     <p>非显然的洞察是：MVP 的产出不是"产品"，而是"经过验证的认知"。许多人误把 MVP 做成"漂亮但用户少"的版本，错过其本质——它是降低不确定性的工具。第一性原理来看：在高不确定环境下，反馈频率决定进化速度，正如生物进化中代际越短的物种适应越快。MVP 把"研发-试错"代际从季度压到周，复利效应惊人。</p>
     <p>实操方法：①写下"我最想验证的一个假设"——只一个；②设计验证它所需的最小动作（可能不是写代码，而是发问卷、做落地页、手工服务）；③预设"红绿线"：什么结果会让你 pivot、persevere 或 kill。MVP 不是终点，而是连接现实的第一根管道。</p>
     <div class="examples">
-      <p><strong>① 经典例子：</strong>Dropbox 早期没有先做云同步系统，而是发布一段 3 分钟的演示视频。视频带来的等候名单激增，验证了需求存在，再投入工程资源。</p>
-      <p><strong>② 贴近你的例子：</strong>你想做一个"AI 育儿教练"产品。MVP 不是 App，而是：用 Claude + 一份精心写的系统提示词，做成 Telegram bot，邀请 10 位妈妈用一周，收集对话日志和满意度。如果留存 &lt;30%，假设需 pivot。</p>
+      <p><strong>经典例子：</strong>Dropbox 早期没有先做云同步系统，而是发布一段 3 分钟的演示视频。视频带来的等候名单激增，验证了需求存在，再投入工程资源。</p>
     </div>
-    <div class="scenario"><strong>场景 · BigCat：</strong>你想测试一个新的投资判断框架（结合第一性原理 + AI 行业趋势）。不要先写一份 50 页方法论。本周用它真实分析一家公司，写一页纸结论给信任的朋友看，问："你愿意基于这页纸做决策吗？"——这就是你的 MVP。</div>
+    <div class="examples">
+      <p><strong>场景 · BigCat：</strong>你想做一个"AI 育儿教练"产品。MVP 不是 App，而是：用 Claude + 一份精心写的系统提示词，做成 Telegram bot，邀请 10 位妈妈用一周，收集对话日志和满意度。如果留存 &lt;30%，假设需 pivot。</p>
+      <p>你想测试一个新的投资判断框架（结合第一性原理 + AI 行业趋势）。不要先写一份 50 页方法论。本周用它真实分析一家公司，写一页纸结论给信任的朋友看，问："你愿意基于这页纸做决策吗？"——这就是你的 MVP。</p>
+    </div>
     <div class="section-label">English Summary</div><hr />
     <div class="en">An MVP is not a stripped-down product—it is the smallest experiment that completes a full build-measure-learn loop. Its real output is validated learning, not features. Under high uncertainty, feedback frequency determines evolution speed, the same way short-generation species out-adapt long-generation ones. Pick exactly one hypothesis, design the minimum action that tests it, and pre-commit to pivot / persevere / kill thresholds. Ship to learn.</div>
     <div class="section-label">AI Prompts</div><hr />
