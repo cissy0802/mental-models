@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思维模型详解：谈判类 — 2026-05-15</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.9}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 20px}
+header h1{font-size:1.9rem;font-weight:800;color:#1a1a2e;letter-spacing:1px}
+header .date{margin-top:8px;font-size:0.95rem;color:#636e72}
+header .day-badge{display:inline-block;margin-top:12px;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;font-size:0.82rem;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px}
+.intro{margin:32px 0 36px;padding:20px 24px;background:linear-gradient(135deg,#dfe6e9,#ffeaa7 120%);border-radius:12px;font-size:0.95rem;color:#2d3436;line-height:1.9}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:28px;overflow:hidden;transition:box-shadow 0.2s}
+.card:hover{box-shadow:0 4px 24px rgba(0,0,0,0.1)}
+.card-header{padding:24px 28px 0}
+.card-header h2{font-size:1.35rem;font-weight:700;color:#1a1a2e}
+.card-header h2 .en{font-weight:400;font-size:1rem;color:#636e72;margin-left:8px}
+.card-body{padding:16px 28px 28px}
+.section-label{font-size:0.78rem;font-weight:700;color:#6c5ce7;letter-spacing:2px;text-transform:uppercase;margin:18px 0 8px;display:flex;align-items:center;gap:6px}
+.section-label::before{content:"";display:inline-block;width:3px;height:14px;background:#6c5ce7;border-radius:2px}
+.card-body p{font-size:0.95rem;color:#2d3436;margin-bottom:10px}
+.card-body .example{background:#f0f0f7;border-left:3px solid #a29bfe;padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0 16px;font-size:0.92rem;color:#2d3436}
+.card-body .en-summary{font-size:0.93rem;color:#555;font-style:italic;line-height:1.8}
+.prompt-box{background:#fafafa;border:1px solid #e9e9e9;border-radius:8px;padding:14px 16px;margin:8px 0 6px;font-size:0.88rem;color:#2d3436;line-height:1.7;cursor:pointer;position:relative}
+.prompt-box:hover{border-color:#a29bfe}
+.prompt-box .lang-tag{position:absolute;top:6px;right:10px;font-size:0.7rem;font-weight:700;color:#b2bec3;letter-spacing:1px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#dfe6e9,transparent);margin:0 28px}
+nav{text-align:center;margin-top:40px}
+nav a{display:inline-block;padding:10px 28px;background:#6c5ce7;color:#fff;border-radius:8px;text-decoration:none;font-size:0.95rem;font-weight:600;transition:background 0.2s}
+nav a:hover{background:#5a4bd1}
+footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
+@media(max-width:600px){
+  header h1{font-size:1.4rem}
+  .card-header{padding:20px 18px 0}
+  .card-body{padding:14px 18px 22px}
+  .card-header h2{font-size:1.15rem}
+  .card-header h2 .en{display:block;margin-left:0;margin-top:4px}
+  .divider{margin:0 18px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>思维模型详解：谈判类</h1>
+  <div class="date">2026 年 5 月 15 日</div>
+  <span class="day-badge">DAY 16 / 30</span>
+</header>
+
+<div class="intro">
+  谈判不仅发生在商务桌上，更贯穿于日常的每一次沟通——与合作伙伴讨论条款、与孩子协商屏幕时间、与自己的内心博弈资源分配。掌握谈判思维模型，核心不在于"赢"对方，而在于创造双方都能接受的更大价值空间。今天我们深入四个经典模型：BATNA、锚定与让步、双赢思维、利益vs立场。
+</div>
+
+<!-- Model 1: BATNA -->
+<div class="card">
+  <div class="card-header">
+    <h2>BATNA<span class="en">Best Alternative to a Negotiated Agreement</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">中文详解</div>
+    <p>BATNA（最佳替代方案）是哈佛谈判项目提出的核心概念：在进入任何谈判之前，你必须清楚地知道——如果谈判破裂，你的最佳备选方案是什么。BATNA 越强，你的谈判底气越足；BATNA 越弱，你越容易被迫接受不利条件。</p>
+    <p>关键在于：BATNA 不是一个固定值，而是需要<strong>主动构建和强化</strong>的。优秀的谈判者在谈判前会花大量时间改善自己的 BATNA，同时评估对方的 BATNA。这与王利杰强调的第一性原理一脉相承——回到底层，问自己"没有这笔交易，我真正的处境是什么？"</p>
+    <div class="example">
+      <strong>💡 场景：AI 创业投资决策</strong><br>
+      BigCat 在评估一个 AI Agent 项目的投资机会。创始人开价估值 5000 万。此时不应急于讨价还价，而应先盘点自己的 BATNA：手中还有哪些同赛道的备选项目？资金如果不投这个项目，放在其他资产的预期回报是多少？当你发现还有两个同样优质的 AI 项目可投，你的 BATNA 就很强——你可以从容谈判，甚至愿意走开。反之，如果这是唯一值得投的项目，你就需要先花时间拓展备选。
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">BATNA is your best fallback if the current negotiation fails. A strong BATNA gives you leverage to walk away; a weak one forces concessions. Before any negotiation, invest time in strengthening your alternatives rather than just planning your arguments at the table.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">中文</span>
+      我即将进行一场关于 [具体事项] 的谈判。请帮我分析：(1) 我当前的 BATNA 是什么？(2) 对方可能的 BATNA 是什么？(3) 我可以通过哪些行动来增强自己的 BATNA？请用结构化列表输出。
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      I'm preparing for a negotiation about [topic]. Help me map out: (1) my current BATNA, (2) the other party's likely BATNA, and (3) concrete actions I can take to strengthen my alternatives before entering the negotiation. Format as a structured analysis.
+    </div>
+  </div>
+</div>
+
+<!-- Model 2: 锚定与让步 -->
+<div class="card">
+  <div class="card-header">
+    <h2>锚定与让步<span class="en">Anchoring & Concession Strategy</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">中文详解</div>
+    <p>锚定效应在谈判中威力巨大：谁先出价，谁就设定了整个谈判的"参考框架"。研究表明，最终成交价往往与初始锚点高度相关，即使双方都知道第一个数字是随意给出的。这是因为人脑在处理不确定信息时，会不自觉地围绕锚点做调整——而调整幅度往往不够。</p>
+    <p>让步策略与锚定相辅相成。关键原则：<strong>让步应递减</strong>（第一次让 100，第二次让 50，第三次让 20），这向对方传递出"已接近底线"的信号。切忌等幅让步（100→100→100），这会让对方认为你还有很大空间。同时，每次让步都应<strong>要求对等回报</strong>，否则对方会视为单方面退让。</p>
+    <div class="example">
+      <strong>💡 场景：与 AI 服务商谈年度合约</strong><br>
+      BigCat 团队要采购一款 AI API 服务，对方年费报价 60 万。你可以先抛出一个有理有据的锚点："基于我们的用量预估和市场上同类产品的价格区间，我们的预算在 35 万左右。"即使最终成交不会是 35 万，这个锚点把谈判区间从 60 万往下拉了一大截。随后的让步遵循递减原则：从 35 万→40 万→43 万→44 万，每一步幅度缩小，同时每次让步都附带条件——"如果加到 40 万，我们需要锁定两年价格不涨。"
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">The first number on the table disproportionately shapes the final outcome — this is the anchoring effect. Pair it with a diminishing concession strategy (give less each round) to signal firmness. Always tie concessions to reciprocal asks; unilateral concessions erode your position.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">中文</span>
+      我需要在 [谈判场景] 中设定一个合理的锚定价/锚定条件。请帮我：(1) 分析对方可能的心理预期区间；(2) 建议一个有说服力的初始锚点及其论据；(3) 设计三轮递减让步策略，每轮附带交换条件。
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      I need to set an effective anchor in a negotiation about [topic]. Please: (1) estimate the other party's expectation range, (2) suggest a defensible opening anchor with supporting rationale, and (3) design a 3-round diminishing concession plan, each round paired with a reciprocal ask.
+    </div>
+  </div>
+</div>
+
+<!-- Model 3: 双赢思维 -->
+<div class="card">
+  <div class="card-header">
+    <h2>双赢思维<span class="en">Win-Win Negotiation</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">中文详解</div>
+    <p>双赢思维的核心假设是：谈判不是零和博弈。大多数谈判中，双方对不同议题的重视程度不同——这种差异恰恰是创造额外价值的空间。你不太在意的东西，可能对对方至关重要；反之亦然。双赢的本质是<strong>"把蛋糕做大"再分配</strong>，而不是在固定大小的蛋糕上争夺份额。</p>
+    <p>实现双赢的关键技术：(1) 多议题打包谈判，而非逐项博弈；(2) 深入了解对方真实需求，寻找互补点；(3) 创造性地引入新选项。这与"人机协同"的理念高度一致——AI 不是替代人，而是与人协作创造更大的总价值。</p>
+    <div class="example">
+      <strong>💡 场景：育儿中的"谈判"</strong><br>
+      孩子想周末多玩一小时游戏，BigCat 希望孩子多阅读。看似零和：游戏时间多 = 阅读时间少。但双赢思维会这样打开局面——孩子真正在意的是"自主支配时间的感觉"，而你在意的是"有效学习的输入"。于是可以创造新选项：孩子用 30 分钟完成一篇读书笔记后，获得 45 分钟的自由时间（包含游戏）。孩子得到了自主权和游戏时间，你得到了高质量的阅读输出。蛋糕变大了。
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">Win-Win negotiation rejects the zero-sum assumption. By understanding what each side truly values — which often differs — negotiators can "expand the pie" through creative trade-offs, bundled deals, and new options that satisfy both parties beyond simple compromise.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">中文</span>
+      我和 [对方] 在 [事项] 上产生了分歧。请帮我用双赢思维分析：(1) 双方各自最在意的底层需求是什么？(2) 哪些议题存在互补的价值差异？(3) 能否创造性地引入新选项，使双方都获得更多？
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      I have a disagreement with [party] about [issue]. Apply Win-Win thinking: (1) What are each side's underlying interests? (2) Where do our value priorities differ and complement? (3) Propose creative options that expand the total value for both sides.
+    </div>
+  </div>
+</div>
+
+<!-- Model 4: 利益vs立场 -->
+<div class="card">
+  <div class="card-header">
+    <h2>利益 vs 立场<span class="en">Interests vs. Positions</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">中文详解</div>
+    <p>《Getting to Yes》一书的核心洞见：人们在谈判中表达的"立场"（Position）往往只是冰山一角，水面下是真正的"利益"（Interest）。立场是"我要什么"，利益是"我为什么要"。当双方陷入立场对立时，往往意味着两个人在为同一个橘子争吵——而实际上一个人要的是橘皮做蛋糕，另一个人要的是橘肉榨汁。</p>
+    <p>解锁利益的方法：不断追问"为什么这对你很重要？"或"如果得到这个，你希望实现什么？"。这与第一性原理如出一辙——穿透表面诉求，触达底层动机。王利杰常说"回到本质去思考"，在谈判中就是从立场回到利益。</p>
+    <div class="example">
+      <strong>💡 场景：团队协作中的资源争夺</strong><br>
+      作为"超级个体"践行者，BigCat 在团队中推动 AI 工具的采用。开发负责人坚持要增加两个人力编制（立场），而你希望用 AI Agent 来提升产能（立场）。立场对立。但如果追问利益：开发负责人真正的利益是"保证项目按时交付且质量可控"，而你的利益是"用最优的投入产出比完成目标"。底层利益其实兼容——你可以提议"先用 AI Agent 跑一个 sprint 做试点，如果效率未达预期，立刻批准增加人力"。这绕过了立场冲突，直接回应了双方的核心利益。
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">Positions are what people say they want; interests are why they want it. Most deadlocks arise from clashing positions that mask compatible interests. By asking "why does this matter to you?" repeatedly, you can uncover shared or complementary interests and find solutions that satisfy both sides at the deeper level.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">中文</span>
+      在 [谈判/冲突场景] 中，双方的立场分别是 [A 的立场] 和 [B 的立场]。请帮我：(1) 剖析双方立场背后可能的深层利益（至少各列三条）；(2) 找出利益的交集或互补点；(3) 基于利益而非立场，提出 2-3 个可能的解决方案。
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      In a negotiation where Party A's position is [X] and Party B's position is [Y], help me: (1) uncover at least 3 underlying interests for each side, (2) identify where interests overlap or complement, and (3) propose 2-3 solutions that address both parties' core interests rather than their stated positions.
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html">← 返回目录 Back to Index</a>
+</nav>
+<footer>Powered by curiosity &amp; first principles.</footer>
+</div>
+</body>
+</html>
