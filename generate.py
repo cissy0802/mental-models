@@ -9,36 +9,36 @@ import subprocess
 import sys
 
 TOPICS = {
-    1:  ("决策类",       "juece",           ["第一性原理", "二阶思维", "逆向思维", "奥卡姆剃刀"]),
-    2:  ("认知偏差类",   "renzhi-pianjian", ["确认偏误", "锚定效应", "幸存者偏差", "沉没成本谬误"]),
-    3:  ("系统思维类",   "xitong-siwei",    ["反馈循环", "杠杆点", "瓶颈理论", "涌现"]),
-    4:  ("战略类",       "zhanlue",         ["博弈论", "竞争优势", "护城河", "飞轮效应"]),
-    5:  ("沟通与影响力类","goutong",        ["金字塔原理", "影响力六原则", "框架效应", "故事思维"]),
-    6:  ("创新与学习类", "chuangxin",       ["刻意练习", "T型人才", "跨界迁移", "类比思维"]),
-    7:  ("风险与概率类", "fengxian",        ["贝叶斯思维", "黑天鹅", "反脆弱", "期望值思维"]),
-    8:  ("效率与执行类", "xiaolv",          ["帕累托法则", "帕金森定律", "时间块理论", "MVP思维"]),
-    9:  ("心理与行为类", "xinli",           ["损失厌恶", "峰终定律", "心流理论", "习惯回路"]),
-    10: ("商业模式类",   "shangye",         ["网络效应", "平台思维", "长尾理论", "边际成本"]),
-    11: ("哲学与元认知类","zhexue",         ["苏格拉底式提问", "知识之筏", "无知之知", "认知谦逊"]),
-    12: ("科学方法类",   "kexue",           ["假说-验证", "可证伪性", "控制变量", "相关≠因果"]),
-    13: ("经济学思维类", "jingjixue-siwei", ["机会成本", "比较优势", "供需均衡", "外部性"]),
-    14: ("投资与财富类", "touzi",           ["安全边际", "均值回归", "复利效应", "资产配置"]),
-    15: ("领导力类",     "lingdaoli",       ["仆人式领导", "情境领导", "能力圈", "授权与信任"]),
-    16: ("谈判类",       "tanjian",         ["BATNA", "锚定与让步", "双赢思维", "利益vs立场"]),
-    17: ("数学思维类",   "shuxue-siwei",    ["大数定律", "回归均值", "幂律分布", "非线性思维"]),
-    18: ("生态与进化类", "shengtai",        ["适者生存", "红皇后效应", "共生", "生态位"]),
-    19: ("产品思维类",   "chanpin-siwei",   ["用户旅程", "产品-市场契合", "奥卡姆设计", "迭代思维"]),
-    20: ("时间与复杂性类","shijian",        ["林迪效应", "蝴蝶效应", "路径依赖", "复杂适应系统"]),
-    21: ("意识与觉知类", "yishi",           ["正念觉察", "元认知", "唯识学", "观察者效应"]),
-    22: ("人际关系类",   "renji",           ["情感账户", "非暴力沟通", "同理心地图", "信任方程式"]),
-    23: ("信息与知识管理类","xinxi",        ["信噪比", "费曼学习法", "知识图谱", "遗忘曲线"]),
-    24: ("伦理与价值类", "lunli",           ["电车问题", "功利主义vs义务论", "无知之幕", "道德直觉"]),
-    25: ("AI与超级个体类","ai-super",       ["人机协同", "提示工程思维", "AI增强认知", "算力杠杆"]),
-    26: ("跨学科迁移类", "kuaxueke",        ["物理学隐喻", "生物学类比", "历史韵律", "数学建模"]),
-    27: ("能量与注意力管理类","nengliang",  ["注意力残留", "决策疲劳", "能量管理", "深度工作"]),
-    28: ("博弈与合作类", "boyi-hezuo",      ["囚徒困境", "纳什均衡", "重复博弈", "以牙还牙策略"]),
-    29: ("认知升级类",   "renzhi-shengji",  ["心智模型更新", "范式转移", "认知失调", "成长型心态"]),
-    30: ("东方智慧类",   "dongfang-zhihui", ["道法自然", "中庸之道", "知行合一", "空性与缘起"]),
+    1:  ("决策类",       "decision-making",          ["第一性原理", "二阶思维", "逆向思维", "奥卡姆剃刀"]),
+    2:  ("认知偏差类",   "cognitive-biases",         ["确认偏误", "锚定效应", "幸存者偏差", "沉没成本谬误"]),
+    3:  ("系统思维类",   "systems-thinking",         ["反馈循环", "杠杆点", "瓶颈理论", "涌现"]),
+    4:  ("战略类",       "strategy",                 ["博弈论", "竞争优势", "护城河", "飞轮效应"]),
+    5:  ("沟通与影响力类","communication",            ["金字塔原理", "影响力六原则", "框架效应", "故事思维"]),
+    6:  ("创新与学习类", "innovation-learning",       ["刻意练习", "T型人才", "跨界迁移", "类比思维"]),
+    7:  ("风险与概率类", "risk-probability",          ["贝叶斯思维", "黑天鹅", "反脆弱", "期望值思维"]),
+    8:  ("效率与执行类", "efficiency-execution",      ["帕累托法则", "帕金森定律", "时间块理论", "MVP思维"]),
+    9:  ("心理与行为类", "psychology-behavior",       ["损失厌恶", "峰终定律", "心流理论", "习惯回路"]),
+    10: ("商业模式类",   "business-models",           ["网络效应", "平台思维", "长尾理论", "边际成本"]),
+    11: ("哲学与元认知类","philosophy-metacognition",  ["苏格拉底式提问", "知识之筏", "无知之知", "认知谦逊"]),
+    12: ("科学方法类",   "scientific-method",         ["假说-验证", "可证伪性", "控制变量", "相关≠因果"]),
+    13: ("经济学思维类", "economics",                 ["机会成本", "比较优势", "供需均衡", "外部性"]),
+    14: ("投资与财富类", "investment-wealth",          ["安全边际", "均值回归", "复利效应", "资产配置"]),
+    15: ("领导力类",     "leadership",                ["仆人式领导", "情境领导", "能力圈", "授权与信任"]),
+    16: ("谈判类",       "negotiation",               ["BATNA", "锚定与让步", "双赢思维", "利益vs立场"]),
+    17: ("数学思维类",   "mathematical-thinking",     ["大数定律", "回归均值", "幂律分布", "非线性思维"]),
+    18: ("生态与进化类", "ecology-evolution",          ["适者生存", "红皇后效应", "共生", "生态位"]),
+    19: ("产品思维类",   "product-thinking",           ["用户旅程", "产品-市场契合", "奥卡姆设计", "迭代思维"]),
+    20: ("时间与复杂性类","time-complexity",           ["林迪效应", "蝴蝶效应", "路径依赖", "复杂适应系统"]),
+    21: ("意识与觉知类", "consciousness-awareness",    ["正念觉察", "元认知", "唯识学", "观察者效应"]),
+    22: ("人际关系类",   "relationships",              ["情感账户", "非暴力沟通", "同理心地图", "信任方程式"]),
+    23: ("信息与知识管理类","information-knowledge",   ["信噪比", "费曼学习法", "知识图谱", "遗忘曲线"]),
+    24: ("伦理与价值类", "ethics-values",              ["电车问题", "功利主义vs义务论", "无知之幕", "道德直觉"]),
+    25: ("AI与超级个体类","ai-super-individual",       ["人机协同", "提示工程思维", "AI增强认知", "算力杠杆"]),
+    26: ("跨学科迁移类", "interdisciplinary",          ["物理学隐喻", "生物学类比", "历史韵律", "数学建模"]),
+    27: ("能量与注意力管理类","energy-attention",      ["注意力残留", "决策疲劳", "能量管理", "深度工作"]),
+    28: ("博弈与合作类", "game-cooperation",           ["囚徒困境", "纳什均衡", "重复博弈", "以牙还牙策略"]),
+    29: ("认知升级类",   "cognitive-upgrade",          ["心智模型更新", "范式转移", "认知失调", "成长型心态"]),
+    30: ("东方智慧类",   "eastern-wisdom",             ["道法自然", "中庸之道", "知行合一", "空性与缘起"]),
 }
 
 USER_BACKGROUND = """
@@ -53,11 +53,18 @@ USER_BACKGROUND = """
 """
 
 
-def get_day_index() -> tuple[int, str]:
+def get_day_index(repo_dir: str) -> tuple[int, str]:
     today = datetime.date.today()
-    day_of_year = today.timetuple().tm_yday
-    day_index = (day_of_year % 30) + 1
-    return day_index, today.strftime("%Y-%m-%d")
+    date_str = today.strftime("%Y-%m-%d")
+    # Find the max day number from existing files (e.g. "ecology-evolution-day18.html" -> 18)
+    max_day = 0
+    pattern = re.compile(r'-day(\d+)\.html$')
+    for fname in os.listdir(repo_dir):
+        m = pattern.search(fname)
+        if m:
+            max_day = max(max_day, int(m.group(1)))
+    day_index = max_day + 1
+    return day_index, date_str
 
 
 def generate_html(client: anthropic.Anthropic, day_index: int, date_str: str,
@@ -95,13 +102,14 @@ HTML 要求：
     return message.content[0].text
 
 
-def build_index(entries: list[tuple[str, str, str, list[str]]]) -> str:
-    """Build index.html from list of (date, topic_name, filename, models) tuples."""
+def build_index(entries: list[tuple[int, str, str, list[str]]]) -> str:
+    """Build index.html from list of (day_number, topic_name, filename, models) tuples.
+    Entries are listed in ascending day order (new days at the bottom)."""
     rows = ""
-    for date_str, topic_name, filename, models in entries:
+    for day_num, topic_name, filename, models in entries:
         model_str = " · ".join(models)
         rows += f"""  <a class="entry" href="{filename}">
-    <span class="date">{date_str}</span>
+    <span class="day">Day {day_num:02d}</span>
     <span class="title">{topic_name}</span>
     <span class="models">{model_str}</span>
   </a>\n"""
@@ -122,7 +130,7 @@ header p{{margin-top:8px;font-size:1rem;color:#636e72}}
 .list{{margin-top:32px}}
 .entry{{display:flex;align-items:baseline;gap:16px;padding:18px 20px;background:#fff;border-radius:10px;box-shadow:0 1px 8px rgba(0,0,0,0.05);margin-bottom:14px;transition:transform 0.15s,box-shadow 0.15s;text-decoration:none;color:inherit}}
 .entry:hover{{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.1)}}
-.entry .date{{flex-shrink:0;font-size:0.85rem;color:#b2bec3;font-variant-numeric:tabular-nums;min-width:100px}}
+.entry .day{{flex-shrink:0;font-size:0.85rem;font-weight:700;color:#6c5ce7;font-variant-numeric:tabular-nums;min-width:56px}}
 .entry .title{{font-size:1.05rem;font-weight:600;color:#1a1a2e}}
 .entry .models{{font-size:0.88rem;color:#636e72;margin-left:auto;text-align:right}}
 footer{{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}}
@@ -147,26 +155,28 @@ footer{{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}}
 </html>"""
 
 
-def scan_existing_entries(repo_dir: str) -> list[tuple[str, str, str, list[str]]]:
-    """Scan repo for existing HTML files and extract metadata from filenames."""
+def scan_existing_entries(repo_dir: str) -> list[tuple[int, str, str, list[str]]]:
+    """Scan repo for existing HTML files and extract metadata from filenames.
+    Returns list of (day_number, topic_name, filename, models) sorted by day ascending."""
     entries = []
-    pattern = re.compile(r'^(.+)-(\d{4}-\d{2}-\d{2})\.html$')
-    for fname in sorted(os.listdir(repo_dir), reverse=True):
+    pattern = re.compile(r'^(.+)-day(\d+)\.html$')
+    for fname in os.listdir(repo_dir):
         if fname == "index.html":
             continue
         m = pattern.match(fname)
         if not m:
             continue
-        slug, date_str = m.group(1), m.group(2)
+        slug, day_num = m.group(1), int(m.group(2))
         # Find matching topic
         topic_name = slug
         models = []
-        for _, (tname, tslug, tmodels) in TOPICS.items():
-            if tslug == slug:
+        for _, (tname, _tslug, tmodels) in TOPICS.items():
+            if _tslug == slug:
                 topic_name = tname
                 models = tmodels
                 break
-        entries.append((date_str, topic_name, fname, models))
+        entries.append((day_num, topic_name, fname, models))
+    entries.sort(key=lambda e: e[0])  # ascending by day number
     return entries
 
 
@@ -179,7 +189,7 @@ def main():
     client = anthropic.Anthropic(api_key=api_key)
     repo_dir = os.path.dirname(os.path.abspath(__file__))
 
-    day_index, date_str = get_day_index()
+    day_index, date_str = get_day_index(repo_dir)
 
     if day_index in TOPICS:
         topic_name, slug, models = TOPICS[day_index]
@@ -200,7 +210,7 @@ def main():
         slug = parts[1] if len(parts) > 1 else "custom"
         models = parts[2].split(",") if len(parts) > 2 else ["模型A", "模型B", "模型C", "模型D"]
 
-    filename = f"{slug}-{date_str}.html"
+    filename = f"{slug}-day{day_index:02d}.html"
     filepath = os.path.join(repo_dir, filename)
 
     print(f"Generating: {topic_name} → {filename}")
@@ -210,12 +220,12 @@ def main():
         f.write(html)
     print(f"Written: {filepath}")
 
-    # Rebuild index with all entries (oldest first)
+    # Rebuild index with all entries (ascending day order, new days at bottom)
     entries = scan_existing_entries(repo_dir)
     # Ensure today's entry is in the list
     if not any(e[2] == filename for e in entries):
-        entries.insert(0, (date_str, topic_name, filename, models))
-    entries.sort(key=lambda e: e[0], reverse=False)  # oldest first
+        entries.append((day_index, topic_name, filename, models))
+        entries.sort(key=lambda e: e[0])
 
     index_path = os.path.join(repo_dir, "index.html")
     with open(index_path, "w", encoding="utf-8") as f:
