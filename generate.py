@@ -56,14 +56,17 @@ USER_BACKGROUND = """
 def get_day_index(repo_dir: str) -> tuple[int, str]:
     today = datetime.date.today()
     date_str = today.strftime("%Y-%m-%d")
-    # Find the max day number from existing files (e.g. "ecology-evolution-day18.html" -> 18)
-    max_day = 0
+    # Collect all existing day numbers
+    existing_days = set()
     pattern = re.compile(r'-day(\d+)\.html$')
     for fname in os.listdir(repo_dir):
         m = pattern.search(fname)
         if m:
-            max_day = max(max_day, int(m.group(1)))
-    day_index = max_day + 1
+            existing_days.add(int(m.group(1)))
+    # Find the first missing day in sequence (1, 2, 3, ...)
+    day_index = 1
+    while day_index in existing_days:
+        day_index += 1
     return day_index, date_str
 
 
@@ -212,6 +215,10 @@ def main():
 
     filename = f"{slug}-day{day_index:02d}.html"
     filepath = os.path.join(repo_dir, filename)
+
+    if os.path.exists(filepath):
+        print(f"Skipping: {filename} already exists.")
+        return
 
     print(f"Generating: {topic_name} → {filename}")
     html = generate_html(client, day_index, date_str, topic_name, slug, models)
