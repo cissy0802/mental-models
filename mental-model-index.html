@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思维模型索引 — 按问题类型查找</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .page-header .meta {
+    color: #868e96;
+    font-size: 14px;
+    letter-spacing: 1px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* Prompt Section */
+  .prompt-section {
+    background: #1e272e;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .prompt-section h2 {
+    color: #fdcb6e;
+    font-size: 18px;
+    margin: 0 0 6px;
+    letter-spacing: 1px;
+  }
+  .prompt-section .hint {
+    color: #b2bec3;
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .prompt-box {
+    background: #2d3436;
+    border: 1px solid #636e72;
+    border-radius: 8px;
+    padding: 18px 20px;
+    color: #dfe6e9;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    position: relative;
+  }
+  .prompt-box .placeholder {
+    color: #fdcb6e;
+    font-weight: 600;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #636e72;
+    color: #dfe6e9;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: #6c5ce7; }
+  .copy-btn.copied { background: #00b894; }
+
+  /* Category Cards */
+  .category {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 5px solid #ccc;
+  }
+  .category h3 {
+    font-size: 18px;
+    margin: 0 0 4px;
+    color: #2d3436;
+  }
+  .category .scenario {
+    font-size: 13px;
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .model-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    display: inline-block;
+    background: #f1f3f5;
+    color: #495057;
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    cursor: default;
+  }
+  .tag[href] { cursor: pointer; }
+  .tag[href]:hover {
+    background: #6c5ce7;
+    color: #fff;
+  }
+  .tag .day-ref {
+    font-size: 10px;
+    color: #adb5bd;
+    margin-left: 4px;
+  }
+  .tag[href]:hover .day-ref { color: rgba(255,255,255,0.7); }
+
+  /* Color coding for categories */
+  .cat-decision    { border-left-color: #6c5ce7; }
+  .cat-bias        { border-left-color: #e17055; }
+  .cat-system      { border-left-color: #00b894; }
+  .cat-strategy    { border-left-color: #0984e3; }
+  .cat-comm        { border-left-color: #fd79a8; }
+  .cat-learn       { border-left-color: #00cec9; }
+  .cat-risk        { border-left-color: #d63031; }
+  .cat-efficiency  { border-left-color: #fdcb6e; }
+  .cat-behavior    { border-left-color: #a29bfe; }
+  .cat-business    { border-left-color: #55efc4; }
+  .cat-science     { border-left-color: #74b9ff; }
+  .cat-invest      { border-left-color: #fab1a0; }
+  .cat-leadership  { border-left-color: #636e72; }
+  .cat-negotiate   { border-left-color: #ffeaa7; }
+  .cat-time        { border-left-color: #81ecec; }
+
+  .section-divider {
+    text-align: center;
+    margin: 48px 0 28px;
+    position: relative;
+  }
+  .section-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #dfe6e9;
+  }
+  .section-divider span {
+    position: relative;
+    background: #f7f7f5;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #636e72;
+    letter-spacing: 3px;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #e9ecef;
+  }
+  .footer a {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .page-header h1 { font-size: 24px; }
+    .prompt-section { padding: 20px 16px; }
+    .prompt-box { font-size: 12px; padding: 14px; }
+    .category { padding: 18px 16px; }
+    .category h3 { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>思维模型索引</h1>
+    <div class="meta">遇到问题时，用下方 Prompt 让 AI 从 70+ 个模型中为你匹配最佳工具</div>
+  </header>
+
+  <!-- Universal Prompt -->
+  <section class="prompt-section">
+    <h2>万能匹配 Prompt</h2>
+    <div class="hint">复制后将 [...] 替换为你的具体问题，直接发给 AI</div>
+    <div class="prompt-box" id="universal-prompt"><button class="copy-btn" onclick="copyPrompt()">复制</button>我遇到了一个问题：[用 2-3 句话描述你的问题、背景和你目前的困惑]
+
+请从以下思维模型库中，选出最适合分析这个问题的 2-3 个模型。
+
+对每个推荐的模型，请说明：
+① 为什么这个模型适用（问题结构与模型的匹配点）
+② 用该模型分析这个问题，会得出什么具体洞察
+③ 基于该模型，我应该采取的下一步行动是什么
+
+最后，说明这几个模型组合使用时如何互补，给出一个整合后的行动方案。
+
+===思维模型库===
+
+【决策与选择】第一性原理, 二阶思维, 逆向思维, 奥卡姆剃刀, 机会成本, 期望值思维, BATNA
+【认知纠偏】确认偏误, 锚定效应, 幸存者偏差, 沉没成本谬误, 损失厌恶, 框架效应
+【系统理解】反馈循环, 杠杆点, 瓶颈理论, 涌现, 复杂适应系统, 蝴蝶效应, 路径依赖
+【战略定位】博弈论, 竞争优势, 护城河, 飞轮效应, 比较优势, 生态位, 红皇后效应
+【风险与不确定性】贝叶斯思维, 黑天鹅, 反脆弱, 安全边际, 均值回归, 大数定律, 幂律分布, 非线性思维
+【效率与执行】帕累托法则, 帕金森定律, MVP思维, 迭代思维, 林迪效应
+【沟通与说服】金字塔原理, 影响力六原则, 故事思维, 双赢思维
+【学习与成长】刻意练习, T型人才, 跨界迁移, 类比思维, 假说-验证, 可证伪性, 费曼学习法
+【行为与心理】峰终定律, 心流理论, 习惯回路, 损失厌恶
+【商业与产品】网络效应, 平台思维, 长尾理论, 边际成本, 用户旅程, 产品-市场契合, 复利效应, 资产配置
+【领导与协作】仆人式领导, 情境领导, 能力圈, 授权与信任
+【哲学与元认知】苏格拉底式提问, 无知之知, 认知谦逊, 相关≠因果, 外部性</div>
+  </section>
+
+  <div class="section-divider"><span>按问题类型浏览</span></div>
+
+  <!-- Category 1: Decision -->
+  <div class="category cat-decision">
+    <h3>决策与选择</h3>
+    <div class="scenario">"该不该做 X？" · "A 和 B 之间怎么选？" · "这个决定的本质是什么？"</div>
+    <div class="model-tags">
+      <a class="tag" href="decision-making-day01.html">第一性原理<span class="day-ref">D1</span></a>
+      <a class="tag" href="decision-making-day01.html">二阶思维<span class="day-ref">D1</span></a>
+      <a class="tag" href="decision-making-day01.html">逆向思维<span class="day-ref">D1</span></a>
+      <a class="tag" href="decision-making-day01.html">奥卡姆剃刀<span class="day-ref">D1</span></a>
+      <a class="tag" href="economics-day13.html">机会成本<span class="day-ref">D13</span></a>
+      <a class="tag" href="risk-probability-day07.html">期望值思维<span class="day-ref">D7</span></a>
+      <a class="tag" href="negotiation-day16.html">BATNA<span class="day-ref">D16</span></a>
+    </div>
+  </div>
+
+  <!-- Category 2: Bias -->
+  <div class="category cat-bias">
+    <h3>认知纠偏</h3>
+    <div class="scenario">"我的判断是否被偏见扭曲了？" · "为什么事后看很明显，当时却没发现？"</div>
+    <div class="model-tags">
+      <a class="tag" href="cognitive-biases-day02.html">确认偏误<span class="day-ref">D2</span></a>
+      <a class="tag" href="cognitive-biases-day02.html">锚定效应<span class="day-ref">D2</span></a>
+      <a class="tag" href="cognitive-biases-day02.html">幸存者偏差<span class="day-ref">D2</span></a>
+      <a class="tag" href="cognitive-biases-day02.html">沉没成本谬误<span class="day-ref">D2</span></a>
+      <a class="tag" href="psychology-behavior-day09.html">损失厌恶<span class="day-ref">D9</span></a>
+      <a class="tag" href="communication-day05.html">框架效应<span class="day-ref">D5</span></a>
+      <a class="tag" href="scientific-method-day12.html">相关≠因果<span class="day-ref">D12</span></a>
+    </div>
+  </div>
+
+  <!-- Category 3: System -->
+  <div class="category cat-system">
+    <h3>系统理解</h3>
+    <div class="scenario">"为什么局部优化反而让整体变差？" · "系统为什么不可控？" · "为什么小变化引发大后果？"</div>
+    <div class="model-tags">
+      <a class="tag" href="systems-thinking-day03.html">反馈循环<span class="day-ref">D3</span></a>
+      <a class="tag" href="systems-thinking-day03.html">杠杆点<span class="day-ref">D3</span></a>
+      <a class="tag" href="systems-thinking-day03.html">瓶颈理论<span class="day-ref">D3</span></a>
+      <a class="tag" href="systems-thinking-day03.html">涌现<span class="day-ref">D3</span></a>
+      <a class="tag" href="time-complexity-day20.html">复杂适应系统<span class="day-ref">D20</span></a>
+      <a class="tag" href="time-complexity-day20.html">蝴蝶效应<span class="day-ref">D20</span></a>
+      <a class="tag" href="time-complexity-day20.html">路径依赖<span class="day-ref">D20</span></a>
+      <a class="tag" href="economics-day13.html">外部性<span class="day-ref">D13</span></a>
+    </div>
+  </div>
+
+  <!-- Category 4: Strategy -->
+  <div class="category cat-strategy">
+    <h3>战略与竞争</h3>
+    <div class="scenario">"如何建立长期优势？" · "我的护城河在哪里？" · "如何在竞争中定位？"</div>
+    <div class="model-tags">
+      <a class="tag" href="strategy-day04.html">博弈论<span class="day-ref">D4</span></a>
+      <a class="tag" href="strategy-day04.html">竞争优势<span class="day-ref">D4</span></a>
+      <a class="tag" href="strategy-day04.html">护城河<span class="day-ref">D4</span></a>
+      <a class="tag" href="strategy-day04.html">飞轮效应<span class="day-ref">D4</span></a>
+      <a class="tag" href="economics-day13.html">比较优势<span class="day-ref">D13</span></a>
+      <a class="tag" href="ecology-evolution-day18.html">生态位<span class="day-ref">D18</span></a>
+      <a class="tag" href="ecology-evolution-day18.html">红皇后效应<span class="day-ref">D18</span></a>
+      <a class="tag" href="ecology-evolution-day18.html">适者生存<span class="day-ref">D18</span></a>
+    </div>
+  </div>
+
+  <!-- Category 5: Risk -->
+  <div class="category cat-risk">
+    <h3>风险与不确定性</h3>
+    <div class="scenario">"如何应对无法预测的未来？" · "这个风险值得冒吗？" · "如何在不确定中做决策？"</div>
+    <div class="model-tags">
+      <a class="tag" href="risk-probability-day07.html">贝叶斯思维<span class="day-ref">D7</span></a>
+      <a class="tag" href="risk-probability-day07.html">黑天鹅<span class="day-ref">D7</span></a>
+      <a class="tag" href="risk-probability-day07.html">反脆弱<span class="day-ref">D7</span></a>
+      <a class="tag" href="investment-wealth-day14.html">安全边际<span class="day-ref">D14</span></a>
+      <a class="tag" href="investment-wealth-day14.html">均值回归<span class="day-ref">D14</span></a>
+      <a class="tag" href="mathematical-thinking-day17.html">大数定律<span class="day-ref">D17</span></a>
+      <a class="tag" href="mathematical-thinking-day17.html">幂律分布<span class="day-ref">D17</span></a>
+      <a class="tag" href="mathematical-thinking-day17.html">非线性思维<span class="day-ref">D17</span></a>
+    </div>
+  </div>
+
+  <!-- Category 6: Efficiency -->
+  <div class="category cat-efficiency">
+    <h3>效率与执行</h3>
+    <div class="scenario">"如何用更少的时间做更多？" · "从哪里开始最有效？" · "如何避免过度规划？"</div>
+    <div class="model-tags">
+      <a class="tag" href="efficiency-execution-day08.html">帕累托法则<span class="day-ref">D8</span></a>
+      <a class="tag" href="efficiency-execution-day08.html">帕金森定律<span class="day-ref">D8</span></a>
+      <a class="tag" href="efficiency-execution-day08.html">时间块理论<span class="day-ref">D8</span></a>
+      <a class="tag" href="efficiency-execution-day08.html">MVP思维<span class="day-ref">D8</span></a>
+      <a class="tag" href="product-thinking-day19.html">迭代思维<span class="day-ref">D19</span></a>
+      <a class="tag" href="time-complexity-day20.html">林迪效应<span class="day-ref">D20</span></a>
+      <a class="tag" href="product-thinking-day19.html">奥卡姆设计<span class="day-ref">D19</span></a>
+    </div>
+  </div>
+
+  <!-- Category 7: Communication -->
+  <div class="category cat-comm">
+    <h3>沟通与说服</h3>
+    <div class="scenario">"如何让对方真正听进去？" · "如何清晰表达复杂想法？" · "如何在谈判中争取最佳结果？"</div>
+    <div class="model-tags">
+      <a class="tag" href="communication-day05.html">金字塔原理<span class="day-ref">D5</span></a>
+      <a class="tag" href="communication-day05.html">影响力六原则<span class="day-ref">D5</span></a>
+      <a class="tag" href="communication-day05.html">故事思维<span class="day-ref">D5</span></a>
+      <a class="tag" href="negotiation-day16.html">双赢思维<span class="day-ref">D16</span></a>
+      <a class="tag" href="negotiation-day16.html">锚定与让步<span class="day-ref">D16</span></a>
+      <a class="tag" href="negotiation-day16.html">利益vs立场<span class="day-ref">D16</span></a>
+    </div>
+  </div>
+
+  <!-- Category 8: Learning -->
+  <div class="category cat-learn">
+    <h3>学习与成长</h3>
+    <div class="scenario">"如何更高效地掌握新技能？" · "如何构建跨学科能力？" · "如何验证我学到的东西是对的？"</div>
+    <div class="model-tags">
+      <a class="tag" href="innovation-learning-day06.html">刻意练习<span class="day-ref">D6</span></a>
+      <a class="tag" href="innovation-learning-day06.html">T型人才<span class="day-ref">D6</span></a>
+      <a class="tag" href="innovation-learning-day06.html">跨界迁移<span class="day-ref">D6</span></a>
+      <a class="tag" href="innovation-learning-day06.html">类比思维<span class="day-ref">D6</span></a>
+      <a class="tag" href="scientific-method-day12.html">假说-验证<span class="day-ref">D12</span></a>
+      <a class="tag" href="scientific-method-day12.html">可证伪性<span class="day-ref">D12</span></a>
+      <a class="tag" href="scientific-method-day12.html">控制变量<span class="day-ref">D12</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.html">苏格拉底式提问<span class="day-ref">D11</span></a>
+    </div>
+  </div>
+
+  <!-- Category 9: Behavior -->
+  <div class="category cat-behavior">
+    <h3>行为与心理</h3>
+    <div class="scenario">"如何养成好习惯？" · "为什么总是半途而废？" · "如何进入高效状态？"</div>
+    <div class="model-tags">
+      <a class="tag" href="psychology-behavior-day09.html">习惯回路<span class="day-ref">D9</span></a>
+      <a class="tag" href="psychology-behavior-day09.html">心流理论<span class="day-ref">D9</span></a>
+      <a class="tag" href="psychology-behavior-day09.html">峰终定律<span class="day-ref">D9</span></a>
+      <a class="tag" href="psychology-behavior-day09.html">损失厌恶<span class="day-ref">D9</span></a>
+      <a class="tag" href="communication-day05.html">框架效应<span class="day-ref">D5</span></a>
+    </div>
+  </div>
+
+  <!-- Category 10: Business -->
+  <div class="category cat-business">
+    <h3>商业与产品</h3>
+    <div class="scenario">"这个商业模式能成吗？" · "如何找到产品-市场契合？" · "如何设计增长引擎？"</div>
+    <div class="model-tags">
+      <a class="tag" href="business-models-day10.html">网络效应<span class="day-ref">D10</span></a>
+      <a class="tag" href="business-models-day10.html">平台思维<span class="day-ref">D10</span></a>
+      <a class="tag" href="business-models-day10.html">长尾理论<span class="day-ref">D10</span></a>
+      <a class="tag" href="business-models-day10.html">边际成本<span class="day-ref">D10</span></a>
+      <a class="tag" href="product-thinking-day19.html">用户旅程<span class="day-ref">D19</span></a>
+      <a class="tag" href="product-thinking-day19.html">产品-市场契合<span class="day-ref">D19</span></a>
+      <a class="tag" href="investment-wealth-day14.html">复利效应<span class="day-ref">D14</span></a>
+    </div>
+  </div>
+
+  <!-- Category 11: Invest -->
+  <div class="category cat-invest">
+    <h3>投资与理财</h3>
+    <div class="scenario">"该买入还是卖出？" · "如何评估一个标的？" · "如何构建稳健的投资组合？"</div>
+    <div class="model-tags">
+      <a class="tag" href="investment-wealth-day14.html">安全边际<span class="day-ref">D14</span></a>
+      <a class="tag" href="investment-wealth-day14.html">均值回归<span class="day-ref">D14</span></a>
+      <a class="tag" href="investment-wealth-day14.html">复利效应<span class="day-ref">D14</span></a>
+      <a class="tag" href="investment-wealth-day14.html">资产配置<span class="day-ref">D14</span></a>
+      <a class="tag" href="risk-probability-day07.html">反脆弱<span class="day-ref">D7</span></a>
+      <a class="tag" href="time-complexity-day20.html">林迪效应<span class="day-ref">D20</span></a>
+      <a class="tag" href="leadership-day15.html">能力圈<span class="day-ref">D15</span></a>
+    </div>
+  </div>
+
+  <!-- Category 12: Leadership -->
+  <div class="category cat-leadership">
+    <h3>领导与管理</h3>
+    <div class="scenario">"如何带好一个团队？" · "什么时候该授权，什么时候该亲力亲为？" · "如何激发团队潜能？"</div>
+    <div class="model-tags">
+      <a class="tag" href="leadership-day15.html">仆人式领导<span class="day-ref">D15</span></a>
+      <a class="tag" href="leadership-day15.html">情境领导<span class="day-ref">D15</span></a>
+      <a class="tag" href="leadership-day15.html">能力圈<span class="day-ref">D15</span></a>
+      <a class="tag" href="leadership-day15.html">授权与信任<span class="day-ref">D15</span></a>
+      <a class="tag" href="time-complexity-day20.html">复杂适应系统<span class="day-ref">D20</span></a>
+      <a class="tag" href="systems-thinking-day03.html">杠杆点<span class="day-ref">D3</span></a>
+    </div>
+  </div>
+
+  <!-- Category 13: Philosophy -->
+  <div class="category cat-negotiate">
+    <h3>哲学与元认知</h3>
+    <div class="scenario">"我是不是在自欺欺人？" · "我的认知边界在哪里？" · "如何思考'思考本身'？"</div>
+    <div class="model-tags">
+      <a class="tag" href="philosophy-metacognition-day11.html">苏格拉底式提问<span class="day-ref">D11</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.html">知识之筏<span class="day-ref">D11</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.html">无知之知<span class="day-ref">D11</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.html">认知谦逊<span class="day-ref">D11</span></a>
+      <a class="tag" href="scientific-method-day12.html">相关≠因果<span class="day-ref">D12</span></a>
+    </div>
+  </div>
+
+  <!-- Category 14: Time -->
+  <div class="category cat-time">
+    <h3>时间与长期思维</h3>
+    <div class="scenario">"这件事 10 年后还重要吗？" · "什么东西会持续存在？" · "早期选择如何影响长期结果？"</div>
+    <div class="model-tags">
+      <a class="tag" href="time-complexity-day20.html">林迪效应<span class="day-ref">D20</span></a>
+      <a class="tag" href="time-complexity-day20.html">路径依赖<span class="day-ref">D20</span></a>
+      <a class="tag" href="time-complexity-day20.html">蝴蝶效应<span class="day-ref">D20</span></a>
+      <a class="tag" href="investment-wealth-day14.html">复利效应<span class="day-ref">D14</span></a>
+      <a class="tag" href="ecology-evolution-day18.html">红皇后效应<span class="day-ref">D18</span></a>
+      <a class="tag" href="ecology-evolution-day18.html">共生<span class="day-ref">D18</span></a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="index.html">&larr; 返回首页</a>
+  </footer>
+
+</div>
+
+<script>
+function copyPrompt() {
+  const box = document.getElementById('universal-prompt');
+  const btn = box.querySelector('.copy-btn');
+  const text = box.textContent.replace('复制', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '已复制';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '复制';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
