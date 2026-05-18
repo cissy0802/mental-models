@@ -127,6 +127,8 @@ body{{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial
 header{{text-align:center;padding:56px 0 40px}}
 header h1{{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:2px}}
 header p{{margin-top:8px;font-size:1rem;color:#636e72}}
+.index-btn{{display:inline-block;margin-top:16px;padding:8px 22px;background:#6c5ce7;color:#fff;border-radius:8px;font-size:0.9rem;font-weight:600;text-decoration:none;letter-spacing:1px;transition:background 0.2s}}
+.index-btn:hover{{background:#5a4bd1}}
 .list{{margin-top:32px}}
 .entry{{display:flex;align-items:baseline;gap:16px;padding:18px 20px;background:#fff;border-radius:10px;box-shadow:0 1px 8px rgba(0,0,0,0.05);margin-bottom:14px;transition:transform 0.15s,box-shadow 0.15s;text-decoration:none;color:inherit}}
 .entry:hover{{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.1)}}
@@ -146,6 +148,7 @@ footer{{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}}
 <header>
   <h1>每日思维模型</h1>
   <p>Mental Models Daily — BigCat's Thinking Toolkit</p>
+  <a class="index-btn" href="mental-model-index.html">按问题类型查找模型 &rarr;</a>
 </header>
 <div class="list">
 {rows}</div>
@@ -178,6 +181,75 @@ def scan_existing_entries(repo_dir: str) -> list[tuple[int, str, str, list[str]]
         entries.append((day_num, topic_name, fname, models))
     entries.sort(key=lambda e: e[0])  # ascending by day number
     return entries
+
+
+def update_model_index(client: anthropic.Anthropic, repo_dir: str,
+                       entries: list[tuple[int, str, str, list[str]]]) -> None:
+    """Regenerate mental-model-index.html with all models from all days."""
+    index_path = os.path.join(repo_dir, "mental-model-index.html")
+
+    # Build a summary of all days and models for Claude
+    all_days_summary = ""
+    for day_num, topic_name, filename, models in entries:
+        all_days_summary += f"Day {day_num}: {topic_name} ({filename}) — {', '.join(models)}\n"
+
+    prompt = f"""你是一位思维模型索引页面生成器。请根据以下所有已发布的思维模型，生成一个完整的 mental-model-index.html 页面。
+
+## 已发布的所有模型
+
+{all_days_summary}
+
+## 页面结构要求
+
+生成一个完整的自包含 HTML 页面（内联 CSS），包含以下三部分：
+
+### 第一部分：使用说明 + 中英文 Prompt
+页面顶部是一个深色背景区域，包含：
+- 标题"如何使用：让 AI 为你匹配思维模型"
+- 使用方法说明（复制 Prompt → 替换 [...] → 发给 AI）
+- 一个中文 Prompt 模板（带复制按钮）
+- 一个英文 Prompt 模板（带复制按钮）
+
+两个 Prompt 都采用 4 步结构：
+1. 诊断问题类型
+2. 匹配模型（选 2-3 个）：匹配理由 + 模型洞察 + 具体行动
+3. 模型组合方案
+4. 反向检验
+
+Prompt 末尾附上完整的模型库（按类别分组）。模型库必须包含上面列出的所有模型（不遗漏）。
+英文版 Prompt 中的模型名用准确的英文翻译。
+
+### 第二部分：按问题类型浏览（分类卡片）
+将所有模型按"问题类型"重新分类（一个模型可出现在多个类别中）：
+- 决策与选择、认知纠偏、系统理解、战略与竞争、风险与不确定性、效率与执行、沟通与说服、学习与成长、行为与心理、商业与产品、投资与理财、领导与管理、哲学与元认知、时间与长期思维
+- 每个类别卡片包含：标题、典型问题场景（斜体）、模型标签（链接到对应 day HTML 文件）
+- 每个标签显示模型名和 Day 编号（如 D1, D20）
+
+### 第三部分：底部
+返回 index.html 的链接
+
+## 样式要求
+- 与现有页面风格一致：背景 #f7f7f5，卡片白色圆角带 box-shadow
+- 分类卡片用不同的 border-left 颜色区分
+- Prompt 区域：深色背景 #1e272e，等宽字体
+- 复制按钮：灰色，hover 变紫，复制后变绿显示"已复制"
+- 中文 Prompt 标签紫色，英文 Prompt 标签绿色
+- 移动端响应式
+- 页面标题："思维模型索引"
+- JavaScript copyById 函数支持两个独立的复制按钮
+
+只输出完整 HTML，不要任何解释或 markdown 包裹。"""
+
+    message = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=12000,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    html = message.content[0].text
+
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print("Updated mental-model-index.html")
 
 
 def main():
@@ -232,10 +304,13 @@ def main():
         f.write(build_index(entries))
     print("Updated index.html")
 
+    # Regenerate model index page with all models
+    update_model_index(client, repo_dir, entries)
+
     # Git commit
     subprocess.run(["git", "config", "user.email", "chengchen0802@gmail.com"], cwd=repo_dir, check=True)
     subprocess.run(["git", "config", "user.name", "BigCat"], cwd=repo_dir, check=True)
-    subprocess.run(["git", "add", filename, "index.html"], cwd=repo_dir, check=True)
+    subprocess.run(["git", "add", filename, "index.html", "mental-model-index.html"], cwd=repo_dir, check=True)
     result = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=repo_dir)
     if result.returncode != 0:
         models_str = "、".join(models)
