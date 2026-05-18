@@ -90,6 +90,47 @@
   .copy-btn:hover { background: #6c5ce7; }
   .copy-btn.copied { background: #00b894; }
 
+  .prompt-section h3 {
+    color: #dfe6e9;
+    font-size: 14px;
+    margin: 28px 0 8px;
+    letter-spacing: 1px;
+  }
+  .prompt-section h3:first-of-type { margin-top: 0; }
+  .prompt-section .lang-label {
+    display: inline-block;
+    background: #6c5ce7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .prompt-section .lang-label.en { background: #00b894; }
+  .prompt-divider {
+    border: none;
+    border-top: 1px solid #636e72;
+    margin: 28px 0;
+  }
+  .usage-tip {
+    background: rgba(108,92,231,0.12);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #dfe6e9;
+    line-height: 1.7;
+  }
+  .usage-tip strong { color: #fdcb6e; }
+  .usage-tip ol {
+    margin: 8px 0 0 18px;
+    padding: 0;
+  }
+  .usage-tip li { margin-bottom: 4px; }
+
   /* Category Cards */
   .category {
     background: #fff;
@@ -211,35 +252,106 @@
     <div class="meta">遇到问题时，用下方 Prompt 让 AI 从 70+ 个模型中为你匹配最佳工具</div>
   </header>
 
-  <!-- Universal Prompt -->
+  <!-- Prompt Section -->
   <section class="prompt-section">
-    <h2>万能匹配 Prompt</h2>
-    <div class="hint">复制后将 [...] 替换为你的具体问题，直接发给 AI</div>
-    <div class="prompt-box" id="universal-prompt"><button class="copy-btn" onclick="copyPrompt()">复制</button>我遇到了一个问题：[用 2-3 句话描述你的问题、背景和你目前的困惑]
+    <h2>如何使用：让 AI 为你匹配思维模型</h2>
+    <div class="usage-tip">
+      <strong>使用方法：</strong>
+      <ol>
+        <li>复制下方中文或英文 Prompt</li>
+        <li>将 <strong>[...]</strong> 替换为你的具体问题</li>
+        <li>直接发给任意 AI（Claude / ChatGPT / Gemini 等）</li>
+        <li>AI 会从模型库中匹配最适合的 2-3 个模型，给出分析和行动方案</li>
+      </ol>
+    </div>
 
-请从以下思维模型库中，选出最适合分析这个问题的 2-3 个模型。
+    <span class="lang-label">中文 Prompt</span>
+    <div class="prompt-box" id="prompt-zh"><button class="copy-btn" onclick="copyById('prompt-zh', this)">复制</button>你是一位思维模型顾问。我将描述一个具体问题，请你从我的思维模型库中匹配最适合的模型来帮我分析。
 
-对每个推荐的模型，请说明：
-① 为什么这个模型适用（问题结构与模型的匹配点）
-② 用该模型分析这个问题，会得出什么具体洞察
-③ 基于该模型，我应该采取的下一步行动是什么
+## 我的问题
+[用 2-3 句话描述：① 问题是什么 ② 关键背景 ③ 你目前的困惑或卡点]
 
-最后，说明这几个模型组合使用时如何互补，给出一个整合后的行动方案。
+## 请你完成以下任务
 
-===思维模型库===
+### 第一步：诊断问题类型
+先判断这个问题的本质属于哪类：决策选择？认知偏差？系统复杂性？战略定位？风险评估？效率瓶颈？沟通说服？还是多类交叉？
+
+### 第二步：匹配模型（选 2-3 个最相关的）
+对每个推荐的模型，说明：
+- **匹配理由**：这个问题的哪个结构特征与该模型吻合
+- **模型洞察**：用该模型的透镜看这个问题，能看到什么之前没看到的
+- **具体行动**：基于该模型，我现在应该做什么（要具体到可执行）
+
+### 第三步：模型组合方案
+这几个模型如何互补？给出一个整合的分析框架和行动路线图。
+
+### 第四步：反向检验
+有没有哪个模型可能会给出相反的建议？如果有，提醒我注意什么。
+
+## 思维模型库
 
 【决策与选择】第一性原理, 二阶思维, 逆向思维, 奥卡姆剃刀, 机会成本, 期望值思维, BATNA
 【认知纠偏】确认偏误, 锚定效应, 幸存者偏差, 沉没成本谬误, 损失厌恶, 框架效应
 【系统理解】反馈循环, 杠杆点, 瓶颈理论, 涌现, 复杂适应系统, 蝴蝶效应, 路径依赖
 【战略定位】博弈论, 竞争优势, 护城河, 飞轮效应, 比较优势, 生态位, 红皇后效应
 【风险与不确定性】贝叶斯思维, 黑天鹅, 反脆弱, 安全边际, 均值回归, 大数定律, 幂律分布, 非线性思维
-【效率与执行】帕累托法则, 帕金森定律, MVP思维, 迭代思维, 林迪效应
-【沟通与说服】金字塔原理, 影响力六原则, 故事思维, 双赢思维
-【学习与成长】刻意练习, T型人才, 跨界迁移, 类比思维, 假说-验证, 可证伪性, 费曼学习法
+【效率与执行】帕累托法则, 帕金森定律, 时间块理论, MVP思维, 迭代思维, 林迪效应
+【沟通与说服】金字塔原理, 影响力六原则, 框架效应, 故事思维, 双赢思维, 锚定与让步, 利益vs立场
+【学习与成长】刻意练习, T型人才, 跨界迁移, 类比思维, 假说-验证, 可证伪性, 控制变量
 【行为与心理】峰终定律, 心流理论, 习惯回路, 损失厌恶
-【商业与产品】网络效应, 平台思维, 长尾理论, 边际成本, 用户旅程, 产品-市场契合, 复利效应, 资产配置
+【商业与产品】网络效应, 平台思维, 长尾理论, 边际成本, 用户旅程, 产品-市场契合, 奥卡姆设计, 迭代思维
+【投资与财富】安全边际, 均值回归, 复利效应, 资产配置
 【领导与协作】仆人式领导, 情境领导, 能力圈, 授权与信任
-【哲学与元认知】苏格拉底式提问, 无知之知, 认知谦逊, 相关≠因果, 外部性</div>
+【哲学与元认知】苏格拉底式提问, 知识之筏, 无知之知, 认知谦逊
+【科学方法】假说-验证, 可证伪性, 控制变量, 相关≠因果
+【时间与复杂性】林迪效应, 蝴蝶效应, 路径依赖, 复杂适应系统
+【生态与进化】适者生存, 红皇后效应, 共生, 生态位
+【经济学】机会成本, 比较优势, 供需均衡, 外部性</div>
+
+    <hr class="prompt-divider">
+
+    <span class="lang-label en">English Prompt</span>
+    <div class="prompt-box" id="prompt-en"><button class="copy-btn" onclick="copyById('prompt-en', this)">复制</button>You are a mental model advisor. I'll describe a specific problem, and you'll match the best models from my library to help me analyze it.
+
+## My Problem
+[Describe in 2-3 sentences: ① What the problem is ② Key context ③ Where you're stuck or confused]
+
+## Your Tasks
+
+### Step 1: Diagnose the Problem Type
+First, identify the nature of this problem: Decision-making? Cognitive bias? System complexity? Strategic positioning? Risk assessment? Efficiency bottleneck? Communication? Or a cross-category hybrid?
+
+### Step 2: Match Models (pick 2-3 most relevant)
+For each recommended model, explain:
+- **Why it fits**: Which structural feature of my problem aligns with this model
+- **Model insight**: What does this model's lens reveal that I haven't seen yet
+- **Specific action**: What should I do right now based on this model (be concrete and actionable)
+
+### Step 3: Combined Framework
+How do these models complement each other? Provide an integrated analysis and action roadmap.
+
+### Step 4: Counter-check
+Is there any model that might give the opposite advice? If so, flag what I should watch out for.
+
+## Mental Model Library
+
+[Decision & Choice] First Principles, Second-Order Thinking, Inversion, Occam's Razor, Opportunity Cost, Expected Value, BATNA
+[Cognitive Debiasing] Confirmation Bias, Anchoring, Survivorship Bias, Sunk Cost Fallacy, Loss Aversion, Framing Effect
+[Systems Understanding] Feedback Loops, Leverage Points, Theory of Constraints, Emergence, Complex Adaptive Systems, Butterfly Effect, Path Dependence
+[Strategy & Positioning] Game Theory, Competitive Advantage, Moats, Flywheel Effect, Comparative Advantage, Ecological Niche, Red Queen Effect
+[Risk & Uncertainty] Bayesian Thinking, Black Swan, Antifragile, Margin of Safety, Mean Reversion, Law of Large Numbers, Power Law, Nonlinear Thinking
+[Efficiency & Execution] Pareto Principle, Parkinson's Law, Time Blocking, MVP Thinking, Iterative Thinking, Lindy Effect
+[Communication & Persuasion] Pyramid Principle, Cialdini's 6 Principles, Framing Effect, Narrative Thinking, Win-Win, Anchoring & Concession, Interests vs Positions
+[Learning & Growth] Deliberate Practice, T-Shaped Talent, Cross-Domain Transfer, Analogical Thinking, Hypothesis-Testing, Falsifiability, Controlled Variables
+[Behavior & Psychology] Peak-End Rule, Flow State, Habit Loop, Loss Aversion
+[Business & Product] Network Effects, Platform Thinking, Long Tail, Marginal Cost, User Journey, Product-Market Fit, Occam's Design, Iterative Thinking
+[Investment & Wealth] Margin of Safety, Mean Reversion, Compound Effect, Asset Allocation
+[Leadership & Collaboration] Servant Leadership, Situational Leadership, Circle of Competence, Delegation & Trust
+[Philosophy & Metacognition] Socratic Questioning, Raft of Knowledge, Knowing Your Ignorance, Intellectual Humility
+[Scientific Method] Hypothesis-Testing, Falsifiability, Controlled Variables, Correlation ≠ Causation
+[Time & Complexity] Lindy Effect, Butterfly Effect, Path Dependence, Complex Adaptive Systems
+[Ecology & Evolution] Survival of the Fittest, Red Queen Effect, Symbiosis, Ecological Niche
+[Economics] Opportunity Cost, Comparative Advantage, Supply-Demand Equilibrium, Externalities</div>
   </section>
 
   <div class="section-divider"><span>按问题类型浏览</span></div>
@@ -458,9 +570,8 @@
 </div>
 
 <script>
-function copyPrompt() {
-  const box = document.getElementById('universal-prompt');
-  const btn = box.querySelector('.copy-btn');
+function copyById(id, btn) {
+  const box = document.getElementById(id);
   const text = box.textContent.replace('复制', '').trim();
   navigator.clipboard.writeText(text).then(() => {
     btn.textContent = '已复制';
