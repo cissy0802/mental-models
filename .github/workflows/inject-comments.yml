@@ -1,0 +1,50 @@
+name: Inject Comments
+
+# After any push that touched HTML, ensure each page includes the shared
+# Giscus comments loader (cissy0802.github.io/comments.js). Skips its own
+# bot commits to avoid loops.
+
+on:
+  push:
+    branches: [main]
+    paths: ['**/*.html']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inject:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject comments.js script tag into HTML missing it
+        run: |
+          changed=0
+          while IFS= read -r f; do
+            if ! grep -q "comments\.js" "$f"; then
+              # Insert just before </body>; if no </body>, append at end
+              if grep -q "</body>" "$f"; then
+                sed -i 's|</body>|<script src="https://cissy0802.github.io/comments.js" defer></script>\n</body>|i' "$f"
+              else
+                printf '\n<script src="https://cissy0802.github.io/comments.js" defer></script>\n' >> "$f"
+              fi
+              changed=$((changed+1))
+              echo "  + $f"
+            fi
+          done < <(find . -name '*.html' -not -path './.git/*' -not -path './node_modules/*')
+          echo "Injected into $changed file(s)."
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git add -A
+          git commit -m "Auto-inject Giscus comments loader"
+          git push
