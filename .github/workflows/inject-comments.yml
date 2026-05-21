@@ -1,8 +1,7 @@
-name: Inject Comments
+name: Inject Shared Scripts
 
 # After any push that touched HTML, ensure each page includes the shared
-# Giscus comments loader (cissy0802.github.io/comments.js). Skips its own
-# bot commits to avoid loops.
+# hub scripts (comments.js + search.js). Skips its own bot commits.
 
 on:
   push:
@@ -20,22 +19,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Inject comments.js script tag into HTML missing it
+      - name: Inject missing shared script tags
         run: |
           changed=0
           while IFS= read -r f; do
-            if ! grep -q "comments\.js" "$f"; then
-              # Insert just before </body>; if no </body>, append at end
-              if grep -q "</body>" "$f"; then
-                sed -i 's|</body>|<script src="https://cissy0802.github.io/comments.js" defer></script>\n</body>|i' "$f"
-              else
-                printf '\n<script src="https://cissy0802.github.io/comments.js" defer></script>\n' >> "$f"
+            for script in comments.js search.js; do
+              if ! grep -q "$script" "$f"; then
+                tag="<script src=\"https://cissy0802.github.io/$script\" defer></script>"
+                if grep -qi "</body>" "$f"; then
+                  awk -v tag="$tag" 'BEGIN{IGNORECASE=1} /<\/body>/ && !done { print tag; done=1 } { print }' "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+                else
+                  printf '\n%s\n' "$tag" >> "$f"
+                fi
+                changed=$((changed+1))
+                echo "  + $f ($script)"
               fi
-              changed=$((changed+1))
-              echo "  + $f"
-            fi
+            done
           done < <(find . -name '*.html' -not -path './.git/*' -not -path './node_modules/*')
-          echo "Injected into $changed file(s)."
+          echo "Injected $changed tag(s)."
 
       - name: Commit and push if changed
         run: |
@@ -46,5 +47,5 @@ jobs:
             exit 0
           fi
           git add -A
-          git commit -m "Auto-inject Giscus comments loader"
+          git commit -m "Auto-inject shared scripts (comments + search)"
           git push
