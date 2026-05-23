@@ -155,7 +155,6 @@ footer{{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}}
 {rows}</div>
 <footer>Powered by curiosity &amp; first principles.</footer>
 </div>
-<script src="i18n-tts.js" defer></script>
 </body>
 </html>"""
 
@@ -249,9 +248,6 @@ Prompt 末尾附上完整的模型库（按类别分组）。模型库必须包�
     )
     html = message.content[0].text
 
-    if "i18n-tts.js" not in html:
-        html = html.replace("</body>", '<script src="i18n-tts.js" defer></script>\n</body>', 1)
-
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(html)
     print("Updated mental-model-index.html")
@@ -292,11 +288,6 @@ def main():
 
     print(f"Generating: {topic_name} → {filename}")
     html = generate_html(client, day_index, date_str, topic_name, slug, models)
-
-    # Ensure the i18n + TTS script is loaded on every new page; apply-i18n.py
-    # can later add data-zh/data-en attributes and data-i18n-mode="full".
-    if "i18n-tts.js" not in html:
-        html = html.replace("</body>", '<script src="i18n-tts.js" defer></script>\n</body>', 1)
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(html)
