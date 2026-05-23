@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思维模型详解：认知升级类 · 2026-05-23</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .page-header .meta {
+    color: #868e96;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #6c5ce7; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #fdcb6e; }
+  .card.c4 { border-left-color: #e17055; }
+  .card h2 {
+    font-size: 24px;
+    margin: 0 0 4px;
+    color: #2d3436;
+  }
+  .card .subtitle {
+    font-size: 14px;
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    padding: 2px 0;
+  }
+  .c1 .section-label { color: #6c5ce7; }
+  .c2 .section-label { color: #00b894; }
+  .c3 .section-label { color: #b88b1a; }
+  .c4 .section-label { color: #e17055; }
+  .card hr {
+    border: none;
+    border-top: 1px solid #ecf0f1;
+    margin: 0 0 16px;
+  }
+  .card p {
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0 8px;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block strong {
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 6px;
+  }
+  .english-summary {
+    font-size: 14.5px;
+    color: #495057;
+    line-height: 1.8;
+  }
+  .prompt-block {
+    background: #1e272e;
+    color: #dfe6e9;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 10px 0 18px;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    overflow-x: auto;
+    position: relative;
+  }
+  .prompt-label {
+    display: inline-block;
+    background: #fdcb6e;
+    color: #2d3436;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .diagram {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption {
+    font-size: 12px;
+    color: #868e96;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #e9ecef;
+  }
+  .footer a {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>思维模型详解：认知升级类</h1>
+    <div class="meta">2026-05-23 · Day 29</div>
+  </header>
+
+  <!-- Card 1: 心智模型更新 -->
+  <section class="card c1">
+    <h2>心智模型更新</h2>
+    <div class="subtitle">Mental Model Updating — 你看到的不是世界，是你大脑画的世界地图</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>心智模型（Mental Models）是大脑对外部世界运行规律的内部表征——你以为自己在"看世界"，实际你在看的是大脑根据过去经验绘制的简化地图。地图不是疆域，模型不是现实。所有判断、决策、情绪反应，本质上都是这张地图驱动的结果。心智模型更新，是指主动识别、检验并升级这些内部模型的元能力。</p>
+    <p>非平凡洞察：人类大脑的默认设置是"模型保护"而非"模型更新"——确认偏误、动机性推理、身份认同绑定，都是为了让既有模型不被推翻。一个深刻的认知：当现实与你的预测发生偏差时，大脑的第一反应不是"我该修改模型"，而是"现实一定有特殊解释"。真正的高手与普通人的差距，不在于模型本身的精度，而在于"模型更新速率"——当新证据到来时，能多快、多准地修正内部地图。贝叶斯思维之所以强大，本质上就是一套形式化的心智模型更新算法。另一个隐藏维度：心智模型有"层级结构"——表层是具体观点（"这只股票会涨"），中层是分析框架（"价值投资"），深层是世界观（"市场最终会回归理性"）。表层更新易，深层更新难，但越深层的模型一旦更新，整个上层结构会被重塑（即"范式转移"）。</p>
+    <p>实践方法：建立"预测-记录-复盘"循环——重要判断前明确写下预测和理由，事后比对结果。设立"模型审计日"，每季度重新审视核心信念是否还成立。刻意寻找"反证据"——主动阅读你不同意的高质量观点。区分"事实型更新"（数据变了）与"框架型更新"（理解世界的方式变了），后者价值大十倍。</p>
+    <div class="diagram">
+      <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#6c5ce7"/>
+          </marker>
+        </defs>
+        <rect x="20" y="80" width="100" height="60" rx="8" fill="#ede9fe" stroke="#6c5ce7" stroke-width="1.5"/>
+        <text x="70" y="105" text-anchor="middle" font-size="13" fill="#2d3436" font-weight="600">现实输入</text>
+        <text x="70" y="125" text-anchor="middle" font-size="11" fill="#636e72">Reality</text>
+        <rect x="160" y="80" width="100" height="60" rx="8" fill="#ede9fe" stroke="#6c5ce7" stroke-width="1.5"/>
+        <text x="210" y="105" text-anchor="middle" font-size="13" fill="#2d3436" font-weight="600">心智模型</text>
+        <text x="210" y="125" text-anchor="middle" font-size="11" fill="#636e72">Model</text>
+        <rect x="300" y="80" width="100" height="60" rx="8" fill="#ede9fe" stroke="#6c5ce7" stroke-width="1.5"/>
+        <text x="350" y="105" text-anchor="middle" font-size="13" fill="#2d3436" font-weight="600">预测/行动</text>
+        <text x="350" y="125" text-anchor="middle" font-size="11" fill="#636e72">Prediction</text>
+        <rect x="430" y="80" width="80" height="60" rx="8" fill="#fff4e6" stroke="#e17055" stroke-width="1.5"/>
+        <text x="470" y="105" text-anchor="middle" font-size="13" fill="#2d3436" font-weight="600">误差</text>
+        <text x="470" y="125" text-anchor="middle" font-size="11" fill="#636e72">Error</text>
+        <line x1="120" y1="110" x2="155" y2="110" stroke="#6c5ce7" stroke-width="1.5" marker-end="url(#arr1)"/>
+        <line x1="260" y1="110" x2="295" y2="110" stroke="#6c5ce7" stroke-width="1.5" marker-end="url(#arr1)"/>
+        <line x1="400" y1="110" x2="425" y2="110" stroke="#6c5ce7" stroke-width="1.5" marker-end="url(#arr1)"/>
+        <path d="M 470 80 Q 470 30 210 30 Q 210 30 210 75" fill="none" stroke="#e17055" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr1)"/>
+        <text x="320" y="22" text-anchor="middle" font-size="11" fill="#e17055" font-weight="600">用误差更新模型 (Bayesian update)</text>
+        <text x="260" y="180" text-anchor="middle" font-size="12" fill="#636e72" font-style="italic">默认大脑：解释误差为"特殊情况"；高手大脑：用误差修正模型</text>
+      </svg>
+      <div class="caption">心智模型的预测—误差—更新循环</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>查理·芒格的"多元思维模型格栅"。他在哈佛法学院演讲中坦言：自己一辈子都在收集和打磨心智模型，并不断用新事实检验它们。当现实反复打脸某个模型时，他会重写它而非辩护它。他著名的口头禅"如果我不能比对手更好地反驳自己的观点，我就没资格拥有这个观点"——这是模型更新机制的极致表达。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>AI 时代的认知折旧速度前所未有。你两年前对"如何使用 AI"形成的心智模型（例如"AI 是搜索升级版""提示词越长越好""模型越大越强"），到 2026 年很可能已经全面过时。建议建立季度"AI 心智模型审计"：列出你当前对 AI 能力边界、人机协作模式、信息验证标准的核心假设，逐条问"过去三个月有什么证据支持或反驳？"。育儿同理——你对孩子"擅长什么、不擅长什么"的判断，本质上也是一个心智模型，孩子在动态成长，模型如果半年不更新，你给出的反馈和资源配置就是基于一张过时的地图。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Mental models are the brain's internal representations of how the world works — you don't perceive reality directly; you perceive a simplified map your brain draws from past experience. The map is not the territory. The default brain protects existing models through confirmation bias and motivated reasoning; the upgraded mind treats prediction errors as fuel for revision rather than anomalies to explain away. The decisive skill is not model accuracy but model update velocity — how quickly and accurately you revise your internal map when new evidence arrives. Models exist in layers: surface opinions, mid-level frameworks, and deep worldviews. Surface updates are easy; deep updates trigger cascades that reshape everything above. The practice: predict explicitly, compare with outcomes, distinguish fact-updates from framework-updates, and treat being wrong as the most valuable signal in your environment.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">中文模板</span><br>
+      我对 [领域/议题] 持有以下核心心智模型：[列出 3-5 个核心假设或信念]。过去 [时间段] 内出现了以下新证据：[列出新数据、新现象或意外结果]。请帮我：① 分别评估每个假设的"信心度"是否应该上调或下调；② 识别其中哪些是"事实型更新"（数据修正），哪些可能触发"框架型更新"（底层世界观重构）；③ 指出我可能正在用什么方式保护旧模型不被推翻（动机性推理、确认偏误等）；④ 给出修订后的心智模型 v2.0。
+    </div>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      I hold the following core mental models about [domain/topic]: [list 3-5 key assumptions or beliefs]. Over the past [timeframe], the following new evidence has emerged: [list new data, phenomena, or unexpected outcomes]. Please: (1) recalibrate the confidence level of each assumption — up or down; (2) distinguish which are fact-updates (data corrections) versus framework-updates (worldview restructuring); (3) identify how I might be defending the old model from being overturned (motivated reasoning, confirmation bias, etc.); (4) draft the revised mental model v2.0.
+    </div>
+  </section>
+
+  <!-- Card 2: 范式转移 -->
+  <section class="card c2">
+    <h2>范式转移</h2>
+    <div class="subtitle">Paradigm Shift — 真理不是被说服的，是被替代的</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>范式转移由科学哲学家托马斯·库恩在《科学革命的结构》（1962）中提出。"范式"（Paradigm）是某一时期科学共同体共享的世界观、方法论与基本假设；"范式转移"是当旧范式无法解释累积的反常现象时，整个认知框架被根本性新框架替代的过程——例如地心说→日心说、牛顿力学→相对论、经典生物学→分子生物学。库恩指出，新范式从来不是通过说服旧范式持有者实现的，而是因为"旧范式的拥护者逐渐死去，新一代人天然接受新范式"。这就是著名的"普朗克原则"：科学一次葬礼前进一步。</p>
+    <p>非平凡洞察：范式转移最反直觉之处在于——新旧范式是"不可通约的"（incommensurable）。这不是说哪个对哪个错，而是它们使用的概念、问题、衡量标准本身就不同。日心说不是"修正了"地心说，而是把整个讨论的坐标系换掉了；量子力学不是"补充了"经典物理，而是把"客观实在"这一前提都重新定义了。这意味着在范式内做再多优化，也无法跨越到新范式——这就是为什么领域内的专家往往是范式转移的最大障碍：他们最擅长的恰恰是旧范式下的精细操作。第二层洞察：个人成长也遵循范式结构。你的人生有几个"主范式"——关于自我、关系、成功、意义的根本假设。20 岁的你和 40 岁的你之间，往往隔着几次范式转移。第三层洞察：范式转移前必有"反常累积"——你越来越多地遇到旧模型无法解释的现象，越来越多地需要"特殊解释"，越来越多地感到"哪里不对劲"。这种"认知摩擦的累积"是范式转移的先兆，值得珍视而非压抑。</p>
+    <p>实践方法：定期问"我所在领域近 5 年有哪些反常现象在累积？"。识别自己的"主范式"（关于工作、关系、AI、财富、教育的底层假设），追溯它们形成的时间和情境，问"形成这些范式的条件还成立吗？"。在重大转型期（行业变革、人生阶段切换），主动寻找"局外人视角"——因为范式转移往往来自边缘而非中心。</p>
+    <div class="diagram">
+      <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="180" x2="500" y2="180" stroke="#636e72" stroke-width="1.5"/>
+        <text x="270" y="205" text-anchor="middle" font-size="11" fill="#636e72">时间 / Time</text>
+        <path d="M 40 160 Q 80 158 120 155 Q 160 152 200 145" fill="none" stroke="#00b894" stroke-width="2.5"/>
+        <text x="120" y="135" text-anchor="middle" font-size="11" fill="#00b894" font-weight="600">旧范式：常规科学</text>
+        <path d="M 200 145 L 210 130 L 195 120 L 215 105 L 200 90 L 220 85" fill="none" stroke="#fdcb6e" stroke-width="2.5"/>
+        <text x="210" y="70" text-anchor="middle" font-size="11" fill="#b88b1a" font-weight="600">危机 / 反常累积</text>
+        <circle cx="240" cy="80" r="5" fill="#e17055"/>
+        <text x="270" y="65" font-size="11" fill="#e17055" font-weight="600">范式转移</text>
+        <path d="M 240 80 Q 290 75 340 75 Q 400 75 480 75" fill="none" stroke="#6c5ce7" stroke-width="2.5"/>
+        <text x="420" y="60" text-anchor="middle" font-size="11" fill="#6c5ce7" font-weight="600">新范式：新常规科学</text>
+        <line x1="200" y1="180" x2="200" y2="40" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="240" y1="180" x2="240" y2="40" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,3"/>
+      </svg>
+      <div class="caption">库恩的科学革命结构：常规 → 危机 → 革命 → 新常规</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>量子力学的兴起。19 世纪末，经典物理学被认为"几乎完美"，开尔文勋爵宣称物理学只剩两朵"小乌云"——黑体辐射和迈克尔逊-莫雷实验。这两朵"小乌云"恰恰是经典范式无法解释的"反常累积"。普朗克、爱因斯坦、海森堡等人不是修补经典物理，而是直接抛弃了"连续性""绝对时空""客观实在"等底层假设。整个物理学的概念坐标系被替换了——这就是教科书级的范式转移。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>从"知识工作者"到"AI 超级个体"是一次正在发生的范式转移。旧范式：个人能力 = 知识储备 + 技能熟练度 + 工作时长；新范式：个人能力 = 心智模型质量 × AI 协同杠杆 × 判断力。你会发现，在旧范式中表现优秀的同事，可能反而是新范式下最难转型的——因为他们最擅长的"精细记忆与流程执行"恰好是 AI 接管的部分。识别这是范式转移而非"工具升级"，意味着你不该问"如何用 AI 提升 30% 效率"，而该问"如果重新定义我的工作输出方式，AI 在场会让什么变得可能？"。育儿同理：你成长的范式（应试、稀缺、信息差变现）正在被孩子要面对的范式（AI 协作、终身学习、判断力溢价、意义驱动）替代——不要用旧范式的成功路径去规划孩子的未来。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Thomas Kuhn's paradigm shift describes how scientific revolutions occur — not through gradual refinement of the old paradigm but through wholesale replacement when anomalies accumulate beyond the old framework's explanatory capacity. The deepest insight is incommensurability: new and old paradigms don't share concepts, questions, or evaluation standards — they describe different worlds. This is why experts in the old paradigm often become the greatest obstacles to transition: their mastery is precisely of the framework being replaced. Personal life has paradigms too — about self, relationships, success, meaning — and major life transitions are paradigm shifts, not optimizations. The early warning sign is "anomaly accumulation": needing more and more special explanations, feeling that "something is off." Honor that friction rather than suppressing it. The shift from "knowledge worker" to "AI super-individual" is a paradigm shift in progress: those most skilled in the old framework face the steepest transition.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">中文模板</span><br>
+      我目前在 [领域/人生议题] 上运行的"主范式"包含以下核心假设：[列出 3-5 条底层信念]。最近我观察到以下"反常现象"：[列出 3-5 个旧范式难以解释、需要特殊解释才能自圆其说的现象]。请：① 判断这些反常是属于"范式内可吸收"还是"指向范式转移"；② 描绘可能的新范式雏形（核心假设、新概念、新衡量标准）；③ 指出我从旧范式跳到新范式时最大的"沉没认知"（最难放下的旧框架要素）；④ 给出一个 30 天"范式实验"计划。
+    </div>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      The current "master paradigm" I operate in within [domain/life area] includes these core assumptions: [list 3-5 foundational beliefs]. Recently I've observed these anomalies: [list 3-5 phenomena that the old paradigm struggles to explain without special pleading]. Please: (1) judge whether these anomalies are absorbable within the paradigm or signal an imminent paradigm shift; (2) sketch the contours of the new paradigm (core assumptions, new concepts, new evaluation standards); (3) identify my biggest "sunk cognition" — the old-framework element I'll struggle most to release; (4) design a 30-day paradigm-experimentation plan.
+    </div>
+  </section>
+
+  <!-- Card 3: 认知失调 -->
+  <section class="card c3">
+    <h2>认知失调</h2>
+    <div class="subtitle">Cognitive Dissonance — 大脑宁愿弯曲事实，也不愿弯曲自我</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>认知失调由心理学家利昂·费斯廷格在 1957 年提出。当一个人同时持有两个相互矛盾的信念，或当行为与信念不一致时，会产生心理上的紧张感。大脑为了消除这种不适，会采取三种策略之一：① 改变信念以匹配行为；② 改变行为以匹配信念；③ 引入新的认知元素来"合理化"矛盾。最危险的是第三种——因为它让你看似"想通了"，实际上是给自欺穿了一件理性外衣。</p>
+    <p>非平凡洞察：认知失调真正深刻的地方不在于"人会自圆其说"，而在于它揭示了一个反直觉规律——人们对自己投入越多的事情，越会强化对它的信念，哪怕证据表明它是错的。费斯廷格经典的"末日邪教"研究发现，当预言失败后，最坚定的信徒不是离开，而是更虔诚——因为离开意味着承认之前的投入（财产、时间、关系）是错的，这种认知失调太痛苦，于是他们重新解释预言（"我们的虔诚让神延后了末日"）。这就是为什么沉没成本谬误、爱情中的盲目坚持、错误投资的死扛，本质上都是认知失调的产物。第二层洞察：认知失调可以被反向利用——如果你想真正改变一个信念，先制造与新信念相符的小行为，让大脑反向更新信念以消除失调（这是"假装久了就成真"的科学基础，也是行为疗法的核心机制）。第三层洞察：高强度的认知失调会促发深层认知重构，是范式转移的微观触发器。所以智慧的人不回避失调，而是刻意创造"建设性失调"——把自己置于与既有信念冲突的高质量信息环境中，让张力推动成长。</p>
+    <p>实践方法：警惕自己在"自圆其说"——当你为某个决定找出过多理由时，那个决定很可能本身有问题。区分"真理性更新"（基于证据改变信念）与"失调消解"（基于不适改变叙事）。主动制造"建设性失调"：读你不同意的人写的最强论证；与立场相反但智力优秀的人深度对话。</p>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>费斯廷格 1959 年的"无聊任务实验"。受试者被要求完成一项极其枯燥的任务，然后被付费（1 美元或 20 美元）告诉下一位受试者这个任务很有趣。结果出人意料：拿 1 美元的人事后比拿 20 美元的人更真诚地认为任务有趣。原因——拿 20 美元的人有充足理由说谎（"我是为钱说的"），认知不失调；拿 1 美元的人没有足够外部理由，为了消除"我说谎了"的失调，只能修改内部信念："任务确实没那么糟"。这个实验奠定了行为先于态度改变的心理学基础。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>投资中的认知失调极其常见且代价高昂。假设你重仓买入一只股票后，公司基本面出现明确恶化信号。理性反应是减仓或清仓；但实际上你会发现自己开始：找新理由证明"长期逻辑没变"、关注利好新闻屏蔽利空信号、把"持有"重新定义为"价值投资的坚守"。这就是认知失调在编织一张自欺之网。破解方法：在买入时就写下"什么条件下我会卖出"的具体清单（决策前承诺），把未来的失调消解空间封死。同样的机制也在育儿中运作——如果你为孩子的某条教育路径投入巨大（金钱、时间、社会关系），即使孩子明显不适合，你也会倾向于"再坚持一下""换个方法试试"。承认"投入是错的"在失调消解面前异常艰难。建议：每个重大投入前，预先定义"清晰的退出条件"，让未来的自己有路可退。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Cognitive dissonance, introduced by Leon Festinger in 1957, describes the psychological tension that arises when a person holds contradictory beliefs or when behavior conflicts with belief. The brain reduces this tension through three routes: change the belief, change the behavior, or introduce new cognitions to rationalize the contradiction. The third is the most dangerous — it dresses self-deception in the clothing of reason. The counterintuitive deep insight is that people strengthen rather than abandon commitments after disconfirming evidence, because withdrawal would mean admitting prior investments were wasted — a dissonance often too painful to bear. This explains sunk-cost stubbornness, doomsday cult intensification, and white-knuckled holding of failing investments. The reverse is also true: small new behaviors can pull beliefs along to resolve dissonance, which is the engine behind "fake it till you make it" and behavioral therapy. The mature stance is to engineer constructive dissonance — deliberately exposing yourself to high-quality contradictory information — and to pre-commit exit conditions before sunk costs accumulate.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">中文模板</span><br>
+      我对 [某个决定/信念/关系] 投入了大量 [时间/金钱/情感/身份认同]，但最近开始出现一些不利信号：[列出 3-5 个具体的反向证据]。我注意到自己在以下方式回应这些信号：[描述你的解释或反应]。请帮我：① 诊断我是在进行"真理性更新"还是"认知失调消解"；② 指出我最可能使用的合理化策略；③ 列出如果我此刻是一个无投入的旁观者，会看到什么；④ 设计一个"建设性失调"练习帮我突破自我保护。
+    </div>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      I've invested significant [time/money/emotion/identity] in [a decision/belief/relationship], but disconfirming signals are emerging: [list 3-5 specific counter-evidence]. I notice I've been responding to these signals by: [describe your explanations or reactions]. Please: (1) diagnose whether I'm performing genuine belief-update or dissonance-resolution dressed as reason; (2) identify the rationalization strategies I'm most likely deploying; (3) describe what an unattached observer would see at this moment; (4) design a "constructive dissonance" exercise to help me break through self-protection.
+    </div>
+  </section>
+
+  <!-- Card 4: 成长型心态 -->
+  <section class="card c4">
+    <h2>成长型心态</h2>
+    <div class="subtitle">Growth Mindset — 能力不是名词，是动词</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>成长型心态由斯坦福心理学家卡罗尔·德韦克在《终身成长》中系统化。她将人对能力本质的根本信念分为两类：固定型心态（fixed mindset）认为智力、才能、性格是天生且基本不变的；成长型心态（growth mindset）认为这些品质都是可以通过努力、策略和反馈持续发展的。德韦克 30 年研究表明，这种"对能力本质的元信念"会决定人面对挑战、挫折、批评和他人成功时的截然不同反应模式，进而决定长期成就轨迹。</p>
+    <p>非平凡洞察：成长型心态被严重误解为"努力就能成功"的鸡汤——这反而离它的精髓很远。德韦克本人后来澄清了"虚假成长型心态"的危害：① 把"努力"等同于成长，忽视策略的重要性；② 一味表扬过程而不看效果；③ 在失败后空喊"不要紧，继续努力"，不复盘原因。真正的成长型心态包含三个底层结构：(a) 关于能力的可塑信念（神经可塑性是其生物学基础）；(b) 对反馈和批评的"信息化"处理（把负面信息当作数据而非身份攻击）；(c) 对"他人成功"的解读模式（把别人的成就视为"可能性的证明"而非"自己的威胁"）。第二层洞察：成长型心态是"领域局部"而非"全局通用"的——同一个人可能在工作上是成长型，在亲密关系或运动能力上是固定型。第三层洞察：在 AI 时代，成长型心态的重要性指数级上升——因为能力的折旧速度前所未有，没有任何"固定能力"能保护你 10 年。但同时它的"反面危险"也加剧：把"持续学习"异化为"焦虑驱动的低质量信息摄入"。真正的成长型心态需要配套"成长的策略"——刻意练习、反馈循环、心智模型更新机制，而非单纯的"努力激情"。</p>
+    <p>实践方法：监测自己的内部语言——"我做不到" vs. "我还没做到"是固定型与成长型的关键分水岭。把每次失败拆解为"策略不对" vs. "努力不够" vs. "目标错误"三类，而非笼统归为"我不行"。对孩子和下属：表扬具体策略与改进，而非"你真聪明""你真有天赋"——后者会无意中植入固定型心态。建立"反馈友好型"环境，让批评成为可观察的数据而非威胁。</p>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>德韦克的"聪明 vs. 努力"表扬实验。两组孩子完成同样的简单任务后，一组被表扬"你真聪明"，另一组被表扬"你一定很努力"。随后让他们选择下一个任务时，"被夸聪明"的孩子大多选择简单任务（以维护"聪明"的标签），"被夸努力"的孩子大多选择挑战性任务。在后续遇到困难的任务时，"被夸聪明"组的成绩显著下降并报告任务"不有趣"，"被夸努力"组反而表现更专注、更享受过程。一句话表扬，激活了完全不同的心理操作系统。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>在 AI 时代追求"超级个体"，成长型心态是真正的元能力。当 Claude、GPT 等模型每几个月就跃迁一代，你过去的核心技能可能在 18 个月内就被部分替代——这时固定型心态会让人产生"我的专业被贬值"的身份危机和防御性抗拒，而成长型心态会让你问"新工具让我可以做什么过去做不了的事？"。具体实践：每季度问自己三个问题——"过去 3 个月我学了什么过去不会的？""我在哪些领域无意识地用了固定型语言（'我不是技术背景''我不擅长 X'）？""我把哪些 AI 工具的快速进化解读为威胁而非杠杆？"。育儿方面：把对孩子的表扬从"你真聪明/有天赋"系统性切换到"你刚才用了什么策略？""你哪里改进了？""遇到难点你试了几种方法？"——这比任何昂贵的教育资源都更深刻地塑造孩子的认知操作系统。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Carol Dweck's growth mindset distinguishes two foundational beliefs about ability: a fixed mindset views intelligence, talent, and character as innate and unchanging, while a growth mindset views them as developable through effort, strategy, and feedback. Thirty years of research show this meta-belief shapes how people respond to challenges, setbacks, criticism, and others' success — and ultimately their long-run trajectory. The crucial nuance, often lost in pop versions, is that growth mindset is not "effort solves everything." Dweck warned against the "false growth mindset" — equating effort with growth, praising process without examining outcomes, and ignoring strategy. Authentic growth mindset rests on three pillars: belief in plasticity, treating feedback as information rather than identity attack, and reading others' success as proof of possibility rather than threat. It is also domain-local, not global. In the AI era, growth mindset becomes a meta-capability because capability depreciation accelerates — but it must be paired with deliberate strategy, not anxiety-driven information consumption. The most consequential parenting move is shifting praise from traits ("you're smart") to strategies ("what approach did you try?").</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">中文模板</span><br>
+      请帮我做一次"成长型 vs 固定型心态"审计。我在以下五个领域的表现和内部语言是：① 工作/事业：[描述]；② 人际关系：[描述]；③ 体能/健康：[描述]；④ AI/新技术学习：[描述]；⑤ 育儿/家庭角色：[描述]。请：(a) 在每个领域识别我使用的固定型语言信号（"我不是 X 型的人""我天生 Y"）；(b) 评估我对失败和负面反馈的处理模式；(c) 给出每个领域具体的"语言替换"清单（旧句式 → 新句式）；(d) 设计一个 7 天微练习，专门针对我最固定的那一个领域。
+    </div>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Conduct a growth-vs-fixed-mindset audit on me. My patterns and inner language across five domains: (1) work/career: [describe]; (2) relationships: [describe]; (3) fitness/health: [describe]; (4) AI/new-tech learning: [describe]; (5) parenting/family role: [describe]. Please: (a) identify fixed-mindset language signals in each domain ("I'm not the X type," "I'm naturally Y"); (b) assess how I process failure and negative feedback; (c) provide a concrete "language replacement" list per domain (old phrasing → new phrasing); (d) design a 7-day micro-practice targeting the most fixed domain.
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.html">&larr; 返回首页</a>
+  </footer>
+
+</div>
+<script src="https://cissy0802.github.io/comments.js" defer></script>
+<script src="https://cissy0802.github.io/search.js" defer></script>
+<script src="https://cissy0802.github.io/index-button.js" defer></script>
+</body>
+</html>
