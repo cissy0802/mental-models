@@ -142,7 +142,7 @@ def process_page(
             skipped_lang += 1
             continue
         voice = voice_zh if lang == "zh" else voice_en
-        if not voice:
+        if not voice and not dry_run:
             skipped_lang += 1
             continue
 
