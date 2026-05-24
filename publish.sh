@@ -3,11 +3,11 @@
 # Auto-derives N, commit message, and URL from filesystem state.
 # Usage: ./publish.sh   (no args)
 #
-# Guards:
-#   - new content file exists with name pattern *-{day,week,book,issue}{N}.html
+# Guards (filesystem is source of truth, not TOPICS.md):
+#   - new content file exists matching *-{day,week,book,issue}{N}.html
 #   - content file is not a tiny error stub (>2KB)
 #   - index.html references the new file
-#   - TOPICS.md has an [x] entry for #N
+#   - no DUPLICATE N (treats day1 and day01 as same N=1)
 #   - no hardcoded shared scripts (comments/search/index-button)
 #   - pushes to main via HEAD:main (bypasses claude/* harness branches)
 #   - retries push up to 3 times on transient failures
@@ -17,7 +17,9 @@ set -e
 NEW=$(git status --porcelain | grep -oE '\S+-(day|week|book|issue)[0-9]+\.html$' | head -1)
 [ -z "$NEW" ] && { echo "ERROR: no new *-{day,week,book,issue}{N}.html in working tree"; exit 1; }
 
-N=$(echo "$NEW" | grep -oE '[0-9]+' | tail -1)
+PADDED_N=$(echo "$NEW" | grep -oE '[0-9]+' | tail -1)
+N=$((10#$PADDED_N))
+KIND=$(echo "$NEW" | grep -oE '(day|week|book|issue)')
 
 TITLE=$(grep -oE '<title>[^<]+' "$NEW" | head -1 | sed 's|<title>||')
 [ -z "$TITLE" ] && TITLE="$NEW"
@@ -27,7 +29,22 @@ MSG="${MSG:-Add #$N: $TITLE}"
 
 grep -q "$NEW" index.html || { echo "ERROR: index.html does not reference $NEW"; exit 1; }
 
-grep -qE "\[x\].*(\b$N\b|#$N)" TOPICS.md || { echo "ERROR: TOPICS.md missing [x] entry for #$N"; exit 1; }
+# Duplicate N check (treats day1 / day01 as same number)
+DUP=""
+for existing in *-${KIND}*.html; do
+  [ ! -f "$existing" ] && continue
+  [ "$existing" = "$NEW" ] && continue
+  EXISTING_PADDED=$(echo "$existing" | grep -oE '[0-9]+' | tail -1)
+  EXISTING_N=$((10#$EXISTING_PADDED))
+  if [ "$EXISTING_N" = "$N" ]; then
+    DUP="$DUP $existing"
+  fi
+done
+if [ -n "$DUP" ]; then
+  echo "ERROR: ${KIND} #$N already exists:$DUP"
+  echo "       Did the routine regenerate an existing day/week? Check filesystem before generating."
+  exit 1
+fi
 
 for f in comments.js search.js index-button.js; do
   grep -q "$f" "$NEW" && { echo "ERROR: $NEW hardcodes $f (auto-injected, will duplicate)"; exit 1; }
