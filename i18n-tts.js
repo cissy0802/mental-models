@@ -64,14 +64,12 @@
     paused: false,
     rate: parseFloat(localStorage.getItem(RATE_KEY)) || 1,
     utter: null,
+    audio: null,
 
     play() {
-      if (!('speechSynthesis' in window)) {
-        alert(currentLang === 'zh' ? '当前浏览器不支持语音合成。' : 'This browser does not support speech synthesis.');
-        return;
-      }
       if (this.paused) {
-        speechSynthesis.resume();
+        if (this.audio) this.audio.play().catch(() => {});
+        else if ('speechSynthesis' in window) speechSynthesis.resume();
         this.paused = false;
         updatePlayButton();
         return;
@@ -95,8 +93,45 @@
       seg.scrollIntoView({ behavior: 'smooth', block: 'center' });
       updateProgress();
 
+      // Tear down any in-flight audio/utterance from the previous segment
+      this._cancelPlayback();
+
+      const hash = seg.getAttribute('data-tts-' + currentLang);
+      if (hash) {
+        const url = `audio/${currentLang}/${hash}.mp3`;
+        const audio = new Audio(url);
+        audio.playbackRate = this.rate;
+        audio.preload = 'auto';
+        const myToken = ++this._token;
+        const isStale = () => myToken !== this._token;
+        audio.onended = () => {
+          if (isStale() || !this.playing) return;
+          this.idx++;
+          this.speakCurrent();
+        };
+        audio.onerror = () => {
+          if (isStale()) return;
+          console.warn(`[mmd-tts] ${url} unavailable, falling back to Web Speech`);
+          this.speakWebSpeech(seg, isStale);
+        };
+        this.audio = audio;
+        audio.play().catch((e) => {
+          if (isStale()) return;
+          console.warn(`[mmd-tts] audio.play() rejected (${e?.message || e}); falling back`);
+          this.speakWebSpeech(seg, isStale);
+        });
+        return;
+      }
+      // No baked audio for this segment → Web Speech
+      const myToken = ++this._token;
+      this.speakWebSpeech(seg, () => myToken !== this._token);
+    },
+
+    speakWebSpeech(seg, isStale) {
+      if (!('speechSynthesis' in window)) return;
       const text = seg.textContent.trim();
       if (!text) {
+        if (isStale && isStale()) return;
         this.idx++;
         this.speakCurrent();
         return;
@@ -107,12 +142,12 @@
       const voice = pickVoice(u.lang);
       if (voice) u.voice = voice;
       u.onend = () => {
-        if (!this.playing) return;
+        if ((isStale && isStale()) || !this.playing) return;
         this.idx++;
         this.speakCurrent();
       };
       u.onerror = (e) => {
-        // Some browsers fire "interrupted" on cancel — only advance on real errors
+        if (isStale && isStale()) return;
         if (e.error && e.error !== 'interrupted' && e.error !== 'canceled') {
           this.idx++;
           if (this.playing) this.speakCurrent();
@@ -123,19 +158,36 @@
       speechSynthesis.speak(u);
     },
 
-    pause() {
-      if (this.playing && !this.paused) {
-        speechSynthesis.pause();
-        this.paused = true;
-        updatePlayButton();
+    _token: 0,
+
+    _cancelPlayback() {
+      // Invalidate any pending callbacks from the previous segment
+      this._token++;
+      if (this.audio) {
+        try { this.audio.pause(); } catch (e) {}
+        this.audio.removeAttribute('src');
+        this.audio.load?.();
+        this.audio = null;
       }
+      if ('speechSynthesis' in window) speechSynthesis.cancel();
+    },
+
+    pause() {
+      if (!this.playing || this.paused) return;
+      if (this.audio) {
+        this.audio.pause();
+      } else if ('speechSynthesis' in window) {
+        speechSynthesis.pause();
+      }
+      this.paused = true;
+      updatePlayButton();
     },
 
     stop() {
       this.playing = false;
       this.paused = false;
       this.idx = -1;
-      speechSynthesis.cancel();
+      this._cancelPlayback();
       document.querySelectorAll('.tts-active').forEach((el) => el.classList.remove('tts-active'));
       updatePlayButton();
       updateProgress();
@@ -163,7 +215,12 @@
       this.rate = r;
       localStorage.setItem(RATE_KEY, String(r));
       updateRateLabel();
-      if (this.playing && !this.paused) this.speakCurrent();
+      // Audio supports live rate changes; Web Speech needs a restart
+      if (this.audio && !this.audio.paused) {
+        this.audio.playbackRate = r;
+      } else if (this.playing && !this.paused && !this.audio) {
+        this.speakCurrent();
+      }
     },
   };
 

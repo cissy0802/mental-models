@@ -1,0 +1,3 @@
+# Volcengine TTS local config
+.env
+.env.local
