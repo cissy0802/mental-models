@@ -27,6 +27,7 @@ Usage:
     python3 bake-tts.py --lang zh                    # only Chinese
     python3 bake-tts.py --dry-run                    # plan, no API calls
 """
+from __future__ import annotations
 
 import argparse
 import base64
