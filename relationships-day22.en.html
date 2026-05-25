@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Relationships · 2026-05-25</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .page-header .meta {
+    color: #868e96;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 {
+    font-size: 24px;
+    margin: 0 0 4px;
+    color: #2d3436;
+  }
+  .card .subtitle {
+    font-size: 14px;
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    padding: 2px 0;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr {
+    border: none;
+    border-top: 1px solid #ecf0f1;
+    margin: 0 0 16px;
+  }
+  .card p {
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0 8px;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block strong { color: #2d3436; letter-spacing: 1px; }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 6px;
+  }
+  .reflect {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0 4px;
+    font-size: 14.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+  }
+  .reflect .reflect-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+  }
+  .diagram {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption {
+    font-size: 12px;
+    color: #868e96;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #e9ecef;
+  }
+  .footer a {
+    color: #0a6fb8;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Daily: Relationships</h1>
+    <div class="meta">2026-05-25 · Day 22</div>
+  </header>
+
+  <!-- Card 1: Emotional Bank Account -->
+  <section class="card c1">
+    <h2>Emotional Bank Account</h2>
+    <div class="subtitle">A relationship is an interest-bearing ledger, not a one-shot settlement</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Stephen Covey's framing: every relationship carries an implicit ledger. Everyday kindness, kept promises, and undivided attention are <strong>deposits</strong>; broken commitments, silent treatment, casual judgment are <strong>withdrawals</strong>. The balance determines not "how nicely the other person treats you on the surface" but <em>how the other person defaults to interpreting you in ambiguous moments</em>. The same line — "you shouldn't do it that way" — lands as concern at a high balance and as attack at a low one.</p>
+    <p>Non-trivial insights: (1) <strong>A withdrawal costs 3-5× a deposit.</strong> The Gottman lab's 30 years of couple-interaction tapes produced the "magic ratio" — stable relationships maintain ≥ 5:1 positive-to-negative interactions; couples below that line are predicted to separate within years with over 90% accuracy. That's not moralizing, it's a physical constant. (2) <strong>When overdrawn, your "deposits" stop earning interest</strong> — at a negative balance, your reparative gestures get auto-attributed as manipulation ("she must want something"). You have to first drag the balance back to zero before new deposits compound. (3) Distributed-systems analogy: trust = the rolling success rate of a heartbeat protocol. The longer the interval between heartbeats (low interaction frequency), the more weight each failure carries. (4) <strong>"Grand gestures on big days" lose to "small reliability on ordinary days."</strong> A Valentine's-Day dinner vs. 300 reliable on-time arrivals home — the latter contributes 30× more. Most people invest on the wrong frequency axis. (5) The biggest hidden withdrawal isn't conflict — it's <em>non-responsiveness</em>. Ed Tronick's "still-face" experiments show prolonged unresponsiveness is processed at the neural level as <em>active harm</em>, more damaging than brief conflict.</p>
+    <p>Practice: (1) Replace "grand-gesture repair" with "high-frequency micro-deposits" — "I noticed you looked tired today" beats a bouquet, at both higher frequency and higher efficiency. (2) Before any hard conversation, check the 24-hour balance — if overdrawn, do not open the hard topic; deposit for 3 days first. (3) Watch for <em>non-responsiveness</em>: even mid-work, a 10-second receipt — "Heard, I'll come in 30 minutes" — is far warmer than 3 hours of silence followed by a reply.</p>
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>The father-son case in Covey's <em>7 Habits</em>: a father, seeing his teenage son withdrawing, plans a "grand repair" — an elaborate trip. The son sulks through it. Covey's diagnosis: ten years of overdraft cannot be flipped by a single large deposit; the deposit gets read as "what does he want from me?" rather than care. The correct sequence is 6-12 months of unforced small deposits (purposeless listening, kept promises) to drag the balance back to zero, after which large gestures finally read as goodwill. Neuroscience later confirms it: kindness from low-trust sources is <em>actively screened</em> by the prefrontal cortex as a threat signal.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>For families running remote work and parenting in parallel, the biggest hidden withdrawal is <strong>"present but not present"</strong> — body in the living room, attention on Slack. A child's bid for attention gets brushed off with "in a minute" twenty times — no single instance is a conflict, but each is a micro-withdrawal. By the weekend the account is overdrawn, and "let's go to the park" gets met with a cold face — you read it as ungrateful, but the balance is reporting accurately. Engineering moves: (1) Set a "heartbeat interval" with your child (and partner): one 5-minute fully-present check-in every 90 minutes outperforms 8 hours of distracted co-presence. (2) Every "in a minute" must carry a timestamp — "I'll come in 5 minutes" — and you must actually arrive in 5. Kept promises are the cheapest deposit available. (3) An AI-era caveat: when you're using AI for work and your child interrupts, the reflex is "I'm busy" — but she can't tell whether you're debugging or scrolling, she only logs "Mom is absent again." Letting AI run async and keeping human attention for present relationships is the new priority discipline.</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">Reflection</div>
+      <p>Pick your three most important relationships. Score each emotional-account balance from -10 to +10. For the lowest one, what "I-thought-was-a-deposit-but-was-actually-a-withdrawal" actions did you do in the past 7 days? Most likely: missed commitment, non-response, or "present but not present"?</p>
+    </div>
+  </section>
+
+  <!-- Card 2: Nonviolent Communication -->
+  <section class="card c2">
+    <h2>Nonviolent Communication</h2>
+    <div class="subtitle">NVC — a protocol that translates "judgment language" into "diagnostic information"</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Marshall Rosenberg proposed NVC in the 1960s as a four-step protocol: <strong>Observation</strong> (objective facts, no judgment) → <strong>Feeling</strong> (your current emotion, not your thought) → <strong>Need</strong> (the unmet deeper need behind that feeling) → <strong>Request</strong> (concrete, executable, refusable). On the surface it looks like "gentle communication." Underneath it's a <em>low-coupling encoding protocol</em> that breaks the high-coupling "accuse-defend" loop into a "diagnose-respond" exchange.</p>
+    <p>Non-trivial insights: (1) <strong>Most conflict gets stuck at step 3 — needs vs. positions.</strong> "You must be home for dinner tonight" is a <em>position</em>; "I need to feel valued" is a <em>need</em>. Positions are mutually exclusive; needs almost never conflict. Roger Fisher uses the same logic in <em>Getting to Yes</em> — this is the core technique beyond Day 16's BATNA. (2) <strong>NVC isn't gentleness; it's precision.</strong> "You're never home lately" is judgment; "in the past 7 days, on 5 nights you arrived after 9pm" is observation. Same information, two protocols — the first triggers the listener's defense circuit, the second triggers a co-diagnostic circuit. (3) Neuroscience mapping: judgment language activates the amygdala (threat); observation + feeling language activates the prefrontal cortex (reasoning) — you're not choosing "tone of voice," you're choosing <em>which brain region of the listener gets activated</em>. (4) <strong>"Feeling" vs. "thought" — the common conflation.</strong> "I feel that you don't respect me" is not a feeling; it's a <em>judgment dressed as a feeling</em>. The real feeling is "I feel hurt." Skip this distinction and the protocol fails. (5) AI-era side effect: people increasingly draft conflict emails with ChatGPT — but the default LLM "high-EQ phrasing" is often the opposite of NVC (well-packaged judgment), which performs worse. The substantive elements of NVC (precise facts, real feelings, deeper needs) must come from <em>you</em>; AI can only polish the request in step 4.</p>
+    <p>Practice: (1) Before any conflict reply, force yourself to write four lines (observation/feeling/need/request) — no skipping. (2) Stuck on the feeling line? Ask "if the other person did nothing wrong, would I still feel this?" — what survives that test is the real feeling. (3) Rewrite "you always…" into "in the past N days I observed K times where…" — one phrase change, different brain region activated.</p>
+    <div class="diagram">
+      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="60" width="120" height="80" fill="#7048b8" opacity="0.9" rx="8"/>
+        <text x="80" y="92" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Observe</text>
+        <text x="80" y="112" text-anchor="middle" font-size="10" fill="#fff">facts, no judgment</text>
+
+        <rect x="160" y="60" width="120" height="80" fill="#7048b8" opacity="0.78" rx="8"/>
+        <text x="220" y="92" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Feel</text>
+        <text x="220" y="112" text-anchor="middle" font-size="10" fill="#fff">emotion, not thought</text>
+
+        <rect x="300" y="60" width="120" height="80" fill="#7048b8" opacity="0.66" rx="8"/>
+        <text x="360" y="92" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Need</text>
+        <text x="360" y="112" text-anchor="middle" font-size="10" fill="#fff">deeper need</text>
+
+        <rect x="440" y="60" width="100" height="80" fill="#7048b8" opacity="0.54" rx="8"/>
+        <text x="490" y="92" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Request</text>
+        <text x="490" y="112" text-anchor="middle" font-size="10" fill="#fff">refusable, concrete</text>
+
+        <path d="M140 100 L160 100" stroke="#636e72" stroke-width="2" marker-end="url(#a)"/>
+        <path d="M280 100 L300 100" stroke="#636e72" stroke-width="2" marker-end="url(#a)"/>
+        <path d="M420 100 L440 100" stroke="#636e72" stroke-width="2" marker-end="url(#a)"/>
+
+        <defs>
+          <marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <polygon points="0 0, 8 4, 0 8" fill="#636e72"/>
+          </marker>
+        </defs>
+
+        <text x="280" y="180" text-anchor="middle" font-size="11" fill="#636e72" font-style="italic">Skip any step and the protocol fails; impure first two steps invalidate the last two</text>
+      </svg>
+      <div class="caption">NVC four steps: Observe → Feel → Need → Request</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Rosenberg, invited in the 1990s to mediate at a Palestinian refugee camp, introduces himself as American — and is immediately roared at: "Murderer!" In that man's eyes, US arms to Israel make Rosenberg directly complicit. Rosenberg doesn't explain or push back. He translates the shout back into NVC: "You see your family hurt by American weapons (observation), you feel rage and helplessness (feeling), you need safety and to be taken seriously (need), you want me to acknowledge the gravity of this right now (request) — is that it?" The man stops, and ends up inviting Rosenberg to dinner. Same content (attack), same person (Rosenberg) — completely reversed outcome because the <em>protocol layer</em> changed. This isn't "gentleness defeated anger" — it's "diagnostic mode defeated adversarial mode."</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>A child refusing homework is the NVC home-court drill. Wrong protocol: "Why aren't you writing yet?! I have to nag you every day!" (observation polluted by judgment, feeling collapsed into complaint, need missing, request becomes demand). NVC protocol: "It's 8pm and you haven't started (observation), I feel anxious (feeling), because I'm worried you'll sleep late and be tired tomorrow (need: your rest), would you tell me your plan for tonight? (request, refusable)" The second version activates the child's cooperative circuit; the first activates her defense circuit. Transfer to work: a PR review — "your code is terrible" is judgment (amygdala); "this function has 3 nested loops that I couldn't follow on one read (observation), I'm worried it'll be hard to debug during on-call (feeling + need), would you split it into two helpers? (request)" is diagnosis (prefrontal). AI-era extra: you can ask an LLM "check if my draft just violated NVC step X" — using AI as a <em>protocol linter</em>, not a phrasing polisher. The genuine inputs (facts, feelings, needs) come from you; AI checks precision.</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">Reflection</div>
+      <p>Recall a small friction in the past 24 hours. Decompose what you actually said into the four lines (observation/feeling/need/request) — which line was empty? Which line carried judgment? If you'd rewritten it through NVC, how might the response have shifted?</p>
+    </div>
+  </section>
+
+  <!-- Card 3: Empathy Map -->
+  <section class="card c3">
+    <h2>Empathy Map</h2>
+    <div class="subtitle">Empathy isn't emotional resonance — it's building a working model of the other person's world</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Dave Gray's six-cell visualization: what the other person <strong>sees</strong>, <strong>hears</strong>, <strong>thinks &amp; feels</strong>, <strong>says &amp; does</strong>, their <strong>pains</strong>, and their <strong>gains</strong>. On the surface it's a designer's tool; underneath it's the <em>engineering definition of empathy</em>: turning "I get you" from a vague emotional claim into a reviewable structured prediction. If you can fill all six cells, you've actually built a model of the other person. If you can't, you're projecting yourself.</p>
+    <p>Non-trivial insights: (1) <strong>"I feel the same" is not empathy — it's emotional resonance.</strong> Resonance is the automatic output of mirror neurons; empathy is <em>active modeling</em>, cognitive labor. Everyone has the first; the second requires practice. (2) ML-engineering analogy: an empathy map = <em>the feature-engineering checklist for the other person's decision model</em>. When the model mispredicts ("why did she react that way?? I didn't expect it"), your feature set is incomplete — not "she's hard to understand." (3) <strong>Pain ≠ complaint.</strong> What the person says aloud is mostly the complaint (surface); the pain is the <em>deeper unmet assumption</em> behind it. Reverse-engineering complaint → pain is intermediate skill. Distinguishing "what she says she wants is X, but her real pain is Y" is advanced. Henry Ford's "if I'd asked customers what they wanted, they'd have said a faster horse" — faster horse is the complaint, <em>mobility efficiency</em> is the pain. (4) <strong>Almost every PMF failure is an empathy-map error.</strong> You built the product against "sees & hears" guesses, but the user's "thinks/feels" and "pains" are far from what you drew — so you think you solved her problem and she thinks you missed her entirely. (5) AI-era specific: LLMs can generate a reasonable empathy-map draft from a short conversation — but <em>they will reflexively portray the subject as benign, cooperative, and wanting-to-be-understood</em>. Real people are often tired, defensive, self-protective. You have to "darken" the AI draft manually to fit reality.</p>
+    <p>Practice: (1) Any time you feel "I don't understand why she did this," force a six-cell pass — in many cases you'll get it by cell 3. (2) Separate "she said" (put in says/does) from "she thought" (put in thinks/feels) — the gap between cells is where the insight lives. (3) Write the pain as "the assumption she silently holds but never voices" — this is the fastest training drill for empathy precision.</p>
+    <div class="diagram">
+      <svg viewBox="0 0 560 360" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="280" cy="180" r="44" fill="#c44545" opacity="0.9"/>
+        <text x="280" y="178" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">Person</text>
+        <text x="280" y="196" text-anchor="middle" font-size="11" fill="#fff">(the subject)</text>
+
+        <rect x="30" y="30" width="200" height="80" fill="#c44545" opacity="0.55" rx="8"/>
+        <text x="130" y="58" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">Sees</text>
+        <text x="130" y="82" text-anchor="middle" font-size="10" fill="#fff">environment / peers / rivals</text>
+
+        <rect x="330" y="30" width="200" height="80" fill="#c44545" opacity="0.55" rx="8"/>
+        <text x="430" y="58" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">Hears</text>
+        <text x="430" y="82" text-anchor="middle" font-size="10" fill="#fff">others' words / feedback</text>
+
+        <rect x="30" y="250" width="200" height="80" fill="#c44545" opacity="0.55" rx="8"/>
+        <text x="130" y="278" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">Thinks &amp; feels</text>
+        <text x="130" y="302" text-anchor="middle" font-size="10" fill="#fff">internal monologue (core)</text>
+
+        <rect x="330" y="250" width="200" height="80" fill="#c44545" opacity="0.55" rx="8"/>
+        <text x="430" y="278" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">Says &amp; does</text>
+        <text x="430" y="302" text-anchor="middle" font-size="10" fill="#fff">overt behavior</text>
+
+        <rect x="60" y="140" width="160" height="44" fill="#c44545" opacity="0.75" rx="6"/>
+        <text x="140" y="167" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">Pain (silent assumption)</text>
+
+        <rect x="340" y="140" width="160" height="44" fill="#c44545" opacity="0.75" rx="6"/>
+        <text x="420" y="167" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">Gain (what they truly want)</text>
+      </svg>
+      <div class="caption">Six cells: if you can't fill them all, you're projecting yourself</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>In the 1990s IDEO redesigned the Kaiser Permanente ER experience. The doctors and nurses were confident they knew what patients wanted: faster, more accurate, more expert care. IDEO didn't trust that — they had a researcher lie on a gurney for 6 hours, filling the empathy map from the patient's seat. "Sees" cell: ceilings, passing shoes, other patients' grimaces. "Hears" cell: background hum, distant nurses calling bed numbers, family members crying quietly. "Thinks &amp; feels" — the core insight: <em>"Nobody knows I'm here. Nobody cares what happens to me next."</em> The pain wasn't treatment speed — it was <strong>information opacity + loss of control</strong>. The redesign was therefore not "faster workflow" but a bedside whiteboard with "what happens in the next 30 minutes." Patient satisfaction jumped 40% — same hospital, same doctors, same treatment, only because the empathy map was finally filled correctly. Most failing products/services aren't underfunded; they treated "sees + hears" as the whole map.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>Empathy mapping with your child is harder than it looks. Your child says "I don't want to go to school." Wrong response: act directly on the "says" cell (lecture, punish, bribe). Right move: fill the other five cells. "Sees": classmates already in cliques before she enters. "Hears": last test, teacher said she "could do better." "Thinks &amp; feels": am I not good enough? "Pain" (silent assumption): <em>"Maybe I don't belong here."</em> This is a belonging issue, not a learning issue. With the map correctly filled, the intervention pivots — not lectures about why school matters, but helping her secure one stable peer or small group. Transfer to distributed collaboration: (1) <strong>People management</strong> — a report says "I'm too busy, I can't take more on." Empathy map: "sees" teammates on leave, "hears" boss adding new asks, "thinks/feels" my effort is invisible — pain is <em>"my work isn't seen"</em> not workload. Giving visibility beats reducing load. (2) <strong>User research</strong> — every super-individual now ships products, but LLM-generated "user personas" skew toward "healthy users." Real users are tired, defensive, looking for shortcuts — manually darken the AI draft. (3) <strong>Cross-disciplinary parallel</strong> — this is the engineered dual of "ignorance" (avidyā) in Buddhism: ignorance = failing to see the conditions producing the other person's experience = empty empathy map. Buddhism says "break ignorance through contemplation"; Western design says "fill the map through interviews and ethnography" — same target, two languages.</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">Reflection</div>
+      <p>Pick someone you recently "can't figure out why she reacted that way." Force-fill all six cells. Which cell is blank? Have you been quietly filling it with "I'd assume…" all along?</p>
+    </div>
+  </section>
+
+  <!-- Card 4: Trust Equation -->
+  <section class="card c4">
+    <h2>Trust Equation</h2>
+    <div class="subtitle">The denominator decides everything: the more you want, the less they give</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>David Maister in <em>The Trusted Advisor</em>: <strong>Trust = (Credibility + Reliability + Intimacy) / Self-Orientation</strong>. <em>Credibility</em> — your words are sound (expertise, evidence, logic). <em>Reliability</em> — your actions land (on time, on quality, predictable). <em>Intimacy</em> — the other person feels safe telling you the truth (no mockery, no exploitation, no judgment). <em>Self-Orientation</em> — are you actually focused on the problem, or on "what's in it for me?" The numerator terms each matter, but the denominator alone can <strong>zero out the entire expression</strong> — a person with very high self-orientation gets no real trust even with a perfect numerator.</p>
+    <p>Non-trivial insights: (1) <strong>The denominator is the lever most people ignore.</strong> Most workplace "trust-building" effort (flexing expertise, performing loyalty, increasing visibility) raises the numerator but also inflates the denominator — <em>net effect is often negative</em>. (2) <strong>Intimacy is the most underrated and fastest-growing term.</strong> It doesn't require time, only one instance where the other person safely showed vulnerability. Senior McKinsey partners often open first client meetings with "we totally botched a similar project once, here's why…" — an engineering move to fast-build intimacy. (3) Buddhism/consciousness mapping: denominator = 0 ⇔ <em>no-self</em>. The real scarcity isn't "high EQ" — it's the moment your mind genuinely doesn't contain "yourself." This is Zen's "应无所住而生其心" in workplace terms. (4) <strong>The AI-era trust premium</strong> — LLMs can simulate credibility (generate expert phrasing), reliability (don't forget things), even intimacy (24/7 listening) — but <em>self-orientation = 0 is the one term AI cannot fake (it has no "self" or "non-self," it's just executing a prompt)</em>. The more AI proliferates, the more "a real human with denominator = 0" commands a premium — the most underrated moat for super-individuals in the AI era. (5) The denominator seems performable, but <strong>humans detect self-orientation with extraordinary precision</strong> — gaze, pauses, where the follow-up question points. The subconscious instantly clocks "is she listening to me or waiting for an opening to sell." Performance can't sustain.</p>
+    <p>Practice: (1) Before any important conversation, ask yourself "how much of my goal is 'getting something from the other person'?" If above 30%, dial it down before speaking. (2) The fastest path to intimacy isn't kindness — it's <em>you safely revealing your own vulnerability first</em> (a professional failure, an actual hesitation) — but in the right venue, not as self-pity. (3) Treat reliability as <em>foundational investment</em> — it grows slowly, but compounds extraordinarily when the denominator stays low.</p>
+    <div class="diagram">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+        <rect x="80" y="40" width="400" height="60" fill="#1b8a5a" opacity="0.85" rx="8"/>
+        <text x="280" y="76" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Credibility + Reliability + Intimacy</text>
+
+        <line x1="100" y1="120" x2="460" y2="120" stroke="#2d3436" stroke-width="3"/>
+
+        <rect x="180" y="140" width="200" height="60" fill="#c44545" opacity="0.9" rx="8"/>
+        <text x="280" y="176" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">Self-Orientation</text>
+
+        <text x="500" y="124" text-anchor="start" font-size="13" fill="#2d3436" font-weight="700">= Trust</text>
+
+        <text x="280" y="225" text-anchor="middle" font-size="11" fill="#636e72" font-style="italic">Numerator terms add up; the denominator alone can zero the whole expression</text>
+      </svg>
+      <div class="caption">Trust = (Credibility + Reliability + Intimacy) / Self-Orientation</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>A standard counter-example from traditional McKinsey training: junior consultants meeting clients for the first time pour all their effort into "demonstrating credibility" — credentials, citations, slick analysis. Client debrief reliably surfaces one word: "agenda-driven" — denominator maxed out. Maister's flipped protocol: in the first 30 minutes, don't sell, don't show — only ask, only listen, only acknowledge "I don't yet understand this specific pain in your industry." With the new protocol, repeat-engagement rate jumps significantly. The mechanism: numerator drops from 8 to 6 (less credibility flexing), denominator drops from 9 to 2, ratio nets out 3× higher. One-line summary: "Show up curious, not credentialed" — the field slogan for denominator management.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>A real human with denominator = 0 is the core scarcity of the AI era. Concrete settings: (1) <strong>1:1s with reports</strong> — when a report comes to discuss career growth, most leaders default to "what management leverage can I extract here?" (denominator = high). High-trust leaders make themselves into <em>temporarily purposeless ears</em>, letting the listening complete before reaching for solutions — 30 minutes of denominator = 0 outweighs 10 "high-impact coaching" sessions. (2) <strong>Parenting</strong> — a child wants to share something small, and the parental reflex is "let me teach a quick lesson" (denominator = use the moment to slip in advice) — intimacy can never grow from that. The accumulating bank of "purposeless listening" before age 10 determines whether she'll still tell you real things as a teenager. (3) <strong>Investment-related decisions</strong> — for partners / founders / advisors, the first three terms can be interviewed; the fourth can only be observed via long, low-stakes interactions. Any moment they reveal "excess self-orientation" in a context that didn't require it (grabbing credit, hogging airtime, repackaging someone else's insight) is a denominator signal. (4) <strong>AI collaboration</strong> — LLMs have a permanent denominator = 0 (they hold no self-goal) — which is why so many people open up real confusion to AI. It isn't that AI has "warmth"; it's structurally self-oriented = 0. To stay irreplaceable in the AI era, humans must learn to <em>deliberately drop our own denominator to 0</em> — that's the moat AI cannot copy.</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">Reflection</div>
+      <p>Pick a relationship where you most want to be truly trusted. Score your current numerator (credibility + reliability + intimacy). Score your denominator (self-orientation). In the past month, how many things did you do to raise the numerator? How many to lower the denominator? How wide is the gap between those two counts?</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.en.html">&larr; Back to Index</a>
+  </footer>
+
+</div>
+</body>
+</html>
