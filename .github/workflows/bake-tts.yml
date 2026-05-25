@@ -49,10 +49,10 @@ jobs:
 
       - name: Run bake-tts.py
         env:
-          VOLCANO_APP_ID: ${{ secrets.VOLCANO_APP_ID }}
-          VOLCANO_API_KEY: ${{ secrets.VOLCANO_API_KEY }}
-          VOLCANO_VOICE_ID: ${{ secrets.VOLCANO_VOICE_ID }}
-          VOLCANO_VOICE_ID_EN: ${{ secrets.VOLCANO_VOICE_ID_EN }}
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+          # AZURE_VOICE_ID defaults to zh-CN-XiaoxiaoNeural in the script
+          # AZURE_VOICE_ID_EN unset → English segments skipped (Web Speech fallback)
         run: |
           if [ -n "${{ inputs.file }}" ]; then
             python3 bake-tts.py "${{ inputs.file }}"
