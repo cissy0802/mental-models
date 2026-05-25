@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Deep Dive: Philosophy &amp; Metacognition — 2026-05-10</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.8}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 40px;border-bottom:1px solid #eee;margin-bottom:40px}
+header .category{font-size:0.85rem;font-weight:600;letter-spacing:3px;color:#6c5ce7;text-transform:uppercase;margin-bottom:12px}
+header h1{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:1px;line-height:1.3}
+header .date{margin-top:10px;font-size:0.92rem;color:#b2bec3}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:32px;overflow:hidden}
+.card-header{background:linear-gradient(135deg,#6c5ce7 0%,#a29bfe 100%);padding:24px 28px}
+.card-header .num{font-size:0.78rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.card-header h2{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.3}
+.card-header .en{font-size:0.92rem;color:rgba(255,255,255,0.8);margin-top:4px;font-style:italic}
+.card-body{padding:28px}
+.section{margin-bottom:24px}
+.section:last-child{margin-bottom:0}
+.section-label{display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:2px;color:#6c5ce7;background:#f0ebff;padding:3px 10px;border-radius:4px;margin-bottom:12px}
+.section p{font-size:0.97rem;color:#2d3436;line-height:1.9}
+.example{background:#f8f7ff;border-left:3px solid #6c5ce7;padding:14px 18px;border-radius:0 8px 8px 0;margin-top:12px}
+.example .label{font-size:0.78rem;font-weight:700;color:#6c5ce7;margin-bottom:6px;letter-spacing:1px}
+.prompts{display:flex;flex-direction:column;gap:12px}
+.prompt-item{background:#f8f7ff;border-radius:8px;padding:14px 16px}
+.prompt-item .lang{font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#a29bfe;margin-bottom:6px}
+.prompt-item p{font-size:0.9rem;color:#2d3436;line-height:1.7}
+.prompt-item strong{color:#6c5ce7}
+nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee}
+nav a{color:#6c5ce7;text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a:hover{text-decoration:underline}
+@media(max-width:600px){
+  header h1{font-size:1.5rem}
+  .card-body{padding:20px}
+  .card-header{padding:18px 20px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="category">Day 11 · Mental Models Deep Dive</div>
+<h1>Philosophy &amp; Metacognition</h1>
+<div class="date">2026-05-10</div>
+</header>
+<!-- Model 1: Socratic Questioning -->
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 01</div>
+<h2>Socratic Questioning</h2>
+<div class="en">The art of disciplined inquiry.</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Socratic questioning is a method of thinking that uses successive questions to expose blind spots and pressure-test assumptions. It does not rush to an answer; it lets the inquiry do the work, peeling back the deeper logic behind a surface opinion. The cognitive-science basis is "metacognitive activation" — when someone is asked "how do you know that?", the brain is forced out of automatic mode and into reflective mode, with the prefrontal cortex auditing the implicit assumptions that had been silently accepted. Six types of questions form a complete inquiry matrix: clarifying, probing assumptions, demanding evidence, examining viewpoints, exploring implications, and questioning the question itself.</p>
+<p>The non-trivial insight: the power of Socratic questioning is not "asking good questions" but "letting the other person discover the contradiction themselves." Telling someone directly "you're wrong" triggers the defense response (psychologists call it the "rebuttal reflex"); leading them through questions until they walk into the contradiction on their own gets them to update — because they found it themselves, there is no felt threat of being corrected. That is why Socrates never "taught" but only "delivered" (he called his method midwifery). In the AI era, this method matters enormously for human-AI collaboration: instead of asking AI for answers, have AI use Socratic questioning to expose your own blind spots.</p>
+<p>How to apply it: (1) before any important decision, prepare a checklist of the six question types and run through them; (2) when discussing a disagreement, replace "I think you're wrong" with "Can you help me understand how you arrived at this conclusion?"; (3) have AI play Socrates — instruct it to "not answer my question directly, but probe with counter-questions until I find the gaps in my reasoning."</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>Socrates meets a general in the streets of Athens and asks "what is courage?" The general answers: "courage is holding the line and not retreating." Socrates probes: "but isn't a tactical retreat sometimes also courage?" The general revises; Socrates probes again; layer by layer the general realizes that for a word he uses every day, he has never truly thought about its meaning. The dialogue itself is the awakening.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat is evaluating whether to roll out a new AI agent tool to the team. Instead of asking "is this tool any good?", Socratic questioning advances like this:<br/>
+        → "What is the real purpose of introducing this tool?"<br/>
+        → "We're assuming it boosts efficiency — what is that assumption grounded in?"<br/>
+        → "Is there data showing comparable tools work in comparable situations?"<br/>
+        → "If two months from now it falls short, what is the cost?"<br/>
+        After several rounds, the original question is often redefined and the decision becomes much clearer.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Socratic Questioning is a disciplined method of inquiry that probes assumptions, exposes contradictions, and deepens understanding through systematic dialogue. Rather than accepting surface-level answers, it relentlessly asks "why," "how do you know," and "what if you're wrong," making it a powerful tool for stress-testing beliefs, business decisions, and AI-assisted reasoning.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>Apply Socratic Questioning to stress-test this belief: <strong>[belief/decision]</strong>. Ask clarifying questions, probe the underlying assumptions, demand evidence, explore counterexamples, and finally question whether this is even the right question to be asking. Surface every hidden blind spot.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Model 2: The Raft Metaphor (Buddhist Epistemology) -->
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 02</div>
+<h2>The Raft Metaphor</h2>
+<div class="en">Buddhist epistemology — knowledge as a tool, not an identity.</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>In the Majjhima Nikāya, the Buddha uses the parable of the raft to clarify the instrumental nature of knowledge: you need a raft to cross the river, but if you carry it on your shoulders after reaching the other shore, it becomes a burden. All knowledge frameworks, theories, and methodologies are rafts — they exist for a specific problem and should be set down once the problem is solved. The cognitive-science substrate is "functional fixedness": the brain tends to bind a tool to its original use, so the moment a framework helps you solve a problem, it gets promoted from "tool" to "identity" — you are no longer "someone who uses first-principles thinking," you become "a first-principles believer." That subtle shift is the starting point of all cognitive ossification.</p>
+<p>The non-trivial insight: what needs to be set down is not only the "wrong raft" but also the "once-correct raft." This is isomorphic to the paradigm shifts in the history of science — Newtonian mechanics was not "overturned"; its boundary of applicability was redrawn. What Charlie Munger calls "a latticework of mental models" is in fact building a shipyard, not a single raft: you own many rafts, choose them by the river's width and current, and stand ready to build new ones and discard old ones. A person's cognitive ceiling depends less on how many frameworks they possess than on how quickly they can set down the one they are currently using.</p>
+<p>How to apply it: (1) periodically run a "framework audit" — list the 3-5 mental models you reach for most often, and for each ask "under what conditions will this model give the wrong answer?"; (2) when facing a new problem, deliberately disable your strongest framework and force yourself to come in from another discipline's angle; (3) keep a "let-it-go log" — each quarter record one theory or method you once trusted deeply but have since found limited, and write down its boundary of applicability and its replacement.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>Newtonian mechanics is one of the greatest rafts humanity ever built for understanding the physical world. But when physicists discovered the constancy of the speed of light and the anomalous precession of Mercury, clinging to the Newtonian frame became an obstacle. Einstein set down the old raft and built a new one — relativity. Newton was not "wrong"; it simply no longer applied to the new shore. Every paradigm shift, at its core, is letting an old raft go.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat studies first-principles thinking deeply and uses it as a primary analytical framework. Yet when evaluating a growth stock, while first-principles decomposition matters, Bayesian probability, behavioral finance's "narrative fallacy," and technical-cycle patterns are equally indispensable. Clinging to the first-principles raft would mean missing valid signals on other dimensions. A true super-individual moves freely between frameworks.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>The Raft Metaphor teaches that knowledge, theories, and mental frameworks are tools for crossing rivers — not destinations to be carried forever. Once a framework has served its purpose, clinging to it becomes a cognitive burden. The highest intelligence lies in knowing when to put down one raft and pick up another.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I've been relying heavily on <strong>[framework/theory]</strong> to understand <strong>[domain/problem]</strong>. Help me identify: (1) where this framework's explanatory power breaks down, (2) in what contexts it becomes a cognitive trap rather than a tool, and (3) which complementary frameworks should replace or supplement it in those edge cases.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Model 3: Knowing That You Don't Know -->
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 03</div>
+<h2>Knowing That You Don't Know</h2>
+<div class="en">Socratic ignorance as the starting point of real learning.</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Socrates said, "The only thing I know more than other people is that I know I know nothing." This is not modesty but a deep epistemological insight — recognizing the existence of your knowledge boundary is the starting point of all real learning. Cognitive science classifies knowledge states into four quadrants: known knowns, known unknowns, unknown knowns (tacit knowledge), and unknown unknowns. The Dunning-Kruger effect exposes a cruel asymmetry: those with the lowest competence, because they cannot even register "what they don't know they don't know," tend to feel best about themselves.</p>
+<p>The non-trivial insight: the value of "knowing that you don't know" is not the psychological feeling of humility but a cognitive "gravitational vacuum" — once you have clearly drawn the boundary of your knowledge, your brain generates a strong drive to fill the gap (psychologists call this the "information-gap theory"). It pairs tightly with the Feynman technique: when you try to explain a concept to a six-year-old, the spots where you cannot hide behind jargon are the spots you do not actually understand. A deeper insight: the real bottleneck of learning has never been "acquiring new information" (in the AI era information is nearly free) — it is "accurately identifying what you do not know." That is the scarcest metacognitive capacity.</p>
+<p>How to apply it: (1) periodically draw a "knowledge boundary map" — pick a topic you consider yourself proficient in, list the questions you can confidently answer and the ones you cannot; the latter is your learning direction; (2) self-test with the Feynman technique — teach the core concept to someone who knows nothing about it and log every place you "fudged"; that is where ignorance hides; (3) cultivate a "knowing that you don't know" culture in your team — make "I don't know, but I know how to find out" a respected response, not a punished one.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>In Dunning-Kruger's original experiments, the bottom-quartile scorers rated their own performance the highest — they did not know what they did not know. The top quartile, by contrast, underestimated themselves, because they were keenly aware of how much more there was to master. A true expert is not "someone who knows everything" but "someone who knows precisely what they do not know."</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>While exploring the link between quantum consciousness and Yogācāra Buddhism, BigCat's real learning began with the admission: "I understand the Schrödinger equation, and I've read the Viṃśatikā, but I do not actually understand how consciousness emerges from matter." That admission is not weakness — it is the door to real inquiry. It tells BigCat to go read Penrose's The Emperor's New Mind, to consult neuroscientists, rather than to stay in the comfort zone of existing knowledge and feel good.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>"Knowing that you don't know" — Socratic ignorance — is the recognition that true expertise begins with an honest map of your knowledge boundaries. Unlike the Dunning-Kruger effect where low competence breeds false confidence, genuine intellectual growth requires clearly identifying the frontier between what you understand and what you merely believe you understand.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I think I understand <strong>[concept/domain]</strong>. Use the Socratic method to expose my actual knowledge gaps: ask me 5 probing questions that reveal what I don't truly understand, which of my assumptions are untested, and where the most critical blind spot in my understanding lies.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Model 4: Intellectual Humility -->
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 04</div>
+<h2>Intellectual Humility</h2>
+<div class="en">Strong opinions, weakly held.</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Intellectual humility is the ability to acknowledge that your beliefs may be wrong and to stay genuinely open to revising them. It is not indecisiveness or lack of conviction; it is epistemic maturity — you can hold strong views and remain highly sensitive to disconfirming evidence at the same time. Its core operation is distinguishing two kinds of conviction: "empirical conviction" (grounded in evidence and overturnable by new evidence) and "identity conviction" (bound to self-image, where new evidence actually strengthens the defense). The former is the basis of reason; the latter is the source of bias.</p>
+<p>The non-trivial insight: the biggest obstacle to intellectual humility is not "pride" but "the need for cognitive closure" — the brain hates uncertainty and rushes to slap a definite label on ambiguous questions. Research shows people with a high need for closure are more drawn to extreme narratives, because extreme narratives offer the strongest sense of certainty. Intellectual humility requires you to deliberately tolerate the discomfort of uncertainty — psychologically, this is "cognitive resistance training." In the AI era, when the cost of acquiring information approaches zero, the scarcity value of intellectual humility stands out: information is not scarce — people willing to be changed by information are.</p>
+<p>How to apply it: (1) attach a "confidence level" to every important judgment ("I'm 70% sure") and review the calibration regularly — of the things you labeled 90%, did 90% actually happen?; (2) keep an "update log" — every time new evidence changed a belief, write it down; three months without an entry means you may have slipped into cognitive closure; (3) practice "strong opinions, weakly held" — when expressing a view, add the qualifier "if X evidence appears, I will change this judgment," preserving both decisiveness and the path to revision.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>At Bridgewater, Ray Dalio built a "believability-weighted" decision system: anyone can publicly challenge anyone's view, but the weight of the challenge depends on your historical accuracy in that domain. Dalio himself has been overruled by the team many times. He says, "Pain + reflection = progress." Intellectual humility is not hollow politeness — it is institutionalizing "I might be wrong."</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat has formed a strong bullish thesis on a specific AI market and concentrated capital around it. Intellectual humility means asking regularly, "If my core thesis is wrong, what is the most likely reason?" — not for self-doubt, but to spot disconfirming signals early. This shares the same root as Bridgewater's believability-weighted voting: the best judgment comes from a person willing to publicly challenge their own beliefs.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Intellectual Humility is the genuine willingness to recognize that your current beliefs may be wrong and to update them when confronted with better evidence. It is the difference between "strong opinions, weakly held" and stubborn certainty. In an AI-augmented world, intellectual humility becomes increasingly valuable as the volume of information explodes — it's the filter that keeps you from drowning in confirmation bias.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I hold a strong belief: <strong>[your belief]</strong>. Help me practice intellectual humility by: (1) presenting the 3 strongest counterarguments to this view, (2) identifying which cognitive biases most likely shaped this belief, and (3) proposing a falsifiable test — a specific observation or outcome that would force me to revise or abandon this belief.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav>
+<a href="index.en.html">← Back to Index</a>
+</nav>
+</div>
+</body>
+</html>
