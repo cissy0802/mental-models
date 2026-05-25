@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mental Models Deep Dive: Efficiency &amp; Execution · 2026-05-07 · Day 8</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #f7f7f5; color: #2d3436; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Segoe UI", "Microsoft YaHei", sans-serif; line-height: 1.75; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 80px; }
+  header.page { margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid #e6e6e0; }
+  header.page h1 { font-size: 28px; margin: 0 0 8px; letter-spacing: 0.5px; color: #1e272e; }
+  header.page .meta { font-size: 14px; color: #777770; letter-spacing: 1px; }
+  .card { background: #ffffff; border-radius: 10px; padding: 28px 30px; margin-bottom: 28px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border-left: 6px solid #ccc; }
+  .card.c1 { border-left-color: #6c5ce7; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #fdcb6e; }
+  .card.c4 { border-left-color: #e17055; }
+  .card h2 { margin: 0 0 4px; font-size: 22px; color: #1e272e; }
+  .card .sub { font-size: 13px; color: #8a8a82; font-style: italic; margin-bottom: 18px; letter-spacing: 0.3px; }
+  .section-label { display: inline-block; margin: 22px 0 10px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-variant: small-caps; font-weight: 700; }
+  .card.c1 .section-label { color: #6c5ce7; }
+  .card.c2 .section-label { color: #00b894; }
+  .card.c3 .section-label { color: #b8860b; }
+  .card.c4 .section-label { color: #e17055; }
+  .section-label + hr { border: 0; border-top: 1px solid #ececea; margin: 0 0 14px; }
+  .card p { margin: 0 0 12px; font-size: 15px; color: #34373b; }
+  .examples { background: #fafaf7; border-radius: 6px; padding: 14px 18px; margin: 12px 0; font-size: 14.5px; }
+  .examples p { margin: 0 0 8px; }
+  .examples p:last-child { margin-bottom: 0; }
+  .en { font-size: 14.5px; color: #3a3a3a; background: #f4f6f8; border-radius: 6px; padding: 14px 18px; font-family: "Georgia", serif; }
+  pre.prompt { background: #1e272e; color: #dfe6e9; border-radius: 8px; padding: 16px 18px 18px; overflow-x: auto; font-family: "SF Mono", "Menlo", "Consolas", monospace; font-size: 13px; line-height: 1.65; margin: 10px 0 16px; white-space: pre-wrap; word-wrap: break-word; }
+  pre.prompt .tag { display: inline-block; background: #fdcb6e; color: #1e272e; font-weight: 700; font-size: 11px; letter-spacing: 1.5px; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px; }
+  footer.page { margin-top: 40px; padding-top: 20px; border-top: 1px solid #e6e6e0; text-align: center; font-size: 14px; }
+  footer.page a { color: #6c5ce7; text-decoration: none; }
+  footer.page a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { .wrap { padding: 28px 16px 60px; } .card { padding: 22px 20px; } header.page h1 { font-size: 22px; } .card h2 { font-size: 19px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page">
+    <h1>Mental Models Deep Dive: Efficiency &amp; Execution</h1>
+    <div class="meta">2026-05-07 · DAY 8</div>
+  </header>
+
+  <section class="card c1">
+    <h2>Pareto Principle</h2>
+    <div class="sub">Pareto Principle — the vital few outweigh the trivial many.</div>
+    <div class="section-label">In Depth</div><hr />
+    <p>The Pareto Principle, also known as the 80/20 rule, originally described how 80% of Italy's land was owned by 20% of the population. It generalizes: in complex systems, roughly 20% of inputs produce roughly 80% of outputs. The underlying mechanism isn't an exact 80/20 split — it's that outputs follow a power-law distribution over inputs, because a small set of factors gets amplified by feedback loops, network effects, or compounding, producing radically non-linear returns.</p>
+    <p>The non-obvious insight: 80/20 is recursive. 20% of the 20% (about 4%) typically drives 64% of the outcome. The real "super-leverage points" are rarer than you think. At the same time, the long-tail 80% isn't useless — it's the stable base and source of optionality, and you can't simply hack it off. The hard part of finding the critical 20%: people allocate attention by "felt effort," not by "actual output."</p>
+    <p>How to practice it: (1) do a weekly output audit — sort all tasks by result rather than by time spent, and find the 1-3 items that truly drove outcomes; (2) handle the remaining 80% with a four-quadrant treatment: automate, delegate, downgrade, delete; (3) watch out for "fake 20%" — the high-frequency small things that look important but really just satisfy your emotions.</p>
+    <div class="examples">
+      <p><strong>Classic example:</strong> Microsoft found that 20% of Windows bugs caused 80% of crashes. Concentrating fixes on that 20% improved user experience far more than spreading effort evenly.</p>
+    </div>
+    <div class="examples">
+      <p><strong>BigCat scenario:</strong> In your AI workflow, you may be maintaining 30+ prompt templates, but only 5-6 actually drive value. Polishing those 5-6 to S-grade — with eval sets and version control — beats keeping all 30 at B-grade.</p>
+      <p>You've planned 12 things this week: three customer calls, two investment diligence sessions, a parent-teacher meeting, two industry reports, four AI agent debugging sessions. Ask first: which 2-3 of these, done, would make "this week worth it"? Put them in your high-energy morning windows. The rest — can you cut half of them outright?</p>
+    </div>
+    <div class="section-label">English Summary</div><hr />
+    <div class="en">The Pareto Principle states that roughly 80% of outcomes come from 20% of inputs, due to power-law dynamics in feedback-rich systems. The principle is recursive — 20% of the 20% often drives most of the leverage. The hardest part is detection: people optimize for effort, not output. Practically, run a weekly output audit, ruthlessly demote the trivial many, and double down on the vital few.</div>
+    <div class="section-label">AI Prompts</div><hr />
+    <pre class="prompt"><span class="tag">Chinese Template</span>
+你是一位效率教练。我的角色是 [你的角色]，当前目标是 [本周/本月目标]。
+以下是我列出的全部任务清单：[任务1, 任务2, ...]。
+请用帕累托法则帮我分析：
+1) 识别可能贡献 80% 结果的 20% 任务，并说明理由；
+2) 对其余任务，给出"自动化 / 外包 / 降级 / 删除"建议；
+3) 指出我清单中可能是"伪 20%"的任务（看似重要、实则情绪驱动）。</pre>
+    <pre class="prompt"><span class="tag">English Template</span>
+Act as a productivity coach. My role is [your role], and my objective for [time window] is [goal].
+Here is my full task list: [task1, task2, ...].
+Apply the Pareto Principle to:
+1) Identify the ~20% of tasks likely to drive 80% of the outcome, with reasoning;
+2) Recommend automate / delegate / downgrade / delete for the rest;
+3) Flag any "pseudo-20%" tasks that feel important but are emotion-driven.</pre>
+  </section>
+
+  <section class="card c2">
+    <h2>Parkinson's Law</h2>
+    <div class="sub">Parkinson's Law — work expands to fill the time available.</div>
+    <div class="section-label">In Depth</div><hr />
+    <p>Parkinson's Law, named after British historian Cyril Northcote Parkinson, says "work expands to fill the time available for its completion." The original formulation also carried an organizational implication: bureaucracies multiply themselves regardless of actual workload. Two mechanisms drive it: psychologically, perfectionism + procrastination feed each other; structurally, unconstrained systems trend toward entropy.</p>
+    <p>The non-obvious insight: a deadline is not just a constraint — it's a creative catalyst. A compressed timebox forces the brain to skip exhaustive search and jump straight into heuristic decisions. That matches the neuroscience finding that the prefrontal cortex switches to fast-path mode when the cognitive budget is tight. But extreme compression triggers stress and a quality collapse; the sweet spot is usually 60-70% of your gut estimate.</p>
+    <p>How to practice it: (1) set a "challenge deadline" for each task, not a "comfortable deadline"; (2) use timeboxing with a visible countdown — a physical timer beats a fuzzy "about two hours"; (3) periodically run the thought experiment "if I only had half the time, what would I do?" — it surgically exposes hidden inefficiencies.</p>
+    <div class="examples">
+      <p><strong>Classic example:</strong> A student given a week to write a 3,000-word essay usually pulls an all-nighter at the end. Cut the deadline to two days and quality doesn't necessarily drop — it often improves.</p>
+    </div>
+    <div class="examples">
+      <p><strong>BigCat scenario:</strong> A team estimates two weeks for fine-tuning an LLM. Force the deadline to "5-day MVP + 1 week polish" and the team has to pick the smallest viable dataset, skip non-critical hyperparameter sweeps, and get feedback signal earlier.</p>
+      <p>You're writing a quarterly AI industry review — originally "two weekend days." Try changing it to "Saturday morning, 90 minutes, ship v1 in one go." Put the timer on the desk where you can see it. You'll find that what got cut is precisely the over-polished filler.</p>
+    </div>
+    <div class="section-label">English Summary</div><hr />
+    <div class="en">Parkinson's Law observes that work expands to fill whatever time you allocate to it. Tight deadlines are catalysts that force the brain into heuristic mode. Use challenge deadlines set at roughly 60-70% of your gut estimate, make timers visible, and periodically run a "half-time" thought experiment to expose hidden inefficiency. The risk is over-compression which collapses quality — calibration matters.</div>
+    <div class="section-label">AI Prompts</div><hr />
+    <pre class="prompt"><span class="tag">Chinese Template</span>
+我要完成的任务是：[任务描述]。我直觉估计需要 [X 小时/天]。
+请基于帕金森定律：
+1) 给出一个"挑战时间盒"（约 60-70%）和对应的可交付物清单；
+2) 列出在压缩时间下应优先保留 / 主动放弃的环节；
+3) 设计 3 个"如果只剩一半时间"的应急路径。</pre>
+    <pre class="prompt"><span class="tag">English Template</span>
+The task I need to complete is: [task description]. My intuitive estimate is [X hours/days].
+Using Parkinson's Law, please:
+1) Propose a "challenge time-box" at ~60-70% of my estimate, with concrete deliverables;
+2) List what to keep vs. deliberately drop under compression;
+3) Design three fallback paths assuming only half the time is available.</pre>
+  </section>
+
+  <section class="card c3">
+    <h2>Time Blocking</h2>
+    <div class="sub">Time Blocking — schedule the work, don't list it.</div>
+    <div class="section-label">In Depth</div><hr />
+    <p>Time blocking argues: don't write a to-do list, drop tasks straight into specific calendar slots. The core idea is to convert a "task" into an "appointment." Once it has a start, an end, a place, and an energy tag, the brain shifts from "still to do" into "now doing" mode. Cal Newport pushes the extreme version: every minute of every day is pre-assigned.</p>
+    <p>The non-obvious insight is neuroscientific. The brain carries a continuous cognitive load for unfinished tasks (the Zeigarnik effect), and the moment you write a task into the calendar, working memory partially releases it — the brain trusts the future self to take over at that timestamp. Time blocking also fights decision fatigue: you stop asking "what's next?" every 15 minutes, freeing prefrontal budget for the work itself.</p>
+    <p>How to practice it: (1) distinguish deep blocks (90-120 minutes, no interruptions), shallow blocks (30-45 min for communication and small items), and transition blocks (15 min for review and switching); (2) tag each block with an energy level (high/medium/low) and align it with your circadian peaks and troughs; (3) accept that blocks will fail — leave 20% buffer blocks for catch-up. Don't tile densely.</p>
+    <div class="examples">
+      <p><strong>Classic example:</strong> Bill Gates's "Think Week" — twice a year he blocks an entire week for nothing but reading and thinking, accepting no visitors. Several company-defining strategic pivots were conceived in those weeks.</p>
+    </div>
+    <div class="examples">
+      <p><strong>BigCat scenario:</strong> Writing "AI learning" vaguely on a to-do list equals not doing it. Rewrite it as: Tuesday 6:30-8:00 = deep block, read one paper + run one Claude controlled experiment; Thursday 21:00-21:30 = shallow block, organize this week's prompt versions.</p>
+      <p>As a mother, your high-energy window is probably the three hours after school drop-off. Lock those three hours as a "creation block" — only for things that need peak prefrontal output (writing, decisions, AI orchestration). Message replies, expense reports, household chores — all pushed into a shallow block after 14:00.</p>
+    </div>
+    <div class="section-label">English Summary</div><hr />
+    <div class="en">Time blocking replaces task lists with calendar appointments: every task gets a start, an end, and an energy tag. This leverages the Zeigarnik effect — once scheduled, the brain offloads it from working memory. It also conserves decision-making budget by eliminating constant "what's next" queries. Distinguish deep blocks, shallow blocks, and transition blocks; align them with your circadian energy curve; and leave ~20% buffer. Done well, time blocking is the operating system for deep work.</div>
+    <div class="section-label">AI Prompts</div><hr />
+    <pre class="prompt"><span class="tag">Chinese Template</span>
+我的角色是 [角色]，明日要处理的任务包括：[任务列表]。
+我的能量峰值时段是 [时段]，低谷时段是 [时段]，固定约束是 [接送孩子/会议/etc]。
+请帮我设计明日的时间块表：
+1) 标注每个块为深度/浅度/过渡，并匹配能量等级；
+2) 至少保留一个 90 分钟以上的深度块；
+3) 预留 20% 缓冲，并指出最可能崩盘的环节。</pre>
+    <pre class="prompt"><span class="tag">English Template</span>
+My role is [role]. Tomorrow I need to handle: [task list].
+My peak energy window is [time]; my trough is [time]; fixed constraints are [school run / meetings / etc].
+Design my time-block schedule with:
+1) Each block tagged as deep / shallow / transition, matched to energy level;
+2) At least one deep block of 90+ minutes;
+3) A 20% buffer reserve, plus the most likely point of failure.</pre>
+  </section>
+
+  <section class="card c4">
+    <h2>MVP Thinking</h2>
+    <div class="sub">Minimum Viable Product — ship to learn, not to impress.</div>
+    <div class="section-label">In Depth</div><hr />
+    <p>MVP was systematized by Eric Ries in <em>The Lean Startup</em>. It isn't "ship a crappy version" — it's "complete a full build-measure-learn loop at the lowest cost." The operative word is <em>viable</em>: the thing must actually be exposed to users, the market, real feedback. Otherwise it's just shrunken waterfall development.</p>
+    <p>The non-obvious insight: the output of an MVP isn't a product — it's validated learning. Many people mistakenly build an MVP that's "polished but has no users," missing the point. The MVP is a tool for reducing uncertainty. From first principles: in high-uncertainty environments, feedback frequency determines evolution speed — short-generation species adapt faster than long-generation ones. MVP compresses the R&amp;D-trial generation from a quarter to a week. The compounding is staggering.</p>
+    <p>How to practice it: (1) write down "the one hypothesis I most want to test" — just one; (2) design the minimum action that tests it (probably not writing code — maybe a survey, a landing page, a manual concierge service); (3) pre-commit to "red/green lines": what result triggers a pivot, perseverance, or kill. MVP isn't the destination — it's the first pipe connecting you to reality.</p>
+    <div class="examples">
+      <p><strong>Classic example:</strong> Dropbox didn't build the cloud sync system first. They shipped a 3-minute demo video. The waitlist that resulted validated demand, and only then did they pour in engineering resources.</p>
+    </div>
+    <div class="examples">
+      <p><strong>BigCat scenario:</strong> You want to build an "AI parenting coach" product. The MVP is not an app — it's Claude + a carefully written system prompt, wrapped in a Telegram bot, with 10 moms invited for a week. Collect chat logs and satisfaction scores. If retention is &lt;30%, the hypothesis needs a pivot.</p>
+      <p>You want to test a new investment framework (first principles + AI industry trends). Don't start by writing a 50-page methodology. This week, use it to analyze one real company, write a one-page conclusion, and send it to a trusted friend with the question: "would you make a decision based on this page?" That's your MVP.</p>
+    </div>
+    <div class="section-label">English Summary</div><hr />
+    <div class="en">An MVP is not a stripped-down product — it is the smallest experiment that completes a full build-measure-learn loop. Its real output is validated learning, not features. Under high uncertainty, feedback frequency determines evolution speed, the same way short-generation species out-adapt long-generation ones. Pick exactly one hypothesis, design the minimum action that tests it, and pre-commit to pivot / persevere / kill thresholds. Ship to learn.</div>
+    <div class="section-label">AI Prompts</div><hr />
+    <pre class="prompt"><span class="tag">Chinese Template</span>
+我正在构思的项目/想法是：[项目描述]。
+我最希望验证的核心假设是：[假设陈述]。
+请用 MVP 思维帮我设计：
+1) 一个本周内可以执行的最小验证动作（鼓励非代码形式）；
+2) 我应该收集哪些定量+定性反馈信号；
+3) 红/黄/绿三档结果，分别对应 kill / pivot / persevere。</pre>
+    <pre class="prompt"><span class="tag">English Template</span>
+The project/idea I am exploring is: [project description].
+The single most important hypothesis I want to validate is: [hypothesis].
+Using MVP thinking, design:
+1) The smallest validation action executable within one week (non-code formats welcome);
+2) The quantitative and qualitative signals I should collect;
+3) Red / yellow / green outcome bands mapped to kill / pivot / persevere decisions.</pre>
+  </section>
+
+  <footer class="page">
+    <a href="index.en.html">← Back to Index</a>
+  </footer>
+</div>
+</body>
+</html>
