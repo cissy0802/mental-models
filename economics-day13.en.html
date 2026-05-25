@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Economic Thinking · Day 13</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+    padding: 40px 20px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin: 0 auto; }
+  header { margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid #e1e1dd; }
+  header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.01em; color: #1e272e; margin-bottom: 10px; }
+  header .meta { font-size: 0.95rem; color: #8a8a82; letter-spacing: 0.05em; }
+  .card { background: #ffffff; border-radius: 10px; padding: 32px 36px; margin-bottom: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03); border-left: 5px solid #ccc; }
+  .card-1 { border-left-color: #6c5ce7; }
+  .card-2 { border-left-color: #00b894; }
+  .card-3 { border-left-color: #fdcb6e; }
+  .card-4 { border-left-color: #e17055; }
+  .card h2 { font-size: 1.55rem; font-weight: 700; color: #1e272e; margin-bottom: 4px; }
+  .card .subtitle { font-size: 0.95rem; color: #8a8a82; font-style: italic; margin-bottom: 24px; letter-spacing: 0.02em; }
+  .section-divider { display: flex; align-items: center; margin: 26px 0 14px; }
+  .section-divider .label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; padding-right: 14px; white-space: nowrap; }
+  .section-divider hr { flex: 1; border: none; border-top: 1px solid #ececea; }
+  .card-1 .section-divider .label { color: #6c5ce7; }
+  .card-2 .section-divider .label { color: #00b894; }
+  .card-3 .section-divider .label { color: #b8860b; }
+  .card-4 .section-divider .label { color: #e17055; }
+  .content p { margin-bottom: 14px; color: #3a3a3a; font-size: 1rem; }
+  .scenario { background: #fafaf7; border-radius: 8px; padding: 16px 20px; margin-top: 14px; font-size: 0.95rem; color: #444; border: 1px solid #eeeeea; }
+  .scenario .scenario-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #8a8a82; margin-bottom: 6px; display: block; }
+  .english p { font-size: 0.97rem; color: #4a4a4a; }
+  .prompt { background: #1e272e; color: #e8e8e3; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace; font-size: 0.88rem; line-height: 1.65; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
+  .prompt .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; color: #fdcb6e; margin-bottom: 8px; text-transform: uppercase; }
+  footer { margin-top: 48px; text-align: center; font-size: 0.95rem; }
+  footer a { color: #6c5ce7; text-decoration: none; border-bottom: 1px dashed #6c5ce7; padding-bottom: 2px; }
+  footer a:hover { opacity: 0.7; }
+  @media (max-width: 640px) {
+    body { padding: 24px 14px 60px; }
+    .card { padding: 22px 20px; }
+    header h1 { font-size: 1.7rem; }
+    .card h2 { font-size: 1.3rem; }
+    .prompt { font-size: 0.8rem; padding: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Mental Models Deep Dive: Economic Thinking</h1>
+    <div class="meta">May 12, 2026 · Day 13</div>
+  </header>
+
+  <section class="card card-1">
+    <h2>Opportunity Cost</h2>
+    <div class="subtitle">The most expensive bill you never see</div>
+    <div class="section-divider"><span class="label">In Depth</span><hr></div>
+    <div class="content">
+      <p>Opportunity cost is the value of the best alternative you give up to get A. It isn't a number on your accounting sheet — it's an invisible expense. Economics feels counterintuitive precisely because it forces you to treat "what didn't happen" as a real cost. Most people only see explicit cash flows, and so they squander "free" time, attention, and option windows as if they cost nothing.</p>
+      <p>The non-trivial insight: in a fast-evolving era — especially the AI era — opportunity cost is itself growing exponentially. Ten years ago, spending two hours hand-writing an analysis report cost you a movie. Today the same two hours might cost you ten parallel Claude/GPT experiments, one untested business hypothesis, or a conversation that would have expanded the cognitive frontier of one super-individual. A "super-individual" is, structurally, someone whose opportunity-cost sense is dialed up to ruthless — they make near-brutal choices about where time should flow.</p>
+      <p>How to use it: before any significant commitment, force yourself to list "if I don't do this, what's the best alternative use of this time or money?" If the alternative is worth more, you're not earning — you're losing.</p>
+      <div class="scenario">
+        <span class="scenario-label">Classic example</span>
+        Warren Buffett uses a thought experiment to explain opportunity cost: imagine he spent $300K on a house in his youth. Given his long-term compounding rate, the real cost over decades isn't $300K — it's millions of dollars in foregone future returns. He audits every expense and every hour the same way: the real price isn't the number you pay, it's the best alternative return you permanently surrendered. That's why he half-jokes, "every haircut costs me $300,000."
+      </div>
+      <div class="scenario">
+        <span class="scenario-label">BigCat scenario</span>
+        You're considering self-hosting a homemade notes-syncing system, projected at 8 hours per month. The opportunity cost isn't the cloud subscription fee — it's the 8 hours you could have used to finish due diligence on an early AI Infra deal, run a quantum-mechanics kitchen experiment with your kid, or re-read the "Hundred Dharmas" section of the <em>Yogācārabhūmi</em>. The right question isn't "does self-hosting save money?" but "which abandoned alternative would have moved next year's me closer to super-individual status?"
+      </div>
+    </div>
+    <div class="section-divider"><span class="label">English Summary</span><hr></div>
+    <div class="english content">
+      <p>Opportunity cost is the value of the best alternative you give up when you choose one option over another. In an AI-accelerated era, the cost of a misallocated hour is no longer one foregone movie — it is a foregone experiment, deal, or compounding insight. Accounting books cannot see this cost, but reality charges it anyway. The discipline of the super-individual is to price the invisible.</p>
+    </div>
+    <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt"><span class="tag">Chinese Template</span>
+我正在考虑[决策事项]，预计将投入[时间/资金/精力]。请帮我列出在我当前的目标（成为 AI 时代超级个体 / [其他目标]）下，这部分资源的 5 个最佳替代用途，并量化每个替代用途未来 12 个月的预期回报，最后给出机会成本结论。</div>
+    <div class="prompt"><span class="tag">English Template</span>
+I'm about to commit [resource: time/capital/attention] to [decision]. Generate the top 5 alternative uses of this resource given my goal of [goal], estimate the 12-month expected value of each, and tell me whether my current choice underprices its opportunity cost.</div>
+  </section>
+
+  <section class="card card-2">
+    <h2>Comparative Advantage</h2>
+    <div class="subtitle">It's not who's stronger — it's whose "cost of giving up" is lower</div>
+    <div class="section-divider"><span class="label">In Depth</span><hr></div>
+    <div class="content">
+      <p>Ricardo's comparative advantage answers a counterintuitive question: if A is better than B at everything, does A still need B? Yes — because cooperation rests not on absolute advantage but on relative opportunity cost. A country, a company, or a person should specialize in whatever they "give up least to do," and trade for the rest. Total output is maximized that way.</p>
+      <p>The AI era has reactivated this model with explosive tension. AI is faster than humans at writing code, looking things up, drafting documents — it has the absolute edge. But relatively speaking, humans have lower opportunity cost on "asking original questions," "redrawing boundaries from first principles," and "making value judgments at the level of consciousness and intuition" (because AI's marginal cost for these is still high). So the optimal human × AI structure isn't a human racing the machine on speed — it's a human guarding the cell where their opportunity cost is lowest: asking, judging, integrating.</p>
+      <p>This also explains why the "super-individual" is structurally not a lone hero but an organism — a human cognitive core with AI as the executing periphery. The hard part of identifying comparative advantage is honestly admitting where your "cost of giving up" is lowest, not where you feel most proud.</p>
+      <div class="scenario">
+        <span class="scenario-label">Classic example</span>
+        David Ricardo explained comparative advantage with 19th-century trade between Portugal and England. Portugal was more efficient at both wine and cloth (absolute advantage), but its relative edge in wine was much larger than in cloth. Ricardo showed: if Portugal focused on wine and England on cloth, and both traded freely, total output exceeded what either could produce alone. The point isn't "who's stronger" — it's "who pays less to give this up." Even if you're good at everything, do only the one thing whose opportunity cost is lowest.
+      </div>
+      <div class="scenario">
+        <span class="scenario-label">BigCat scenario</span>
+        As an investor, you can probably run the financial models, write due-diligence memos, and chart the competitive landscape yourself. But your comparative advantage may be "evaluating a founder's stability of consciousness through the Yogācāra eight-vijñāna framework" — something AI can't replicate near-term, and your most scarce source of insight. Hand off the modeling, doc work, and competitor scraping to a Claude / Cursor pipeline. Your output scales not because you do more, but because you only do the one thing everyone else (AI included) pays the highest cost to give up.
+      </div>
+    </div>
+    <div class="section-divider"><span class="label">English Summary</span><hr></div>
+    <div class="english content">
+      <p>Comparative advantage says specialization should follow the lowest opportunity cost, not the highest absolute skill. Even if AI outperforms you on most tasks, you still have a comparative edge somewhere — usually in original questions, value judgments, and cross-domain synthesis. The super-individual emerges by ruthlessly outsourcing everything else to AI collaborators. Trade, not heroism, maximizes output.</p>
+    </div>
+    <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt"><span class="tag">Chinese Template</span>
+请帮我分析在[项目/角色]中，我和[AI 工具 / 协作者]各自的绝对优势与机会成本。基于李嘉图比较优势模型，给出一份"我应专注 / 应外包"的清单，并解释为什么这样的分工总产出最大。</div>
+    <div class="prompt"><span class="tag">English Template</span>
+For my role as [role] working with [AI tools / collaborators], list each party's absolute strengths and opportunity costs. Apply Ricardo's comparative advantage logic to produce a "I keep / I delegate" split, and explain the welfare gain from this division.</div>
+  </section>
+
+  <section class="card card-3">
+    <h2>Supply &amp; Demand Equilibrium</h2>
+    <div class="subtitle">Price is just the shadow of information</div>
+    <div class="section-divider"><span class="label">In Depth</span><hr></div>
+    <div class="content">
+      <p>Supply-demand equilibrium is the oldest, most durable model in economics: price forms spontaneously where the supply and demand curves cross, and it transmits the entire public information about scarcity. Hayek pushed the insight further — price isn't just an output, it's the product of distributed computation, the process by which countless decision-makers compress private information into a single scalar. Any deviation from equilibrium (shortage, surplus, monopoly) gets corrected by the price mechanism.</p>
+      <p>The most common misreading: "equilibrium" doesn't mean "stationary." Real-world equilibrium is dynamic and oscillating — price is always chasing a moving truth. From first principles, every market is doing the same thing: rendering invisible preferences and costs into a tradable number. Internalize this and you'll sniff out the windows in AI compute, attention, talent, and early-stage equity where price hasn't yet caught up to value.</p>
+      <p>The deeper move is to port this from commodity markets to any scarce-resource setting. Your attention has supply and demand. Your kid's study time has supply and demand. Even your meditative concentration has supply and demand. Imbalance shows up as symptoms (anxiety, burnout, decision fatigue) — that's the market quoting a price at you.</p>
+      <div class="scenario">
+        <span class="scenario-label">Classic example</span>
+        Uber's surge pricing is a real-time demonstration. When a downpour or a concert release spikes demand while nearby driver supply is flat, prices auto-adjust upward. The high price does two things at once: suppresses non-urgent demand (some riders wait) and pulls more drivers into the area. Within minutes, supply and demand re-converge, and the price falls. The mechanism makes it visible that no one "sets" the price — it's the live shadow of two intersecting curves.
+      </div>
+      <div class="scenario">
+        <span class="scenario-label">BigCat scenario</span>
+        In 2026, GPU compute on the secondary market shows a striking regional spread: Southeast Asian clusters have surging supply thanks to loosened regulation, while US-West demand has exploded from a new training cycle. If you only look at absolute prices, you miss the arbitrage; if you see "two curves haven't cleared across borders yet," you can plant a seed in the AI Infra portfolio early. The same logic at home: is your child's "demand" for a subject (interest) being continually matched by your "supply" (resources, time)? The cost of mismatch is the death of interest — a price you never see on any invoice.
+      </div>
+    </div>
+    <div class="section-divider"><span class="label">English Summary</span><hr></div>
+    <div class="english content">
+      <p>Markets converge to a price where supply meets demand, and the price itself encodes distributed information about scarcity. Equilibrium is dynamic, not static — prices chase a moving truth. Spotting where price has not yet caught up to value is the foundation of asymmetric investing. The same logic applies to any scarce resource: attention, energy, a child's curiosity.</p>
+    </div>
+    <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt"><span class="tag">Chinese Template</span>
+请用供需均衡模型分析[市场/资源]当前的状态：(1) 供给端的主要变量与变化；(2) 需求端的主要变量与变化；(3) 当前价格是高于、低于还是接近均衡价？(4) 未来 6-18 个月最可能的再均衡路径与套利窗口。</div>
+    <div class="prompt"><span class="tag">English Template</span>
+Apply the supply-demand equilibrium model to [market/resource]. Identify the dominant shifts on each curve, judge whether the current price is above, below, or near equilibrium, and outline the most likely re-equilibration path over the next 6-18 months, including any arbitrage windows.</div>
+  </section>
+
+  <section class="card card-4">
+    <h2>Externality</h2>
+    <div class="subtitle">The part nobody pays for is the part that costs the most</div>
+    <div class="section-divider"><span class="label">In Depth</span><hr></div>
+    <div class="content">
+      <p>An externality is the cost or benefit an economic activity imposes on third parties without passing through the price system. Negative externalities (pollution, attention extraction, AI-hallucination pollution of public knowledge) make society pay for private costs. Positive externalities (open-source code, public education, basic research) let private effort create social value without compensating returns. Market failure has one core source: externalities that haven't been internalized.</p>
+      <p>The AI era turns this into a civilizational issue. Someone using AI to flood the web with low-quality content has near-zero private cost, but injects cognitive noise that everyone pays for. Conversely, a creator who carefully publishes a high-quality long essay rooted in first principles generates strong positive externalities — and captures only a fraction of the value. From a Buddhist lens, externalities are <em>gòngyè</em> (collective karma) — your actions ripple through the web of conditions, and the excess that overflows your own account is borne by all beings.</p>
+      <p>In practice, externality-thinking means two things: (1) identify the negative externalities you're producing (even from "private" actions) and dial them down; (2) identify the actions with strong positive externalities and "second-order returns" (reputation, network, luck surface area) and amplify them. It's a way of turning ethics into long-term return.</p>
+      <div class="scenario">
+        <span class="scenario-label">Classic example</span>
+        A factory dumps wastewater into a river, and downstream fishermen lose their catch. The factory's accounting cost is low because it has pushed the pollution cost onto the fishermen and the ecosystem — the textbook negative externality. The factory doesn't pay for the damage, market prices lie, and total welfare falls. Pigou's solution was a tax on pollution (the Pigouvian tax) — internalize the external cost into the factory's P&amp;L, so the price tells the truth again.
+      </div>
+      <div class="scenario">
+        <span class="scenario-label">BigCat scenario</span>
+        You consider whether to publish the cross-disciplinary notes — "economics × Yogācāra × quantum" — you've been pulling together with AI. Short-term, you pay an editing cost and the gain seems to go to readers — a classic positive externality. But look deeper: publishing draws same-frequency readers, prospective LPs, and a permanent archive of paternal thinking your kid can read someday — these second-order spillovers are unbuyable. Equally, beware: a hasty conclusion you posted could be scraped into AI training and propagate at scale — a negative externality you're quietly producing. A clear-headed super-individual sets a "quality waterline" on their output.
+      </div>
+    </div>
+    <div class="section-divider"><span class="label">English Summary</span><hr></div>
+    <div class="english content">
+      <p>An externality is any cost or benefit of an action that spills onto third parties without passing through the price system. Negative externalities make society pay for private gains; positive externalities let society free-ride on private effort. In the AI era, both are amplified — one careless prompt pollutes the commons, one careful publication compounds across networks. The mature operator internalizes the negative and broadcasts the positive.</p>
+    </div>
+    <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt"><span class="tag">Chinese Template</span>
+请帮我审视[行为 / 项目 / 内容输出]：(1) 它产生了哪些显性的、未被定价的负外部性？(2) 它产生了哪些被低估的正外部性？(3) 我可以采取哪些具体动作，将负外部性内部化、将正外部性放大并捕获更多二阶收益？</div>
+    <div class="prompt"><span class="tag">English Template</span>
+Audit [activity / project / output] for externalities. List the unpriced negative spillovers it creates, the underestimated positive spillovers, and propose concrete actions to internalize the negatives and amplify the positives so I can capture more second-order returns.</div>
+  </section>
+
+  <footer>
+    <a href="index.en.html">← Back to Index</a>
+  </footer>
+
+</div>
+</body>
+</html>
