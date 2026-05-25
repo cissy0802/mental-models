@@ -114,6 +114,15 @@
           console.warn(`[mmd-tts] ${url} unavailable, falling back to Web Speech`);
           this.speakWebSpeech(seg, isStale);
         };
+        audio.onloadedmetadata = () => {
+          if (isStale()) return;
+          setSeekEnabled(true);
+          updateSeek(0, audio.duration);
+        };
+        audio.ontimeupdate = () => {
+          if (isStale() || isScrubbing) return;
+          updateSeek(audio.currentTime, audio.duration);
+        };
         this.audio = audio;
         audio.play().catch((e) => {
           if (isStale()) return;
@@ -122,9 +131,18 @@
         });
         return;
       }
-      // No baked audio for this segment → Web Speech
+      // No baked audio for this segment → Web Speech (no seek support)
+      setSeekEnabled(false);
+      updateSeek(0, 0);
       const myToken = ++this._token;
       this.speakWebSpeech(seg, () => myToken !== this._token);
+    },
+
+    seekTo(fraction) {
+      if (!this.audio || !this.audio.duration) return;
+      const t = Math.max(0, Math.min(this.audio.duration, fraction * this.audio.duration));
+      this.audio.currentTime = t;
+      updateSeek(t, this.audio.duration);
     },
 
     speakWebSpeech(seg, isStale) {
@@ -191,6 +209,8 @@
       document.querySelectorAll('.tts-active').forEach((el) => el.classList.remove('tts-active'));
       updatePlayButton();
       updateProgress();
+      setSeekEnabled(false);
+      updateSeek(0, 0);
     },
 
     next() {
@@ -264,14 +284,24 @@ body{padding-bottom:96px!important}
 .mmd-controls .sep{width:1px;height:18px;background:rgba(0,0,0,0.1);margin:0 3px}
 .mmd-controls .rate{background:transparent;border:none;cursor:pointer;font-size:12px;color:#636e72;padding:6px 10px;border-radius:14px;font-weight:600;font-variant-numeric:tabular-nums;min-width:34px;text-align:center}
 .mmd-controls .rate:hover{background:#f0f0f4}
-.mmd-controls .progress{font-size:11px;color:#8a93a0;padding:0 8px;min-width:42px;text-align:center;font-variant-numeric:tabular-nums;letter-spacing:0.5px}
+.mmd-controls .progress{font-size:11px;color:#8a93a0;padding:0 6px;min-width:38px;text-align:center;font-variant-numeric:tabular-nums;letter-spacing:0.5px}
 .mmd-controls .lang{font-weight:700;font-size:13px;letter-spacing:0.5px;padding:8px 12px}
+.mmd-controls .seek-wrap{display:flex;align-items:center;gap:6px;padding:0 4px;min-width:140px}
+.mmd-controls .seek-bar{flex:1;height:18px;cursor:pointer;position:relative;display:flex;align-items:center;touch-action:none}
+.mmd-controls .seek-bar.disabled{cursor:not-allowed;opacity:0.4}
+.mmd-controls .seek-track{position:absolute;left:0;right:0;height:4px;background:rgba(0,0,0,0.1);border-radius:2px}
+.mmd-controls .seek-fill{position:absolute;left:0;height:4px;background:#6c5ce7;border-radius:2px;width:0%;pointer-events:none}
+.mmd-controls .seek-knob{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:#6c5ce7;transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,0.25);left:0;opacity:0;transition:opacity 0.15s;pointer-events:none}
+.mmd-controls .seek-bar:hover .seek-knob,.mmd-controls .seek-bar.scrubbing .seek-knob{opacity:1}
+.mmd-controls .seek-time{font-size:11px;color:#8a93a0;font-variant-numeric:tabular-nums;min-width:36px;text-align:right}
 .tts-active{background:rgba(108,92,231,0.10)!important;box-shadow:0 0 0 2px rgba(108,92,231,0.35),0 0 0 6px rgba(108,92,231,0.08);border-radius:6px;transition:background 0.2s,box-shadow 0.2s;scroll-margin-top:80px;scroll-margin-bottom:120px}
 @media(max-width:600px){
   .mmd-controls{bottom:10px;right:10px;left:10px;justify-content:center;border-radius:22px;padding:5px}
   .mmd-controls .lang{padding:6px 8px;font-size:12px}
   .mmd-controls button{min-width:32px;min-height:32px;padding:6px 8px}
   .mmd-controls .progress{display:none}
+  .mmd-controls .seek-wrap{min-width:0;flex:1}
+  .mmd-controls .seek-time{display:none}
 }
 `;
     const s = document.createElement('style');
@@ -292,6 +322,14 @@ body{padding-bottom:96px!important}
       <button data-action="next" title="下一段 / Next" aria-label="Next segment">⏭</button>
       <button data-action="stop" title="停止 / Stop" aria-label="Stop">■</button>
       <span class="progress" aria-live="polite">0/0</span>
+      <div class="seek-wrap">
+        <div class="seek-bar disabled" role="slider" aria-label="Seek within current segment" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="seek-track"></div>
+          <div class="seek-fill"></div>
+          <div class="seek-knob"></div>
+        </div>
+        <span class="seek-time">0:00</span>
+      </div>
       <span class="sep"></span>
       <button class="rate" data-action="rate" title="语速 / Speed" aria-label="Playback speed">1×</button>
     `;
@@ -343,10 +381,93 @@ body{padding-bottom:96px!important}
     if (el) el.textContent = `${tts.rate}×`;
   }
 
+  // ---------- Seek bar ----------
+  let isScrubbing = false;
+
+  function fmtTime(s) {
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, '0')}`;
+  }
+
+  function updateSeek(currentTime, duration) {
+    const fill = document.querySelector('.mmd-controls .seek-fill');
+    const knob = document.querySelector('.mmd-controls .seek-knob');
+    const time = document.querySelector('.mmd-controls .seek-time');
+    const bar = document.querySelector('.mmd-controls .seek-bar');
+    if (!fill) return;
+    const pct = duration > 0 ? (currentTime / duration) * 100 : 0;
+    fill.style.width = pct + '%';
+    if (knob) knob.style.left = pct + '%';
+    if (time) time.textContent = duration > 0
+      ? `${fmtTime(currentTime)} / ${fmtTime(duration)}`
+      : '0:00';
+    if (bar) bar.setAttribute('aria-valuenow', String(Math.round(pct)));
+  }
+
+  function setSeekEnabled(enabled) {
+    const bar = document.querySelector('.mmd-controls .seek-bar');
+    if (bar) bar.classList.toggle('disabled', !enabled);
+  }
+
+  function wireSeekBar() {
+    const bar = document.querySelector('.mmd-controls .seek-bar');
+    if (!bar) return;
+
+    const fractionFromEvent = (e) => {
+      const rect = bar.getBoundingClientRect();
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      return Math.max(0, Math.min(1, x / rect.width));
+    };
+
+    const startScrub = (e) => {
+      if (bar.classList.contains('disabled')) return;
+      e.preventDefault();
+      isScrubbing = true;
+      bar.classList.add('scrubbing');
+      const f = fractionFromEvent(e);
+      if (tts.audio) updateSeek(f * tts.audio.duration, tts.audio.duration);
+    };
+    const moveScrub = (e) => {
+      if (!isScrubbing) return;
+      const f = fractionFromEvent(e);
+      if (tts.audio) updateSeek(f * tts.audio.duration, tts.audio.duration);
+    };
+    const endScrub = (e) => {
+      if (!isScrubbing) return;
+      const f = fractionFromEvent(e.changedTouches ? e : (e.type === 'mouseup' ? e : e));
+      tts.seekTo(f);
+      isScrubbing = false;
+      bar.classList.remove('scrubbing');
+    };
+
+    bar.addEventListener('mousedown', startScrub);
+    bar.addEventListener('touchstart', startScrub, { passive: false });
+    window.addEventListener('mousemove', moveScrub);
+    window.addEventListener('touchmove', moveScrub, { passive: false });
+    window.addEventListener('mouseup', endScrub);
+    window.addEventListener('touchend', endScrub);
+
+    // Keyboard support (arrows = ±5s)
+    bar.addEventListener('keydown', (e) => {
+      if (!tts.audio || bar.classList.contains('disabled')) return;
+      const step = 5;
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        tts.audio.currentTime = Math.max(0, tts.audio.currentTime - step);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        tts.audio.currentTime = Math.min(tts.audio.duration, tts.audio.currentTime + step);
+      }
+    });
+  }
+
   // ---------- Init ----------
   function init() {
     injectStyles();
     injectControls();
+    wireSeekBar();
     applyLang(currentLang);
     updateRateLabel();
     rebuildSegments();
