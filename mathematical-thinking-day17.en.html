@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Mathematical Thinking — 2026-05-15</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.9}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 20px}
+header h1{font-size:1.9rem;font-weight:800;color:#1a1a2e;letter-spacing:1px}
+header .date{margin-top:8px;font-size:0.95rem;color:#636e72}
+header .day-badge{display:inline-block;margin-top:12px;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;font-size:0.82rem;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px}
+.intro{margin:32px 0 36px;padding:20px 24px;background:linear-gradient(135deg,#dfe6e9,#ffeaa7 120%);border-radius:12px;font-size:0.95rem;color:#2d3436;line-height:1.9}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:28px;overflow:hidden;transition:box-shadow 0.2s}
+.card:hover{box-shadow:0 4px 24px rgba(0,0,0,0.1)}
+.card-header{padding:24px 28px 0}
+.card-header h2{font-size:1.35rem;font-weight:700;color:#1a1a2e}
+.card-header h2 .en{font-weight:400;font-size:1rem;color:#636e72;margin-left:8px}
+.card-body{padding:16px 28px 28px}
+.section-label{font-size:0.78rem;font-weight:700;color:#6c5ce7;letter-spacing:2px;text-transform:uppercase;margin:18px 0 8px;display:flex;align-items:center;gap:6px}
+.section-label::before{content:"";display:inline-block;width:3px;height:14px;background:#6c5ce7;border-radius:2px}
+.card-body p{font-size:0.95rem;color:#2d3436;margin-bottom:10px}
+.card-body .example{background:#f0f0f7;border-left:3px solid #a29bfe;padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0 16px;font-size:0.92rem;color:#2d3436}
+.card-body .en-summary{font-size:0.93rem;color:#555;font-style:italic;line-height:1.8}
+.prompt-box{background:#fafafa;border:1px solid #e9e9e9;border-radius:8px;padding:14px 16px;margin:8px 0 6px;font-size:0.88rem;color:#2d3436;line-height:1.7;cursor:pointer;position:relative}
+.prompt-box:hover{border-color:#a29bfe}
+.prompt-box .lang-tag{position:absolute;top:6px;right:10px;font-size:0.7rem;font-weight:700;color:#b2bec3;letter-spacing:1px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#dfe6e9,transparent);margin:0 28px}
+nav{text-align:center;margin-top:40px}
+nav a{display:inline-block;padding:10px 28px;background:#6c5ce7;color:#fff;border-radius:8px;text-decoration:none;font-size:0.95rem;font-weight:600;transition:background 0.2s}
+nav a:hover{background:#5a4bd1}
+footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
+@media(max-width:600px){
+  header h1{font-size:1.4rem}
+  .card-header{padding:20px 18px 0}
+  .card-body{padding:14px 18px 22px}
+  .card-header h2{font-size:1.15rem}
+  .card-header h2 .en{display:block;margin-left:0;margin-top:4px}
+  .divider{margin:0 18px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Mental Models Deep Dive: Mathematical Thinking</h1>
+  <div class="date">May 15, 2026</div>
+  <span class="day-badge">DAY 17 / 30</span>
+</header>
+
+<div class="intro">
+  Math isn't only formulas and arithmetic — it's a language for the deep structure of the world. The Law of Large Numbers tells us why short-run "luck" can't be trusted. Regression to the mean explains why extreme performance falls back. Power laws expose the universal rule that "a few dominate the many." Nonlinear thinking reminds us that cause and effect are far less proportional than intuition suggests. Master these four models and you'll have the mathematical instinct to cut through surface noise and reach the structural core of systems.
+</div>
+
+<!-- Model 1: Law of Large Numbers -->
+<div class="card">
+  <div class="card-header">
+    <h2>Law of Large Numbers<span class="en">Law of Large Numbers</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">In Depth</div>
+    <p>The Law of Large Numbers in one line: as the number of independent repeated trials grows, the sample mean converges to the expected value. In other words, <strong>short-run results are full of randomness; long-run results trend toward certainty</strong>. It's one of the most foundational — and most profound — theorems in probability.</p>
+    <p>The real power of the law lies in its converse: small samples are deeply unreliable. Most everyday cognitive errors come from over-generalizing on small samples — reading three articles and drawing a conclusion, trying something twice and declaring it doesn't work, watching one quarter and forecasting the whole year. The law tells us: stay humble until your sample is large enough. It also implies a practical strategy — <strong>iteration count is itself an advantage</strong>. People who can run many trials quickly and cheaply are closer to the truth.</p>
+    <p>One subtle point: the Law of Large Numbers is not the gambler's fallacy. It doesn't guarantee that you'll "recover" or "balance out" in the short run — it only guarantees mean convergence over a long enough horizon. Conflating the two is one of the most dangerous misreadings in everyday decisions.</p>
+    <div class="example">
+      <strong>Classic example</strong><br>
+      Why does the casino always win? Not because it wins every hand, but because every game carries a small, certain house edge (e.g. 2.7% on roulette). Any single hand is random, but over millions of hands, the Law of Large Numbers guarantees the casino's realized return converges precisely to that theoretical edge. The house doesn't need to win every hand — it needs enough hands.
+    </div>
+    <div class="example">
+      <strong>BigCat scenario</strong><br>
+      BigCat uses an AI Agent to help with writing. The first three pieces vary wildly in quality, and you start to doubt "is AI writing reliable at all?" That's the classic small-sample trap. The right move: run 30 pieces through the same prompt framework and track hit-rate, edit volume, and time. Only with a large enough sample can you genuinely evaluate the expected output of this AI workflow. Three trials have enormous variance — no conclusion is trustworthy.
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">The Law of Large Numbers states that as trial count grows, the sample mean converges to the expected value. Small samples are unreliable and prone to misleading conclusions. The practical implication: increase your iteration count before drawing judgments, and never confuse short-run randomness with long-run certainty.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">ZH</span>
+      我正在基于 [少量数据/经验] 做一个判断。请帮我分析：(1) 当前样本量是否足以支撑这个结论？(2) 如果不够，最少需要多少样本才能有统计意义？(3) 有哪些低成本的方式可以快速增加试验次数？
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      I'm drawing a conclusion from [small dataset/limited experience]. Help me assess: (1) Is the sample size sufficient for a reliable conclusion? (2) What minimum sample would be statistically meaningful? (3) How can I increase trial count quickly and cheaply to get closer to the true mean?
+    </div>
+  </div>
+</div>
+
+<!-- Model 2: Regression to the Mean -->
+<div class="card">
+  <div class="card-header">
+    <h2>Regression to the Mean<span class="en">Regression to the Mean</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">In Depth</div>
+    <p>Regression to the mean is one of the most counterintuitive phenomena in statistics: when a variable shows an extreme measurement (very high or very low), the next measurement tends to land closer to average. Not because some "corrective force" is at work — but because extreme outcomes typically contain a large random component, and randomness rarely repeats itself exactly.</p>
+    <p>Francis Galton discovered this while studying the heights of parents and children: very tall parents tended to have somewhat-less-tall children, and very short parents had somewhat-taller children. He called it "regression toward mediocrity." The most dangerous trap with regression is <strong>false causal attribution</strong>: an employee performs badly, you criticize them, they improve next time — you think the criticism worked. They perform well, you praise them, they regress — you think praise made them lazy. In reality, both might be pure statistical regression, with no causal link to your intervention.</p>
+    <p>Understanding regression keeps you from overreacting to random fluctuations — in investing, in management, in parenting. The "regression" after extreme performance is nearly inevitable and needs no causal explanation.</p>
+    <div class="example">
+      <strong>Classic example</strong><br>
+      Israeli Air Force instructors noticed: pilots praised after a great flight typically performed worse on the next; pilots harshly criticized after a bad flight typically improved. They concluded "criticism works better than praise." Daniel Kahneman pointed out this is textbook regression to the mean — the regression is a statistical inevitability, unrelated to praise or criticism at all. This example deeply shaped behavioral economics.
+    </div>
+    <div class="example">
+      <strong>BigCat scenario</strong><br>
+      BigCat invested in an AI-sector fund that returned 35% in the first quarter. Intuition says "this manager is amazing — add to the position!" But regression reminds you: how much of that 35% is skill, and how much is luck plus market conditions? If long-run annual returns in the sector are about 15%, a single-quarter 35% likely contains a large positive random component, and the next reading is likely to drift back. The right move is not to chase — it's to set expectations against the long-run mean and treat a single anomalous quarter as noise, not signal.
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">Regression to the mean explains why extreme performances — good or bad — tend to be followed by more average outcomes. The trap: we invent causal stories for what is merely statistical inevitability. Recognizing this prevents overreacting to outliers and misattributing results to interventions that had no real effect.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">ZH</span>
+      [某项指标/某人表现] 近期出现了 [极端高/极端低] 的结果。请帮我分析：(1) 这个极端表现中，可能有多大比例是均值回归的统计效应？(2) 我是否对这个结果做了错误的因果归因？(3) 基于历史均值，合理的预期区间应该是什么？
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      [A metric/person's performance] recently showed [extremely high/low] results. Help me analyze: (1) How much of this extreme outcome is likely regression to the mean? (2) Am I making a false causal attribution? (3) Based on historical averages, what is a reasonable expectation range going forward?
+    </div>
+  </div>
+</div>
+
+<!-- Model 3: Power Law -->
+<div class="card">
+  <div class="card-header">
+    <h2>Power Law Distribution<span class="en">Power Law Distribution</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">In Depth</div>
+    <p>The power law (also known as Pareto or long-tail distribution) describes radically uneven distributions: a tiny minority of nodes or events accounts for the vast majority of influence or resources. Unlike the normal distribution (the bell curve), where most values cluster around the mean, in a power-law world <strong>the mean is nearly meaningless</strong> — the influence of extremes vastly exceeds the "average."</p>
+    <p>Power laws are everywhere: 1% of papers get 50% of citations, 0.1% of videos get 90% of views, a handful of cities hold most of the population, a few earthquakes cause most of the damage. This isn't accident — it's typically driven by "rich-get-richer" positive feedback (in physics, "preferential attachment"). The practical implication is profound: <strong>in a power-law world, your strategy should be to concentrate resources on a few high-leverage bets, not spread evenly</strong>. A normal-distribution world rewards "don't make mistakes"; a power-law world rewards "find the 10x winner."</p>
+    <p>Power-law thinking also reveals a counterintuitive fact: in power-law systems, the "average" is a misleading metric. The "average return" of a VC fund is meaningless, because a few super-winners contribute nearly all the profit.</p>
+    <div class="example">
+      <strong>Classic example</strong><br>
+      Y Combinator's data shows that across thousands of startups they've ever funded, the returns from just two — Airbnb and Stripe — exceed the returns from all others combined. Peter Thiel sums it up in <em>Zero to One</em>: the first law of VC is that the power law means one best investment equals all the others put together. Your job isn't to avoid failure — it's to find the one super-winner.
+    </div>
+    <div class="example">
+      <strong>BigCat scenario</strong><br>
+      As a super-individual, BigCat runs a dozen AI workflows in parallel: writing assist, data analysis, scheduling, reading digests, code review… Power-law thinking forces a rethink: which 2-3 of those dozen actually contribute 80% of the value? Probably AI-assisted deep research and AI code generation. The right move isn't to evenly optimize every workflow — it's to pour effort into those 2-3 and polish them to extreme quality, because in a power-law world, improvements at the head dwarf the sum of all tail improvements.
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">Power Law distributions mean a tiny minority captures the vast majority of outcomes — wealth, citations, returns, impact. Unlike bell curves, averages are meaningless here. The strategic implication: concentrate resources on finding and maximizing the few high-leverage opportunities rather than spreading effort evenly.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">ZH</span>
+      请帮我分析 [我的项目/投资/工作流] 是否存在幂律分布模式：(1) 列出所有投入项及其产出；(2) 识别哪些是头部的"超级贡献者"；(3) 建议我如何重新分配资源，集中投入头部以获得最大杠杆效应。
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      Analyze whether [my projects/investments/workflows] follow a power law pattern: (1) list all inputs and their outputs, (2) identify the top contributors that drive disproportionate results, and (3) recommend how I should reallocate resources to concentrate on the high-leverage few.
+    </div>
+  </div>
+</div>
+
+<!-- Model 4: Nonlinear Thinking -->
+<div class="card">
+  <div class="card-header">
+    <h2>Nonlinear Thinking<span class="en">Nonlinear Thinking</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">In Depth</div>
+    <p>The human brain's default mode is linear thinking: double the input, double the output; bigger cause, bigger effect. But most real-world systems are nonlinear — they have thresholds, exponential growth, S-curves, phase transitions, chaos. <strong>Linear extrapolation is one of the most common thinking errors we make.</strong></p>
+    <p>Core features of nonlinear systems: (1) <strong>thresholds</strong> — water from 99°C to 100°C is a qualitative change, not quantitative; (2) <strong>exponential growth</strong> — compounding, viral spread, network effects are imperceptible early and explode after the inflection; (3) <strong>sensitive dependence</strong> — the butterfly effect, where tiny differences in initial conditions produce wildly different outcomes; (4) <strong>emergence</strong> — the whole displays new properties that can't be predicted from the sum of the parts.</p>
+    <p>Nonlinear thinking demands: stop using simple linear ratios to predict complex systems. When you see "input and output aren't proportional," don't be confused — that's the normal state of nonlinear systems. Look for thresholds and leverage points where a small force tips a big change.</p>
+    <div class="example">
+      <strong>Classic example</strong><br>
+      In the early days of COVID-19, most people underestimated transmission speed because their brains default to linear extrapolation — "100 cases today, probably a few hundred next week." But exponential growth at R₀=2.5 means just 10 transmission rounds turn one infected person into nearly 10,000. Human intuition for exponential growth is broken, and that's the classic cost of missing nonlinear thinking. The epidemiologists who understood the exponential model were the ones sounding accurate alarms when the data was still sparse.
+    </div>
+    <div class="example">
+      <strong>BigCat scenario</strong><br>
+      Building a personal knowledge system, you can fall into linear thinking: "I read one paper a day, 365 a year, so 365 units of knowledge." But knowledge accumulation is deeply nonlinear — when cross-disciplinary nodes reach a critical density, a "connection explosion" happens: quantum mechanics suddenly mirrors the Buddhist concept of <em>śūnyatā</em> (emptiness), complex-systems emergence resonates with consciousness research in neuroscience, distributed-systems architecture meets the philosophy of organizational management. That's the phase transition in knowledge — not linear addition, but qualitative change above a threshold. The first 200 papers may feel slow, but they're charging the system toward the transition.
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">Nonlinear thinking recognizes that most real-world systems don't follow proportional cause-and-effect. They exhibit thresholds, exponential growth, phase transitions, and emergent properties. Linear extrapolation — our brain's default — fails catastrophically in these systems. Look for tipping points and leverage points where small inputs produce outsized effects.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">ZH</span>
+      我正在用线性方式预测 [某个系统/趋势] 的发展。请帮我检验：(1) 这个系统是否存在非线性特征（阈值、指数增长、S 曲线、涌现）？(2) 如果存在，线性预测在哪里会失效？(3) 系统中可能存在哪些临界点或拐点，它们会如何改变结果？
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      I'm using a linear model to forecast [a system/trend]. Help me stress-test: (1) Does this system exhibit nonlinear characteristics (thresholds, exponential growth, S-curves, emergence)? (2) Where would my linear projection break down? (3) What tipping points or phase transitions might exist, and how would they alter the outcome?
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a href="index.en.html">← Back to Index</a>
+</nav>
+<footer>Powered by curiosity &amp; first principles.</footer>
+</div>
+</body>
+</html>
