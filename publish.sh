@@ -60,6 +60,17 @@ if [ "$OPENS" != "$CLOSES" ]; then
   exit 1
 fi
 
+# data-zh/data-en attribute integrity (catch ASCII " inside attribute value)
+# Bug: data-zh="...foo"bar..." terminates attr early at first ", spills "bar..." as text
+BAD_ATTR=$(grep -cE 'data-(zh|en)="[^"]*"[^ />]' "$NEW" || true)
+if [ "$BAD_ATTR" -gt 0 ]; then
+  echo "ERROR: $NEW has $BAD_ATTR data-zh/data-en attribute(s) with unescaped ASCII \" inside value."
+  echo "       Replace inner \" with &quot; or use Chinese curly quotes 「」 / 『』."
+  echo "       Example bad: data-zh=\"组织变得\\\"高效\\\"的机制\""
+  echo "       Example good: data-zh=\"组织变得&quot;高效&quot;的机制\""
+  exit 1
+fi
+
 git config user.email "chengchen0802@gmail.com"
 git config user.name "BigCat"
 git add -A
