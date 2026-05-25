@@ -260,15 +260,24 @@
   }
 
   function rebuildSegments() {
-    const nodes = document.querySelectorAll('h1, h2, h3, p');
-    tts.segments = Array.from(nodes).filter((el) => {
+    const visible = (el) => {
       if (el.closest('.mmd-controls')) return false;
       if (el.closest('nav')) return false;
       if (!el.textContent.trim()) return false;
       const cs = getComputedStyle(el);
       if (cs.display === 'none' || cs.visibility === 'hidden') return false;
       return true;
-    });
+    };
+    // Prefer per-group baked audio (one mp3 covers a whole model section).
+    // After per-model bake, only h1/h2 carry data-tts-* attributes.
+    const tagged = document.querySelectorAll(`[data-tts-${currentLang}]`);
+    if (tagged.length > 0) {
+      tts.segments = Array.from(tagged).filter(visible);
+    } else {
+      // Fallback for un-baked pages: read all headings + paragraphs via Web Speech
+      const nodes = document.querySelectorAll('h1, h2, h3, p');
+      tts.segments = Array.from(nodes).filter(visible);
+    }
     updateProgress();
   }
 
@@ -289,8 +298,8 @@ body{padding-bottom:96px!important}
 .mmd-controls .seek-wrap{display:flex;align-items:center;gap:6px;padding:0 4px;min-width:140px}
 .mmd-controls .seek-bar{flex:1;height:18px;cursor:pointer;position:relative;display:flex;align-items:center;touch-action:none}
 .mmd-controls .seek-bar.disabled{cursor:not-allowed;opacity:0.4}
-.mmd-controls .seek-track{position:absolute;left:0;right:0;height:4px;background:rgba(0,0,0,0.1);border-radius:2px}
-.mmd-controls .seek-fill{position:absolute;left:0;height:4px;background:#6c5ce7;border-radius:2px;width:0%;pointer-events:none}
+.mmd-controls .seek-track{position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:rgba(0,0,0,0.12);border-radius:2px}
+.mmd-controls .seek-fill{position:absolute;left:0;top:50%;height:4px;margin-top:-2px;background:#6c5ce7;border-radius:2px;width:0%;pointer-events:none}
 .mmd-controls .seek-knob{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:#6c5ce7;transform:translate(-50%,-50%);box-shadow:0 1px 3px rgba(0,0,0,0.25);left:0;opacity:0;transition:opacity 0.15s;pointer-events:none}
 .mmd-controls .seek-bar:hover .seek-knob,.mmd-controls .seek-bar.scrubbing .seek-knob{opacity:1}
 .mmd-controls .seek-time{font-size:11px;color:#8a93a0;font-variant-numeric:tabular-nums;min-width:36px;text-align:right}
