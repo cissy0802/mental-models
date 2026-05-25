@@ -69,5 +69,11 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Auto-bake TTS audio [skip bake]"
-            git push
+            # Rebase on top of any new commits that landed during the bake,
+            # then push. Retry once if a push race still occurs.
+            for i in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              echo "push attempt $i failed, retrying..."
+              sleep 3
+            done
           fi
