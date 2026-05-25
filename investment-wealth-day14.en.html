@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Investing &amp; Wealth — 2026-05-13</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.9}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 32px}
+header h1{font-size:1.85rem;font-weight:800;color:#1a1a2e;letter-spacing:1px}
+header .date{margin-top:8px;font-size:0.95rem;color:#b2bec3}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);padding:36px 32px;margin-bottom:28px;border-left:4px solid #6c5ce7}
+.card h2{font-size:1.35rem;font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.card .subtitle{font-size:0.9rem;color:#636e72;margin-bottom:20px}
+.card .section-label{font-size:0.8rem;font-weight:700;color:#6c5ce7;text-transform:uppercase;letter-spacing:1.5px;margin:24px 0 8px;padding-top:16px;border-top:1px solid #f0f0f0}
+.card .section-label:first-of-type{border-top:none;margin-top:0;padding-top:0}
+.card p{font-size:0.97rem;color:#2d3436;margin-bottom:12px}
+.card .prompt-box{background:#f8f7ff;border-radius:8px;padding:14px 16px;margin:8px 0 12px;font-size:0.92rem;color:#4a4a6a;border:1px solid #e8e6f0}
+.card .prompt-box strong{color:#6c5ce7;font-size:0.78rem;display:block;margin-bottom:4px}
+.back{display:inline-block;margin-top:32px;font-size:0.95rem;color:#6c5ce7;text-decoration:none;font-weight:600;transition:opacity 0.15s}
+.back:hover{opacity:0.7}
+footer{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}
+@media(max-width:600px){
+  header h1{font-size:1.4rem}
+  .card{padding:24px 18px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Mental Models Deep Dive: Investing &amp; Wealth</h1>
+  <div class="date">2026-05-13 · Day 14</div>
+</header>
+
+<!-- Margin of Safety -->
+<div class="card">
+  <h2>Margin of Safety</h2>
+  <div class="subtitle">Buy a dollar for fifty cents</div>
+
+  <div class="section-label">In Depth</div>
+  <p>Margin of Safety comes from Benjamin Graham's value-investing philosophy: act only when the price is meaningfully below intrinsic value, and build in enough buffer to absorb estimation errors and unforeseen risks. It's not just an investing rule — it's a survival strategy for any decision made under uncertainty.</p>
+  <p>The heart of the idea is humility about human cognition. Our forecasts about the future are necessarily noisy, so decisions need reserved "error bandwidth." Intrinsic-value estimates are full of assumptions; the margin of safety is the insurance policy on those assumptions being wrong.</p>
+  <div class="prompt-box">
+    <strong>Classic example</strong>
+    Benjamin Graham — the founder of the concept — spent his career buying dollars for fifty cents. His method was to find stocks whose price sat well below the company's net assets (liquidation value), so that even if his estimate of value was too generous, there was still enough cushion to avoid loss. The "bargain-hunting" approach looks conservative, but precisely because each trade carried a thick safety pad, Graham's portfolio survived the Great Depression and several market crashes while still delivering excellent long-run returns.
+  </div>
+  <div class="prompt-box">
+    <strong>BigCat scenario</strong>
+    When BigCat evaluates an AI startup, even if the model shows a 25% expected return, the next question is: if regulation tightens, competitors ship stronger models, or customer acquisition costs double, does this still break even? Only when the pessimistic case is still acceptable does BigCat pull the trigger — that's margin of safety in practice. The same thinking applies to time management: leaving 30% slack in your kid's study plan for unexpected disruptions is far more sustainable than scheduling every minute solid.
+  </div>
+
+  <div class="section-label">English Summary</div>
+  <p>Margin of Safety means acting only when the price is significantly below intrinsic value, creating a buffer against estimation errors and unforeseen risks. Coined by Benjamin Graham, it acknowledges that all valuations contain uncertainty. The wider the margin, the more room for being wrong while still achieving acceptable outcomes. It applies far beyond investing — any decision under uncertainty benefits from building in slack.</p>
+
+  <div class="section-label">AI Prompts</div>
+  <div class="prompt-box">
+    <strong>Chinese Template</strong>
+    我正在评估一个投资机会（或重大决策）。请帮我用安全边际思维分析：1）列出我估算中最脆弱的三个假设；2）在最悲观情境下，结果是否仍可接受；3）我应该设定多大的安全边际才合理？
+  </div>
+  <div class="prompt-box">
+    <strong>English Prompt</strong>
+    I'm evaluating [decision/investment]. Apply Margin of Safety thinking: identify the three most fragile assumptions in my analysis, stress-test them under pessimistic scenarios, and recommend what safety buffer I should maintain.
+  </div>
+</div>
+
+<!-- Mean Reversion -->
+<div class="card">
+  <h2>Mean Reversion</h2>
+  <div class="subtitle">Mean Reversion</div>
+
+  <div class="section-label">In Depth</div>
+  <p>Mean reversion is a foundational statistical phenomenon: extreme values tend to drift back toward the long-run average. Asset prices, individual performance, market sentiment — deviations from the mean are usually temporary, and the system pulls itself back to "normal" on its own.</p>
+  <p>Understanding mean reversion keeps you calm in mania and confident in troughs. It exposes a counterintuitive pattern: a period of peak performance is often followed by a fall, while a period of disaster is more likely than not to recover. The key is distinguishing a "temporary deviation" from a "structural shift" — mean reversion only holds when the underlying fundamentals haven't changed.</p>
+  <div class="prompt-box">
+    <strong>Classic example</strong>
+    Research on the NBA's "hot hand fallacy" is a clean demonstration. When a player hits several shots in a row, the crowd and teammates believe he's "on fire" and will keep scoring. But statistical analysis shows that shooting percentage after a streak tends to revert to the player's long-run average. This doesn't mean players don't differ in skill — it means extreme performance, good or bad, has a random component, and subsequent results are likely to drift back toward the mean. Internalizing this stops you from doubling down at short-term peaks and panicking at short-term troughs.
+  </div>
+  <div class="prompt-box">
+    <strong>BigCat scenario</strong>
+    During the 2024-2025 AI bubble, BigCat reasoned through mean reversion: when a company's P/E jumps from the industry average of 30x to 120x, unless the fundamentals have undergone a 4x qualitative shift (true AGI-grade product monopoly, say), it will most likely fall back. Similarly, if your kid suddenly ranks first in the grade, the right move isn't to crank up study intensity to "preserve" the rank — it's to recognize the lucky component and focus on stable long-run habits rather than a single peak.
+  </div>
+
+  <div class="section-label">English Summary</div>
+  <p>Mean Reversion describes the tendency of extreme outcomes to gravitate back toward the long-term average. Exceptional performance is often followed by decline, and poor performance by recovery — not necessarily due to any change in approach, but because extreme states are statistically unlikely to persist. The key insight is to avoid overreacting to outliers: don't chase peaks or panic at troughs. Distinguish between temporary deviation and genuine structural change.</p>
+
+  <div class="section-label">AI Prompts</div>
+  <div class="prompt-box">
+    <strong>Chinese Template</strong>
+    请帮我分析[某个指标/资产/现象]当前是否偏离了历史均值。如果是，请评估：1）偏离程度有多大；2）基本面是否发生了结构性变化足以支撑新水平；3）回归均值的时间框架可能是多久？
+  </div>
+  <div class="prompt-box">
+    <strong>English Prompt</strong>
+    Analyze whether [metric/asset/phenomenon] is currently deviating from its historical mean. Assess the magnitude of deviation, whether structural changes justify a new baseline, and the likely timeframe for mean reversion.
+  </div>
+</div>
+
+<!-- Compound Effect -->
+<div class="card">
+  <h2>Compound Effect</h2>
+  <div class="subtitle">Compound Effect</div>
+
+  <div class="section-label">In Depth</div>
+  <p>The compound effect is one of the most powerful forces in the universe: growth acting on growth, producing exponential accumulation. Einstein called it the "eighth wonder of the world." The point isn't the size of any single increment — it's duration. Time is the fuel of compounding.</p>
+  <p>What's counterintuitive about compounding: the early stage feels demoralizingly slow, and the late stage becomes stunningly fast. 99% of Buffett's wealth was earned after age 50. Which means most people give up before compounding starts to show its teeth. The key is patience — and avoiding the fatal mistakes that break the chain (large drawdowns, quitting midway, frequent strategy churn).</p>
+  <div class="prompt-box">
+    <strong>Classic example</strong>
+    A classic math puzzle nails the counterintuitive force of compounding: if you have $1 and double it every day, after 30 days you'll have over a billion ($1,073,741,824 to be exact). The astonishing part is that you only crossed $1M on day 20 — the last 10 days produced 99.9% of the total. That's the nature of exponential growth: glacial early, rocket-fueled late. Buffett spent a lifetime proving it — 99% of his net worth was accumulated after age 50, and he started investing at 11. The secret of compounding isn't the rate — it's the runway.
+  </div>
+  <div class="prompt-box">
+    <strong>BigCat scenario</strong>
+    As an "AI super-individual" practitioner, BigCat compounds 5% daily productivity gains from AI tools. That sounds tiny, but daily 5% compounding theoretically multiplies output ~770,000x in a year (with real-world ceilings, of course). More realistic: spending 30 minutes a day on cross-disciplinary learning with Claude — quantum mechanics, Yogācāra Buddhism, neuroscience — yields a knowledge network and cross-domain connection density that vastly outpaces one weekly cram session. Same with kids: 15 minutes of Socratic dialogue every night, sustained for two years, produces critical-thinking ability far beyond peers. That's cognitive compounding.
+  </div>
+
+  <div class="section-label">English Summary</div>
+  <p>The Compound Effect describes how small, consistent gains accumulate exponentially over time. Growth building upon growth creates results that seem disproportionate to the effort at any single point. The magic lies in duration and consistency — not intensity. Most people quit before compounding kicks in because early progress feels negligible. The greatest threat to compounding is interruption: a single catastrophic loss can undo years of steady gains. Protect the chain.</p>
+
+  <div class="section-label">AI Prompts</div>
+  <div class="prompt-box">
+    <strong>Chinese Template</strong>
+    我想利用复利效应来提升[技能/财富/习惯]。请帮我设计：1）每天可执行的最小有效行动是什么；2）如何避免中断复利链条的常见陷阱；3）按当前节奏，6个月和2年后的预期累积效果是什么？
+  </div>
+  <div class="prompt-box">
+    <strong>English Prompt</strong>
+    I want to apply the Compound Effect to [skill/wealth/habit]. Design a minimum viable daily action, identify the top three risks of breaking the compounding chain, and project cumulative results at 6-month and 2-year milestones.
+  </div>
+</div>
+
+<!-- Asset Allocation -->
+<div class="card">
+  <h2>Asset Allocation</h2>
+  <div class="subtitle">Asset Allocation</div>
+
+  <div class="section-label">In Depth</div>
+  <p>Asset allocation is the single most important decision in investing — research shows more than 90% of long-run return variance comes from allocation, not stock picking or market timing. The core idea: distribute resources across low-correlation categories so you cut risk meaningfully without materially reducing expected return.</p>
+  <p>The wisdom of allocation is admitting the limits of prediction. Since we can't reliably know which asset class will dominate next, build a portfolio that can survive across many scenarios. The goal isn't the optimal outcome — it's the robust outcome. It's antifragility, applied to wealth.</p>
+  <div class="prompt-box">
+    <strong>Classic example</strong>
+    David Swensen, the legendary manager of Yale's endowment, rewrote the textbook on institutional allocation. Before him, Yale, like most institutions, held mostly US stocks and bonds. Swensen boldly diversified into six low-correlation buckets: domestic equity, foreign equity, fixed income, real assets, private equity, and absolute-return strategies. The "Yale model" delivered 13.7% annualized from 1985 to 2021 — far ahead of the traditional 60/40 — and crucially showed remarkable resilience in the 2000 dot-com crash and the 2008 financial crisis. Swensen proved that real diversification isn't owning more names within one asset class — it's allocating across structurally uncorrelated classes.
+  </div>
+  <div class="prompt-box">
+    <strong>BigCat scenario</strong>
+    BigCat applies asset allocation not only to financial investments but to "life allocation" — distributing time and energy across four buckets: deep AI skill-building (high growth, high variance), stable income (low-volatility cash flow), parent-child investment (long-term compounding, unquantifiable in the short term), and physical/mental health (the infrastructure that supports everything else). Like a portfolio, over-concentration in any single dimension is dangerous — going all-in on the AI bet means losing the ease of watching your kid grow up if the bet sours. Good allocation lets the system stay stable even when one dimension takes a hit.
+  </div>
+
+  <div class="section-label">English Summary</div>
+  <p>Asset Allocation is the strategic distribution of resources across uncorrelated categories to optimize the risk-return tradeoff. Research shows it explains over 90% of long-term portfolio return variation — far more than stock picking or market timing. The principle extends beyond finance: allocating time, energy, and attention across life domains (career, relationships, health, learning) with deliberate diversification creates antifragile life design. The goal is not to maximize any single dimension but to build a portfolio that survives and thrives across multiple scenarios.</p>
+
+  <div class="section-label">AI Prompts</div>
+  <div class="prompt-box">
+    <strong>Chinese Template</strong>
+    请帮我用资产配置思维重新审视我目前的[投资组合/时间分配/精力投入]。1）识别当前的集中度风险；2）建议相关性低的"对冲"配置；3）在最差情境下，这个配置是否能保证系统存活？
+  </div>
+  <div class="prompt-box">
+    <strong>English Prompt</strong>
+    Apply Asset Allocation thinking to my current [portfolio/time budget/energy distribution]. Identify concentration risks, suggest uncorrelated hedging categories, and stress-test whether this allocation survives the worst-case scenario.
+  </div>
+</div>
+
+<a class="back" href="index.en.html">← Back to Index</a>
+<footer>Powered by curiosity &amp; first principles.</footer>
+</div>
+</body>
+</html>
