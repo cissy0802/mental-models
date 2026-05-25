@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Deep Dive: Scientific Method — 2026-05-11</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.8}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 40px;border-bottom:1px solid #eee;margin-bottom:40px}
+header .category{font-size:0.85rem;font-weight:600;letter-spacing:3px;color:#00b894;text-transform:uppercase;margin-bottom:12px}
+header h1{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:1px;line-height:1.3}
+header .date{margin-top:10px;font-size:0.92rem;color:#b2bec3}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:32px;overflow:hidden}
+.card-header{background:linear-gradient(135deg,#00b894 0%,#55efc4 100%);padding:24px 28px}
+.card-header .num{font-size:0.78rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.card-header h2{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.3}
+.card-header .en{font-size:0.92rem;color:rgba(255,255,255,0.85);margin-top:4px;font-style:italic}
+.card-body{padding:28px}
+.section{margin-bottom:24px}
+.section:last-child{margin-bottom:0}
+.section-label{display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:2px;color:#00b894;background:#e8faf5;padding:3px 10px;border-radius:4px;margin-bottom:12px}
+.section p{font-size:0.97rem;color:#2d3436;line-height:1.9}
+.example{background:#f0faf7;border-left:3px solid #00b894;padding:14px 18px;border-radius:0 8px 8px 0;margin-top:12px}
+.example .label{font-size:0.78rem;font-weight:700;color:#00b894;margin-bottom:6px;letter-spacing:1px}
+.prompts{display:flex;flex-direction:column;gap:12px}
+.prompt-item{background:#f0faf7;border-radius:8px;padding:14px 16px}
+.prompt-item .lang{font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#00b894;margin-bottom:6px}
+.prompt-item p{font-size:0.9rem;color:#2d3436;line-height:1.7}
+.prompt-item strong{color:#00b894}
+nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee}
+nav a{color:#00b894;text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a:hover{text-decoration:underline}
+@media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="category">Day 12 · Mental Models Deep Dive</div>
+<h1>Scientific Method</h1>
+<div class="date">2026-05-11</div>
+</header>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 01</div>
+<h2>Hypothesis Testing</h2>
+<div class="en">From vague intuition to testable claim.</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Hypothesis testing is the central loop of the scientific method: state a testable hypothesis, design an experiment, gather data, and judge whether the evidence supports or refutes the claim. The value of the loop is not "proving things right" — it is approaching truth through relentless attempts to falsify. The cognitive payoff: it forces a hazy intuition into a precise statement that reality can defeat. "I think this product has a market" is not a hypothesis. "Conversion rate exceeds 3% within one week on channel A" is.</p>
+<p>The non-trivial insight: the most common error is not "the hypothesis failed" but "we tested the wrong hypothesis." People spend enormous effort validating "does this solution work?" without testing the more fundamental premise — "does the problem actually exist?" In a startup, founders carefully validate feature feasibility but skip the deeper assumption "do users really have this pain?" The correct order in hypothesis testing is bottom-up: test the most fundamental, cheapest-to-overturn assumptions first.</p>
+<p>How to apply it: (1) decompose any decision into 3-5 layered hypotheses ranked from foundational to derived, and start at the bottom; (2) define a "killer metric" for each hypothesis up front — a number that, below the threshold, you abandon the hypothesis, and above which you commit; this eliminates after-the-fact rationalization; (3) cultivate the habit of pre-registration — write down your predicted outcome before the experiment so you cannot "reinterpret" the data after seeing it (the HARKing trap).</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>In the 19th century, Hungarian physician Ignaz Semmelweis observed that puerperal fever mortality differed wildly between wards. He proposed the hypothesis: "doctors going directly from the autopsy room to delivery carry 'cadaverous particles' on their hands, which are the lethal cause." Experiment: require doctors to wash with chlorinated lime water before delivery. Result: mortality in the washed ward plunged from 12% to 1.3%. A textbook hypothesis-test loop — testable conjecture, then let the data speak.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat is considering replacing a manual team process with an AI workflow. Rather than swapping in full, the hypothesis-testing approach is:<br/>
+        Hypothesis: "The AI workflow can cut this task's processing time by 60% without lowering quality."<br/>
+        Experiment: pick one week of real tasks, run dual-track (manual vs. AI), and log time plus error rate.<br/>
+        Decision: compare the data. If the gain is under 30%, revisit the hypothesis — wrong tool, or wrong task for AI?</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Hypothesis-Testing is the engine of scientific progress: form a specific, falsifiable prediction, design an experiment, collect data, and update your beliefs accordingly. In business and investment contexts, it translates to disciplined small-scale testing before committing major resources — replacing "I think this will work" with "here's how we'll know if it works."</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I need to test this hypothesis: <strong>[your hypothesis]</strong>. Design the minimum viable experiment: (1) convert the hypothesis into a measurable, specific prediction, (2) outline the simplest possible test, (3) define clear pass/fail criteria in advance, and (4) identify the confounding variables most likely to corrupt the results.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 02</div>
+<h2>Falsifiability</h2>
+<div class="en">Popper's criterion — only refutable theories are scientific.</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Karl Popper argued that to be scientific a theory must be falsifiable — there must exist some possible observation that could refute it. A theory that no evidence can refute is not science; it is faith. The key distinction: a scientific claim says "I have not been refuted yet" (provisional), while a pseudoscientific claim says "I can never be refuted" (eternally true). This is why "the market may go up or down tomorrow" is worthless — it can be falsified by no outcome, so it contains no predictive information.</p>
+<p>The non-trivial insight: falsifiability is not only a yardstick for scientific theories but also a sharp blade for testing the quality of personal beliefs. The more non-falsifiable a person's belief system, the more fragile their cognitive system — because it has refused all feedback from reality. The most dangerous narratives in investing share the non-falsifiable feature: "it will rise in the long run" — no matter how long it drops, you can always say "not long enough." Falsifiable thinking demands you answer one question before forming a belief: what evidence would make me give up this belief? If you cannot answer, the belief has slipped out of the rational domain.</p>
+<p>How to apply it: (1) for every important judgment you hold, write a "falsification checklist" — concrete, observable, time-bounded ("if X does not occur within 6 months, I abandon this judgment"); (2) watch for "non-falsifiability drift" — when you find yourself constantly revising the conditions to fit new data, your belief may have slid from science into faith; (3) when evaluating others' predictions or theories, the first question is always "under what circumstances would this prediction be proven wrong?" — if they cannot answer, the prediction carries no information.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>Popper used "all swans are white" to illustrate falsifiability: the statement is scientific because finding a single black swan would refute it. In 1697, Europeans discovered black swans in Australia — the claim was falsified. Contrast that with "fate has a plan": no observation can refute it, and it has no scientific value. Falsifiability draws the boundary that says "this is the evidence that could overturn this belief."</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat holds a long-term bullish thesis on an AI chip company. Falsifiability demands an explicit statement: "If, over the next two quarters, the company's data-center business grows under 25% while competitors gain more than five percentage points of share, my core thesis must be re-evaluated." That statement is falsifiable — it draws the boundary of the belief and prevents the "explain anything" trap of confirmation bias.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Falsifiability, proposed by Karl Popper, is the criterion that separates science from pseudoscience: a genuine theory must make predictions that could, in principle, be proven wrong. In investing, strategy, and everyday reasoning, falsifiability forces you to define in advance what evidence would change your mind — preventing the intellectual trap of theories that can explain everything and therefore predict nothing.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I hold this view or thesis: <strong>[your view/investment thesis/belief]</strong>. Apply Popper's falsifiability test: (1) restate it as a concrete, testable prediction, (2) specify 3 observable outcomes that would force me to abandon or significantly revise this view, and (3) assess whether this belief has genuine predictive power or is merely an unfalsifiable narrative.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 03</div>
+<h2>Controlled Variables</h2>
+<div class="en">Hold everything else constant to see the true effect.</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Controlling variables is the foundational move of experimental science: when you want to know A's effect on B, every other factor must be held constant — otherwise you cannot distinguish whether the change came from A or from something else. The mathematical basis is the partial derivative — to measure A's effect on B, you fix all other variables and take the derivative. This principle is routinely ignored in everyday decisions because real-world variables move at the same time, and the brain naturally treats "happens together" as "happens because."</p>
+<p>The non-trivial insight: the biggest difficulty in controlling variables in practice is not "knowing what to control" but "not knowing what you didn't control" — the unknown confounders. That is why the randomized controlled trial (RCT) is the gold standard of causal inference: randomization does not require you to know every confounder; probability guarantees that unknown variables are evenly distributed across treatment and control groups. When an RCT is not possible (investing, education), the fallbacks are natural experiments and difference-in-differences (DiD) — finding quasi-random historical events as the basis for causal inference.</p>
+<p>How to apply it: (1) when you change something in life or work, change only one variable at a time and observe for 2-4 weeks before introducing the next; (2) when multiple variables change together (the real-world default), at least list every variable you can identify and admit "I cannot tell which one is the cause"; (3) when evaluating someone else's causal claim, ask "what's the control group?" — a conclusion with no control group is an anecdote, not evidence.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>In 1747, British naval surgeon James Lind, facing scurvy ravaging crews, designed one of the earliest controlled experiments in medical history. He took 12 sailors with similar symptoms, split them into 6 pairs, and gave each pair a different supplement — citrus, vinegar, seawater, cider, and so on — keeping the rest of the diet identical. Only the citrus pair recovered quickly. Because he controlled the other variables, he could attribute the cure precisely to the nutrient in citrus (later identified as vitamin C).</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat notices his child's math score rose 15 points in a month after using a new learning app. But during the same period the math teacher also changed, screen time dropped, and a daily practice habit kicked in. So is the gain the app's, the teacher's, or the practice habit's? Without controlling variables, this "experiment" can only show correlation; it cannot attribute. Real judgment requires isolating variables and testing one at a time.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Controlled Variables is the experimental principle of isolating cause from effect: to understand the impact of variable A on outcome B, everything else must be held constant. Without this discipline, we mistake correlation for causation and attribute effects to the wrong causes. In product testing, investing, and parenting — wherever you're trying to learn what actually works — controlling variables is the difference between knowledge and noise.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm trying to understand what's driving <strong>[outcome/phenomenon]</strong>. Help me apply controlled variable thinking: (1) list all variables that could plausibly influence the outcome, (2) design an experiment that isolates the key variable, and (3) identify which confounding variables in my current analysis might be leading me to the wrong causal conclusion.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 04</div>
+<h2>Correlation ≠ Causation</h2>
+<div class="en">Moving together is not the same as causing together.</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Correlation ≠ causation is the most basic statistical principle and the most frequently violated: two variables moving together in the data (correlation) does not mean one causes the other. Correlations can arise from three structures: (1) A really does cause B; (2) B in fact causes A (reverse causation); (3) an invisible third variable C drives both A and B (confounder). The brain is wired to read correlation as causation, because rapidly inferring cause and effect ("the bush moved → predator may be near") gave a huge survival edge to our ancestors, even with occasional false alarms. But in a data-driven modern world this instinct becomes a systematic cognitive trap.</p>
+<p>The non-trivial insight: big data has not reduced this trap — it has grown it exponentially. When the dataset is large enough, you can find a statistically significant correlation between almost any two variables (the multiple-comparisons problem). More subtle is the "inverted causal chain" — we see "people who meditate make better decisions" and roll out a meditation program, without testing whether a third variable like "high self-discipline" drives both meditation habits and good decisions. Judea Pearl's ladder of causation makes the point: going from "observation" to "intervention" to "counterfactual" requires fundamentally different reasoning tools at each level; pure data mining is stuck on the first rung.</p>
+<p>How to apply it: (1) for any "A and B are correlated" finding, immediately sketch all three causal diagrams (A→B, B→A, C→A+B) and ask which is most plausible; (2) ask "if I intervene on A (rather than passively observe), does B still change?" — that is the gold question for separating correlation from causation; (3) in life and investment decisions, prioritize RCT-based conclusions and stay highly skeptical of causal claims from purely observational studies.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>Statistics show ice-cream sales are strongly positively correlated with drowning incidents. The conclusion "eating ice cream causes drowning" is obviously absurd. The real cause is a common third variable — summer heat: when it's hot, people buy more ice cream and swim more, so drownings rise too. The textbook example of "spurious causation," reminding us that correlation is only the starting point of causal inquiry, never the endpoint.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat notices that people who meditate daily tend to make higher-quality investment decisions. Does meditation improve decision quality (causal), or do already-disciplined people both meditate and make more rational investment decisions (third variable: self-discipline)? Before adopting a "meditation training program" as a personal practice, BigCat must ask: is this correlation backed by an RCT?</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Correlation ≠ Causation is perhaps the most important statistical principle for clear thinking. Just because two variables move together doesn't mean one causes the other — there may be a third confounding variable, or the relationship may be pure coincidence. In the age of big data, distinguishing genuine causal signals from spurious correlations is one of the highest-value cognitive skills.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I've observed a correlation between <strong>[A and B]</strong> and am tempted to conclude that A causes B. Rigorously challenge this causal inference: (1) propose 3 alternative explanations (confounders, reverse causation, coincidence), (2) describe the empirical tests that could distinguish true causation from mere correlation, and (3) assess the current state of evidence for and against a causal relationship.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav>
+<a href="index.en.html">← Back to Index</a>
+</nav>
+</div>
+</body>
+</html>
