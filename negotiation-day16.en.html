@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Negotiation — 2026-05-15</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.9}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 20px}
+header h1{font-size:1.9rem;font-weight:800;color:#1a1a2e;letter-spacing:1px}
+header .date{margin-top:8px;font-size:0.95rem;color:#636e72}
+header .day-badge{display:inline-block;margin-top:12px;background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;font-size:0.82rem;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px}
+.intro{margin:32px 0 36px;padding:20px 24px;background:linear-gradient(135deg,#dfe6e9,#ffeaa7 120%);border-radius:12px;font-size:0.95rem;color:#2d3436;line-height:1.9}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:28px;overflow:hidden;transition:box-shadow 0.2s}
+.card:hover{box-shadow:0 4px 24px rgba(0,0,0,0.1)}
+.card-header{padding:24px 28px 0}
+.card-header h2{font-size:1.35rem;font-weight:700;color:#1a1a2e}
+.card-header h2 .en{font-weight:400;font-size:1rem;color:#636e72;margin-left:8px}
+.card-body{padding:16px 28px 28px}
+.section-label{font-size:0.78rem;font-weight:700;color:#6c5ce7;letter-spacing:2px;text-transform:uppercase;margin:18px 0 8px;display:flex;align-items:center;gap:6px}
+.section-label::before{content:"";display:inline-block;width:3px;height:14px;background:#6c5ce7;border-radius:2px}
+.card-body p{font-size:0.95rem;color:#2d3436;margin-bottom:10px}
+.card-body .example{background:#f0f0f7;border-left:3px solid #a29bfe;padding:12px 16px;border-radius:0 8px 8px 0;margin:10px 0 16px;font-size:0.92rem;color:#2d3436}
+.card-body .en-summary{font-size:0.93rem;color:#555;font-style:italic;line-height:1.8}
+.prompt-box{background:#fafafa;border:1px solid #e9e9e9;border-radius:8px;padding:14px 16px;margin:8px 0 6px;font-size:0.88rem;color:#2d3436;line-height:1.7;cursor:pointer;position:relative}
+.prompt-box:hover{border-color:#a29bfe}
+.prompt-box .lang-tag{position:absolute;top:6px;right:10px;font-size:0.7rem;font-weight:700;color:#b2bec3;letter-spacing:1px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#dfe6e9,transparent);margin:0 28px}
+nav{text-align:center;margin-top:40px}
+nav a{display:inline-block;padding:10px 28px;background:#6c5ce7;color:#fff;border-radius:8px;text-decoration:none;font-size:0.95rem;font-weight:600;transition:background 0.2s}
+nav a:hover{background:#5a4bd1}
+footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
+@media(max-width:600px){
+  header h1{font-size:1.4rem}
+  .card-header{padding:20px 18px 0}
+  .card-body{padding:14px 18px 22px}
+  .card-header h2{font-size:1.15rem}
+  .card-header h2 .en{display:block;margin-left:0;margin-top:4px}
+  .divider{margin:0 18px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Mental Models Deep Dive: Negotiation</h1>
+  <div class="date">May 15, 2026</div>
+  <span class="day-badge">DAY 16 / 30</span>
+</header>
+
+<div class="intro">
+  Negotiation isn't confined to the conference table — it runs through every daily exchange: discussing terms with a partner, talking screen time with your kid, allocating resources against your own inner resistance. The point of mastering negotiation models isn't to "beat" the other side — it's to create a larger space of value both sides can accept. Today we go deep on four classics: BATNA, anchoring and concessions, Win-Win thinking, and interests vs. positions.
+</div>
+
+<!-- Model 1: BATNA -->
+<div class="card">
+  <div class="card-header">
+    <h2>BATNA<span class="en">Best Alternative to a Negotiated Agreement</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">In Depth</div>
+    <p>BATNA was coined by the Harvard Negotiation Project: before entering any negotiation, you must know exactly what your best alternative is if it falls through. The stronger your BATNA, the more leverage you have; the weaker it is, the more likely you are to accept bad terms.</p>
+    <p>The key: BATNA isn't a fixed value — it has to be <strong>actively built and strengthened</strong>. Good negotiators spend serious time before the meeting improving their own BATNA and estimating the other side's. This is straight first-principles thinking — ask yourself "without this deal, what's my real situation?"</p>
+    <div class="example">
+      <strong>Classic example</strong><br>
+      A job candidate holding two offers can negotiate the first one with full confidence — because their BATNA is an equivalent offer elsewhere. With only one offer, the entire posture changes. The strength of your BATNA directly decides whether you can say "no."
+    </div>
+    <div class="example">
+      <strong>BigCat scenario</strong><br>
+      BigCat is evaluating an AI Agent investment. The founder asks for a $50M valuation. The right move isn't to start haggling — it's first to inventory your BATNA: what other deals in the same space are on the table? If this capital sits elsewhere, what's the expected return? Once you find two equally promising AI deals available, your BATNA is strong — you can negotiate calmly, even walk away.
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">BATNA is your best fallback if the current negotiation fails. A strong BATNA gives you leverage to walk away; a weak one forces concessions. Before any negotiation, invest time in strengthening your alternatives rather than just planning your arguments at the table.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">ZH</span>
+      我即将进行一场关于 [具体事项] 的谈判。请帮我分析：(1) 我当前的 BATNA 是什么？(2) 对方可能的 BATNA 是什么？(3) 我可以通过哪些行动来增强自己的 BATNA？请用结构化列表输出。
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      I'm preparing for a negotiation about [topic]. Help me map out: (1) my current BATNA, (2) the other party's likely BATNA, and (3) concrete actions I can take to strengthen my alternatives before entering the negotiation. Format as a structured analysis.
+    </div>
+  </div>
+</div>
+
+<!-- Model 2: Anchoring & Concession -->
+<div class="card">
+  <div class="card-header">
+    <h2>Anchoring &amp; Concessions<span class="en">Anchoring &amp; Concession Strategy</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">In Depth</div>
+    <p>Anchoring is enormously powerful in negotiation: whoever speaks the first number sets the reference frame for the whole conversation. Research shows final settlements correlate heavily with initial anchors, even when both parties know the first number was arbitrary. The brain, processing uncertainty, can't help adjusting from the anchor — and the adjustment is almost always insufficient.</p>
+    <p>Concession strategy works in tandem with anchoring. Key rule: <strong>concessions should diminish</strong> — give 100 the first round, 50 the second, 20 the third. The pattern signals "I'm approaching my floor." Don't make even-sized concessions (100 → 100 → 100) — that tells the other side you have plenty left. Also, every concession should be <strong>tied to a reciprocal ask</strong>, otherwise it's read as a unilateral retreat.</p>
+    <div class="example">
+      <strong>Classic example</strong><br>
+      A real-estate agent showing homes deliberately starts with an overpriced listing (the anchor), then takes the client to the property they actually want to sell. By contrast, the second house looks "reasonable." Studies show the final sale price correlates with the seller's initial listing at around 0.95 — the anchoring effect isn't a psychology curiosity, it's hard-dollar leverage.
+    </div>
+    <div class="example">
+      <strong>BigCat scenario</strong><br>
+      Your team needs to procure an AI API service. The vendor quotes $600K/year. You can drop a well-reasoned anchor first: "Based on our usage projections and comparable products in the market, our budget is around $350K." Even if the deal doesn't close at $350K, that anchor has dragged the negotiation zone down significantly. The follow-up concessions diminish: 350 → 400 → 430 → 440 — each step smaller, and each tied to a condition: "if we go to $400K, we need a 2-year price lock."
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">The first number on the table disproportionately shapes the final outcome — this is the anchoring effect. Pair it with a diminishing concession strategy (give less each round) to signal firmness. Always tie concessions to reciprocal asks; unilateral concessions erode your position.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">ZH</span>
+      我需要在 [谈判场景] 中设定一个合理的锚定价/锚定条件。请帮我：(1) 分析对方可能的心理预期区间；(2) 建议一个有说服力的初始锚点及其论据；(3) 设计三轮递减让步策略，每轮附带交换条件。
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      I need to set an effective anchor in a negotiation about [topic]. Please: (1) estimate the other party's expectation range, (2) suggest a defensible opening anchor with supporting rationale, and (3) design a 3-round diminishing concession plan, each round paired with a reciprocal ask.
+    </div>
+  </div>
+</div>
+
+<!-- Model 3: Win-Win -->
+<div class="card">
+  <div class="card-header">
+    <h2>Win-Win Thinking<span class="en">Win-Win Negotiation</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">In Depth</div>
+    <p>Win-Win thinking rests on one core assumption: negotiation is not zero-sum. In most negotiations, the two sides weight different issues differently — and that asymmetry is precisely where extra value lives. What you don't care much about may matter a lot to them, and vice versa. The essence of Win-Win is <strong>expanding the pie before dividing it</strong>, rather than fighting over a fixed slice.</p>
+    <p>Key techniques: (1) negotiate bundles of issues, not items one at a time; (2) understand the other side's real needs and look for complementary points; (3) creatively introduce new options. This aligns deeply with the "human-AI collaboration" mindset — AI isn't replacing the human; it's collaborating to create more total value.</p>
+    <div class="example">
+      <strong>Classic example</strong><br>
+      The classic "orange negotiation": two sisters fight over one orange. Zero-sum thinking cuts it in half. But when asked further, it turns out one wants the peel for baking, the other wants the juice. The Win-Win solution: one takes all the peel, the other takes all the flesh — both get 100%, not 50%.
+    </div>
+    <div class="example">
+      <strong>BigCat scenario</strong><br>
+      Your kid wants an extra hour of weekend gaming. BigCat wants more reading. Looks zero-sum: more gaming = less reading. But Win-Win opens the box — what the kid really wants is "the feeling of choosing my own time," and what you want is "high-quality learning input." So you create a new option: after the kid writes a 30-minute reading note, they get 45 minutes of free time (gaming included). The kid gets autonomy and gaming; you get quality reading output. The pie grew.
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">Win-Win negotiation rejects the zero-sum assumption. By understanding what each side truly values — which often differs — negotiators can "expand the pie" through creative trade-offs, bundled deals, and new options that satisfy both parties beyond simple compromise.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">ZH</span>
+      我和 [对方] 在 [事项] 上产生了分歧。请帮我用双赢思维分析：(1) 双方各自最在意的底层需求是什么？(2) 哪些议题存在互补的价值差异？(3) 能否创造性地引入新选项，使双方都获得更多？
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      I have a disagreement with [party] about [issue]. Apply Win-Win thinking: (1) What are each side's underlying interests? (2) Where do our value priorities differ and complement? (3) Propose creative options that expand the total value for both sides.
+    </div>
+  </div>
+</div>
+
+<!-- Model 4: Interests vs Positions -->
+<div class="card">
+  <div class="card-header">
+    <h2>Interests vs Positions<span class="en">Interests vs. Positions</span></h2>
+  </div>
+  <div class="card-body">
+    <div class="section-label">In Depth</div>
+    <p>The core insight from <em>Getting to Yes</em>: the "position" people state in negotiation is usually just the tip of the iceberg — beneath it sits the real "interest." A position is "what I want"; an interest is "why I want it." When two sides lock into opposing positions, it often means they're fighting over the same orange — when in reality one wants the peel and the other wants the juice.</p>
+    <p>How to unlock interests: keep asking "why is this important to you?" or "if you got this, what would it let you achieve?" This is first principles in negotiation — pierce through surface demands to underlying motivations.</p>
+    <div class="example">
+      <strong>Classic example</strong><br>
+      In the Camp David Accords, Israel's position was "never return the Sinai Peninsula"; Egypt's position was "every inch of land must come back." Total opposition. But on the interest level: Israel really wanted security (fear of Egyptian tanks rolling across the border), and Egypt really wanted sovereignty (Sinai had been Egyptian since antiquity). The final solution: return the territory to Egypt (sovereignty), but make it a demilitarized zone (security).
+    </div>
+    <div class="example">
+      <strong>BigCat scenario</strong><br>
+      As a super-individual practitioner, BigCat pushes AI tool adoption inside the team. The dev lead insists on adding two headcount (position); you want to use AI Agents to boost capacity (position). Positions collide. But probe the interests: the dev lead's real interest is "ship the project on time at controllable quality," and your interest is "hit the goal at the best ratio of input to output." Underlying interests are actually compatible — you can propose "run one sprint as an AI Agent pilot; if efficiency misses the bar, headcount is immediately approved." That bypasses the position fight and addresses both core interests.
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <p class="en-summary">Positions are what people say they want; interests are why they want it. Most deadlocks arise from clashing positions that mask compatible interests. By asking "why does this matter to you?" repeatedly, you can uncover shared or complementary interests and find solutions that satisfy both sides at the deeper level.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <div class="prompt-box">
+      <span class="lang-tag">ZH</span>
+      在 [谈判/冲突场景] 中，双方的立场分别是 [A 的立场] 和 [B 的立场]。请帮我：(1) 剖析双方立场背后可能的深层利益（至少各列三条）；(2) 找出利益的交集或互补点；(3) 基于利益而非立场，提出 2-3 个可能的解决方案。
+    </div>
+    <div class="prompt-box">
+      <span class="lang-tag">EN</span>
+      In a negotiation where Party A's position is [X] and Party B's position is [Y], help me: (1) uncover at least 3 underlying interests for each side, (2) identify where interests overlap or complement, and (3) propose 2-3 solutions that address both parties' core interests rather than their stated positions.
+    </div>
+  </div>
+</div>
+
+<nav>
+  <a href="index.en.html">← Back to Index</a>
+</nav>
+<footer>Powered by curiosity &amp; first principles.</footer>
+</div>
+</body>
+</html>
