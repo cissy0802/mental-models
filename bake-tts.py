@@ -279,20 +279,50 @@ def synth_with_retry(app_id, api_key, voice_id, text, max_retries=3):
 
 
 def synth_long(app_id: str, api_key: str, voice_id: str, text: str) -> bytes:
-    """TTS arbitrary-length text by chunking + raw mp3 binary concat."""
+    """TTS arbitrary-length text by chunking + ffmpeg concat (so the final mp3
+    has a proper VBR header and the browser reports a finite audio.duration —
+    raw binary concat leaves duration=Infinity which breaks seeking)."""
     import time
+    import subprocess
+    import tempfile
     chunks = chunk_text(text)
     if len(chunks) == 1:
         return synth_with_retry(app_id, api_key, voice_id, chunks[0])
-    parts = []
-    for i, c in enumerate(chunks):
-        try:
-            parts.append(synth_with_retry(app_id, api_key, voice_id, c))
-        except Exception as e:
-            print(f"        chunk {i}/{len(chunks)} ({len(c)} chars) failed: {c[:60]!r}", file=sys.stderr)
-            raise
-        time.sleep(0.3)  # gentle pacing
-    return b"".join(parts)
+
+    with tempfile.TemporaryDirectory() as tmp:
+        files = []
+        for i, c in enumerate(chunks):
+            try:
+                mp3 = synth_with_retry(app_id, api_key, voice_id, c)
+            except Exception as e:
+                print(f"        chunk {i}/{len(chunks)} ({len(c)} chars) failed: {c[:60]!r}", file=sys.stderr)
+                raise
+            f = Path(tmp) / f"part{i:03d}.mp3"
+            f.write_bytes(mp3)
+            files.append(f)
+            time.sleep(0.3)  # gentle pacing
+
+        # ffmpeg concat demuxer expects a manifest file
+        manifest = Path(tmp) / "list.txt"
+        manifest.write_text("".join(f"file '{f}'\n" for f in files))
+        out = Path(tmp) / "out.mp3"
+        # -c copy = no re-encoding (fast, lossless); ffmpeg fixes the header.
+        result = subprocess.run(
+            ["ffmpeg", "-y", "-f", "concat", "-safe", "0",
+             "-i", str(manifest), "-c", "copy", str(out)],
+            capture_output=True,
+        )
+        if result.returncode != 0:
+            # Fallback: re-encode to be safe
+            result = subprocess.run(
+                ["ffmpeg", "-y", "-f", "concat", "-safe", "0",
+                 "-i", str(manifest), "-c:a", "libmp3lame", "-b:a", "128k",
+                 str(out)],
+                capture_output=True,
+            )
+            if result.returncode != 0:
+                raise RuntimeError(f"ffmpeg concat failed: {result.stderr.decode()[:500]}")
+        return out.read_bytes()
 
 
 def process_page(
