@@ -145,6 +145,13 @@
       updateSeek(t, this.audio.duration);
     },
 
+    skip(deltaSeconds) {
+      if (!this.audio || !isFinite(this.audio.duration)) return;
+      const t = Math.max(0, Math.min(this.audio.duration, this.audio.currentTime + deltaSeconds));
+      this.audio.currentTime = t;
+      updateSeek(t, this.audio.duration);
+    },
+
     speakWebSpeech(seg, isStale) {
       if (!('speechSynthesis' in window)) return;
       const text = seg.textContent.trim();
@@ -294,7 +301,11 @@ body{padding-bottom:96px!important}
 .mmd-controls .rate{background:transparent;border:none;cursor:pointer;font-size:12px;color:#636e72;padding:6px 10px;border-radius:14px;font-weight:600;font-variant-numeric:tabular-nums;min-width:34px;text-align:center}
 .mmd-controls .rate:hover{background:#f0f0f4}
 .mmd-controls .progress{font-size:11px;color:#8a93a0;padding:0 6px;min-width:38px;text-align:center;font-variant-numeric:tabular-nums;letter-spacing:0.5px}
-.mmd-controls .lang{font-weight:700;font-size:13px;letter-spacing:0.5px;padding:8px 12px}
+.mmd-controls .skip{font-size:11px;font-weight:700;letter-spacing:0;padding:8px 8px;min-width:auto}
+.mmd-lang-toggle{position:fixed;top:16px;right:16px;z-index:10000;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:22px;box-shadow:0 4px 16px rgba(0,0,0,0.12);padding:4px;display:flex;align-items:center;gap:0;font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,sans-serif;border:1px solid rgba(0,0,0,0.06);user-select:none}
+.mmd-lang-toggle button{background:transparent;border:none;cursor:pointer;font-size:13px;font-weight:700;letter-spacing:0.5px;padding:6px 14px;border-radius:18px;color:#636e72;transition:background 0.15s,color 0.15s;line-height:1;min-width:38px}
+.mmd-lang-toggle button.active{background:#6c5ce7;color:#fff}
+.mmd-lang-toggle button:not(.active):hover{background:#f0f0f4;color:#2d3436}
 .mmd-controls .seek-wrap{display:flex;align-items:center;gap:6px;padding:0 4px;min-width:140px}
 .mmd-controls .seek-bar{flex:1;height:18px;cursor:pointer;position:relative;display:flex;align-items:center;touch-action:none}
 .mmd-controls .seek-bar.disabled{cursor:not-allowed;opacity:0.4}
@@ -306,11 +317,13 @@ body{padding-bottom:96px!important}
 .tts-active{background:rgba(108,92,231,0.10)!important;box-shadow:0 0 0 2px rgba(108,92,231,0.35),0 0 0 6px rgba(108,92,231,0.08);border-radius:6px;transition:background 0.2s,box-shadow 0.2s;scroll-margin-top:80px;scroll-margin-bottom:120px}
 @media(max-width:600px){
   .mmd-controls{bottom:10px;right:10px;left:10px;justify-content:center;border-radius:22px;padding:5px}
-  .mmd-controls .lang{padding:6px 8px;font-size:12px}
   .mmd-controls button{min-width:32px;min-height:32px;padding:6px 8px}
   .mmd-controls .progress{display:none}
+  .mmd-controls .skip{padding:6px 5px;font-size:10px}
   .mmd-controls .seek-wrap{min-width:0;flex:1}
   .mmd-controls .seek-time{display:none}
+  .mmd-lang-toggle{top:10px;right:10px}
+  .mmd-lang-toggle button{padding:5px 10px;font-size:12px;min-width:32px}
 }
 `;
     const s = document.createElement('style');
@@ -319,15 +332,27 @@ body{padding-bottom:96px!important}
   }
 
   function injectControls() {
+    // Top-right: language toggle (separated from playback controls)
+    const langBar = document.createElement('div');
+    langBar.className = 'mmd-lang-toggle';
+    langBar.setAttribute('role', 'group');
+    langBar.setAttribute('aria-label', 'Language toggle');
+    langBar.innerHTML = `
+      <button data-action="lang-zh" aria-label="中文">中文</button>
+      <button data-action="lang-en" aria-label="English">EN</button>
+    `;
+    document.body.appendChild(langBar);
+
+    // Bottom-right: playback controls
     const bar = document.createElement('div');
     bar.className = 'mmd-controls';
     bar.setAttribute('role', 'toolbar');
-    bar.setAttribute('aria-label', 'Language and audio controls');
+    bar.setAttribute('aria-label', 'Audio controls');
     bar.innerHTML = `
-      <button class="lang" data-action="lang" title="切换语言 / Switch language" aria-label="Switch language">中/EN</button>
-      <span class="sep"></span>
       <button data-action="prev" title="上一段 / Previous" aria-label="Previous segment">⏮</button>
+      <button class="skip" data-action="back10" title="后退 10 秒 / Back 10s" aria-label="Back 10 seconds">−10</button>
       <button class="play-btn" data-action="play" title="播放 / 暂停" aria-label="Play or pause">▶</button>
+      <button class="skip" data-action="fwd10" title="快进 10 秒 / Forward 10s" aria-label="Forward 10 seconds">+10</button>
       <button data-action="next" title="下一段 / Next" aria-label="Next segment">⏭</button>
       <button data-action="stop" title="停止 / Stop" aria-label="Stop">■</button>
       <span class="progress" aria-live="polite">0/0</span>
@@ -344,15 +369,23 @@ body{padding-bottom:96px!important}
     `;
     document.body.appendChild(bar);
 
+    langBar.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-action]');
+      if (!btn) return;
+      if (btn.dataset.action === 'lang-zh') applyLang('zh');
+      else if (btn.dataset.action === 'lang-en') applyLang('en');
+    });
+
     bar.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-action]');
       if (!btn) return;
       switch (btn.dataset.action) {
-        case 'lang': applyLang(currentLang === 'zh' ? 'en' : 'zh'); break;
         case 'play': (tts.playing && !tts.paused) ? tts.pause() : tts.play(); break;
         case 'stop': tts.stop(); break;
         case 'next': tts.next(); break;
         case 'prev': tts.prev(); break;
+        case 'back10': tts.skip(-10); break;
+        case 'fwd10': tts.skip(10); break;
         case 'rate': {
           const i = RATES.indexOf(tts.rate);
           tts.setRate(RATES[(i + 1) % RATES.length]);
@@ -378,11 +411,11 @@ body{padding-bottom:96px!important}
   }
 
   function updateLangButton() {
-    const btn = document.querySelector('.mmd-controls .lang');
-    if (!btn) return;
-    btn.innerHTML = currentLang === 'zh'
-      ? '<b>中</b><span style="opacity:0.35">/EN</span>'
-      : '<span style="opacity:0.35">中/</span><b>EN</b>';
+    const zhBtn = document.querySelector('.mmd-lang-toggle [data-action="lang-zh"]');
+    const enBtn = document.querySelector('.mmd-lang-toggle [data-action="lang-en"]');
+    if (!zhBtn || !enBtn) return;
+    zhBtn.classList.toggle('active', currentLang === 'zh');
+    enBtn.classList.toggle('active', currentLang === 'en');
   }
 
   function updateRateLabel() {
