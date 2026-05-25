@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Engineering Philosophy &amp; Software Design · 2026-05-25</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .page-header .meta {
+    color: #868e96;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 {
+    font-size: 24px;
+    margin: 0 0 4px;
+    color: #2d3436;
+  }
+  .card .subtitle {
+    font-size: 14px;
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    padding: 2px 0;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr {
+    border: none;
+    border-top: 1px solid #ecf0f1;
+    margin: 0 0 16px;
+  }
+  .card p {
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0 8px;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block strong { color: #2d3436; letter-spacing: 1px; }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 6px;
+  }
+  .reflect {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0 4px;
+    font-size: 14.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+  }
+  .reflect .reflect-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+  }
+  .diagram {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption {
+    font-size: 12px;
+    color: #868e96;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Daily: Engineering Philosophy &amp; Software Design</h1>
+    <div class="meta">2026-05-25 · Day 33</div>
+  </header>
+
+  <!-- Card 1: Levels of Abstraction -->
+  <section class="card c1">
+    <h2>Levels of Abstraction</h2>
+    <div class="subtitle">Choosing a layer is choosing which class of errors you're willing to own</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Abstraction isn't "making complex things simple" — it's <strong>pretending the layer below is solved so you can reason in a narrower concept space</strong>. Each level up trades expressive power for control granularity. There's no fixed "right level"; it's a function of what you're trying to do <em>right now</em>. Same system: write business logic at the ORM layer, tune perf at SQL, root-cause faults at the EXPLAIN plan.</p>
+    <p>Non-trivial insights: (1) <strong>All non-trivial abstractions leak</strong> (Joel Spolsky's Law). TCP pretends the network is reliable — until packet loss spikes; ORMs pretend objects are tables — until N+1 queries leak through. Abstractions don't eliminate complexity; they defer it to "when things break." (2) <strong>Choosing an abstraction = choosing which errors you're willing to own.</strong> Pick an ORM, you own "performance opacity"; pick raw SQL, you own "boilerplate repetition." No free lunch — only an <em>error-type trade</em>. (3) Buddhist two-truths parallel: conventional truth = upper abstraction; ultimate truth = lower physics. Both are "true" — what matters is <em>using the right one for the moment</em>. Mistaking convention for ultimate = self-deception; mistaking ultimate for convention = paralysis (no one can live by quantum mechanics at breakfast). (4) <strong>Debug cost is non-linear in layer count</strong> — for N layers, debug ~ O(N²), because faults can live in any layer and information is lost crossing each boundary. The hidden cost of microservices lives here.</p>
+    <p>Practice: (1) Before designing, ask "<em>when</em> will this abstraction leak?" — pre-build penetration paths (logging, metrics, escape hatches to the lower layer). (2) Beware "higher abstraction = more senior" — true seniority is moving <em>fluidly up and down</em> levels; staying stuck on one is asking to be blindsided. (3) When designing interfaces for teams/AI, explicitly tag <em>which layer</em> you're speaking from. Most cross-team conflict is one person speaking at conventional truth while the other replies at ultimate truth.</p>
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>The OSI/TCP-IP stack is the textbook of abstraction layers. More instructive is <em>when it fails</em> — you write HTTP APIs assuming "network is reliable," then a microservice call's P99 hits 10s. The bug isn't at HTTP — it's TCP retransmits colliding with stale NAT entries. You're forced to descend to L4. The leak makes you pay "the lower-layer tax." Understanding levels isn't to stay on top forever; it's to <em>know when to come down</em>.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) <strong>LLM/Agent frameworks are next-gen leaky abstractions</strong> — LangChain/AutoGen promise "we handle the prompt," but hallucination, cost, latency, context truncation all leak through. The "upper layer" of agent workflows pretends the underlying LLM is a deterministic function — until it isn't. Fastest maturity test for an AI framework: <em>look at its leak-handling story</em> (retry, fallback, observability). (2) <strong>Investment judgment</strong> — "pick the right sector" is high abstraction; "analyze this specific company" is low. Living only at the sector level misses individual alpha; only at the stock level gets crushed by cycles. Pros switch rhythmically. (3) <strong>Parenting</strong> — "raise an independent kid" is high; "she spilled milk just now, how do I respond" is low. Commanding every micro-response from the high principle = dogma; only firefighting at the low level = no direction. Both layers must be live. (4) <strong>Buddhist link</strong> — "form is emptiness" condenses "<em>every abstraction is a convention, but inside the convention you still have to do the work</em>" into four characters.</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">Reflection</div>
+      <p>A decision you made this week — which abstraction layer did you reason at? Would the conclusion change if you re-examined it from one layer up or down? Which abstraction in your current stack is <em>leaking right now</em> while you pretend not to notice?</p>
+    </div>
+  </section>
+
+  <!-- Card 2: Conway's Law -->
+  <section class="card c2">
+    <h2>Conway's Law</h2>
+    <div class="subtitle">System structure mirrors organizational communication structure</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Melvin Conway's 1967 observation: "Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations." Not metaphor — mechanism. Any <strong>call that crosses an org boundary gets designed as an API / async / defensive interface</strong>; any intra-team call becomes an inline function or shared memory. Because cross-boundary communication is expensive, engineers unconsciously substitute "interface" for "conversation." The seams of the system end up exactly where the org has seams.</p>
+    <p>Non-trivial insights: (1) <strong>Architecture problems are often org problems in disguise.</strong> You think you're refactoring code; you're actually refactoring an org. Two teams maintaining two "user services" — the root cause isn't tech choice, it's that those two teams don't talk directly. Change code without changing org, six months later the same problem returns in a new shape. (2) <strong>Inverse Conway Maneuver</strong> — to get an architecture, <em>restructure the team first</em>. Amazon's "two-pizza teams, each independently deployable" preceded microservices — it was a prerequisite, not coincidence. (3) <strong>Open-source middleware carries its origin company's organizational DNA.</strong> Google tools skew "centrally planned + highly general"; Facebook tools skew "fast experiments + internal forks." When you adopt a tool, you adopt its organizational philosophy, not just code. (4) <strong>Distributed systems view</strong> — Conway's law is the self-referential version of distributed systems: the observer (humans) is part of the system (code). You think you design the system; the system also shapes you (how the team communicates). (5) AI-collaboration extension: <em>your communication boundaries with AI agents become the seams of your output code</em>. Agent A writes backend, Agent B writes frontend, you don't personally review across the seam — a Conway seam will inevitably show up at the interface.</p>
+    <p>Practice: (1) Want to change architecture → first ask "who in the org should be talking but isn't?" Fixing the org channel is cheaper than fixing the code. (2) See a weird architecture → don't blame engineers first, <em>look at the org chart</em>. Usually you'll find the root cause. (3) Cross-boundary interfaces deserve <strong>3× the design time</strong> — they're materialized org debt and mistakes accrue compound interest.</p>
+    <div class="diagram">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="30" width="100" height="70" fill="#7048b8" opacity="0.85" rx="6"/>
+        <text x="90" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">Team A</text>
+        <text x="90" y="78" text-anchor="middle" font-size="10" fill="#fff">5 people</text>
+
+        <rect x="220" y="30" width="100" height="70" fill="#7048b8" opacity="0.85" rx="6"/>
+        <text x="270" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">Team B</text>
+        <text x="270" y="78" text-anchor="middle" font-size="10" fill="#fff">5 people</text>
+
+        <rect x="400" y="30" width="100" height="70" fill="#7048b8" opacity="0.85" rx="6"/>
+        <text x="450" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">Team C</text>
+        <text x="450" y="78" text-anchor="middle" font-size="10" fill="#fff">5 people</text>
+
+        <line x1="140" y1="65" x2="220" y2="65" stroke="#636e72" stroke-width="2" stroke-dasharray="5,3"/>
+        <line x1="320" y1="65" x2="400" y2="65" stroke="#636e72" stroke-width="2" stroke-dasharray="5,3"/>
+
+        <rect x="40" y="150" width="100" height="60" fill="#0a6fb8" opacity="0.9" rx="6"/>
+        <text x="90" y="178" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Service A</text>
+        <text x="90" y="196" text-anchor="middle" font-size="9" fill="#fff">(owned by A)</text>
+
+        <rect x="220" y="150" width="100" height="60" fill="#0a6fb8" opacity="0.9" rx="6"/>
+        <text x="270" y="178" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Service B</text>
+        <text x="270" y="196" text-anchor="middle" font-size="9" fill="#fff">(owned by B)</text>
+
+        <rect x="400" y="150" width="100" height="60" fill="#0a6fb8" opacity="0.9" rx="6"/>
+        <text x="450" y="178" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">Service C</text>
+        <text x="450" y="196" text-anchor="middle" font-size="9" fill="#fff">(owned by C)</text>
+
+        <line x1="140" y1="180" x2="220" y2="180" stroke="#c44545" stroke-width="2" marker-end="url(#arr5)"/>
+        <text x="180" y="170" text-anchor="middle" font-size="10" fill="#c44545">REST API</text>
+        <line x1="320" y1="180" x2="400" y2="180" stroke="#c44545" stroke-width="2" marker-end="url(#arr5)"/>
+        <text x="360" y="170" text-anchor="middle" font-size="10" fill="#c44545">REST API</text>
+
+        <line x1="90" y1="100" x2="90" y2="150" stroke="#2d3436" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="270" y1="100" x2="270" y2="150" stroke="#2d3436" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="450" y1="100" x2="450" y2="150" stroke="#2d3436" stroke-width="1" stroke-dasharray="2,2"/>
+
+        <defs>
+          <marker id="arr5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#c44545"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="caption">Org boundaries → service boundaries. Communication seams become architecture seams.</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Amazon's microservices and the birth of AWS — Bezos's 2002 "API Mandate" (all teams must communicate via service APIs, no direct DB sharing; any service must be exposable to outside) was essentially <em>using org rules to force inverse-Conway</em>. Org split came first, then microservices, then AWS. Build tech architecture before splitting teams, and the org will inevitably bend it back along old communication paths. Bezos intuitively knew: the architecture you want must be <em>grown in the org first</em>.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) <strong>Internal Conway for an AI super-individual</strong> — you + 5 AI agents is also a distributed system. If your communication boundaries with the agents are muddled (same context bouncing between ChatGPT/Cursor/Claude), the "system" you ship reflects the muddle in your head. AI-collaboration architecture = a mirror of <em>your</em> communication architecture. That's why different people produce wildly different output with the same tools — their "orgs" (self + tool dialogue patterns) differ. (2) <strong>Cross-disciplinary thinking</strong> — if "philosophy mode" and "engineering mode" in your head don't talk, your insights show a Conway seam between them. Deep cross-discipline isn't knowing more — it's letting the two modes <em>converse during the same session</em>. (3) <strong>Family</strong> — the "spouse communication boundary" determines the parenting "system architecture." Parents giving the child different lines (different APIs) teaches the kid "fetch what you need from each side" — a coping strategy grown directly at your family's Conway seam. (4) <strong>Investment team</strong> — separating research and trading grows a "research writes report / trader watches price" seam; closing it requires merging the conversational cadence of the two people, not adjusting process.</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">Reflection</div>
+      <p>A system you recently found "ugly" — what does its org chart look like? At the seam, which two people/teams don't talk directly? If you wanted to fix the architecture, what's the smallest <em>org-first</em> action you could take?</p>
+    </div>
+  </section>
+
+  <!-- Card 3: Technical Debt -->
+  <section class="card c3">
+    <h2>Technical Debt</h2>
+    <div class="subtitle">Not all bad code is debt — real debt is deliberate, with a plan to repay</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Ward Cunningham's 1992 original meaning is widely misread. His precise definition: <strong>deliberately choosing an imperfect implementation to ship faster, with full awareness of <em>where</em> the simplification is and <em>a plan</em> to repay</strong>. Active, conscious, scoped. Modern usage calls all bad code "technical debt," conflating two very different things — <em>intentional debt</em> (strategic choice) and <em>rot debt</em> (unconscious decay).</p>
+    <p>Non-trivial insights: (1) <strong>The truly dangerous debt is the invisible kind</strong>, not the kind you "know where it lives" — naming conventions that didn't update as the team grew, stale comments never removed, half-finished migrations, dead code. None of this is on your "debt list," but every new hire pays interest on it during onboarding. "I have 10 items of tech debt" is almost always an illusion — you only see the visible portion. (2) <strong>Like finance: debt's danger is compound interest</strong> — unrepaid, the cost of new features grows exponentially; past some critical point, "adding one feature" costs more than "rewriting the whole system." That's why many legacy systems trace a J-curve: a long gentle slide ending in a cliff. (3) <strong>Counterintuitive rule of repayment</strong> — pure debt-repayment projects fail 80% of the time, because they lack a business reason to hold priority. The right move is the <em>boy scout rule</em>: improve the code you happen to touch; don't run "refactor sprints." (4) <strong>A new kind of debt in the AI era</strong> — "code AI wrote that I never fully understood." It runs fine; you don't know why. Every line is debt because when it breaks, <em>you don't know where to start</em>. This is the first time in programmer history you can <em>borrow debt that isn't yours</em>. (5) Buddhist link — debt is the continuation of past causes; ignore it and you stay shaped by it. "Settling accounts" means <em>understanding each cause</em>, not brute-force rewrite.</p>
+    <p>Practice: (1) <strong>Distinguish intentional debt from rot debt</strong> — the former gets a future sprint, the latter must be <em>documented + reverted immediately</em>, no delay. (2) When you borrow, <em>tag the debt</em> (TODO + deadline + estimated repayment cost). No verbal debt. (3) Repay only <em>en passant</em> — don't open a "refactor sprint." (4) In the AI era: every block of AI-written code must pass "I can re-explain this to a teammate" before merging — otherwise it's invisible debt.</p>
+    <div class="diagram">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="200" x2="520" y2="200" stroke="#636e72" stroke-width="1.5"/>
+        <line x1="40" y1="40" x2="40" y2="200" stroke="#636e72" stroke-width="1.5"/>
+        <text x="30" y="45" text-anchor="end" font-size="11" fill="#2d3436">delivery cost</text>
+        <text x="280" y="220" text-anchor="middle" font-size="11" fill="#636e72">time →</text>
+
+        <path d="M 40 195 Q 200 190 280 185 T 420 165 L 440 130 L 460 90 L 475 60" stroke="#c44545" stroke-width="3" fill="none"/>
+        <text x="350" y="155" font-size="11" fill="#c44545" font-weight="700">no repay: J-curve cliff</text>
+
+        <path d="M 40 195 Q 200 185 280 175 T 480 155" stroke="#1b8a5a" stroke-width="3" fill="none"/>
+        <text x="350" y="175" font-size="11" fill="#1b8a5a" font-weight="700">pay-as-you-go: stable</text>
+
+        <circle cx="475" cy="60" r="6" fill="#c44545"/>
+        <text x="490" y="58" font-size="10" fill="#c44545">cliff: 1 feature &gt; full rewrite</text>
+      </svg>
+      <div class="caption">Compound debt curve: past the critical point, "fix one thing" costs more than "redo it all"</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Netflix turned debt repayment into culture — Chaos Monkey deliberately injects failures, forcing the system to live in "must-tolerate-failure" mode daily, effectively <em>spreading repayment across every code change</em>. The opposite is the "annual grand refactor" most companies attempt: 3 years of debt accumulation, 6 months dedicated to repayment, business stalls, repayment fails, back to square one. The compounded difference across a 5-year horizon is orders of magnitude.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) <strong>The AI-era new debt shape</strong> — you let Claude write a module, it ran, you didn't read it carefully. A month later it errors and you can't read your own code. This isn't a "tech problem" — it's <em>cognitive debt</em>: you owe "understanding my own code." The stronger AI gets, the easier it is to borrow this debt and the harder it is to repay. Threshold rule: <em>any AI-written code must let me re-narrate its core logic to the team before merging</em>. (2) <strong>Investment decision debt</strong> — you bought an asset but didn't write the buy thesis = decision debt. Next time you need to decide whether to sell, you're guessing. Investment journals are essentially repayment slips you leave for your future self. (3) <strong>Parenting</strong> — "let's discuss later" / "mom's busy right now" are small compromises, each reasonable in isolation, compounding into a communication chasm. The most expensive family debt is "promised but not delivered." (4) <strong>Cross-disciplinary</strong> — read a great book but didn't digest it (no notes, no links to existing models)? That's <em>knowledge debt</em> — the fuller your shelf, the higher the debt, and next time you need it you can't find it.</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">Reflection</div>
+      <p>Inventory the intentional debt you borrowed in the last 30 days — how many items? Now ask: how many <em>invisible debts</em> are off the list but still charging you interest daily? Which one is closest to the J-curve cliff — where, if you don't repay now, next month's cost will jump discontinuously?</p>
+    </div>
+  </section>
+
+  <!-- Card 4: YAGNI / Premature Abstraction -->
+  <section class="card c4">
+    <h2>YAGNI / Premature Abstraction</h2>
+    <div class="subtitle">You Aren't Gonna Need It — the wrong abstraction is far more expensive than duplication</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Kent Beck (XP) coined YAGNI — "You Aren't Gonna Need It": don't write code for imagined future requirements. The matched principle is Sandi Metz's: "<strong>Duplication is far cheaper than the wrong abstraction.</strong>" Together they form software engineering's sharp razor.</p>
+    <p>Non-trivial insights: (1) <strong>Premature-abstraction paradox</strong> — the cost you pay for "generality" (cognitive load, all degrees of freedom outside the abstraction get locked away) far exceeds the cost of "duplication." Three superficially similar things abstracted into one interface is usually wrong — because you only saw 3, you <em>didn't see the 4th that would break the abstraction</em>. Once the abstraction is built, all future cases get forced into the wrong shape. (2) <strong>ML overfitting analogy</strong> — sharing parameters that shouldn't be shared = overfitting to a false "commonality." Elegant on the training set (existing code), collapses on test set (future needs). (3) <strong>YAGNI is sharper than Occam's Razor</strong> — Occam says "minimize assumptions"; YAGNI says <em>the credibility of future requirements is negative</em>. You think you predicted them; almost always you predicted wrong. Predicting future requirements = the engineering form of ego-clinging. (4) <strong>Rule of three</strong> — abstract only after the third repetition: first write, second copy + mark the similarity, third extract — by then you've seen enough variation to distinguish surface vs. structural difference. (5) <strong>Anti-YAGNI trap</strong> — when abstraction cost approaches zero (Python class, TypeScript interface), people naturally over-abstract. Worse in the LLM era — AI loves giving you "perfect architecture" with 5 layers, 10 interfaces, paved for the extensibility it imagined. <em>Most AI-suggested initial architectures are over-abstracted</em>, because the training set is full of "good architectures." (6) Buddhist link — "future requirements" flow in dependent origination, not fixed and pre-determinable. Pre-specifying the future = ego-clinging = treating present causes as already-arrived effects.</p>
+    <p>Practice: (1) Default-resist abstraction — unless you can <em>concretely name</em> three different scenarios. (2) When repetitions ≤ 3, <strong>tolerate duplication</strong> — treat it as data you're still collecting. (3) When AI hands you "perfect architecture," cut the layer count in half first — usually closer to what you actually need. (4) Watch your own "but in the future..." sentences — they're the trigger words of premature abstraction.</p>
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Early Java EE built endless XML config, factories-of-factories, AbstractStrategyFactoryBuilder 5-layer matryoshkas — all "for future extensibility." Result: (1) adding a new feature meant editing 7 files; (2) stack traces 30+ deep; (3) 95% of the "future needs" never showed up, and the 5% that did broke the original abstraction anyway. Spring Boot's rise was the industry's collective regret over premature abstraction — make configurability the <em>opt-in</em>, not the default. Engineering's "subtract first."</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) <strong>Prompt engineering YAGNI</strong> — don't build a "universal prompt framework" or "prompt meta-template" first. Concretely solve 3 different tasks, record the differences, consider abstraction on the 4th. Most "prompt frameworks" are premature abstractions — they parameterize <em>variations you haven't encountered yet</em>. (2) <strong>Agent architecture</strong> — when building an AI workflow for the first time, hardcoding one or two flows is 10× more valuable than immediately building a "universal agent orchestration framework." You need 3-5 concrete working flows before you know where the real variation points live. (3) <strong>Investment framework</strong> — don't build a "universal asset allocation model" first. Do 3 concrete trades, record the differences (liquidity / cycle / information asymmetry), then on the 4th extract the framework. People who build frameworks first usually stuff in "what books say to consider" — not what they've been burned by in real trades. (4) <strong>Parenting/education</strong> — don't construct "my parenting philosophy" first. Seriously work through 3 concrete situations (mealtime, bedtime, conflict), observe your child's response patterns, then let principles emerge. Pre-committed philosophy is often a <em>premature abstraction imposed on your child</em> — it makes you unable to see <em>this specific kid</em>. (5) <strong>Buddhist link</strong> — YAGNI corresponds to "abide nowhere and let your mind arise" (應無所住而生其心) — don't pre-form the future; let mind flow with conditions. Restraint in design is engineering's "non-self."</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">Reflection</div>
+      <p>A "framework / system / general solution" you built in the last month — how many real scenarios has it actually served? Anywhere you're currently paying <em>present cost for a "future maybe..."</em> that never became concrete? If you cut it, what would you actually lose right now?</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

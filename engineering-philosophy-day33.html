@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思维模型详解：工程哲学与软件设计思维 · 2026-05-25</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .page-header .meta {
+    color: #868e96;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 {
+    font-size: 24px;
+    margin: 0 0 4px;
+    color: #2d3436;
+  }
+  .card .subtitle {
+    font-size: 14px;
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    padding: 2px 0;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr {
+    border: none;
+    border-top: 1px solid #ecf0f1;
+    margin: 0 0 16px;
+  }
+  .card p {
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0 8px;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block strong { color: #2d3436; letter-spacing: 1px; }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 6px;
+  }
+  .reflect {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0 4px;
+    font-size: 14.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+  }
+  .reflect .reflect-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+  }
+  .diagram {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption {
+    font-size: 12px;
+    color: #868e96;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>思维模型详解：工程哲学与软件设计思维</h1>
+    <div class="meta">2026-05-25 · Day 33</div>
+  </header>
+
+  <!-- Card 1: 抽象层次 -->
+  <section class="card c1">
+    <h2>抽象层次</h2>
+    <div class="subtitle">Levels of Abstraction — 选哪一层抽象，本质上是选你愿意为哪类错误负责</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>抽象不是"把复杂变简单"，是<strong>在某一层假装下层已被解决，让你在更窄的概念空间里推理</strong>。每往上一层，你换来的是表达力，付出的是"控制粒度"。"正确的抽象层次"不是固定属性，而是相对于"你现在要做什么"的函数——同一系统，写业务逻辑时该用 ORM，调优时必须下到 SQL，故障定位时还得再下到 explain plan。</p>
+    <p>非平凡洞察：① <strong>所有非平凡抽象都是漏的</strong>（Joel Spolsky's Law of Leaky Abstractions）——TCP 假装网络可靠，直到丢包率高时它泄漏；ORM 假装对象就是表，直到 N+1 查询泄漏。抽象不消除复杂性，只是把它推迟到"出问题时"。② <strong>"选抽象 = 选愿意为哪类错误负责"</strong>——选 ORM 你为"性能不透明"负责，选裸 SQL 你为"重复样板"负责。没有免费午餐，只有<em>错误类型的交换</em>。③ 与佛学二谛对接——俗谛（约定真理）= 上层抽象；真谛（究竟真理）= 下层物理。两者都是"真"的，关键是<em>用对场景</em>。把俗谛当真谛会自欺，把真谛当俗谛会瘫痪（每天起床思考量子力学就没法生活）。④ <strong>层数越多，调试成本越非线性</strong>——抽象层 N 时调试成本 ~ O(N²)，因为故障可能出在每一层，且穿越层时信息会丢失。微服务化的隐性成本就在这里。</p>
+    <p>实践方法：① 设计前问"这层抽象会在<em>什么情况下</em>漏？"——提前预备穿透通道（日志、metrics、回退到下层 API 的入口）。② 警惕"高抽象 = 高级"的误区——能在多层之间<em>自如上下</em>的人才是高级，永远停在一层是迟早被打脸。③ 给团队/AI 设计接口时，明确标记"这是哪一层"——很多团队冲突源于一个人在俗谛说话、另一个人在真谛回应。</p>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>TCP/IP 七层模型是抽象层次的教科书。但更教科书的是它<em>什么时候失效</em>——你写 HTTP API 时假装"网络可靠"，直到某次微服务调用 P99 飙到 10s。问题不在 HTTP 层，是 TCP 重传遇上 NAT 表项过期。这一刻你必须临时下到 L4 思考——抽象漏了，你被迫支付"下层的税"。理解抽象层不是为了"永远在上层"，是<em>知道何时该下来</em>。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>① <strong>LLM/Agent 框架是新一代漏抽象</strong>——LangChain/AutoGen 给你"它处理 prompt"的承诺，但 hallucination、cost、latency、上下文截断都会漏穿。Agent 工作流的"上层"假装下层 LLM 是确定性函数，直到它不是。判断一个 AI 框架成熟度的最快方法：<em>看它的漏抽象处理机制</em>（重试、回退、可观测）。② <strong>投资判断</strong>——"赛道选择"是高抽象，"具体公司分析"是低抽象。永远在赛道层会错过个股 alpha，永远在个股层会被周期碾压。高手在两层之间<em>有节奏地切换</em>。③ <strong>育儿场景</strong>——"培养孩子独立性"是高抽象，"今天她洒了牛奶我该怎么反应"是低抽象。用高抽象指挥每一个具体反应 = 教条；只在低抽象层应付 = 无方向。两层都要在。④ <strong>佛学接口</strong>——"色即是空"就是对"<em>每一层抽象都是约定，但约定下你仍要老老实实做事</em>"的最浓缩表达。</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">思考题</div>
+      <p>过去一周你做的某个决策——你在哪一层抽象上想问题？如果上一层或下一层重新看同一个问题，结论会不会变？你手头哪一层抽象，最近<em>正在漏</em>而你假装没看见？</p>
+    </div>
+  </section>
+
+  <!-- Card 2: 康威定律 -->
+  <section class="card c2">
+    <h2>康威定律</h2>
+    <div class="subtitle">Conway's Law — 系统结构是组织沟通结构的镜像</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>Melvin Conway 1967 年的观察："设计系统的组织，被迫产出的设计是组织自身沟通结构的拷贝。" 这不是隐喻，是机制——任何<strong>穿越组织边界的调用，会被设计成 API / 异步 / 防御性接口</strong>；任何组内调用就是 inline 函数或共享内存。因为跨边界沟通昂贵，工程师下意识地用"接口"代替"对话"。系统的接缝最终长在组织的接缝处。</p>
+    <p>非平凡洞察：① <strong>架构问题常常是组织问题的伪装</strong>——你以为在重构代码，其实你在重构组织。两个团队各自维护一份"用户服务"，根因不是技术选型，是这两个团队不直接对话。改代码不改组织，6 个月后老问题以新形式回来。② <strong>反康威策略</strong>（Inverse Conway Maneuver）——想要某种架构，<em>先重组团队</em>。Amazon 的"两个披萨团队 + 每个团队独立部署"先于微服务架构，不是巧合，是先决条件。③ <strong>开源中间件携带其源公司的组织 DNA</strong>——Google 出来的工具偏向"集中规划 + 高度通用"，Facebook 出来的偏向"快速实验 + 内部 fork"。引入工具时你引入了它的组织哲学，不只是代码。④ <strong>分布式系统视角</strong>——康威定律是分布式系统的自指版本：观察者（人）是系统（代码）的一部分。你以为你在设计系统，系统也在塑造你（团队的沟通方式）。⑤ AI 协同时代的延伸：<em>你和 AI Agent 的"沟通边界"就是你产出代码的接缝</em>。如果你让 Agent A 写后端、Agent B 写前端，且你不亲自跨边界 review，二者接口处必然出现"康威接缝"。</p>
+    <p>实践方法：① 想改架构 → 先问"组织上谁该和谁说话却没说话？"——修组织通路比修代码便宜。② 看到一个奇怪的架构 → 别先骂工程师，<em>先看组织图</em>，多数时候你会找到根因。③ 跨边界的接口要刻意花<strong>3 倍时间</strong>设计——它是组织债务的物化，错一次将长期付息。</p>
+    <div class="diagram">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="30" width="100" height="70" fill="#7048b8" opacity="0.85" rx="6"/>
+        <text x="90" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">团队 A</text>
+        <text x="90" y="78" text-anchor="middle" font-size="10" fill="#fff">5 人</text>
+
+        <rect x="220" y="30" width="100" height="70" fill="#7048b8" opacity="0.85" rx="6"/>
+        <text x="270" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">团队 B</text>
+        <text x="270" y="78" text-anchor="middle" font-size="10" fill="#fff">5 人</text>
+
+        <rect x="400" y="30" width="100" height="70" fill="#7048b8" opacity="0.85" rx="6"/>
+        <text x="450" y="60" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">团队 C</text>
+        <text x="450" y="78" text-anchor="middle" font-size="10" fill="#fff">5 人</text>
+
+        <line x1="140" y1="65" x2="220" y2="65" stroke="#636e72" stroke-width="2" stroke-dasharray="5,3"/>
+        <line x1="320" y1="65" x2="400" y2="65" stroke="#636e72" stroke-width="2" stroke-dasharray="5,3"/>
+
+        <rect x="40" y="150" width="100" height="60" fill="#0a6fb8" opacity="0.9" rx="6"/>
+        <text x="90" y="178" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">服务 A</text>
+        <text x="90" y="196" text-anchor="middle" font-size="9" fill="#fff">(团队 A 拥有)</text>
+
+        <rect x="220" y="150" width="100" height="60" fill="#0a6fb8" opacity="0.9" rx="6"/>
+        <text x="270" y="178" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">服务 B</text>
+        <text x="270" y="196" text-anchor="middle" font-size="9" fill="#fff">(团队 B 拥有)</text>
+
+        <rect x="400" y="150" width="100" height="60" fill="#0a6fb8" opacity="0.9" rx="6"/>
+        <text x="450" y="178" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">服务 C</text>
+        <text x="450" y="196" text-anchor="middle" font-size="9" fill="#fff">(团队 C 拥有)</text>
+
+        <line x1="140" y1="180" x2="220" y2="180" stroke="#c44545" stroke-width="2" marker-end="url(#arr5)"/>
+        <text x="180" y="170" text-anchor="middle" font-size="10" fill="#c44545">REST API</text>
+        <line x1="320" y1="180" x2="400" y2="180" stroke="#c44545" stroke-width="2" marker-end="url(#arr5)"/>
+        <text x="360" y="170" text-anchor="middle" font-size="10" fill="#c44545">REST API</text>
+
+        <line x1="90" y1="100" x2="90" y2="150" stroke="#2d3436" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="270" y1="100" x2="270" y2="150" stroke="#2d3436" stroke-width="1" stroke-dasharray="2,2"/>
+        <line x1="450" y1="100" x2="450" y2="150" stroke="#2d3436" stroke-width="1" stroke-dasharray="2,2"/>
+
+        <defs>
+          <marker id="arr5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#c44545"/>
+          </marker>
+        </defs>
+      </svg>
+      <div class="caption">组织边界 → 服务边界。沟通的接缝长成架构的接缝</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>Amazon 的微服务和 AWS 的诞生——Bezos 2002 年发布的 "API Mandate"（所有团队必须通过服务化 API 通信，禁止直接共享数据库；任何服务必须可暴露给外部）本质上是<em>用组织规则强制反康威</em>。先有组织拆分，才有微服务架构，才有 AWS。如果先建技术架构再分团队，组织一定会沿着旧沟通路径绕回去。Bezos 直觉地知道：你想要的架构，必须先在组织里"种"出来。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>① <strong>AI 超级个体的"内部康威"</strong>——你一个人 + 5 个 AI Agent 也是分布式系统。如果你和不同 Agent 的沟通边界混乱（同一个上下文在 ChatGPT/Cursor/Claude 之间切来切去），最终产出的"系统"会反映你大脑里的混乱。AI 协同的架构 = 你的沟通架构的镜像。这就是为什么不同人用同样工具产出天差地别——他们的"组织"（自己 + 工具的沟通方式）不同。② <strong>跨学科思考</strong>——你大脑里"哲学组"和"工程组"不对话，你产出的洞察就会在两者之间有"康威接缝"。深度跨界者不是知道更多，是<em>让两组在同一时间段对话</em>。③ <strong>家庭场景</strong>——"夫妻沟通边界"决定了育儿"系统架构"。两人对孩子说不同的话（不同 API），孩子学到的是"在两边各自获取所需"——这是孩子在你们家庭康威接缝处长出的应对策略。④ <strong>投资团队</strong>——研究和交易分离会长出"研究输出报告 / 交易看价格"的接缝；想消除接缝必须先合二人对话节奏，不是改流程。</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">思考题</div>
+      <p>你最近觉得"架构很丑"的某个系统——它的组织图长什么样？接缝处对应组织里哪两个人/团队不直接沟通？如果你想改这个架构，<em>先改组织</em>的最小可行动作是什么？</p>
+    </div>
+  </section>
+
+  <!-- Card 3: 技术债 -->
+  <section class="card c3">
+    <h2>技术债</h2>
+    <div class="subtitle">Technical Debt — 不是所有烂代码都是债；真正的债是有意为之、有还的计划</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>Ward Cunningham 1992 年提出技术债的原意被严重误读。他的精确定义：<strong>为快速交付而<em>故意</em>选择一个不完美的实现，前提是你<em>清楚</em>这个简化在哪、并且有<em>还的计划</em></strong>。是主动的、有意识的、限定范围的。现代用法把所有"代码烂"都叫技术债，混淆了两类完全不同的东西——<em>有意债</em>（战略选择）和 <em>腐败债</em>（无意识腐烂）。</p>
+    <p>非平凡洞察：① <strong>真正危险的债是隐性债</strong>，不是你"知道在哪"的债——是随团队增长但没更新的命名约定、过时但未删除的注释、半完成的迁移、未删的死代码。这些不在你的债务清单上，但每个新人 onboarding 都在付利息。"我列了 10 条技术债"基本上是错觉：你只看到了显性那部分。② <strong>类比金融：债的可怕在复利</strong>——不还，每次新功能成本指数上升；某个临界点之后，"加一个新特性"比"重写整个系统"还贵。这就是为什么很多遗留系统的演进曲线是 J 形：长期下滑后陡崖。③ <strong>还债的反直觉规律</strong>——纯还债项目 80% 失败，因为没有业务理由保持优先级。正确做法是 <em>boy scout rule</em>：每次改动顺手把经过的代码改好一点，不"专门还债"。④ <strong>AI 时代的新型债</strong>——"AI 写的、我没完全理解的代码"。它运行正常，你不知道为什么。每加一行都在加债，因为故障时你<em>不知道从哪里开始</em>。这是程序员历史上第一次能"借不属于自己的债"。⑤ 与佛学缘起接口——债是过去因缘的延续；不直面就被它持续塑造。"清账"是<em>了解每一笔的成因</em>，不是粗暴重写。</p>
+    <p>实践方法：① <strong>区分有意债 vs 腐败债</strong>——前者列入未来 sprint，后者必须<em>立刻补文档+回退</em>，不能拖。② 写代码时<em>标记你正在借的债</em>（TODO + 截止条件 + 还的成本估计），不留口头债。③ 还债只在"路过"时还——禁止开"重构 sprint"。④ AI 协同时代：每段 AI 写的代码必须有"我能向同事解释一遍"作为合并门槛——否则就是隐性债。</p>
+    <div class="diagram">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="200" x2="520" y2="200" stroke="#636e72" stroke-width="1.5"/>
+        <line x1="40" y1="40" x2="40" y2="200" stroke="#636e72" stroke-width="1.5"/>
+        <text x="30" y="45" text-anchor="end" font-size="11" fill="#2d3436">交付成本</text>
+        <text x="280" y="220" text-anchor="middle" font-size="11" fill="#636e72">时间 →</text>
+
+        <path d="M 40 195 Q 200 190 280 185 T 420 165 L 440 130 L 460 90 L 475 60" stroke="#c44545" stroke-width="3" fill="none"/>
+        <text x="350" y="155" font-size="11" fill="#c44545" font-weight="700">不还债：J 形崩盘</text>
+
+        <path d="M 40 195 Q 200 185 280 175 T 480 155" stroke="#1b8a5a" stroke-width="3" fill="none"/>
+        <text x="350" y="175" font-size="11" fill="#1b8a5a" font-weight="700">边走边还：平稳</text>
+
+        <circle cx="475" cy="60" r="6" fill="#c44545"/>
+        <text x="490" y="58" font-size="10" fill="#c44545">陡崖：单功能成本 &gt; 重写</text>
+      </svg>
+      <div class="caption">技术债复利曲线：临界点之后，"修一处"比"重做整个"还贵</div>
+    </div>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>Netflix 把"还债"做成了文化——chaos monkey 故意制造故障，强迫系统每天处于"必须容错"的状态，相当于<em>把还债摊到日常每一次代码改动里</em>。等价的反面是大量企业的"年度大重构"——3 年攒一次债，6 个月专门还，期间业务停滞，最后还款失败回到原点。两种节奏的复利差异在 5 年时间尺度上是数量级的。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>① <strong>AI 时代的代码债新形态</strong>——你让 Claude 写了一个模块，跑通了，没仔细看实现。一个月后报错，你完全读不懂自己的代码。这不是"技术问题"，是<em>认知债</em>——你欠了"理解自己代码"这件事的债。AI 越强大，这种债越容易借、越难还。门槛规则：<em>任何 AI 写的代码，合并前我必须能向团队复述其核心逻辑</em>。② <strong>投资决策债</strong>——买入一只资产但没写清买入逻辑 = 决策债。下次该不该卖时你只能猜。投资笔记的本质是给未来的自己留还债凭证。③ <strong>育儿场景</strong>——对孩子说"以后再说" / "妈妈在忙先这样" 是小妥协，每次单独看都合理，复利后变成沟通鸿沟。家庭里最贵的债是"承诺但没兑现"的复利。④ <strong>跨学科</strong>——你看了一本好书但没消化（没写笔记、没和已知模型连接），就是"知识债"——书架越满，债越多，下次想用时找不到。</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">思考题</div>
+      <p>盘点你过去 30 天主动借的"有意债"——清单上有几笔？再问：你还有多少笔<em>没出现在清单上</em>但每天在付利息的隐性债？哪一笔最接近"陡崖临界点"——若不立刻还，下个月成本会突变？</p>
+    </div>
+  </section>
+
+  <!-- Card 4: YAGNI / 过早抽象 -->
+  <section class="card c4">
+    <h2>YAGNI / 过早抽象</h2>
+    <div class="subtitle">You Aren't Gonna Need It — 错误的抽象比重复昂贵得多</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>Kent Beck 在 XP 中提出 YAGNI："You Aren't Gonna Need It"——别为想象中的未来需求写代码。配套定律是 Sandi Metz 的名言："<strong>Duplication is far cheaper than the wrong abstraction.</strong>"（重复远比错误的抽象便宜）。这两条加起来构成软件工程的精确剃刀。</p>
+    <p>非平凡洞察：① <strong>过早抽象的悖论</strong>——你为"通用性"付出的代价（认知复杂度、灵活性外的所有自由度被锁死），远大于"重复"的代价。三个看起来类似的东西被抽象成一个接口，往往是错的——因为你只看到了 3 个，<em>没看到第 4 个会破坏抽象</em>。一旦抽象建好，所有未来场景都被迫挤进这个错误的形状里。② <strong>类比 ML 的过拟合</strong>——把不该共享的参数共享 = 过拟合到错误的"共性"。在样本（已写过的代码）上看似优雅，在新样本（未来需求）上崩塌。③ <strong>YAGNI 比奥卡姆剃刀更尖锐</strong>——奥卡姆说"假设要少"，YAGNI 说"<em>未来需求的可信度是负的</em>"——你以为你预知了，绝大多数时候你预知错了。预知未来需求 = 我执的工程化形式。④ <strong>三次重复才抽象</strong>（rule of three）：第 1 次写代码；第 2 次复制 + 标记相似；第 3 次才提炼——此时你看到了足够多的变化模式，能区分"哪些差异是表象、哪些是结构性的"。⑤ <strong>反 YAGNI 陷阱</strong>：当抽象成本接近零（Python class、TypeScript interface），人天然过度抽象。LLM 时代尤其严重——AI 喜欢给你"完美架构"，包含 5 个层、10 个接口、为你想象中的扩展性铺路。<em>大多数 AI 给出的初版架构都是过抽象</em>，因为它在训练集里见过太多"好架构"。⑥ 与佛学缘起接口——"未来需求"是因缘和合中流动的，不是固定可预设的。预设未来 = 我执 = 把当下的因执着为未来的果。</p>
+    <p>实践方法：① 默认抗拒抽象——除非你能<em>具体说出</em>三个不同场景。② 重复 ≤ 3 次时，<strong>容忍重复</strong>，把它当成正在收集的数据。③ 接到 AI 给的"完美架构"，先砍掉一半层级再看——通常更接近你真正需要的。④ 留意自己的 "but in the future..." 句式——这是过早抽象的标志触发词。</p>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>Java EE 早期为"未来扩展性"加了无数 XML 配置、工厂的工厂、AbstractStrategyFactoryBuilder 这种 5 层套娃。结果：① 想加一个新功能要在 7 个文件里改；② 调试时栈深 30+；③ "未来需求"95% 没出现，剩下 5% 出现时还破坏了原抽象。Spring Boot 的崛起本质上是行业对过早抽象的集体懊悔——把可配置性<em>默认掉</em>，需要时才显式。这是工程上的"先做减法"。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>① <strong>Prompt 工程的 YAGNI</strong>——别先建"通用 prompt 框架"或"prompt 元模板"。先具体解决 3 个不同任务，记录差异，第 4 次再考虑抽象。绝大多数"prompt 框架"是过早抽象——它们在试图把<em>你还没遇到的变化</em>提前参数化。② <strong>Agent 架构</strong>——刚开始构建 AI 工作流时，硬编码一两个流程比立刻搭"通用 Agent 编排框架"价值高 10 倍。你需要 3-5 个具体跑通的工作流，才知道真正的变化点在哪。③ <strong>投资框架</strong>——别先建"通用资产配置模型"。先做 3 笔具体交易，记录差异（流动性 / 周期 / 信息不对称），第 4 笔之后才提炼框架。先建框架的人通常在框架里塞了大量<em>书本上读来的"应该考虑"</em>，而非自己交易疼出来的。④ <strong>育儿/教育</strong>——别先建"我的育儿哲学体系"。先认真处理 3 个具体场景（吃饭、睡前、冲突），观察孩子的反应模式，再让原则浮现。提前确立的哲学经常是<em>套到孩子身上的过抽象</em>，让你看不见这个具体孩子。⑤ <strong>佛学接口</strong>——YAGNI 对应"应无所住而生其心"——不预先把未来定型，让心随因缘流动。设计上的克制，是工程的"无我"。</p>
+    </div>
+    <div class="reflect">
+      <div class="reflect-label">思考题</div>
+      <p>你过去一个月建过哪个"框架/体系/通用方案"——它实际服务了几个真实场景？你正在做的某件事里，有没有<em>为"将来可能…"而付出的当下成本</em>，但那个"将来"其实从未具体过？若把它砍掉，眼下会失去什么？</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
