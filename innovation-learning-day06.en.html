@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Innovation &amp; Learning · 2026-05-05</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f7f7f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header.page-header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #dfe6e9;
+  }
+  header.page-header h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 0.5px;
+  }
+  header.page-header .meta {
+    color: #636e72;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #6c5ce7; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #fdcb6e; }
+  .card.c4 { border-left-color: #e17055; }
+  .card h2 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    color: #2d3436;
+  }
+  .card .subtitle {
+    font-style: italic;
+    color: #636e72;
+    font-size: 14px;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-top: 18px;
+    margin-bottom: 6px;
+  }
+  .card.c1 .section-label { color: #6c5ce7; }
+  .card.c2 .section-label { color: #00b894; }
+  .card.c3 .section-label { color: #c9a227; }
+  .card.c4 .section-label { color: #e17055; }
+  .card hr {
+    border: none;
+    border-top: 1px solid #ecf0f1;
+    margin: 4px 0 12px;
+  }
+  .card p {
+    margin: 8px 0 12px;
+    text-align: justify;
+  }
+  .scenario {
+    background: #fafaf7;
+    border-left: 3px solid #b2bec3;
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-size: 14.5px;
+    color: #495057;
+    border-radius: 4px;
+  }
+  .scenario strong {
+    color: #2d3436;
+    margin-right: 6px;
+  }
+  .english-summary {
+    color: #2d3436;
+    font-size: 15px;
+  }
+  pre.prompt {
+    background: #1e272e;
+    color: #dfe6e9;
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 10px 0 14px;
+  }
+  pre.prompt .tag {
+    display: inline-block;
+    background: #fdcb6e;
+    color: #1e272e;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 32px;
+    color: #6c5ce7;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px dashed #6c5ce7;
+    padding-bottom: 2px;
+  }
+  .back-link:hover { color: #4834d4; }
+  @media (max-width: 600px) {
+    .container { padding: 24px 16px 60px; }
+    .card { padding: 22px 20px; }
+    header.page-header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Deep Dive: Innovation &amp; Learning</h1>
+    <div class="meta">2026-05-05 · Day 6</div>
+  </header>
+
+  <!-- Card 1: Deliberate Practice -->
+  <section class="card c1">
+    <h2>Deliberate Practice</h2>
+    <span class="subtitle">Repetition without feedback is just decay.</span>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Systematized by Anders Ericsson, deliberate practice is highly structured training inside the learning zone, with explicit goals, immediate feedback, and continuous error correction. Its biological substrate is myelination — when neurons are repeatedly activated, glial cells wrap their axons in an insulating sheath that increases signal conduction speed by orders of magnitude. Put differently, skill is not "accumulated"; it is a physical structure that grows. Ordinary practice merely repeats in the comfort zone and produces almost no new myelin. Deliberate practice deliberately picks difficulty that is "out of reach but within stretch," forcing the brain to re-encode.</p>
+    <p>Non-obvious insights: (1) the 10,000-hour figure is a median, not a threshold, with an extremely long tail — quality beats hours; (2) feedback delay is the silent killer — chess players grow faster than golfers because every move's quality is known instantly; (3) the largest gap between experts and novices is not motor fluency but the granularity of their mental representations — experts can simulate a thousand possible board positions in their head; novices, only three. Practice, in essence, is sharpening an internal model, not polishing an external motion.</p>
+    <p>How to apply it: (1) decompose vague goals into quantifiable micro-actions; (2) target difficulty 4-15% above current ability (the zone of proximal development); (3) build a fast feedback loop — video replay, expert critique, or AI scoring will all work; (4) after every session, force a post-mortem: write down what broke and what to change next time.</p>
+    <div class="scenario"><strong>Classic Example</strong>Mozart's father was not the architect of a "born genius" myth but a relentless feedback machine — breaking down techniques daily and correcting them on the spot. By age 5, Mozart had completed the practice volume of a typical 10-year-old.</div>
+    <div class="scenario"><strong>Scenario · BigCat</strong>Training yourself into an AI super-individual is not "use ChatGPT more." It is locking in one concrete capability per week — say, "prompt the AI to produce an executable investment memo" — writing three a day, comparing against the expert version, logging failure modes, and iterating until day 30 produces a stable mental representation. Practicing piano with your child? Skip the "30-minute timer" and switch to "today we crack these four bars of left-hand fingering — five slow, two at tempo, self-score at the end." Same time, multiples more myelin, and the child internalizes the word "deliberate" for life.</div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Deliberate practice is structured training inside the learning zone with clear goals, immediate feedback, and relentless error correction. Its biological substrate is myelination — repeated activation thickens the insulating sheath around axons, physically rewiring speed and precision. Quality dwarfs quantity; the 10,000-hour figure is a median, not a threshold. Experts differ from amateurs less in motor fluency than in the granularity of their internal mental representations. Shorten the feedback loop, target 4-15% above current capability, and review failures explicitly after every session.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <pre class="prompt"><span class="tag">English Template</span>Design a deliberate-practice plan for [skill] over [timeframe]. Current level: [self-assessment]. Target outcome: [measurable goal]. Provide: (1) a 5-step skill ladder, each rung ~10% harder than the previous; (2) one micro-drill per rung with a quantitative feedback metric; (3) a weekly retrospective checklist of 5+ questions to surface failure modes and adjust the next week's loop.</pre>
+  </section>
+
+  <!-- Card 2: T-shaped Talent -->
+  <section class="card c2">
+    <h2>T-shaped Talent</h2>
+    <span class="subtitle">One deep root, many lateral branches.</span>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Popularized by McKinsey and IDEO, the T-shape model uses the vertical stroke to represent domain depth and the horizontal stroke to represent breadth — literacy and collaboration across many fields. The underlying logic comes from information theory and combinatorial innovation: creativity is the close-range recombination of distant concepts. Depth supplies a precise raw-materials library; breadth supplies the cross-domain connectors. Pure specialists fall into the "instrument trap" (expert blind spots); pure generalists become "salon talkers" — connected but shipping nothing. Only the combination survives in the AI era — AI excels at single-domain depth, but cross-domain semantic translation and counterintuitive connections remain the human moat.</p>
+    <p>Non-obvious insights: (1) the horizontal stroke is not "a little bit of everything." It must be deep enough to hold a substantive conversation with a real specialist in that field — anything less is zero; (2) the real masters are "π-shaped" or "comb-shaped" — two or more deep pillars plus a horizontal bar. Someone fluent in investing + AI + neuroscience can spot arbitrage that any single-pillar expert is structurally blind to; (3) the marginal return on depth declines steeply. Crossing into an adjacent new field often pays more than another 1,000 hours in the original one (Scott Page's Diversity Prediction Theorem proves this mathematically).</p>
+    <p>How to apply it: (1) first secure the main pillar — pick one capability that will still matter in ten years; (2) every 18-24 months, open a "strategic horizontal" — a field that resonates with your pillar at the level of first principles but differs sharply at the surface; (3) self-test by teaching: can you explain the new field to a layperson? (4) actively build cross-domain relationships — schedule monthly 1-hour deep conversations with two operators from very different fields.</p>
+    <div class="scenario"><strong>Classic Example</strong>Steve Jobs audited a calligraphy course in college. Ten years later that "useless horizontal" produced the typography revolution inside the Macintosh. Depth (electrical engineering) × breadth (calligraphic aesthetics) = an inimitable product philosophy.</div>
+    <div class="scenario"><strong>Scenario · BigCat</strong>Your main pillar is "business judgment + investment decisions." Strategically adding "neuroscience / consciousness research / AI engineering fundamentals" as second and third pillars makes sense — they resonate with decision-making at the level of first principles (uncertainty, attention allocation, information processing) and let you see technical risks and opportunities inside AI startups that pure-business investors miss. Planning your child's path? Skip the obsession with grinding a single subject to perfection. Design a "main pillar + two horizontals" — math as the pillar, plus a "hands-on experimental science" track (small physics/chem/bio projects) and a "narrative expression" track (writing or theater). In ten years their cross-connection ability will leave pure top-of-class peers in the dust.</div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">A T-shaped talent has one deep vertical of domain expertise plus a broad horizontal of literacy across adjacent fields. Depth supplies precision and credibility; breadth supplies the cross-domain connections that fuel innovation, since creativity is the recombination of distant concepts. Pure specialists hit blind spots; pure generalists fail to ship. In the AI era the moat is "π-shaped" or even comb-shaped — two or more deep pillars plus a wide cross-bar. Cultivate a new horizontal every 18-24 months and validate breadth by teaching it to a layperson.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <pre class="prompt"><span class="tag">English Template</span>My current deep expertise is [primary pillar]. I want to evolve into a π-shaped expert within 3 years. Candidate second pillars: [list]. Rank them by (a) resonance with my primary pillar at the level of first principles, (b) transfer dividend, (c) market scarcity. For the top pick, produce a 12-month learning roadmap with quarterly milestones and self-assessment criteria.</pre>
+  </section>
+
+  <!-- Card 3: Cross-domain Transfer -->
+  <section class="card c3">
+    <h2>Cross-domain Transfer</h2>
+    <span class="subtitle">Borrow the structure, not the surface.</span>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Cross-domain transfer takes a validated principle, structure, or method from one field and transplants it into another superficially unrelated field to produce a new solution. Cognitive scientist Dedre Gentner's Structure-Mapping Theory makes the key point: real transfer happens at the level of relational structure, not surface attributes. The "atom = miniature solar system" analogy does not transfer color or mass; it transfers the topology of "central attractor + orbiting bodies." This is why convergent evolution in biology (sharks and dolphins share a body plan) can in turn inspire engineering (biomimicry): when underlying constraints are the same, optimal solutions naturally converge.</p>
+    <p>Non-obvious insights: (1) the biggest barrier to cross-domain transfer is not insufficient knowledge but the wall of disciplinary identity — our brains naturally store knowledge by subject, so even when two fields share a structure, retrieval rarely happens spontaneously. You have to deliberately set down your "specialist identity" before the wall comes down; (2) transfer has near and far flavors — near transfer (bicycle to motorcycle) is nearly free but low-innovation; far transfer (porting the Buddhist concept of "non-self" into the "stateless service" pattern of AI system design) is costly but pays exponentially; (3) most "originals," in hindsight, are some form of far transfer — the DNA double helix was shaped by Pauling's work on protein helices plus, reportedly, the spiral staircases of Victorian architecture.</p>
+    <p>How to apply it: (1) when you hit a hard problem, abstract first — strip the surface details and extract the relational skeleton; (2) actively scan distant-but-structurally-similar fields for inspiration; (3) keep a transfer journal — each week log three structural problems you faced and force yourself to find analogs in foreign domains; (4) guard against false transfers — analogies that match on the surface but diverge in structure produce catastrophic misuse (e.g., calling a market an "ecosystem" while ignoring the difference in feedback delays).</p>
+    <div class="scenario"><strong>Classic Example</strong>George de Mestral, inventor of Velcro, noticed the hook structure of burrs sticking to his dog's fur, ported it to textile engineering, and built a multi-billion-dollar industry. The structure (microscopic hook-and-loop engagement) mattered far more than the field (plants vs. textiles).</div>
+    <div class="scenario"><strong>Scenario · BigCat</strong>Port "synaptic plasticity + Hebb's rule" (neurons that fire together wire together) from neuroscience into AI agent system design — give agents a "collaboration memory" so the weight of connections between agents that frequently succeed together is automatically reinforced, evolving a self-organizing coordination network. That design space is invisible to anyone working in a single field. Teaching a child word problems? Skip "this is a distance problem" and train the abstraction "two changing quantities + one conserved relation," then have them hunt for the same skeleton in physics (velocity), economics (interest rates), and life (saving allowance). One drill, three domains.</div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Cross-domain transfer ports a validated principle or structure from one field into another superficially unrelated one. Gentner's Structure-Mapping Theory clarifies that what transfers is the relational topology, not surface features — atoms map to solar systems via "central attractor + orbiting bodies", not via mass. The barrier is rarely knowledge; it is the mental wall of disciplinary identity that prevents retrieval across categories. Distant transfers cost more but compound far more in value, and most breakthroughs in hindsight are distant transfers. Guard against false analogies whose surfaces match but whose underlying structures diverge.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <pre class="prompt"><span class="tag">English Template</span>Problem statement: [describe issue and current bottleneck]. Help me: (1) abstract it into a relational skeleton stripped of domain jargon; (2) scan 5 distant domains (biology, physics, history, art, religion, etc.) that may share this skeleton; (3) for each, give a concrete analog and the transferable mechanism; (4) for each analog, flag the surface-vs-structure mismatch risk that could break the transfer.</pre>
+  </section>
+
+  <!-- Card 4: Analogical Thinking -->
+  <section class="card c4">
+    <h2>Analogical Thinking</h2>
+    <span class="subtitle">The fastest path from unknown to known.</span>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Analogical thinking is one of the core engines of human cognition. In Surfaces and Essences, Douglas Hofstadter argues that "analogy is the spark of cognition" — the brain understands anything new by mapping it onto an already-known structure. The neural mechanism couples the prefrontal cortex (structural alignment) with the temporo-parietal junction (semantic distance estimation). Analogy and cross-domain transfer are close cousins, but analogy leans toward real-time cognitive operations — it is what you reach for while speaking, thinking, and deciding — while transfer is the more deliberate porting of method. A high-quality analogy can compress 30 minutes of explanation into 3 seconds.</p>
+    <p>Non-obvious insights: (1) the test of a good analogy is not "how similar" but "does the listener's brain already hold the source object?" — telling a programmer "Git is like time travel" is gold; telling your grandmother the same thing is noise; (2) analogies have both a generative and a constraining face — once a popular analogy takes root, it caps the boundary of further thinking (the "brain is a computer" analogy has misled neuroscience for decades). Andy Clark calls this the "tyranny of analogy"; (3) quantum mechanics' biggest teaching difficulty is precisely that no good macroscopic analogy exists — which itself tells us that when a field is new enough and counterintuitive enough, forcing analogies does harm. You need to train direct formal intuition instead.</p>
+    <p>How to apply it: (1) before explaining anything, ask "what model is already in the listener's head?" and pick the anchor; (2) after every analogy add a "but unlike X…" sentence — proactively expose the boundary to prevent analogical tyranny; (3) build an analogy pool — capture every great analogy you encounter, tag it by topic, and compound it into an instantly recallable cognitive toolkit; (4) use analogy in reverse — when you cannot grasp a concept, list 5 candidate anchors and pick the one with the highest structural match.</p>
+    <div class="scenario"><strong>Classic Example</strong>Richard Feynman explained QED (quantum electrodynamics) by comparing "light choosing a path" to "a lifeguard running diagonally down a beach, then swimming to a drowning swimmer" — finding the broken-line path that minimizes total time, given that running is fast and swimming is slow. In five minutes, undergraduates grasp the essence of Fermat's principle and the path integral.</div>
+    <div class="scenario"><strong>Scenario · BigCat</strong>To explain to your team "why AI agents need long context plus memory compression," reach for the Buddhist Yogācāra concept of the ālayavijñāna — the storehouse consciousness — a container that continually receives seeds (input), stores impressions (memory), and selectively manifests (output), but whose capacity is finite and requires "transforming consciousness into wisdom" (compression and abstraction) to avoid drowning. One sentence activates both the Buddhism-literate and the engineering-literate members of the team. Explaining saving and compound interest to a child? Try "planting an apple tree" — don't eat this year's apples, and next year the tree grows more; in five years you own an orchard. Then add "but unlike a real tree, the money tree needs no watering — only that you not pick it" — concept planted, misuse blocked.</div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Analogical thinking is the brain's primary mechanism for grasping the unfamiliar by mapping it onto the familiar, powered by structural alignment in the prefrontal cortex. A good analogy is judged not by surface resemblance but by whether the target audience already holds the source model in mind. Beware the tyranny of analogy: once entrenched, a popular metaphor (like "brain = computer") silently caps the conceptual horizon for decades. Always pair every analogy with an explicit "but unlike X…" disclaimer to mark its breaking point. Build a curated analogy library — it becomes the fastest cognitive lever you own.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <pre class="prompt"><span class="tag">English Template</span>I need to explain [concept + key points] to [audience and their prior knowledge]. Generate 5 candidate analogies. For each, specify: (a) the familiar anchor; (b) the relational mapping that carries the load; (c) a one-sentence "but unlike X…" disclaimer that marks where the analogy breaks. Rank them by comprehension efficiency for this audience and recommend the strongest single choice.</pre>
+  </section>
+
+  <a href="index.en.html" class="back-link">← Back to Mental Models Daily index</a>
+
+</div>
+</body>
+</html>
