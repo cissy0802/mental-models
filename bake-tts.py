@@ -158,15 +158,44 @@ def synth_long(key: str, region: str, voice_name: str, text: str) -> bytes:
         return out.read_bytes()
 
 
+def detect_page_mode(soup) -> str:
+    """Return 'split', 'full', or 'legacy' based on document markup.
+
+    - 'split': new pattern — one file per language; element text is the language;
+      no data-zh / data-en attrs. Identified by <html lang="..."> + no data-zh.
+    - 'full': legacy embedded — <html data-i18n-mode="full"> + data-zh/data-en
+      pairs on translatable elements.
+    - 'legacy': oldest pages — bilingual sections labeled by class/text.
+    """
+    html = soup.find("html")
+    if html and html.get("data-i18n-mode") == "full":
+        return "full"
+    if soup.find(attrs={"data-zh": True}) or soup.find(attrs={"data-en": True}):
+        return "full"
+    return "split"
+
+
+def page_lang(soup) -> str:
+    """Pull the page's primary language from <html lang>. Defaults to zh."""
+    html = soup.find("html")
+    lang_attr = (html.get("lang") if html else "") or "zh"
+    return "en" if lang_attr.lower().startswith("en") else "zh"
+
+
 def collect_groups(soup) -> list[tuple]:
     """Return [(anchor_element, {'zh': text, 'en': text}), ...] grouped by model.
 
     A 'model' is bounded by h2 elements. The very first group (before the first
-    h2) is the cover (h1 + intro). Each group concatenates all data-zh / data-en
-    text from descendant elements between two consecutive h2 boundaries — so
-    paragraphs, AI prompt items, list items etc. all roll up into ONE audio per
-    model. The hash is written back to the anchor (h1 for cover, h2 for models).
+    h2) is the cover (h1 + intro).
+
+    SPLIT mode: extracts element.textContent for every readable element, attributes
+    it to the page's lang (zh OR en). Returns text in one language bucket only.
+
+    FULL mode (legacy): concatenates data-zh / data-en from elements with those
+    attributes, plus content-detected .prompt-item / .prompt-block paragraphs.
+    Returns both language buckets.
     """
+    mode = detect_page_mode(soup)
     body = soup.body or soup
     h2s = [h for h in body.find_all("h2") if not h.find_parent(class_="mmd-controls")]
     if not h2s:
@@ -179,6 +208,47 @@ def collect_groups(soup) -> list[tuple]:
         end = h2s[i + 1] if i + 1 < len(h2s) else None
         anchors_and_bounds.append((h2, h2, end))
 
+    # ---- SPLIT mode: one language per file, read textContent directly ----
+    if mode == "split":
+        lang = page_lang(soup)
+        n_groups = len(anchors_and_bounds)
+        bins_split: list[list[str]] = [[] for _ in range(n_groups)]
+        h2_set = set(id(h) for h in h2s)
+        h2_seen = 0
+        # Readable text-bearing tags. Skip nav/controls and obviously decorative bits.
+        for node in body.descendants:
+            if id(node) in h2_set:
+                h2_seen += 1
+            if not hasattr(node, "name") or node.name not in NARRATION_TAGS:
+                continue
+            if node.find_parent("nav") or node.find_parent(class_="mmd-controls"):
+                continue
+            # Skip elements inside a diagram/SVG, footers, anything purely decorative
+            if node.find_parent("svg") or node.find_parent("style") or node.find_parent("script"):
+                continue
+            # Only direct visible text — skip elements that wrap richer structures
+            # whose text we already collected from children
+            if node.name == "div" and not any(
+                c in (node.get("class") or [])
+                for c in ("prompt-item", "prompt-block", "subtitle", "label",
+                          "section-label", "example-label", "lang", "english-summary")
+            ):
+                continue
+            text = node.get_text().strip()
+            if not text:
+                continue
+            bins_split[h2_seen].append(text)
+        out = []
+        for (anchor, _, _), parts in zip(anchors_and_bounds, bins_split):
+            joined = "  ".join(parts).strip()
+            if joined:
+                # Same shape as FULL mode but with text only in the page's lang
+                texts = {"zh": "", "en": ""}
+                texts[lang] = joined
+                out.append((anchor, texts))
+        return out
+
+    # ---- FULL mode (legacy): use data-zh / data-en attributes ----
     # Decorative elements whose data-zh/data-en contain OPPOSITE-language text.
     SKIP_CLASSES = {"en", "zh", "date", "category"}
 
@@ -283,22 +353,22 @@ def process_page(
     print(f"\n=== {path.name} ===")
     html_src = path.read_text(encoding="utf-8")
     soup = BeautifulSoup(html_src, "html.parser")
+    mode = detect_page_mode(soup)
     groups = collect_groups(soup)
-    print(f"  {len(groups)} model groups (cover + N models)")
+    print(f"  {len(groups)} model groups (cover + N models)  [mode={mode}]")
 
     changed = False
     generated = skipped_existing = skipped_lang = errors = 0
 
-    # Clean up stale per-paragraph data-tts-* — only anchors should keep them
+    # SPLIT mode uses `data-tts` (single attr); FULL uses `data-tts-zh/-en`.
+    # Clean up any stale hash attrs on non-anchors.
     anchor_ids = {id(a) for a, _ in groups}
-    for el in soup.find_all(attrs={"data-tts-zh": True}):
-        if id(el) not in anchor_ids:
-            del el["data-tts-zh"]
-            changed = True
-    for el in soup.find_all(attrs={"data-tts-en": True}):
-        if id(el) not in anchor_ids:
-            del el["data-tts-en"]
-            changed = True
+    stale_attrs = ("data-tts", "data-tts-zh", "data-tts-en")
+    for attr in stale_attrs:
+        for el in soup.find_all(attrs={attr: True}):
+            if id(el) not in anchor_ids:
+                del el[attr]
+                changed = True
 
     for anchor, lang_texts in groups:
         for lang in ("zh", "en"):
@@ -314,7 +384,9 @@ def process_page(
                 continue
 
             digest = hash_text(text)
-            attr_name = f"data-tts-{lang}"
+            # SPLIT mode: each file is single-language, JS reads `data-tts`.
+            # FULL mode: file holds both, JS reads `data-tts-{lang}`.
+            attr_name = "data-tts" if mode == "split" else f"data-tts-{lang}"
             if anchor.get(attr_name) != digest:
                 anchor[attr_name] = digest
                 changed = True
