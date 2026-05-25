@@ -1,11 +1,19 @@
-/* Mental Models Daily — i18n + TTS
- * Floating control: language toggle (zh/en) + play/pause/prev/next/stop + rate.
- * Reads <h1>/<h2>/<h3>/<p> in document order via Web Speech API, highlights
- * the active segment, smooth-scrolls it into view.
+/* BigCat Learning Hub — i18n + TTS
  *
- * Pages opted into "full" mode have <html data-i18n-mode="full"> plus
- * data-zh / data-en attributes on translatable elements. Pages without
- * those fall back to show/hide of existing bilingual sections by label.
+ * THREE MODES detected at load:
+ *
+ * 1. SPLIT mode (new, default for clean pages):
+ *    - Page has <html lang="zh-CN"> or <html lang="en"> AND no data-zh attrs
+ *    - Each language lives in its own file: foo.html (zh) / foo.en.html (en)
+ *    - Lang toggle = navigate to the other file
+ *    - TTS reads current page lang only
+ *
+ * 2. FULL mode (legacy embedded):
+ *    - <html data-i18n-mode="full"> + data-zh / data-en attributes everywhere
+ *    - Lang toggle = swap innerHTML in place
+ *
+ * 3. LEGACY mode (oldest pages):
+ *    - Bilingual sections labeled by class/text, show/hide by language
  */
 (function () {
   'use strict';
@@ -15,7 +23,29 @@
   const RATES = [0.75, 1, 1.25, 1.5, 2];
 
   const fullMode = document.documentElement.getAttribute('data-i18n-mode') === 'full';
-  let currentLang = localStorage.getItem(LANG_KEY) || 'zh';
+  const hasDataZh = document.querySelector('[data-zh][data-en]') !== null;
+  const splitMode = !fullMode && !hasDataZh;
+
+  // In split mode, page's own lang attribute is authoritative; localStorage is irrelevant.
+  let currentLang;
+  if (splitMode) {
+    currentLang = (document.documentElement.lang || 'zh').toLowerCase().startsWith('en') ? 'en' : 'zh';
+  } else {
+    currentLang = localStorage.getItem(LANG_KEY) || 'zh';
+  }
+
+  // ---------- Split-mode lang toggle: navigate to other file ----------
+  function otherLangUrl() {
+    const p = window.location.pathname;
+    // index.html -> index.en.html and vice versa
+    // foo-day9.html -> foo-day9.en.html
+    // foo-day9.en.html -> foo-day9.html
+    if (/\.en\.html$/.test(p)) return p.replace(/\.en\.html$/, '.html');
+    if (/\.html$/.test(p))     return p.replace(/\.html$/, '.en.html');
+    // Bare dir like /repo/ -> /repo/index.en.html etc.
+    if (p.endsWith('/')) return p + (currentLang === 'zh' ? 'index.en.html' : 'index.html');
+    return p;
+  }
 
   // ---------- Language ----------
   function applyLang(lang) {
@@ -96,7 +126,9 @@
       // Tear down any in-flight audio/utterance from the previous segment
       this._cancelPlayback();
 
-      const hash = seg.getAttribute('data-tts-' + currentLang);
+      const hash = splitMode
+        ? seg.getAttribute('data-tts')
+        : seg.getAttribute('data-tts-' + currentLang);
       if (hash) {
         const url = `audio/${currentLang}/${hash}.mp3`;
         const audio = new Audio(url);
@@ -275,9 +307,10 @@
       if (cs.display === 'none' || cs.visibility === 'hidden') return false;
       return true;
     };
-    // Prefer per-group baked audio (one mp3 covers a whole model section).
-    // After per-model bake, only h1/h2 carry data-tts-* attributes.
-    const tagged = document.querySelectorAll(`[data-tts-${currentLang}]`);
+    // Prefer per-group baked audio. Split-mode pages use simple `data-tts`
+    // (one lang per page); legacy/embedded pages use `data-tts-zh` / `data-tts-en`.
+    const ttsAttr = splitMode ? 'data-tts' : `data-tts-${currentLang}`;
+    const tagged = document.querySelectorAll(`[${ttsAttr}]`);
     if (tagged.length > 0) {
       tts.segments = Array.from(tagged).filter(visible);
     } else {
@@ -372,8 +405,13 @@ body{padding-bottom:96px!important}
     langBar.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-action]');
       if (!btn) return;
-      if (btn.dataset.action === 'lang-zh') applyLang('zh');
-      else if (btn.dataset.action === 'lang-en') applyLang('en');
+      const targetLang = btn.dataset.action === 'lang-zh' ? 'zh' : 'en';
+      if (splitMode) {
+        // Navigate to the other-language file if it differs from current
+        if (targetLang !== currentLang) window.location.assign(otherLangUrl());
+      } else {
+        applyLang(targetLang);
+      }
     });
 
     bar.addEventListener('click', (e) => {
@@ -510,7 +548,18 @@ body{padding-bottom:96px!important}
     injectStyles();
     injectControls();
     wireSeekBar();
-    applyLang(currentLang);
+    if (splitMode) {
+      // In split mode the page is already the right language; just mark the
+      // toggle UI to reflect that and skip attribute-based content swap.
+      const zhBtn = document.querySelector('.mmd-lang-toggle [data-action="lang-zh"]');
+      const enBtn = document.querySelector('.mmd-lang-toggle [data-action="lang-en"]');
+      if (zhBtn && enBtn) {
+        zhBtn.classList.toggle('active', currentLang === 'zh');
+        enBtn.classList.toggle('active', currentLang === 'en');
+      }
+    } else {
+      applyLang(currentLang);
+    }
     updateRateLabel();
     rebuildSegments();
     if ('speechSynthesis' in window && speechSynthesis.getVoices().length === 0) {
