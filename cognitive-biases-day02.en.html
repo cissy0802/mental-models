@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Deep Dive: Cognitive Biases — 2026-05-13</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.8}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 40px;border-bottom:1px solid #eee;margin-bottom:40px}
+header .category{font-size:0.85rem;font-weight:600;letter-spacing:3px;color:#d63031;text-transform:uppercase;margin-bottom:12px}
+header h1{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:1px;line-height:1.3}
+header .date{margin-top:10px;font-size:0.92rem;color:#b2bec3}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:32px;overflow:hidden}
+.card-header{background:linear-gradient(135deg,#d63031 0%,#ff7675 100%);padding:24px 28px}
+.card-header .num{font-size:0.78rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.card-header h2{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.3}
+.card-header .en{font-size:0.92rem;color:rgba(255,255,255,0.85);margin-top:4px;font-style:italic}
+.card-body{padding:28px}
+.section{margin-bottom:24px}
+.section:last-child{margin-bottom:0}
+.section-label{display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:2px;color:#d63031;background:#fdf0f0;padding:3px 10px;border-radius:4px;margin-bottom:12px}
+.section p{font-size:0.97rem;color:#2d3436;line-height:1.9}
+.example{background:#fdf0f0;border-left:3px solid #d63031;padding:14px 18px;border-radius:0 8px 8px 0;margin-top:12px}
+.example .label{font-size:0.78rem;font-weight:700;color:#d63031;margin-bottom:6px;letter-spacing:1px}
+.prompts{display:flex;flex-direction:column;gap:12px}
+.prompt-item{background:#fdf0f0;border-radius:8px;padding:14px 16px}
+.prompt-item .lang{font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#d63031;margin-bottom:6px}
+.prompt-item p{font-size:0.9rem;color:#2d3436;line-height:1.7}
+.prompt-item strong{color:#d63031}
+nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee}
+nav a{color:#d63031;text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a:hover{text-decoration:underline}
+@media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="category">Day 02 · Mental Models Deep Dive</div>
+<h1>Cognitive Biases</h1>
+<div class="date">2026-05-13  |  Cognitive Biases</div>
+</header>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 01</div>
+<h2>Confirmation Bias</h2>
+<div class="en">Confirmation Bias</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Confirmation bias is the most deeply rooted of human cognitive defects: we seek out, prefer, and remember information that supports what we already believe, while overlooking or discounting the evidence that contradicts it. This isn't laziness — even when you're actively researching, the bias quietly warps how you collect and interpret information. The neural mechanism rides the dopamine reward system: confirming information triggers a small pleasure spike; disconfirming information triggers an amygdala threat response. Confirmation bias is, at the physiological level, "reward the bias, punish the truth."</p>
+<p>The non-trivial insight: the most insidious mode of confirmation bias isn't <em>rejecting</em> opposing evidence — it's <em>distorting the search strategy itself</em>. You don't intentionally ignore contrary information; your search terms, choice of sources, and attention allocation are already biased toward confirmation before you start reading. In the filter-bubble era, recommendation algorithms are a force-multiplier for this. Worse, confirmation bias is self-sealing — the people most under its influence are the ones least likely to believe they have it.</p>
+<p>Practice: ① For each important judgment, set up a "red team" — assign a person (or AI) whose sole job is to surface contrary evidence; ② When searching, deliberately use opposite keywords (bullish on AI? search "AI bubble" / "AI overvalued"); ③ Build a steel-manning habit — before critiquing the opposing view, restate it in its strongest possible form. Make sure you're attacking the strongest version of their argument, not a straw man.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>Peter Wason's "2-4-6 task": the experimenter has a rule in mind; subjects propose number sequences to discover it. Most people, after guessing "ascending even numbers," only test sequences consistent with their hypothesis (8-10-12) and never try counterexamples (1-3-5). The actual rule was just "any three ascending numbers" — but pure confirmation-seeking made the truth permanently undiscoverable.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat is bullish on a particular AI hardware sector and starts reading heavily in the space. Two months in, he has stacked up "bullish evidence" and feels confident. Looking back carefully: three bearish analyst reports got skipped, one quarter of declining unit sales got hand-waved as "short-term noise," the community accounts he follows skew long. The whole process has unconsciously built an echo chamber. Counter-move: actively search for the most persuasive bearish case and force yourself to steel-man the other side.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Confirmation Bias is the tendency to search for, favor, and remember information that confirms our existing beliefs — while discounting contradictory evidence. It operates unconsciously even in active research, and is dramatically amplified by algorithmic recommendation systems. Countering it requires deliberately seeking out the strongest opposing arguments, not just acknowledging they exist.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">Prompt (CN)</div>
+<p>我持有这个观点：<strong>[你的观点]</strong>。请扮演一个强力的反驳者，用「钢人论证」方式（即以最有力的形式呈现反对意见，而非稻草人攻击）提出3个最有说服力的理由来否定这个观点，并指出我在研究这个问题时最可能产生确认偏误的环节。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I believe: <strong>[your belief]</strong>. Act as a rigorous devil's advocate using steel-manning (present the strongest possible case against my view, not a straw man). Give me the 3 most compelling reasons why I might be wrong, and identify the specific points in my research process where confirmation bias is most likely distorting my judgment.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 02</div>
+<h2>Anchoring Effect</h2>
+<div class="en">Anchoring Effect</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>The anchoring effect describes how people, when making a judgment, over-rely on the first piece of information they encounter — the "anchor" — as a reference point. Even when the anchor is random and irrelevant, it measurably shifts every subsequent estimate. Two psychological channels are at work: "anchor and adjust" — the brain starts from the anchor and makes adjustments that are almost always insufficient; and "selective accessibility" — the anchor activates memories and information consistent with itself, pulling later judgments in its direction.</p>
+<p>The non-trivial insight: anchoring doesn't only operate on "uncertain estimates" — it also operates on "judgments you feel sure about." Even seasoned experts — real estate appraisers, judges, doctors — are demonstrably shifted by random anchors in controlled experiments. Which means "I'm experienced, so I'm not anchorable" is itself a dangerous flavor of overconfidence. In negotiation, whoever quotes first holds a structural advantage. In investing, a stock's all-time high becomes a hidden anchor, and "40% off the peak" is a zero-information sentence that nonetheless drives behavior.</p>
+<p>Practice: ① Before exposure to any external anchor, form your own independent estimate range — "what do I think this is worth?" must be answered <em>before</em> you see the asking price; ② In negotiation, if you can't quote first, at least explicitly reject the first anchor's reference value before resetting the frame; ③ For investments, replace historical price with an intrinsic-value model (DCF, etc.) as your reference — price is somebody else's anchor; value is your own judgment.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>Kahneman and Tversky spun a rigged wheel that landed on 10 or 65, then asked subjects: "What percentage of UN member states are African?" People who saw 10 guessed 25% on average; people who saw 65 guessed 45%. A completely random, zero-information number shifted judgment by 20 percentage points.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat is shopping for a tutor and the first quote is $200/hour. The next quote, $120, feels "cheap." But if the first quote had been $80, $120 would feel "expensive." The $200 anchor distorted his sense of "fair price." De-anchoring move: before getting any concrete quote, estimate independently what range this service <em>should</em> cost, and use your own judgment as the anchor.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>The Anchoring Effect describes how the first piece of information we encounter disproportionately influences our subsequent judgments — even when that information is arbitrary or irrelevant. In negotiations, pricing, and investment decisions, whoever sets the anchor gains a structural advantage. The defense is to form an independent estimate before encountering any external anchor.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">Prompt (CN)</div>
+<p>我正在进行一个涉及数字判断的决策：<strong>[谈判/定价/估值场景]</strong>。请帮我：(1) 识别在这个场景中可能存在的锚定效应，(2) 提供一个去锚化的独立评估框架，帮我在接触任何外部锚点之前形成自己的基准判断，(3) 如果我处于谈判中，告诉我如何利用锚定效应为己方设置有利的参考框架。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm making a judgment that involves numbers: <strong>[negotiation/pricing/valuation scenario]</strong>. Help me: (1) identify where anchoring bias is most likely to distort my judgment in this context, (2) provide an independent valuation framework I can use before encountering any external anchor, and (3) if I'm in a negotiation, advise on how to strategically set anchors in my favor.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 03</div>
+<h2>Survivorship Bias</h2>
+<div class="en">Survivorship Bias</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>The core mechanism of survivorship bias is the <em>asymmetric extinction of data</em>: failures systematically disappear from the observable sample, leaving us to infer general laws from a heavily filtered subset. Evolution actually reinforced this — humans innately attend to "what's alive, present, and audible," because in the ancestral environment, the absent didn't matter for survival decisions. In a modern information environment, the same instinct makes us systematically overestimate the efficacy of "successful" strategies and underestimate the role of randomness.</p>
+<p>The non-trivial insight: the real danger of survivorship bias isn't "you can't see the failures" — it's that <em>it flips the direction of causality</em>. You think A caused success, but in reality success filtered for samples that happened to have property A. Successful entrepreneurs are mostly "high risk tolerance," not because risk-taking caused success, but because the conservative founders already exited your sample. Which means: the "strategies" extracted from success cases are often by-products of the survival filter, not real causal drivers.</p>
+<p>Practice: ① For any case study, force yourself to find a counterexample — someone who used the same strategy and failed. One case can't prove anything, but one counterexample can refute a lot; ② For any statistic, ask: "what was the inclusion criterion for this sample? who got excluded?"; ③ Build a "graveyard" habit — before investing, study the companies in the same sector that died; before founding, study the failed founders in the same model; before adopting a learning method, find the contexts where it didn't work.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>WWII: Allied analysts tallied the bullet-hole distribution on returning bombers and proposed armoring the most-hit spots. Statistician Abraham Wald pointed out the inversion: heavily hit areas were where planes could still take damage and return — the truly fatal hits (engines, fuel tanks) <em>didn't show up on returning aircraft</em>, because planes hit there crashed. Armor where the data <em>isn't</em>.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat reads dozens of case studies and notices that successful AI founders all have "manic execution and absurd work hours." He molds his work style accordingly. But this is textbook survivorship bias: founders with the same manic execution who picked the wrong direction and burned out simply don't appear in the corpus. The real question is: "Among <em>all</em> founders with that level of execution, what's the success rate? Did execution cause the outcome, or did sector selection?"</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Survivorship Bias occurs when we draw conclusions from visible survivors while ignoring the invisible failures. It makes successful strategies look more reliable than they are, because the failures using the same strategy have disappeared from our dataset. The corrective is to actively ask: "What would the full distribution of outcomes look like, including the cases I'm not seeing?"</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">Prompt (CN)</div>
+<p>我正在研究<strong>[某个成功案例/策略/人物]</strong>，希望从中提取可复制的经验。请帮我进行幸存者偏差检验：(1) 识别"幸存者样本"中哪些特征可能是偶然而非必要条件，(2) 推测那些采用相同策略但失败的"隐形案例"最可能具有哪些特征，(3) 在排除幸存者偏差后，这个策略的真实成功率和适用条件是什么？</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm studying <strong>[a success story/strategy/person]</strong> to extract replicable lessons. Apply survivorship bias analysis: (1) identify which features of the success story might be coincidental rather than causal, (2) describe the likely characteristics of the invisible failures who followed the same strategy, and (3) after correcting for survivorship bias, what is the realistic success rate and true preconditions for this approach?</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 04</div>
+<h2>Sunk Cost Fallacy</h2>
+<div class="en">Sunk Cost Fallacy</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>The sunk cost fallacy is continuing a course of action you should abandon, simply because of past time, money, or effort already invested. Rational decisions should weigh only future costs and benefits; sunk costs are unrecoverable and should not influence forward-looking choices. The psychological roots aren't just "I can't bear to walk away" — it's a double hostage situation: <em>loss aversion</em> (quitting confirms the loss) plus <em>self-consistency</em> (quitting concedes the past decision was wrong, threatening self-image).</p>
+<p>The non-trivial insight: the most dangerous form of sunk-cost reasoning isn't "I don't want to lose the money" — it's "I don't want to lose the <em>narrative</em>." After heavy investment in a project, you've sunk not just resources but a whole story about why this is worth doing. Quitting demolishes that narrative — and humans will keep losing money rather than admit the story was wrong. That's why organizational sunk-cost behavior is worse than individual: every reporting layer is protecting its own narrative.</p>
+<p>Practice: ① For any "continue or stop" decision, run the <em>reset test</em>: "If I were starting fresh today with no commitment to this project, would I choose to start it?" If the answer is no, the only reason to continue is sunk cost; ② Set a stop-loss line up front — "if by date X we haven't hit metric Y, we terminate" — defined before emotion can hijack the call; ③ Don't decide while in a losing state — when emotion is highest, decision quality is lowest. Let it cool 24 hours and re-evaluate.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>The Anglo-French Concorde program: mid-development, both governments already knew the commercial outlook was grim and operating costs untenable. But with billions already sunk, they kept funding it "to not waste the prior investment." Concorde operated for 27 years and never turned a profit — each day extending old losses with new ones. The fallacy is even nicknamed the "Concorde Fallacy" in economics.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat has spent 3 months and substantial configuration effort on one AI workflow toolset. A new tool appears that, from first principles, fits his needs better, with a switching cost of about two weeks. The sunk-cost voice says: "I've put 3 months in, I can't waste it." The correct question: "From today forward, over the next six months, which option — keep optimizing the old stack vs. switch to the new — has higher expected return?" The past 3 months aren't in the equation.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>The Sunk Cost Fallacy is the irrational tendency to continue an endeavor because of past investments — time, money, or effort — rather than future prospects. Rational decision-making should be purely forward-looking: sunk costs are gone regardless of your next action. The key question is always "what are the future costs and benefits from this point forward?" — not "how much have I already spent?"</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">Prompt (CN)</div>
+<p>我面临一个决策：是否继续<strong>[某个项目/投资/方向]</strong>。我已经投入了<strong>[时间/金钱/资源]</strong>。请帮我进行去除沉没成本影响的纯前瞻性分析：(1) 完全忽略过去已投入的成本，(2) 仅基于从今天起的未来预期收益和成本进行评估，(3) 给出继续 vs 停止的理性建议。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm deciding whether to continue <strong>[project/investment/direction]</strong>. I've already invested <strong>[time/money/resources]</strong>. Perform a purely forward-looking analysis that completely ignores sunk costs: (1) evaluate only the future expected costs and benefits from today forward, (2) explicitly flag any reasoning in my thinking that is contaminated by sunk cost fallacy, and (3) give a rational continue/stop recommendation based solely on prospective value.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav>
+<a href="index.en.html">← Back to Index</a>
+</nav>
+</div>
+</body>
+</html>
