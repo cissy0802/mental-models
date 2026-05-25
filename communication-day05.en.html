@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Communication &amp; Influence · 2026-05-04</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f7f7f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  header.page-header {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid #dfe6e9;
+  }
+  header.page-header h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 0.5px;
+  }
+  header.page-header .meta {
+    color: #636e72;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #6c5ce7; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #fdcb6e; }
+  .card.c4 { border-left-color: #e17055; }
+  .card h2 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    color: #2d3436;
+  }
+  .card .subtitle {
+    font-style: italic;
+    color: #636e72;
+    font-size: 14px;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-top: 18px;
+    margin-bottom: 6px;
+  }
+  .card.c1 .section-label { color: #6c5ce7; }
+  .card.c2 .section-label { color: #00b894; }
+  .card.c3 .section-label { color: #c9a227; }
+  .card.c4 .section-label { color: #e17055; }
+  .card hr {
+    border: none;
+    border-top: 1px solid #ecf0f1;
+    margin: 4px 0 12px;
+  }
+  .card p {
+    margin: 8px 0 12px;
+    text-align: justify;
+  }
+  .scenario {
+    background: #fafaf7;
+    border-left: 3px solid #b2bec3;
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-size: 14.5px;
+    color: #495057;
+    border-radius: 4px;
+  }
+  .scenario strong {
+    color: #2d3436;
+    margin-right: 6px;
+  }
+  .english-summary {
+    color: #2d3436;
+    font-size: 15px;
+  }
+  pre.prompt {
+    background: #1e272e;
+    color: #dfe6e9;
+    padding: 14px 16px;
+    border-radius: 6px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 10px 0 14px;
+  }
+  pre.prompt .tag {
+    display: inline-block;
+    background: #fdcb6e;
+    color: #1e272e;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 32px;
+    color: #6c5ce7;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px dashed #6c5ce7;
+    padding-bottom: 2px;
+  }
+  .back-link:hover { color: #4834d4; }
+  @media (max-width: 600px) {
+    .container { padding: 24px 16px 60px; }
+    .card { padding: 22px 20px; }
+    header.page-header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Deep Dive: Communication &amp; Influence</h1>
+    <div class="meta">2026-05-04 · Day 5</div>
+  </header>
+
+  <!-- Card 1: The Pyramid Principle -->
+  <section class="card c1">
+    <h2>The Pyramid Principle</h2>
+    <span class="subtitle">Conclusion first, evidence beneath.</span>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Distilled by Barbara Minto at McKinsey, the Pyramid Principle rests on four moves: lead with the conclusion, govern from above, group by category, and progress logically. Every piece of communication is an inverted tree — a single core claim at the top, several mutually exclusive and collectively exhaustive (MECE) supporting points below, then facts and data at the base. It respects working memory's chunking limit: the brain can hold only 4±1 units in parallel, so giving the frame before the details maximizes throughput.</p>
+    <p>The non-obvious insight: the pyramid is not a writing trick — it is a thinking structure. Forced to compress your conclusion into one sentence, you usually discover you had not actually thought it through. The real quality work happens while building the pyramid, not while delivering the report. A second counterintuitive point: within any single group, your logic must be purely deductive or purely inductive — never mixed. Switching modes mid-group forces the reader's brain to flip back and forth, and cognitive load spikes.</p>
+    <p>How to apply it: (1) write a single "answer sentence" (under 30 words); (2) walk down the pyramid by asking "why?" or "how?" — each answer becomes the next layer; (3) test horizontally with MECE for gaps and overlaps; (4) open with SCQA (Situation – Complication – Question – Answer) so the reader actively craves the conclusion.</p>
+    <div class="scenario"><strong>Classic Example</strong>Emailing your boss to approve a $200K budget — open with "I recommend approving Option A: it has the highest ROI, the lowest risk, and the team is ready," then expand each point. A reader scanning the first line can decide immediately, no need to reach the bottom.</div>
+    <div class="scenario"><strong>Scenario · BigCat</strong>Briefing the board on whether to bet on the AI super-individual market — open directly with "I recommend a $5M pilot fund, 6 months, validating three workflow categories," then support with market timing, the tech maturity curve, and team readiness. Coaching a child's writing? Have them write the single most important sentence at the very top, then add three reasons underneath. Ten minutes of pyramid drilling will sharpen their structured expression for life.</div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">The Pyramid Principle organizes ideas as an inverted tree: one governing thesis on top, MECE supporting points below, evidence at the base. It maps cleanly onto working memory limits, so audiences absorb conclusion-first messages with minimal cognitive load. Each grouping must be either purely deductive or purely inductive — never mixed. The real value is upstream: forcing yourself to write a single-sentence answer exposes muddled thinking before you ever speak. Open with SCQA to make the listener crave your conclusion.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <pre class="prompt"><span class="tag">English Template</span>Restructure the following content using the Pyramid Principle. Start with a single governing answer (under 25 words), then list 3 MECE supporting arguments, each backed by 1-2 data points. Use SCQA framing for the opener. Source text: [paste here]. Audience: [role]. Decision required: [what they must decide].</pre>
+  </section>
+
+  <!-- Card 2: Cialdini's Six Principles of Influence -->
+  <section class="card c2">
+    <h2>Cialdini's Six Principles of Influence</h2>
+    <span class="subtitle">The levers behind every "yes".</span>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Through years of field experiments, Robert Cialdini distilled six psychological shortcuts that trigger compliance: Reciprocity, Commitment &amp; Consistency, Social Proof, Liking, Authority, and Scarcity. They exploit the heuristics the brain reaches for when bandwidth is tight. These shortcuts saved our ancestors decision cost; in today's information-saturated environment they can be deliberately and legitimately activated to amplify influence.</p>
+    <p>The non-obvious insight: the real power lies not in any single principle but in their combination and sequencing. Lead with a small, personalized, meaningful gift (reciprocity, intensified). Follow with a tiny commitment (consistency). Then show that "people like you" have already said yes (social proof). The conversion rates compound multiplicatively. Cialdini later added a seventh principle — Unity — and shared identity outperforms mere liking, because it activates "we" rather than "me and you."</p>
+    <p>How to apply it: (1) before trying to influence anyone, inventory which of these six or seven levers you naturally hold; (2) design a "commitment ladder" for every important conversation — start from the smallest possible yes; (3) keep scarcity honest. Manufactured scarcity poisons trust permanently.</p>
+    <div class="scenario"><strong>Classic Example</strong>The supermarket sample tray — a tiny piece of sausage (reciprocity) + "promotion ends today" (scarcity) + "300 people already bought it" (social proof). Three levers stacked, purchase rate jumps noticeably.</div>
+    <div class="scenario"><strong>Scenario · BigCat</strong>Driving team adoption of a new AI workflow — start by openly admitting "I tripped over this myself" (liking / unity), ask each person to commit to a one-week trial (consistency), and cite OpenAI / DeepMind practices (authority) plus "early adopters are saving 40% of their time" (social proof). Parenting works the same way: to get a child to put down the tablet, first give 15 minutes of undivided attention (reciprocity), then let them set their own "screen time tonight" rule (consistency). Far more effective than commanding.</div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Cialdini identified six (now seven) heuristic levers that trigger compliance: reciprocity, commitment/consistency, social proof, liking, authority, scarcity, and unity. They exploit cognitive shortcuts the brain uses under bandwidth pressure. Power compounds when levers are sequenced — for example, a personalized gift followed by a tiny commitment followed by social proof. Unity (shared identity) outperforms mere liking because it activates "us" rather than "me and you". Use them ethically; manufactured scarcity destroys trust permanently.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <pre class="prompt"><span class="tag">English Template</span>Design a 3-step persuasion script to move [target] toward [specific action]. For each step, label which of Cialdini's principles it activates (reciprocity, commitment, social proof, liking, authority, scarcity, unity). Context: [paste]. Assets I already have: [list]. Avoid any deceptive framing.</pre>
+  </section>
+
+  <!-- Card 3: Framing Effect -->
+  <section class="card c3">
+    <h2>Framing Effect</h2>
+    <span class="subtitle">Change the frame, change the decision.</span>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Kahneman and Tversky formalized the framing effect inside prospect theory: the same information, phrased as a "gain" versus a "loss," triggers very different choices. The mechanism is loss aversion — losses hurt roughly 2 to 2.5 times more than equivalent gains feel good — so "avoid losing $10,000" drives behavior more powerfully than "earn $10,000." Frames change not only emotional color but also the reference point, and the reference point decides where "good" ends and "bad" begins.</p>
+    <p>The non-obvious insight: frames pivot on more than gain/loss. There are time frames ("$3 a day" vs. "$1,095 a year"), ratio frames ("95% survival" vs. "5% mortality"), analogy frames (decision as "investment" vs. "gamble"), and identity frames ("be a non-smoker" vs. "quit smoking" — research shows the latter has a markedly higher relapse rate). The highest-leverage communicators refuse the frame they are handed and proactively reset it — which is why, in debate, swapping the concept is more lethal than swapping the argument.</p>
+    <p>How to apply it: (1) before speaking, ask "from which reference point is my listener evaluating this?"; (2) prepare 2-3 frames for the same message and A/B test them; (3) guard against being framed in reverse — whenever you read emotionally charged copy, pause and ask "if I changed the frame, would the conclusion still hold?"</p>
+    <div class="scenario"><strong>Classic Example</strong>Surgical communication — telling a patient "30-day post-op survival is 90%" wins consent far more often than "30-day mortality is 10%," and the clinical literature has confirmed this repeatedly. Same data, different frame, different decision.</div>
+    <div class="scenario"><strong>Scenario · BigCat</strong>Talking to a child about schoolwork: "1% better than yesterday" (gain frame + compounding anchor) sustains intrinsic drive far longer than "30 points short of a perfect score" (loss frame). Re-frame your stance on AI tools from "it will replace me" to "it makes me a 10x leveraged operator" — fear flips to agency. Facing an investment decision, reframe "could lose $2M" as "spending $2M to buy a cognitive option on this market" — and you escape loss aversion long enough to judge clearly.</div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">The framing effect shows that logically equivalent messages produce different choices when phrased as gains versus losses. This is driven by loss aversion — losses hurt about 2-2.5x more than equivalent gains feel good. Beyond gain/loss, frames operate on time, ratio, analogy, and identity dimensions. Master communicators refuse the frame they are handed and proactively reset the reference point. Always ask: "From which anchor is my audience evaluating this?"</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <pre class="prompt"><span class="tag">English Template</span>Rewrite the following message in 4 distinct frames: (1) gain frame, (2) loss frame, (3) time-distributed frame, (4) identity frame. Original message: [text]. Audience: [profile]. After each version, add one sentence explaining when that frame works best and one sentence on its ethical risk.</pre>
+  </section>
+
+  <!-- Card 4: Story Thinking -->
+  <section class="card c4">
+    <h2>Story Thinking</h2>
+    <span class="subtitle">Narratives outlive arguments.</span>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Story thinking is grounded in neuroscience. When people hear data, only the language areas of the brain (Broca's, Wernicke's) light up. When they hear a story, sensorimotor cortex, insula, and the default mode network fire as well — producing "neural coupling," in which the listener's brain activity begins to synchronize with the speaker's. Uri Hasson's fMRI experiments at Princeton show that a good story makes listeners' brain patterns closely track those of the storyteller. That is why stories transmit belief while data only transmits information.</p>
+    <p>The non-obvious insight: the atomic unit of a story is not "plot" but the four-element arc — desire, obstacle, action, transformation. Missing any one of them and it is no longer a story. Pixar's famous "Once upon a time…, Every day…, One day…, Because of that…, Until finally…" formula is essentially these four elements unpacked. A second counterintuitive point: good stories require details so specific they are almost embarrassing. Abstraction kills resonance; specifics activate mirror neurons. "She cried" is a statement. "Her tear hit page four of the contract" is a story.</p>
+    <p>How to apply it: (1) decide which single belief you want to plant in the listener (the takeaway); (2) work backward to find a desire-obstacle event you lived through or witnessed up close; (3) use sensory detail, not adjectives; (4) leave the ending open — a conclusion the listener reaches themselves sticks far better than one you hand them.</p>
+    <div class="scenario"><strong>Classic Example</strong>Launching the iPhone, Steve Jobs did not list specs. He said: "We've been carrying around three devices — a phone, an iPod, and an internet communicator. Today, we're combining them into one." Desire (simplify) + obstacle (three things) + transformation (one).</div>
+    <div class="scenario"><strong>Scenario · BigCat</strong>To get a team to embrace AI, skip the productivity slides and tell a personal story: "Last Tuesday at 2 a.m. I was staring at an 80-page due diligence report, about to break. I let the AI produce a structured summary in 12 minutes. In that moment I realized I wasn't using a tool — I was reallocating my life's hours." When teaching a child why honesty matters, don't lecture — tell them about a specific time you lied as a kid and paid the price. They will remember the story for 30 years; they would forget the lesson in three days.</div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Stories work because they trigger neural coupling: the listener's brain literally synchronizes with the storyteller's, activating sensory and emotional regions that pure data cannot reach. The atomic unit of a story is desire — obstacle — action — transformation; missing any element collapses the structure. Concrete sensory detail beats abstraction because it fires mirror neurons. Leave the moral implicit; conclusions the listener draws themselves stick far longer than ones you hand them.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <pre class="prompt"><span class="tag">English Template</span>I want to plant this single belief in [audience]: [belief in one sentence]. Using the desire–obstacle–action–transformation arc, generate 3 candidate stories (preferably grounded in this raw material: [paste]). Each story: 120-200 words, contains at least 2 concrete sensory details, ends without stating the moral explicitly.</pre>
+  </section>
+
+  <a href="index.en.html" class="back-link">← Back to Mental Models Daily index</a>
+
+</div>
+</body>
+</html>
