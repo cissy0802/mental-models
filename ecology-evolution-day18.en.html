@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Ecology &amp; Evolution · 2026-05-16</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .page-header .meta {
+    color: #868e96;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #6c5ce7; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #fdcb6e; }
+  .card.c4 { border-left-color: #e17055; }
+  .card h2 {
+    font-size: 24px;
+    margin: 0 0 4px;
+    color: #2d3436;
+  }
+  .card .subtitle {
+    font-size: 14px;
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    padding: 2px 0;
+  }
+  .c1 .section-label { color: #6c5ce7; }
+  .c2 .section-label { color: #00b894; }
+  .c3 .section-label { color: #b88b1a; }
+  .c4 .section-label { color: #e17055; }
+  .card hr {
+    border: none;
+    border-top: 1px solid #ecf0f1;
+    margin: 0 0 16px;
+  }
+  .card p {
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0 8px;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block strong {
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 6px;
+  }
+  .english-summary {
+    font-size: 14.5px;
+    color: #495057;
+    line-height: 1.8;
+  }
+  .prompt-block {
+    background: #1e272e;
+    color: #dfe6e9;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 10px 0 18px;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    overflow-x: auto;
+    position: relative;
+  }
+  .prompt-label {
+    display: inline-block;
+    background: #fdcb6e;
+    color: #2d3436;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #e9ecef;
+  }
+  .footer a {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Deep Dive: Ecology &amp; Evolution</h1>
+    <div class="meta">2026-05-16 · Day 18</div>
+  </header>
+
+  <!-- Card 1: Survival of the Fittest -->
+  <section class="card c1">
+    <h2>Survival of the Fittest</h2>
+    <div class="subtitle">Not the strongest survives — the best adapted does.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>"Survival of the fittest" was coined by Herbert Spencer in interpreting Darwin's theory of evolution, and Darwin himself adopted the phrase in the fifth edition of On the Origin of Species. The core meaning is often misread as "the strongest survives" — it actually means "the best-adapted to the environment survives." Fitness refers to alignment with a specific environment, not absolute power. When the environment changes, yesterday's "fittest" can become today's "least fit."</p>
+    <p>Non-trivial insight: the deepest lesson is that adaptation is relative and dynamic. Dinosaurs ruled the planet for 160 million years as the "fittest" of their day, only to flip to "least fit" the moment the environment lurched. True evolutionary advantage is not "best-adapted right now" but "the ability to keep adapting" — meta-fitness. Viewed through complex adaptive systems, over-specialization is a hidden fragility: the more perfectly you fit the current environment, the larger your loss when it changes. This rhymes with Taleb's antifragility — real robustness is not resisting change but profiting from it. A second counterintuitive point: evolution needs no "designer." Complex adaptive structures can emerge spontaneously from the simple loop of variation–selection–retention — a core metaphor for market economies, AI training, and cultural evolution.</p>
+    <p>How to apply it: do regular "environment scans" — what are the key assumptions your current survival rests on? Which are being eroded by technology, market, or social change? Maintain "adaptive redundancy" — never throw 100% of your resources at the currently optimal strategy; reserve 10-20% for exploration and experimentation. Deliberately train the ability to learn quickly in new environments rather than deepening specialization in the old one.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>Darwin's finches in the Galápagos. On different islands, finches evolved sharply different beak shapes to fit different food sources — thick beaks for crushing nuts, slender ones for probing for insects. Peter and Rosemary Grant's 40-year field study found that a single severe drought could produce a measurable evolutionary shift in average beak depth within two years. The standard of "fittest" can be redefined within a single generation.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>In AI, the bar for "fittest" is being reset month by month. Two years ago, prompt-engineering mastery was scarce; today AI agents, multimodal interaction, and MCP toolchains are redefining "adapted." As an AI super-individual, your core strategy is not "perfectly master today's tools" but "stay able to migrate quickly to the next generation" — meta-fitness. Concretely: put 70% of your effort into the most effective current AI workflow (exploitation), and 30% into exploring emerging tools and paradigms (exploration). Parenting works the same way: rather than specializing a child early (only piano, only math), prioritize the meta-capability of "learning how to learn" — curiosity, reading habits, problem decomposition. Those are the "adaptive infrastructure" that never depreciates when the environment shifts.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">"Survival of the fittest" means survival of the best-adapted to a specific environment, not the strongest in absolute terms. Fitness is relative and dynamic — the optimal phenotype shifts as the environment changes, turning yesterday's winners into today's casualties. Over-specialization is a hidden fragility: the more perfectly an organism fits one niche, the greater its loss when conditions shift. True evolutionary advantage lies in meta-fitness — the capacity to adapt to adaptation itself. This maps directly to complex adaptive systems: markets, AI ecosystems, and careers all follow variation-selection-retention dynamics. Practical wisdom: maintain adaptive redundancy, allocate resources to exploration alongside exploitation, and train the ability to learn quickly in new environments rather than deepening specialization in the current one.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Apply the "survival of the fittest" framework to [my career / business / skill portfolio]. (1) List 3-5 key environmental assumptions my current success depends on; (2) Assess the probability each assumption gets disrupted within 2-3 years; (3) Diagnose any over-specialization risk; (4) Design an exploration/exploitation resource allocation plan to maintain adaptability under environmental disruption.
+    </div>
+  </section>
+
+  <!-- Card 2: Red Queen Effect -->
+  <section class="card c2">
+    <h2>Red Queen Effect</h2>
+    <div class="subtitle">You have to run as hard as you can just to stay in place.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>The Red Queen Effect takes its name from Through the Looking-Glass, where the Red Queen tells Alice: "here, you must run as hard as you can to stay in the same place." Evolutionary biologist Leigh Van Valen ported the metaphor into science: in coevolution, a species must keep evolving simply to maintain its fitness relative to competitors — because competitors are evolving in parallel. Predators get faster; prey must also get faster. Pathogens mutate; host immune systems must adapt. Absolute progress does not guarantee relative advantage.</p>
+    <p>Non-trivial insight: the Red Queen Effect reveals a brutal reality — in competitive systems, "progress" only maintains the status quo; standing still equals falling behind. This is not a single catch-up; it is a never-ending arms race. A deeper point: the Red Queen explains why sexual reproduction (expensive and inefficient) persisted in evolution at all — recombination produces enough variation for a species to stay in step with the parasite arms race. Pulling further back: the value of diversity is not "optimal now" but "keeping up the evolutionary pace." A second lesson: in a Red Queen race, the real strategy is not running faster (that only maintains) — it is switching tracks. Create a niche the competitor has not yet reached and exit the arms race for a while.</p>
+    <p>How to apply it: identify the "Red Queen treadmills" in your field — which dimensions is everyone accelerating on? Is your "running speed" just keeping you in place? Distinguish "Red Queen dimensions" (must keep up but create no differentiation) from "Blue Ocean dimensions" (spaces competitors have not reached). Use automation and AI to keep up on the Red Queen dimensions; pour creative resources into the Blue Ocean ones.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>The cheetah-and-gazelle arms race. The cheetah evolved sprint speeds of 120 km/h; the Thomson's gazelle responded with 80 km/h plus extreme cornering. Over millions of years of coevolution, both "progressed" continuously, yet the cheetah's hunt success rate has stayed near 50% — absolute speeds have multiplied, but the competitive ratio has barely moved. That is the Red Queen Effect in its purest form.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>AI tooling is a textbook Red Queen track — you learn advanced GPT-4 usage, so does everyone else; you set up automation workflows, so do your competitors. Continued investment on these dimensions only maintains relative position. The real differentiation lies in your "Blue Ocean dimensions" — for example, combining AI capability with a unique cross-disciplinary knowledge stack (quantum mechanics × Buddhism × neuroscience × investing) to create a cognitive niche others cannot easily reproduce. Automate the Red Queen tasks (information gathering, content formatting, daily ops) with AI and reinvest the freed-up cognitive bandwidth into the Blue Ocean depth. Parenting has Red Queen dynamics too: all parents push their kids; loading up on cram schools and worksheets is treadmill running. Real differentiation comes from building the meta-capabilities other families neglect.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">The Red Queen Effect, named after the character in Through the Looking-Glass, describes coevolutionary dynamics where continuous adaptation is required merely to maintain relative fitness. In competitive systems, absolute progress does not guarantee relative advantage because competitors are evolving simultaneously. This creates an endless arms race where standing still means falling behind. The effect explains costly biological strategies like sexual reproduction — genetic recombination maintains variation speed in the parasite arms race. Strategically, the insight is to distinguish Red Queen dimensions (where effort merely maintains position) from Blue Ocean dimensions (uncontested spaces). Automate the Red Queen treadmill; invest creative resources in building unique ecological niches that competitors have not yet reached.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Analyze the Red Queen Effect in [my industry / skill domain]. (1) Identify 3 "Red Queen treadmills" where everyone is accelerating; (2) Assess whether I'm leading, pacing, or falling behind on each; (3) Identify 2-3 under-contested "Blue Ocean dimensions"; (4) Design a resource allocation strategy that automates the Red Queen dimensions while concentrating creative energy on Blue Ocean opportunities.
+    </div>
+  </section>
+
+  <!-- Card 3: Symbiosis -->
+  <section class="card c3">
+    <h2>Symbiosis</h2>
+    <div class="subtitle">Competition is not the only logic — cooperation can rewrite the evolutionary equation.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Symbiosis denotes a long-term, intimate living relationship between different species, defined by German mycologist Anton de Bary in 1879. The main flavors: mutualism (both benefit, e.g., bees and flowers), commensalism (one benefits, the other is unaffected, e.g., epiphytes on large trees), and parasitism (one benefits, the other is harmed). Lynn Margulis's endosymbiotic theory exposes an even more striking fact: the mitochondria and chloroplasts of eukaryotic cells were originally independent bacteria that, through mutualism with the host cell, eventually fused into a single organism. The very complexity of life is the product of cooperation.</p>
+    <p>Non-trivial insight: the mainstream evolutionary story emphasizes competition, but symbiosis reveals the other half of the picture — the biggest leaps in the history of life (prokaryote to eukaryote, single-cell to multi-cell, plants to plant-fungal networks) were almost all driven by symbiosis. Competition produces optimization; symbiosis produces innovation. This challenges the default zero-sum frame: under the right conditions, two species joined together can produce a combined fitness far greater than the sum of their parts (1+1>>2). Conditions: complementary capabilities, reliable exchange mechanisms, and enough relationship stability for mutual benefits to accumulate. Symbiosis also has a dark side — an initially mutualistic relationship can drift into parasitism as power asymmetry grows. Maintaining symbiosis requires continual recalibration of the value exchange.</p>
+    <p>How to apply it: map your important relationships onto the symbiosis spectrum — mutualism, commensalism, or parasitism? Evaluate whether the value you provide and the value you receive are symmetric. Look for complementary potential partners — your "waste" may be someone else's "raw material." Design sustainable exchange mechanisms and periodically check whether a relationship is sliding from mutualism toward parasitism.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>The mycorrhizal network — the forest's "Wood Wide Web." Tree roots and fungi form a mutualistic relationship: trees feed the fungi carbohydrates produced by photosynthesis; the fungal hyphae network helps the trees absorb water and phosphorus from the soil. More remarkably, mother trees use the mycorrhizal network to send nutrients to seedlings, and even pass on stored carbon to neighboring trees before dying. The whole forest is a superorganism connected by symbiosis.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>The human-AI relationship is a new kind of symbiosis. The most effective mode today is mutualism: humans bring goal-setting, value judgment, and cross-domain analogies; AI brings information-processing speed, pattern matching, and tireless execution. The "AI super-individual" is, at heart, a human-AI mutualistic organism — your cognitive architecture is the photosynthesis the AI cannot replicate; the AI's compute is the mycorrhizal network you cannot build on your own. The key is keeping the mutualism balanced: over-reliance on AI that decays your own thinking turns the relationship into parasitism (you appear dependent, but you are actually fragile). The same lens applies in knowledge communities — find partners whose capabilities complement yours (your cross-disciplinary view × their technical depth) and design a regular value-exchange ritual.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Symbiosis — long-term intimate association between different species — reveals that cooperation, not just competition, drives evolution's most transformative leaps. Endosymbiotic theory shows that eukaryotic cells themselves arose from bacterial symbiosis; the Wood Wide Web demonstrates that entire forests operate as symbiotic superorganisms. Competition optimizes within existing niches; symbiosis creates fundamentally new capabilities (1+1>>2). The conditions for productive symbiosis are complementary capabilities, reliable exchange mechanisms, and sufficient relationship stability for mutual benefits to accumulate. Symbiotic relationships require ongoing calibration — initial mutualism can drift toward parasitism as power asymmetries develop. Map your key relationships onto the symbiosis spectrum and design sustainable value-exchange mechanisms.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Analyze [my key relationship network / partnerships / human-AI collaboration mode] through the symbiosis model. (1) Classify each relationship as mutualism, commensalism, or parasitism; (2) Assess the symmetry of value exchange; (3) Identify any relationships drifting from mutualism toward parasitism; (4) Spot 2 potential mutualistic opportunities with complementary partners and design specific exchange mechanisms.
+    </div>
+  </section>
+
+  <!-- Card 4: Ecological Niche -->
+  <section class="card c4">
+    <h2>Ecological Niche</h2>
+    <div class="subtitle">You don't have to be everything — only irreplaceable in one position.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>An ecological niche is the unique functional role a species occupies in an ecosystem — the resources it uses, the times it is active, the spaces it lives in, and how it interacts with other species. Gause's competitive exclusion principle states that two species with identical niches cannot coexist in the long run — one must be eliminated or forced to differentiate into a different niche. This is why species diversity in nature is so high: every species has found its unique space through niche differentiation.</p>
+    <p>Non-trivial insight: a niche describes not only "where you are" but also "your relational function with the entire system." A species' niche is jointly defined by its skills, resource needs, the position of competitors, and environmental conditions — change any variable and the boundary shifts. A deeper lesson comes from niche construction theory: species are not only passively adapting to their niche; they actively modify the environment to create new ones. Earthworms restructure soil; beavers dam streams to create wetlands. They are shaping their own evolutionary environment. A second insight: the narrower the niche, the stronger your competitiveness within it, but the more fragile you are to environmental change. Between the "fundamental niche" (the full space theoretically available) and the "realized niche" (the space actually occupied) lies undeveloped potential.</p>
+    <p>How to apply it: draw your "niche map" — on which dimensions do you provide unique value? Who are your direct competitors (overlapping niches)? Can you add a new dimension to differentiate? Evaluate your niche width — too wide and each dimension lacks depth; too narrow and you are fragile. Look for niche-construction opportunities — can you change the environment (build a new platform, set a new standard, educate the market) to define a position only you can occupy?</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>Niche differentiation among the large carnivores of the African savanna. Lions, cheetahs, leopards, and African wild dogs are all predators, but they coexist by differentiating across time (day/night), space (plain/canopy/scrub), prey size, and hunting strategy (group/solo, speed/strength/endurance). The cheetah chose a narrow niche — "extreme-speed short-range sprints on medium-sized prey" — and on that dimension is unmatched, but cannot challenge lions head-on for large prey.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>Inside the "AI super-individual" ecosystem, you need to find a distinctive niche. The pure "AI tool user" niche is already overcrowded (equivalent to a generalist predator on the savanna). Your differentiated niche could be the three-way intersection of "cross-disciplinary mental models × AI-augmented cognition × applied teaching" — a position with very few competitors. A concrete niche-construction move: use a daily mental-models stream to create a new "knowledge ecology," and inside the environment you defined, you are naturally the best-adapted species. Parenting application: help your child discover their niche — not being mediocre on every dimension, but excellent on a unique combination of dimensions. A child fluent in both programming and biology occupies a rarer niche than peers who do only one.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">An ecological niche defines a species' unique functional role within an ecosystem — the resources it uses, the conditions it thrives in, and its relationships with other species. The competitive exclusion principle states that two species with identical niches cannot coexist indefinitely; one must differentiate or be eliminated. Niche construction theory adds that organisms actively shape their environment to create new niches rather than merely adapting to existing ones. The strategic implications are profound: map your niche across multiple dimensions, identify overlaps with competitors, and differentiate by adding unique dimensional combinations. Niche width involves a trade-off between depth (competitive strength within the niche) and breadth (resilience to environmental change). The most powerful move is niche construction — reshaping the competitive landscape so that your unique capability set becomes the defining advantage.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Conduct a "niche analysis" for me. (1) Map competitors' ecological niches in [my industry / domain] along 2-3 key dimensions; (2) Plot my current position and identify major niche overlaps; (3) Spot "white space" — dimensional combinations with no strong occupants; (4) Design a "niche construction" plan — what actions can I take to reshape the environment so that the white space becomes a new niche where my unique capabilities are the defining advantage?
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.en.html">&larr; Back to Index</a>
+  </footer>
+
+</div>
+</body>
+</html>
