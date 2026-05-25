@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Deep Dive: Psychology &amp; Behavior — 2026-05-08</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.8}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 40px;border-bottom:1px solid #eee;margin-bottom:40px}
+header .category{font-size:0.85rem;font-weight:600;letter-spacing:3px;color:#e17055;text-transform:uppercase;margin-bottom:12px}
+header h1{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:1px;line-height:1.3}
+header .date{margin-top:10px;font-size:0.92rem;color:#b2bec3}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:32px;overflow:hidden}
+.card-header{background:linear-gradient(135deg,#e17055 0%,#fab1a0 100%);padding:24px 28px}
+.card-header .num{font-size:0.78rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.card-header h2{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.3}
+.card-header .en{font-size:0.92rem;color:rgba(255,255,255,0.85);margin-top:4px;font-style:italic}
+.card-body{padding:28px}
+.section{margin-bottom:24px}
+.section:last-child{margin-bottom:0}
+.section-label{display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:2px;color:#e17055;background:#fdf3f1;padding:3px 10px;border-radius:4px;margin-bottom:12px}
+.section p{font-size:0.97rem;color:#2d3436;line-height:1.9}
+.example{background:#fdf3f1;border-left:3px solid #e17055;padding:14px 18px;border-radius:0 8px 8px 0;margin-top:12px}
+.example .label{font-size:0.78rem;font-weight:700;color:#e17055;margin-bottom:6px;letter-spacing:1px}
+.prompts{display:flex;flex-direction:column;gap:12px}
+.prompt-item{background:#fdf3f1;border-radius:8px;padding:14px 16px}
+.prompt-item .lang{font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#e17055;margin-bottom:6px}
+.prompt-item p{font-size:0.9rem;color:#2d3436;line-height:1.7}
+.prompt-item strong{color:#e17055}
+nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee}
+nav a{color:#e17055;text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a:hover{text-decoration:underline}
+@media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="category">Day 09 · Mental Models Deep Dive</div>
+<h1>Psychology &amp; Behavior</h1>
+<div class="date">2026-05-08  |  Psychology &amp; Behavior</div>
+</header>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 01</div>
+<h2 data-tts-en="17f1bd2e87c9642b" data-tts-zh="09ef571d0753d36e">Loss Aversion</h2>
+<div class="en">Loss Aversion</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">In Depth</div>
+<p>Loss aversion was introduced by Kahneman and Tversky in prospect theory: the pain of losing $100 is roughly 2 to 2.5 times the pleasure of gaining $100. It's not a rational bias but an evolutionary fingerprint — in the resource-scarce ancestral world, individuals sensitive to loss survived at much higher rates. The amygdala flags "potential loss" as a survival-grade threat and triggers avoidance bypassing the prefrontal cortex.</p>
+<p>The counterintuitive point most people miss: loss aversion doesn't only attach to things you already own — it attaches to things you've <em>mentally</em> already taken ownership of. The moment you've rehearsed "getting it" in your head, it becomes the baseline. Not getting it = a loss. That's why free trials, pre-order waitlists, and "we're holding it for you" scripts work so well — they transfer psychological ownership to you before you've paid a cent.</p>
+<p>Applications come in two layers. Externally: replace "you'll gain" with "you'll lose" framing ("not doing this loses you…" usually beats "doing this gets you…"), or grant the counterparty psychological ownership and let them feel the cost of giving it up. Internally: identify your own loss aversion — separate "real sunk cost" from "imagined ownership," and exit the second one fast. A simple reverse question: if I didn't own this right now, would I buy it back at today's price?</p>
+<div class="example">
+<div class="label">Classic example</div>
+<p>You bought a stock and it's down 30%. You know the fundamentals have worsened, but you can't bring yourself to sell — instead you fantasize about "selling when it recovers." If someone handed you 30%-position cash and asked you to buy the same stock at today's price, you wouldn't touch it. That's loss aversion — what you're attached to isn't the company; it's the pain of admitting a loss.</p>
+</div>
+<div class="example">
+<div class="label">BigCat scenario</div>
+<p>As an "AI super-individual" practitioner, you've probably sunk huge effort into one workflow — prompt tuning, private knowledge bases, automation scripts. When a new model generation or better paradigm arrives, loss aversion will make you cling to the old stack. The countermove: a quarterly "zero-based AI tool budget" — assume you're starting today from scratch; would you still choose this stack? Same applies to tutoring your kid: if a method you've invested heavily in stops working, switching now is more rational than "holding on until I break even."</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Loss aversion means losses feel roughly twice as painful as equivalent gains feel good — a survival-wired bias, not a rational one. Crucially, "loss" includes things you only mentally own (free trials, default endowments), which is why reframing choices around what someone stands to lose is far more persuasive than framing them around gain.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">Chinese Template</div>
+<p>你是行为经济学顾问。我正在考虑放弃<strong>[项目/资产/习惯]</strong>，已投入<strong>[时间/金钱/精力]</strong>。请用损失厌恶视角帮我区分：哪些是真实沉没成本、哪些是想象中的所有权？给出"如果今天从零开始我是否会重新投入"的判断框架，并指出我最可能掉入的 3 个认知陷阱。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>Act as a loss-aversion coach. I'm deciding whether to quit <strong>[project/asset/habit]</strong> after investing <strong>[resources]</strong>. Separate genuine sunk cost from imagined ownership. Apply the "would I buy in again today at current price?" test, and flag the 3 most likely cognitive traps holding me back.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 02</div>
+<h2 data-tts-en="b4f9effcdd99f085" data-tts-zh="2609fe0286ef61c8">Peak-End Rule</h2>
+<div class="en">Peak-End Rule</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">In Depth</div>
+<p>The peak-end rule also comes from Kahneman's research: people's overall evaluation of an experience depends almost entirely on two moments — the emotional peak (good or bad) and the ending. The flat middle, and even the total duration, get heavily discounted by memory. The brain doesn't store a continuous stream — it stores a few sparse snapshots that get assembled into a retrievable "story."</p>
+<p>The non-obvious insight: the "two selves" are separate. The experiencing self feels every second in real time; the remembering self decides whether to come back. They often disagree. Kahneman's colonoscopy experiment proved it: an 8-minute procedure that ended painfully made patients more reluctant to return than a 24-minute procedure that eased off at the end — even though total pain was higher in the latter. In other words, whether the summer you build for your kid is memorable doesn't depend on how much you did — it depends on whether there was a peak, and how the ending lands.</p>
+<p>The application is "invest in both ends, compress the middle." Engineer a high-intensity positive peak (surprise, flow, breakthrough), and obsess over the ending — the last 2 minutes of a meeting, the last day of a trip, the refund flow of a product all decide overall reputation. Conversely, painful experiences should either be compressed (don't drag them out) or have the pain front-loaded, not back-loaded.</p>
+<div class="example">
+<div class="label">Classic example</div>
+<p>Disneyland's queues are notoriously bad, but visitors leave feeling "it was amazing" — because the park deliberately engineers at least one emotional peak (fireworks, a character meet-and-greet) and orchestrates a warm farewell at the exit. The same 8 hours, ending in a queue, would collapse memory entirely.</p>
+</div>
+<div class="example">
+<div class="label">BigCat scenario</div>
+<p>With a school-age child, "did today feel good?" is decided almost entirely by two moments: the highest point of the day, and the last 10 minutes before sleep. No matter how rich the day's content was, if it ends with criticism over homework and nagging about brushing teeth, what your kid remembers is "today was bad." Countermove: deliberately engineer a 30-second peak (an unexpected hug, a shared discovery) and turn the last 10 minutes before sleep into an inviolable "tender ritual." Same logic for team 1:1s — your colleague remembers the sharpest line and the closing line, not the careful analysis in between.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>We judge experiences not by their average or duration, but by the emotional peak and the ending. The "experiencing self" lives through every moment; the "remembering self" decides whether to come back — and only the latter holds the pen when writing the story. Design the peak, perfect the ending, compress the rest.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">Chinese Template</div>
+<p>你是体验设计师。请用峰终定律重新设计<strong>[场景：例如孩子的生日 / 团队 offsite / 产品 onboarding]</strong>。先列出当前体验的情绪曲线，标出现有的峰与终；再给出 3 个低成本制造正向峰的方案，以及 2 个优化结尾的具体动作。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>Act as an experience designer. Apply the peak-end rule to redesign <strong>[scenario]</strong>. Map the current emotional curve, mark existing peaks and the ending, then propose 3 low-cost ways to engineer a positive peak and 2 concrete moves to upgrade the ending.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 03</div>
+<h2 data-tts-en="ef7bbb4e1fa1c090" data-tts-zh="0e46d1af08047b60">Flow Theory</h2>
+<div class="en">Flow Theory</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">In Depth</div>
+<p>Flow, proposed by Csikszentmihalyi, describes the optimal experience: challenge slightly above skill, attention fully absorbed, self-awareness dissolved, time distortion. Neurologically, flow is accompanied by "transient hypofrontality" — the prefrontal regions responsible for self-monitoring, critique, and reflection briefly go quiet, the default mode network gives way to the task network, and dopamine, norepinephrine, and endorphins surge together. Efficiency and pleasure maximize simultaneously.</p>
+<p>What's counterintuitive: the enemy of flow isn't difficulty — it's mild distraction. One window switch, one notification, one "let me just check" — and it takes an average of 23 minutes to return to the same cognitive depth. That means 8 hours sliced into sixteen 30-minute fragments produces almost no flow at all; while a single uninterrupted 2-hour deep block can equal a whole day of shallow work. In other words, what determines your output isn't total hours — it's the longest unbroken block.</p>
+<p>The core application is engineering the four prerequisites of flow: (1) clear goal + instant feedback; (2) challenge precisely matched to skill (the 4-15% sweet zone above current ability); (3) physical and digital environment free of interruptions; (4) a startup ritual that reduces entry friction. You can't muscle into flow — but you can lure it. Same time, same place, same opening action, and the brain enters state within 5 minutes.</p>
+<div class="example">
+<div class="label">Classic example</div>
+<p>Gaming for 3 hours that feel like 30 minutes — the most common flow experience anyone has. Clear goal (beat the level), instant feedback (frame-by-frame response), auto-adapted difficulty (dynamic matchmaking), outside world tuned out. Game studios are the world's largest "flow engineers" — they reverse-engineered human attention with neuroscience.</p>
+</div>
+<div class="example">
+<div class="label">BigCat scenario</div>
+<p>As a super-individual chasing AI leverage, your scarcest resource isn't tokens — it's uninterrupted deep blocks. Recommendation: reserve one 90-120 minute "AI co-flow window" daily — kill all notifications, pick one goal ("finish thinking through X"), let Claude/GPT act as instant feedback and external working memory. This dovetails with neuroscience: the human brain provides prefrontal high-level intent and cross-disciplinary intuition, AI provides execution and instant feedback — together they hit all four flow prerequisites. Use the same principle to design your kid's homework environment: single goal + instant feedback + difficulty sweet spot — more effective than any "focus training."</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Flow is the state where challenge slightly exceeds skill, self-awareness dissolves, and output peaks — neurologically it's a transient quieting of the prefrontal cortex. Its real enemy isn't difficulty but interruption: a single ping costs ~23 minutes of depth. Protect uninterrupted blocks, not total hours.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">Chinese Template</div>
+<p>你是心流教练。我每天能投入<strong>[X]</strong>小时做<strong>[任务]</strong>，但产出感薄弱。请基于 Csikszentmihalyi 的四前提（清晰目标 / 即时反馈 / 难度技能匹配 / 无打断环境）诊断我的工作流，找出当前最大的"心流杀手"，并设计一个可执行的 90 分钟心流块协议。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>Act as a flow coach. I spend <strong>[X]</strong> hours daily on <strong>[task]</strong> but output feels shallow. Diagnose my workflow against Csikszentmihalyi's four conditions (clear goal / instant feedback / skill-challenge match / no interruption). Identify my biggest flow killer and design a concrete 90-minute deep-work protocol.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 04</div>
+<h2 data-tts-en="d169571aa6ac8459" data-tts-zh="3963a19e4137cfa5">Habit Loop</h2>
+<div class="en">Habit Loop</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">In Depth</div>
+<p>The habit loop was systematized by Duhigg in <em>The Power of Habit</em>: cue → routine → reward. After enough repetition, the basal ganglia "packages" the neural pathway, and the behavior bypasses the prefrontal cortex and runs automatically. That's why your hand goes for your phone the moment you sit on the couch — you didn't "decide" to reach; the basal ganglia ran a subroutine.</p>
+<p>The counterintuitive key: habits can't be deleted, only replaced. Once a neural pathway exists, it exists forever. Willpower suppressing it is like pressing on a spring with the gas pedal already floored — the moment you're tired, stressed, or drinking, the prefrontal cortex relaxes and the old habit roars back to full strength. That's why relapse rates for alcohol are so high, and why "I'll spend less time on my phone" almost never works. What actually works: keep the same cue and reward, swap out the routine in the middle — replace "stress → phone scrolling → brief relief" with "stress → 4-7-8 breathing → brief relief."</p>
+<p>Method: run a "habit audit" — log every stuck behavior over a week and reverse-engineer the cue (time? place? emotion? prior action?) and reward (dopamine? social validation? avoidance?). Then design a new loop using Atomic Habits' four laws: make the cue obvious, make the behavior easy, make the process attractive, make the reward immediate. Environment design beats willpower every time — put what you want to do in your line of sight, and add 3 steps of friction to what you don't.</p>
+<div class="example">
+<div class="label">Classic example</div>
+<p>Toothpaste barely sold in the early 20th century until Pepsodent added a "cooling tingle" as an instant reward. The tingle didn't actually clean anything, but users felt it every time, and the daily-brushing habit became universal. It's the most classic case in history of engineering a population-scale habit through immediate reward.</p>
+</div>
+<div class="example">
+<div class="label">BigCat scenario</div>
+<p>Want to build "30 minutes of co-thinking with AI every day"? Don't rely on willpower. Design the loop: cue = the morning's first cup of coffee arriving at the desk (a stable existing cue) → routine = open a preset Claude workspace with today's question (written the night before, zero friction) → reward = the small thrill of thinking visibly advancing + the satisfaction of checking a box. The same loop teaches your child: backpack down after school (cue) → favorite math problem first as "appetizer" (routine) → one M&amp;M + your smile (reward). Three weeks in, the startup friction for homework disappears. From a Buddhist lens, habits are the micro-structure of <em>karma</em> — every repetition deepens one mental groove. Changing a habit is, at its core, reshaping the continuum of mind.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Habits follow a cue → routine → reward loop encoded in the basal ganglia. They cannot be deleted, only replaced — keep the cue and reward, swap the routine in the middle. Environment design beats willpower; make the desired behavior obvious, easy, attractive, and immediately rewarding.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">Chinese Template</div>
+<p>你是习惯设计教练。我想<strong>[建立/戒除]</strong>一个习惯：<strong>[具体行为]</strong>。请先帮我识别这个习惯背后的真实 cue 和 reward（提出 5 个诊断问题），然后基于"保留 cue+reward，替换 routine"的原则设计一个新回路，并用 Atomic Habits 四定律检查可执行性。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>Act as a habit-design coach. I want to <strong>[build/break]</strong> the habit of <strong>[specific behavior]</strong>. First identify the real cue and reward (ask 5 diagnostic questions). Then design a replacement loop that keeps the cue and reward but swaps the routine, and stress-test it against the four laws of Atomic Habits.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav><a href="index.en.html">← Back to Index</a></nav>
+</div>
+</body>
+</html>
