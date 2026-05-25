@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Risk &amp; Probability · Day 7</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0; background: #f7f7f5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; color: #2d3436; line-height: 1.75; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+  header.page-header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #dfe6e9; }
+  header.page-header h1 { font-size: 32px; margin: 0 0 12px; color: #2d3436; letter-spacing: 1px; }
+  header.page-header .meta { font-size: 14px; color: #636e72; letter-spacing: 2px; text-transform: uppercase; }
+  .card { background: #ffffff; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 6px solid #ccc; }
+  .card.c1 { border-left-color: #6c5ce7; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #fdcb6e; }
+  .card.c4 { border-left-color: #e17055; }
+  .card h2 { margin: 0 0 4px; font-size: 24px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 20px; letter-spacing: 0.5px; }
+  .divider { margin: 22px 0 14px; }
+  .divider .label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 2px 0; font-variant: small-caps; }
+  .c1 .divider .label { color: #6c5ce7; }
+  .c2 .divider .label { color: #00b894; }
+  .c3 .divider .label { color: #d6a843; }
+  .c4 .divider .label { color: #e17055; }
+  .divider hr { border: none; border-top: 1px solid #ecf0f1; margin: 6px 0 0; }
+  .card p { margin: 0 0 14px; font-size: 15.5px; color: #2d3436; }
+  .card .example { background: #fafafa; border-radius: 6px; padding: 12px 16px; margin: 10px 0; font-size: 15px; color: #4a5568; }
+  .summary { font-size: 15px; color: #4a5568; background: #f5f7fa; padding: 14px 18px; border-radius: 6px; line-height: 1.7; }
+  .prompt-block { background: #1e272e; color: #dfe6e9; border-radius: 8px; padding: 16px 18px; margin: 10px 0 14px; font-family: "SF Mono", "Consolas", "Monaco", monospace; font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; word-break: break-word; overflow-x: auto; }
+  .prompt-block .tag { display: inline-block; background: #fdcb6e; color: #1e272e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px; letter-spacing: 1px; }
+  footer { text-align: center; margin-top: 50px; padding-top: 24px; border-top: 1px solid #dfe6e9; }
+  footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="page-header">
+    <h1>Mental Models Deep Dive: Risk &amp; Probability</h1>
+    <div class="meta">2026-05-06 · Day 7</div>
+  </header>
+
+  <section class="card c1">
+    <h2>1. Bayesian Thinking</h2>
+    <div class="subtitle">Calibrate your beliefs with new evidence</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>The core mechanism of Bayesian thinking is simple: beliefs aren't 0/1 verdicts but probability distributions. When new evidence arrives, you don't throw out the old judgment — you update it according to posterior ∝ prior × likelihood. The prior is what you believe today; the likelihood asks "if the hypothesis were true, how likely is this evidence?" Decisions stop being "right vs wrong" and become "how likely to be right."</p>
+    <p>The non-obvious insight: the more extreme your prior, the harder it is to shift with a single data point; the more vague your prior, the more easily noise hijacks it. Real experts aren't "neutral" — they hold priors with reasonable strength and are highly sensitive to disconfirming evidence. Another counterintuitive point: absence of evidence is itself evidence. What you don't see updates your belief just as much as what you do.</p>
+    <p>How to practice it: before a decision, write down three things explicitly — (1) your prior probability as a percentage, (2) what kinds of evidence should move it up or down, and (3) by how much. After the fact, audit how you actually updated against your intuition, and look for systematic biases.</p>
+    <div class="example"><strong>Classic example:</strong> A medical test for a rare disease (base rate 0.1%) returns positive, with 99% test accuracy. Intuition says the patient is 99% likely to have the disease. Bayes says under 10% — because the prior is so low that false positives swamp true positives.</div>
+    <div class="example"><strong>BigCat scenario:</strong> You're evaluating an early-stage AI startup. Prior: comparable projects have a 15% five-year survival rate. But the founding team proactively presents counter-data three times ("here are the users who don't come back") — behavior that's extremely unlikely for a low-quality team (huge likelihood ratio). The posterior should jump to 35-40%.<br><br>Your kid says "I'm bad at math." The prior is one recent disappointing unit test (70%). But the longer-run evidence — voluntary daily problem sets, clear solution paths — is poorly compatible with "bad at math." Resist the emotional drift of the prior. Recalibrate "I'm bad" into "I'm 80% likely stuck on one specific sub-concept in this chapter" — a solvable problem.</div>
+    <div class="divider"><span class="label">English Summary</span><hr></div>
+    <div class="summary">Bayesian Thinking treats beliefs as probability distributions, not binary verdicts. Each new piece of evidence — including its absence — multiplies your prior by a likelihood ratio to yield an updated posterior. Strong priors resist single data points; vague priors get hijacked by noise. The discipline: write priors explicitly, specify what evidence would shift them, and reconcile actual updates against intuition.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">Chinese Template</span>
+请帮我用贝叶斯思维分析以下决策：[决策内容]。
+我当前的先验判断是 [概率%]，依据是 [理由]。
+新出现的证据是 [证据描述]。
+请：1) 评估这个证据在"假设成立"与"假设不成立"两种情形下出现的相对概率（似然比）；2) 计算更新后的后验概率；3) 指出我可能忽略的反向证据；4) 给出 3 个能进一步显著更新概率的关键观察点。</div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+Apply Bayesian reasoning to my decision: [decision].
+My current prior is [X%], based on [reasoning].
+New evidence: [evidence].
+Please: 1) Estimate the likelihood ratio; 2) Compute the updated posterior; 3) Flag disconfirming evidence I may have overlooked; 4) List 3 future observations that would most efficiently update this belief.</div>
+  </section>
+
+  <section class="card c2">
+    <h2>2. Black Swan</h2>
+    <div class="subtitle">The "impossible" events are the ones that decide the outcome</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>Black Swan events have three signatures: extreme rarity (outside the known sample), massive impact (they set the trajectory of the system), and retrospective rationalization ("we should have seen it coming"). The mechanism is that the world isn't normally distributed — it's often a power law. In a power-law world, averages lie: a tiny number of extreme events accounts for most of the total.</p>
+    <p>The counterintuitive insight: risk management shouldn't focus on "what's most likely to happen" but on "if it happens, will I be wiped out?" This is Taleb's ergodicity problem — a positive-EV bet that includes a single ruinous outcome guarantees long-run failure. Another widely missed point: Black Swans cut both ways. Positive Black Swans (a 100x return on one bet) exist too; the question is whether your structure can catch them.</p>
+    <p>How to practice it: (1) Replace probability forecasts with stress tests — don't ask whether it will happen, ask whether you'd survive if it did. (2) Hold a barbell portfolio: extreme safety on one end, bounded high-risk exposure on the other, nothing in the middle. (3) Maintain a "never" list — no single variable should ever be able to wipe out 80% of your assets, energy, or health.</p>
+    <div class="example"><strong>Classic example:</strong> Before the 2008 subprime crisis, every bank model put the probability of a nationwide 20%+ housing decline at near zero — it had never happened in the historical window. But the models used historical data, not structural fragility. When it did happen, the global financial system nearly collapsed.</div>
+    <div class="example"><strong>BigCat scenario:</strong> ChatGPT's late-2022 release was a textbook positive Black Swan for knowledge workers. Beforehand, most career models assumed "AI can only handle narrow tasks." Afterward, everyone said "we should have seen the Transformer's potential" — but very few actually positioned for it. Whether you catch a positive Black Swan depends on whether you've built scalable leverage structures in advance: personal content assets, cross-domain learning habits, technical literacy.<br><br>When planning your child's education, the traditional path assumes "the career landscape will be roughly stable for the next 15 years." But the pace of AI iteration is itself a Black Swan source. Rather than over-betting on one specific skill, bet on antifragile capabilities: meta-learning, the ability to ask good questions, judgment in collaborating with AI, psychological resilience. This is making unpredictability part of the educational strategy.</div>
+    <div class="divider"><span class="label">English Summary</span><hr></div>
+    <div class="summary">Black Swans are rare, high-impact, retrospectively-rationalized events that dominate outcomes in power-law systems. Forecasting their probability is futile; engineering survivability is not. Apply barbell strategies — extreme safety paired with bounded high-risk exposure — and maintain a "never" list that prevents any single variable from inflicting irreversible loss. Position structurally for positive Black Swans as well: optionality compounds.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">Chinese Template</span>
+请帮我对以下计划/系统做黑天鹅压力测试：[计划描述]
+请分别列出：1) 3 个负向黑天鹅情景（罕见但毁灭性）；2) 3 个正向黑天鹅情景（罕见但巨大利好）；3) 当前结构中能"一击致命"的单点脆弱性；4) 为同时降低负向风险、提高正向暴露的杠铃式调整建议。</div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+Stress-test the following plan for Black Swan exposure: [plan].
+Please provide: 1) Three plausible negative tail scenarios with cascading effects; 2) Three positive tail scenarios I could structurally capture; 3) Single points of failure that could cause ruin; 4) A barbell-style restructuring to reduce downside while preserving upside optionality.</div>
+  </section>
+
+  <section class="card c3">
+    <h2>3. Antifragility</h2>
+    <div class="subtitle">Not just resilient — actually getting stronger under stress</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>Taleb distinguishes three states: fragile (breaks under stress), robust (unchanged by stress), and antifragile (strengthened by stress). The mathematical signature of an antifragile system is a convex response to volatility — the upside slope exceeds the downside slope. Biological evolution, muscle training, startup ecosystems, immune systems — all are textbook antifragile.</p>
+    <p>The counterintuitive insight: over-protection manufactures fragility. Sterile environments weaken immunity, zero-failure schooling destroys resilience, suppressed market volatility accumulates systemic risk. "Stability" is often fragility in disguise — it compounds small risks into large ones. A second insight: antifragility isn't about avoiding the hit — it's about turning every hit into information and adaptation.</p>
+    <p>How to practice it: (1) Cap the downside (stop-losses, insurance, exit routes) while leaving the upside uncapped. (2) Deliberately expose yourself to small, recoverable doses of stress. (3) Replace one large bet with many small, low-correlation bets. (4) Review every "hit" for what new information it revealed — let the system learn from disorder.</p>
+    <div class="example"><strong>Classic example:</strong> Muscle training. Microscopic tears (stress) trigger supercompensation, and the muscle returns stronger. No exercise (avoiding stress) leads to atrophy; one-shot overload (unrecoverable damage) leads to injury. The key to antifragility: controlled dose plus full recovery.</div>
+    <div class="example"><strong>BigCat scenario:</strong> Design your "AI super-individual" learning system as antifragile — spend 20% of each week deliberately testing new tools, prompts, or workflows that have a 50% failure rate. The 10% that fail is cheap tuition; among the 10% that succeed, one or two will be transformative (convex payoff). Sticking only to tools you already know means your capability atrophies relative to a fast-moving frontier — that's hidden fragility.<br><br>When your kid fails a test, the fragile response is anxiety, more tutoring, easier material. The antifragile response is to turn the wrong answers into specific diagnostic information — which underlying concept did this expose? Reframe every "failure" as a free diagnostic scan. Over time, a child who extracts information from volatility builds a steeper capability curve than one whose scores never wobbled.</div>
+    <div class="divider"><span class="label">English Summary</span><hr></div>
+    <div class="summary">Antifragility is a step beyond robustness: systems that gain from disorder, volatility, and stressors via convex payoffs. Overprotection — sterile environments, failure-free trajectories, suppressed volatility — manufactures hidden fragility. Engineer antifragility by capping downside, exposing yourself to small recoverable stressors, diversifying into many low-correlation bets, and treating every shock as a free diagnostic signal.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">Chinese Template</span>
+请用反脆弱框架审视我的 [系统/项目/习惯]：[详细描述]
+分析：1) 它目前属于脆弱、坚韧还是反脆弱？依据是什么？2) 哪些隐性"过度保护"在制造长期脆弱？3) 我可以引入哪些可控的小剂量压力源（凸性暴露）？4) 给出一份为期 30 天的反脆弱化改造清单。</div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+Apply the antifragility framework to my [system/project/habit]: [description]
+Analyze: 1) Is it fragile, robust, or antifragile, and why? 2) Which hidden over-protections are accumulating long-term fragility? 3) What small, recoverable stressors could introduce convexity? 4) Provide a 30-day antifragility retrofit plan with measurable signals.</div>
+  </section>
+
+  <section class="card c4">
+    <h2>4. Expected Value Thinking</h2>
+    <div class="subtitle">The geometric center of decision-making</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>The basic formula: EV = Σ (probability × payoff). The core idea is to decouple a single outcome from the quality of the decision behind it — a decision can be correct (positive EV) but the outcome can still be a loss, and a decision can be wrong (negative EV) but still pay off through luck. Only EV compounds in the long run.</p>
+    <p>The non-obvious insight: real-world EV is asymmetric. Many opportunities have bounded downside (the cost of trying a new tool is a few hours) and potentially enormous upside (it reshapes your whole workflow). These asymmetric setups are the expert's hunting ground. A second counterintuitive point: when sample size is small, EV thinking yields to the ruin boundary (Kelly criterion) — even a positive-EV bet, sized too large in a single shot, can still destroy you.</p>
+    <p>How to practice it: (1) For every important decision, list 3-5 possible outcomes with their probabilities and values. (2) Separate repeatable decisions (use EV) from one-shot irreversible ones (use maximum tolerable loss). (3) Actively hunt for bounded-downside, asymmetric-upside opportunities. (4) Audit past decisions and separate decision quality from outcome luck.</p>
+    <div class="example"><strong>Classic example:</strong> Flip a fair coin: heads wins $200, tails loses $100. EV = 0.5×200 + 0.5×(-100) = +$50. Even if you lose $100 on this round, repeating the bet long-term is profitable. The mistake is abandoning a positive-EV game over one bad outcome.</div>
+    <div class="example"><strong>BigCat scenario:</strong> Should you spend 4 hours learning a new AI framework? Outcome distribution: 60% marginally useful (saves 5 hrs/month), 30% useless (lose 4 hrs), 10% extremely useful (reshapes a workflow, saves 50+ hrs/month). EV ≈ 0.6×5 + 0.3×(-4) + 0.1×50 ≈ +6.8 hrs/month — a classic bounded-downside, asymmetric-upside decision.<br><br>When choosing your child's extracurriculars, instead of picking only the "most certainly useful" activities, build an EV portfolio: one high-certainty pick (e.g. academic reinforcement) + one mid-certainty pick (e.g. public speaking) + one low-probability, high-payoff pick (e.g. robotics, coding, creative writing). The third category will usually be just an experience — but with a 10% chance of igniting a lifelong passion, whose expected value dwarfs the other two combined.</div>
+    <div class="divider"><span class="label">English Summary</span><hr></div>
+    <div class="summary">Expected Value Thinking decouples decision quality from single outcomes: EV = Σ (probability × payoff). Hunt for asymmetric opportunities where downside is bounded but upside is uncapped. Use EV for repeatable decisions, but switch to ruin-avoidance (Kelly-style sizing) for irreversible ones. Audit decisions by their EV at the time of choice, not by whether luck happened to land in your favor.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">Chinese Template</span>
+请帮我对以下决策做期望值分析：[决策内容]
+请：1) 列出 3-5 个可能结果，估算每个的概率与价值；2) 计算综合期望值并标注关键不确定性；3) 判断该决策是否属于"下行有限、上行非对称"机会；4) 如属一次性不可逆决策，请用 ruin-avoidance 视角重新评估并给出建议投入比例。</div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+Run an expected-value analysis on this decision: [decision]
+Please: 1) Enumerate 3-5 possible outcomes with probability and payoff; 2) Compute the EV and flag the most uncertain input; 3) Assess whether the structure is asymmetric (bounded downside, uncapped upside); 4) If the decision is one-shot/irreversible, re-evaluate under a ruin-avoidance lens and recommend a sizing/exposure level.</div>
+  </section>
+
+  <footer>
+    <a href="index.en.html">← Back to Index</a>
+  </footer>
+</div>
+</body>
+</html>
