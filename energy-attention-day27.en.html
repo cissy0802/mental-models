@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Energy &amp; Attention Management · 2026-05-16</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f7f7f5; color: #2d3436; line-height: 1.75; }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card { background: #ffffff; border-radius: 12px; padding: 32px 36px; margin-bottom: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border-left: 6px solid #ccc; }
+  .card.c1 { border-left-color: #6c5ce7; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #fdcb6e; }
+  .card.c4 { border-left-color: #e17055; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label { display: inline-block; font-variant: small-caps; font-size: 12px; letter-spacing: 3px; font-weight: 600; margin-top: 20px; margin-bottom: 8px; padding: 2px 0; }
+  .c1 .section-label { color: #6c5ce7; }
+  .c2 .section-label { color: #00b894; }
+  .c3 .section-label { color: #b88b1a; }
+  .c4 .section-label { color: #e17055; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 16px; }
+  .card p { margin: 12px 0; font-size: 15px; }
+  .example-block { background: #f1f3f5; border-radius: 8px; padding: 14px 18px; margin: 18px 0 8px; font-size: 14px; color: #495057; border-left: 3px solid #adb5bd; }
+  .example-block strong { color: #2d3436; letter-spacing: 1px; }
+  .example-block .example-label { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #636e72; margin-bottom: 6px; }
+  .english-summary { font-size: 14.5px; color: #495057; line-height: 1.8; }
+  .prompt-block { background: #1e272e; color: #dfe6e9; border-radius: 8px; padding: 16px 18px; margin: 10px 0 18px; font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 13px; line-height: 1.65; overflow-x: auto; position: relative; }
+  .prompt-label { display: inline-block; background: #fdcb6e; color: #2d3436; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; text-transform: uppercase; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) { .container { padding: 28px 14px 48px; } .card { padding: 24px 20px; } .page-header h1 { font-size: 24px; } .card h2 { font-size: 20px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Deep Dive: Energy &amp; Attention Management</h1>
+    <div class="meta">2026-05-16 · Day 27</div>
+  </header>
+
+  <!-- Card 1: Attention Residue -->
+  <section class="card c1">
+    <h2>Attention Residue</h2>
+    <div class="subtitle">You think you switched tasks — your brain is still on the last one.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Attention residue was named by organizational behavior researcher Sophie Leroy: when you switch from task A to task B, the brain does not cleanly "shut down" the cognitive process of A. The unfinished A keeps occupying bandwidth in working memory, leaving a "residue" — even though you are doing B, your cognitive resources are partly locked onto A. Studies show that the stronger the residue, the worse the performance on B.</p>
+    <p>Non-trivial insight: attention residue is why "multitasking" is not just an efficiency problem — it is a quality problem. Every switch wastes "reload" time and forces you to enter the new task with only partial cognitive resources. You think you are working at full capacity; you are actually running underclocked. A deeper mechanism: the sense of incompletion (Zeigarnik effect) is the main source of residue. If you "encapsulate" the current task before switching — write the next step, mark progress, set a recovery anchor — residue drops substantially, because the brain receives a "safely stored" signal and stops revisiting. That means "how you end a task" matters more for overall output quality than "how you start a task."</p>
+    <p>How to apply it: spend two minutes on an "encapsulation ritual" before every switch — write down current progress, unresolved questions, and the next concrete action. When using time blocks, insert a 5-minute "clearing buffer" between blocks rather than jumping directly. Reduce unnecessary switches — batch similar tasks; handle email and messages in fixed windows rather than in real time.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>In Sophie Leroy's experiment, subjects were interrupted on an unsolved word puzzle and asked to switch to a résumé-evaluation task. Their judgments on the résumés were significantly worse than those of a control group that completed the puzzle first. The unfinished puzzle kept occupying cognitive bandwidth even when subjects subjectively believed they were fully focused on the new task.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>As an AI super-individual, you may be running several AI-assisted workflows in parallel — writing prompts, reviewing AI output, managing a knowledge base, replying in community channels. Every hop between tasks leaves cognitive fragments from the previous one eating into your decision quality. Solution: for each AI workflow, keep a "state file" — before switching, have AI generate a progress summary and next-action list and save it to a fixed location. When you come back, read the state file first instead of rebuilding context from memory. Same in parenting: when your child interrupts work, immediately write a "breakpoint" on a sticky note instead of trying to handle both things at once.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Attention residue, identified by Sophie Leroy, describes how cognitive resources remain partially locked on a previous task after switching, degrading performance on the current one. The incomplete task continues consuming working memory bandwidth even when you believe you've fully shifted focus. The Zeigarnik effect — the mind's tendency to ruminate on unfinished tasks — is the primary driver. The antidote is deliberate "encapsulation" before switching: document progress, note the next step, and create a recovery anchor. This signals the brain that the task is safely stored, releasing cognitive bandwidth. How you end a task matters more for overall output quality than how you begin the next one.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Create an "attention encapsulation" note for my current work. I'm working on [task description] and need to switch to [other task]. Structure it as: (1) Current progress (2) Unresolved key questions (3) Next concrete action (4) Context needed for resumption. Keep it concise enough to restore my state in under 30 seconds.
+    </div>
+  </section>
+
+  <!-- Card 2: Decision Fatigue -->
+  <section class="card c2">
+    <h2>Decision Fatigue</h2>
+    <div class="subtitle">Willpower is a finite inventory — every decision draws from it.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Decision fatigue: after many decisions, the quality of subsequent decisions falls noticeably. Research shows decision-making capacity fatigues like a muscle — Israeli judges' parole approval rate falls to near zero just before lunch and recovers to ~65% afterward. Not because the judges become "evil"; once cognitive resources are exhausted, the brain defaults to the safest option (deny) or the least-effort option (status quo).</p>
+    <p>Non-trivial insight: the danger of decision fatigue is not that you "make bad decisions" but that you "stop making decisions" — a fatigued brain regresses to autopilot, picks defaults, takes shortcuts, or simply procrastinates. More subtly, trivial decisions and major decisions draw from the same cognitive resource pool. The decision energy you burn in the morning on "what to wear," "what to eat for breakfast," and "which email to reply to first" directly weakens the quality of your afternoon strategic decisions. That is why Steve Jobs wore only black turtlenecks and Mark Zuckerberg only grey T-shirts — not because they did not care about appearance, but to eliminate trivial decisions and protect cognitive resources for high-value ones. Second counterintuitive point: self-control and decision-making share the same energy pool (ego depletion), so resisting temptation also accelerates decision fatigue.</p>
+    <p>How to apply it: schedule the most important decisions in the most energetic part of the day (usually morning). Build "decision systems" to replace one-off decisions — use rules, processes, and defaults to eliminate repetitive choices. Set automation rules for trivial matters (fixed menus, fixed wardrobe, fixed routines). Track your "decision budget" and refuse to waste it on low-value choices.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>Danziger et al. studied 1,112 Israeli parole rulings and found approval rates dropped from ~65% at the start of each session to near zero, recovering after breaks/meals. The judges were not deliberately biased — when cognitive resources are exhausted, the brain defaults to the "safe option" (deny parole). The finding shows decision fatigue is not job-specific; it is a hard constraint of the cognitive system.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>As a mother and AI super-individual, your decision density is extreme: workflow design, AI tool selection, content direction, investment judgment, your child's education arrangements… every one draws from the same energy pool. Strategy: (1) lock strategic thinking (investment decisions, system design) into the morning peak; (2) have AI agents handle low-value decisions — let AI pre-filter information, rank options, and propose defaults; you only "approve or reject"; (3) preset parenting decisions — plan Monday-to-Friday dinner menus and after-school activities in advance, avoiding on-the-spot decisions every day. The essence is replacing "willpower" with "systems."</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Decision fatigue describes the deterioration of decision quality after a prolonged period of decision-making. The cognitive resource pool is finite and shared across all decisions — trivial and strategic alike. As it depletes, the brain defaults to the safest option, the path of least resistance, or outright avoidance. The Israeli parole study dramatically demonstrates this: approval rates drop to near zero before meal breaks regardless of case merit. The practical implication is that decision volume, not just complexity, determines quality. Solutions involve protecting peak-energy hours for high-value decisions, automating trivial choices through rules and defaults, and using systems (AI agents, pre-set routines, decision frameworks) to replace repeated deliberation with one-time design.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Conduct a "decision audit" for my typical [day/week]. List all decisions I make, categorize them into three tiers (strategic / tactical / trivial). For trivial decisions, propose automation rules or defaults. For tactical decisions, design a simplified decision framework. For strategic decisions, recommend optimal timing, environment, and preparation rituals to maximize quality.
+    </div>
+  </section>
+
+  <!-- Card 3: Energy Management -->
+  <section class="card c3">
+    <h2>Energy Management</h2>
+    <div class="subtitle">Time is equal for everyone — energy is the real differentiator.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Energy management was systematized by Jim Loehr and Tony Schwartz in The Power of Full Engagement: high performance is not a time-management problem; it is an energy-management problem. Human energy operates on four dimensions — physical (body), emotional (quality of feeling), mental (focus), and spiritual (sense of purpose). Each has a capacity limit and recovery mechanism, and the four are tightly coupled: physical fatigue drags down focus; emotional drain eats into mental energy; lack of purpose strips direction from all the effort.</p>
+    <p>Non-trivial insight: time management assumes "every hour is equally valuable," which is wrong. One hour at your peak can outproduce four hours in a trough. Real efficiency is not "fill the schedule" — it is "align high-energy windows with high-value tasks." Second insight: energy is not consumed linearly; it is consumed in pulses (oscillation). Full engagement must be followed by genuine recovery, not low-quality "half-work, half-rest." Elite athletes' training rhythm (high intensity + total recovery) outperforms steady moderate effort; the same holds for knowledge work. Third insight: recovery itself requires active design — scrolling your phone is not recovery; it is another form of consumption (decisions, emotional stimuli, fragmented attention).</p>
+    <p>How to apply it: track your energy curve for a week — every hour, rate your body / emotion / mind (1-10), and find your personal peaks and troughs. Place high-creativity work in peak windows and administrative work in troughs. Design "recovery rituals" — every 90 minutes, take 10-15 minutes of true recovery (a walk, meditation, breath practice; not scrolling). Plan a deep-recovery day each week.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>Inter-point intervals in professional tennis. Research finds the gap between top-tier and average players in stroke technique is much smaller than the gap in recovery capacity. Top players use fixed rituals between points (adjusting strings, deep breaths, fixed visual focus) to lower heart rate by 15-20 bpm within 16-20 seconds, while average players stay elevated. By the third set, accumulated recovery differences translate into large performance gaps.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>As a mother + AI super-individual, your energy consumption has a unique shape: morning school drop-off (body + emotional drain) → AI workflow (mental drain) → afternoon pickup / homework support (emotional + mental drain) → evening study / retrospective (mental drain). Without deliberate management, by evening study you are running on low battery. Restructure: (1) place the most creative AI work (system design, strategic thinking) in the morning peak; (2) at midday, take 20 minutes of "true recovery" (meditation or a walk, not scrolling); (3) use your child's nap / independent play for a second mental peak on high-value work; (4) switch evening study to "input mode" (reading, courses) instead of "output mode" (writing, decisions), matching the low-energy state.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Energy management reframes productivity from "filling time" to "matching energy to task value." Human energy operates across four dimensions — physical, emotional, mental, and spiritual — each with finite capacity and distinct recovery needs. The critical insight is that not all hours are equal: one peak-energy hour can outproduce four depleted hours. Performance follows an oscillation pattern — full engagement followed by genuine recovery — rather than sustained moderate effort. Elite performers distinguish themselves not by working harder but by recovering more effectively between sprints. Practical application: map your personal energy curve, align high-value creative work with peak windows, design active recovery rituals (not passive scrolling), and treat energy as the binding constraint rather than time.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Design an "energy-optimized schedule" for me. My typical day involves [describe wake time, main activity blocks, family responsibilities, work content]. Please: (1) Predict my four-dimensional energy curve (physical/emotional/mental/spiritual) across the day; (2) Realign my task list to matching energy windows; (3) Design 3 recovery rituals for post-depletion gaps; (4) Identify the biggest energy waste point in my current schedule.
+    </div>
+  </section>
+
+  <!-- Card 4: Deep Work -->
+  <section class="card c4">
+    <h2>Deep Work</h2>
+    <div class="subtitle">In a shallow age, sustained focus is itself a superpower.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Cal Newport defined deep work as cognitively demanding professional activity performed without distraction that pushes your capability to its limit and creates new value hard to reproduce. Its counterpart — "shallow work" (email, meetings, admin) — does not require deep focus and is easy to copy and replace. Newport's core thesis: in the knowledge economy, deep-work capacity is becoming both rarer and more valuable, so those who master it gain a large competitive advantage.</p>
+    <p>Non-trivial insight: the scarcity of deep work is not because people do not want to do it; modern work environments systematically punish it. Replying to email instantly, being always online, and constant meetings are all read as signals of effort, while closed-door thinking can be misread as slacking. A structural prisoner's dilemma: everyone knows deep work produces more, yet no one dares to exit the visibility race first. Second insight: deep-work capacity is trainable — modern attention has been heavily reshaped by social media's variable-ratio reinforcement (slot-machine like), and recovering sustained focus must be trained like a muscle, gradually. You may start at 20 minutes and over a few weeks reach 90+ minutes. Third insight: the binding constraint is not time but attention stamina — even with a whole free day, an untrained brain cannot sustain deep work past about 4 hours.</p>
+    <p>How to apply it: choose a deep-work philosophy that fits you — monastic (long isolation), bimodal (alternating deep and shallow), rhythmic (fixed daily blocks), or journalistic (drop in any time). Build a "deep-work ritual": fixed place, fixed start cue, explicit end condition. Use pre-commitment to kill distraction — disconnect, mute notifications, set physical boundaries. Track deep-work hours as a leading indicator.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>Bill Gates's "Think Week." Twice a year, Gates retreats alone to a lakeside cabin for a week, severs all communications, and brings only a box of papers and books. Microsoft's major strategic turns — the direction of Internet Explorer, the architecture of .NET, the tablet bet — were born inside Think Weeks. Not a "vacation" but an extreme form of deep work: physical isolation eliminates all shallow distraction so the brain has room to handle the hardest problems.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>In the AI era, the meaning of deep work is being redefined. Shallow work (information gathering, first-pass organizing, formatted output) can be handed to AI agents, but deep work (cross-disciplinary insight generation, system architecture design, creative analogy transfer) remains the irreplaceable human zone. Your strategy: use AI to compress shallow work and reinvest the freed bandwidth fully into deep work. Concretely: set aside 2-3 hours of "sacred deep time" each day (ideally morning), turn off all notifications, and work on a single high-load task (designing a new mental-models curriculum, planning a long-term knowledge architecture, writing a deep analysis). Train the same capability in your child — 30 minutes of "focused time" daily (reading, puzzles, drawing) gradually builds attention stamina, which will become a core competitive edge in an age of fragmented attention.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Deep work — cognitively demanding professional activity performed in a distraction-free state — is simultaneously becoming rarer and more valuable in the knowledge economy. Modern work environments systematically penalize depth through visibility competitions (instant replies, constant meetings) while rewarding shallow busyness signals. Deep work capacity is trainable but atrophies without practice; most untrained knowledge workers can sustain only 1-2 hours of genuine deep work daily, while trained practitioners reach 4+ hours. The constraint is attention stamina, not available time. In the AI era, shallow work is increasingly automatable, making deep work the remaining locus of irreplaceable human value. Strategy: use AI to compress shallow work, reinvest the freed bandwidth entirely into deep work, and treat deep-work hours as the leading KPI for long-term output quality.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Design a 4-week "deep work training program" for me. I can currently sustain focus for about [X] minutes before distraction. My work environment is [describe] and biggest distraction sources are [list]. Please design: (1) Weekly deep-work duration targets (progressive) (2) A concrete "deep work ritual" (start cue, environment setup, shutdown ceremony) (3) Pre-commitment strategies to eliminate major distractions (4) Tracking metrics and weekly self-assessment checklist.
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.en.html">&larr; Back to Index</a>
+  </footer>
+
+</div>
+</body>
+</html>
