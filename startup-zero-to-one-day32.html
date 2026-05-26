@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思维模型详解：创业与零到一思维 · 2026-05-26</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>思维模型详解：创业与零到一思维</h1>
+    <div class="meta">2026-05-26 · Day 32</div>
+  </header>
+
+  <!-- Card 1: 反共识真理 -->
+  <section class="card c1">
+    <h2>反共识真理 · Contrarian Truth</h2>
+    <div class="subtitle">"What important truth do very few people agree with you on?" — Peter Thiel</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>创业的边际收益不在共识里——共识赛道永远拥挤、回报趋零。机会在<strong>市场聚合错了的地方</strong>。Thiel 用这句招聘问题筛真创业者：你有什么重要真相，是很少有人同意你的？</p>
+    <p>真正的反共识真理必须同时满足两条：① 你能给出<em>强证据</em>；② <em>主流仍坚定持反方</em>。缺①是妄想，缺②是已被消化的硬道理。"反着主流做"本身不算——那是叛逆，不是洞见。贝叶斯版本：市场 = 先验聚合系统，反共识真理 = 你的先验与聚合先验显著不同<em>且</em>你的更可能正确。</p>
+    <p>实践：写下 3 件"你认为显然但同事不信"的事 → 对每条找最强反对论据 → 仍站得住的，是你的反共识候选。</p>
+
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>2009 年的 Airbnb——"陌生人愿意住进陌生人家"在当时所有 VC 眼里是疯子命题，Brian Chesky 几乎拿不到融资。但 Chesky 能给证据（couch-surfing 已存在、自己房客已付费）+ 市场坚定不信 = 真反共识。今天看显然，正说明 10 年前它是"显然不显然"。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>AI 时代的反共识候选：① "AI 替代知识工作者"是共识；"AI 把知识工作者杠杆放大 100×而不是替代"可能反共识——你有大量一线证据。② "更大模型 = 更好产出"是共识；"prompt 即先验工程，先验质量 &gt; 模型大小"可能反共识。哪一条你能给出主流反驳不掉的证据？</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <div class="summary-en">
+      <strong>Contrarian Truth</strong> — Thiel's interview question: "What important truth do very few people agree with you on?" Startup edge ≠ doing consensus better; it = finding what consensus misses. A real contrarian truth needs both (a) strong evidence and (b) the market still believing the opposite. (a) without (b) = conventional wisdom; (b) without (a) = delusion. Bayesian framing: the market is a prior-aggregation engine — opportunity lives where that aggregate is miscalibrated.
+    </div>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我目前在 [行业/赛道]。我相信的一条反共识观点是：[你的观点]。请：
+① 列出主流为何持反方的最强 3 个论据；
+② 评估我的证据是否真的反驳了这些论据；
+③ 判断这是"反共识真理"还是"反共识幻觉"，并给出我接下来 30 天可做的 1 个验证实验。</div>
+    <div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I work in [industry/domain]. My contrarian belief: [your belief]. Please:
+1. List the 3 strongest mainstream counter-arguments.
+2. Assess whether my evidence actually refutes them.
+3. Judge — genuine contrarian truth or contrarian fantasy? Give me one 30-day validation experiment I can run.</div>
+  </section>
+
+  <!-- Card 2: 0→1 vs 1→N -->
+  <section class="card c2">
+    <h2>零到一 vs 一到N · Zero to One vs One to N</h2>
+    <div class="subtitle">垂直进步与水平进步——两类活动不能共用同一套指标</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>Thiel 的核心区分：<strong>0→1 = 创造新事物（垂直进步），1→N = 复制已有（水平进步）</strong>。两类根本不同的活动。混淆它们是创始人最贵的错误。</p>
+    <p>判别测试：如果竞品照抄你，需要<em>重建一套基础设施</em>才能赶上 → 0→1；只需调整营销预算 → 1→N。0→1 阶段"暂时无法量化"是<em>特征不是 bug</em>——可量化意味着已有先例，那就是 1→N。最危险的混淆：以为自己在做 0→1，实际只是在某个地理或小幅优化的 1→N。</p>
+    <p>实践：用 1→N 的量化做 0→1 = 杀死小苗；用 0→1 的耐心做 1→N = 烧钱。两套指标、两套时间感、两套耐心阈值，不可混用。</p>
+
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>SpaceX 火箭可回收 = 0→1（行业三十年无人成功）。十几年、多次爆炸、传统估值模型完全估不出。一旦成功，再开发射场、再压低复用周期 = 1→N，由此打开全行业可能性。混着看：用 1→N 的"年度发射次数"在前 10 年评估，SpaceX 早该被关停。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>用 LLM 写更快代码、做更快总结 = 1→N（同样的事更便宜）；构造一套"多 agent 协同 + 自我反思层"的全新工作流 = 0→1。每天 80% 时间花在 1→N，长期你只是更便宜的自己。固定每周一块时段给 0→1 实验，明确<em>不期望短期 ROI</em>——否则你会用错误的尺子杀掉自己的小苗。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <div class="summary-en">
+      <strong>Zero to One vs One to N</strong> — Thiel: creating something new (vertical progress) is categorically different from copying what works (horizontal progress). Quick test: if a copycat must rebuild infrastructure to match you → 0→1; if they only need ad spend → 1→N. "Not yet quantifiable" is a feature of 0→1, not a bug. Don't apply 1→N metrics (KPIs, ROI, growth %) to 0→1 work, or 0→1 patience to 1→N execution.
+    </div>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我的项目是 [项目描述]。请帮我判断：
+① 它本质是 0→1 还是 1→N？最关键的判别证据是什么？
+② 如果是 0→1，列出我目前误用的 1→N 标尺（如季度 KPI、ROI、增长率）；
+③ 给出 3 个适合 0→1 阶段的替代信号（不依赖规模化数据）。</div>
+    <div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My project: [description]. Help me decide:
+1. Is it fundamentally 0→1 or 1→N? What's the decisive evidence?
+2. If 0→1, list the 1→N metrics I'm wrongly applying (quarterly KPIs, ROI, growth %).
+3. Suggest 3 alternative signals that fit the 0→1 stage (not dependent on scale data).</div>
+  </section>
+
+  <!-- Card 3: 创始人-市场契合 -->
+  <section class="card c3">
+    <h2>创始人-市场契合 · Founder-Market Fit</h2>
+    <div class="subtitle">VC 早期 bet 90% 是 bet on the founder, not the product</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>FMF ≠ PMF。指<strong>这个创始人对这个市场的结构性优势</strong>：领域 know-how、亲历痛点、稀有访问、网络深度。VC 早期赌注实际多在 FMF 上——产品会迭代，创始人对市场的<em>内化模型</em>才是真正的不可复制资产。</p>
+    <p>非平凡：① "我有热情"是入门票不是 FMF；FMF 要求你比 99% 玩家更懂某一具体维度。② FMF 可<em>compound</em>——3 年后会显著加强。"现在 FMF 不够"不是不开始的理由；"未来 2-3 年契合度会显著扩大"是好理由。③ "是用户"最强，但"曾经是用户"经常过期（市场每年演化）。④ FMF 可来自痛苦不必来自专业——Bumble 创始人不来自酒店/约会行业，FMF 来自"作为女性使用 Tinder 的不舒适"。</p>
+    <p>实践：写下"我 know 什么 99% 玩家 doesn't know" → 模拟一个比你聪明 10× 但无你这段经历的对手，他在哪卡壳——那就是你的 FMF。</p>
+
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>Whitney Wolfe Herd 创立 Bumble——曾任 Tinder 联创，亲历女性在男性主导约会 app 中的骚扰与不适。"女性发起对话"机制不是市场调研出来的，是亲历者直觉，男性创始人几乎不可能拥有这条 FMF。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>FMF 候选：① AI/分布式深度 + 学龄家长一线视角——"AI 如何赋能家庭学习"这个 niche，99% AI 创业者缺第二条、99% 教育创业者缺第一条；② 跨东西方哲学/佛学 + 工程背景——"东方智慧 × AI agent 设计"几乎无人同时持两层深度。识别信号：被反复问到的问题、两个领域都能 BS-detect、能让两边都不觉得 hand-wavy。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <div class="summary-en">
+      <strong>Founder-Market Fit (FMF)</strong> ≠ product-market fit. It's the founder's structural edge over this specific market — domain depth, lived pain, rare access, network. Passion is a ticket, not FMF; you must know one dimension better than 99% of incumbents. FMF compounds — "insufficient now" is no objection if it deepens over 2–3 years. Strongest form = being the user (not "was the user" — markets evolve). FMF can come from pain rather than expertise.
+    </div>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想做 [市场/领域]。请审计我的 FMF：
+① 我声称的"信息差"是真的还是错觉？请反问我直到我无法回答；
+② 我 know 什么是 99% 玩家 doesn't know？标出我答案里最薄弱处；
+③ 如果 FMF 不够强，给出 3 个 1-2 年内可构建 FMF 的具体路径。</div>
+    <div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm aiming at [market/domain]. Audit my founder-market fit:
+1. Is my claimed information edge real or an illusion? Cross-examine me until I can't answer.
+2. What do I know that 99% of players don't? Flag the weakest spots in my answer.
+3. If FMF is insufficient, give 3 concrete 1–2 year paths to build it.</div>
+  </section>
+
+  <!-- Card 4: J 曲线 -->
+  <section class="card c4">
+    <h2>J 曲线 · The J-Curve</h2>
+    <div class="subtitle">事情在变好之前总会先变差——这是物理事实，不是 bug</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>任何有意义的创业/转型——产出在<strong>变好之前会先变差</strong>。曲线先下行再 J 形上升。重组代码库、换技术栈、修复关系、孩子转学——短期内全部差于"什么都不做"。</p>
+    <p>非平凡：① J 曲线不是 bug 是物理事实——重组复杂系统必须先打破旧均衡，旧均衡的局部稳定就是下行段的来源。② 多数人在<em>曲线最低点</em>放弃，因为"看证据"只能看到下行——而 J 曲线的定义性质就是<em>从底部看不到 J 的右半</em>。③ 真 J 曲线 vs 无底深渊的判别：有人走通过这条曲线吗？你的下行幅度是否在已知 J 带宽内？④ 深度 ∝ 改变的根本性——表面改进无 J，范式转移（monolith→microservices, 单兵→团队）的 J 又深又长。⑤ 底部正是损失厌恶 + 沉没成本最强时——大脑要求你回到"不好但稳定"的旧均衡。理解 J 曲线本身就是抵抗"撤退冲动"的工程杠杆。</p>
+    <p>实践：启动前先画 J（估底部深度、底部时长、反弹形态），找 3 个走通过的人取经。在底部反复问"是否仍在事前估计范围内"——是则撑住，显著超出则重估而非机械坚持。</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+        <line x1="50" y1="180" x2="530" y2="180" stroke="#636e72" stroke-width="1.5"/>
+        <line x1="50" y1="30" x2="50" y2="180" stroke="#636e72" stroke-width="1.5"/>
+        <text x="40" y="105" text-anchor="end" font-size="11" fill="#2d3436">产出</text>
+        <text x="290" y="205" text-anchor="middle" font-size="11" fill="#2d3436">时间</text>
+        <line x1="50" y1="100" x2="530" y2="100" stroke="#adb5bd" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="540" y="104" font-size="10" fill="#868e96">起点水平</text>
+        <path d="M 50 100 Q 150 100 200 140 Q 270 170 340 140 Q 420 95 530 50" stroke="#1b8a5a" stroke-width="3" fill="none"/>
+        <circle cx="270" cy="160" r="5" fill="#c44545"/>
+        <text x="270" y="178" text-anchor="middle" font-size="10" fill="#c44545" font-weight="700">最低点 ← 多数人在这里放弃</text>
+        <text x="120" y="92" font-size="10" fill="#636e72">①打破旧均衡</text>
+        <text x="350" y="118" font-size="10" fill="#636e72">②新均衡 compound</text>
+        <text x="470" y="60" font-size="10" fill="#1b8a5a" font-weight="700">右半 ↗</text>
+        <text x="470" y="74" font-size="9" fill="#868e96" font-style="italic">从底部看不到</text>
+      </svg>
+      <div class="caption">J 曲线的定义性质：站在底部时，右半永远是不可见的</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>Netflix 2011 从 DVD 转流媒体并尝试拆分 Qwikster——股价 $300 跌到 $63，70% 用户愤怒，新闻一边倒看衰。Hastings 公开道歉但坚持核心方向。教科书 J：他清楚 DVD 业务的天花板、清楚流媒体先期成本必须吞下、清楚短期数据无法反映长期。3 年后股价超原高点 5 倍。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>① 转型 AI 超级个体是高 J——前 3-6 个月产出反降（学新工具、重建工作流、试错失败），同事用旧法在 KPI 上看似更强。事先承认这段下行的存在。② 育儿 J 极常见——从"代孩子做决定"换成"陪她学决策"，前几个月她做得肯定不如你直接代办，但你在投资她的 J 曲线。③ 系统化补量子力学/神经科学——前 2-3 个月脑里碎片化比"完全不学"还混乱。<strong>底部撤退是最大浪费</strong>——你已付的成本只有在曲线右半才能兑现。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <div class="summary-en">
+      <strong>The J-Curve</strong> — any meaningful transition gets worse before it gets better. Output dips, then J-curves up. Most people quit at the bottom because "evidence" only shows the descent — the defining property of a J-curve is that the right half is invisible from below. Real-J vs bottomless-pit test: has anyone walked this curve? Is your descent within their known band? Depth ∝ how fundamental the change is. The trough coincides with maximum loss aversion + sunk-cost pull — understanding the J is the engineering lever against the retreat impulse.
+    </div>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正在做的转变是 [具体转变]，目前感觉变差了。请：
+① 帮我估计这条 J 曲线（底部多深、底部维持多久、反弹形态）；
+② 找 3 个走通过同类 J 曲线的真实先例，给出他们在底部时的关键决策；
+③ 给我 3 个判别问题，区分"我还在 J 曲线内"vs"我走错方向了"。</div>
+    <div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm in a transition: [describe]. Things feel worse right now. Please:
+1. Sketch the expected J-curve (depth, time at bottom, recovery shape).
+2. Find 3 real precedents who walked the same J — what did they decide at the bottom?
+3. Give me 3 diagnostic questions that distinguish "still inside the J" from "wrong direction entirely."</div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.html">&larr; 返回首页</a>
+  </footer>
+
+</div>
+</body>
+</html>
