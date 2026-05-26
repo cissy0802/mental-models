@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Game Theory &amp; Cooperation · 2026-05-17</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background: #f7f7f5; color: #2d3436; line-height: 1.75; }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card { background: #ffffff; border-radius: 12px; padding: 32px 36px; margin-bottom: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border-left: 6px solid #ccc; }
+  .card.c1 { border-left-color: #6c5ce7; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #fdcb6e; }
+  .card.c4 { border-left-color: #e17055; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label { display: inline-block; font-variant: small-caps; font-size: 12px; letter-spacing: 3px; font-weight: 600; margin-top: 20px; margin-bottom: 8px; padding: 2px 0; }
+  .c1 .section-label { color: #6c5ce7; }
+  .c2 .section-label { color: #00b894; }
+  .c3 .section-label { color: #b88b1a; }
+  .c4 .section-label { color: #e17055; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 16px; }
+  .card p { margin: 12px 0; font-size: 15px; }
+  .example-block { background: #f1f3f5; border-radius: 8px; padding: 14px 18px; margin: 18px 0 8px; font-size: 14px; color: #495057; border-left: 3px solid #adb5bd; }
+  .example-block strong { color: #2d3436; letter-spacing: 1px; }
+  .example-block .example-label { font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #636e72; margin-bottom: 6px; }
+  .english-summary { font-size: 14.5px; color: #495057; line-height: 1.8; }
+  .prompt-block { background: #1e272e; color: #dfe6e9; border-radius: 8px; padding: 16px 18px; margin: 10px 0 18px; font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 13px; line-height: 1.65; overflow-x: auto; position: relative; }
+  .prompt-label { display: inline-block; background: #fdcb6e; color: #2d3436; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 2px 8px; border-radius: 3px; margin-bottom: 8px; text-transform: uppercase; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) { .container { padding: 28px 14px 48px; } .card { padding: 24px 20px; } .page-header h1 { font-size: 24px; } .card h2 { font-size: 20px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Deep Dive: Game Theory &amp; Cooperation</h1>
+    <div class="meta">2026-05-17 · Day 28</div>
+  </header>
+
+  <!-- Card 1: Prisoner's Dilemma -->
+  <section class="card c1">
+    <h2>Prisoner's Dilemma</h2>
+    <div class="subtitle">How individual rationality produces collective disaster.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>The Prisoner's Dilemma is the most classic model in game theory: two players each independently choose "cooperate" or "defect"; under information isolation, no matter what the other chooses, defection is the individually dominant strategy — yet the outcome where both defect is worse than the outcome where both cooperate. This "individual rationality produces collective irrationality" structure reveals a deep paradox: rational choices by intelligent people are not necessarily good choices.</p>
+    <p>Non-trivial insight: the Prisoner's Dilemma is not just an academic model — it is the underlying structure of every "tragedy of the commons," from environmental pollution and arms races to free-rider behavior in teams. The key to breaking out lies not in raising individual morality but in changing the structure of the game: introducing repeated interaction (so defection has future cost), building reputation mechanisms (so behavior can be observed and punished), designing institutional constraints (changing the payoff matrix), or shrinking the group (linking individual action visibly to collective consequence). The real wisdom: when you recognize you are inside a Prisoner's Dilemma, do not "play smarter within it" — find a way out and reshape the rules.</p>
+    <p>How to apply it: in any competitive or conflict situation, draw the payoff matrix first to check whether it fits the Prisoner's Dilemma structure (mutual cooperation > unilateral defection's payoff > mutual defection > the betrayed party's payoff). If yes, prioritize "change-the-game" levers — can you turn a one-shot game into a repeated game? Introduce a third-party watcher? Reshape payoffs so cooperation becomes dominant?</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>The Cold War arms race. Both the U.S. and Soviet Union knew that disarmament benefited both, but unilateral disarmament would be dangerous. The rational choice was to keep arming, and trillions were spent maintaining the balance of terror. The breakthrough did not come from moral appeals but from arms-control treaties (institutional constraint), verification mechanisms (information transparency), and "mutually assured destruction" commitments (payoff-matrix change) that finally cracked the dilemma.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>The contribution dilemma in AI open-source communities. Every developer wants to use open-source models for free, but if everyone only consumes and never contributes, projects die. Building your AI workflow faces the same structure: lock your prompt library and keep the edge, or share to get community feedback and iteration? The way out is to convert it into a repeated game — share first inside a small, high-trust circle (a curated AI practitioner community) to establish reciprocity expectations. The community's long-term reputation mechanism culls free riders naturally and rewards cooperators with compounding returns.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">The Prisoner's Dilemma reveals how individually rational choices can produce collectively irrational outcomes. When two players independently choose between cooperation and defection under information isolation, defection dominates — yet mutual defection is worse for both than mutual cooperation. This structure underlies tragedies of the commons, arms races, and free-rider problems. The resolution lies not in moral persuasion but in restructuring the game: introducing repeated interactions, reputation mechanisms, institutional constraints, or smaller group sizes that link individual actions to collective consequences. The master move is to recognize the dilemma and redesign the game rather than play it more cleverly.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      I'm facing a cooperation dilemma: [describe the situation, players, available actions, and consequences of different action combinations]. Determine whether this fits the Prisoner's Dilemma structure and construct the payoff matrix. If so, propose three strategies to restructure the game — such as converting it to a repeated game, introducing reputation mechanisms, or altering the payoff structure — and evaluate each strategy's feasibility and implementation cost.
+    </div>
+  </section>
+
+  <!-- Card 2: Nash Equilibrium -->
+  <section class="card c2">
+    <h2>Nash Equilibrium</h2>
+    <div class="subtitle">Stable does not mean optimal — equilibrium does not mean satisfied.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>The Nash equilibrium is game theory's core solution concept: a strategy profile in which, given the others' strategies, no player has incentive to unilaterally change their own. In other words, a stable state where "nobody wants to move first." John Nash proved that at least one such equilibrium exists in finite games (possibly mixed strategy), an achievement that won the Nobel Prize in economics.</p>
+    <p>Non-trivial insight: the most disruptive lesson of Nash equilibrium is not "find the equilibrium" — it is understanding that equilibria can be terrible. In the Prisoner's Dilemma, mutual defection is the Nash equilibrium, yet it is Pareto inferior to mutual cooperation. Markets, teams, and societies can stay for long periods in a state nobody likes but nobody dares break alone. From systems thinking, this is the "local optimum trap" — the system is stuck in a suboptimal attractor. Escape requires coordinated action (everyone moves together), commitment mechanisms (credibly guaranteeing no rollback), or external forces that change the payoff matrix (institutional or technological change). Another important point: multiple equilibria are common in the real world, and which one prevails often depends on culture, historical path, and focal effects rather than pure rationality.</p>
+    <p>How to apply it: in any multi-party decision, first check whether the current state is already a Nash equilibrium (nobody wants to move first?). If yes, assess whether it is Pareto optimal. If not, diagnose the "coordination failure" — is it opaque information? Lack of credible commitment? A payoff structure that punishes the first mover? Then design interventions accordingly.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>Driving on the right vs the left: both are Nash equilibria — once society sets a convention, any individual deviation causes accidents. The two equilibria are equally efficient; which one is chosen depends on historical path. But from QWERTY to VHS, many "locked-in" equilibria are not the most efficient; first movers grab the position and switching costs become prohibitive.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>The "inefficient equilibrium" in team collaboration. If everyone defaults to email instead of a structured knowledge base, any single person switching to a new tool fails because "nobody else uses it" — that is a Nash equilibrium. The fix is not to convince one person to change but to design a coordinated jump: pick a minimum viable team and switch together, creating the "seed of a new equilibrium," then spread via network effects. Parenting works the same way: if everyone in the family defaults to phones to entertain a child, asking the child alone to put the phone down meets massive resistance. The whole family needs to establish a new equilibrium together — say, a "no-screen family hour" — so the new pattern becomes everyone's shared default.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">A Nash equilibrium is a strategy profile where no player can improve their payoff by unilaterally changing their own strategy. Its deepest insight is that stable does not mean optimal — systems can be locked into equilibria that everyone dislikes but nobody will unilaterally break. The Prisoner's Dilemma mutual-defection outcome is a Nash equilibrium yet Pareto inferior to mutual cooperation. Breaking out of a bad equilibrium requires coordinated shifts, credible commitments, or external changes to the payoff matrix. In the real world, multiple equilibria are common, and which one prevails often depends on history, culture, and focal points rather than pure rationality. The practical question is always: is the current equilibrium the best achievable, and if not, what coordination mechanism can tip the system to a better one?</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Analyze the Nash equilibria in this multi-player decision scenario: [describe players, strategy options, and payoff structure]. Identify all Nash equilibria and assess whether each is Pareto optimal. If the system is stuck in a suboptimal equilibrium, diagnose the specific coordination failure — information barriers, lack of credible commitment, or first-mover punishment — and design three feasible interventions to tip the system toward a superior equilibrium.
+    </div>
+  </section>
+
+  <!-- Card 3: Repeated Games -->
+  <section class="card c3">
+    <h2>Repeated Games</h2>
+    <div class="subtitle">When the shadow of the future is long enough, cooperation emerges on its own.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>A repeated game plays the same game many times along the time dimension. Fundamentally different from a one-shot game: players can observe past behavior, build reputation, and apply punishment and reward. Game theory's Folk Theorem proves a striking result: as long as the game is repeated enough times (or the players are patient enough), almost any cooperative outcome above the minimax payoff can be sustained as an equilibrium — even if defection is the unique equilibrium in the one-shot version.</p>
+    <p>Non-trivial insight: repeated games reveal that "time" is the most powerful infrastructure for cooperation. The "shadow of the future" — the expectation of future interaction — is the key variable that decides whether cooperation can emerge. This explains why fraud is rampant in high-fluidity environments (anonymous online trading) while honesty maintains itself naturally in stable communities. A deeper lesson: the discount rate (how much you weight the future) determines the boundary of cooperation. Someone who weights the present heavily and ignores the future will defect even inside a repeated game. So helping others "see the future" — by building expectations of long-term relationship, credible path commitments, and making delayed payoffs visible — is the most effective lever for promoting cooperation. This is also why the "endgame effect" is so dangerous: when everyone knows the last round has no future, defection backward-inducts and infects earlier rounds.</p>
+    <p>How to apply it: in every important relationship, evaluate the length of the "shadow of the future" — interaction frequency, expected duration, exit cost. Deliberately lengthen it: sign long-term contracts, establish regular interaction rhythms, create shared long-horizon goals. Avoid "endgame signals" — do not let your partner feel this is the last transaction.</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>The trench "live-and-let-live" philosophy of World War I. Front-line soldiers on both sides discovered they were facing the same enemies day after day (a repeated game) and spontaneously developed the unspoken agreement "if you don't shoot me, I won't shoot you." They would fire at fixed times into no-man's land (performing for officers) but tacitly avoided each other's lines. Not a command — a spontaneous emergence of the "cooperation equilibrium" in a repeated game, until headquarters noticed and forced rotations (breaking the repeated-game structure).</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>When building the collaboration network of an AI super-individual, repeated-game thinking is the underlying operating system. Your long-term AI tool vendors, content collaborators, and knowledge community members are all in repeated games — every action right now is writing into a "reputation ledger." Specifically: set quarterly retros with core partners (increase interaction frequency); jointly invest in long-term projects like a shared knowledge base (create sunk costs that make the relationship "stickier"); publicize your collaboration principles in the community (make reputation observable). In parenting, the parent-child relationship is the most extreme long-term repeated game: every "promise kept" builds trust capital; every broken promise shortens the shadow of the future.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Repeated games transform strategic interaction by introducing memory, reputation, and the possibility of future retaliation or reward. The Folk Theorem proves that when the "shadow of the future" is long enough — when players are sufficiently patient and expect continued interaction — almost any cooperative outcome above the minimax payoff can be sustained as an equilibrium, even if defection dominates in the one-shot version. The discount rate, interaction frequency, and exit cost are the critical variables. Cooperation emerges not from moral virtue but from structural incentives: make defection costly over time and cooperation profitable in the long run. The endgame effect is the key vulnerability — when players know the game is ending, backward induction unravels cooperation from the last round forward. Practical wisdom: deliberately lengthen the shadow of the future in every important relationship.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Analyze the repeated-game structure in this cooperation scenario: [describe players, interaction frequency, expected duration, and exit costs]. Rate the current "shadow of the future" on a 1-10 scale, identify three potential endgame signals that could unravel cooperation, and propose three concrete strategies to lengthen the shadow and reinforce the cooperative equilibrium.
+    </div>
+  </section>
+
+  <!-- Card 4: Tit-for-Tat -->
+  <section class="card c4">
+    <h2>Tit-for-Tat</h2>
+    <div class="subtitle">Simple, transparent, forgiving — and yet it beats every fancy strategy.</div>
+
+    <div class="section-label">Deep Dive</div>
+    <hr>
+    <p>Tit-for-Tat was validated by political scientist Robert Axelrod in his famous "iterated Prisoner's Dilemma tournament." The strategy is radically simple: cooperate on the first move; on every subsequent move, copy the opponent's previous move. This strategy, implementable in two lines of code, beat every complex strategy submitted by game theorists in both rounds of the tournament — a milestone in the study of cooperation evolution.</p>
+    <p>Non-trivial insight: the success of Tit-for-Tat reveals four deep principles. (1) Nice: never defect first — this prevents the "mutual harm spiral" from starting. (2) Retaliatory: respond immediately to defection so the other side knows that taking advantage has a cost. (3) Forgiving: as soon as the opponent returns to cooperation, forgive immediately and do not hold grudges, avoiding the "permanent retaliation" lock. (4) Clear: the behavior pattern is simple and predictable, easy for the opponent to read, reducing the risk of misreading. A deeper lesson: Tit-for-Tat requires neither a "nice" opponent nor complex computation — it shapes cooperation purely through structural incentive. But it has a weakness: in "noisy" environments (when actions are misread), two Tit-for-Tat players can fall into a "retaliation–counter-retaliation" loop. The improved "Generous Tit-for-Tat" cooperates with some probability even after defection, introducing an "error-tolerance mechanism" to break the vicious cycle.</p>
+    <p>How to apply it: default to cooperation in long-term relationships; respond quickly and clearly to defection (not as revenge, but to let the other side feel the consequence); restore cooperation immediately after correction; keep behavior consistent and predictable; in high-noise environments, allow the other party room to "make one mistake."</p>
+    <div class="example-block">
+      <div class="example-label">Classic Example</div>
+      <p>The Axelrod tournament. Game theorists from around the world submitted strategies to the iterated Prisoner's Dilemma. Complex strategies — "exploratory defection," "probability mixes," "N-step memory" — lost one after another. Anatol Rapoport's Tit-for-Tat, with the simplest logic, won both rounds, proving the evolutionary advantage of the "nice + retaliatory + forgiving + clear" combination. The result has inspired research from international relations to biological evolution.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">Scenario · BigCat</div>
+      <p>In everyday leadership and parenting, Tit-for-Tat offers an elegant behavioral frame. Managing a team: default trust through delegation (nice), give immediate feedback the moment execution drifts (retaliatory) rather than letting it pile up to the year-end review, restore trust quickly after correction without bringing up the past (forgiving), and make your principles transparent (clear). Parenting works the same way: build clear expectations with your child, enforce consequences swiftly but calmly on violation, restore warmth immediately after correction, and keep rules consistent so the child can "read" you. Key tweak: add the "generous" dimension — when information is incomplete (a child's behavior may have reasons you do not know), give them the benefit of the doubt once to prevent trust collapse from misreading.</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Tit-for-Tat, validated by Robert Axelrod's iterated Prisoner's Dilemma tournaments, is a strategy of radical simplicity: cooperate first, then mirror the opponent's last move. It embodies four winning principles — be nice (never defect first), be retaliatory (respond immediately to defection), be forgiving (restore cooperation once the opponent does), and be clear (maintain predictable behavior). Despite its simplicity, it outperformed all sophisticated strategies in tournament settings, demonstrating that cooperation can emerge from structural incentives without requiring trust, altruism, or complex reasoning. Its weakness is noise: when actions are misread, two Tit-for-Tat players can spiral into mutual retaliation. "Generous Tit-for-Tat" addresses this by occasionally cooperating even after defection, building in error tolerance. The meta-lesson: in long-term relationships, clarity and forgiveness outperform cleverness.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Evaluate my behavioral pattern in [scenario: team management / client relationships / parenting / partnership negotiation] against the four Tit-for-Tat principles — nice, retaliatory, forgiving, and clear. Identify which dimensions I'm strong in and which are lacking, with specific behavioral adjustments. Also assess the "noise level" in this context (probability of misreading actions), and if high, recommend how to introduce a "generous" error-tolerance mechanism to prevent retaliatory spirals.
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.en.html">&larr; Back to Index</a>
+  </footer>
+
+</div>
+</body>
+</html>
