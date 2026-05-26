@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：决策与选择 — 2026-05-26</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.8}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 40px;border-bottom:1px solid #eee;margin-bottom:40px}
+header .category{font-size:0.85rem;font-weight:600;letter-spacing:3px;color:#6c5ce7;text-transform:uppercase;margin-bottom:12px}
+header h1{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:1px;line-height:1.3}
+header .date{margin-top:10px;font-size:0.92rem;color:#b2bec3}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:32px;overflow:hidden}
+.card-header{background:linear-gradient(135deg,#6c5ce7 0%,#a29bfe 100%);padding:24px 28px}
+.card-header .num{font-size:0.78rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.card-header h2{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.3}
+.card-header .en{font-size:0.92rem;color:rgba(255,255,255,0.85);margin-top:4px;font-style:italic}
+.card-body{padding:28px}
+.section{margin-bottom:24px}
+.section:last-child{margin-bottom:0}
+.section-label{display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:2px;color:#6c5ce7;background:#f1efff;padding:3px 10px;border-radius:4px;margin-bottom:12px}
+.section p{font-size:0.97rem;color:#2d3436;line-height:1.9}
+.section p+p{margin-top:12px}
+.example{background:#f1efff;border-left:3px solid #6c5ce7;padding:14px 18px;border-radius:0 8px 8px 0;margin-top:14px}
+.example .label{font-size:0.78rem;font-weight:700;color:#6c5ce7;margin-bottom:6px;letter-spacing:1px}
+.prompts{display:flex;flex-direction:column;gap:12px}
+.prompt-item{background:#f1efff;border-radius:8px;padding:14px 16px}
+.prompt-item .lang{font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#6c5ce7;margin-bottom:6px}
+.prompt-item p{font-size:0.9rem;color:#2d3436;line-height:1.7}
+.prompt-item strong{color:#6c5ce7}
+nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee}
+nav a{color:#6c5ce7;text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a:hover{text-decoration:underline}
+@media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="category">Day 01 · 思维模型详解</div>
+<h1>决策与选择</h1>
+<div class="date">2026-05-26  |  Decision Making</div>
+</header>
+
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 01</div>
+<h2>第一性原理</h2>
+<div class="en">First Principles Thinking</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">中文详解</div>
+<p>第一性原理思维的核心是「拆到不可再拆」——把论断剥离到无法用其他命题推导的最小公理层，再从这些公理重新推演。亚里士多德称之为「认识事物的第一基础」，物理学叫公理化方法。它的反面是「类比思维」——用现有解决方案的相似版本去对付新问题。类比快但只能产出微调版本；第一性原理慢但能跳出现有范式。</p>
+<p>真正非平凡的洞察在于：第一性原理最常被滥用的方式是「假拆解」——人们以为自己拆到了底，其实只是拆到「自己习惯的那一层」就停了。「电动车太贵」拆到「电池太贵」就停，马斯克继续拆到「电池由镍、钴、铝、碳构成，按伦敦金属交易所原料价只需 80 美元/千瓦时」——前者停在产品层，后者切到物理学层。判断你是否真的用了第一性原理：你的推理能否跨越一个学科边界？</p>
+<p>实践方法：①对每个假设连续追问「依据是什么？依据的依据是什么？」直到撞到物理定律、数学公理或确凿事实；②识别「类比的味道」——出现「行业惯例」「大家都这么做」「历史上一直」就是预警信号；③AI 时代的角色分工——LLM 极擅长类比插值，人擅长跨学科切到公理层。这是人机协作里最稀缺的人类杠杆。</p>
+<div class="example">
+<div class="label">经典例子</div>
+<p>马斯克 SpaceX：火箭行业认为发射成本必须 6500 万美元起步，因为「这是行业平均价」。他拆到原料层——铝、钛、铜、碳纤维按市场价采购总成本仅占发射价格的约 2%，剩下 98% 是制造、组织、保守惯例造成的。Falcon 9 把发射成本压到约 6000 万，可回收后摊销更低。整个范式转换源于一句话：不接受「行业价格」作为前提。</p>
+</div>
+<div class="example">
+<div class="label">场景 · BigCat</div>
+<p>BigCat 评估「要不要自建本地 LLM 推理集群」。类比思维说「大公司都用云 API，跟着做没错」。第一性原理：拆到 token 经济学——月调用量×单价 = $X，自建硬件+电+运维 = $Y。再追一层：你的工作流 90% 是重复模板，提示词缓存命中后真实 token 数仅 1/5。结论可能反转：自建未必划算，但优化缓存能省 70%。决策的真正杠杆点不在「云 vs 自建」，而在更深一层的 token 结构。</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>First Principles thinking strips an argument down to irreducible axioms — physical laws, mathematical truths, established facts — and rebuilds reasoning from there. Its opposite, analogical thinking, just produces small variations on existing solutions. The most common misuse is "fake decomposition": stopping at a familiar layer and calling it the base. A true first-principles move usually crosses a discipline boundary, replacing industry convention with physics-grade facts.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">中文提示词</div>
+<p>我面临一个判断：<strong>[决策/产品/技术选择]</strong>。请用第一性原理拆解：(1) 列出我的判断默认成立的所有假设，(2) 对每个假设逐层追问「凭什么」，直到撞到物理定律、数学事实或不可分解的公理，(3) 从这些公理重建一遍推理，对比初始结论与重建结论的差异，(4) 指出我可能在哪一层悄悄滑入了「类比思维」却不自知。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm evaluating <strong>[decision/product/tech choice]</strong>. Apply first-principles decomposition: (1) list every assumption my current judgment quietly takes for granted, (2) for each assumption, recursively ask "what makes this true?" until you hit physical laws, mathematical facts, or irreducible axioms, (3) rebuild the reasoning from those axioms and contrast it with my original conclusion. Flag exactly which layer I likely substituted analogical thinking for actual decomposition.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 02</div>
+<h2>二阶思维</h2>
+<div class="en">Second-Order Thinking</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">中文详解</div>
+<p>一阶思维问「接下来会发生什么」，二阶思维问「接下来发生之后，还会发生什么」。霍华德·马克斯把它做成了投资圣经：一阶看到好公司就买，二阶问「这家公司多好，市场已经定价了多少？我比市场知道的多在哪里？」前者是直觉反应，后者是反身性博弈。在博弈系统里，仅靠一阶永远超不过平均——所有人都看到了同样明显的事实。</p>
+<p>真正非平凡的洞察在于：二阶思维的杠杆不是「想得更远」，而是「看到反身性」。当你的决策会改变系统状态、改变其他玩家行为时，单线推演就失效。「限速更严，事故减少」是一阶；二阶问「司机如何反应？会不会因为信任系统反而开得更快？」再加一层——保险、警力如何重新配置？复杂适应系统里，每个干预都会被参与者预期的反馈「反过来吃掉」。</p>
+<p>实践方法：①训练「And then what？」连问习惯——逼自己至少推演到第三层；②建立反向 brainstorming——每个干预都问「对方/系统会怎么适应」；③区分两类决策——可逆且影响小的用一阶就够（快比对快），不可逆且系统性的必须二阶（慢比对慢）。多数失败不是因为没想，而是只想了第一层。</p>
+<div class="example">
+<div class="label">经典例子</div>
+<p>1990 年代美国某州为减少眼镜蛇出没，悬赏每条死蛇。一阶预期：蛇会减少。结果民众开始养蛇赚赏金，悬赏取消后又集体放生，蛇患加倍——这就是著名的「眼镜蛇效应」。任何施加于系统的激励，都会触发参与者的二阶反应；忽视这一层的政策制定者，常常制造比原问题更大的问题。</p>
+</div>
+<div class="example">
+<div class="label">场景 · BigCat</div>
+<p>BigCat 给团队上 AI 编码工具，期待人均产出翻倍（一阶）。二阶：每个工程师产出更多 PR，code review 队列堵塞；reviewer 草草过审，bug 率上升；新人因为 AI 替代了「读代码学习」环节，成长曲线变平。三阶：6 个月后高级工程师离职率上升，组织能力被掏空。结论不是「不用 AI」，而是引入 AI 时必须同步重构 review 机制和新人成长路径——这恰恰是大多数团队跳过的二阶设计。</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>First-order thinking asks "what happens next?"; second-order thinking asks "and then what?" In markets, politics, and complex adaptive systems, first-order moves are already priced in — only second-order insight produces edge. The real leverage isn't thinking further into the future; it's seeing reflexivity — how your decision changes the system and other players' responses, creating loops the linear model misses entirely.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">中文提示词</div>
+<p>我准备执行这个决策：<strong>[政策/产品/职业选择]</strong>。请进行二阶/三阶推演：(1) 列出最直接的一阶结果（其他人也能看到的），(2) 推演关键参与者会如何理性适应、博弈、对冲——产生怎样的二阶反应，(3) 再推一层三阶结果，找出哪些「听起来没问题的一阶判断」会被二阶反应完全反转，(4) 指出我需要哪些预先配套的二阶设计才能避免眼镜蛇效应。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm about to act on <strong>[policy/product/career decision]</strong>. Run a second/third-order analysis: (1) state the obvious first-order outcome that everyone can see, (2) project how key actors will rationally adapt, game, or hedge — yielding second-order reactions, (3) push to third-order: which "sensible first-order" conclusions get fully reversed by the second-order response, (4) flag the second-order safeguards I must build in upfront to avoid a cobra-effect outcome.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 03</div>
+<h2>逆向思维</h2>
+<div class="en">Inversion</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">中文详解</div>
+<p>逆向思维不是「反对正面观点」，而是「反向求解同一个问题」。要找「如何成功」，先列「如何必败」；要找「如何健康长寿」，先研究「哪些行为最易致死」。这是雅各比公式：「Invert, always invert」——芒格把它列为人类思维工具箱里最被低估的一件。它的力量来自一个非对称：成功路径千万种，每种都需要复杂判断；失败路径常常只有少数几条，且明显得多——避开它们，比追逐成功更可行。</p>
+<p>真正非平凡的洞察在于：逆向思维真正解决的不是「找到答案」，而是「绕开认知盲区」。正向追求成功时，我们倾向于看到自己想看到的；反向列举失败时，我们看到的是冷酷的因果链。神经科学的解释：损失回避电路（杏仁核相关）比奖励电路更敏锐——逆向问法其实在调用大脑更精确的子系统。佛学的「观死随念」异曲同工——通过预演终点反向校准当下选择。</p>
+<p>实践方法：①每个目标先做「如何彻底失败」清单，作为决策前的避坑表；②对每个看好的判断做 prepare the funeral——假设它失败了，复盘可能死因；③团队决策中设置红队，专门论证「为什么这个项目会失败」，避免集体确认偏误。逆向不会给你创意，但会移除你被消灭的大多数路径。</p>
+<div class="example">
+<div class="label">经典例子</div>
+<p>芒格在哈佛毕业演讲讲「如何确保人生悲惨」：①不可靠；②只从自己经验学习；③失败时不爬起来；④嫉妒、怨恨、自怜。听完反过来照做就是好人生指南。比正面教导「如何幸福」有效得多——「幸福」过于抽象，「必败行为」却具体可识别。这就是为什么医学先有禁忌症，金融先有不可接受风险，软件先有「绝不在生产环境做的事」。</p>
+</div>
+<div class="example">
+<div class="label">场景 · BigCat</div>
+<p>BigCat 想用 AI 转型为「超级个体」。正面问：怎么做？答案太散——学提示词、买订阅、读案例。逆向问：怎么必定失败？①把 AI 当万能工具，所有领域都用一点，没有任何一个领域深入到 AI 用不动的层级；②沉迷工具采购，永远在评测新模型而不产出；③用 AI 替代思考而非加速思考，关键判断力被外包给统计模式；④不积累私有数据/经验，公开能力没有壁垒。把这四条做成周自检表，比追逐「最佳实践」清单更可执行。</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Inversion solves problems by working backward from failure: rather than asking "how do I succeed?", ask "how would I guarantee failure?" Charlie Munger borrowed it from Jacobi — "invert, always invert." Its power comes from asymmetry: success paths are many and judgment-heavy; failure paths are few and obvious. Avoiding them is more tractable than chasing success. Inversion also bypasses confirmation bias by recruiting the brain's sharper loss-aversion circuitry.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">中文提示词</div>
+<p>我的目标是<strong>[职业转型/项目目标/人生决策]</strong>。请用逆向思维帮我重构这个问题：(1) 不要告诉我如何成功——先列出「想确保彻底失败该怎么做」的 5-7 条具体行为清单，(2) 把这些失败行为按「我目前最容易陷入」排序，(3) 给我一个每周可以自查的「避坑自检表」格式，(4) 指出我现在的计划里，哪些步骤其实正在做必败清单上的事而我不自知。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>My goal is <strong>[career pivot / project objective / life decision]</strong>. Use inversion: (1) Don't tell me how to succeed — list 5-7 concrete behaviors guaranteed to make me fail at this, (2) rank those failure modes by "which one I'm most prone to right now," (3) turn them into a weekly self-audit checklist, (4) point out which steps in my current plan are quietly executing items from the failure list without me realizing it.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 04</div>
+<h2>奥卡姆剃刀</h2>
+<div class="en">Occam's Razor</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">中文详解</div>
+<p>奥卡姆剃刀：「如无必要，勿增实体」——在解释力相同时，选择假设更少的那个。它不是说「简单的总是对的」，而是说「在两个同样好的解释里，复杂的那个携带更多可能出错的环节」。信息论视角下，更短的假设描述长度更小、先验概率更高（Solomonoff 归纳的核心）；工程视角下，每多一个假设就多一个失败点。</p>
+<p>真正非平凡的洞察在于：奥卡姆剃刀最常被误用的方式是「过度简化」——把「简单」和「减少假设」混为一谈。爱因斯坦的更准表述是「Everything should be made as simple as possible, but not simpler」。当现象本身复杂时，硬塞进简单理论就是「剃过头」。量子力学不是简单的，但用「波粒二象性」解释一切已是剃刀边界——继续加「超弦」「多元宇宙」在没新证据时就违反原则。判断标准不是「听起来简单」，而是「假设数量」。</p>
+<p>实践方法：①调试问题按「最少假设解释」排序——配置错 &gt; 代码 bug &gt; 编译器 bug &gt; 硬件故障；②评估阴谋论时问「这个故事需要多少人保持沉默/协调？协调成本是否大于直接动机？」；③产品设计中防御功能蔓延——每加一个功能都要回答「必要性证据是什么」，否则用剃刀剃掉。剃刀本质上是贝叶斯先验，不是审美偏好。</p>
+<div class="example">
+<div class="label">经典例子</div>
+<p>医学诊断原则「When you hear hoofbeats, think horses, not zebras」（听到马蹄声先想马，不是斑马）。年轻患者头痛+疲倦：先考虑睡眠不足、脱水、屏幕用眼过度；其次甲状腺、贫血；最后才是肿瘤。直接跳到「肿瘤」诊断在统计上是错的——不是因为肿瘤不存在，而是因为同样症状下「睡眠不足」的先验概率高 100 倍。剃刀就是贝叶斯先验的口语版。</p>
+</div>
+<div class="example">
+<div class="label">场景 · BigCat</div>
+<p>BigCat 的 AI 工作流突然变慢。复杂叙事：是新模型版本性能回退？API rate limit 被悄悄降了？运营商在限速？应用剃刀——先查本机 CPU/内存/网络（最常见），再查最近一次配置改动（你自己引入的变量），最后才是上游变化。90% 的「诡异 bug」是自己改了什么忘了。同理分析孩子近期成绩下滑：先排查作息、屏幕时间、近期人际冲突，再去找「学习方法」层面的复杂原因——剃刀提醒你，常见原因远比独特原因频繁。</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">English Summary</div>
+<p>Occam's Razor: when two explanations have equal predictive power, prefer the one with fewer assumptions. Each extra assumption is a failure point and a prior-cost. Misused as "simpler is always true," but Einstein's gloss is sharper: "as simple as possible, but not simpler." In debugging, diagnostics, and conspiracy assessment, the razor is really a Bayesian prior — common, low-assumption explanations dominate exotic ones until evidence accumulates against them.</p>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">中文提示词</div>
+<p>我在分析这个问题/异常/现象：<strong>[场景描述]</strong>。请用奥卡姆剃刀帮我重排诊断顺序：(1) 列出 4-6 个可能的解释，按「假设数量」从少到多排序，(2) 对每个解释，标注它需要「凭空成立的前提」有几条，(3) 给出贝叶斯式排查路径——从假设最少的开始测试，(4) 指出我当前判断里有没有为了「听起来更聪明」而引入了不必要的复杂解释。</p>
+</div>
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm analyzing this issue/anomaly: <strong>[scenario]</strong>. Apply Occam's Razor to rebuild the diagnostic order: (1) list 4-6 plausible explanations, ranked from fewest to most assumptions, (2) for each, count the "unsupported premises" it silently requires, (3) propose a Bayesian-style test sequence starting from the lowest-assumption hypothesis, (4) flag any reasoning in my current hypothesis where I'm reaching for an exotic explanation just because it "sounds smarter," when a mundane one would do.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<nav>
+<a href="index.html">← 返回目录 / Back to Index</a>
+</nav>
+</div>
+</body>
+</html>

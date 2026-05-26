@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Deep Dive: Decision Making — 2026-05-26</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f7f8fa;color:#2d3436;line-height:1.8}
+.container{max-width:780px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:56px 0 40px;border-bottom:1px solid #eee;margin-bottom:40px}
+header .category{font-size:0.85rem;font-weight:600;letter-spacing:3px;color:#6c5ce7;text-transform:uppercase;margin-bottom:12px}
+header h1{font-size:2rem;font-weight:800;color:#1a1a2e;letter-spacing:1px;line-height:1.3}
+header .date{margin-top:10px;font-size:0.92rem;color:#b2bec3}
+.card{background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:32px;overflow:hidden}
+.card-header{background:linear-gradient(135deg,#6c5ce7 0%,#a29bfe 100%);padding:24px 28px}
+.card-header .num{font-size:0.78rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.card-header h2{font-size:1.35rem;font-weight:800;color:#fff;line-height:1.3}
+.card-header .en{font-size:0.92rem;color:rgba(255,255,255,0.85);margin-top:4px;font-style:italic}
+.card-body{padding:28px}
+.section{margin-bottom:24px}
+.section:last-child{margin-bottom:0}
+.section-label{display:inline-block;font-size:0.78rem;font-weight:700;letter-spacing:2px;color:#6c5ce7;background:#f1efff;padding:3px 10px;border-radius:4px;margin-bottom:12px}
+.section p{font-size:0.97rem;color:#2d3436;line-height:1.9}
+.section p+p{margin-top:12px}
+.example{background:#f1efff;border-left:3px solid #6c5ce7;padding:14px 18px;border-radius:0 8px 8px 0;margin-top:14px}
+.example .label{font-size:0.78rem;font-weight:700;color:#6c5ce7;margin-bottom:6px;letter-spacing:1px}
+.prompts{display:flex;flex-direction:column;gap:12px}
+.prompt-item{background:#f1efff;border-radius:8px;padding:14px 16px}
+.prompt-item .lang{font-size:0.72rem;font-weight:700;letter-spacing:2px;color:#6c5ce7;margin-bottom:6px}
+.prompt-item p{font-size:0.9rem;color:#2d3436;line-height:1.7}
+.prompt-item strong{color:#6c5ce7}
+nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee}
+nav a{color:#6c5ce7;text-decoration:none;font-weight:600;font-size:0.95rem}
+nav a:hover{text-decoration:underline}
+@media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="category">Day 01 · Mental Models Deep Dive</div>
+<h1>Decision Making</h1>
+<div class="date">2026-05-26  |  Decision Making</div>
+</header>
+
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 01</div>
+<h2>First Principles Thinking</h2>
+<div class="en">First Principles Thinking</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>First-principles thinking is "decompose until indivisible" — strip an argument down to axioms that can't be derived from anything else, then rebuild reasoning from those axioms. Aristotle called it "the first basis for knowing a thing"; physics calls it axiomatization. Its opposite is <em>analogical thinking</em> — solving new problems with variants of existing solutions. Analogy is fast but only produces tweaks; first principles is slow but can leave the prevailing paradigm entirely.</p>
+<p>The non-trivial insight: the most common misuse is <em>fake decomposition</em> — people believe they've hit the floor when in fact they've stopped at "the layer they're already familiar with." "EVs are expensive" stops at "batteries are expensive." Musk kept going: "batteries are nickel, cobalt, aluminum, carbon — buy raw materials at LME prices and the cost is ~$80/kWh." The first stops at the product layer; the second hits the physics layer. The test: does your reasoning cross a discipline boundary? If not, you probably stopped early.</p>
+<p>Practice: ① For every assumption, repeatedly ask "what's the basis for this? what's the basis for that basis?" until you hit a physical law, a mathematical axiom, or hard fact; ② Smell-test for analogical thinking — phrases like "industry convention," "everybody does it this way," "historically..." are warning flags; ③ In the AI era, this is a role allocation between you and the LLM — LLMs are brilliant at analogical interpolation; humans are uniquely useful at slicing across disciplines down to axioms. That's the scarcest leverage in human-AI collaboration.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>SpaceX: the rocket industry took $65M as the floor launch cost because "that's the industry average." Musk decomposed to raw materials — aluminum, titanium, copper, carbon fiber at market price totaled ~2% of launch cost. The remaining 98% was manufacturing, organization, and conservative convention — all rebuildable. Falcon 9 brought the cost to ~$60M, far lower amortized when reused. The paradigm shift came from one move: refusing to accept "industry price" as a premise.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat is evaluating "should I build my own LLM inference cluster?" Analogical thinking says "the big players use cloud APIs — just follow them." First principles: decompose to token economics — monthly calls × unit price = $X; in-house hardware + power + ops = $Y. One more layer: 90% of his workflow is repeated templates; with prompt caching, real token count is ~1/5. The conclusion may flip: in-house isn't necessarily cheaper, but caching saves 70%. The real leverage point isn't "cloud vs in-house" — it's the deeper layer of token structure.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm evaluating <strong>[decision/product/tech choice]</strong>. Apply first-principles decomposition: (1) list every assumption my current judgment quietly takes for granted, (2) for each assumption, recursively ask "what makes this true?" until you hit physical laws, mathematical facts, or irreducible axioms, (3) rebuild the reasoning from those axioms and contrast it with my original conclusion. Flag exactly which layer I likely substituted analogical thinking for actual decomposition.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 02</div>
+<h2>Second-Order Thinking</h2>
+<div class="en">Second-Order Thinking</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>First-order thinking asks "what happens next?" Second-order thinking asks "and then what?" Howard Marks turned this into an investing canon: first-order says "buy good companies"; second-order asks "how good is this company, and how much is already priced in? where do I know more than the market?" The first is reflex; the second is reflexive game-play. In any game-theoretic system, first-order alone never beats average — everyone sees the same obvious facts.</p>
+<p>The non-trivial insight: the lever isn't "think further into the future" — it's <em>see the reflexivity</em>. When your decision changes the system's state and other players' behavior, linear projection breaks. "Stricter speed limits → fewer accidents" is first-order. Second-order: "how do drivers react? Will trust in the system make them drive faster?" Add a layer — how do insurers and police reallocate? In complex adaptive systems, every intervention is "eaten back" by participants' expectations and feedback.</p>
+<p>Practice: ① Train the "and then what?" chain — force yourself to at least the third layer; ② Reverse brainstorming — for every intervention, ask "how will the other side / the system adapt?"; ③ Distinguish two decision classes — reversible and low-impact decisions can survive on first-order (speed of comparison wins); irreversible, systemic decisions <em>must</em> be second-order (deliberation wins). Most failures aren't from lack of thinking; they're from stopping at layer one.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>1990s: a U.S. state put a bounty on dead cobras to reduce the snake problem. First-order expectation: fewer snakes. Result: people started farming cobras for the bounty; when the bounty was canceled, they released their stock — the snake population doubled. This is the famous "Cobra Effect." Any incentive imposed on a system triggers participants' second-order response; policymakers who ignore that layer often create a worse problem than the one they started with.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat deploys an AI coding tool, expecting per-engineer output to double (first-order). Second-order: each engineer ships more PRs; code-review queues clog; reviewers rubber-stamp; bug rate rises; juniors lose the "read code to learn" loop AI now does for them, and their growth curve flattens. Third-order: in six months, senior attrition rises and organizational capacity hollows out. The conclusion isn't "don't use AI" — it's that adopting AI <em>requires</em> a parallel redesign of review and mentorship paths. Most teams skip this second-order design.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm about to act on <strong>[policy/product/career decision]</strong>. Run a second/third-order analysis: (1) state the obvious first-order outcome that everyone can see, (2) project how key actors will rationally adapt, game, or hedge — yielding second-order reactions, (3) push to third-order: which "sensible first-order" conclusions get fully reversed by the second-order response, (4) flag the second-order safeguards I must build in upfront to avoid a cobra-effect outcome.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 03</div>
+<h2>Inversion</h2>
+<div class="en">Inversion</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Inversion isn't "argue the opposite side" — it's <em>solve the same problem from the back</em>. To find "how to succeed," first list "how to guarantee failure." To find "how to live long and healthy," first study "what behaviors most reliably kill." Jacobi's formula: "Invert, always invert." Munger ranks it among the most underused tools in the human cognitive toolkit. Its power is an asymmetry: success paths are countless and judgment-heavy; failure paths are few, obvious, and avoidable. Avoiding them is more tractable than chasing success.</p>
+<p>The non-trivial insight: inversion's real job isn't "find the answer" — it's <em>bypass cognitive blind spots</em>. Pursuing success directly, we see what we want to see. Listing failure modes, we see the cold causal chain. Neuroscience reading: the loss-aversion circuitry (amygdala-related) is sharper than the reward circuitry — inversion recruits the brain's more precise subsystem. Buddhism's "contemplation of death" exercise is structurally identical — by rehearsing the endpoint, you recalibrate current choices in reverse.</p>
+<p>Practice: ① Before any goal, draft the "how to completely fail at this" list as a pre-decision pothole map; ② For every conviction, "prepare the funeral" — assume it failed, then autopsy plausible causes; ③ In team decisions, install a red team whose explicit job is to argue "why this project will fail" — countering groupthink and confirmation bias. Inversion won't give you creativity, but it removes most of the paths on which you'd be killed.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>Munger's Harvard commencement speech on "How to Guarantee a Miserable Life": ① be unreliable; ② learn only from your own experience; ③ stay down when you fall; ④ practice envy, resentment, and self-pity. Invert that list and you have a guide to a good life — far more useful than positive advice. "Happiness" is too abstract; specific failure behaviors are identifiable. That's why medicine has contraindications first, finance has unacceptable-risk lists first, and software has "never do this in production" rules first.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat wants to become an AI-powered "super-individual." Forward question: how? The answer scatters — prompts, subscriptions, case studies. Inverted: how do I guarantee failure? ① Use AI as a universal tool, dabbling in every domain, deep in none beyond AI's reach; ② Get addicted to tool shopping — perpetually benchmarking new models instead of producing; ③ Use AI to replace thinking rather than accelerate it, outsourcing key judgment to statistical patterns; ④ Don't accumulate private data/experience — public capability has no moat. Turn those four into a weekly self-check — far more actionable than chasing a "best practices" list.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>My goal is <strong>[career pivot / project objective / life decision]</strong>. Use inversion: (1) Don't tell me how to succeed — list 5-7 concrete behaviors guaranteed to make me fail at this, (2) rank those failure modes by "which one I'm most prone to right now," (3) turn them into a weekly self-audit checklist, (4) point out which steps in my current plan are quietly executing items from the failure list without me realizing it.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header">
+<div class="num">MODEL 04</div>
+<h2>Occam's Razor</h2>
+<div class="en">Occam's Razor</div>
+</div>
+<div class="card-body">
+<div class="section">
+<div class="section-label">Deep Dive</div>
+<p>Occam's Razor: "entities should not be multiplied beyond necessity" — when explanations have equal predictive power, prefer the one with fewer assumptions. It does <em>not</em> say "simpler is always true"; it says "between two equally good explanations, the more complex one carries more parts that can be wrong." Information-theoretically, a shorter hypothesis has a smaller description length and a higher prior (the core of Solomonoff induction); engineering-wise, every extra assumption is an extra failure point.</p>
+<p>The non-trivial insight: the most common abuse is <em>oversimplification</em> — conflating "simple" with "fewer assumptions." Einstein's sharper gloss: "as simple as possible, but not simpler." When the phenomenon itself is complex, jamming it into a simple theory is razor overshoot. Quantum mechanics isn't simple, but "wave-particle duality" is the current razor boundary — adding "superstrings" or "multiverse" without new evidence violates the principle. The criterion isn't "sounds simple" — it's <em>assumption count</em>.</p>
+<p>Practice: ① Debug in "fewest-assumption first" order — config error &gt; code bug &gt; compiler bug &gt; hardware fault; ② Stress-test conspiracy theories with "how many people would have to stay silent and coordinated? does the coordination cost exceed the direct motive?"; ③ In product design, defend against feature creep — every new feature must answer "what's the evidence of necessity?" or get razored. The razor is fundamentally a Bayesian prior, not an aesthetic preference.</p>
+<div class="example">
+<div class="label">Classic Example</div>
+<p>Medical heuristic: "When you hear hoofbeats, think horses, not zebras." Young patient with headache and fatigue: first consider sleep loss, dehydration, screen-strain; next thyroid or anemia; only last, tumor. Jumping straight to "tumor" is statistically wrong — not because tumors don't exist, but because given identical symptoms, the prior probability of "sleep deficit" is 100× higher. The razor is just the colloquial form of a Bayesian prior.</p>
+</div>
+<div class="example">
+<div class="label">Scenario · BigCat</div>
+<p>BigCat's AI workflow suddenly slowed. Complex story: did the new model version regress? Did the API rate-limit silently drop? Is the ISP throttling? Apply the razor — first check local CPU/memory/network (most common); then the most recent config change (the variable <em>you</em> introduced); upstream changes last. 90% of "weird bugs" are something you changed and forgot. Same with a child's recent grade drop: check sleep, screen time, recent interpersonal stress first, before reaching for "learning method" theories. The razor reminds you: common causes vastly outnumber exotic ones.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-label">AI Prompts</div>
+<div class="prompts">
+<div class="prompt-item">
+<div class="lang">English Prompt</div>
+<p>I'm analyzing this issue/anomaly: <strong>[scenario]</strong>. Apply Occam's Razor to rebuild the diagnostic order: (1) list 4-6 plausible explanations, ranked from fewest to most assumptions, (2) for each, count the "unsupported premises" it silently requires, (3) propose a Bayesian-style test sequence starting from the lowest-assumption hypothesis, (4) flag any reasoning in my current hypothesis where I'm reaching for an exotic explanation just because it "sounds smarter," when a mundane one would do.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<nav>
+<a href="index.en.html">← Back to Index</a>
+</nav>
+</div>
+</body>
+</html>
