@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Military Strategic Thinking · Day 31</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0; background: #f7f7f5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; color: #2d3436; line-height: 1.75; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+  header.page-header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #dfe6e9; }
+  header.page-header h1 { font-size: 32px; margin: 0 0 12px; color: #2d3436; letter-spacing: 1px; }
+  header.page-header .meta { font-size: 14px; color: #636e72; letter-spacing: 2px; text-transform: uppercase; }
+  .card { background: #ffffff; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 6px solid #ccc; }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #c44545; }
+  .card.c3 { border-left-color: #1b8a5a; }
+  .card.c4 { border-left-color: #7048b8; }
+  .card h2 { margin: 0 0 4px; font-size: 24px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 20px; letter-spacing: 0.5px; }
+  .divider { margin: 22px 0 14px; }
+  .divider .label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 2px 0; font-variant: small-caps; }
+  .c1 .divider .label { color: #0a6fb8; }
+  .c2 .divider .label { color: #c44545; }
+  .c3 .divider .label { color: #1b8a5a; }
+  .c4 .divider .label { color: #7048b8; }
+  .divider hr { border: none; border-top: 1px solid #ecf0f1; margin: 6px 0 0; }
+  .card p { margin: 0 0 14px; font-size: 15.5px; color: #2d3436; }
+  .card .example { background: #fafafa; border-radius: 6px; padding: 12px 16px; margin: 10px 0; font-size: 15px; color: #4a5568; }
+  .summary { font-size: 15px; color: #4a5568; background: #f5f7fa; padding: 14px 18px; border-radius: 6px; line-height: 1.7; }
+  .prompt-block { background: #1e272e; color: #dfe6e9; border-radius: 8px; padding: 16px 18px; margin: 10px 0 14px; font-family: "SF Mono", "Consolas", "Monaco", monospace; font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; word-break: break-word; overflow-x: auto; }
+  .prompt-block .tag { display: inline-block; background: #fdcb6e; color: #1e272e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px; letter-spacing: 1px; }
+  footer { text-align: center; margin-top: 50px; padding-top: 24px; border-top: 1px solid #dfe6e9; }
+  footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="page-header">
+    <h1>Mental Models Deep Dive: Military Strategic Thinking</h1>
+    <div class="meta">2026-05-26 · Day 31</div>
+  </header>
+
+  <section class="card c1">
+    <h2>1. OODA Loop</h2>
+    <div class="subtitle">John Boyd — Not a process, but a cycle; not more precise, but faster</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>USAF fighter pilot John Boyd: every decision is a continuous loop of <strong>Observe → Orient → Decide → Act</strong>. The common misread is treating it as a four-step process. The real claim: <em>whoever completes a full lap faster locks the opponent into stale data</em>.</p>
+    <p>The non-obvious insights: (1) Boyd emphasized <em>Orient is the core</em> — same observation, different mental model, opposite orientations. The algorithm didn't change, the parameters didn't change, but the world did — so your next action is structurally outdated. (2) Engineering analogy: OODA ≈ a CI/CD pipeline. Most people optimize Decide quality ("think harder before acting"); experts optimize <em>cycle time</em> — halve each lap and knowledge depreciation can keep pace with reality. (3) "OODA arbitrage": top operators don't just go faster themselves, they <em>actively pollute the opponent's Orient stage</em> with information overload, tempo shifts, paradigm dislocations — leaving the opponent permanently stuck in Orient.</p>
+    <p>How to practice: (1) For any complex task, first ask "what is my current loop length — hours? weeks?" — that's the primary metric, more important than "being right." (2) Never let a single lap run too long; chop big moves into small trial laps. (3) Watch out for "I'm still Orienting" — most stuck Orients aren't from missing data, they're from an unupdated mental model.</p>
+    <div class="example"><strong>Classic example:</strong> Korean War, F-86 vs MiG-15. The MiG flew higher, faster, climbed harder — on paper, it should have dominated. But the F-86 had two unflashy things: a bubble canopy (wider field of view, faster Observe) and hydraulic-assisted controls (lighter Act). Together they compressed the pilot's entire OODA loop. The resulting kill ratio was roughly 10:1. Boyd's insight was distilled from this exact war.</div>
+    <div class="example"><strong>BigCat scenario:</strong> The real moat in the AI era isn't "knowing more" — it's a shorter OODA loop. The person who goes from idea → prototype → feedback in 30 minutes is operating one dimension above the one who spends two weeks writing PRDs. Use LLMs to automate Observe (info aggregation), accelerate Orient (instant framing), compress Decide (multi-option comparison) — and the whole loop drops from days to hours. That's the engineering definition of a "super-individual."<br><br>Parenting transfer: when something new appears in a child, most parents stall at Orient ("what's going on with her?") and decide using last cycle's model — always half a lap late. Shorten the loop: spend a week observing instead of lecturing, let the mental model recalibrate; trial small actions and gather feedback rather than think your way to certainty.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+The situation/competition I face: [context]. My current approach: [approach].
+Apply Boyd's OODA Loop: 1) Estimate my current loop length (Observe→Act). Which stage is the bottleneck? 2) Could my Orient (mental model) be stale? Name 2 most suspect outdated assumptions. 3) If I compressed the loop to 1/3 of current length, what would I sacrifice vs. gain? 4) Design one minimal OODA cycle I can run end-to-end within [timeframe].</div>
+  </section>
+
+  <section class="card c2">
+    <h2>2. Center of Gravity</h2>
+    <div class="subtitle">Schwerpunkt (Clausewitz) — Not the largest, but the nonlinear hinge</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>The core concept of Clausewitz's <em>On War</em>: every system has a <strong>"center of gravity" (Schwerpunkt) — the hinge node that sustains the system's stability</strong>. Strike it and the whole system collapses; strike the wrong place and any amount of force becomes attrition.</p>
+    <p>The non-obvious insights: (1) The center is <em>not necessarily the largest or most visible</em>. For a sea power, it's the navy; for a land power, the army; <em>for an alliance, its unity itself</em> (Clausewitz's own example). What looks massive may be flesh; the real skeleton is elsewhere. (2) Structurally identical to systems-thinking leverage points — nonlinear hinges where a 10% perturbation changes 80% of the outcome. But the military framing is sharper: the center is <em>the source of the opponent's stability</em>, not a metric you want to optimize. (3) Most failures aren't from lack of effort — they're from <em>spending effort off-center</em>. You feel busy; the opponent is unscratched. (4) The center moves — early, mid, and end phases of a campaign often have different centers, and clinging to the previous one is a classic mistake.</p>
+    <p>How to practice: (1) After listing your todos, ask <em>"if I could do only one, which one would make ten others self-cancel or self-resolve?"</em> — that's your center. (2) Faced with a hard problem, ask "what is holding this system's stability together?" — not "where does it hurt?" (3) Beware "symptom thinking": the loudest complaints, the highest-priority bug, the most behind project are rarely the center.</p>
+    <div class="example"><strong>Classic example:</strong> Ulm 1805. Napoleon identified that the Austrian army's real center was <em>not troop strength</em> but <em>unified command</em> — the main force was absolutely expected to converge in a fixed area. With 210,000 men, Napoleon executed a massive flanking march, skipped frontal engagement, cut the Austrians' supply and communications from behind, dismantled their "unified command" center — and took 60,000 Austrians at Ulm almost without battle. Hitting the center ≠ hitting the largest flesh.</div>
+    <div class="example"><strong>BigCat scenario:</strong> Tech debt management — most teams rank debt by size and pay down the biggest. Wrong. The real center is <em>the one block that's blocking ten other things</em>. It might be an unglamorous auth module, or one manual step in the deploy pipeline — but unblock it and ten "more urgent" debts self-cancel.<br><br>The center of an AI product is often <em>not model quality</em> but the data-flywheel closing loop — once that spins, model gaps get smoothed by time; without it, the most expensive model is an isolated island. Parenting transfer: the center across a child's multiple surface "problem behaviors" (procrastination, defiance, avoidance) is usually <em>one unseen emotion</em> or <em>one fracture in the relational trust</em> — patching ten symptoms is worse than mending that one root.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+The complex situation/project: [context]. Current todo/pain list: [list].
+Apply Clausewitz's Center of Gravity lens: 1) What is the true structural hinge sustaining the current stability (or the opponent's advantage)? Why is it the center, not the most visible piece? 2) What % of my current effort is spent off-center? 3) If I could move only one thing, what's the highest-leverage action? 4) Will the center drift in the next phase — where should I anticipate it moving to?</div>
+  </section>
+
+  <section class="card c3">
+    <h2>3. Fog of War</h2>
+    <div class="subtitle">Clausewitz — Information is never complete; build robust architecture, not dependent</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>Clausewitz: "Three-quarters of the factors on which action in war is based are wrapped in a fog of uncertainty." This isn't a tech defect — it's an <strong>intrinsic property of adversarial systems</strong>. Better sensors don't dispel fog; they only push it to a higher dimension.</p>
+    <p>The non-obvious insights: (1) Most people's instinct is "let's do another round of research" — treating fog as a bug. The correct response is treating it as a feature: <em>design decision principles that work under fog</em>, not architectures that depend on transparency arriving. (2) The structural cognate in distributed systems is <em>partial failure</em>: you can never be 100% sure of a remote node's state — so CAP forces you to <em>pre-commit</em> to partition behavior rather than wait for ground truth. (3) Engineering parallel: good error handling isn't fixing known failures, it's the system <em>degrading gracefully under unknown ones</em>. Same with decisions: a good decision isn't one based on complete info, it's one that <em>still has acceptable expected value under partial info</em>. (4) Inverse use: fog isn't only something you endure — <em>you can manufacture it for the opponent</em>. Tempo shifts, concealed movement, noised signals — all paralyze the opponent's Orient stage.</p>
+    <p>How to practice: (1) Before deciding, list "what I don't know now, and won't know in the next 24h" — design from that floor. (2) Replace "let's wait and see" with "place a small bet, let real reactions replace guesses" — action is the cheapest probe. (3) Any plan that requires "full information" to run is structurally fragile — replace it.</p>
+    <div class="example"><strong>Classic example:</strong> 1862, Stonewall Jackson's Shenandoah Valley Campaign. Jackson <em>manufactured</em> the fog: 1,100 km of marching across 48 days, unpredictable routes, frequent feints — Union commanders never knew where he was or in what strength. Result: 17,000 Confederates tied down 60,000 Union troops and prevented reinforcement of the main theater. Same fog — he used it as a weapon, not an obstacle.</div>
+    <div class="example"><strong>BigCat scenario:</strong> AI product decisions live in compounded fog — true user intent is invisible, model capability edges are untestable, the competitor's next move is unknowable. "Wait until we're sure" is a losing architecture. The right move: build <em>cheap probes</em> — gradual rollouts, A/B tests, minimal prompt prototypes — and let real reactions replace guesses. Model behavior uncertain? Don't pile on more prompt tuning first — build a quantifiable eval set as your probe.<br><br>Parenting transfer: you will never "fully know" your child's inner state at any given stage — that's not your failure, it's fog's nature. Stop chasing "understanding her completely" and instead design <em>low-cost signal capture</em>: open-ended questions, shared activities, non-judgmental presence. They're probes, not interrogations. The worst architecture is "wait for the day she opens up on her own."</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+The decision/situation I face: [context]. I feel information is insufficient and want to wait.
+Reframe via Fog of War: 1) List what I don't know now and won't know within [timeframe] — that's the fog baseline. 2) Under this fog, what decision principle still yields an acceptable expected value? 3) Is my current plan robust to fog, or dependent on transparency arriving? Suggest 3 ways to make it robust. 4) Which small-stakes probes can I launch within [time] to replace guessing with real signal?</div>
+  </section>
+
+  <section class="card c4">
+    <h2>4. The Indirect Approach</h2>
+    <div class="subtitle">Liddell Hart — Create dislocation, then strike</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>British military theorist B.H. Liddell Hart, after surveying two thousand years of battles, concluded: <strong>victory rarely comes from frontal attack on the strongest point — it comes from striking where the opponent is psychologically and structurally off-balance</strong>. Beyond physical displacement, the deeper move is creating <em>cognitive dislocation</em> first, then engaging.</p>
+    <p>The non-obvious insights: (1) The "strongest point" is <em>precisely the wrong place to attack</em> — that's where the opponent is best prepared, where every unit of your effort is canceled. The indirect approach targets <em>the unguarded, the unguardable, or the awkward-to-guard</em>. (2) Game-theoretic framing: a direct attack lands inside the opponent's best-response function; an indirect attack <em>steps outside their strategy space entirely</em> — they don't have a prepared response. (3) Liddell Hart's keyword is <em>dislocation</em> — not a strength gap, but <em>the opponent losing stable reactivity before you act</em>. Movement, deception, tempo, psychological shock are all means of creating dislocation. (4) Not "go around because you can't fight" — even when you could win head-on, the cost/benefit of going around is usually better.</p>
+    <p>How to practice: (1) When stuck, don't ask "how do I push harder on this?" — ask <em>"if not directly, from what unexpected angle could the result simply appear?"</em>. (2) List the opponent's/system's expectations — your best move is often <em>outside that expected set</em>. (3) Avoid the "valor trap" — being able to win head-on doesn't mean you should fight head-on.</p>
+    <div class="example"><strong>Classic example:</strong> France, 1940. The Maginot Line was the French army's ten-year frontal investment — nearly perfect — so the Germans <em>didn't attack it</em>. Guderian's armor pushed through the Ardennes Forest, considered "impassable by armor" by the French, and flanked from behind. Within a week, the French strongest position was rendered irrelevant — not breached, just bypassed into irrelevance. The 20th century's purest textbook of the indirect approach.</div>
+    <div class="example"><strong>BigCat scenario:</strong> Competing with AI incumbents — frontal contest on foundation models is a losing strongest-point. Indirect routes: vertical scenarios they don't serve well, long-tail users, deep personalization, localized compliance, privacy-sensitive niches. The same logic as Nintendo's Wii — instead of racing Sony/Microsoft on hardware spec, it flanked from motion controls + family co-play, skipping the entire frontline.<br><br>Parenting transfer: a child's surface "problem behaviors" (defiance, procrastination, avoidance) — direct correction usually escalates. The indirect approach: tune sleep, emotional baseline, environmental structure, parent-child connection — and the surface issue often resolves from the side. The same goes for self-change: a frontal willpower war against a bad habit usually loses; redesigning the environment, triggers, and substitute behaviors is the indirect approach, and the win rate is far higher.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+The challenge/competition I face: [context]. My current frontal approach: [approach].
+Apply Liddell Hart's Indirect Approach: 1) Where is the opponent/system best prepared (strongest point)? Why is direct attack there a bad idea? 2) Propose 3 indirect angles — flank, unguarded, outside their strategy space. 3) Before contact, how can I create "dislocation" (movement, tempo, deception, cognitive misalignment)? 4) Identify one path where going around once yields more ROI than three direct pushes.</div>
+  </section>
+
+  <footer>
+    <a href="index.en.html">← Back to Home</a>
+  </footer>
+</div>
+</body>
+</html>
