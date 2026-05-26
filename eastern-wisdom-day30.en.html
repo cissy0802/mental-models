@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Deep Dive: Eastern Wisdom · Day 30</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 0; background: #f7f7f5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; color: #2d3436; line-height: 1.75; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+  header.page-header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid #dfe6e9; }
+  header.page-header h1 { font-size: 32px; margin: 0 0 12px; color: #2d3436; letter-spacing: 1px; }
+  header.page-header .meta { font-size: 14px; color: #636e72; letter-spacing: 2px; text-transform: uppercase; }
+  .card { background: #ffffff; border-radius: 12px; padding: 28px 32px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 6px solid #ccc; }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #c44545; }
+  .card.c3 { border-left-color: #1b8a5a; }
+  .card.c4 { border-left-color: #7048b8; }
+  .card h2 { margin: 0 0 4px; font-size: 24px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 20px; letter-spacing: 0.5px; }
+  .divider { margin: 22px 0 14px; }
+  .divider .label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 2px 0; font-variant: small-caps; }
+  .c1 .divider .label { color: #0a6fb8; }
+  .c2 .divider .label { color: #c44545; }
+  .c3 .divider .label { color: #1b8a5a; }
+  .c4 .divider .label { color: #7048b8; }
+  .divider hr { border: none; border-top: 1px solid #ecf0f1; margin: 6px 0 0; }
+  .card p { margin: 0 0 14px; font-size: 15.5px; color: #2d3436; }
+  .card .example { background: #fafafa; border-radius: 6px; padding: 12px 16px; margin: 10px 0; font-size: 15px; color: #4a5568; }
+  .summary { font-size: 15px; color: #4a5568; background: #f5f7fa; padding: 14px 18px; border-radius: 6px; line-height: 1.7; }
+  .prompt-block { background: #1e272e; color: #dfe6e9; border-radius: 8px; padding: 16px 18px; margin: 10px 0 14px; font-family: "SF Mono", "Consolas", "Monaco", monospace; font-size: 13.5px; line-height: 1.65; white-space: pre-wrap; word-break: break-word; overflow-x: auto; }
+  .prompt-block .tag { display: inline-block; background: #fdcb6e; color: #1e272e; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 3px; margin-bottom: 10px; letter-spacing: 1px; }
+  footer { text-align: center; margin-top: 50px; padding-top: 24px; border-top: 1px solid #dfe6e9; }
+  footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="page-header">
+    <h1>Mental Models Deep Dive: Eastern Wisdom</h1>
+    <div class="meta">2026-05-26 · Day 30</div>
+  </header>
+
+  <section class="card c1">
+    <h2>1. Dao Follows Nature (道法自然)</h2>
+    <div class="subtitle">Wu Wei — Not inaction, but non-coercive action</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>"Dao follows nature" is often misread as "do nothing." Its real meaning: the Dao models itself on the way things are <em>of themselves</em>. "Wu wei" (无为) is not stillness — it's <strong>not exerting force against the system's gradient</strong>. Let the system evolve along its own attractor, then nudge the direction. Maximum output comes from minimum counter-friction.</p>
+    <p>The non-obvious insights: (1) From an engineer's perspective, every complex system has a natural gradient (loss function, incentive structure, user habits). Effort against the gradient is 90% diluted by the system; small actions with the gradient amplify exponentially. (2) The real difficulty of wu wei isn't doing less — it's <em>identifying where you're spending force in vain</em>. Most people mistake "the feeling of effort" for contribution, but effort against the natural gradient is just paying friction tax. (3) It complements antifragility: antifragility extracts gain from volatility; wu wei avoids adding resistance to it — the latter is a prerequisite for the former.</p>
+    <p>How to practice it: before every decision, ask three things. (1) Where does the natural gradient of this situation point (what do users/markets/the other party/your child <em>already want</em> to do)? (2) Is my current force aligned with or against it? (3) If I applied only 10% of the force, where is the highest leverage point? The most effective intervention is often <em>removing one obstacle</em>, not adding one push.</p>
+    <div class="example"><strong>Classic example:</strong> Zhuangzi's "Cook Ding cutting up an ox" — the blade is still sharp after 19 years, because Ding follows the natural seams (依乎天理), never hacking through bone. Ordinary cooks change knives monthly (hacking), good ones yearly (cutting), Ding's blade looks brand new. Same job; the difference is going with the grain vs. against it.</div>
+    <div class="example"><strong>BigCat scenario:</strong> In distributed systems, "strong consistency" goes against the gradient (it requires global coordination); "eventual consistency" follows it (nodes converge on their own) — the former pays an availability tax, the latter just accepts brief inconsistency. The same applies to AI: a good prompt stretches along the model's distribution (few-shot in the direction of examples); a bad one demands the model violate its training distribution.<br><br>Parenting transfer: when a child drags on homework, the against-the-gradient move is to nag repeatedly; the with-the-gradient move is to identify the specific point of resistance (afraid of being wrong? too long? boring?) and <em>remove that obstacle</em> — 5 minutes per problem, no criticism on errors, start with the easiest. Same goal: in the first you're exhausted and she resists; in the second you've barely pushed and she's already moving.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+I'm working on: [goal/project]. My current approach: [approach].
+Apply the Wu Wei / Dao-Follows-Nature lens: 1) What's the natural gradient of this system (the underlying motivations, habits, incentives of the parties involved)? 2) Where am I currently pushing against the gradient and paying friction tax? 3) Reframe "add force" into "remove obstacle" — identify the 3 highest-leverage frictions to remove. 4) Suggest a minimal action that delivers 80% of the outcome with 10% of the effort.</div>
+  </section>
+
+  <section class="card c2">
+    <h2>2. Doctrine of the Mean (中庸之道)</h2>
+    <div class="subtitle">Zhongyong — Not compromise, but dynamic optimum</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>"Zhongyong" is often diminished to "splitting the difference." Its real meaning: <strong>finding the context-specific optimum between two failure modes (excess and deficiency)</strong>, and that optimum <em>drifts with context</em>. It's nearly isomorphic to Aristotle's Golden Mean — courage as the mean between recklessness and cowardice. But Zhongyong emphasizes "timely centering" (时中): the optimum is never at a fixed position.</p>
+    <p>The non-obvious insights: (1) Compromise treats "the mean" as a <em>static average</em> (50% A, 50% B); Zhongyong treats it as a <em>dynamic optimum</em> ("in this context, A should be 73%"). The former is the refuge of mediocrity; the latter is the expert's judgment. (2) Engineering analogy: Zhongyong ≈ a <em>variable setpoint</em> in a control system — the same PID controller uses different setpoints under different loads; a fixed value crashes. (3) Structurally identical to exploration vs. exploitation in ML: over-exploring wastes, over-exploiting gets stuck in local optima, and the right ratio shifts by stage. (4) The biggest enemy of Zhongyong is not the extreme — it's <em>transplanting last cycle's optimum onto this one</em>. Context changed; the optimum has necessarily drifted.</p>
+    <p>How to practice it: (1) For any important choice, explicitly write down the two failure extremes (excess vs. deficiency), not "right vs. wrong." (2) Identify the key variables in <em>this context</em> that move the optimum (not a universal answer). (3) Periodically ask: "Is my current optimum a leftover from the previous stage?" Many people aren't wrong — they're <em>lagged</em>.</p>
+    <div class="example"><strong>Classic example:</strong> Analects: "Excess is as bad as deficiency" (过犹不及). Zigong asked Confucius which student was wiser, Shi or Shang. Confucius said, "Shi goes too far; Shang doesn't go far enough." Zigong followed: "So Shi is wiser?" Confucius: "Going too far is just as bad as not going far enough." Two failure modes, equally bad — no safety margin in "better err on the side of excess." A clean break from the folk intuition that extremes are safer than the middle.</div>
+    <div class="example"><strong>BigCat scenario:</strong> In team management, both "tight control" and "full hands-off" are failure modes. Zhongyong isn't "manage half, let go half" — it's dynamically calibrating based on <em>the team's current maturity</em>: new hires get 80% structure + 20% autonomy; senior people the reverse. Applying "hands-off for senior team" to a new team isn't the Mean — it's a <em>misalignment</em>.<br><br>Parenting: strict vs. permissive have completely different optima at different ages. Early school years need structure and certainty (lean strict); pre- and adolescence need autonomy and the right to fail (lean permissive). Most parents' failure isn't picking the wrong style — it's <em>not updating</em>: carrying what worked at 6 into 12, then 16. Zhongyong demands re-calibrating the setpoint every few years.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+The choice I'm facing: [decision/state].
+Apply the Doctrine of the Mean (中庸) lens: 1) Name both failure extremes (what "excess" and "deficiency" look like here). 2) Which context variables shift the optimum (stage, maturity, counterparty)? 3) Given the current context, which side is the optimum closer to, and why? 4) Is my current approach a leftover from a previous stage's optimum? Recommend one calibration this week.</div>
+  </section>
+
+  <section class="card c3">
+    <h2>3. Unity of Knowing and Doing (知行合一)</h2>
+    <div class="subtitle">Wang Yangming — Unenacted "knowing" is not yet knowing</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>Wang Yangming: "To know and not act is simply not yet to know." He isn't urging people to practice more — he's <strong>defining</strong> what counts as "knowing." Only what can move your action qualifies as real knowing; "knowing" that doesn't drive action is merely <em>a memory about knowing</em>. This is an epistemological verdict, not a moral exhortation.</p>
+    <p>The non-obvious insights: (1) Engineering analogy — code that has never been run isn't code; it's <em>a description of code</em>. Reading 100 papers doesn't equal mastering 100 methods; it's just 100 token sequences in your memory. "Real knowing" is structure verified by your own action and reusable on demand. (2) This explains why heavy reading ≠ real understanding: the "I got it" of reading is cheap <em>recognition</em>; the "I got it" of acting is expensive <em>retrieval</em> — they travel different circuits in the brain. (3) Coupled with predictive processing: your "priors" only get genuinely calibrated by being repeatedly checked against action; read-only mode keeps your priors at low resolution forever. (4) The reverse also holds: action reshapes knowing. Wang Yangming's awakening at Longchang wasn't reasoned out in a study — it was <em>forced out by exile and military command</em>.</p>
+    <p>How to practice it: (1) Apply a gate to anything you "know" — when did you last <em>change an action because of this knowledge</em>? If you can't say, downgrade it to "heard of." (2) When you learn something new, perform the smallest real application within 48 hours (not a practice problem — a <em>real-stakes situation</em>). (3) Beware the knowledge-hoarding trap: a bookmark or highlight isn't capability. Capability is only defined by action.</p>
+    <div class="example"><strong>Classic example:</strong> Wang Yangming's early "investigating bamboo" — following Zhu Xi's "investigate things to fathom principle," he sat staring at bamboo for seven days and fell ill with nothing gained. Years later, exiled to wild Guizhou (Longchang), facing near-death conditions, he <em>had to act in order to survive</em> — and in those conditions awakened to "mind is principle" and "unity of knowing and doing." What couldn't be exhausted in a study was forced out by practice. The most dramatic self-proof of the doctrine.</div>
+    <div class="example"><strong>BigCat scenario:</strong> In the AI era, "knowing" suffers the worst inflation — you can read 50 high-quality pieces and watch 10 tutorials a day, but the count that <em>actually changes your next line of code, next decision, next conversation</em> is probably under 1. The real moat for an AI super-individual isn't input volume but <em>input-to-action conversion rate</em>. A weekly check: list the 5 things you read or watched this week that struck you most, and ask each: "What action did this change?" — most likely you'll have no answer for most of them.<br><br>Parenting transfer: no matter how many parenting books you read, your real knowing is your reaction at the next tantrum. Treat each conflict as an exam in "knowing" — the gap between your response and the book is your true knowledge boundary. That gap is the true goal of next-round reading, not opening yet another book.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+Something I recently "learned": [knowledge/theory/method].
+Apply Wang Yangming's Unity of Knowing and Doing audit: 1) Which specific action of mine has this changed in the last 7 days? If none, is this real knowing or just a memory about knowing? 2) What's the smallest real-stakes (not practice) application in my current context? 3) Design a 48-hour "action litmus test" that lets reality check this knowing. 4) After acting, what aspects of the original knowledge are likely to need revision?</div>
+  </section>
+
+  <section class="card c4">
+    <h2>4. Emptiness &amp; Dependent Origination (空性 / 缘起)</h2>
+    <div class="subtitle">Śūnyatā / Pratītyasamutpāda — No "things," only relations</div>
+    <div class="divider"><span class="label">In Depth</span><hr></div>
+    <p>Buddhist "emptiness" is not "nothing exists" — it's <strong>nothing exists with independent self-nature</strong>. Every phenomenon is the temporary appearance of an assembly of conditions (dependent origination). The Buddha's canonical formula: "When this is, that is; when this arises, that arises." Translated into modern language: <em>a "thing" is just a stable pattern in a relational network, not an entity behind the relations</em>.</p>
+    <p>The non-obvious insights: (1) Directly connects to systems thinking — once you drop "objects have independent essence," the systems view emerges naturally: you see <em>relations</em> between nodes, not <em>properties</em> of nodes. (2) Strikingly isomorphic to modern physics — in quantum field theory, "particles" are stable excitations of fields, not little balls; in neuroscience, the "self" is the narrative generated by the default mode network, not a core entity. "Substance illusion" is the brain's compressed output, not a property of the world. (3) Engineering analogy: OOP encapsulation actually obscures this — most bugs aren't inside a class; they're in <em>the relations between classes</em>; performance bottlenecks aren't at a node but in the <em>shape of the call graph</em>. Seeing emptiness drops the obsession "it must have a single root cause" and looks straight at the relations. (4) Psychology application — emotions aren't "your" property; they're a temporary assembly of (situation × bodily state × interpretation × history). This isn't word-play — it's leverage that lets you <em>not get hijacked</em> by emotion.</p>
+    <p>How to practice it: (1) When you catch "X is Y" (he's just like that / I'm just this kind of person / this project just won't work), replace "is" with "currently manifests as, under these conditions" — and the intervenable conditions immediately appear. (2) When debugging anything, first ask "which conditions assembled this?" rather than "whose fault is it?" (3) Put a question mark on identity claims ("I am X") — identity is a pattern, not an essence, and patterns can be re-formed.</p>
+    <div class="example"><strong>Classic example:</strong> The "chariot" analogy in the <em>Questions of King Milinda</em>: Nāgasena asks the king "What is the chariot?" The wheel? The axle? The frame? None of them is the chariot. But take all the parts apart, and there's no "chariot itself" left over either. "Chariot" is just the designation for these parts in a <em>specific relational structure</em>. The same argument applied to "self": body, feeling, thought, consciousness — none of them is the self, yet their assembly <em>is</em> what we ordinarily call the self. The cleanest reduction of emptiness.</div>
+    <div class="example"><strong>BigCat scenario:</strong> The "intelligence" of an LLM is not in the weights — the same weights, with no context, prompt, or user, are just numbers. Intelligence is the <em>relational emergence</em> of (weights × context × prompt × user). Get this and you stop asking entity-style questions like "does the model understand X?" and start asking "under what prompt structure does it reliably produce X?" — the latter is engineerable.<br><br>Parenting transfer: swap essence-style labels like "she's an introvert / she's bad at math" for "under this combination of conditions, she manifests as X" — and the adjustable conditions immediately appear (fatigue? social familiarity? explanation style?). Labels are closed verdicts; dependent origination is an open engineering space. Same applies to yourself — "I'm not good at X" becomes "under past condition-assemblies, X wasn't developed in me," and instantly turns fate into project.</div>
+    <div class="divider"><span class="label">AI Prompts</span><hr></div>
+    <div class="prompt-block"><span class="tag">English Template</span>
+I'm holding an essence-style judgment: [person/project/self/situation] — specifically the label: [X IS Y].
+Reframe via Emptiness &amp; Dependent Origination: 1) Translate "X is Y" into "under which conditions does X manifest as Y" — enumerate 5 condition dimensions (situation, body state, history, relations, interpretation). 2) Which 2-3 of these conditions are directly within my influence? 3) Design a minimal experiment that varies one condition to see Y shift. 4) What observation has my attachment to this essence-judgment caused me to miss?</div>
+  </section>
+
+  <footer>
+    <a href="index.en.html">← Back to Index</a>
+  </footer>
+</div>
+</body>
+</html>
