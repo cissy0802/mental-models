@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思维模型详解：人际关系类 · 2026-05-26</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .page-header .meta {
+    color: #868e96;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #e17055; }
+  .card.c2 { border-left-color: #00b894; }
+  .card.c3 { border-left-color: #0984e3; }
+  .card.c4 { border-left-color: #6c5ce7; }
+  .card h2 {
+    font-size: 24px;
+    margin: 0 0 4px;
+    color: #2d3436;
+  }
+  .card .subtitle {
+    font-size: 14px;
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+  }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    padding: 2px 0;
+  }
+  .c1 .section-label { color: #e17055; }
+  .c2 .section-label { color: #00b894; }
+  .c3 .section-label { color: #0984e3; }
+  .c4 .section-label { color: #6c5ce7; }
+  .card hr {
+    border: none;
+    border-top: 1px solid #ecf0f1;
+    margin: 0 0 16px;
+  }
+  .card p {
+    margin: 12px 0;
+    font-size: 15px;
+  }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0 8px;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block strong { color: #2d3436; letter-spacing: 1px; }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 6px;
+  }
+  .english-summary {
+    font-size: 14.5px;
+    color: #495057;
+    line-height: 1.8;
+  }
+  .prompt-block {
+    background: #1e272e;
+    color: #dfe6e9;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 10px 0 18px;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    overflow-x: auto;
+  }
+  .prompt-label {
+    display: inline-block;
+    background: #fdcb6e;
+    color: #2d3436;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #e9ecef;
+  }
+  .footer a {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>思维模型详解：人际关系类</h1>
+    <div class="meta">2026-05-26 · Day 22</div>
+  </header>
+
+  <!-- Card 1: 情感账户 -->
+  <section class="card c1">
+    <h2>情感账户</h2>
+    <div class="subtitle">Emotional Bank Account — 每段关系都是一个隐形账户，余额决定能否借支</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>柯维（Stephen Covey）的隐喻：每段关系都有一个隐形"账户"。理解、守约、感激、道歉、专注倾听是存款；忽视、违诺、批评、冷漠是取款。账户余额决定了出错时、提需求时、说硬话时——关系能否撑住。</p>
+    <p>非平凡洞察：① <strong>存取严重不对称</strong>——Gottman 的研究显示稳定关系需要 5:1 的正负互动比；一次重要的取款（爽约、当众否定）要 5–10 次同强度存款才能抵消。② <strong>"币种"必须匹配</strong>——你以为送礼物是存款，对方真正记账的是你记得她朋友的名字；你以为长时间陪伴是存款，对方需要的是 15 分钟全神贯注。错币种的存款 = 自我感觉良好的取款。③ <strong>不存款 = 慢性贬值</strong>——关系不是中性资产，是按"信任利率"折旧的。半年不联系的朋友账户已接近零，不是因为有取款，是因为没有维护。</p>
+    <p>实践方法：① 每周问"这周给最重要的 3 个人各做了几笔存款？" ② 出错后立即承认并补存，不解释不辩护——拖延让取款利息复利。 ③ 大请求前先预存，不要在余额接近 0 时去借支。</p>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>柯维原例：和孩子约好周六去公园，被工作打断改期。父母觉得"理由正当"，对孩子而言是一笔重大取款——下一次"我会做到"的承诺自动打折。账户余额逐次降低，直到孩子不再期待你的承诺，连失望都不表达——那时已经透支封户。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>分布式系统的"心跳"是关系账户最精确的隐喻——心跳停了不代表服务死了，但其他节点会把它从可用列表中静默剔除，<em>不通知</em>。亲密关系/团队信任同理：你不主动发心跳（短消息、肯定、关心），别人就把你从"可依赖的人"集合中移除。具体实践：日历加一栏"今日心跳"——给配偶、孩子、一位关键合作者各做一次具体存款（不是"你好吗"，是"我看到你做了 X，特别有意义"）。育儿场景：孩子要的币种和你以为的不同——你存的是"我多努力工作给你提供资源"，孩子记账的是"她记得我朋友的名字 / 陪我把那盒积木拼完"。币种错位，账户始终透支。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Stephen Covey's Emotional Bank Account: every relationship holds an invisible balance. Listening, keeping promises, gratitude, apology = deposits; broken promises, criticism, neglect = withdrawals. The balance determines whether the relationship can absorb mistakes, requests, and hard truths. Three non-trivial insights: (1) asymmetry — Gottman's work suggests it takes 5+ positive interactions to offset one strong negative; (2) wrong-currency deposits feel good to the giver but register as nothing — or as a withdrawal — for the receiver; (3) no deposit equals slow depreciation; relationships are decaying assets, not neutral ones. The practice: weekly check on the top 3 relationships, apologize fast and concretely (delay compounds the debt), pre-fund before requesting a large withdrawal.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">中文模板</span><br>
+      我和 [关系对象] 最近出现 [具体摩擦或疏离信号]。回顾过去 [时间段]，我做的存款大致是：[列举 3-5 件]；可能的取款是：[列举 3-5 件]。请：① 估算当前"账户余额"区间；② 判断我以为是存款的事情里，哪些可能是"错币种"对她而言无效甚至像取款；③ 设计未来 14 天 5 个具体、对方真正在乎的存款行动；④ 如果存在未弥补的重大取款，给出"修复对话"的开场白。
+    </div>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      My relationship with [person] is showing [specific friction or distance signs]. Over the past [timeframe], my deposits include: [list 3-5]; possible withdrawals include: [list 3-5]. Please: (1) estimate the current balance range; (2) identify which of my "deposits" may be wrong-currency — invisible or even withdrawal-like to them; (3) design 5 concrete deposit actions for the next 14 days that the other person actually values; (4) if there is an unrepaired major withdrawal, draft the opening line of a repair conversation.
+    </div>
+  </section>
+
+  <!-- Card 2: 非暴力沟通 -->
+  <section class="card c2">
+    <h2>非暴力沟通</h2>
+    <div class="subtitle">Nonviolent Communication (NVC) — 观察 → 感受 → 需要 → 请求</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>马歇尔·罗森博格（Marshall Rosenberg）的 NVC 把一切沟通拆为四步：观察（Observation）→ 感受（Feeling）→ 需要（Need）→ 请求（Request）。表面是话术，本质是把对话从"对错评判"切换到"需要表达"——不再说"你又这样"，而是说"当我看到 X，我感到 Y，因为我需要 Z，你能不能 W？"</p>
+    <p>非平凡洞察：① <strong>观察 ≠ 评价</strong>——"你总是不听我说话"是评价，"过去 10 分钟我说话时你看了 3 次手机"是观察。评价激活防御，观察激活共同事实。② <strong>感受 ≠ 想法</strong>——"我觉得你不尊重我"是伪装成感受的评价（受害者-加害者结构），真感受是"我感到失落"。区分这一层就抽走 80% 的对抗张力。③ <strong>所有愤怒下面都是未被识别的需要</strong>——愤怒是"我的需要没被满足、且我把责任投射给了对方"的信号。把"你让我生气"翻译为"我有一个未满足的需要"，主语回到自己，行动空间立刻打开。④ <strong>请求 ≠ 要求</strong>——可被拒绝的才是请求；不能被拒绝的（"你必须…"）是要求。保留对方的自主权，才有真诚回应的可能。</p>
+    <p>实践方法：① 大冲突前，4 步"在心里写一遍"再开口——多数怒火在写到第 3 步就溶解。② 听对方时主动把对方的话翻译成 NVC 四要素——"她的观察是什么？感受？需要？请求？"，这是同理心的可操作版本。</p>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>罗森博格在卢旺达大屠杀后做部族调解：把"你们杀了我兄弟"重新表达为"我看到 X 事件（观察），我感到悲痛和恐惧（感受），我需要安全和被听见（需要），请求你们今天和我坐下（请求）"。同一件事，用 NVC 框架表述时对方的防御几乎归零。最高强度冲突场景中验证过的方法。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>对技术人，NVC 就是"沟通协议层"——把无结构的情绪流量包装成结构化协议帧。① <strong>工作场景</strong>：reviewer 说"这代码写得太烂了"是评价层，转 NVC：观察"这个函数 200 行没测试"；感受"我担心"；需要"可维护性"；请求"能拆成 3 个函数并补 2 个测试吗？"——对方接收的不是攻击是请求。② <strong>育儿</strong>：孩子打翻牛奶，本能说"你怎么这么不小心"（评价 + 标签）→ NVC："牛奶洒了一桌（观察），我有点烦躁因为厨房需要保持干净（感受+需要），你能拿抹布一起擦吗？（请求）"——孩子学到的是"事件→影响→修复"的因果，而不是"我=不小心的人"的身份。十年后差别巨大。③ <strong>亲密关系</strong>："你从来不关心我"翻成"过去一周我们没有超过 5 分钟的深度对话（观察），我感到孤独（感受），我需要被看见（需要），下周三晚饭后能聊 30 分钟吗？（请求）"。前者关上门，后者打开门。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">Marshall Rosenberg's Nonviolent Communication (NVC) reduces any conversation to four steps: Observation → Feeling → Need → Request. The deep shift is from evaluation to need-expression. Key insights: (1) observation ≠ evaluation — "you never listen" triggers defense; "you checked your phone 3 times in 10 minutes" stays factual; (2) feeling ≠ thought-disguised-as-feeling — "I feel disrespected" is a hidden judgment; "I feel sad" is a feeling; (3) anger always signals an unrecognized need projected onto the other; (4) a request that cannot be declined is a demand. NVC was validated in post-genocide mediation precisely because it strips the attack surface and replaces blame with need-expression — keeping the other's defenses down so contact remains possible.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">中文模板</span><br>
+      我和 [对象] 在 [具体场景] 出现冲突。我本能想说的话是：[原话]。请帮我：① 把这句话拆成"观察 vs 评价"，指出哪些是隐藏评价；② 找出我真正的"感受"（区分感受 vs 伪装成感受的想法）；③ 推断我未被满足的"需要"；④ 写成一个完整的 NVC 四步表达（观察+感受+需要+请求），且请求是对方可以拒绝的形式。
+    </div>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      I'm in conflict with [person] in [specific scenario]. My instinctive line was: "[verbatim]". Please: (1) split it into observation vs evaluation and flag hidden judgments; (2) surface my real feeling (distinguishing feeling from thought-dressed-as-feeling); (3) infer the unmet need underneath; (4) rewrite as the full 4-step NVC expression — observation + feeling + need + request — where the request is genuinely declinable.
+    </div>
+  </section>
+
+  <!-- Card 3: 同理心地图 -->
+  <section class="card c3">
+    <h2>同理心地图</h2>
+    <div class="subtitle">Empathy Map — 对抗"自我投射"的认知脚手架</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>同理心地图（Empathy Map）由 Dave Gray / XPLANE 提出，原用于 UX。把"理解他人"结构化为 6 格：她<strong>说</strong>什么（Say）/ <strong>做</strong>什么（Do）/ <strong>想</strong>什么（Think）/ <strong>感受</strong>什么（Feel）/ <strong>痛点</strong>（Pain）/ <strong>期望</strong>（Gain）。表层是用户画像工具，深层是对抗自我投射的脚手架。</p>
+    <p>非平凡洞察：① <strong>多数"我懂你"是自我投射</strong>——你以为在理解对方，其实在把自己放进她的位置想"如果是我会怎样"。地图强制区分"对方实际说/做的"（Say/Do = 观察）vs"对方内部想/感受的"（Think/Feel/Pain/Gain = 有意识的推断），而非默认替换。② <strong>Say 和 Think 经常背道而驰</strong>——这是最有杠杆的一格差。员工嘴上说"挺好"（Say），脑里想"下个月就辞职"（Think）；孩子说"作业写完了"（Say），心里是"我不想被骂所以不说没写完"（Think）。仅听 Say 是 1 维信息，加上 Think 是 2 维。③ <strong>Pain 和 Gain 才是行动驱动力</strong>——人不为"道理"行动，为"避免痛苦 + 追求收益"行动。识别对方<em>真实</em>的 Pain（不是你以为的）和 Gain（不是你认为她该追求的），决定你能否影响她。</p>
+    <p>实践方法：① 重要会议/谈判/家庭对话前给关键人画 5 分钟地图，主动问"她的 Pain 是什么？我以为是 X，可能其实是 Y"。② 区分"我能填的格"（Say/Do 可观察）和"必须问的格"（Think/Feel/Pain/Gain 必须靠提问 + 反馈）——不能靠猜。</p>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>IDEO 为美国医院重设计急诊体验时，让设计师躺在担架上 4 小时，从"病人 Say/See/Feel"重画地图。发现真正痛点不是等待时间，是<em>不知道下一步要发生什么</em>的不确定感。只加了一个"流程进度告知"环节，满意度大幅提升。地图的本质是逼自己离开自己的视角。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>① <strong>AI 产品场景</strong>：团队最大的失败模式是 PM 替用户想——给"AI 写作工具"用户画地图，PM 想象的 Gain 是"效率 10 倍"，实际用户的 Pain 是"我担心 AI 写的不像我、被同事看出来"，真正的 Gain 是"听起来像更好的我"。这两个差距决定产品做对还是做歪。② <strong>育儿场景</strong>：和孩子的地图经常被父母替写——孩子 Say"我数学不行"，父母默认 Think"她不努力"、Pain"怕难"。实际可能 Think"妈妈也觉得我不行所以我也不信自己"、Pain"在妈妈眼中变蠢"。父母替写的地图错一格，整个干预方向就反了。③ <strong>量子隐喻</strong>——地图本质是"观察者必须承认自己持有的先验"。你以为在"看"对方，其实你的观察已被你的模型坍缩。明确标出每格的来源（观察/推断/假设）就是把先验暴露出来——这正是预测加工大脑里的元观察操作。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">The Empathy Map by Dave Gray/XPLANE organizes understanding-another-person into six quadrants: Say, Do, Think, Feel, Pain, Gain. On the surface it's a UX tool; underneath it's a scaffold against self-projection. Most "I get you" moments are projection — putting yourself in the other's seat and imagining your own reaction. The map forces you to separate observable Say/Do from inferred Think/Feel/Pain/Gain — and to mark inference <em>as</em> inference, not as default substitution. The highest-leverage gap is Say vs Think — what people say and what they think often diverge sharply (the employee who says "I'm fine" while planning to quit). Pain and Gain drive behavior more than reasons do. The practice: draft a 5-minute map before any high-stakes conversation, distinguish observation from inference, and audit your guesses against later behavior.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">中文模板</span><br>
+      请帮我为 [关键人物 + 关系背景] 做一张同理心地图。我观察到的事实是：① 她说了什么（Say）：[…]；② 她做了什么（Do）：[…]。我猜测但不确定的是：③ 她可能在想什么（Think）；④ 感受是什么（Feel）；⑤ 真实痛点（Pain）；⑥ 真实期望收益（Gain）。请：(a) 整理出 6 格地图；(b) 标出每格是"观察"还是"推断"，并对每个推断给出反向假设；(c) 列出 3 个能验证 Think/Pain 的提问；(d) 指出我最可能把自己投射成对方的那一格。
+    </div>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Please build an Empathy Map for [key person + relationship context]. What I have observed: (1) Say: […]; (2) Do: […]. What I'm guessing but not sure about: (3) Think; (4) Feel; (5) real Pain; (6) real Gain. Please: (a) lay out the full 6-quadrant map; (b) tag each cell as observation or inference, and offer a counter-hypothesis for each inference; (c) give 3 questions that would validate the Think/Pain cells; (d) flag the cell where I'm most likely projecting myself onto them.
+    </div>
+  </section>
+
+  <!-- Card 4: 信任方程式 -->
+  <section class="card c4">
+    <h2>信任方程式</h2>
+    <div class="subtitle">Trust Equation — Trust = (Credibility × Reliability × Intimacy) / Self-Orientation</div>
+
+    <div class="section-label">中文详解</div>
+    <hr>
+    <p>David Maister 在《可信赖的顾问》中提出：<strong>信任 = (可信度 × 可靠度 × 亲近度) / 自利倾向</strong>。Credibility 是<em>你说的事是否准确</em>（专业、判断力）；Reliability 是<em>你做的事是否兑现</em>（交付、一致性）；Intimacy 是<em>对方是否敢在你面前暴露脆弱</em>（情感安全）；Self-Orientation 是<em>你的注意力多大程度在自己身上</em>——分母，越大整体信任越低。</p>
+    <p>非平凡洞察：① <strong>分母是杀手</strong>——三个分子加再多，只要分母（让对方感到"她在算计自己"）一升，整体趋零。技术能力极强但天花板低的人，多数卡在这里。② <strong>Intimacy 最稀缺、杠杆最大</strong>——多数职场关系卡在"能力可信 + 交付可靠"，但永远到不了"愿意把真实顾虑告诉你"那层。这是高管教练、稀缺合伙人、深度友谊真正的分水岭。③ <strong>信任是非对称的不可压缩资产</strong>——建立要 100 件事，崩塌要 1 件。一次明显的自利行为（独占功劳、关键时刻甩锅、背后议论）会把多年积累的分子全部归零。④ <strong>自评 vs 他评严重错位</strong>——大多数人对自己 Self-Orientation 的评分远低于他人对自己的评分。"我不是出于私心"几乎总是当事人的自我叙事；外人看到的是行为的实际分布。信任度的提升必须基于<em>他人反馈</em>而非自评。</p>
+    <p>实践方法：① 列出 5 段重要关系，给每段打 4 个分（0-10）；最先关注分母——你哪些行为可能让对方感到你在自利？② 提升 Intimacy 不要堆"职业表现"，要主动暴露一个真实顾虑——脆弱性是 Intimacy 的入场券。③ 关键场景管住"看起来在算自己"的小动作——抢话、强行 take credit、只为自己说话——这些是分母的快速放大器。</p>
+    <div class="example-block">
+      <div class="example-label">经典例子</div>
+      <p>Maister 对咨询业的研究：客户解雇顾问的最大原因不是"不够聪明"（Credibility 不足），而是顾问让客户感到"他们在最大化项目费用"（Self-Orientation 过高）。能把分母压到极低的顾问会被同一客户连续雇用 10 年；能力相当但分母大的，做完一单就再无下次——分子的乘积被分母吃掉了。</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">场景 · BigCat</div>
+      <p>① <strong>资深技术人的天花板多数卡在分母</strong>——Credibility 够、Reliability 够，但因习惯性"我这有更好方案"/"你这不对"的姿态，让协作方感到她总在证明自己 → Self-Orientation 高 → 难以升到跨团队合作所需的层级。② <strong>AI 时代信任结构在变</strong>——Credibility 越来越廉价（AI 可放大）、Reliability 也被工具增强；不能被 AI 替代的只剩 Intimacy 和（低）Self-Orientation——前者要求人在场，后者要求人格成熟。这是 AI 时代的人际护城河方向。③ <strong>亲密关系</strong>：伴侣崩塌几乎从不是因为分子不够，是某一次"我感到她优先考虑自己"被记成长期标签。修复路径不在解释，在持续可观察的分母降低——冲突时让对方先。④ <strong>育儿</strong>：孩子对父母信任度的核心变量是 Intimacy（能否在你面前哭、说怕、说"我不想去学校"），父母却以为是 Credibility（"我是大人我懂得多"）。错配导致青春期突然关闭。⑤ <strong>佛学接口</strong>——降低 Self-Orientation 在佛学里就是"我执"的减弱。两种语言指向同一件事：注意力从"我"转向"事 + 他人"，信任与智慧同时上升。</p>
+    </div>
+
+    <div class="section-label">English Summary</div>
+    <hr>
+    <p class="english-summary">David Maister's Trust Equation from <em>The Trusted Advisor</em>: Trust = (Credibility × Reliability × Intimacy) / Self-Orientation. Credibility is what you say (accuracy, expertise); Reliability is what you do (delivery, consistency); Intimacy is whether others feel safe being vulnerable with you; Self-Orientation is how much your attention is on yourself — the denominator that collapses everything above. Insights: (1) the denominator dominates — high self-orientation tanks the whole equation no matter how strong the numerators; (2) intimacy is the scarcest and highest-leverage numerator — most professional relationships plateau at "competent and reliable" and never reach "willing to share real concerns"; (3) trust is asymmetric and incompressible — built over 100 acts, collapsed by one; (4) people consistently under-rate their own self-orientation versus how others see it. The practice: rate 5 key relationships, target the denominator first, and earn intimacy by exposing a real concern of your own rather than performing more competence.</p>
+
+    <div class="section-label">AI Prompts</div>
+    <hr>
+    <div class="prompt-block">
+      <span class="prompt-label">中文模板</span><br>
+      请用信任方程式 Trust = (Credibility × Reliability × Intimacy) / Self-Orientation 诊断我和 [对象] 的当前信任状态。背景：[关系目的 + 持续时间 + 近期关键事件]。我的自评（0-10）：可信度 [X]，可靠度 [X]，亲近度 [X]，自利倾向 [X]。请：① 指出我最可能高估或低估的那一项；② 推断对方给我的评分会和我的差在哪里；③ 找出我近 6 个月内可能在不知不觉中放大"自利倾向"分母的 3 个行为；④ 给出 30 天具体行动：1 件提升 Intimacy、1 件降低 Self-Orientation。
+    </div>
+    <div class="prompt-block">
+      <span class="prompt-label">English Template</span><br>
+      Please diagnose the trust state between me and [person] using Trust = (Credibility × Reliability × Intimacy) / Self-Orientation. Context: [purpose, duration, recent key events]. My self-scores (0-10): Credibility [X], Reliability [X], Intimacy [X], Self-Orientation [X]. Please: (1) flag the dimension I'm most likely over- or under-rating; (2) infer where the other person's scores of me would diverge from mine; (3) name 3 behaviors over the past 6 months that may have inadvertently inflated my Self-Orientation denominator; (4) give a concrete 30-day plan: one move to lift Intimacy, one to lower Self-Orientation.
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.html">&larr; 返回首页</a>
+  </footer>
+
+</div>
+</body>
+</html>
