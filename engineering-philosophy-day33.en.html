@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Engineering Philosophy &amp; Software Design · 2026-05-26</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Daily: Engineering Philosophy &amp; Software Design</h1>
+    <div class="meta">2026-05-26 · Day 33</div>
+  </header>
+
+  <!-- Card 1: Levels of Abstraction -->
+  <section class="card c1">
+    <h2>Levels of Abstraction</h2>
+    <div class="subtitle">"Computer science is the science of indirection." — Butler Lampson</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Abstraction is not "hiding details." It's <strong>picking the set of invariants sufficient for the current problem and encapsulating everything else one layer down</strong>. Good abstraction: the upper layer can reason correctly using only the interface, and the implementation below can be swapped independently. Bad abstraction: the upper layer must know the lower-layer details to use it correctly ("leaky abstraction").</p>
+    <p>Non-trivial: (1) there's a <em>correct number of layers</em> — too few and the upper layer repeats work, too many and a single line of business logic must pierce 7 layers of indirection (an "abstraction tax"). (2) Every new layer <em>compresses information</em>, and the compressed-away part eventually returns as a bug — the cost of an abstraction is "when does the lost information bite back?" (3) Structurally isomorphic to Buddhist <em>prajñapti</em> (useful designation): an abstraction is a <em>useful fiction</em>, not the thing itself. Believing TCP/IP "really has layers" is a category error — layers are our design, not a physical fact of the network.</p>
+    <p>Practical test: a healthy abstraction lets the upper layer be debugged <em>without opening the lower layer</em>. If every debug session forces you to dive through 3 layers, you've drawn the boundary wrong. Good abstraction = linear reasoning; bad abstraction = tree-shaped reasoning every time.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>TCP gives the upper layer the illusion of a "reliable byte stream" — applications don't need to know IP packetization, retransmission, or congestion control. This is why the Internet scales: each new layer (IP → TCP → HTTP → REST → GraphQL) lets developers forget an entire class of problems. The price: when the abstraction leaks (e.g., head-of-line blocking in HTTP/2), the upper layer must temporarily become "half a TCP expert" to tune.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>Designing an AI agent system: treating an LLM as a "natural-language function" is one abstraction. Benefit: orchestrate via prompts. Cost: when the LLM hallucinates or token cost explodes, you must drop down to "it's actually probabilistic sampling + context window" to debug. <strong>Choosing the wrong abstraction layer is the dominant source of design cost.</strong> Same with parenting — "learning" is one abstraction; when a child gets stuck, you must be able to drop to lower-level concepts (attention / working memory / motivation), otherwise no intervention lands.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm designing [system/module]. Current abstraction boundaries: [describe]. Please:
+1. Identify 2–3 likely leaky abstractions — interfaces where the upper layer must know lower-layer details to use them correctly.
+2. Diagnose whether there are too few layers (upper-layer duplication) or too many (debug requires piercing many layers).
+3. Propose one concrete re-drawing of boundaries, naming which compression-rebound it resolves.</div>
+  </section>
+
+  <!-- Card 2: Conway's Law -->
+  <section class="card c2">
+    <h2>Conway's Law</h2>
+    <div class="subtitle">"Organizations design systems that mirror their communication structure." — Melvin Conway, 1967</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>System architecture is an <strong>isomorphic projection</strong> of the organization's communication structure. High-friction team boundaries always evolve into "defensive interfaces" in the code they own — no matter how clean the original architecture diagram. This isn't a bug; it's the <em>physics of socio-technical systems</em>.</p>
+    <p>Non-trivial: (1) the <em>Inverse Conway Maneuver</em> — to get the architecture you want, reshape the org first. Want microservices? You first need small, autonomous teams with full ownership. Splitting services without splitting the org = you'll ship distributed monoliths. (2) Same family as <em>emergence</em>: architecture isn't designed, it <em>emerges under bandwidth constraints</em>. What an architect actually controls is <em>boundary conditions</em> (team splits, reporting lines, who shares meetings) — not the box diagram directly. (3) A non-trivial corollary for the AI era: a single AI-augmented developer = the team collapsed to 1 → Conway predicts their code will have far fewer defensive boundaries, will be more tightly integrated — and correspondingly harder for others to take over.</p>
+    <p>Practice: before designing architecture, draw the <em>communication graph</em> — who talks to whom daily, who reports to whom? That graph predicts what the code looks like in 6 months more accurately than any UML.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+        <text x="100" y="20" text-anchor="middle" font-size="12" fill="#2d3436" font-weight="700">Org communication</text>
+        <circle cx="100" cy="55" r="18" fill="#7048b8"/>
+        <text x="100" y="59" text-anchor="middle" font-size="10" fill="#fff">CTO</text>
+        <circle cx="50" cy="125" r="16" fill="#7048b8" opacity="0.85"/>
+        <text x="50" y="129" text-anchor="middle" font-size="9" fill="#fff">Team A</text>
+        <circle cx="100" cy="125" r="16" fill="#7048b8" opacity="0.85"/>
+        <text x="100" y="129" text-anchor="middle" font-size="9" fill="#fff">Team B</text>
+        <circle cx="150" cy="125" r="16" fill="#7048b8" opacity="0.85"/>
+        <text x="150" y="129" text-anchor="middle" font-size="9" fill="#fff">Team C</text>
+        <line x1="100" y1="73" x2="50" y2="109" stroke="#7048b8" stroke-width="1.5"/>
+        <line x1="100" y1="73" x2="100" y2="109" stroke="#7048b8" stroke-width="1.5"/>
+        <line x1="100" y1="73" x2="150" y2="109" stroke="#7048b8" stroke-width="1.5"/>
+        <line x1="50" y1="141" x2="150" y2="141" stroke="#7048b8" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
+        <text x="100" y="175" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">weak link = defensive API</text>
+
+        <path d="M 220 120 L 270 120" stroke="#636e72" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+        <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"/></marker></defs>
+        <text x="245" y="110" text-anchor="middle" font-size="10" fill="#636e72">isomorphism</text>
+
+        <text x="430" y="20" text-anchor="middle" font-size="12" fill="#2d3436" font-weight="700">System architecture</text>
+        <rect x="320" y="40" width="220" height="40" fill="#0a6fb8" rx="4"/>
+        <text x="430" y="64" text-anchor="middle" font-size="11" fill="#fff">API Gateway</text>
+        <rect x="320" y="95" width="60" height="50" fill="#0a6fb8" opacity="0.85" rx="4"/>
+        <text x="350" y="124" text-anchor="middle" font-size="10" fill="#fff">Svc A</text>
+        <rect x="395" y="95" width="60" height="50" fill="#0a6fb8" opacity="0.85" rx="4"/>
+        <text x="425" y="124" text-anchor="middle" font-size="10" fill="#fff">Svc B</text>
+        <rect x="470" y="95" width="60" height="50" fill="#0a6fb8" opacity="0.85" rx="4"/>
+        <text x="500" y="124" text-anchor="middle" font-size="10" fill="#fff">Svc C</text>
+        <text x="430" y="175" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">weak link = thick API + duplication</text>
+
+        <text x="280" y="220" text-anchor="middle" font-size="11" fill="#c44545" font-weight="700">want new architecture ⇒ redraw the org graph first (Inverse Conway)</text>
+      </svg>
+      <div class="caption">Conway's Law: architecture = the org's communication graph, projected into code</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Amazon's "two-pizza team" + "API-only mandate" (Bezos, 2002) is the canonical Inverse Conway. Bezos didn't say "let's build microservices." He said "all inter-team communication must go through service APIs." The communication structure was forcibly reshaped → six years later, AWS emerged as an externalizable product. Architecture isn't drawn — it's <em>forced</em> by org constraints.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) At work: two modules in a distributed system constantly fight at their boundary? Look at the people — do those two teams only talk in meetings? Tightening daily communication is more curative than refactoring the code. (2) At home: assigning the "piano practice" and "homework" modules to the same parent → boundaries blur automatically; splitting them across parents + syncing via a shared calendar → an "interface contract" emerges. Conway's Law doesn't care about company vs household. (3) AI era: you + a set of agents form a new "organization" — the bandwidth between you and your agents determines coupling in the artifacts you produce together. Narrow bandwidth = fragmented agent output.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>Our team org structure: [describe]. Target architecture: [describe]. Please:
+1. Apply Conway's Law: under the current org, what architecture will actually emerge in 6 months?
+2. Identify 2 team boundaries most likely to harden into defensive APIs.
+3. Propose one minimal Inverse-Conway move (which communication line to redraw, who joins which meeting) that makes the target architecture feasible.</div>
+  </section>
+
+  <!-- Card 3: Technical Debt -->
+  <section class="card c3">
+    <h2>Technical Debt</h2>
+    <div class="subtitle">Ward Cunningham, 1992 — not all debt is bad; what matters is the interest rate and the intent to repay</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>The original metaphor is widely abused. "Hacky code = tech debt" is wrong. Cunningham's intent: <strong>ship with incomplete understanding, then refactor in what you learned post-release</strong> — that's the borrow. Interest = every new feature built on a flawed model compounds the future refactor cost.</p>
+    <p>Non-trivial: (1) <em>conscious debt vs unconscious debt</em> — the former is strategy (chase a deadline, validate PMF first); the latter is ignorance (the team didn't know a better way existed). Unconscious debt is the most dangerous: you don't know you're indebted. (2) Interest rates <em>are not uniform</em> — some debt sits dormant for 5 years (dead code, inconsistent style); some grinds velocity to zero in 6 months (wrong data model, wrong core abstraction, wrong deployment topology). Pay down <em>high-interest</em> debt, not "the ugliest-looking debt." (3) <em>Every abstraction choice is a borrow</em> — zero debt = zero output. A healthy team explicitly tracks what it borrowed, the rate, and when it plans to repay. (4) Structurally isomorphic to the Buddhist notion of <em>karma</em>: each commit plants a fruit the codebase must eventually face — but you can <em>notice and actively repay</em>, rather than passively suffer.</p>
+    <p>Practice: every quarter, maintain a "tech-debt ledger" — 3 columns: what you owe / estimated rate / planned repayment month. <em>Debt not on the ledger = high-rate debt</em>.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Twitter's early Rails monolith was the <em>correct</em> debt choice — get PMF validated fast. But during the 2010 World Cup, when the site kept melting, the interest rate had become "exponential in user growth." It took three years to rewrite into Scala/JVM microservices (the "Fail Whale" era). Lesson: they borrowed right early (it kept Twitter alive); they paid back too late (waited until crisis forced it).</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Personal knowledge system debt: taking notes without categorizing = borrowing on "classification decisions." Low rate for 3 months (few notes, search works); high rate at 1 year (notes explode, nothing is findable). (2) "Parenting tech debt" is real — making decisions for a child to save time = borrowing against her future autonomy; the interest comes due in one lump sum at adolescence. (3) AI workflow: copy-pasting prompts = borrowing on "prompt systematization." Speedy upfront; six months later, none of your prompts are reusable, none version-controlled — you're paying high interest on last year's laziness. <strong>The point isn't to never borrow; it's to keep the books.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>My project/system: [describe]. Run a technical-debt audit:
+1. List 5 current debts, ranked by estimated interest rate × current balance.
+2. Tag each as "consciously borrowed" or "unconsciously incurred" — prioritize the latter.
+3. Propose a 1-quarter repayment plan: which 2 to pay down, why these two, how much future velocity it buys back.</div>
+  </section>
+
+  <!-- Card 4: YAGNI & Premature Abstraction -->
+  <section class="card c4">
+    <h2>YAGNI &amp; Premature Abstraction</h2>
+    <div class="subtitle">"You Ain't Gonna Need It" — XP / "Duplication is far cheaper than the wrong abstraction." — Sandi Metz</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>YAGNI is the discipline against "future-tense engineering": <strong>don't write code for imagined requirements</strong>. But the deep version isn't "write less code" — it's that <em>abstraction needs data</em>. You must see 3–5 real variants before the correct boundary is visible. Abstracting at variant #1 or #2 = fitting on insufficient samples; you'll inevitably overfit to the current two examples, and the abstraction will collapse the moment variant #3 arrives.</p>
+    <p>Non-trivial: (1) <em>"Looks duplicated" ≠ "is conceptually duplicated."</em> Two identical-looking blocks may be two instances of one concept (DRY them) or two distinct concepts that happen to look similar today (don't DRY). Premature DRY = locking two concepts into one abstraction; later, as they evolve independently, you'll painfully tear them apart. (2) Sandi Metz: "duplication is far cheaper than the wrong abstraction." Duplication is a <em>linear</em> problem (change in N places); a wrong abstraction is a <em>coupling</em> problem (every new requirement gets contorted by the wrong frame). (3) Reverse trap ("YAGNI overshoot"): claiming "I won't predict the future" about a wrong core data-model choice is a mistake. Architecture-level decisions (data model, deployment topology, core API contracts) <em>must</em> be predicted, because they carry the highest interest rate when wrong (see Card 3). YAGNI applies to the <em>implementation layer</em>, not the <em>architecture layer</em>. (4) "Wait for three before abstracting" is Martin Fowler's Rule of Three heuristic — tolerate duplication twice, abstract on the third occurrence when samples are sufficient.</p>
+    <p>Practice: as you write, ask "is the basis for this abstraction <em>real observed variants</em> or <em>imagined variants</em>?" The latter = YAGNI trigger. Stop.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Knight Capital, 2012 — a dormant code path ("Power Peg") kept around for 8 years "in case it's needed." A deployment slip-up re-activated it; in 45 minutes the trading system fired runaway orders and lost $440M. The firm went under the next day. YAGNI isn't aesthetic hygiene: <em>every line of code you "don't think will run" is a time bomb</em>. Keeping "future-maybe" code in the repo = leaving an unexploded device for the future to trigger.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Engineering: building an AI agent framework, you see 2 agents both have "retry + logging" — extract BaseAgent immediately? Stop. Wait for agent #3, then look at the shared structure of three. You'll find that the first two "retries" are semantically different (one is API rate-limit, the other is hallucination-resampling); forcing them together only entangles two different retries in one wrong interface. (2) Parenting: the first time your child says "I don't want to practice piano," constructing a whole "how to make her persist" system = premature abstraction (sample = 1). Observe 3–5 occurrences first to distinguish "tired today" / "teacher problem" / "genuinely dislikes it" — three root causes, three strategies; abstracting too early = one hammer, all nails. (3) Knowledge base: after reading 5 neuroscience papers, building "my neuroscience framework" = premature abstraction; the framework will almost certainly be torn down by paper #10. Draw the map at 30–50 papers. <strong>"Duplicate three times before abstracting" is the engineering counterpart of regularization against overfit.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm about to add an abstraction / generic framework to [code/system/process]. Stress-test me:
+1. How many <em>real observed</em> variants do I have? If &lt; 3 → YAGNI trigger; argue me into duplicating first.
+2. If I abstract now, which feature am I most likely overfitting to, and how does it break when variant #3 arrives?
+3. Classify the decision as implementation-layer vs architecture-layer. If architecture-layer, name the minimal set of decisions that must be made now.</div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.en.html">&larr; Back to Index</a>
+  </footer>
+
+</div>
+</body>
+</html>
