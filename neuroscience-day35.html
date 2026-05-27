@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
@@ -112,13 +113,12 @@
 <body>
 <div class="container">
 <header class="page-header">
-<h1>思维模型详解：脑科学与神经基础</h1>
+<h1 data-tts="65c22be02a5d30c8">思维模型详解：脑科学与神经基础</h1>
 <div class="meta">2026-05-27 · Day 35</div>
 </header>
-
 <!-- Card 1: 神经可塑性 -->
 <section class="card c1">
-<h2>神经可塑性 · Neuroplasticity</h2>
+<h2 data-tts="d7efcca3e8580356">神经可塑性 · Neuroplasticity</h2>
 <div class="subtitle">"Cells that fire together wire together; cells out of sync, lose their link." — Hebb (1949) / Stent (1973)</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -128,35 +128,29 @@
 <div class="diagram">
 <svg viewbox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
 <!-- Plasticity gating model: 3 inputs converge -->
-<rect x="40" y="40" width="120" height="40" rx="6" fill="#0a6fb8" opacity="0.85"/>
-<text x="100" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">注意力 / 显著性</text>
-<text x="100" y="72" text-anchor="middle" font-size="9" fill="#fff">ACh · NE</text>
-
-<rect x="40" y="90" width="120" height="40" rx="6" fill="#7048b8" opacity="0.85"/>
-<text x="100" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">预测误差</text>
-<text x="100" y="122" text-anchor="middle" font-size="9" fill="#fff">VTA dopamine</text>
-
-<rect x="40" y="140" width="120" height="40" rx="6" fill="#1b8a5a" opacity="0.85"/>
-<text x="100" y="158" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">睡眠 / 巩固</text>
-<text x="100" y="172" text-anchor="middle" font-size="9" fill="#fff">NREM + REM</text>
-
+<rect fill="#0a6fb8" height="40" opacity="0.85" rx="6" width="120" x="40" y="40"></rect>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="100" y="58">注意力 / 显著性</text>
+<text fill="#fff" font-size="9" text-anchor="middle" x="100" y="72">ACh · NE</text>
+<rect fill="#7048b8" height="40" opacity="0.85" rx="6" width="120" x="40" y="90"></rect>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="100" y="108">预测误差</text>
+<text fill="#fff" font-size="9" text-anchor="middle" x="100" y="122">VTA dopamine</text>
+<rect fill="#1b8a5a" height="40" opacity="0.85" rx="6" width="120" x="40" y="140"></rect>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="100" y="158">睡眠 / 巩固</text>
+<text fill="#fff" font-size="9" text-anchor="middle" x="100" y="172">NREM + REM</text>
 <!-- Converging arrows -->
-<path d="M 165 60 Q 230 110 270 110" fill="none" stroke="#636e72" stroke-width="1.5" marker-end="url(#arrN1)"/>
-<path d="M 165 110 L 270 110" fill="none" stroke="#636e72" stroke-width="1.5" marker-end="url(#arrN1)"/>
-<path d="M 165 160 Q 230 110 270 110" fill="none" stroke="#636e72" stroke-width="1.5" marker-end="url(#arrN1)"/>
-<defs><marker id="arrN1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"/></marker></defs>
-
+<path d="M 165 60 Q 230 110 270 110" fill="none" marker-end="url(#arrN1)" stroke="#636e72" stroke-width="1.5"></path>
+<path d="M 165 110 L 270 110" fill="none" marker-end="url(#arrN1)" stroke="#636e72" stroke-width="1.5"></path>
+<path d="M 165 160 Q 230 110 270 110" fill="none" marker-end="url(#arrN1)" stroke="#636e72" stroke-width="1.5"></path>
+<defs><marker id="arrN1" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
 <!-- AND gate -->
-<rect x="285" y="90" width="80" height="40" rx="6" fill="#fdcb6e"/>
-<text x="325" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#5d4e1f">AND</text>
-
+<rect fill="#fdcb6e" height="40" rx="6" width="80" x="285" y="90"></rect>
+<text fill="#5d4e1f" font-size="13" font-weight="700" text-anchor="middle" x="325" y="115">AND</text>
 <!-- Output -->
-<path d="M 370 110 L 430 110" fill="none" stroke="#636e72" stroke-width="2" marker-end="url(#arrN1)"/>
-<rect x="435" y="90" width="100" height="40" rx="6" fill="#c44545"/>
-<text x="485" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">回路重连</text>
-<text x="485" y="122" text-anchor="middle" font-size="9" fill="#fff">真实学习发生</text>
-
-<text x="280" y="20" text-anchor="middle" font-size="11" fill="#868e96" font-style="italic">缺任一项 = 经历不留痕</text>
+<path d="M 370 110 L 430 110" fill="none" marker-end="url(#arrN1)" stroke="#636e72" stroke-width="2"></path>
+<rect fill="#c44545" height="40" rx="6" width="100" x="435" y="90"></rect>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="485" y="108">回路重连</text>
+<text fill="#fff" font-size="9" text-anchor="middle" x="485" y="122">真实学习发生</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="middle" x="280" y="20">缺任一项 = 经历不留痕</text>
 </svg>
 <div class="caption">成年可塑性是一个 AND 门：3 个共发条件缺一不成立</div>
 </div>
@@ -188,10 +182,9 @@
 3. Give a 3-week cadence: daily dose, spaced/interleaved review, sleep protection window.
 4. Also flag one habit loop I am currently reinforcing in the wrong direction (high-frequency training I'll regret).</div>
 </section>
-
 <!-- Card 2: 预测加工 -->
 <section class="card c2">
-<h2>预测加工 · Predictive Processing</h2>
+<h2 data-tts="16c77848c3cd22f8">预测加工 · Predictive Processing</h2>
 <div class="subtitle">"The brain is a prediction machine, perception is controlled hallucination." — Andy Clark / Karl Friston</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -202,34 +195,29 @@
 <svg viewbox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
 <!-- Hierarchical predictive coding diagram -->
 <!-- Higher layer -->
-<rect x="220" y="20" width="120" height="32" rx="6" fill="#7048b8" opacity="0.85"/>
-<text x="280" y="40" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">高层先验</text>
-<text x="280" y="50" text-anchor="middle" font-size="9" fill="#fff">"应该是什么"</text>
-
+<rect fill="#7048b8" height="32" opacity="0.85" rx="6" width="120" x="220" y="20"></rect>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="280" y="40">高层先验</text>
+<text fill="#fff" font-size="9" text-anchor="middle" x="280" y="50">"应该是什么"</text>
 <!-- Middle layer -->
-<rect x="220" y="90" width="120" height="32" rx="6" fill="#7048b8" opacity="0.6"/>
-<text x="280" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">中层模型</text>
-
+<rect fill="#7048b8" height="32" opacity="0.6" rx="6" width="120" x="220" y="90"></rect>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="280" y="108">中层模型</text>
 <!-- Sensory layer -->
-<rect x="220" y="160" width="120" height="32" rx="6" fill="#7048b8" opacity="0.35"/>
-<text x="280" y="178" text-anchor="middle" font-size="11" font-weight="700" fill="#2d3436">感官输入</text>
-<text x="280" y="188" text-anchor="middle" font-size="9" fill="#2d3436">"实际是什么"</text>
-
+<rect fill="#7048b8" height="32" opacity="0.35" rx="6" width="120" x="220" y="160"></rect>
+<text fill="#2d3436" font-size="11" font-weight="700" text-anchor="middle" x="280" y="178">感官输入</text>
+<text fill="#2d3436" font-size="9" text-anchor="middle" x="280" y="188">"实际是什么"</text>
 <!-- Top-down predictions (left arrows going down) -->
-<path d="M 200 36 Q 140 70 200 104" fill="none" stroke="#0a6fb8" stroke-width="2" marker-end="url(#arrPP1)"/>
-<path d="M 200 106 Q 140 140 200 174" fill="none" stroke="#0a6fb8" stroke-width="2" marker-end="url(#arrPP1)"/>
-<defs><marker id="arrPP1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#0a6fb8"/></marker></defs>
-<text x="105" y="70" text-anchor="middle" font-size="10" fill="#0a6fb8" font-weight="700">预测↓</text>
-<text x="105" y="140" text-anchor="middle" font-size="10" fill="#0a6fb8" font-weight="700">预测↓</text>
-
+<path d="M 200 36 Q 140 70 200 104" fill="none" marker-end="url(#arrPP1)" stroke="#0a6fb8" stroke-width="2"></path>
+<path d="M 200 106 Q 140 140 200 174" fill="none" marker-end="url(#arrPP1)" stroke="#0a6fb8" stroke-width="2"></path>
+<defs><marker id="arrPP1" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#0a6fb8"></path></marker></defs>
+<text fill="#0a6fb8" font-size="10" font-weight="700" text-anchor="middle" x="105" y="70">预测↓</text>
+<text fill="#0a6fb8" font-size="10" font-weight="700" text-anchor="middle" x="105" y="140">预测↓</text>
 <!-- Bottom-up errors (right arrows going up) -->
-<path d="M 360 174 Q 420 140 360 106" fill="none" stroke="#c44545" stroke-width="2" marker-end="url(#arrPP2)"/>
-<path d="M 360 104 Q 420 70 360 36" fill="none" stroke="#c44545" stroke-width="2" marker-end="url(#arrPP2)"/>
-<defs><marker id="arrPP2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#c44545"/></marker></defs>
-<text x="455" y="140" text-anchor="middle" font-size="10" fill="#c44545" font-weight="700">误差↑</text>
-<text x="455" y="70" text-anchor="middle" font-size="10" fill="#c44545" font-weight="700">误差↑</text>
-
-<text x="280" y="215" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">知觉 = 预测 - 误差修正 = 受控的幻觉</text>
+<path d="M 360 174 Q 420 140 360 106" fill="none" marker-end="url(#arrPP2)" stroke="#c44545" stroke-width="2"></path>
+<path d="M 360 104 Q 420 70 360 36" fill="none" marker-end="url(#arrPP2)" stroke="#c44545" stroke-width="2"></path>
+<defs><marker id="arrPP2" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#c44545"></path></marker></defs>
+<text fill="#c44545" font-size="10" font-weight="700" text-anchor="middle" x="455" y="140">误差↑</text>
+<text fill="#c44545" font-size="10" font-weight="700" text-anchor="middle" x="455" y="70">误差↑</text>
+<text fill="#868e96" font-size="10" font-style="italic" text-anchor="middle" x="280" y="215">知觉 = 预测 - 误差修正 = 受控的幻觉</text>
 </svg>
 <div class="caption">分层预测编码：top-down 预测（蓝）与 bottom-up 误差（红）反向流动</div>
 </div>
@@ -261,10 +249,9 @@
 3. For each item: is the fix to update the prior, or to change action so the data changes?
 4. If emotion is involved, name the likely interoceptive prediction underneath it.</div>
 </section>
-
 <!-- Card 3: 默认模式网络 -->
 <section class="card c3">
-<h2>默认模式网络 · Default Mode Network (DMN)</h2>
+<h2 data-tts="6fe4645117b9eb1b">默认模式网络 · Default Mode Network (DMN)</h2>
 <div class="subtitle">Raichle et al. (2001) — "The brain at 'rest' burns nearly as much glucose as the brain at work. It's not idle — it's running you."</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -274,28 +261,25 @@
 <div class="diagram">
 <svg viewbox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
 <!-- Two networks: DMN vs TPN -->
-<rect x="40" y="30" width="220" height="140" rx="10" fill="#c44545" opacity="0.12" stroke="#c44545" stroke-width="2"/>
-<text x="150" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#c44545">DMN（默认模式）</text>
-<text x="150" y="75" text-anchor="middle" font-size="11" fill="#c44545">自我 · 回忆 · 想象 · 反刍</text>
-<text x="150" y="95" text-anchor="middle" font-size="11" fill="#c44545">创造性重组 · 心智游走</text>
-<text x="150" y="118" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">激活：散步 · 淋浴 · 发呆</text>
-<text x="150" y="140" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">过度 → 反刍 / 抑郁</text>
-<text x="150" y="158" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">不足 → 无创意 / 自我模糊</text>
-
-<rect x="300" y="30" width="220" height="140" rx="10" fill="#0a6fb8" opacity="0.12" stroke="#0a6fb8" stroke-width="2"/>
-<text x="410" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#0a6fb8">TPN（任务正向）</text>
-<text x="410" y="75" text-anchor="middle" font-size="11" fill="#0a6fb8">外部聚焦 · 目标驱动</text>
-<text x="410" y="95" text-anchor="middle" font-size="11" fill="#0a6fb8">深度工作 · 解题</text>
-<text x="410" y="118" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">激活：编码 · 阅读 · 谈话</text>
-<text x="410" y="140" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">过度 → 耗竭 / 创造力枯</text>
-<text x="410" y="158" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">不足 → 拖延 / 弥散</text>
-
+<rect fill="#c44545" height="140" opacity="0.12" rx="10" stroke="#c44545" stroke-width="2" width="220" x="40" y="30"></rect>
+<text fill="#c44545" font-size="14" font-weight="700" text-anchor="middle" x="150" y="55">DMN（默认模式）</text>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="150" y="75">自我 · 回忆 · 想象 · 反刍</text>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="150" y="95">创造性重组 · 心智游走</text>
+<text fill="#636e72" font-size="11" font-style="italic" text-anchor="middle" x="150" y="118">激活：散步 · 淋浴 · 发呆</text>
+<text fill="#636e72" font-size="11" font-style="italic" text-anchor="middle" x="150" y="140">过度 → 反刍 / 抑郁</text>
+<text fill="#636e72" font-size="11" font-style="italic" text-anchor="middle" x="150" y="158">不足 → 无创意 / 自我模糊</text>
+<rect fill="#0a6fb8" height="140" opacity="0.12" rx="10" stroke="#0a6fb8" stroke-width="2" width="220" x="300" y="30"></rect>
+<text fill="#0a6fb8" font-size="14" font-weight="700" text-anchor="middle" x="410" y="55">TPN（任务正向）</text>
+<text fill="#0a6fb8" font-size="11" text-anchor="middle" x="410" y="75">外部聚焦 · 目标驱动</text>
+<text fill="#0a6fb8" font-size="11" text-anchor="middle" x="410" y="95">深度工作 · 解题</text>
+<text fill="#636e72" font-size="11" font-style="italic" text-anchor="middle" x="410" y="118">激活：编码 · 阅读 · 谈话</text>
+<text fill="#636e72" font-size="11" font-style="italic" text-anchor="middle" x="410" y="140">过度 → 耗竭 / 创造力枯</text>
+<text fill="#636e72" font-size="11" font-style="italic" text-anchor="middle" x="410" y="158">不足 → 拖延 / 弥散</text>
 <!-- Anti-correlated -->
-<path d="M 260 100 L 295 100" fill="none" stroke="#7048b8" stroke-width="2" marker-end="url(#arrDMN)"/>
-<path d="M 300 110 L 265 110" fill="none" stroke="#7048b8" stroke-width="2" marker-end="url(#arrDMN)"/>
-<defs><marker id="arrDMN" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7048b8"/></marker></defs>
-
-<text x="280" y="190" text-anchor="middle" font-size="10" font-style="italic" fill="#868e96">反相关：一个增强 → 另一个抑制 · 健康 = 能自由切换</text>
+<path d="M 260 100 L 295 100" fill="none" marker-end="url(#arrDMN)" stroke="#7048b8" stroke-width="2"></path>
+<path d="M 300 110 L 265 110" fill="none" marker-end="url(#arrDMN)" stroke="#7048b8" stroke-width="2"></path>
+<defs><marker id="arrDMN" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#7048b8"></path></marker></defs>
+<text fill="#868e96" font-size="10" font-style="italic" text-anchor="middle" x="280" y="190">反相关：一个增强 → 另一个抑制 · 健康 = 能自由切换</text>
 </svg>
 <div class="caption">两大网络是反相关跷跷板 — 永远 TPN 在线 = DMN 慢性饥饿</div>
 </div>
@@ -327,10 +311,9 @@
 3. Am I filling every idle slot with AI/phone, starving the DMN?
 4. Prescribe the minimum this week: one DMN protection + one rumination-interrupt + one TPN load-shed.</div>
 </section>
-
 <!-- Card 4: 多巴胺奖赏预测误差 -->
 <section class="card c4">
-<h2>多巴胺奖赏预测误差 · Dopamine Reward Prediction Error (RPE)</h2>
+<h2 data-tts="e00e3861a66dec5b">多巴胺奖赏预测误差 · Dopamine Reward Prediction Error (RPE)</h2>
 <div class="subtitle">Schultz, Dayan &amp; Montague (1997) — "Dopamine doesn't signal reward. It signals the difference between expected and received reward."</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -341,42 +324,37 @@
 <svg viewbox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
 <!-- Three scenarios: predicted, surprise+, surprise- -->
 <!-- Scenario 1: predicted -->
-<text x="93" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#1b8a5a">① 预期内</text>
-<line x1="30" y1="120" x2="160" y2="120" stroke="#868e96" stroke-width="1"/>
-<text x="20" y="124" text-anchor="end" font-size="9" fill="#868e96">0</text>
-<rect x="55" y="55" width="6" height="65" fill="#fdcb6e"/>
-<text x="58" y="48" text-anchor="middle" font-size="9" fill="#5d4e1f">cue</text>
-<rect x="120" y="115" width="6" height="10" fill="#1b8a5a"/>
-<text x="123" y="142" text-anchor="middle" font-size="9" fill="#1b8a5a">奖励</text>
-<text x="93" y="170" text-anchor="middle" font-size="10" fill="#868e96">δ ≈ 0</text>
-<text x="93" y="185" text-anchor="middle" font-size="9" font-style="italic" fill="#868e96">无学习</text>
-
+<text fill="#1b8a5a" font-size="11" font-weight="700" text-anchor="middle" x="93" y="22">① 预期内</text>
+<line stroke="#868e96" stroke-width="1" x1="30" x2="160" y1="120" y2="120"></line>
+<text fill="#868e96" font-size="9" text-anchor="end" x="20" y="124">0</text>
+<rect fill="#fdcb6e" height="65" width="6" x="55" y="55"></rect>
+<text fill="#5d4e1f" font-size="9" text-anchor="middle" x="58" y="48">cue</text>
+<rect fill="#1b8a5a" height="10" width="6" x="120" y="115"></rect>
+<text fill="#1b8a5a" font-size="9" text-anchor="middle" x="123" y="142">奖励</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="93" y="170">δ ≈ 0</text>
+<text fill="#868e96" font-size="9" font-style="italic" text-anchor="middle" x="93" y="185">无学习</text>
 <!-- Divider -->
-<line x1="186" y1="40" x2="186" y2="195" stroke="#dee2e6" stroke-width="1"/>
-
+<line stroke="#dee2e6" stroke-width="1" x1="186" x2="186" y1="40" y2="195"></line>
 <!-- Scenario 2: surprise + -->
-<text x="279" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#1b8a5a">② 意外好</text>
-<line x1="216" y1="120" x2="346" y2="120" stroke="#868e96" stroke-width="1"/>
-<rect x="306" y="50" width="6" height="70" fill="#1b8a5a"/>
-<text x="309" y="44" text-anchor="middle" font-size="9" fill="#1b8a5a">↑↑</text>
-<text x="309" y="142" text-anchor="middle" font-size="9" fill="#1b8a5a">奖励大于预期</text>
-<text x="279" y="170" text-anchor="middle" font-size="10" fill="#1b8a5a" font-weight="700">δ &gt; 0</text>
-<text x="279" y="185" text-anchor="middle" font-size="9" font-style="italic" fill="#1b8a5a">↑ 强化此行为</text>
-
+<text fill="#1b8a5a" font-size="11" font-weight="700" text-anchor="middle" x="279" y="22">② 意外好</text>
+<line stroke="#868e96" stroke-width="1" x1="216" x2="346" y1="120" y2="120"></line>
+<rect fill="#1b8a5a" height="70" width="6" x="306" y="50"></rect>
+<text fill="#1b8a5a" font-size="9" text-anchor="middle" x="309" y="44">↑↑</text>
+<text fill="#1b8a5a" font-size="9" text-anchor="middle" x="309" y="142">奖励大于预期</text>
+<text fill="#1b8a5a" font-size="10" font-weight="700" text-anchor="middle" x="279" y="170">δ &gt; 0</text>
+<text fill="#1b8a5a" font-size="9" font-style="italic" text-anchor="middle" x="279" y="185">↑ 强化此行为</text>
 <!-- Divider -->
-<line x1="372" y1="40" x2="372" y2="195" stroke="#dee2e6" stroke-width="1"/>
-
+<line stroke="#dee2e6" stroke-width="1" x1="372" x2="372" y1="40" y2="195"></line>
 <!-- Scenario 3: surprise - -->
-<text x="465" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#c44545">③ 预期落空</text>
-<line x1="402" y1="120" x2="532" y2="120" stroke="#868e96" stroke-width="1"/>
-<rect x="438" y="55" width="6" height="65" fill="#fdcb6e"/>
-<text x="441" y="48" text-anchor="middle" font-size="9" fill="#5d4e1f">cue</text>
-<rect x="495" y="120" width="6" height="40" fill="#c44545"/>
-<text x="498" y="180" text-anchor="middle" font-size="9" fill="#c44545">未到</text>
-<text x="465" y="170" text-anchor="middle" font-size="10" fill="#c44545" font-weight="700">δ &lt; 0</text>
-<text x="465" y="207" text-anchor="middle" font-size="9" font-style="italic" fill="#c44545">↓ 抑制此预测</text>
-
-<text x="280" y="205" text-anchor="middle" font-size="10" font-style="italic" fill="#495057">多巴胺编码 δ，不编码 R · 学习只发生在 δ ≠ 0</text>
+<text fill="#c44545" font-size="11" font-weight="700" text-anchor="middle" x="465" y="22">③ 预期落空</text>
+<line stroke="#868e96" stroke-width="1" x1="402" x2="532" y1="120" y2="120"></line>
+<rect fill="#fdcb6e" height="65" width="6" x="438" y="55"></rect>
+<text fill="#5d4e1f" font-size="9" text-anchor="middle" x="441" y="48">cue</text>
+<rect fill="#c44545" height="40" width="6" x="495" y="120"></rect>
+<text fill="#c44545" font-size="9" text-anchor="middle" x="498" y="180">未到</text>
+<text fill="#c44545" font-size="10" font-weight="700" text-anchor="middle" x="465" y="170">δ &lt; 0</text>
+<text fill="#c44545" font-size="9" font-style="italic" text-anchor="middle" x="465" y="207">↓ 抑制此预测</text>
+<text fill="#495057" font-size="10" font-style="italic" text-anchor="middle" x="280" y="205">多巴胺编码 δ，不编码 R · 学习只发生在 δ ≠ 0</text>
 </svg>
 <div class="caption">RPE = R − V · 预测被满足 = 无学习；变率奖励永远 δ ≠ 0 = 永远上瘾</div>
 </div>
@@ -408,7 +386,6 @@
 3. Propose a minimal redesign: keep R slightly above V, preserve some unpredictability, avoid the variable-ratio trap.
 4. Also flag one key feedback relationship I've "good-job-ed" into uselessness (child / colleague / self), and give a more effective replacement script.</div>
 </section>
-
 </div>
 <script src="https://cissy0802.github.io/comments.js" defer></script>
 <script src="https://cissy0802.github.io/search.js" defer></script>
