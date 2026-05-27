@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：脑科学与神经基础 · 2026-05-27</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：脑科学与神经基础</h1>
+<div class="meta">2026-05-27 · Day 35</div>
+</header>
+
+<!-- Card 1: 神经可塑性 -->
+<section class="card c1">
+<h2>神经可塑性 · Neuroplasticity</h2>
+<div class="subtitle">"Cells that fire together wire together; cells out of sync, lose their link." — Hebb (1949) / Stent (1973)</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>"大脑可以改变"几乎是被滥用最严重的脑科学口号。真相是：<strong>可塑性不是免费的，它是一个有预算的、竞争性的过程</strong>。Hebbian rule 完整版是两条："fire together, wire together" + "<em>out of sync, lose the link</em>"。你强化某个回路的同时，正在悄悄修剪另一个。</p>
+<p>非平凡点：① 成年可塑性需要 3 个共发条件——<em>注意力/显著性</em>（释放 ACh、NE 打开"学习闸门"）、<em>预测误差</em>（VTA 多巴胺信号"这里有东西要学"）、<em>睡眠巩固</em>（NREM 慢波 + REM 把当天权重写回长期回路）。<strong>缺一项 = 经历不留痕</strong>，这就是为什么"看了 100 篇 paper 还是没长进"。② 与 LLM fine-tuning 同构：catastrophic forgetting（学新忘旧）是真的，但成年大脑用<em>渐进暴露 + 复习交错</em>做正则化。③ 你不能"加"一个新习惯而不"减"什么——大脑能量预算固定，皮层面积竞争性分配。决定你是谁的不是"做了什么"，是<em>反复做了什么 + 反复没做什么</em>。④ 与佛学"习气"对应：每一个起心动念都在刻沟。"业力"在神经层就是 spike-timing-dependent plasticity（STDP）的累积。</p>
+<p>实践拐点：把"我要学 X" 翻译成"<em>我要在哪 3 周内每天给 X 注意力 + 制造预测误差 + 睡好</em>"。三件都做到，可塑性才会真正流向你想要的地方。否则你只是在让默认习惯继续加固。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+<!-- Plasticity gating model: 3 inputs converge -->
+<rect x="40" y="40" width="120" height="40" rx="6" fill="#0a6fb8" opacity="0.85"/>
+<text x="100" y="58" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">注意力 / 显著性</text>
+<text x="100" y="72" text-anchor="middle" font-size="9" fill="#fff">ACh · NE</text>
+
+<rect x="40" y="90" width="120" height="40" rx="6" fill="#7048b8" opacity="0.85"/>
+<text x="100" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">预测误差</text>
+<text x="100" y="122" text-anchor="middle" font-size="9" fill="#fff">VTA dopamine</text>
+
+<rect x="40" y="140" width="120" height="40" rx="6" fill="#1b8a5a" opacity="0.85"/>
+<text x="100" y="158" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">睡眠 / 巩固</text>
+<text x="100" y="172" text-anchor="middle" font-size="9" fill="#fff">NREM + REM</text>
+
+<!-- Converging arrows -->
+<path d="M 165 60 Q 230 110 270 110" fill="none" stroke="#636e72" stroke-width="1.5" marker-end="url(#arrN1)"/>
+<path d="M 165 110 L 270 110" fill="none" stroke="#636e72" stroke-width="1.5" marker-end="url(#arrN1)"/>
+<path d="M 165 160 Q 230 110 270 110" fill="none" stroke="#636e72" stroke-width="1.5" marker-end="url(#arrN1)"/>
+<defs><marker id="arrN1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"/></marker></defs>
+
+<!-- AND gate -->
+<rect x="285" y="90" width="80" height="40" rx="6" fill="#fdcb6e"/>
+<text x="325" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#5d4e1f">AND</text>
+
+<!-- Output -->
+<path d="M 370 110 L 430 110" fill="none" stroke="#636e72" stroke-width="2" marker-end="url(#arrN1)"/>
+<rect x="435" y="90" width="100" height="40" rx="6" fill="#c44545"/>
+<text x="485" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">回路重连</text>
+<text x="485" y="122" text-anchor="middle" font-size="9" fill="#fff">真实学习发生</text>
+
+<text x="280" y="20" text-anchor="middle" font-size="11" fill="#868e96" font-style="italic">缺任一项 = 经历不留痕</text>
+</svg>
+<div class="caption">成年可塑性是一个 AND 门：3 个共发条件缺一不成立</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Maguire et al. (2000) 用 MRI 扫描伦敦出租车司机：必须背下"The Knowledge"（25,000 条街道）的资深司机，<em>右后海马灰质显著增大</em>，且开车年数越长扩张越大；而前海马<em>萎缩</em>——皮层资源是零和的，记忆地图扩张挤压了其他功能。这是成人脑结构可塑性的第一个硬证据，也是"可塑性预算"的直接物理示例。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 你每天解锁手机 80 次 = 你正在<em>每天 80 次刻意训练"分心回路"</em>。三个条件全到位：高度显著（红点）、强预测误差（消息内容不可预测）、且这个回路在你睡前最后强化。深度工作的 1 小时不敌它 — 不是因为意志不够，是<em>剂量比 1:80</em>。② 学新框架的正确姿势：不是周末啃 8 小时文档，而是连续 3 周每天 25 分钟<em>带具体问题去查</em>（注意力 + 预测误差），然后<em>睡饱</em>。这套是神经层面真正在写权重；周末长冲是肌肉记忆错觉。③ 让 AI 帮你<em>制造预测误差</em>——它对你已知概念点头不会产生学习，让它<em>反驳你、提出反例、给你不熟的角度</em>。把 AI 用成"高密度 prediction-error 发生器"，这是 BigCat 真正的算力杠杆。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Neuroplasticity</strong> — "the brain can rewire" is the most overused neuro-slogan. The truth: plasticity is <em>budgeted and competitive</em>. Hebb's full rule is "fire together, wire together <em>AND</em> out of sync, lose the link." Adult plasticity requires three co-occurring inputs: <em>attention/salience</em> (ACh, NE open the learning gate), <em>prediction error</em> (VTA dopamine flags "something to learn here"), and <em>sleep consolidation</em> (NREM + REM commit the day's weight updates). Miss one — experience leaves no trace. Isomorphic to LLM fine-tuning: catastrophic forgetting is real; adult brains regularize via spaced + interleaved exposure. You cannot add a habit without subtracting somewhere — cortical surface is zero-sum. The Buddhist "habit-energy" (vāsanā) is STDP at the metabolic level: every passing thought etches a groove.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我最近想真正掌握 [技能/领域]。请用神经可塑性的 3 共发条件帮我设计学习方案：
+① 哪些场景能保证我的"注意力/显著性"被打开（而不是 passive 浏览）；
+② 如何持续制造"预测误差"——具体说，我应该让你（AI）以什么方式挑战我、暴露我的盲点；
+③ 给出一个 3 周节律，明确每天剂量、复习交错间隔、睡眠保护窗口；
+④ 同时点出我目前哪个习惯回路在"反向加固"（每天被高频训练却让我后悔的回路）。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to genuinely master [skill/domain]. Use the three co-occurring conditions of adult neuroplasticity to design my plan:
+1. Which scenarios will reliably engage my attention/salience system (not passive scrolling)?
+2. How can you (the AI) keep generating prediction errors for me — concretely, how should you challenge me, surface my blind spots?
+3. Give a 3-week cadence: daily dose, spaced/interleaved review, sleep protection window.
+4. Also flag one habit loop I am currently reinforcing in the wrong direction (high-frequency training I'll regret).</div>
+</section>
+
+<!-- Card 2: 预测加工 -->
+<section class="card c2">
+<h2>预测加工 · Predictive Processing</h2>
+<div class="subtitle">"The brain is a prediction machine, perception is controlled hallucination." — Andy Clark / Karl Friston</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>传统观点：感官 → 大脑 → 加工 → 知觉。预测加工框架反过来：<strong>大脑是个不断生成预测的引擎，感官只负责传送"预测错了多少" (prediction error)</strong>。你看到的世界 ≈ <em>受感官修正的最佳猜测</em>，所以 Andy Clark 称之为"受控的幻觉" (controlled hallucination)。</p>
+<p>非平凡点：① Friston 的<em>自由能原理</em>把这扩展为一切大脑活动的统一目标——最小化预测误差（≈ 最小化"惊讶"）。感知、行动、学习、情绪皆为子情况：感知 = 改预测以匹配数据；行动 = 改数据以匹配预测；学习 = 改先验。② 情绪是<em>内感受 (interoception) 的预测</em>。焦虑 = 对内在状态的高不确定预测；抑郁 = "无论我做什么奖励都低"的锁死先验。所以谈话疗法和正念都是<em>更新先验</em>的技术。③ 与贝叶斯思维完全同构：先验 + 似然 → 后验。脑就是个跑近似贝叶斯推断的器官，时刻在做。④ 与 LLM next-token prediction 同源——同一计算范式，碳基/硅基不同实现。Transformer 的成功不是偶然，是逼近了大脑的核心算子。⑤ 与佛学唯识 (Yogācāra) 高度对应——"万法唯识"说的就是体验由心识构造，1600 年前已经描述了 top-down 知觉的核心：你不是"看到"世界，你是"建造"了它。</p>
+<p>实践拐点：把每天的"惊讶"记下来——惊讶是<em>唯一能学习的地方</em>。一天没被任何事情惊讶到 = 要么你的模型已经停止更新（认知僵化），要么你已经停止暴露在新数据下（感官停摆）。<strong>"无聊"和"惊讶"是先验质量的两端指标。</strong></p>
+<div class="diagram">
+<svg viewbox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+<!-- Hierarchical predictive coding diagram -->
+<!-- Higher layer -->
+<rect x="220" y="20" width="120" height="32" rx="6" fill="#7048b8" opacity="0.85"/>
+<text x="280" y="40" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">高层先验</text>
+<text x="280" y="50" text-anchor="middle" font-size="9" fill="#fff">"应该是什么"</text>
+
+<!-- Middle layer -->
+<rect x="220" y="90" width="120" height="32" rx="6" fill="#7048b8" opacity="0.6"/>
+<text x="280" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">中层模型</text>
+
+<!-- Sensory layer -->
+<rect x="220" y="160" width="120" height="32" rx="6" fill="#7048b8" opacity="0.35"/>
+<text x="280" y="178" text-anchor="middle" font-size="11" font-weight="700" fill="#2d3436">感官输入</text>
+<text x="280" y="188" text-anchor="middle" font-size="9" fill="#2d3436">"实际是什么"</text>
+
+<!-- Top-down predictions (left arrows going down) -->
+<path d="M 200 36 Q 140 70 200 104" fill="none" stroke="#0a6fb8" stroke-width="2" marker-end="url(#arrPP1)"/>
+<path d="M 200 106 Q 140 140 200 174" fill="none" stroke="#0a6fb8" stroke-width="2" marker-end="url(#arrPP1)"/>
+<defs><marker id="arrPP1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#0a6fb8"/></marker></defs>
+<text x="105" y="70" text-anchor="middle" font-size="10" fill="#0a6fb8" font-weight="700">预测↓</text>
+<text x="105" y="140" text-anchor="middle" font-size="10" fill="#0a6fb8" font-weight="700">预测↓</text>
+
+<!-- Bottom-up errors (right arrows going up) -->
+<path d="M 360 174 Q 420 140 360 106" fill="none" stroke="#c44545" stroke-width="2" marker-end="url(#arrPP2)"/>
+<path d="M 360 104 Q 420 70 360 36" fill="none" stroke="#c44545" stroke-width="2" marker-end="url(#arrPP2)"/>
+<defs><marker id="arrPP2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#c44545"/></marker></defs>
+<text x="455" y="140" text-anchor="middle" font-size="10" fill="#c44545" font-weight="700">误差↑</text>
+<text x="455" y="70" text-anchor="middle" font-size="10" fill="#c44545" font-weight="700">误差↑</text>
+
+<text x="280" y="215" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">知觉 = 预测 - 误差修正 = 受控的幻觉</text>
+</svg>
+<div class="caption">分层预测编码：top-down 预测（蓝）与 bottom-up 误差（红）反向流动</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Adelson 的"棋盘阴影错觉"：A、B 两格在屏幕上像素值<em>完全相同</em>，但你的视觉系统因为"圆柱投阴影 → 阴影里的格应该更亮"这一<em>高层先验</em>，自动把 B 格"上调"为更亮——你看到的不是像素，是大脑修正后的最佳猜测。这是<em>top-down 预测覆盖 bottom-up 数据</em>的肉眼可见演示。一旦你用纸遮住周围只露 A、B 两格，错觉立刻塌掉——遮住了产生先验的上下文。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① <em>资深的代价</em>：你写了 15 年代码，第一眼看新框架就觉得"哦，这不就是 X"——这是你的强先验在压制感官。新手能注意到的细节，你的预测引擎直接"补全"掉了。解药：刻意找<em>不会被你的模板覆盖</em>的领域（佛学冥想里的 beginner's mind / shoshin 就是这个）。② <em>调试 ≈ 找最大预测误差</em>。资深工程师的直觉来自<em>预测哪里会出问题</em>的精准先验。但同一套先验在新范式（LLM/agent）下变成<em>反向负担</em>——你的"应该"太强，新的"实际"被你过滤掉了。③ 焦虑的神经定义：对内感受的高不确定预测。深呼吸/正念有效，是因为它<em>提供高质量内感受数据来更新预测</em>，不是"放松"那么模糊。④ 量子测量的"观察者效应"和预测加工的"先验决定知觉"是同结构的——观察过程不可剥离地参与了被观察对象的样态。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Predictive Processing</strong> — the brain is not perception-action-machine but a constantly running prediction engine; sensory channels only carry <em>prediction errors</em>. What you "see" is your brain's best guess, sensory-corrected — Andy Clark's "controlled hallucination." Friston's Free Energy Principle unifies all brain activity under one objective: minimize prediction error (≈ surprise). Perception updates predictions to match data; action updates data to match predictions; learning updates priors. Emotions are interoceptive predictions: anxiety = high uncertainty about internal state; depression = locked-in low-reward priors. Isomorphic to Bayesian inference and to next-token LLM prediction — same computational primitive, different substrate. Yogācāra Buddhism described this 1600 years ago: phenomena are mind-constructed. Practice: track daily surprise. No surprise = your model has frozen or you've stopped exposing yourself to new data.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我对 [话题/领域/决策] 有以下既有判断：[列出你的预测/先验]。请按预测加工框架做诊断：
+① 这些是高强度先验还是弱先验？我可能在哪里用先验"覆盖"了不利数据；
+② 给出 3 个能制造高质量预测误差的具体反例/反问/反数据；
+③ 帮我区分：哪一项的解法是"更新先验"，哪一项是"改变行动以改变数据"；
+④ 如果有情绪卷入，指出可能背后的内感受预测假设是什么。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My current beliefs about [topic/domain/decision]: [list priors/predictions]. Run a predictive-processing diagnostic:
+1. Which of these are strong priors vs weak? Where might priors be overwriting inconvenient data?
+2. Generate 3 high-quality prediction-error inputs — counterexamples, counter-questions, or counter-data I should sit with.
+3. For each item: is the fix to update the prior, or to change action so the data changes?
+4. If emotion is involved, name the likely interoceptive prediction underneath it.</div>
+</section>
+
+<!-- Card 3: 默认模式网络 -->
+<section class="card c3">
+<h2>默认模式网络 · Default Mode Network (DMN)</h2>
+<div class="subtitle">Raichle et al. (2001) — "The brain at 'rest' burns nearly as much glucose as the brain at work. It's not idle — it's running you."</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>DMN 是大脑在你"什么都没做"时反而高度活跃的网络（mPFC + PCC + 角回 + 海马）。功能：<strong>自我参照思考、自传式记忆、心智时间旅行（回忆与想象未来）、心智理论、心智游走</strong>。它消耗的能量与"task-positive 网络"相当——所谓"休息"，是大脑切换到另一套高耗能进程，<em>不是停机</em>。</p>
+<p>非平凡点：① DMN<em>构造"自我"</em>。Carhart-Harris 等用 fMRI 看到 psilocybin 显著<strong>降低 DMN 内连接性</strong>，主观对应"自我消解 (ego dissolution)"。资深冥想者长期表现出类似的 DMN 调节能力——"无我"在脑层就是<em>降低 DMN 主导地位</em>。② DMN 是双刃剑：<em>创造性重组与洞察预编</em>发生在这里（淋浴时的"啊哈！"是 DMN 把白天的输入交叉重排）；但<em>反刍 (rumination)</em> 也在这里。抑郁的核心神经特征之一就是 DMN 过度活跃且无法停。③ 现代病：手机让你时刻 task-positive，<strong>DMN 慢性饥饿</strong>——创造力下降、记忆巩固变差、自我感模糊。"无聊危机"不是矫情，是 DMN 营养不良。④ 与工程同构：DMN ≈ 后台 GC + 索引重建 + offline 学习。永远跑前台高优先级任务的系统，迟早 OOM。⑤ 与佛学"无所住而生其心"对应：理想状态不是 DMN 关闭（那是丧失自传），而是 DMN <em>可调</em>——能进，能出。</p>
+<p>实践拐点：每天<em>主动安排 DMN 时间</em>——洗澡不带音频、散步不带 podcast、通勤盯窗外不刷手机。这不是浪费，是<em>洞察预编与情绪整理的发生地</em>。规则：手机在口袋里 ≠ DMN 在线（你预期它会响，task-positive 仍在 standby）。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+<!-- Two networks: DMN vs TPN -->
+<rect x="40" y="30" width="220" height="140" rx="10" fill="#c44545" opacity="0.12" stroke="#c44545" stroke-width="2"/>
+<text x="150" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#c44545">DMN（默认模式）</text>
+<text x="150" y="75" text-anchor="middle" font-size="11" fill="#c44545">自我 · 回忆 · 想象 · 反刍</text>
+<text x="150" y="95" text-anchor="middle" font-size="11" fill="#c44545">创造性重组 · 心智游走</text>
+<text x="150" y="118" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">激活：散步 · 淋浴 · 发呆</text>
+<text x="150" y="140" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">过度 → 反刍 / 抑郁</text>
+<text x="150" y="158" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">不足 → 无创意 / 自我模糊</text>
+
+<rect x="300" y="30" width="220" height="140" rx="10" fill="#0a6fb8" opacity="0.12" stroke="#0a6fb8" stroke-width="2"/>
+<text x="410" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="#0a6fb8">TPN（任务正向）</text>
+<text x="410" y="75" text-anchor="middle" font-size="11" fill="#0a6fb8">外部聚焦 · 目标驱动</text>
+<text x="410" y="95" text-anchor="middle" font-size="11" fill="#0a6fb8">深度工作 · 解题</text>
+<text x="410" y="118" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">激活：编码 · 阅读 · 谈话</text>
+<text x="410" y="140" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">过度 → 耗竭 / 创造力枯</text>
+<text x="410" y="158" text-anchor="middle" font-size="11" font-style="italic" fill="#636e72">不足 → 拖延 / 弥散</text>
+
+<!-- Anti-correlated -->
+<path d="M 260 100 L 295 100" fill="none" stroke="#7048b8" stroke-width="2" marker-end="url(#arrDMN)"/>
+<path d="M 300 110 L 265 110" fill="none" stroke="#7048b8" stroke-width="2" marker-end="url(#arrDMN)"/>
+<defs><marker id="arrDMN" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7048b8"/></marker></defs>
+
+<text x="280" y="190" text-anchor="middle" font-size="10" font-style="italic" fill="#868e96">反相关：一个增强 → 另一个抑制 · 健康 = 能自由切换</text>
+</svg>
+<div class="caption">两大网络是反相关跷跷板 — 永远 TPN 在线 = DMN 慢性饥饿</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Carhart-Harris et al. (2012, 2016) 给受试者 IV 注射 psilocybin 后 fMRI 扫描：<em>DMN 内连接性显著下降</em>，主观体验为"自我消解 / 时空感解构"。后续大量研究显示：长期冥想者（&gt; 10000 小时）在静息态下也表现出<em>类似的 DMN 模块化下降</em>。这是"自我"作为大脑构造而非客体存在的最硬证据之一——你不是有一个自我，自我是一个<em>持续运行的进程</em>，关掉这个进程，体验仍在，但"我"消失。这与中观/唯识对"我"的解析直接呼应。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 你最好的架构灵感是<em>在洗澡或散步时</em>来的——不是巧合。白天 TPN 收集问题，DMN 在背景重排组合。把手机带进洗澡间 = 关掉了 GC 进程。② 工程类比：你的大脑像一个集群——TPN 是 stateless 服务（处理请求），DMN 是 stateful 后台（重建索引、压缩、跑机器学习）。<strong>从来不让后台跑的集群，迟早把请求吃成 N+1 慢查询</strong>。③ AI 时代专属陷阱：用 LLM 把每一个 idle 间隙都填满（等编译时问个问题，等 build 时让它写点东西）= 把仅剩的 DMN 时间也清零。<em>这是 BigCat 这样的高效用户最危险的反模式</em>。④ 反刍预警：DMN 主题如果反复是"为什么当时没那样做" / "如果他这样想我"，已进入抑郁性反刍轨道。正念不是停 DMN，是<em>给 DMN 装一个"主题切换器"</em>——觉察后把主题切回更宽视野。⑤ 给孩子的同样适用：让她无聊。不要把每个 5 分钟空隙都用平板填满。<em>无聊是儿童 DMN 的生长素</em>。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Default Mode Network (DMN)</strong> — most active when you're "doing nothing" (mPFC + PCC + angular gyrus + hippocampus). Functions: self-referential thought, autobiographical memory, mental time travel, theory of mind, mind-wandering. "Rest" isn't idle — it's switching to another high-energy process. Non-trivial: the DMN <em>constructs the self</em>. Psilocybin and long-term meditation both reduce DMN coherence, producing "ego dissolution." DMN is double-edged — it powers creative recombination and insight precomputation (the shower "aha"), but also rumination (a depression hallmark). Constant phone use starves the DMN: shrinks creativity, weakens memory consolidation, blurs self-coherence. Engineering analog: background GC + offline learning — a system always running foreground will OOM. Healthy state isn't DMN-off; it's DMN <em>switchable</em>. Schedule it deliberately: showers without audio, walks without podcasts, staring out windows.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>最近一周我的认知/情绪状态是：[描述]。请用 DMN/TPN 框架做扫描：
+① 我每天有几次"主动 DMN 时段"（无音频的洗澡/散步/发呆）？
+② 我有没有滑入反刍循环——如果有，主题是什么、典型时间是什么；
+③ 我有没有把 idle 时间都用 AI/手机填满，把 DMN 饿掉；
+④ 给出本周可执行的最小处方：一项 DMN 保护 + 一项反刍打断 + 一项 TPN 减负。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My cognitive/emotional state this past week: [describe]. Run a DMN/TPN scan:
+1. How many deliberate DMN sessions did I have (audio-free shower/walk/staring)?
+2. Am I drifting into rumination — if so, what's the recurring theme and typical time of day?
+3. Am I filling every idle slot with AI/phone, starving the DMN?
+4. Prescribe the minimum this week: one DMN protection + one rumination-interrupt + one TPN load-shed.</div>
+</section>
+
+<!-- Card 4: 多巴胺奖赏预测误差 -->
+<section class="card c4">
+<h2>多巴胺奖赏预测误差 · Dopamine Reward Prediction Error (RPE)</h2>
+<div class="subtitle">Schultz, Dayan &amp; Montague (1997) — "Dopamine doesn't signal reward. It signals the difference between expected and received reward."</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>关于多巴胺最普遍的误解是"奖励化学物质"——错。Schultz 等人在猴脑 VTA 神经元的开创性记录证明：<strong>多巴胺编码的是奖励预测误差 δ = R − V</strong>，不是奖励本身。预期内的奖励几乎不放电；意外的奖励 +；预期到但落空 −。这与强化学习的 TD-learning 是同一个方程，<em>AlphaGo 的 TD update 和你的 VTA 神经元跑同一行公式</em>。</p>
+<p>非平凡点：① <em>预期奖励不放电</em>——这就是为什么你升职第二个月已经无感、为什么婚姻第 5 年的浪漫晚餐像例行公事。多巴胺系统对"持平"麻木，对"差值"敏感。② <em>多巴胺峰值发生在 cue（线索）上，不在 reward 本身</em>。打开 App 之前的预期，比看到内容那一刻更强。Berridge 的 "wanting ≠ liking"：你"想要"的是 cue，但"喜欢"的是结果——两套独立回路。成瘾就是 wanting 系统脱离 liking 系统的失控。③ <em>变率奖励 (variable-ratio reward) 最难戒</em>——因为预测误差无法收敛到零。这是老虎机、社交媒体、短视频背后的共同算法。Skinner 知道，TikTok 团队也知道，<em>你的 VTA 神经元就是这么编程的</em>。④ <em>RPE 是学习的引擎</em>。无预测误差 = 无学习。一个"永远说 good job"的反馈系统失去学习功能；一个"永远批评"的反馈系统使 V 值持续低于 R，多巴胺被压抑直至抑郁（习得性无助的神经学）。<strong>有效反馈 = 稍高于预测 + 不可完全预测</strong>。⑤ 与佛学"tanha (渴爱)"对应：佛陀分离"想要"与"满足"早于 Berridge 2500 年。"苦"的根源不在缺乏，在 wanting 系统的结构性永不满足——预测被满足，新的预测立刻抬高。</p>
+<p>实践拐点：不追逐奖励，<em>设计预测误差</em>。给孩子（团队、自己）的反馈：稍微高于预测 + 不完全可预测。一个永远 5 分的妈妈、一个永远批评的老板、一个永远赞美的 AI 助手，神经层等价——<strong>都把学习信号清零了</strong>。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+<!-- Three scenarios: predicted, surprise+, surprise- -->
+<!-- Scenario 1: predicted -->
+<text x="93" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#1b8a5a">① 预期内</text>
+<line x1="30" y1="120" x2="160" y2="120" stroke="#868e96" stroke-width="1"/>
+<text x="20" y="124" text-anchor="end" font-size="9" fill="#868e96">0</text>
+<rect x="55" y="55" width="6" height="65" fill="#fdcb6e"/>
+<text x="58" y="48" text-anchor="middle" font-size="9" fill="#5d4e1f">cue</text>
+<rect x="120" y="115" width="6" height="10" fill="#1b8a5a"/>
+<text x="123" y="142" text-anchor="middle" font-size="9" fill="#1b8a5a">奖励</text>
+<text x="93" y="170" text-anchor="middle" font-size="10" fill="#868e96">δ ≈ 0</text>
+<text x="93" y="185" text-anchor="middle" font-size="9" font-style="italic" fill="#868e96">无学习</text>
+
+<!-- Divider -->
+<line x1="186" y1="40" x2="186" y2="195" stroke="#dee2e6" stroke-width="1"/>
+
+<!-- Scenario 2: surprise + -->
+<text x="279" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#1b8a5a">② 意外好</text>
+<line x1="216" y1="120" x2="346" y2="120" stroke="#868e96" stroke-width="1"/>
+<rect x="306" y="50" width="6" height="70" fill="#1b8a5a"/>
+<text x="309" y="44" text-anchor="middle" font-size="9" fill="#1b8a5a">↑↑</text>
+<text x="309" y="142" text-anchor="middle" font-size="9" fill="#1b8a5a">奖励大于预期</text>
+<text x="279" y="170" text-anchor="middle" font-size="10" fill="#1b8a5a" font-weight="700">δ &gt; 0</text>
+<text x="279" y="185" text-anchor="middle" font-size="9" font-style="italic" fill="#1b8a5a">↑ 强化此行为</text>
+
+<!-- Divider -->
+<line x1="372" y1="40" x2="372" y2="195" stroke="#dee2e6" stroke-width="1"/>
+
+<!-- Scenario 3: surprise - -->
+<text x="465" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#c44545">③ 预期落空</text>
+<line x1="402" y1="120" x2="532" y2="120" stroke="#868e96" stroke-width="1"/>
+<rect x="438" y="55" width="6" height="65" fill="#fdcb6e"/>
+<text x="441" y="48" text-anchor="middle" font-size="9" fill="#5d4e1f">cue</text>
+<rect x="495" y="120" width="6" height="40" fill="#c44545"/>
+<text x="498" y="180" text-anchor="middle" font-size="9" fill="#c44545">未到</text>
+<text x="465" y="170" text-anchor="middle" font-size="10" fill="#c44545" font-weight="700">δ &lt; 0</text>
+<text x="465" y="207" text-anchor="middle" font-size="9" font-style="italic" fill="#c44545">↓ 抑制此预测</text>
+
+<text x="280" y="205" text-anchor="middle" font-size="10" font-style="italic" fill="#495057">多巴胺编码 δ，不编码 R · 学习只发生在 δ ≠ 0</text>
+</svg>
+<div class="caption">RPE = R − V · 预测被满足 = 无学习；变率奖励永远 δ ≠ 0 = 永远上瘾</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Schultz et al. (1993, 1997) 训练猴子听铃声 → 给果汁。<em>第 1 天</em>：果汁送达时 VTA 神经元放电（"意外好东西"）。<em>训练后</em>：放电峰值<em>前移到铃声</em>（cue 已经携带了预测，奖励本身是预期内）。<em>关键实验</em>：训练完成后突然撤掉果汁——VTA 在<em>预期送达时刻</em>放电<strong>下降到基线以下</strong>。这是 R − V 公式的肉眼可见证据：当 V 已建立而 R 未到，差值是负的。同一组放电序列后来发现就是 TD-learning 的 δ 项——计算神经科学和强化学习从此被同一方程统一。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① TikTok / X / 短视频上瘾的神经定义：<em>变率奖励 + 高频 cue</em>。下一条可能爆笑、可能无聊——δ 永远不收敛，VTA 永远在跑。这不是意志薄弱，是<strong>系统在你的奖励学习算法的弱点上做了精确攻击</strong>。② 给孩子（团队）反馈的真正心法：永远的"good job"等价于训练后撤掉果汁——褒奖词的 V 已被她预测到，R 完全可预期，δ → 0，学习信号消失。她外表"被夸赞"，神经层零增益。<em>有效反馈 = 具体 + 稍高于她预期 + 偶尔意外</em>。③ 工程同构：你的 reward function（OKR / KPI）如果完全可预测，对 agent（包括团队和自己）就停止驱动学习。引入<em>不可完全预测的高信号反馈</em>是关键。这也是 Karpathy 说的"surprise is data"。④ 自我管理：你新做事的兴奋会迅速衰减——不是项目变差，是 V 追上 R，δ → 0。解药是<em>主动制造可见的预测误差</em>：设难度阶梯、给自己加意外的小挑战、换协作者引入新数据。⑤ 量子直觉的链接：测量结果与先验之差驱动后验更新 —— 在大脑里就是 δ，在贝叶斯里是 likelihood ratio。三套语言，同一引擎。⑥ 佛学：tanha（渴爱）的不止息正是 RPE 系统的特性——预测被满足 → 立即抬高新预测 → δ 永远在追逐。看见这一点，不是去消灭 wanting 系统，是<em>不被它驱使</em>。这是"离欲"的神经层定义。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Dopamine Reward Prediction Error (RPE)</strong> — dopamine doesn't signal reward; it signals <em>δ = R − V</em>, the difference between received and expected reward. Schultz, Dayan &amp; Montague (1997) showed VTA neurons firing the exact equation of TD-learning — AlphaGo's update rule and your midbrain run the same line of code. Consequences: ① fully predicted rewards fire no dopamine (why month-2 of a promotion feels flat); ② the spike sits on the cue, not the reward — "wanting ≠ liking" (Berridge); ③ variable-ratio reward (slots, social feeds, shorts) keeps δ from converging — engineered against your VTA; ④ no prediction error = no learning; constant "good job" feedback zeroes the signal as much as constant criticism does. Effective feedback: slightly above prediction + not fully predictable. The Buddhist tanha — wanting that satisfaction never quenches — is RPE's structural feature: once predicted, the prior rises, δ chases anew. Liberation isn't destroying the wanting system; it's not being driven by it.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想分析 [一个上瘾循环 / 一个停止学习的反馈系统 / 一个对孩子或团队的激励安排]。请用 RPE 做诊断：
+① 当前 δ 的形状是什么——可预测的低 δ、变率高 δ、还是持续负 δ；
+② 多巴胺峰值落在 cue 还是 outcome 上？我是被"想要"驱动还是被"满足"驱动；
+③ 给出一个最小重构：让 R 稍高于 V、保留一定不可预测性、避免变率成瘾的陷阱；
+④ 同时帮我识别一个被我"good job 化"了的关键反馈关系（孩子/同事/自己），并给出更有效的替代脚本。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Help me analyze [an addictive loop / a feedback system that stopped teaching / an incentive setup for my child or team]. Run an RPE diagnostic:
+1. What's the current shape of δ — predictable low-δ, variable high-δ, or chronic negative δ?
+2. Does the dopamine peak land on the cue or the outcome? Am I being driven by "wanting" or by "liking"?
+3. Propose a minimal redesign: keep R slightly above V, preserve some unpredictability, avoid the variable-ratio trap.
+4. Also flag one key feedback relationship I've "good-job-ed" into uselessness (child / colleague / self), and give a more effective replacement script.</div>
+</section>
+
+</div>
+</body>
+</html>
