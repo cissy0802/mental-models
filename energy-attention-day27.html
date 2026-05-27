@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>思维模型详解：能量与注意力管理类 · 2026-05-16</title>
 <style>
   * { box-sizing: border-box; }
@@ -153,160 +154,141 @@
 </head>
 <body>
 <div class="container">
-
-  <header class="page-header">
-    <h1>思维模型详解：能量与注意力管理类</h1>
-    <div class="meta">2026-05-16 · Day 27</div>
-  </header>
-
-  <!-- Card 1: 注意力残留 -->
-  <section class="card c1">
-    <h2>注意力残留</h2>
-    <div class="subtitle">Attention Residue — 你以为切换了任务，但大脑还停在上一个</div>
-
-    <div class="section-label">中文详解</div>
-    <hr>
-    <p>注意力残留由组织行为学家 Sophie Leroy 提出：当你从任务 A 切换到任务 B 时，大脑并不会干净地"关闭" A 的认知进程。未完成的任务 A 会在工作记忆中持续占据带宽，形成"残留"——即使你已经在做 B，认知资源仍部分锁定在 A 上。研究表明，残留越强，任务 B 的表现越差。</p>
-    <p>非平凡洞察：注意力残留解释了为什么"多任务切换"不仅是效率问题，更是质量问题。每次切换不仅浪费"重新加载"的时间，还让你在新任务上只能投入部分认知资源——你以为自己在全力工作，实际上是在"降频运行"。更深层的机制是：未完成感（蔡格尼克效应）是残留的主要来源。如果你在切换前将当前任务"封装"——写下明确的下一步、标记进展、设置恢复锚点——可以大幅减轻残留，因为大脑获得了"已被妥善安置"的信号，不再反复回访。这意味着"如何结束一个任务"比"如何开始一个任务"更影响整体产出质量。</p>
-    <p>实践方法：在切换任务前花 2 分钟做"封装仪式"——写下当前进度、未解决的问题、下一步行动。使用时间块工作法时，在块与块之间设置 5 分钟的"清空缓冲"而非直接跳转。减少不必要的任务切换——将同类任务批处理，用固定时间段处理邮件和消息而非实时响应。</p>
-    <div class="example-block">
-      <div class="example-label">经典例子</div>
-      <p>Sophie Leroy 的实验中，受试者在未完成一个文字谜题时被要求切换到简历评估任务。结果显示，他们对简历的判断显著低于那些在完成谜题后再切换的对照组。未完成的谜题持续占据认知带宽，即使受试者主观上认为自己已经"全神贯注"在新任务上。</p>
-    </div>
-    <div class="example-block">
-      <div class="example-label">场景 · BigCat</div>
-      <p>作为 AI 超级个体，你可能同时运行多个 AI 辅助工作流——写提示词、审阅 AI 输出、管理知识库、回复社群消息。每次在这些任务间跳转，前一个任务的认知碎片都在消耗你的决策质量。解决方案：为每个 AI 工作流设置"状态文件"——在切换前让 AI 帮你生成当前进度摘要和下一步行动清单，存入固定位置。下次回来时，先读取状态文件再继续，而非依赖记忆重建上下文。育儿场景同理：被孩子中断工作时，立即在便签上写下"断点"，而非试图同时处理两件事。</p>
-    </div>
-
-    <div class="section-label">English Summary</div>
-    <hr>
-    <p class="english-summary">Attention residue, identified by Sophie Leroy, describes how cognitive resources remain partially locked on a previous task after switching, degrading performance on the current one. The incomplete task continues consuming working memory bandwidth even when you believe you've fully shifted focus. The Zeigarnik effect — the mind's tendency to ruminate on unfinished tasks — is the primary driver. The antidote is deliberate "encapsulation" before switching: document progress, note the next step, and create a recovery anchor. This signals the brain that the task is safely stored, releasing cognitive bandwidth. How you end a task matters more for overall output quality than how you begin the next one.</p>
-
-    <div class="section-label">AI Prompts</div>
-    <hr>
-    <div class="prompt-block">
-      <span class="prompt-label">中文模板</span><br>
+<header class="page-header">
+<h1 data-tts="43ef0fcf5bced827">思维模型详解：能量与注意力管理类</h1>
+<div class="meta">2026-05-16 · Day 27</div>
+</header>
+<!-- Card 1: 注意力残留 -->
+<section class="card c1">
+<h2 data-tts="bb15cf225173cc70">注意力残留</h2>
+<div class="subtitle">Attention Residue — 你以为切换了任务，但大脑还停在上一个</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>注意力残留由组织行为学家 Sophie Leroy 提出：当你从任务 A 切换到任务 B 时，大脑并不会干净地"关闭" A 的认知进程。未完成的任务 A 会在工作记忆中持续占据带宽，形成"残留"——即使你已经在做 B，认知资源仍部分锁定在 A 上。研究表明，残留越强，任务 B 的表现越差。</p>
+<p>非平凡洞察：注意力残留解释了为什么"多任务切换"不仅是效率问题，更是质量问题。每次切换不仅浪费"重新加载"的时间，还让你在新任务上只能投入部分认知资源——你以为自己在全力工作，实际上是在"降频运行"。更深层的机制是：未完成感（蔡格尼克效应）是残留的主要来源。如果你在切换前将当前任务"封装"——写下明确的下一步、标记进展、设置恢复锚点——可以大幅减轻残留，因为大脑获得了"已被妥善安置"的信号，不再反复回访。这意味着"如何结束一个任务"比"如何开始一个任务"更影响整体产出质量。</p>
+<p>实践方法：在切换任务前花 2 分钟做"封装仪式"——写下当前进度、未解决的问题、下一步行动。使用时间块工作法时，在块与块之间设置 5 分钟的"清空缓冲"而非直接跳转。减少不必要的任务切换——将同类任务批处理，用固定时间段处理邮件和消息而非实时响应。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Sophie Leroy 的实验中，受试者在未完成一个文字谜题时被要求切换到简历评估任务。结果显示，他们对简历的判断显著低于那些在完成谜题后再切换的对照组。未完成的谜题持续占据认知带宽，即使受试者主观上认为自己已经"全神贯注"在新任务上。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>作为 AI 超级个体，你可能同时运行多个 AI 辅助工作流——写提示词、审阅 AI 输出、管理知识库、回复社群消息。每次在这些任务间跳转，前一个任务的认知碎片都在消耗你的决策质量。解决方案：为每个 AI 工作流设置"状态文件"——在切换前让 AI 帮你生成当前进度摘要和下一步行动清单，存入固定位置。下次回来时，先读取状态文件再继续，而非依赖记忆重建上下文。育儿场景同理：被孩子中断工作时，立即在便签上写下"断点"，而非试图同时处理两件事。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<p class="english-summary">Attention residue, identified by Sophie Leroy, describes how cognitive resources remain partially locked on a previous task after switching, degrading performance on the current one. The incomplete task continues consuming working memory bandwidth even when you believe you've fully shifted focus. The Zeigarnik effect — the mind's tendency to ruminate on unfinished tasks — is the primary driver. The antidote is deliberate "encapsulation" before switching: document progress, note the next step, and create a recovery anchor. This signals the brain that the task is safely stored, releasing cognitive bandwidth. How you end a task matters more for overall output quality than how you begin the next one.</p>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-block">
+<span class="prompt-label">中文模板</span><br/>
       请帮我为当前工作创建一个"注意力封装"模板。我正在做 [任务描述]，需要切换去做 [另一个任务]。请帮我结构化记录：① 当前进度（完成了什么）② 未解决的关键问题 ③ 下一步具体行动 ④ 恢复时需要的上下文信息。格式要求简洁，让我下次能在 30 秒内恢复状态。
     </div>
-    <div class="prompt-block">
-      <span class="prompt-label">English Template</span><br>
+<div class="prompt-block">
+<span class="prompt-label">English Template</span><br/>
       Create an "attention encapsulation" note for my current work. I'm working on [task description] and need to switch to [other task]. Structure it as: ① Current progress ② Unresolved key questions ③ Next concrete action ④ Context needed for resumption. Keep it concise enough to restore my state in under 30 seconds.
     </div>
-  </section>
-
-  <!-- Card 2: 决策疲劳 -->
-  <section class="card c2">
-    <h2>决策疲劳</h2>
-    <div class="subtitle">Decision Fatigue — 意志力是有限库存，每个决策都在消耗它</div>
-
-    <div class="section-label">中文详解</div>
-    <hr>
-    <p>决策疲劳指的是：做出大量决策后，后续决策的质量会显著下降。研究表明，人的决策能力像肌肉一样会疲劳——以色列法官在午餐前的假释批准率降至接近零，而午餐后恢复至 65%。这不是因为法官变得"邪恶"，而是认知资源耗尽后，大脑默认选择最安全的选项（拒绝）或最省力的选项（维持现状）。</p>
-    <p>非平凡洞察：决策疲劳的危险不在于你"做出坏决策"，而在于你"停止做决策"——疲劳的大脑会退回自动驾驶模式，选择默认选项、走捷径、或者干脆拖延。更微妙的是，琐碎决策和重大决策消耗的是同一池认知资源。早上在"穿什么""早餐吃什么""先回哪封邮件"上消耗的决策能量，直接削弱了下午面对战略决策时的质量。这就是为什么乔布斯只穿黑色高领衫、扎克伯格只穿灰T恤——不是因为不在意外表，而是通过消除琐碎决策来保护认知资源给高价值决策。第二个反直觉点：自我控制和决策共享同一能量池（ego depletion），所以抵制诱惑的行为也会加速决策疲劳。</p>
-    <p>实践方法：将最重要的决策安排在一天中精力最充沛的时段（通常是上午）。建立"决策系统"取代逐次决策——用规则、流程、默认选项消除重复性决策。对琐碎事务设定自动化规则（固定菜单、固定着装、固定流程）。识别你的"决策预算"，不要在低价值选择上浪费配额。</p>
-    <div class="example-block">
-      <div class="example-label">经典例子</div>
-      <p>Danziger 等人对以色列法官的研究：审查了 1,112 件假释裁决，发现批准率从每个时段开头的约 65% 逐渐下降至接近 0%，然后在休息/用餐后恢复。法官并非有意偏见，而是在认知资源耗尽时默认选择"安全选项"（拒绝假释）。这一发现揭示了：决策疲劳不分职业高低，它是认知系统的硬约束。</p>
-    </div>
-    <div class="example-block">
-      <div class="example-label">场景 · BigCat</div>
-      <p>作为妈妈和 AI 超级个体，你的决策密度极高：工作流设计、AI 工具选型、内容方向、投资判断、孩子的教育安排……每一项都在消耗同一池能量。策略：① 将战略性思考（投资决策、系统设计）锁定在早晨精力峰值时段；② 用 AI 代理处理低价值决策——让 AI 预筛选信息、生成选项排序、提供默认推荐，你只需"批准或否决"；③ 为育儿建立"决策预设"——周一到周五的晚餐菜单、课外活动安排都提前规划好，避免每天临时决定。本质上是用"系统"取代"意志力"。</p>
-    </div>
-
-    <div class="section-label">English Summary</div>
-    <hr>
-    <p class="english-summary">Decision fatigue describes the deterioration of decision quality after a prolonged period of decision-making. The cognitive resource pool is finite and shared across all decisions — trivial and strategic alike. As it depletes, the brain defaults to the safest option, the path of least resistance, or outright avoidance. The Israeli parole study dramatically demonstrates this: approval rates drop to near zero before meal breaks regardless of case merit. The practical implication is that decision volume, not just complexity, determines quality. Solutions involve protecting peak-energy hours for high-value decisions, automating trivial choices through rules and defaults, and using systems (AI agents, pre-set routines, decision frameworks) to replace repeated deliberation with one-time design.</p>
-
-    <div class="section-label">AI Prompts</div>
-    <hr>
-    <div class="prompt-block">
-      <span class="prompt-label">中文模板</span><br>
+</section>
+<!-- Card 2: 决策疲劳 -->
+<section class="card c2">
+<h2 data-tts="63cb87e16f76e48a">决策疲劳</h2>
+<div class="subtitle">Decision Fatigue — 意志力是有限库存，每个决策都在消耗它</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>决策疲劳指的是：做出大量决策后，后续决策的质量会显著下降。研究表明，人的决策能力像肌肉一样会疲劳——以色列法官在午餐前的假释批准率降至接近零，而午餐后恢复至 65%。这不是因为法官变得"邪恶"，而是认知资源耗尽后，大脑默认选择最安全的选项（拒绝）或最省力的选项（维持现状）。</p>
+<p>非平凡洞察：决策疲劳的危险不在于你"做出坏决策"，而在于你"停止做决策"——疲劳的大脑会退回自动驾驶模式，选择默认选项、走捷径、或者干脆拖延。更微妙的是，琐碎决策和重大决策消耗的是同一池认知资源。早上在"穿什么""早餐吃什么""先回哪封邮件"上消耗的决策能量，直接削弱了下午面对战略决策时的质量。这就是为什么乔布斯只穿黑色高领衫、扎克伯格只穿灰T恤——不是因为不在意外表，而是通过消除琐碎决策来保护认知资源给高价值决策。第二个反直觉点：自我控制和决策共享同一能量池（ego depletion），所以抵制诱惑的行为也会加速决策疲劳。</p>
+<p>实践方法：将最重要的决策安排在一天中精力最充沛的时段（通常是上午）。建立"决策系统"取代逐次决策——用规则、流程、默认选项消除重复性决策。对琐碎事务设定自动化规则（固定菜单、固定着装、固定流程）。识别你的"决策预算"，不要在低价值选择上浪费配额。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Danziger 等人对以色列法官的研究：审查了 1,112 件假释裁决，发现批准率从每个时段开头的约 65% 逐渐下降至接近 0%，然后在休息/用餐后恢复。法官并非有意偏见，而是在认知资源耗尽时默认选择"安全选项"（拒绝假释）。这一发现揭示了：决策疲劳不分职业高低，它是认知系统的硬约束。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>作为妈妈和 AI 超级个体，你的决策密度极高：工作流设计、AI 工具选型、内容方向、投资判断、孩子的教育安排……每一项都在消耗同一池能量。策略：① 将战略性思考（投资决策、系统设计）锁定在早晨精力峰值时段；② 用 AI 代理处理低价值决策——让 AI 预筛选信息、生成选项排序、提供默认推荐，你只需"批准或否决"；③ 为育儿建立"决策预设"——周一到周五的晚餐菜单、课外活动安排都提前规划好，避免每天临时决定。本质上是用"系统"取代"意志力"。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<p class="english-summary">Decision fatigue describes the deterioration of decision quality after a prolonged period of decision-making. The cognitive resource pool is finite and shared across all decisions — trivial and strategic alike. As it depletes, the brain defaults to the safest option, the path of least resistance, or outright avoidance. The Israeli parole study dramatically demonstrates this: approval rates drop to near zero before meal breaks regardless of case merit. The practical implication is that decision volume, not just complexity, determines quality. Solutions involve protecting peak-energy hours for high-value decisions, automating trivial choices through rules and defaults, and using systems (AI agents, pre-set routines, decision frameworks) to replace repeated deliberation with one-time design.</p>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-block">
+<span class="prompt-label">中文模板</span><br/>
       请帮我做一次"决策审计"：列出我在 [典型一天/一周] 中需要做的所有决策，按价值高低分为三层（战略级 / 战术级 / 琐碎级）。对琐碎级决策，提出自动化规则或默认选项方案；对战术级决策，设计一个简化决策框架（如评分矩阵）；对战略级决策，建议最佳时间窗口和决策环境设置。
     </div>
-    <div class="prompt-block">
-      <span class="prompt-label">English Template</span><br>
+<div class="prompt-block">
+<span class="prompt-label">English Template</span><br/>
       Conduct a "decision audit" for my typical [day/week]. List all decisions I make, categorize them into three tiers (strategic / tactical / trivial). For trivial decisions, propose automation rules or defaults. For tactical decisions, design a simplified decision framework. For strategic decisions, recommend optimal timing, environment, and preparation rituals to maximize quality.
     </div>
-  </section>
-
-  <!-- Card 3: 能量管理 -->
-  <section class="card c3">
-    <h2>能量管理</h2>
-    <div class="subtitle">Energy Management — 时间对所有人平等，能量才是真正的差异变量</div>
-
-    <div class="section-label">中文详解</div>
-    <hr>
-    <p>能量管理由 Jim Loehr 和 Tony Schwartz 在《精力管理》中系统提出：高效能不是时间管理问题，而是能量管理问题。人的能量分为四个维度——身体（体力）、情绪（情感质量）、心智（专注力）、精神（目的感）。每个维度都有容量上限和恢复机制，且四者相互关联：身体疲劳拖累专注力，情绪内耗消耗心智能量，缺乏目的感则让所有投入失去方向。</p>
-    <p>非平凡洞察：时间管理的隐含假设是"每小时的价值相等"，这是错误的。你在精力巅峰时的一小时可能抵得上低谷时的四小时。真正的效率优化不是"塞满时间表"，而是"让高能量时段对准高价值任务"。第二个洞察：能量不是线性消耗的，而是"脉冲式"（oscillation）的——全力投入后需要真正的恢复，而非低质量的"半工作半休息"。精英运动员的训练节奏（高强度训练 + 完全恢复）比持续中等强度更有效，知识工作同理。第三个洞察：恢复本身需要"主动设计"——刷手机不是恢复，它是另一种消耗（决策、情绪刺激、注意力碎片化）。</p>
-    <p>实践方法：追踪一周能量曲线——每小时给自己的身体/情绪/心智能量打分（1-10），找出个人的能量峰值和低谷时段。将高创造性工作安排在峰值时段，将事务性工作安排在低谷。设计"恢复仪式"——每 90 分钟进行一次 10-15 分钟的真正恢复（散步、冥想、呼吸练习，而非刷手机）。每周设计一次深度恢复日。</p>
-    <div class="example-block">
-      <div class="example-label">经典例子</div>
-      <p>职业网球选手的比赛间歇。研究发现，顶尖选手和普通选手在击球技术上的差异远小于"恢复能力"的差异。顶尖选手在得分间隙使用固定的仪式（调整球拍线、深呼吸、目视固定点）将心率在 16-20 秒内降低 15-20 次/分钟，而普通选手心率持续居高不下。比赛到第三盘时，累积的恢复差异转化为巨大的表现差距。</p>
-    </div>
-    <div class="example-block">
-      <div class="example-label">场景 · BigCat</div>
-      <p>作为妈妈 + AI 超级个体的双重角色，你的能量消耗模式独特：早晨送孩子上学（身体+情绪消耗）→ 进入 AI 工作流（心智消耗）→ 下午接孩子/辅导作业（情绪+心智消耗）→ 晚上学习/复盘（心智消耗）。如果不主动管理，到晚上的学习时段你已是"低电量模式"。策略重构：① 将最需要创造力的 AI 工作（系统设计、策略思考）放在早晨精力峰值；② 午间设置 20 分钟"真正恢复"（冥想或散步，而非刷手机）；③ 利用孩子午休/独立活动时间做第二个心智峰值的高价值工作；④ 将晚上的学习改为"输入型"（阅读、听课）而非"产出型"（写作、决策），匹配低能量状态。</p>
-    </div>
-
-    <div class="section-label">English Summary</div>
-    <hr>
-    <p class="english-summary">Energy management reframes productivity from "filling time" to "matching energy to task value." Human energy operates across four dimensions — physical, emotional, mental, and spiritual — each with finite capacity and distinct recovery needs. The critical insight is that not all hours are equal: one peak-energy hour can outproduce four depleted hours. Performance follows an oscillation pattern — full engagement followed by genuine recovery — rather than sustained moderate effort. Elite performers distinguish themselves not by working harder but by recovering more effectively between sprints. Practical application: map your personal energy curve, align high-value creative work with peak windows, design active recovery rituals (not passive scrolling), and treat energy as the binding constraint rather than time.</p>
-
-    <div class="section-label">AI Prompts</div>
-    <hr>
-    <div class="prompt-block">
-      <span class="prompt-label">中文模板</span><br>
+</section>
+<!-- Card 3: 能量管理 -->
+<section class="card c3">
+<h2 data-tts="e40d3e4dfe1314b1">能量管理</h2>
+<div class="subtitle">Energy Management — 时间对所有人平等，能量才是真正的差异变量</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>能量管理由 Jim Loehr 和 Tony Schwartz 在《精力管理》中系统提出：高效能不是时间管理问题，而是能量管理问题。人的能量分为四个维度——身体（体力）、情绪（情感质量）、心智（专注力）、精神（目的感）。每个维度都有容量上限和恢复机制，且四者相互关联：身体疲劳拖累专注力，情绪内耗消耗心智能量，缺乏目的感则让所有投入失去方向。</p>
+<p>非平凡洞察：时间管理的隐含假设是"每小时的价值相等"，这是错误的。你在精力巅峰时的一小时可能抵得上低谷时的四小时。真正的效率优化不是"塞满时间表"，而是"让高能量时段对准高价值任务"。第二个洞察：能量不是线性消耗的，而是"脉冲式"（oscillation）的——全力投入后需要真正的恢复，而非低质量的"半工作半休息"。精英运动员的训练节奏（高强度训练 + 完全恢复）比持续中等强度更有效，知识工作同理。第三个洞察：恢复本身需要"主动设计"——刷手机不是恢复，它是另一种消耗（决策、情绪刺激、注意力碎片化）。</p>
+<p>实践方法：追踪一周能量曲线——每小时给自己的身体/情绪/心智能量打分（1-10），找出个人的能量峰值和低谷时段。将高创造性工作安排在峰值时段，将事务性工作安排在低谷。设计"恢复仪式"——每 90 分钟进行一次 10-15 分钟的真正恢复（散步、冥想、呼吸练习，而非刷手机）。每周设计一次深度恢复日。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>职业网球选手的比赛间歇。研究发现，顶尖选手和普通选手在击球技术上的差异远小于"恢复能力"的差异。顶尖选手在得分间隙使用固定的仪式（调整球拍线、深呼吸、目视固定点）将心率在 16-20 秒内降低 15-20 次/分钟，而普通选手心率持续居高不下。比赛到第三盘时，累积的恢复差异转化为巨大的表现差距。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>作为妈妈 + AI 超级个体的双重角色，你的能量消耗模式独特：早晨送孩子上学（身体+情绪消耗）→ 进入 AI 工作流（心智消耗）→ 下午接孩子/辅导作业（情绪+心智消耗）→ 晚上学习/复盘（心智消耗）。如果不主动管理，到晚上的学习时段你已是"低电量模式"。策略重构：① 将最需要创造力的 AI 工作（系统设计、策略思考）放在早晨精力峰值；② 午间设置 20 分钟"真正恢复"（冥想或散步，而非刷手机）；③ 利用孩子午休/独立活动时间做第二个心智峰值的高价值工作；④ 将晚上的学习改为"输入型"（阅读、听课）而非"产出型"（写作、决策），匹配低能量状态。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<p class="english-summary">Energy management reframes productivity from "filling time" to "matching energy to task value." Human energy operates across four dimensions — physical, emotional, mental, and spiritual — each with finite capacity and distinct recovery needs. The critical insight is that not all hours are equal: one peak-energy hour can outproduce four depleted hours. Performance follows an oscillation pattern — full engagement followed by genuine recovery — rather than sustained moderate effort. Elite performers distinguish themselves not by working harder but by recovering more effectively between sprints. Practical application: map your personal energy curve, align high-value creative work with peak windows, design active recovery rituals (not passive scrolling), and treat energy as the binding constraint rather than time.</p>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-block">
+<span class="prompt-label">中文模板</span><br/>
       请帮我设计一个"能量优化日程"。我的典型一天是 [描述起床时间、主要活动块、家庭责任、工作内容]。请：① 预测我的四维能量曲线（身体/情绪/心智/精神）在各时段的相对水平；② 将我的任务清单按能量需求重新排列到最适合的时段；③ 设计 3 个"恢复仪式"插入消耗后的间隙；④ 识别我当前日程中最大的能量浪费点。
     </div>
-    <div class="prompt-block">
-      <span class="prompt-label">English Template</span><br>
+<div class="prompt-block">
+<span class="prompt-label">English Template</span><br/>
       Design an "energy-optimized schedule" for me. My typical day involves [describe wake time, main activity blocks, family responsibilities, work content]. Please: ① Predict my four-dimensional energy curve (physical/emotional/mental/spiritual) across the day; ② Realign my task list to matching energy windows; ③ Design 3 recovery rituals for post-depletion gaps; ④ Identify the biggest energy waste point in my current schedule.
     </div>
-  </section>
-
-  <!-- Card 4: 深度工作 -->
-  <section class="card c4">
-    <h2>深度工作</h2>
-    <div class="subtitle">Deep Work — 在浅薄的时代，专注力本身就是超级大国</div>
-
-    <div class="section-label">中文详解</div>
-    <hr>
-    <p>深度工作由 Cal Newport 定义：在无干扰状态下进行的高认知负荷专业活动，能将你的认知能力推向极限，创造难以复制的新价值。与之对应的"浅层工作"——邮件、会议、行政事务——不需要深度专注，容易被复制和替代。Newport 的核心论点是：在知识经济中，深度工作的能力正在变得越来越稀缺的同时越来越有价值，因此掌握它的人将获得巨大的竞争优势。</p>
-    <p>非平凡洞察：深度工作的稀缺性不是因为人们不想做，而是因为现代工作环境的激励结构系统性地惩罚深度工作——即时回复邮件、随时在线、频繁开会都被视为"工作努力"的信号，而闭门深思却可能被误读为"偷懒"。这是一个制度性囚徒困境：每个人都知道深度工作更有产出，但都不敢先退出"可见性竞赛"。第二个洞察：深度工作的能力需要训练——当代人的注意力已被社交媒体的变动比例强化调度（类似老虎机）严重"重塑"，恢复长时间专注的能力需要像肌肉一样逐步锻炼。一开始可能只能维持 20 分钟，经过数周训练可扩展至 90 分钟以上。第三个洞察：深度工作的约束不是时间而是注意力耐力——即使有整天空闲，未经训练的大脑也无法持续深度工作超过 4 小时。</p>
-    <p>实践方法：选择适合自己的深度工作哲学——隐修式（长期隔离）、双模式（交替深浅期）、节奏式（固定每日时段）、或记者式（随时切入）。建立"深度工作仪式"：固定地点、固定起始动作、明确结束条件。用"前置承诺"消除干扰——断网、关通知、设物理界限。追踪深度工作小时数作为领先指标。</p>
-    <div class="example-block">
-      <div class="example-label">经典例子</div>
-      <p>比尔·盖茨的"思考周"（Think Week）。每年两次，盖茨独自住进湖边小屋一周，切断所有通讯，只带一箱论文和书籍。Internet Explorer 的战略方向、.NET 的架构决策、平板电脑的布局等微软最重要的战略转向都诞生于思考周。这不是"休假"，而是深度工作的极端形式——通过物理隔离消除所有浅层工作的干扰，让大脑有空间处理最复杂的问题。</p>
-    </div>
-    <div class="example-block">
-      <div class="example-label">场景 · BigCat</div>
-      <p>在 AI 时代，深度工作的内涵正在重新定义。浅层工作（信息搜集、初步整理、格式化输出）可以交给 AI 代理，但深度工作（跨学科洞察生成、系统架构设计、创造性类比迁移）仍然是人类不可替代的价值区。你的策略应该是：用 AI 压缩浅层工作时间，将释放出的带宽全部投入深度工作。具体实施：每天设置 2-3 小时的"神圣深度时间"（最好是早晨），这段时间内关闭所有通知，只处理一个高认知负荷任务（如设计新的思维模型课程、规划长期知识架构、撰写深度分析）。对孩子也培养同样的能力——每天 30 分钟的"专注时间"（阅读、拼图、绘画），逐步训练注意力耐力，这在注意力碎片化的时代会成为孩子的核心竞争力。</p>
-    </div>
-
-    <div class="section-label">English Summary</div>
-    <hr>
-    <p class="english-summary">Deep work — cognitively demanding professional activity performed in a distraction-free state — is simultaneously becoming rarer and more valuable in the knowledge economy. Modern work environments systematically penalize depth through visibility competitions (instant replies, constant meetings) while rewarding shallow busyness signals. Deep work capacity is trainable but atrophies without practice; most untrained knowledge workers can sustain only 1-2 hours of genuine deep work daily, while trained practitioners reach 4+ hours. The constraint is attention stamina, not available time. In the AI era, shallow work is increasingly automatable, making deep work the remaining locus of irreplaceable human value. Strategy: use AI to compress shallow work, reinvest the freed bandwidth entirely into deep work, and treat deep-work hours as the leading KPI for long-term output quality.</p>
-
-    <div class="section-label">AI Prompts</div>
-    <hr>
-    <div class="prompt-block">
-      <span class="prompt-label">中文模板</span><br>
+</section>
+<!-- Card 4: 深度工作 -->
+<section class="card c4">
+<h2 data-tts="33bcbc91dd74ad5a">深度工作</h2>
+<div class="subtitle">Deep Work — 在浅薄的时代，专注力本身就是超级大国</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>深度工作由 Cal Newport 定义：在无干扰状态下进行的高认知负荷专业活动，能将你的认知能力推向极限，创造难以复制的新价值。与之对应的"浅层工作"——邮件、会议、行政事务——不需要深度专注，容易被复制和替代。Newport 的核心论点是：在知识经济中，深度工作的能力正在变得越来越稀缺的同时越来越有价值，因此掌握它的人将获得巨大的竞争优势。</p>
+<p>非平凡洞察：深度工作的稀缺性不是因为人们不想做，而是因为现代工作环境的激励结构系统性地惩罚深度工作——即时回复邮件、随时在线、频繁开会都被视为"工作努力"的信号，而闭门深思却可能被误读为"偷懒"。这是一个制度性囚徒困境：每个人都知道深度工作更有产出，但都不敢先退出"可见性竞赛"。第二个洞察：深度工作的能力需要训练——当代人的注意力已被社交媒体的变动比例强化调度（类似老虎机）严重"重塑"，恢复长时间专注的能力需要像肌肉一样逐步锻炼。一开始可能只能维持 20 分钟，经过数周训练可扩展至 90 分钟以上。第三个洞察：深度工作的约束不是时间而是注意力耐力——即使有整天空闲，未经训练的大脑也无法持续深度工作超过 4 小时。</p>
+<p>实践方法：选择适合自己的深度工作哲学——隐修式（长期隔离）、双模式（交替深浅期）、节奏式（固定每日时段）、或记者式（随时切入）。建立"深度工作仪式"：固定地点、固定起始动作、明确结束条件。用"前置承诺"消除干扰——断网、关通知、设物理界限。追踪深度工作小时数作为领先指标。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>比尔·盖茨的"思考周"（Think Week）。每年两次，盖茨独自住进湖边小屋一周，切断所有通讯，只带一箱论文和书籍。Internet Explorer 的战略方向、.NET 的架构决策、平板电脑的布局等微软最重要的战略转向都诞生于思考周。这不是"休假"，而是深度工作的极端形式——通过物理隔离消除所有浅层工作的干扰，让大脑有空间处理最复杂的问题。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>在 AI 时代，深度工作的内涵正在重新定义。浅层工作（信息搜集、初步整理、格式化输出）可以交给 AI 代理，但深度工作（跨学科洞察生成、系统架构设计、创造性类比迁移）仍然是人类不可替代的价值区。你的策略应该是：用 AI 压缩浅层工作时间，将释放出的带宽全部投入深度工作。具体实施：每天设置 2-3 小时的"神圣深度时间"（最好是早晨），这段时间内关闭所有通知，只处理一个高认知负荷任务（如设计新的思维模型课程、规划长期知识架构、撰写深度分析）。对孩子也培养同样的能力——每天 30 分钟的"专注时间"（阅读、拼图、绘画），逐步训练注意力耐力，这在注意力碎片化的时代会成为孩子的核心竞争力。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<p class="english-summary">Deep work — cognitively demanding professional activity performed in a distraction-free state — is simultaneously becoming rarer and more valuable in the knowledge economy. Modern work environments systematically penalize depth through visibility competitions (instant replies, constant meetings) while rewarding shallow busyness signals. Deep work capacity is trainable but atrophies without practice; most untrained knowledge workers can sustain only 1-2 hours of genuine deep work daily, while trained practitioners reach 4+ hours. The constraint is attention stamina, not available time. In the AI era, shallow work is increasingly automatable, making deep work the remaining locus of irreplaceable human value. Strategy: use AI to compress shallow work, reinvest the freed bandwidth entirely into deep work, and treat deep-work hours as the leading KPI for long-term output quality.</p>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-block">
+<span class="prompt-label">中文模板</span><br/>
       请帮我设计一个为期 4 周的"深度工作训练计划"。我当前能持续专注约 [X] 分钟就会分心。我的工作环境是 [描述]，最大干扰来源是 [列举]。请设计：① 每周的深度工作时长目标（渐进式）② 具体的"深度工作仪式"（启动信号、环境设置、结束仪式）③ 消除主要干扰源的前置承诺方案 ④ 追踪指标和每周自检清单。
     </div>
-    <div class="prompt-block">
-      <span class="prompt-label">English Template</span><br>
+<div class="prompt-block">
+<span class="prompt-label">English Template</span><br/>
       Design a 4-week "deep work training program" for me. I can currently sustain focus for about [X] minutes before distraction. My work environment is [describe] and biggest distraction sources are [list]. Please design: ① Weekly deep-work duration targets (progressive) ② A concrete "deep work ritual" (start cue, environment setup, shutdown ceremony) ③ Pre-commitment strategies to eliminate major distractions ④ Tracking metrics and weekly self-assessment checklist.
     </div>
-  </section>
-
-  <footer class="footer">
-    <a href="index.html">&larr; 返回首页</a>
-  </footer>
-
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
 </div>
-<script src="https://cissy0802.github.io/comments.js" defer></script>
-<script src="https://cissy0802.github.io/search.js" defer></script>
-<script src="https://cissy0802.github.io/index-button.js" defer></script>
-<script src="i18n-tts.js" defer></script>
+<script defer="" src="https://cissy0802.github.io/comments.js"></script>
+<script defer="" src="https://cissy0802.github.io/search.js"></script>
+<script defer="" src="https://cissy0802.github.io/index-button.js"></script>
+<script defer="" src="i18n-tts.js"></script>
 </body>
 </html>
