@@ -228,15 +228,30 @@ def collect_groups(soup) -> list[tuple]:
                 continue
             # Only direct visible text — skip elements that wrap richer structures
             # whose text we already collected from children
+            classes = node.get("class") or []
             if node.name == "div" and not any(
-                c in (node.get("class") or [])
-                for c in ("prompt-item", "prompt-block", "subtitle", "label",
+                c in classes
+                for c in ("prompt-item", "prompt-block", "prompt-box", "subtitle", "label",
                           "section-label", "example-label", "lang", "english-summary")
             ):
+                continue
+            # Skip elements explicitly tagged as the opposite language
+            if lang == "zh" and "en" in classes:
+                continue
+            if lang == "en" and "zh" in classes:
                 continue
             text = node.get_text().strip()
             if not text:
                 continue
+            # Skip prompt-box etc. whose text is clearly the wrong language
+            # (e.g. "English Prompt" boxes inside a zh page with no `en` class)
+            if "prompt-box" in classes or "prompt-block" in classes or "prompt-item" in classes:
+                cjk = sum(1 for ch in text if "一" <= ch <= "鿿")
+                ascii_letters = sum(1 for ch in text if ch.isascii() and ch.isalpha())
+                if lang == "zh" and ascii_letters > cjk * 3:
+                    continue
+                if lang == "en" and cjk > ascii_letters:
+                    continue
             bins_split[h2_seen].append(text)
         out = []
         for (anchor, _, _), parts in zip(anchors_and_bounds, bins_split):
