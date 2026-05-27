@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>思维模型详解：军事战略思维 · Day 31</title>
 <style>
   * { box-sizing: border-box; }
@@ -38,99 +39,94 @@
 </head>
 <body>
 <div class="container">
-  <header class="page-header">
-    <h1>思维模型详解：军事战略思维</h1>
-    <div class="meta">2026-05-26 · Day 31</div>
-  </header>
-
-  <section class="card c1">
-    <h2>1. OODA 循环</h2>
-    <div class="subtitle">OODA Loop (Boyd) — 不是流程，是回路；不是更准，是更快</div>
-    <div class="divider"><span class="label">中文详解</span><hr></div>
-    <p>美军战斗机飞行员 John Boyd 提出：决策的本质是 <strong>Observe（观察）→ Orient（定向）→ Decide（决策）→ Act（行动）</strong> 的不断回路。常见误读是把它当四步流程；真意是 <em>谁能更快完成整圈，谁就把对手锁死在过期数据里</em>。</p>
-    <p>非平凡洞见：① Boyd 强调 <em>Orient 才是核心</em>——同样的观察，不同的 mental model 会得到完全相反的 Orient。算法没换，参数没换，世界已经换了，于是你的下一步动作天然过时。② 工程类比：OODA 循环 ≈ CI/CD pipeline。多数人花力气优化 Decide 质量（"想清楚再做"），高手优化 <em>cycle time</em>——每圈短一倍，知识折旧速度跟得上现实。③ "OODA 套利"：高手不只是自己更快，还会 <em>主动制造让对手 Orient 困难的输入</em>（信息过载、节奏跳变、范式错位），让对手永远停在 Orient 阶段。</p>
-    <p>实操：① 任何复杂任务先问"我现在的循环长度是多少？（小时？周？）"——这是第一指标，比"做对"更优先。② 不要让一圈太长——大动作切成小圈试运行。③ 警惕"我在 Orient"——多数人卡 Orient 不是没数据，是 mental model 没更新。</p>
-    <div class="example"><strong>经典例子：</strong>韩战 F-86 vs MiG-15。MiG 飞得更高更快、爬升更猛——按账面应该碾压。但 F-86 有两件小事：气泡座舱（视野更广，Observe 快）、液压助力操控（Act 更轻）。结果两件事压缩了飞行员的整个 OODA 循环时间，最终战损比约 10:1。Boyd 的洞见正是从此战提炼。</div>
-    <div class="example"><strong>场景 · BigCat：</strong>AI 时代的真壁垒不是"知道更多"，是 OODA 循环更短。能 30 分钟从想法→原型→反馈的人，对能写两周 PRD 的人是降维。用 LLM 自动化 Observe（信息聚合）、加速 Orient（即时框架化）、缩短 Decide（多方案对照），整圈从天级压到小时级——这才是"超级个体"的工程定义。<br><br>育儿迁移：孩子身上出现新情况时，多数家长卡在 Orient（"她到底怎么了"），却用上次的 mental model 决策，结果总是慢半拍。把循环切短——观察一周不再讲道理，先让 model 校准；与其想清楚再说，不如试小动作快速收反馈。</div>
-    <div class="divider"><span class="label">English Summary</span><hr></div>
-    <div class="summary">Boyd's OODA Loop (Observe-Orient-Decide-Act) is a continuous cycle, not a four-step process. The leverage isn't precision — it's cycle time. Orient is the hidden bottleneck: same data, different mental model, opposite actions. Winners shorten their own loop and actively pollute the opponent's Orient stage with unexpected inputs (OODA arbitrage). For an AI-augmented operator, the loop length — idea-to-prototype-to-feedback — is the real competitive moat, not how much you know.</div>
-    <div class="divider"><span class="label">AI Prompts</span><hr></div>
-    <div class="prompt-block"><span class="tag">中文模板</span>
+<header class="page-header">
+<h1 data-tts="8c4ee10c93232ef6">思维模型详解：军事战略思维</h1>
+<div class="meta">2026-05-26 · Day 31</div>
+</header>
+<section class="card c1">
+<h2 data-tts="9dc29376cc2c9d8a">1. OODA 循环</h2>
+<div class="subtitle">OODA Loop (Boyd) — 不是流程，是回路；不是更准，是更快</div>
+<div class="divider"><span class="label">中文详解</span><hr/></div>
+<p>美军战斗机飞行员 John Boyd 提出：决策的本质是 <strong>Observe（观察）→ Orient（定向）→ Decide（决策）→ Act（行动）</strong> 的不断回路。常见误读是把它当四步流程；真意是 <em>谁能更快完成整圈，谁就把对手锁死在过期数据里</em>。</p>
+<p>非平凡洞见：① Boyd 强调 <em>Orient 才是核心</em>——同样的观察，不同的 mental model 会得到完全相反的 Orient。算法没换，参数没换，世界已经换了，于是你的下一步动作天然过时。② 工程类比：OODA 循环 ≈ CI/CD pipeline。多数人花力气优化 Decide 质量（"想清楚再做"），高手优化 <em>cycle time</em>——每圈短一倍，知识折旧速度跟得上现实。③ "OODA 套利"：高手不只是自己更快，还会 <em>主动制造让对手 Orient 困难的输入</em>（信息过载、节奏跳变、范式错位），让对手永远停在 Orient 阶段。</p>
+<p>实操：① 任何复杂任务先问"我现在的循环长度是多少？（小时？周？）"——这是第一指标，比"做对"更优先。② 不要让一圈太长——大动作切成小圈试运行。③ 警惕"我在 Orient"——多数人卡 Orient 不是没数据，是 mental model 没更新。</p>
+<div class="example"><strong>经典例子：</strong>韩战 F-86 vs MiG-15。MiG 飞得更高更快、爬升更猛——按账面应该碾压。但 F-86 有两件小事：气泡座舱（视野更广，Observe 快）、液压助力操控（Act 更轻）。结果两件事压缩了飞行员的整个 OODA 循环时间，最终战损比约 10:1。Boyd 的洞见正是从此战提炼。</div>
+<div class="example"><strong>场景 · BigCat：</strong>AI 时代的真壁垒不是"知道更多"，是 OODA 循环更短。能 30 分钟从想法→原型→反馈的人，对能写两周 PRD 的人是降维。用 LLM 自动化 Observe（信息聚合）、加速 Orient（即时框架化）、缩短 Decide（多方案对照），整圈从天级压到小时级——这才是"超级个体"的工程定义。<br/><br/>育儿迁移：孩子身上出现新情况时，多数家长卡在 Orient（"她到底怎么了"），却用上次的 mental model 决策，结果总是慢半拍。把循环切短——观察一周不再讲道理，先让 model 校准；与其想清楚再说，不如试小动作快速收反馈。</div>
+<div class="divider"><span class="label">English Summary</span><hr/></div>
+<div class="summary">Boyd's OODA Loop (Observe-Orient-Decide-Act) is a continuous cycle, not a four-step process. The leverage isn't precision — it's cycle time. Orient is the hidden bottleneck: same data, different mental model, opposite actions. Winners shorten their own loop and actively pollute the opponent's Orient stage with unexpected inputs (OODA arbitrage). For an AI-augmented operator, the loop length — idea-to-prototype-to-feedback — is the real competitive moat, not how much you know.</div>
+<div class="divider"><span class="label">AI Prompts</span><hr/></div>
+<div class="prompt-block"><span class="tag">中文模板</span>
 我面对的情境/竞争是：[情境描述]，我当前的做法是：[做法]。
 请用 OODA 循环框架分析：1) 估算我当前一圈的长度（Observe→Act）大约是多久？瓶颈在哪一步？2) 我的 Orient（mental model）有没有可能已经过时？识别 2 条最可疑的旧假设。3) 如果把循环时长压缩到原来的 1/3，我会牺牲什么、可获得什么？4) 给出 1 个可在 [时间] 内跑完的最小 OODA 闭环实验。</div>
-    <div class="prompt-block"><span class="tag">English Template</span>
+<div class="prompt-block"><span class="tag">English Template</span>
 The situation/competition I face: [context]. My current approach: [approach].
 Apply Boyd's OODA Loop: 1) Estimate my current loop length (Observe→Act). Which stage is the bottleneck? 2) Could my Orient (mental model) be stale? Name 2 most suspect outdated assumptions. 3) If I compressed the loop to 1/3 of current length, what would I sacrifice vs. gain? 4) Design one minimal OODA cycle I can run end-to-end within [timeframe].</div>
-  </section>
-
-  <section class="card c2">
-    <h2>2. 重心</h2>
-    <div class="subtitle">Schwerpunkt / Center of Gravity (Clausewitz) — 不是最大的，是非线性枢纽</div>
-    <div class="divider"><span class="label">中文详解</span><hr></div>
-    <p>克劳塞维茨《战争论》核心概念：每个系统中有一个 <strong>"重心"（Schwerpunkt）——支撑整个系统稳定性的枢纽节点</strong>。打掉它，系统整体瓦解；打错位置，再多兵力也只是消耗战。</p>
-    <p>非平凡洞见：① 重心 <em>不一定是最大、最显眼的</em>——海权国家是海军，陆权国家是军队，<em>联盟的重心是团结本身</em>（克劳塞维茨原文）。看起来庞大的东西可能是肉，真正的骨架在别处。② 与系统思维的"杠杆点"同构——非线性枢纽：扰动它的 10% 改变结果的 80%。但军事概念更狠：重心是 <em>对方稳定性的来源</em>，不是你想优化的指标。③ 多数人失败不是没努力，是 <em>把努力倒在非重心上</em>——感觉很忙，对手毫发无伤。④ 重心会移动——战争初期、中期、终局的重心常常不同，固守"上次的重心"是经典错误。</p>
-    <p>实操：① 列出 ToDo 后问 <em>"如果我只能做一件，做哪件能让其他十件自动失效或解决？"</em>——这才是你的重心。② 遇到难题先问"这个系统的稳定性靠什么撑着？"——而非"哪里痛？"③ 警惕"症状思维"：客诉最响、bug 最多、进度最落后的地方，往往不是重心。</p>
-    <div class="example"><strong>经典例子：</strong>1805 年乌尔姆战役，拿破仑识别奥军真正的重心 <em>不是兵力</em>，而是 <em>指挥统一性</em>——奥军主力被绝对预期会在某地集结。拿破仑以 21 万兵力大迂回机动，不打正面，绕到奥军后方切断补给与通讯，把对方"统一指挥"这个重心拆掉，最终在乌尔姆几乎不战而下 6 万奥军。打掉重心 ≠ 打掉最大的肉。</div>
-    <div class="example"><strong>场景 · BigCat：</strong>技术债务管理——多数团队按"债大小"排序还债，错。真正的重心是 <em>阻塞了其他十件事的那一块</em>。可能是一个不起眼的鉴权模块，可能是部署流程的某个手动环节，但解开它，其他十个"看起来更紧急"的债自动失效。<br><br>AI 产品的重心常常 <em>不是模型质量</em>，而是数据飞轮闭环——后者一旦转起来，模型差距会被时间抹平；后者不转，再贵的模型也是孤岛。育儿迁移：孩子的多个"问题行为"（拖延、顶撞、回避）的重心，常常是 <em>一段未被看见的情绪</em> 或 <em>关系信任的某个裂缝</em>——修十个症状不如修这一个根。</div>
-    <div class="divider"><span class="label">English Summary</span><hr></div>
-    <div class="summary">Clausewitz's Center of Gravity (Schwerpunkt) is the structural hinge whose collapse brings down the system — not the largest or loudest part. For a sea power it's the navy; for an alliance, its unity. It's structurally identical to systems-thinking leverage points, but framed adversarially: where does the opponent's coherence come from? Most effort fails not because it's weak, but because it's spent on non-center targets. The center also drifts across phases — clinging to last phase's center is a classic mistake.</div>
-    <div class="divider"><span class="label">AI Prompts</span><hr></div>
-    <div class="prompt-block"><span class="tag">中文模板</span>
+</section>
+<section class="card c2">
+<h2 data-tts="969a103c48af47bb">2. 重心</h2>
+<div class="subtitle">Schwerpunkt / Center of Gravity (Clausewitz) — 不是最大的，是非线性枢纽</div>
+<div class="divider"><span class="label">中文详解</span><hr/></div>
+<p>克劳塞维茨《战争论》核心概念：每个系统中有一个 <strong>"重心"（Schwerpunkt）——支撑整个系统稳定性的枢纽节点</strong>。打掉它，系统整体瓦解；打错位置，再多兵力也只是消耗战。</p>
+<p>非平凡洞见：① 重心 <em>不一定是最大、最显眼的</em>——海权国家是海军，陆权国家是军队，<em>联盟的重心是团结本身</em>（克劳塞维茨原文）。看起来庞大的东西可能是肉，真正的骨架在别处。② 与系统思维的"杠杆点"同构——非线性枢纽：扰动它的 10% 改变结果的 80%。但军事概念更狠：重心是 <em>对方稳定性的来源</em>，不是你想优化的指标。③ 多数人失败不是没努力，是 <em>把努力倒在非重心上</em>——感觉很忙，对手毫发无伤。④ 重心会移动——战争初期、中期、终局的重心常常不同，固守"上次的重心"是经典错误。</p>
+<p>实操：① 列出 ToDo 后问 <em>"如果我只能做一件，做哪件能让其他十件自动失效或解决？"</em>——这才是你的重心。② 遇到难题先问"这个系统的稳定性靠什么撑着？"——而非"哪里痛？"③ 警惕"症状思维"：客诉最响、bug 最多、进度最落后的地方，往往不是重心。</p>
+<div class="example"><strong>经典例子：</strong>1805 年乌尔姆战役，拿破仑识别奥军真正的重心 <em>不是兵力</em>，而是 <em>指挥统一性</em>——奥军主力被绝对预期会在某地集结。拿破仑以 21 万兵力大迂回机动，不打正面，绕到奥军后方切断补给与通讯，把对方"统一指挥"这个重心拆掉，最终在乌尔姆几乎不战而下 6 万奥军。打掉重心 ≠ 打掉最大的肉。</div>
+<div class="example"><strong>场景 · BigCat：</strong>技术债务管理——多数团队按"债大小"排序还债，错。真正的重心是 <em>阻塞了其他十件事的那一块</em>。可能是一个不起眼的鉴权模块，可能是部署流程的某个手动环节，但解开它，其他十个"看起来更紧急"的债自动失效。<br/><br/>AI 产品的重心常常 <em>不是模型质量</em>，而是数据飞轮闭环——后者一旦转起来，模型差距会被时间抹平；后者不转，再贵的模型也是孤岛。育儿迁移：孩子的多个"问题行为"（拖延、顶撞、回避）的重心，常常是 <em>一段未被看见的情绪</em> 或 <em>关系信任的某个裂缝</em>——修十个症状不如修这一个根。</div>
+<div class="divider"><span class="label">English Summary</span><hr/></div>
+<div class="summary">Clausewitz's Center of Gravity (Schwerpunkt) is the structural hinge whose collapse brings down the system — not the largest or loudest part. For a sea power it's the navy; for an alliance, its unity. It's structurally identical to systems-thinking leverage points, but framed adversarially: where does the opponent's coherence come from? Most effort fails not because it's weak, but because it's spent on non-center targets. The center also drifts across phases — clinging to last phase's center is a classic mistake.</div>
+<div class="divider"><span class="label">AI Prompts</span><hr/></div>
+<div class="prompt-block"><span class="tag">中文模板</span>
 我正在处理的复杂局面/项目是：[情境]。
 当前的待办/痛点清单：[列表]。
 请用克劳塞维茨"重心"框架分析：1) 在这个系统中，支撑当前稳定性（或对方优势）的真正枢纽节点是哪一个？为什么是它而非看起来最大的那个？2) 我现在的精力，多大比例倒在非重心上？3) 如果只能动一处，最高杠杆的那个动作是什么？4) 这个重心在下一阶段会不会漂移到别处？我需要预判到哪里。</div>
-    <div class="prompt-block"><span class="tag">English Template</span>
+<div class="prompt-block"><span class="tag">English Template</span>
 The complex situation/project: [context]. Current todo/pain list: [list].
 Apply Clausewitz's Center of Gravity lens: 1) What is the true structural hinge sustaining the current stability (or the opponent's advantage)? Why is it the center, not the most visible piece? 2) What % of my current effort is spent off-center? 3) If I could move only one thing, what's the highest-leverage action? 4) Will the center drift in the next phase — where should I anticipate it moving to?</div>
-  </section>
-
-  <section class="card c3">
-    <h2>3. 战争迷雾</h2>
-    <div class="subtitle">Fog of War (Clausewitz) — 信息永远不全；决策架构必须 robust 而非 dependent</div>
-    <div class="divider"><span class="label">中文详解</span><hr></div>
-    <p>克劳塞维茨："战争中 3/4 的信息要么错误、要么不完整、要么滞后。"——这不是技术缺陷，是 <strong>对抗性系统的本征属性</strong>。再先进的传感器也不会消除迷雾，只会把它推到更高维度。</p>
-    <p>非平凡洞见：① 多数人的本能反应是"再调研一轮"——这是把迷雾当 bug。正确反应是把它当 feature：<em>设计在迷雾中仍可执行的决策原则</em>，而非依赖透明。② 分布式系统的同构概念是 <em>partial failure</em>：你永远不能 100% 确定远端节点状态，所以 CAP 定理逼你 <em>提前选择</em>面对分区时的行为，而不是等"知道真相再决定"。③ 工程对应：好的错误处理不是 fix 已知失败，是在 <em>未知故障下系统仍能 degrade gracefully</em>。决策同理：好的决策不是基于完整信息，是 <em>在信息残缺时仍能产生可接受期望值</em>。④ 反向应用：迷雾不只是被动承受的，<em>你也可以主动制造</em>对方的迷雾——节奏跳变、行动隐蔽、信号噪声化，逼对方在 Orient 阶段瘫痪。</p>
-    <p>实操：① 决策前先列"我现在不知道什么、未来 24h 内也不会知道什么"——以此为底线设计。② 把"等等再说"换成"小注下场，用真实反应替代猜测"——行动是最便宜的探针。③ 任何依赖"全信息"才能跑的方案，本质上 fragile，要替换。</p>
-    <div class="example"><strong>经典例子：</strong>1862 Stonewall Jackson 谢南多厄河谷战役——Jackson <em>主动制造</em>战争迷雾：连续 48 天行军 1100 公里、行踪不定、佯动频繁，让联邦军始终不知道他在哪、有多少人。结果 1.7 万南军牵制了 6 万联邦军，让对方无法增援主战场。同样的"迷雾"，他视为武器而非障碍。</div>
-    <div class="example"><strong>场景 · BigCat：</strong>AI 产品决策永远在多重迷雾中——用户真实意图不可见、模型能力边界不可测、竞品下一步不可知。"等想清楚再动"是必输架构。正解：设计 <em>小代价探针</em>（灰度发布、A/B 实验、最小提示原型），用真实反应替代猜测。模型行为不确定？不要堆更多 prompt 优化，先建可量化的 eval set 当探针。<br><br>育儿迁移：你永远不会"完全了解"自己的孩子在某个阶段的内部状态——这不是你的失败，是迷雾的本质。停止追求"完全懂她"，转而设计 <em>低代价信号采集</em>：开放性问题、共同活动、不评判的旁观——它们是探针，不是审讯。最差的决策架构是"等她哪天主动说"。</div>
-    <div class="divider"><span class="label">English Summary</span><hr></div>
-    <div class="summary">Clausewitz's Fog of War: 3/4 of information in conflict is wrong, incomplete, or stale — and it's an intrinsic property of adversarial systems, not a fixable bug. The mistake is treating fog as something to remove; the discipline is designing decision architectures that are robust under fog, not dependent on transparency. Structurally identical to partial failure in distributed systems (CAP forces a pre-commitment instead of waiting for ground truth). Action becomes the cheapest probe — and fog can be weaponized: imposed on the opponent, it paralyzes their Orient.</div>
-    <div class="divider"><span class="label">AI Prompts</span><hr></div>
-    <div class="prompt-block"><span class="tag">中文模板</span>
+</section>
+<section class="card c3">
+<h2 data-tts="f3c61cdd0eb54618">3. 战争迷雾</h2>
+<div class="subtitle">Fog of War (Clausewitz) — 信息永远不全；决策架构必须 robust 而非 dependent</div>
+<div class="divider"><span class="label">中文详解</span><hr/></div>
+<p>克劳塞维茨："战争中 3/4 的信息要么错误、要么不完整、要么滞后。"——这不是技术缺陷，是 <strong>对抗性系统的本征属性</strong>。再先进的传感器也不会消除迷雾，只会把它推到更高维度。</p>
+<p>非平凡洞见：① 多数人的本能反应是"再调研一轮"——这是把迷雾当 bug。正确反应是把它当 feature：<em>设计在迷雾中仍可执行的决策原则</em>，而非依赖透明。② 分布式系统的同构概念是 <em>partial failure</em>：你永远不能 100% 确定远端节点状态，所以 CAP 定理逼你 <em>提前选择</em>面对分区时的行为，而不是等"知道真相再决定"。③ 工程对应：好的错误处理不是 fix 已知失败，是在 <em>未知故障下系统仍能 degrade gracefully</em>。决策同理：好的决策不是基于完整信息，是 <em>在信息残缺时仍能产生可接受期望值</em>。④ 反向应用：迷雾不只是被动承受的，<em>你也可以主动制造</em>对方的迷雾——节奏跳变、行动隐蔽、信号噪声化，逼对方在 Orient 阶段瘫痪。</p>
+<p>实操：① 决策前先列"我现在不知道什么、未来 24h 内也不会知道什么"——以此为底线设计。② 把"等等再说"换成"小注下场，用真实反应替代猜测"——行动是最便宜的探针。③ 任何依赖"全信息"才能跑的方案，本质上 fragile，要替换。</p>
+<div class="example"><strong>经典例子：</strong>1862 Stonewall Jackson 谢南多厄河谷战役——Jackson <em>主动制造</em>战争迷雾：连续 48 天行军 1100 公里、行踪不定、佯动频繁，让联邦军始终不知道他在哪、有多少人。结果 1.7 万南军牵制了 6 万联邦军，让对方无法增援主战场。同样的"迷雾"，他视为武器而非障碍。</div>
+<div class="example"><strong>场景 · BigCat：</strong>AI 产品决策永远在多重迷雾中——用户真实意图不可见、模型能力边界不可测、竞品下一步不可知。"等想清楚再动"是必输架构。正解：设计 <em>小代价探针</em>（灰度发布、A/B 实验、最小提示原型），用真实反应替代猜测。模型行为不确定？不要堆更多 prompt 优化，先建可量化的 eval set 当探针。<br/><br/>育儿迁移：你永远不会"完全了解"自己的孩子在某个阶段的内部状态——这不是你的失败，是迷雾的本质。停止追求"完全懂她"，转而设计 <em>低代价信号采集</em>：开放性问题、共同活动、不评判的旁观——它们是探针，不是审讯。最差的决策架构是"等她哪天主动说"。</div>
+<div class="divider"><span class="label">English Summary</span><hr/></div>
+<div class="summary">Clausewitz's Fog of War: 3/4 of information in conflict is wrong, incomplete, or stale — and it's an intrinsic property of adversarial systems, not a fixable bug. The mistake is treating fog as something to remove; the discipline is designing decision architectures that are robust under fog, not dependent on transparency. Structurally identical to partial failure in distributed systems (CAP forces a pre-commitment instead of waiting for ground truth). Action becomes the cheapest probe — and fog can be weaponized: imposed on the opponent, it paralyzes their Orient.</div>
+<div class="divider"><span class="label">AI Prompts</span><hr/></div>
+<div class="prompt-block"><span class="tag">中文模板</span>
 我正在面对的决策/局面是：[情境]，我感到信息不够要等更多确认。
 请用"战争迷雾"框架重构：1) 列出此刻我不知道、且未来 [时间窗] 内也不会知道的关键信息——这是迷雾基线。2) 在这个迷雾下，依然能给出可接受期望值的决策原则是什么？3) 我现在的方案，是 robust 还是 dependent 于"信息变透明"？给出 3 个把它改 robust 的具体改造。4) 哪些"小注探针"可以在 [时间] 内跑出来，把真实反应替代猜测？</div>
-    <div class="prompt-block"><span class="tag">English Template</span>
+<div class="prompt-block"><span class="tag">English Template</span>
 The decision/situation I face: [context]. I feel information is insufficient and want to wait.
 Reframe via Fog of War: 1) List what I don't know now and won't know within [timeframe] — that's the fog baseline. 2) Under this fog, what decision principle still yields an acceptable expected value? 3) Is my current plan robust to fog, or dependent on transparency arriving? Suggest 3 ways to make it robust. 4) Which small-stakes probes can I launch within [time] to replace guessing with real signal?</div>
-  </section>
-
-  <section class="card c4">
-    <h2>4. 间接路线</h2>
-    <div class="subtitle">The Indirect Approach (Liddell Hart) — 制造心理不平衡，再出手</div>
-    <div class="divider"><span class="label">中文详解</span><hr></div>
-    <p>英国军事理论家 Liddell Hart 系统研究两千年战例后得出：<strong>真正决定胜负的不是正面强攻，而是在对手预期之外、心理失衡之时切入</strong>。物理位移之外，更关键的是先制造 <em>对方思维上的失衡</em>，然后才动手。</p>
-    <p>非平凡洞见：① "最强处" ≠ 应该攻击的地方——那是对方准备最充分的地方，你的每一分力都被对消。间接路线找 <em>对方未防备、防不胜防、或防了也尴尬</em> 的位置。② 与博弈论对位：直接路线是落在对手最优反应函数的定义域内，间接路线是 <em>跳出对手策略空间</em>——他没准备这个回应。③ "不平衡"是 Liddell Hart 的关键词——不是兵力差距，是 <em>对手在你出手前已失去稳定的反应能力</em>。机动、欺骗、节奏、心理震慑都是制造不平衡的手段。④ 不是"打不过就绕"——而是即使你正面打得过，绕的代价/收益比也常常更优。</p>
-    <p>实操：① 卡住时不要问"怎么把这件事推得更猛"，问 <em>"如果不正面做，能从哪个意想不到的角度让结果自动出现？"</em>。② 列出对手/系统的预期——你的最优策略往往在 <em>预期之外</em>。③ 警惕"逞勇"陷阱——能正面打赢不代表应该正面打。</p>
-    <div class="example"><strong>经典例子：</strong>1940 法兰西战役。马奇诺防线是法军准备了十年的正面防御，几乎完美——所以德军 <em>不打它</em>。古德里安装甲集群穿越被法军认为"装甲不可通过"的阿登森林，从侧后包抄。一周内法军最强阵地完全失效——不是被攻破，是被绕过到无关紧要。这是 20 世纪间接路线最纯粹的教科书。</div>
-    <div class="example"><strong>场景 · BigCat：</strong>与 AI 巨头竞争——正面拼基础模型是必输的最强处。间接路线：找他们做不好的垂直场景、长尾用户、深度个性化、本地化合规、隐私敏感场景。任天堂 Wii 的原型逻辑——不跟索尼/微软拼硬件性能，从体感+合家欢侧翼切入，绕开了整个正面战场。<br><br>育儿迁移：孩子顶撞、拖延、回避等表层"问题行为"——正面纠正常常激化。间接路线：调节作息、情绪基础、环境结构、亲子连接——表层问题往往从侧面才自然消解。同样适用于自己：戒掉某个坏习惯的正面意志力战通常输，改环境、改触发器、改替代行为是间接路线，胜率高得多。</div>
-    <div class="divider"><span class="label">English Summary</span><hr></div>
-    <div class="summary">Liddell Hart's Indirect Approach: victory rarely comes from frontal attack on the strongest point — it comes from striking where the opponent is psychologically and structurally unbalanced. Direct attack lands inside the opponent's best-response function; indirect attack steps outside their strategy space entirely. The hinge is "dislocation" — making the opponent lose stable footing before contact. Even when you could win head-on, the cost/benefit of going around is usually better.</div>
-    <div class="divider"><span class="label">AI Prompts</span><hr></div>
-    <div class="prompt-block"><span class="tag">中文模板</span>
+</section>
+<section class="card c4">
+<h2 data-tts="7ab0b6bc18975df0">4. 间接路线</h2>
+<div class="subtitle">The Indirect Approach (Liddell Hart) — 制造心理不平衡，再出手</div>
+<div class="divider"><span class="label">中文详解</span><hr/></div>
+<p>英国军事理论家 Liddell Hart 系统研究两千年战例后得出：<strong>真正决定胜负的不是正面强攻，而是在对手预期之外、心理失衡之时切入</strong>。物理位移之外，更关键的是先制造 <em>对方思维上的失衡</em>，然后才动手。</p>
+<p>非平凡洞见：① "最强处" ≠ 应该攻击的地方——那是对方准备最充分的地方，你的每一分力都被对消。间接路线找 <em>对方未防备、防不胜防、或防了也尴尬</em> 的位置。② 与博弈论对位：直接路线是落在对手最优反应函数的定义域内，间接路线是 <em>跳出对手策略空间</em>——他没准备这个回应。③ "不平衡"是 Liddell Hart 的关键词——不是兵力差距，是 <em>对手在你出手前已失去稳定的反应能力</em>。机动、欺骗、节奏、心理震慑都是制造不平衡的手段。④ 不是"打不过就绕"——而是即使你正面打得过，绕的代价/收益比也常常更优。</p>
+<p>实操：① 卡住时不要问"怎么把这件事推得更猛"，问 <em>"如果不正面做，能从哪个意想不到的角度让结果自动出现？"</em>。② 列出对手/系统的预期——你的最优策略往往在 <em>预期之外</em>。③ 警惕"逞勇"陷阱——能正面打赢不代表应该正面打。</p>
+<div class="example"><strong>经典例子：</strong>1940 法兰西战役。马奇诺防线是法军准备了十年的正面防御，几乎完美——所以德军 <em>不打它</em>。古德里安装甲集群穿越被法军认为"装甲不可通过"的阿登森林，从侧后包抄。一周内法军最强阵地完全失效——不是被攻破，是被绕过到无关紧要。这是 20 世纪间接路线最纯粹的教科书。</div>
+<div class="example"><strong>场景 · BigCat：</strong>与 AI 巨头竞争——正面拼基础模型是必输的最强处。间接路线：找他们做不好的垂直场景、长尾用户、深度个性化、本地化合规、隐私敏感场景。任天堂 Wii 的原型逻辑——不跟索尼/微软拼硬件性能，从体感+合家欢侧翼切入，绕开了整个正面战场。<br/><br/>育儿迁移：孩子顶撞、拖延、回避等表层"问题行为"——正面纠正常常激化。间接路线：调节作息、情绪基础、环境结构、亲子连接——表层问题往往从侧面才自然消解。同样适用于自己：戒掉某个坏习惯的正面意志力战通常输，改环境、改触发器、改替代行为是间接路线，胜率高得多。</div>
+<div class="divider"><span class="label">English Summary</span><hr/></div>
+<div class="summary">Liddell Hart's Indirect Approach: victory rarely comes from frontal attack on the strongest point — it comes from striking where the opponent is psychologically and structurally unbalanced. Direct attack lands inside the opponent's best-response function; indirect attack steps outside their strategy space entirely. The hinge is "dislocation" — making the opponent lose stable footing before contact. Even when you could win head-on, the cost/benefit of going around is usually better.</div>
+<div class="divider"><span class="label">AI Prompts</span><hr/></div>
+<div class="prompt-block"><span class="tag">中文模板</span>
 我正在面对的难题/竞争是：[情境]，目前我考虑的正面打法是：[做法]。
 请用"间接路线"框架重构：1) 对手/系统在哪个点准备最充分（最强处）？为什么不该正面打那里？2) 列出 3 条非正面的切入角度——侧翼/未防备/对方策略空间之外。3) 在出手前，如何先制造对方的"不平衡"（机动/节奏/欺骗/认知错位）？4) 给出一条"绕一次比直推三次更高 ROI"的可执行路径。</div>
-    <div class="prompt-block"><span class="tag">English Template</span>
+<div class="prompt-block"><span class="tag">English Template</span>
 The challenge/competition I face: [context]. My current frontal approach: [approach].
 Apply Liddell Hart's Indirect Approach: 1) Where is the opponent/system best prepared (strongest point)? Why is direct attack there a bad idea? 2) Propose 3 indirect angles — flank, unguarded, outside their strategy space. 3) Before contact, how can I create "dislocation" (movement, tempo, deception, cognitive misalignment)? 4) Identify one path where going around once yields more ROI than three direct pushes.</div>
-  </section>
-
-  <footer>
-    <a href="index.html">← 返回首页</a>
-  </footer>
+</section>
+<footer>
+<a href="index.html">← 返回首页</a>
+</footer>
 </div>
-<script src="https://cissy0802.github.io/comments.js" defer></script>
-<script src="https://cissy0802.github.io/search.js" defer></script>
-<script src="https://cissy0802.github.io/index-button.js" defer></script>
-<script src="i18n-tts.js" defer></script>
+<script defer="" src="https://cissy0802.github.io/comments.js"></script>
+<script defer="" src="https://cissy0802.github.io/search.js"></script>
+<script defer="" src="https://cissy0802.github.io/index-button.js"></script>
+<script defer="" src="i18n-tts.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>思维模型详解：工程哲学与软件设计思维 · 2026-05-26</title>
 <style>
   * { box-sizing: border-box; }
@@ -111,220 +112,193 @@
 </head>
 <body>
 <div class="container">
-
-  <header class="page-header">
-    <h1>思维模型详解：工程哲学与软件设计思维</h1>
-    <div class="meta">2026-05-26 · Day 33</div>
-  </header>
-
-  <!-- Card 1: 抽象层次 -->
-  <section class="card c1">
-    <h2>抽象层次 · Levels of Abstraction</h2>
-    <div class="subtitle">"Computer science is the science of indirection." — Butler Lampson</div>
-
-    <div class="section-label">中文详解</div>
-    <hr>
-    <p>抽象不是"省略细节"，而是<strong>选择一组对当前问题足够的不变量，把其余信息封装到下一层</strong>。好的抽象 = 上层只用其接口就能正确推理，下层实现可以独立替换。坏抽象 = 上层必须知道下层细节才能用对（"抽象泄露"）。</p>
-    <p>非平凡点：① 抽象有<em>正确的层数</em>——太少则上层做太多重复工作，太多则一行业务逻辑要穿透 7 层间接调用（"抽象税"）。② 每加一层抽象都在<em>压缩信息</em>，被压掉的那部分迟早会以 bug 形态回来——所以抽象的代价是"被压掉的信息何时反扑"。③ 与佛学"假名安立"同构：抽象是<em>有用的虚构</em>，不是事物本身。把 TCP/IP 当成"真的有 layers"是范畴错误——layers 是我们设计的，不是网络的物理事实。</p>
-    <p>实践判别：一个抽象是否健康，看上层能否<em>不打开下层</em>独立调试。若每次 debug 都要 dive through 3 层 → 抽象选错了边界。换言之：好抽象让推理变线性，坏抽象让推理变树形展开。</p>
-
-    <div class="example-block">
-      <div class="example-label">经典例子</div>
-      <p>TCP 给上层"可靠字节流"的假象——上层 application 不需知道 IP 分包、重传、拥塞控制。这是 Internet 能 scale 的关键：每加一层（IP → TCP → HTTP → REST → GraphQL）都让开发者忘掉一整套问题。代价：抽象泄露时（如 head-of-line blocking 拖慢 HTTP/2），上层必须临时变成"半个 TCP 专家"才能调优。</p>
+<header class="page-header">
+<h1 data-tts="e5c9d6af8539d67c">思维模型详解：工程哲学与软件设计思维</h1>
+<div class="meta">2026-05-26 · Day 33</div>
+</header>
+<!-- Card 1: 抽象层次 -->
+<section class="card c1">
+<h2 data-tts="3f161393593b5df3">抽象层次 · Levels of Abstraction</h2>
+<div class="subtitle">"Computer science is the science of indirection." — Butler Lampson</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>抽象不是"省略细节"，而是<strong>选择一组对当前问题足够的不变量，把其余信息封装到下一层</strong>。好的抽象 = 上层只用其接口就能正确推理，下层实现可以独立替换。坏抽象 = 上层必须知道下层细节才能用对（"抽象泄露"）。</p>
+<p>非平凡点：① 抽象有<em>正确的层数</em>——太少则上层做太多重复工作，太多则一行业务逻辑要穿透 7 层间接调用（"抽象税"）。② 每加一层抽象都在<em>压缩信息</em>，被压掉的那部分迟早会以 bug 形态回来——所以抽象的代价是"被压掉的信息何时反扑"。③ 与佛学"假名安立"同构：抽象是<em>有用的虚构</em>，不是事物本身。把 TCP/IP 当成"真的有 layers"是范畴错误——layers 是我们设计的，不是网络的物理事实。</p>
+<p>实践判别：一个抽象是否健康，看上层能否<em>不打开下层</em>独立调试。若每次 debug 都要 dive through 3 层 → 抽象选错了边界。换言之：好抽象让推理变线性，坏抽象让推理变树形展开。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>TCP 给上层"可靠字节流"的假象——上层 application 不需知道 IP 分包、重传、拥塞控制。这是 Internet 能 scale 的关键：每加一层（IP → TCP → HTTP → REST → GraphQL）都让开发者忘掉一整套问题。代价：抽象泄露时（如 head-of-line blocking 拖慢 HTTP/2），上层必须临时变成"半个 TCP 专家"才能调优。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>设计 AI agent 系统：把 LLM 当作"自然语言函数"是一层抽象。好处：上层用 prompt 编排即可；代价：当 LLM hallucinate 或 token cost 爆炸，你必须临时下沉到"它其实是概率采样 + context window"层去 debug。<strong>选错抽象层 = 设计成本的主要来源</strong>。教孩子也同理——"学习"是一层抽象，孩子卡住时你必须能下沉到"注意力 / 工作记忆 / 动机"等更底层概念，否则给不出有效干预。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Levels of Abstraction</strong> — abstraction isn't "hiding details," it's <em>picking the set of invariants sufficient for the current problem</em> and encapsulating the rest one layer down. Good abstraction: upper layer reasons correctly using only the interface. Bad abstraction: upper layer must know lower-layer details to use it (leaky abstraction). Each layer compresses information; whatever gets compressed away eventually returns as a bug. Test: can you debug the upper layer without opening the lower one? If every debug session requires diving through 3 layers, the boundary is wrong.
     </div>
-    <div class="example-block">
-      <div class="example-label">场景 · BigCat</div>
-      <p>设计 AI agent 系统：把 LLM 当作"自然语言函数"是一层抽象。好处：上层用 prompt 编排即可；代价：当 LLM hallucinate 或 token cost 爆炸，你必须临时下沉到"它其实是概率采样 + context window"层去 debug。<strong>选错抽象层 = 设计成本的主要来源</strong>。教孩子也同理——"学习"是一层抽象，孩子卡住时你必须能下沉到"注意力 / 工作记忆 / 动机"等更底层概念，否则给不出有效干预。</p>
-    </div>
-
-    <div class="section-label">English Summary</div>
-    <hr>
-    <div class="summary-en">
-      <strong>Levels of Abstraction</strong> — abstraction isn't "hiding details," it's <em>picking the set of invariants sufficient for the current problem</em> and encapsulating the rest one layer down. Good abstraction: upper layer reasons correctly using only the interface. Bad abstraction: upper layer must know lower-layer details to use it (leaky abstraction). Each layer compresses information; whatever gets compressed away eventually returns as a bug. Test: can you debug the upper layer without opening the lower one? If every debug session requires diving through 3 layers, the boundary is wrong.
-    </div>
-
-    <div class="section-label">AI Prompts</div>
-    <hr>
-    <div class="prompt-box">
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
 <div class="prompt-label">中文提示词</div>我正在设计 [系统/模块]。当前抽象边界是 [描述]。请：
 ① 找出 2-3 个最可能"抽象泄露"的地方——上层必须知道下层细节才能用对的接口；
 ② 评估是否抽象层太少（上层重复劳动）还是太多（穿透太多层 debug）；
 ③ 给出 1 个具体的重画边界方案，说明它解决了哪个信息压缩反扑。</div>
-    <div class="prompt-box en">
+<div class="prompt-box en">
 <div class="prompt-label">English Prompt</div>I'm designing [system/module]. Current abstraction boundaries: [describe]. Please:
 1. Identify 2–3 likely leaky abstractions — interfaces where the upper layer must know lower-layer details to use them correctly.
 2. Diagnose whether there are too few layers (upper-layer duplication) or too many (debug requires piercing many layers).
 3. Propose one concrete re-drawing of boundaries, naming which compression-rebound it resolves.</div>
-  </section>
-
-  <!-- Card 2: 康威定律 -->
-  <section class="card c2">
-    <h2>康威定律 · Conway's Law</h2>
-    <div class="subtitle">"Organizations design systems that mirror their communication structure." — Melvin Conway, 1967</div>
-
-    <div class="section-label">中文详解</div>
-    <hr>
-    <p>系统架构 = 组织沟通结构的<strong>同构投影</strong>。两个 team 之间沟通成本高 → 它们负责的模块之间一定会演化出"防御性接口"，无论你最初画的架构图多漂亮。这不是 bug 是<em>社会-技术系统的物理定律</em>。</p>
-    <p>非平凡点：① <em>逆康威 (Inverse Conway Maneuver)</em>——想要某种架构，先把组织重组成那个形状。要 microservices？先要"小、自治、有完整 ownership"的小队。组织没拆，强行拆服务 = 拆出一堆分布式 monolith。② 与<em>涌现</em>同源：架构不是设计出来的，是"在沟通带宽约束下涌现"出来的。架构师能影响的是<em>边界条件</em>（团队怎么分、谁向谁汇报、谁和谁同会议），不是直接的代码图。③ 对 AI 时代有非平凡推论：单个 AI 增强的开发者 = 把团队压缩成 1 → 康威定律说他/她的代码会少很多"防御性边界"，结构更紧致——但也更难被他人接管。</p>
-    <p>实践：设计架构前先画<em>组织通信图</em>——谁每天和谁说话？谁向谁汇报？这张图比任何 UML 都更精准地预测 6 个月后的代码长什么样。</p>
-
-    <div class="diagram">
-      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
-        <!-- Left: org chart -->
-        <text x="100" y="20" text-anchor="middle" font-size="12" fill="#2d3436" font-weight="700">组织沟通结构</text>
-        <circle cx="100" cy="55" r="18" fill="#7048b8"/>
-        <text x="100" y="59" text-anchor="middle" font-size="10" fill="#fff">CTO</text>
-        <circle cx="50" cy="125" r="16" fill="#7048b8" opacity="0.85"/>
-        <text x="50" y="129" text-anchor="middle" font-size="9" fill="#fff">Team A</text>
-        <circle cx="100" cy="125" r="16" fill="#7048b8" opacity="0.85"/>
-        <text x="100" y="129" text-anchor="middle" font-size="9" fill="#fff">Team B</text>
-        <circle cx="150" cy="125" r="16" fill="#7048b8" opacity="0.85"/>
-        <text x="150" y="129" text-anchor="middle" font-size="9" fill="#fff">Team C</text>
-        <line x1="100" y1="73" x2="50" y2="109" stroke="#7048b8" stroke-width="1.5"/>
-        <line x1="100" y1="73" x2="100" y2="109" stroke="#7048b8" stroke-width="1.5"/>
-        <line x1="100" y1="73" x2="150" y2="109" stroke="#7048b8" stroke-width="1.5"/>
-        <line x1="50" y1="141" x2="150" y2="141" stroke="#7048b8" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
-        <text x="100" y="175" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">弱连接 = 防御性接口</text>
-
-        <!-- Arrow -->
-        <path d="M 220 120 L 270 120" stroke="#636e72" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-        <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"/></marker></defs>
-        <text x="245" y="110" text-anchor="middle" font-size="10" fill="#636e72">同构投影</text>
-
-        <!-- Right: code architecture -->
-        <text x="430" y="20" text-anchor="middle" font-size="12" fill="#2d3436" font-weight="700">系统架构</text>
-        <rect x="320" y="40" width="220" height="40" fill="#0a6fb8" rx="4"/>
-        <text x="430" y="64" text-anchor="middle" font-size="11" fill="#fff">API Gateway</text>
-        <rect x="320" y="95" width="60" height="50" fill="#0a6fb8" opacity="0.85" rx="4"/>
-        <text x="350" y="124" text-anchor="middle" font-size="10" fill="#fff">Svc A</text>
-        <rect x="395" y="95" width="60" height="50" fill="#0a6fb8" opacity="0.85" rx="4"/>
-        <text x="425" y="124" text-anchor="middle" font-size="10" fill="#fff">Svc B</text>
-        <rect x="470" y="95" width="60" height="50" fill="#0a6fb8" opacity="0.85" rx="4"/>
-        <text x="500" y="124" text-anchor="middle" font-size="10" fill="#fff">Svc C</text>
-        <text x="430" y="175" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">弱连接 = 厚重 API + duplication</text>
-
-        <text x="280" y="220" text-anchor="middle" font-size="11" fill="#c44545" font-weight="700">想要新架构 ⇒ 先重画组织通信图（逆康威）</text>
-      </svg>
-      <div class="caption">康威定律：架构 = 组织通信结构在代码空间的同构</div>
+</section>
+<!-- Card 2: 康威定律 -->
+<section class="card c2">
+<h2 data-tts="c1f549b9e119a084">康威定律 · Conway's Law</h2>
+<div class="subtitle">"Organizations design systems that mirror their communication structure." — Melvin Conway, 1967</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>系统架构 = 组织沟通结构的<strong>同构投影</strong>。两个 team 之间沟通成本高 → 它们负责的模块之间一定会演化出"防御性接口"，无论你最初画的架构图多漂亮。这不是 bug 是<em>社会-技术系统的物理定律</em>。</p>
+<p>非平凡点：① <em>逆康威 (Inverse Conway Maneuver)</em>——想要某种架构，先把组织重组成那个形状。要 microservices？先要"小、自治、有完整 ownership"的小队。组织没拆，强行拆服务 = 拆出一堆分布式 monolith。② 与<em>涌现</em>同源：架构不是设计出来的，是"在沟通带宽约束下涌现"出来的。架构师能影响的是<em>边界条件</em>（团队怎么分、谁向谁汇报、谁和谁同会议），不是直接的代码图。③ 对 AI 时代有非平凡推论：单个 AI 增强的开发者 = 把团队压缩成 1 → 康威定律说他/她的代码会少很多"防御性边界"，结构更紧致——但也更难被他人接管。</p>
+<p>实践：设计架构前先画<em>组织通信图</em>——谁每天和谁说话？谁向谁汇报？这张图比任何 UML 都更精准地预测 6 个月后的代码长什么样。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+<!-- Left: org chart -->
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="100" y="20">组织沟通结构</text>
+<circle cx="100" cy="55" fill="#7048b8" r="18"></circle>
+<text fill="#fff" font-size="10" text-anchor="middle" x="100" y="59">CTO</text>
+<circle cx="50" cy="125" fill="#7048b8" opacity="0.85" r="16"></circle>
+<text fill="#fff" font-size="9" text-anchor="middle" x="50" y="129">Team A</text>
+<circle cx="100" cy="125" fill="#7048b8" opacity="0.85" r="16"></circle>
+<text fill="#fff" font-size="9" text-anchor="middle" x="100" y="129">Team B</text>
+<circle cx="150" cy="125" fill="#7048b8" opacity="0.85" r="16"></circle>
+<text fill="#fff" font-size="9" text-anchor="middle" x="150" y="129">Team C</text>
+<line stroke="#7048b8" stroke-width="1.5" x1="100" x2="50" y1="73" y2="109"></line>
+<line stroke="#7048b8" stroke-width="1.5" x1="100" x2="100" y1="73" y2="109"></line>
+<line stroke="#7048b8" stroke-width="1.5" x1="100" x2="150" y1="73" y2="109"></line>
+<line opacity="0.4" stroke="#7048b8" stroke-dasharray="3,3" stroke-width="1" x1="50" x2="150" y1="141" y2="141"></line>
+<text fill="#868e96" font-size="9" font-style="italic" text-anchor="middle" x="100" y="175">弱连接 = 防御性接口</text>
+<!-- Arrow -->
+<path d="M 220 120 L 270 120" fill="none" marker-end="url(#arr)" stroke="#636e72" stroke-width="2"></path>
+<defs><marker id="arr" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
+<text fill="#636e72" font-size="10" text-anchor="middle" x="245" y="110">同构投影</text>
+<!-- Right: code architecture -->
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="430" y="20">系统架构</text>
+<rect fill="#0a6fb8" height="40" rx="4" width="220" x="320" y="40"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="430" y="64">API Gateway</text>
+<rect fill="#0a6fb8" height="50" opacity="0.85" rx="4" width="60" x="320" y="95"></rect>
+<text fill="#fff" font-size="10" text-anchor="middle" x="350" y="124">Svc A</text>
+<rect fill="#0a6fb8" height="50" opacity="0.85" rx="4" width="60" x="395" y="95"></rect>
+<text fill="#fff" font-size="10" text-anchor="middle" x="425" y="124">Svc B</text>
+<rect fill="#0a6fb8" height="50" opacity="0.85" rx="4" width="60" x="470" y="95"></rect>
+<text fill="#fff" font-size="10" text-anchor="middle" x="500" y="124">Svc C</text>
+<text fill="#868e96" font-size="9" font-style="italic" text-anchor="middle" x="430" y="175">弱连接 = 厚重 API + duplication</text>
+<text fill="#c44545" font-size="11" font-weight="700" text-anchor="middle" x="280" y="220">想要新架构 ⇒ 先重画组织通信图（逆康威）</text>
+</svg>
+<div class="caption">康威定律：架构 = 组织通信结构在代码空间的同构</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Amazon 的 "two-pizza team" + "API-only mandate"（Bezos 2002 备忘录）是经典逆康威。Bezos 没说"我们要建 microservices 架构"，他说"任何团队对外通信必须通过 service API"。组织通信结构被强制改造 → 6 年后 AWS 涌现为可对外销售的产品。架构不是被画出来的，是被组织约束<em>逼</em>出来的。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 在公司：分布式系统里两个模块总在边界打架？看人——这俩 team 之间是不是"开会才说话"？拉近 daily 沟通比重构代码更治本。② 在家：把孩子的"练琴模块"和"作业模块"塞给同一个家长 → 边界自动模糊；分给不同家长 + 通过共享日历同步 → 自动涌现出"接口契约"。康威定律不分公司还是家。③ AI 时代：你 + 一组 agents 是一个新的"组织"——你和 agent 的对话带宽决定了产出代码/产物的耦合度。沟通带宽窄 = agent 输出会变碎片化。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Conway's Law</strong> — system architecture is an <em>isomorphic projection</em> of the organization's communication structure. High-friction team boundaries become defensive API boundaries in code, regardless of the original architecture diagram. The <em>Inverse Conway Maneuver</em>: to get the architecture you want, first reshape the org. Architecture isn't designed — it emerges under communication-bandwidth constraints. The architect's lever is boundary conditions (team splits, reporting lines, who shares meetings), not the box diagram. Map team-communication structure before drawing UML — it predicts the code 6 months out more accurately than any design doc.
     </div>
-
-    <div class="example-block">
-      <div class="example-label">经典例子</div>
-      <p>Amazon 的 "two-pizza team" + "API-only mandate"（Bezos 2002 备忘录）是经典逆康威。Bezos 没说"我们要建 microservices 架构"，他说"任何团队对外通信必须通过 service API"。组织通信结构被强制改造 → 6 年后 AWS 涌现为可对外销售的产品。架构不是被画出来的，是被组织约束<em>逼</em>出来的。</p>
-    </div>
-    <div class="example-block">
-      <div class="example-label">场景 · BigCat</div>
-      <p>① 在公司：分布式系统里两个模块总在边界打架？看人——这俩 team 之间是不是"开会才说话"？拉近 daily 沟通比重构代码更治本。② 在家：把孩子的"练琴模块"和"作业模块"塞给同一个家长 → 边界自动模糊；分给不同家长 + 通过共享日历同步 → 自动涌现出"接口契约"。康威定律不分公司还是家。③ AI 时代：你 + 一组 agents 是一个新的"组织"——你和 agent 的对话带宽决定了产出代码/产物的耦合度。沟通带宽窄 = agent 输出会变碎片化。</p>
-    </div>
-
-    <div class="section-label">English Summary</div>
-    <hr>
-    <div class="summary-en">
-      <strong>Conway's Law</strong> — system architecture is an <em>isomorphic projection</em> of the organization's communication structure. High-friction team boundaries become defensive API boundaries in code, regardless of the original architecture diagram. The <em>Inverse Conway Maneuver</em>: to get the architecture you want, first reshape the org. Architecture isn't designed — it emerges under communication-bandwidth constraints. The architect's lever is boundary conditions (team splits, reporting lines, who shares meetings), not the box diagram. Map team-communication structure before drawing UML — it predicts the code 6 months out more accurately than any design doc.
-    </div>
-
-    <div class="section-label">AI Prompts</div>
-    <hr>
-    <div class="prompt-box">
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
 <div class="prompt-label">中文提示词</div>我们团队当前组织结构是 [描述]，想要的目标架构是 [描述]。请：
 ① 用康威定律预测：在当前组织下，6 个月后实际会涌现出什么样的架构？
 ② 找出 2 个最可能演化为"防御性接口"的团队边界；
 ③ 给出 1 个最小化的"逆康威"动作（重组哪条沟通线、谁开始同会），它能让目标架构变得可行。</div>
-    <div class="prompt-box en">
+<div class="prompt-box en">
 <div class="prompt-label">English Prompt</div>Our team org structure: [describe]. Target architecture: [describe]. Please:
 1. Apply Conway's Law: under the current org, what architecture will actually emerge in 6 months?
 2. Identify 2 team boundaries most likely to harden into defensive APIs.
 3. Propose one minimal Inverse-Conway move (which communication line to redraw, who joins which meeting) that makes the target architecture feasible.</div>
-  </section>
-
-  <!-- Card 3: 技术债 -->
-  <section class="card c3">
-    <h2>技术债 · Technical Debt</h2>
-    <div class="subtitle">Ward Cunningham 1992 隐喻——并非所有债都坏，关键是"利息率"和"还款意图"</div>
-
-    <div class="section-label">中文详解</div>
-    <hr>
-    <p>原始隐喻被严重误用："hacky 代码 = 技术债"是错的。Cunningham 原意：<strong>带着"现在的不完全理解"先发布，把发布后学到的洞见再 refactor 回来——这是"借"</strong>。利息 = 每次 feature 都在错误模型上多写一点，未来 refactor 成本指数上升。</p>
-    <p>非平凡点：① <em>有意识的债 vs 无意识的债</em>——前者是策略（赶 deadline、先验证 PMF），后者是无知（团队根本不知道有更好做法）。后者最危险：你不知道自己在欠债。② 利息率<em>不是匀速的</em>——某些债 5 年不爆（dead code、风格不一），某些债 6 个月就让团队走不动（错的数据模型、错的核心抽象、错的部署架构）。优先还<em>高利率债</em>，不是"看起来最丑的债"。③ <em>所有抽象选择都是借钱</em>——零债务 = 零产出。健康团队 = 显式跟踪自己借了什么、利率多少、什么时候打算还。④ 与佛学"业 (karma)"结构同构：每个 commit 在 codebase 里种下一个未来必须面对的果——但你可以<em>觉察并主动还</em>，而不是被动承受。</p>
-    <p>实践：每季度列"技术债账本"——3 列：欠了什么 / 估计利率 / 计划还款月。<em>没上账本的债 = 高利率债</em>。</p>
-
-    <div class="example-block">
-      <div class="example-label">经典例子</div>
-      <p>Twitter 早期 Rails monolith——快速验证 PMF 的<em>正确</em>债务选择。但 2010 年 World Cup 期间反复宕机时，债务利率已变成"每多一个用户就指数上升"。他们用 3 年时间重写为 Scala/JVM 微服务（"Fail Whale"时代）。教训：早期借得对（让 Twitter 活下来），中期没及时还（拖到危机才动）。</p>
+</section>
+<!-- Card 3: 技术债 -->
+<section class="card c3">
+<h2 data-tts="0a1007df31027d08">技术债 · Technical Debt</h2>
+<div class="subtitle">Ward Cunningham 1992 隐喻——并非所有债都坏，关键是"利息率"和"还款意图"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>原始隐喻被严重误用："hacky 代码 = 技术债"是错的。Cunningham 原意：<strong>带着"现在的不完全理解"先发布，把发布后学到的洞见再 refactor 回来——这是"借"</strong>。利息 = 每次 feature 都在错误模型上多写一点，未来 refactor 成本指数上升。</p>
+<p>非平凡点：① <em>有意识的债 vs 无意识的债</em>——前者是策略（赶 deadline、先验证 PMF），后者是无知（团队根本不知道有更好做法）。后者最危险：你不知道自己在欠债。② 利息率<em>不是匀速的</em>——某些债 5 年不爆（dead code、风格不一），某些债 6 个月就让团队走不动（错的数据模型、错的核心抽象、错的部署架构）。优先还<em>高利率债</em>，不是"看起来最丑的债"。③ <em>所有抽象选择都是借钱</em>——零债务 = 零产出。健康团队 = 显式跟踪自己借了什么、利率多少、什么时候打算还。④ 与佛学"业 (karma)"结构同构：每个 commit 在 codebase 里种下一个未来必须面对的果——但你可以<em>觉察并主动还</em>，而不是被动承受。</p>
+<p>实践：每季度列"技术债账本"——3 列：欠了什么 / 估计利率 / 计划还款月。<em>没上账本的债 = 高利率债</em>。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Twitter 早期 Rails monolith——快速验证 PMF 的<em>正确</em>债务选择。但 2010 年 World Cup 期间反复宕机时，债务利率已变成"每多一个用户就指数上升"。他们用 3 年时间重写为 Scala/JVM 微服务（"Fail Whale"时代）。教训：早期借得对（让 Twitter 活下来），中期没及时还（拖到危机才动）。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 个人知识系统的债：随手记笔记不归类 = 借了"分类决策"债，3 个月内利率低（笔记少时随便搜），1 年后变高利率（笔记爆炸时找不到东西）。② 育儿的"技术债"也成立——为了赶时间替孩子做决定 = 借"她的自主性"债，利率会在青春期一次性兑现。③ AI 工作流：prompt 复制粘贴 = 借"prompt 系统化"债。最初提速，半年后所有 prompt 都不能复用、版本不可追溯 = 你在为一年前的偷懒付高利息。<strong>关键不在不借，而在记账。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Technical Debt</strong> — Cunningham's original metaphor is widely misused. It's not "hacky code." It's: ship with incomplete understanding, then refactor in what you learned post-release — that's the borrow. Interest = every new feature built on a flawed model compounds future refactor cost. Distinguish conscious debt (strategy) from unconscious debt (ignorance) — the latter is dangerous because you don't know you're indebted. Interest rates vary wildly: some debt sits 5 years (dead code), others kill velocity in 6 months (wrong data model, wrong core abstraction). Pay down high-rate debt first, not the ugliest debt. Zero debt = zero output; healthy teams track what they borrowed, the rate, and when they plan to pay.
     </div>
-    <div class="example-block">
-      <div class="example-label">场景 · BigCat</div>
-      <p>① 个人知识系统的债：随手记笔记不归类 = 借了"分类决策"债，3 个月内利率低（笔记少时随便搜），1 年后变高利率（笔记爆炸时找不到东西）。② 育儿的"技术债"也成立——为了赶时间替孩子做决定 = 借"她的自主性"债，利率会在青春期一次性兑现。③ AI 工作流：prompt 复制粘贴 = 借"prompt 系统化"债。最初提速，半年后所有 prompt 都不能复用、版本不可追溯 = 你在为一年前的偷懒付高利息。<strong>关键不在不借，而在记账。</strong></p>
-    </div>
-
-    <div class="section-label">English Summary</div>
-    <hr>
-    <div class="summary-en">
-      <strong>Technical Debt</strong> — Cunningham's original metaphor is widely misused. It's not "hacky code." It's: ship with incomplete understanding, then refactor in what you learned post-release — that's the borrow. Interest = every new feature built on a flawed model compounds future refactor cost. Distinguish conscious debt (strategy) from unconscious debt (ignorance) — the latter is dangerous because you don't know you're indebted. Interest rates vary wildly: some debt sits 5 years (dead code), others kill velocity in 6 months (wrong data model, wrong core abstraction). Pay down high-rate debt first, not the ugliest debt. Zero debt = zero output; healthy teams track what they borrowed, the rate, and when they plan to pay.
-    </div>
-
-    <div class="section-label">AI Prompts</div>
-    <hr>
-    <div class="prompt-box">
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
 <div class="prompt-label">中文提示词</div>我们的项目/系统是 [描述]。请帮我做技术债审计：
 ① 列出 5 项当前存在的债，按"利率估计 × 当前余额"排序；
 ② 标记每项是"有意识借的"还是"无意识欠的"——后者优先；
 ③ 给出未来 1 个季度的"还款计划"：还哪 2 项、为什么是这两项、能换回多少未来 velocity。</div>
-    <div class="prompt-box en">
+<div class="prompt-box en">
 <div class="prompt-label">English Prompt</div>My project/system: [describe]. Run a technical-debt audit:
 1. List 5 current debts, ranked by estimated interest rate × current balance.
 2. Tag each as "consciously borrowed" or "unconsciously incurred" — prioritize the latter.
 3. Propose a 1-quarter repayment plan: which 2 to pay down, why these two, how much future velocity it buys back.</div>
-  </section>
-
-  <!-- Card 4: YAGNI / 过早抽象 -->
-  <section class="card c4">
-    <h2>YAGNI 与过早抽象 · YAGNI &amp; Premature Abstraction</h2>
-    <div class="subtitle">"You Ain't Gonna Need It" — XP 原则 / "Duplication is far cheaper than the wrong abstraction." — Sandi Metz</div>
-
-    <div class="section-label">中文详解</div>
-    <hr>
-    <p>YAGNI 是反"未来主义工程"的纪律：<strong>不要为想象中的需求写代码</strong>。但 YAGNI 的深层不是"少写代码"，而是<em>抽象需要数据</em>——你必须先看到 3-5 个真实变体，才能知道正确的抽象边界。在<em>1-2 个变体时</em>就抽象，等于在样本不足时拟合——必然 overfit 到当前 2 个例子，然后第 3 个例子来时整个抽象塌掉。</p>
-    <p>非平凡点：① <em>"看起来重复" ≠ "本质重复"</em>——两段长得一样的代码可能是同一概念的 2 个 instance（应该 DRY），也可能是两个不同概念恰好暂时长得一样（不应 DRY）。提前 DRY = 把两个概念锁进一个 abstraction，未来它们各自演化时你要痛苦地把它们撕开。② Sandi Metz 名言："duplication is far cheaper than the wrong abstraction"——错抽象的成本远高于复制代码。原因：复制代码是<em>线性</em>问题（多改几个地方），错抽象是<em>耦合</em>问题（每个新需求都被错框架污染）。③ 反方向陷阱（"YAGNI 过头"）：核心数据模型选错也叫"我不预测未来"——错了。架构层面的决策（数据模型、部署拓扑、核心 API 契约）<em>必须</em>预测，因为它们一旦错了，技术债利率最高（见 Card 3）。YAGNI 适用于<em>实现层</em>，不适用于<em>架构层</em>。④ "等三次再抽象"是 Martin Fowler 的 Rule of Three 启发法——前两次容许重复，第三次再抽象，此时样本充足。</p>
-    <p>实践：写代码时问"我现在抽象的依据是<em>已看到的真实变体</em>还是<em>想象中的变体</em>？" 后者 = YAGNI 触发，立即停。</p>
-
-    <div class="example-block">
-      <div class="example-label">经典例子</div>
-      <p>Knight Capital 2012——为"未来某天可能用到"留了一段 8 年没用的代码（dead code，名为 Power Peg）。一次部署疏忽把它重新激活，45 分钟内交易系统狂下错单亏损 4.4 亿美元，公司次日破产。YAGNI 不是风格洁癖：<em>每行你"以为不会执行"的代码都是一颗定时炸弹</em>。把"未来可能要"的代码留在仓库 = 留下被未来意外触发的爆炸装置。</p>
+</section>
+<!-- Card 4: YAGNI / 过早抽象 -->
+<section class="card c4">
+<h2 data-tts="41f3a14f3b5b4a90">YAGNI 与过早抽象 · YAGNI &amp; Premature Abstraction</h2>
+<div class="subtitle">"You Ain't Gonna Need It" — XP 原则 / "Duplication is far cheaper than the wrong abstraction." — Sandi Metz</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>YAGNI 是反"未来主义工程"的纪律：<strong>不要为想象中的需求写代码</strong>。但 YAGNI 的深层不是"少写代码"，而是<em>抽象需要数据</em>——你必须先看到 3-5 个真实变体，才能知道正确的抽象边界。在<em>1-2 个变体时</em>就抽象，等于在样本不足时拟合——必然 overfit 到当前 2 个例子，然后第 3 个例子来时整个抽象塌掉。</p>
+<p>非平凡点：① <em>"看起来重复" ≠ "本质重复"</em>——两段长得一样的代码可能是同一概念的 2 个 instance（应该 DRY），也可能是两个不同概念恰好暂时长得一样（不应 DRY）。提前 DRY = 把两个概念锁进一个 abstraction，未来它们各自演化时你要痛苦地把它们撕开。② Sandi Metz 名言："duplication is far cheaper than the wrong abstraction"——错抽象的成本远高于复制代码。原因：复制代码是<em>线性</em>问题（多改几个地方），错抽象是<em>耦合</em>问题（每个新需求都被错框架污染）。③ 反方向陷阱（"YAGNI 过头"）：核心数据模型选错也叫"我不预测未来"——错了。架构层面的决策（数据模型、部署拓扑、核心 API 契约）<em>必须</em>预测，因为它们一旦错了，技术债利率最高（见 Card 3）。YAGNI 适用于<em>实现层</em>，不适用于<em>架构层</em>。④ "等三次再抽象"是 Martin Fowler 的 Rule of Three 启发法——前两次容许重复，第三次再抽象，此时样本充足。</p>
+<p>实践：写代码时问"我现在抽象的依据是<em>已看到的真实变体</em>还是<em>想象中的变体</em>？" 后者 = YAGNI 触发，立即停。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Knight Capital 2012——为"未来某天可能用到"留了一段 8 年没用的代码（dead code，名为 Power Peg）。一次部署疏忽把它重新激活，45 分钟内交易系统狂下错单亏损 4.4 亿美元，公司次日破产。YAGNI 不是风格洁癖：<em>每行你"以为不会执行"的代码都是一颗定时炸弹</em>。把"未来可能要"的代码留在仓库 = 留下被未来意外触发的爆炸装置。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：构造 AI agent 框架时，看到 2 个 agent 都有"retry + 日志"逻辑，立即抽 BaseAgent？停。等第 3 个 agent 出现再看 3 个共性是什么——你会发现前 2 个的"retry"其实语义不同（一个是 API 限流，一个是 hallucination 重采样），强抽到一起只会把两种重试纠缠在一个错的接口里。② 育儿：孩子第 1 次说"我不想去学钢琴"，立即构造一整套"如何让她持续坚持"的体系 = 过早抽象（样本 = 1）。先观察 3-5 次，分清是"今天累了"、"老师问题"、还是"真的不喜欢"——3 个根因要 3 套策略，提前抽象 = 用一把锤子敲所有钉子。③ 知识库：刚学 5 篇神经科学论文就建立"我的神经科学体系" = 过早抽象，前 10 篇的 framework 几乎必然要推翻。读到 30-50 篇再画地图。<strong>"复制 3 次再抽象"是抗 overfit 的工程版本。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>YAGNI &amp; Premature Abstraction</strong> — XP's "You Ain't Gonna Need It." Deep version: abstraction needs data — you must see 3–5 real variants before the right boundary is visible. Abstracting at variant #1 or #2 = fitting on insufficient samples; you'll overfit and the abstraction collapses when variant #3 arrives. Sandi Metz: "duplication is far cheaper than the wrong abstraction." Reverse trap: don't push YAGNI into architecture-level decisions (data model, core APIs, deployment topology) — those have the highest interest rate when wrong. YAGNI applies to <em>implementation layer</em>, not <em>architecture layer</em>. Fowler's Rule of Three: tolerate duplication twice; abstract on the third occurrence when samples are sufficient.
     </div>
-    <div class="example-block">
-      <div class="example-label">场景 · BigCat</div>
-      <p>① 工程：构造 AI agent 框架时，看到 2 个 agent 都有"retry + 日志"逻辑，立即抽 BaseAgent？停。等第 3 个 agent 出现再看 3 个共性是什么——你会发现前 2 个的"retry"其实语义不同（一个是 API 限流，一个是 hallucination 重采样），强抽到一起只会把两种重试纠缠在一个错的接口里。② 育儿：孩子第 1 次说"我不想去学钢琴"，立即构造一整套"如何让她持续坚持"的体系 = 过早抽象（样本 = 1）。先观察 3-5 次，分清是"今天累了"、"老师问题"、还是"真的不喜欢"——3 个根因要 3 套策略，提前抽象 = 用一把锤子敲所有钉子。③ 知识库：刚学 5 篇神经科学论文就建立"我的神经科学体系" = 过早抽象，前 10 篇的 framework 几乎必然要推翻。读到 30-50 篇再画地图。<strong>"复制 3 次再抽象"是抗 overfit 的工程版本。</strong></p>
-    </div>
-
-    <div class="section-label">English Summary</div>
-    <hr>
-    <div class="summary-en">
-      <strong>YAGNI &amp; Premature Abstraction</strong> — XP's "You Ain't Gonna Need It." Deep version: abstraction needs data — you must see 3–5 real variants before the right boundary is visible. Abstracting at variant #1 or #2 = fitting on insufficient samples; you'll overfit and the abstraction collapses when variant #3 arrives. Sandi Metz: "duplication is far cheaper than the wrong abstraction." Reverse trap: don't push YAGNI into architecture-level decisions (data model, core APIs, deployment topology) — those have the highest interest rate when wrong. YAGNI applies to <em>implementation layer</em>, not <em>architecture layer</em>. Fowler's Rule of Three: tolerate duplication twice; abstract on the third occurrence when samples are sufficient.
-    </div>
-
-    <div class="section-label">AI Prompts</div>
-    <hr>
-    <div class="prompt-box">
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
 <div class="prompt-label">中文提示词</div>我正在考虑给 [代码/系统/流程] 加一层抽象/通用框架。请压力测试：
 ① 我目前手上有几个<em>真实出现过</em>的变体？少于 3 个 → YAGNI 触发，请说服我先复制；
 ② 如果硬抽象，最可能 overfit 到哪个特性，将来第 3 个变体出现时如何 break？
 ③ 区分这个决策属于"实现层"还是"架构层"——若是架构层，给出必须现在决定的最小决策集。</div>
-    <div class="prompt-box en">
+<div class="prompt-box en">
 <div class="prompt-label">English Prompt</div>I'm about to add an abstraction / generic framework to [code/system/process]. Stress-test me:
 1. How many <em>real observed</em> variants do I have? If &lt; 3 → YAGNI trigger; argue me into duplicating first.
 2. If I abstract now, which feature am I most likely overfitting to, and how does it break when variant #3 arrives?
 3. Classify the decision as implementation-layer vs architecture-layer. If architecture-layer, name the minimal set of decisions that must be made now.</div>
-  </section>
-
-  <footer class="footer">
-    <a href="index.html">&larr; 返回首页</a>
-  </footer>
-
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
 </div>
-<script src="https://cissy0802.github.io/comments.js" defer></script>
-<script src="https://cissy0802.github.io/search.js" defer></script>
-<script src="https://cissy0802.github.io/index-button.js" defer></script>
-<script src="i18n-tts.js" defer></script>
+<script defer="" src="https://cissy0802.github.io/comments.js"></script>
+<script defer="" src="https://cissy0802.github.io/search.js"></script>
+<script defer="" src="https://cissy0802.github.io/index-button.js"></script>
+<script defer="" src="i18n-tts.js"></script>
 </body>
 </html>
