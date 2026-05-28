@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Distributed Systems Thinking · 2026-05-28</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Daily: Distributed Systems Thinking</h1>
+    <div class="meta">2026-05-28 · Day 37</div>
+  </header>
+
+  <!-- Card 1: CAP Theorem -->
+  <section class="card c1">
+    <h2>CAP Theorem</h2>
+    <div class="subtitle">"Of Consistency, Availability, and Partition-tolerance, you can have at most two." — Eric Brewer, 2000</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>When nodes lose contact with each other (a "partition," P), a system must choose between <strong>Consistency (every node sees the same latest data)</strong> and <strong>Availability (every request gets an immediate response)</strong>. Reading CAP as "pick 2 of 3" is the novice error — partitions are <em>physically inevitable</em> in any system spread across space (networks will fail), so P isn't something you can give up. The expert reading is one sentence: <strong>when a partition happens, do you pick C or A?</strong></p>
+    <p>Non-trivial: (1) this isn't an engineering quirk — it's a fundamental constraint of information propagating at finite speed, governing any "coordination across space," including human organizations, cross-timezone teams, even signal-delayed neural systems. (2) CP and AP aren't labels for a whole system but <em>per-operation</em> tradeoffs: a bank balance picks C (better to refuse than be wrong), a like-count picks A (a few seconds of lag is fine). (3) Nearly every coordination disaster comes from <em>picking the wrong side</em> — forcing C where A was needed (everything stalls the moment something disconnects), or grabbing A where C was needed (corrupted data).</p>
+    <p>Practice: for any coordination problem, split two questions first — "What's the partition here, who might lose contact with whom?" and "Does this operation need correctness, or does it need a response?" Classify first, then design.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="260,40 70,200 450,200" fill="none" stroke="#0a6fb8" stroke-width="2"/>
+        <circle cx="260" cy="40" r="6" fill="#0a6fb8"/>
+        <circle cx="70" cy="200" r="6" fill="#0a6fb8"/>
+        <circle cx="450" cy="200" r="6" fill="#0a6fb8"/>
+        <text x="260" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#2d3436">C Consistency</text>
+        <text x="60" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#2d3436">A Availability</text>
+        <text x="450" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#c44545">P Partition-tolerance</text>
+        <text x="450" y="236" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">(non-optional)</text>
+        <text x="260" y="135" text-anchor="middle" font-size="11" fill="#636e72">Once a partition occurs</text>
+        <text x="260" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="#0a6fb8">the real choice = trade along the C↔A edge</text>
+        <line x1="120" y1="200" x2="400" y2="200" stroke="#fdcb6e" stroke-width="3" stroke-dasharray="6,4"/>
+      </svg>
+      <div class="caption">CAP: P is a premise, not an option — what's left is the C-vs-A trade under partition</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>An ATM: when it's cut off from the bank's core network (partition), it picks A over C — it still lets you withdraw, just with a cap, and reconciles later. That's a business decision: "the revenue from availability &gt; the loss from an occasional overdraft." Here CAP isn't a technical dogma but a value tradeoff with an explicit price tag.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Designing an AI agent system with shared state: globally locking and syncing on every step (strong consistency) gets too slow to be usable; letting agents run and reconcile periodically (eventual consistency) is fast but risks brief conflicts. Split by operation: money or irreversible actions pick C, drafts and exploration pick A. (2) Family decisions are isomorphic — "everything must be agreed in real time by both parents" runs the home as a CP system; when one parent is absent (a partition), the kid just waits. Healthier: high-stakes decisions pick C (wait to align), daily small stuff picks A (whoever's present decides, sync later). <strong>Design the family as a partition-tolerant system.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I face a coordination problem: [describe the system/team/decision]. Use CAP to break it down:
+1. What exactly is the "partition" here — who can lose contact with whom, and when does information fall out of sync?
+2. List 3 key operations; for each, decide Consistency vs Availability and justify it.
+3. Point out where I'm most likely picking the wrong side (forcing C where A fits, or vice versa) and propose a fix.</div>
+  </section>
+
+  <!-- Card 2: Eventual Consistency -->
+  <section class="card c2">
+    <h2>Eventual Consistency</h2>
+    <div class="subtitle">"In the absence of new writes, all replicas eventually converge to the same state."</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Give up "all replicas agree at every instant" (strong consistency) for "once writes stop, the system <strong>eventually</strong> converges." This is exactly how you cash in the A choice from CAP. Its essence isn't abandoning consistency; it's <strong>relaxing consistency from a point-in-time guarantee to an interval guarantee</strong> — buying enormous availability and scalability in return.</p>
+    <p>Non-trivial: (1) "eventually" doesn't happen by itself — you must design a <em>convergence mechanism</em>: how conflicts are resolved (last-write-wins / version vectors / conflict-free data types, CRDTs). "Eventual consistency" without a resolution rule is just "never consistent." (2) The cost is exposed inconsistency during the convergence window (a post you just made isn't visible to friends yet) — acceptability depends on business semantics. (3) The deep point: <strong>strong consistency is itself an expensive illusion</strong>. Reality is already eventually consistent — light takes time to travel, so the starlight you see now is from the past. Insisting on instant consistency everywhere is fighting physics. This is isomorphic to the Buddhist view of impermanence and dependent origination: there's no "global truth of the present moment," only local states that propagate and eventually converge.</p>
+    <p>Practice: stop chasing "real-time sync for the whole team or family" — that obsession grinds everyone down. Instead design convergence points (a weekly review, a nightly family sync) plus a clear tie-breaker rule (who decides), and deliberately tolerate temporary inconsistency inside the window.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>DNS: change one resolution record and global caches won't update instantly — it takes minutes to tens of hours to become "eventually consistent." The entire Internet's naming system is built on eventual consistency, because a strongly-consistent global DNS simply couldn't scale. Available and scalable, at the cost of a brief inconsistency window — a trade the whole Internet accepts.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Note-taking across devices (phone + laptop + cloud): don't demand every edit sync to all devices in real time (strong consistency throws constant conflict errors); accept eventual consistency with a clear conflict rule (e.g., "last edit wins"). (2) The most common family arguments are, at root, "<strong>assuming you're running a strongly-consistent system when you're actually eventually consistent, with no convergence mechanism installed</strong>" — you and your partner don't need real-time agreement on "who's picking up the kid today," but you do need a convergence point like "sync tomorrow's plan at 9pm every night." Install the convergence point and most coordination conflicts vanish.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>Coordinating [team/family/multi-device/multi-agent] keeps causing conflicts from being out of sync. Use eventual consistency to design a fix:
+1. Which states don't actually need strong consistency and can be relaxed to eventual?
+2. Specify one concrete convergence mechanism: when to sync, and what rule resolves conflicts.
+3. Name the inconsistencies exposed during the convergence window, and how to make them acceptable in practice.</div>
+  </section>
+
+  <!-- Card 3: Idempotency -->
+  <section class="card c3">
+    <h2>Idempotency</h2>
+    <div class="subtitle">"f(f(x)) = f(x) — applying it twice is the same as once."</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Idempotent: applying an operation once or many times has the <strong>identical effect</strong> on system state. "Set x to 5" is idempotent; "increment x by 1" is not. It's the <strong>bedrock of distributed fault tolerance</strong> — over an unreliable network you can never be sure a request actually arrived (the response itself can be lost), so the only safe retry strategy is to <strong>make retrying itself harmless</strong>.</p>
+    <p>Non-trivial: (1) rather than chase "exactly-once" (near-impossible in distributed systems), design "at-least-once + idempotent" — together they're equivalent to exactly-once, and far simpler. (2) The mechanism is an <em>idempotency key</em>: tag each operation with a unique ID and ignore duplicates. (3) The deepest layer: idempotency is a <strong>design philosophy of converting uncertainty into safety</strong> — you don't eliminate duplication, you make duplication not matter. This is the fundamental stance for dealing with an unreliable world, isomorphic to biological robustness (immune memory and DNA repair don't compound damage from repeated stimuli).</p>
+    <p>Practice: for any process that might be triggered more than once (reminders, transfers, deployments, even the rules you set for a child), ask first: "what happens if this repeats?" Designing key actions to be idempotent makes fault-tolerance cost plummet.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Online payment: you hit "pay," the network stalls, you hit it again. Idempotent design (using the order number as an idempotency key) guarantees you're charged only once. A payment system without idempotency is a double-charge disaster machine — which is why every serious payment API (e.g., Stripe's idempotency key) mandates idempotency.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) When an AI agent retries an external API call, if that API isn't idempotent (e.g., "create a new record"), the retry produces duplicate data; the fix is to attach an idempotency key, or rewrite the operation as an upsert (update if exists, else create). (2) Parenting rules should be idempotent too — "remind the child to put toys away" should drive toward the same state (toys away) whether said once or three times, rather than escalating emotion with each repeat. <strong>A non-idempotent rule accumulates conflict and erodes the relationship on repeat; an idempotent rule keeps its meaning no matter how many times you say it.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I have a process that may be triggered more than once: [describe the operation/API/rule]. Run an idempotency audit:
+1. Is this operation naturally idempotent? If not, what breaks when it repeats?
+2. Give one concrete way to make it idempotent (idempotency key / rewrite as upsert / state check).
+3. Combine it with at-least-once retries and explain why the pair is equivalent to exactly-once.</div>
+  </section>
+
+  <!-- Card 4: Backpressure -->
+  <section class="card c4">
+    <h2>Backpressure</h2>
+    <div class="subtitle">"When the downstream can't keep up, push 'slow down' back upstream — don't drop, don't crash."</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Backpressure: when the downstream (consumer) can't process as fast as the upstream (producer), the downstream signals "slow down" so the producer throttles, instead of letting data pile up without bound until the system collapses. It's fundamentally a <strong>negative-feedback control loop</strong> (the same family as feedback loops in systems thinking): downstream congestion is fed back to constrain the upstream rate.</p>
+    <p>Non-trivial: (1) a system without backpressure under overload <em>doesn't slow down — it collapses catastrophically</em>: the queue grows unbounded → memory is exhausted → the whole system dies, far worse than merely being slow. Backpressure's value is converting catastrophic failure into graceful degradation. (2) The counterintuitive core: <strong>deliberately slowing down (queuing, throttling, rejecting) actually sustains higher throughput</strong> — greedily accepting everything drives throughput to zero after the crash. (3) Three tactics for overload: buffer (treats the symptom), drop (when acceptable), backpressure (the cure). The nervous system uses backpressure too — synaptic inhibition and sensory gating keep the brain from being flooded by input.</p>
+    <p>Practice: spot the "<em>unbounded queues</em>" in your life and work — the ever-growing to-do list, the inbox, the child's activity schedule. An unbounded queue will eventually avalanche. Install backpressure: set an explicit intake limit, and when it's full, push back (reject or defer) rather than silently absorbing until you break.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="60" width="110" height="50" rx="6" fill="#1b8a5a"/>
+        <text x="85" y="90" text-anchor="middle" font-size="12" fill="#fff">Producer</text>
+        <rect x="225" y="60" width="110" height="50" rx="6" fill="#1b8a5a" opacity="0.55"/>
+        <text x="280" y="84" text-anchor="middle" font-size="12" fill="#fff">Queue</text>
+        <text x="280" y="100" text-anchor="middle" font-size="9" fill="#fff">(bounded)</text>
+        <rect x="420" y="60" width="110" height="50" rx="6" fill="#1b8a5a"/>
+        <text x="475" y="90" text-anchor="middle" font-size="12" fill="#fff">Consumer</text>
+        <path d="M 140 85 L 220 85" fill="none" stroke="#636e72" stroke-width="2" marker-end="url(#a4)"/>
+        <path d="M 335 85 L 415 85" fill="none" stroke="#636e72" stroke-width="2" marker-end="url(#a4)"/>
+        <defs><marker id="a4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"/></marker></defs>
+        <path d="M 475 115 C 475 160, 85 160, 85 118" fill="none" stroke="#c44545" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#a4r)"/>
+        <defs><marker id="a4r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#c44545"/></marker></defs>
+        <text x="280" y="155" text-anchor="middle" font-size="11" font-weight="700" fill="#c44545">Backpressure: queue full → tell the producer to slow down</text>
+        <text x="280" y="30" text-anchor="middle" font-size="11" fill="#868e96" font-style="italic">without this red line → unbounded queue → avalanche</text>
+      </svg>
+      <div class="caption">Backpressure = a negative-feedback loop carrying downstream congestion back upstream</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>TCP flow control (the sliding window): the receiver continuously tells the sender "this much buffer remains," and the sender paces itself accordingly. This is why the Internet doesn't collapse when one fast server overwhelms a slow client — backpressure is welded directly into the protocol. Toyota's Kanban is the physical version of the same idea: if downstream sends no card, upstream doesn't produce.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) AI agent pipeline: an upstream agent floods a downstream executor with tasks; if the downstream is slow, its queue explodes. The fix is to bound the downstream queue and, when full, have the upstream pause production or drop low-priority tasks. (2) As someone pursuing the "AI super-individual," AI makes your "upstream" (things you could do) nearly infinite — without backpressure your to-do list grows unbounded and eventually avalanches as burnout. Install backpressure: set a daily/weekly intake capacity and, when full, push back explicitly (say "no," or defer to next week). <strong>Saying "no" isn't a character flaw — it's flow control.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I have a component that overloads: [describe the system/process/my to-do list or attention]. Use backpressure to design a fix:
+1. Identify the "unbounded queue" — what piles up here with no cap?
+2. Design a concrete backpressure mechanism: where to set the intake limit, and how to push back when full (reject / defer / drop low-priority).
+3. Compare "greedily accept everything" vs "deliberately slow down" and estimate the sustainable throughput of each.</div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.en.html">← Back to index</a>
+  </footer>
+</div>
+</body>
+</html>
