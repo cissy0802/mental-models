@@ -44,6 +44,20 @@ for F in $NEW_FILES; do
   # Size guard
   [ $(wc -c < "$F") -lt 2000 ] && { echo "ERROR: $F only $(wc -c < $F) bytes, likely incomplete"; exit 1; }
 
+  # Length ceiling (optional, opt-in per repo via .maxchars file).
+  # Counts CJK chars only (strips <style>/<script>/tags). Defends against the
+  # self-imitation ratchet where each issue mimics the last and grows ~20%/gen.
+  # Only applies to the Chinese file (.en has ~0 CJK and passes trivially).
+  if [ -f .maxchars ] && ! echo "$F" | grep -q '\.en\.html$'; then
+    LIMIT=$(tr -dc '0-9' < .maxchars)
+    CJK=$(python3 -c 'import sys,re;h=sys.stdin.read();h=re.sub(r"<style.*?</style>","",h,flags=re.S);h=re.sub(r"<script.*?</script>","",h,flags=re.S);h=re.sub(r"<[^>]+>","",h);print(len(re.findall(r"[一-鿿]",h)))' < "$F")
+    if [ -n "$LIMIT" ] && [ "$CJK" -gt "$LIMIT" ]; then
+      echo "ERROR: $F has $CJK CJK chars > limit $LIMIT (.maxchars)."
+      echo "       Trim the longest paragraphs (don't rewrite wholesale) and re-run."
+      exit 1
+    fi
+  fi
+
   # Reference check: Chinese file must be in index.html, .en file in index.en.html (if exists)
   if echo "$F" | grep -q '\.en\.html$'; then
     if [ -f index.en.html ]; then
