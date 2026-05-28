@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：物理学思维 · 2026-05-28</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：物理学思维</h1>
+<div class="meta">2026-05-28 · Day 36</div>
+</header>
+
+<!-- Card 1: 熵增与耗散结构 -->
+<section class="card c1">
+<h2>熵增与耗散结构 · Entropy &amp; Dissipative Structures</h2>
+<div class="subtitle">"生命以负熵为食。" — Erwin Schrödinger《What is Life?》, 1944</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>热力学第二定律只对<em>封闭系统</em>成立——孤立系统的熵必然增加。但生命、组织、知识都是<em>开放系统</em>：它们靠<strong>持续从环境吸收能量、再把更多的熵排放出去</strong>，来维持自身内部的低熵秩序（普里高津的"耗散结构"）。</p>
+<p>非平凡点：① <strong>秩序不是一种状态，而是一种流</strong>。漩涡、烛焰、细胞、一家公司——都只在能量穿流而过时存在，断流即溃散。所以"结构"本质是动词不是名词。② <strong>局部有序的代价是别处更大的无序</strong>。你整洁的桌面、清晰的代码库、专注的心智，都在把熵倾倒到环境里（热、废物、他人的混乱）。<em>若你看不见熵被排往何处，它多半正在系统内部悄悄累积</em>——隐性技术债、隐性倦怠。③ 反直觉推论：别追求"一次做好就稳定"的秩序，要建立<strong>持续再生秩序的代谢</strong>。一次性整理完就放手的代码库必然腐化；有持续重构之流的代码库才长期有序。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>一个活细胞维持着精密的内部秩序（膜电位、蛋白折叠、DNA 完整），代价是不断向宇宙排放热与废物，让总熵升得更快。贝纳对流、烛焰同理：有序花纹只在能量持续穿过时才存在。<em>秩序是"借来的"，靠流量偿还</em>——这正是薛定谔"生命以负熵为食"的本意。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>分布式系统维持副本一致性（低熵态），靠的是持续的心跳、gossip 和"反熵修复"——Cassandra / Dynamo 里这个机制就直接叫 anti-entropy repair。一旦停掉修复进程，副本会无声地发散，熵升。同理：① 个人知识系统是耗散结构，需要持续复习之流，停更则遗忘曲线（第二定律的记忆版）接管，链接腐烂。② 团队共识也是耗散结构，靠持续沟通之流维持，断流就漂移（呼应康威定律）。<strong>关键提问：我这套秩序的能量从哪来？熵往哪去？</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Entropy &amp; Dissipative Structures</strong> — the Second Law applies to <em>closed</em> systems. Life, organizations, and knowledge are <em>open</em> systems that maintain low internal entropy by continuously importing energy and exporting even more entropy (Prigogine's dissipative structures). (1) Order is a <em>flow</em>, not a state — a whirlpool, flame, or cell exists only while energy streams through; cut the flow and it dissolves. (2) Local order costs greater disorder elsewhere; if you can't see where you dump the entropy, it's accumulating internally as hidden debt or burnout. (3) Don't chase "build it once and it stays ordered" — build a <em>metabolism</em> that regenerates order. Schrödinger: life feeds on negative entropy.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想维持 [某种秩序：代码库整洁 / 知识体系 / 团队共识 / 个人专注]。请用"耗散结构"视角分析：
+① 这套秩序靠什么能量流维持？能量流断了会怎样？
+② 我在把熵排往何处？若看不见出口，它是不是正在内部累积成隐性债？
+③ 给出一个"代谢式"机制——能持续再生秩序的最小流程，而非一次性整理。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to maintain [some order: a clean codebase / a knowledge system / team alignment / personal focus]. Analyze it as a dissipative structure:
+1. What energy flow sustains this order, and what happens when the flow stops?
+2. Where am I exporting the entropy? If there's no visible outlet, is it accumulating internally as hidden debt?
+3. Propose one "metabolic" mechanism — a minimal recurring process that regenerates order, not a one-time cleanup.</div>
+</section>
+
+<!-- Card 2: 相变与临界点 -->
+<section class="card c2">
+<h2>相变与临界点 · Phase Transitions &amp; Criticality</h2>
+<div class="subtitle">"More is different." — Philip W. Anderson, 1972</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>相变的非平凡处不在"水到 100°C 会沸腾"这种常识，而在临界点附近系统展现的几个反直觉性质。</p>
+<p>① <strong>普适性（universality）</strong>：临界点附近，微观上毫不相干的系统——磁体、流体、甚至神经网络——表现出<em>完全相同</em>的标度律（临界指数）。微观细节突然不重要了，只剩对称性和维度在主宰；此时关联长度发散，涨落跨越所有尺度，于是出现幂律（呼应幂律分布）。② <strong>对称破缺</strong>：相变是系统"自发地选了一个它本不必选的方向"。临界点上，微小涨落被放大成宏观选择——市场反转、社会运动引爆、团队文化结晶、一个想法突然"想通了"。③ <strong>临界慢化（critical slowing down）</strong>：越接近临界点，系统从扰动中恢复得越慢。这是可测量的<em>预警信号</em>——生态崩溃、抑郁发作、金融危机前，恢复时间和自相关都会上升。④ <strong>滞后（hysteresis）</strong>：相变点取决于方向，上去和下来不在同一点（过冷水）。一旦相变完成，想回退要退得比原阈值更远——信任、声誉、习惯皆如此。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="520" y1="200" y2="200"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="60" y1="40" y2="200"></line>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="290" y="228">控制参量（温度 / 负载 / 压力）→</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" transform="rotate(-90 24 120)" x="24" y="120">序参量 →</text>
+<rect fill="#7048b8" height="160" opacity="0.08" width="70" x="300" y="40"></rect>
+<text fill="#7048b8" font-size="10" font-style="italic" text-anchor="middle" x="335" y="58">临界慢化</text>
+<text fill="#7048b8" font-size="10" font-style="italic" text-anchor="middle" x="335" y="72">预警区</text>
+<path d="M 60 195 Q 200 190 300 180 L 370 178" fill="none" stroke="#7048b8" stroke-width="2.5"></path>
+<line stroke="#c44545" stroke-dasharray="4,4" stroke-width="2" x1="370" x2="370" y1="178" y2="70"></line>
+<path d="M 370 70 Q 440 58 520 52" fill="none" stroke="#7048b8" stroke-width="2.5"></path>
+<circle cx="370" cy="124" fill="#c44545" r="4"></circle>
+<text fill="#c44545" font-size="11" font-weight="700" text-anchor="middle" x="408" y="120">临界点</text>
+<text fill="#868e96" font-size="9" text-anchor="middle" x="170" y="185">平稳（线性）</text>
+<text fill="#868e96" font-size="9" text-anchor="middle" x="455" y="44">新相</text>
+</svg>
+<div class="caption">逼近临界点时序参量突变；突变前的"临界慢化"可作预警</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>铁磁体在居里温度失去磁性；更惊人的是普适性：液-气临界点和单轴磁体属于同一个"伊辛普适类"，临界指数一模一样——两个毫无关系的系统在临界点上行为同构。这说明临界点附近，"是什么材料"远不如"什么对称性"重要。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 大脑被认为运行在临界点附近——神经雪崩服从幂律，这种"自组织临界"让大脑同时拥有最大动态范围和信息传输能力（神经科学与复杂性科学的交汇）。② 工程：给系统加负载，延迟一直平稳，直到利用率逼近 1，延迟突然爆炸——排队论里这就是一次相变。③ 个人：技能、研究、创业的进展常是"线性平台期后突然相变"（呼应 J 曲线）。<strong>实践杠杆：用"临界慢化"当预警</strong>——当你从小挫折中恢复越来越慢（睡一觉不够了、周末缓不过来了），系统正逼近临界点，该在相变前干预，而非崩溃后。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Phase Transitions &amp; Criticality</strong> — the content isn't "water boils at 100°C." Near a critical point: (1) <em>Universality</em> — microscopically unrelated systems (magnets, fluids, neural nets) show identical scaling laws; micro-details stop mattering, only symmetry and dimension do. Correlation length diverges, fluctuations span all scales → power laws. (2) <em>Symmetry breaking</em> — the system spontaneously "chooses" a direction; tiny fluctuations amplify into macroscopic outcomes (markets tipping, cultures crystallizing). (3) <em>Critical slowing down</em> — near the tipping point, recovery from perturbation slows; a measurable early-warning signal (ecosystems, depression, financial crises). (4) <em>Hysteresis</em> — the transition point depends on direction; reverting requires overshooting the original threshold (trust, reputation, habits).
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在观察 [某系统：团队士气 / 我的健康 / 某市场 / 某项目]，担心它接近某个临界点。请：
+① 找出这个系统的"序参量"和"控制参量"——什么在突变，什么在推动突变？
+② 是否出现"临界慢化"信号（从扰动中恢复变慢）？还有哪些可测的预警指标？
+③ 如果相变已不可避免，考虑滞后效应：事后回退要付多大代价？现在该如何布局？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm watching [a system: team morale / my health / a market / a project] and worry it's nearing a tipping point. Please:
+1. Identify the order parameter and the control parameter — what changes abruptly, and what drives the change?
+2. Are there "critical slowing down" signals (slower recovery from perturbations)? What other measurable early-warning indicators exist?
+3. If the transition is inevitable, account for hysteresis: how costly is reverting afterward, and how should I position now?</div>
+</section>
+
+<!-- Card 3: 共振 -->
+<section class="card c3">
+<h2>共振 · Resonance</h2>
+<div class="subtitle">当驱动频率匹配固有频率，微小而持续的输入也能累积成巨大的振幅。</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>每个系统都有自己的<em>固有频率</em>。当外部驱动的频率匹配它时，能量被高效注入、逐周期累积，<strong>微小而持续的输入能放大成巨大振幅</strong>——这就是共振。非平凡处不是"频率对上就放大"，而是几个推论。</p>
+<p>① <strong>共振是窄带的</strong>：放大只发生在固有频率附近极窄的一段；同样的力，频率不对就被系统耗散掉。所以蛮力（大振幅、错频率）往往不如"小力但对频"。② <strong>匹配比强度更重要</strong>：决定能否撬动一个系统的，是你能否找到它的固有频率，而非你推得多用力。③ <strong>阻尼决定共振的锐利度</strong>：低阻尼系统共振峰又高又窄（一旦对频就剧烈响应，但容错极小）；高阻尼系统峰矮而宽（响应温和但鲁棒）。④ <strong>共振是双刃的</strong>：它能高效传能（乐器、激光、收音机选台、核磁共振 MRI），也能摧毁结构；同一机制，建设与摧毁只差一个"是否受控"。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="520" y1="190" y2="190"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="60" y1="30" y2="190"></line>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="290" y="216">驱动频率 →</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" transform="rotate(-90 24 110)" x="24" y="110">振幅 →</text>
+<line stroke="#c44545" stroke-dasharray="4,4" stroke-width="1.5" x1="290" x2="290" y1="45" y2="190"></line>
+<text fill="#c44545" font-size="10" text-anchor="middle" x="290" y="205">固有频率 f₀</text>
+<path d="M 70 182 C 200 178 250 160 290 50 C 330 160 380 178 510 182" fill="none" stroke="#c44545" stroke-width="2.5"></path>
+<path d="M 70 185 C 220 184 255 172 290 130 C 325 172 360 184 510 185" fill="none" opacity="0.6" stroke="#1b8a5a" stroke-width="2"></path>
+<text fill="#c44545" font-size="10" text-anchor="start" x="300" y="58">低阻尼：又高又窄</text>
+<text fill="#1b8a5a" font-size="10" text-anchor="start" x="350" y="128">高阻尼：矮而宽</text>
+</svg>
+<div class="caption">共振峰：对频 → 小输入大振幅；阻尼决定峰的锐利度与鲁棒性</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>收音机选台是纯粹的共振——天线接收所有频率的电磁波，调谐电路只对你选中的那一个频率共振放大，其余全部忽略；可见"信号本就在空气里，关键是你调到哪一频"。最直观的版本是荡秋千：不必用大力，只要每个周期在正确时点轻推（匹配固有频率），振幅就逐周期累积到很高；错了节拍，再用力也白费。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 沟通与领导：同一个观点，用对方的"固有频率"（他在意的语言、价值、节奏）讲，小小一句就能引发共鸣；错频则你再用力也被耗散——这是说服的物理学。② 注意力：深度工作是让任务节奏与你的认知固有频率对上，于是低投入高产出；频繁切换 = 不断错频，能量全耗在阻尼上（呼应注意力残留）。③ 团队 / 产品：找到与用户"固有频率"共振的那一个点（呼应产品-市场契合），胜过在十个方向上蛮推。<strong>实践：撬动任何系统前，先问"它的固有频率是什么"，而不是"我要用多大力"。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Resonance</strong> — every system has a <em>natural frequency</em>. When an external drive matches it, energy injects efficiently and accumulates cycle by cycle, so a small, well-tuned input grows into a huge amplitude. (1) Resonance is <em>narrow-band</em> — amplification only happens near the natural frequency; off-frequency force gets dissipated, so "small force, right frequency" beats "brute force, wrong frequency." (2) Matching beats strength — what moves a system is finding its natural frequency, not how hard you push. (3) Damping sets sharpness — low damping = tall, narrow peak (violent but fragile); high damping = short, broad peak (gentle but robust). (4) Resonance is double-edged — the same mechanism powers radios, lasers, and MRI, or destroys structures; build vs destroy differs only by whether it's controlled.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想撬动 [某系统：说服某人 / 推动某项目 / 改变某习惯 / 进入深度专注]，但一直在用蛮力。请用"共振"视角帮我：
+① 这个系统的"固有频率"是什么——它真正会响应的语言、节奏、价值是什么？
+② 我现在的输入是"对频小力"还是"错频蛮力"？错在哪？
+③ 给出一个把输入调到固有频率的具体动作，让小投入产生大振幅。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to move [a system: persuade someone / push a project / change a habit / enter deep focus] but I keep using brute force. Use the lens of resonance:
+1. What is this system's natural frequency — the language, rhythm, or value it actually responds to?
+2. Is my current input "small force at the right frequency" or "brute force at the wrong one"? Where's the mismatch?
+3. Give me one concrete way to tune my input to the natural frequency so a small input yields a large amplitude.</div>
+</section>
+
+<!-- Card 4: 量子叠加与可选性 -->
+<section class="card c4">
+<h2>量子叠加与可选性 · Superposition &amp; Optionality</h2>
+<div class="subtitle">测量之前，系统同时持有所有可能；测量让它坍缩成一个。</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>把量子叠加当思维模型用时要小心：它不是"心想事成、平行宇宙"那种鸡汤。真正可迁移的结构有三点。</p>
+<p>① <strong>测量即坍缩，过早测量摧毁可选性</strong>：叠加态同时持有多种可能，一旦"测量"（做出不可逆承诺）就坍缩成一个。<em>保持不坍缩本身有价值</em>——这正是金融"实物期权"和"可选性"的内核：信息不足时不急于承诺，保留多个未来的开口。过早决定 = 过早测量 = 把别的可能性永久抹掉。② <strong>退相干：可选性会自己衰减</strong>：叠加不只被主动测量摧毁，更会因系统与环境"纠缠"（信息泄漏）而自发坍缩，这叫退相干。推论很反直觉——你的可选性不需别人来逼，也会随着你不断对外承诺、暴露立场、与环境耦合而悄悄消失。所以要主动"隔离"以保护可选性（少做不可逆承诺、延迟绑定）。③ <strong>叠加不是免费的</strong>：维持多个开放选项要付维护成本（认知、资源、协调）。可选性的价值必须减去维护成本——不是越多越好，而是保留<em>凸性</em>最高的那几个（下行有限、上行巨大）。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>量子计算的威力正来自叠加：n 个量子比特能同时表示 2ⁿ 个状态，但"读出"（测量）的瞬间只坍缩出一个结果——所以算法的全部艺术在于"坍缩前如何安排干涉，让正确答案的概率最大"。这恰是可选性思维的精确隐喻：<em>价值在坍缩前的布局，不在坍缩本身</em>。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 职业 / 投资：同时持有几个低成本、下行有限的"开口"（副业、技能、小注投资），不急于 all-in 任何一个——保持叠加，等信息让某个选项的上行变清晰再坍缩（呼应反共识真理、J 曲线）。② 工程：架构上的"延迟绑定"——把不可逆决策（数据模型、核心契约）尽量推迟到信息最充分时（YAGNI / 过早抽象，本质就是"别过早坍缩抽象"）。③ 警惕退相干：每次你公开承诺一个方向、把团队资源全压上，都在与环境纠缠、让其他选项退相干。<strong>实践：区分"可逆决策"（随便坍缩，错了重来）与"不可逆决策"（尽量维持叠加直到信息足够）——亚马逊的"单向门 vs 双向门"正是此理。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Superposition &amp; Optionality</strong> — used as a mental model, not parallel-universe wishful thinking. (1) <em>Measurement collapses; premature measurement destroys optionality.</em> A superposition holds many possibilities at once; an irreversible commitment ("measurement") collapses it to one. Staying uncollapsed has value — the core of real options and optionality: don't commit while information is scarce; keep multiple futures open. (2) <em>Decoherence — optionality decays on its own.</em> Superposition is destroyed not only by deliberate measurement but by entanglement with the environment (information leakage). Optionality quietly erodes as you make commitments and couple to the world; you must actively isolate to protect it (delayed binding, fewer irreversible moves). (3) <em>Superposition isn't free</em> — keeping options open costs maintenance; subtract that cost and keep only the most <em>convex</em> options (limited downside, large upside).
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我面对 [某决策：职业方向 / 投资 / 架构选型 / 产品路线]，纠结要不要现在就定下来。请用"叠加与可选性"帮我：
+① 这是"可逆决策（双向门）"还是"不可逆决策（单向门）"？前者尽快坍缩，后者尽量维持叠加。
+② 我现在保留着哪些选项？哪些已因我做过的承诺而"退相干"消失了？
+③ 在我维持的选项里，哪几个"凸性"最高（下行有限、上行巨大）值得花成本保留，哪些该主动放弃？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm facing [a decision: career direction / investment / architecture choice / product roadmap] and I'm torn about committing now. Use superposition &amp; optionality:
+1. Is this a reversible (two-way door) or irreversible (one-way door) decision? Collapse the former fast; keep the latter in superposition.
+2. Which options am I still holding open? Which have already "decohered" away due to commitments I've made?
+3. Among the options I'm maintaining, which are the most convex (limited downside, large upside) and worth the maintenance cost — and which should I deliberately drop?</div>
+</section>
+
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
