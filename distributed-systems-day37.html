@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
@@ -112,12 +113,12 @@
 <body>
 <div class="container">
 <header class="page-header">
-<h1>思维模型详解：分布式系统思维</h1>
+<h1 data-tts="3cdeb1845b7d6845">思维模型详解：分布式系统思维</h1>
 <div class="meta">2026-05-28 · Day 37</div>
 </header>
 <!-- Card 1: CAP 定理 -->
 <section class="card c1">
-<h2>CAP 定理 · CAP Theorem</h2>
+<h2 data-tts="bf0b7501a19c6059">CAP 定理 · CAP Theorem</h2>
 <div class="subtitle">"一致性、可用性、分区容错，至多取其二。" — Eric Brewer, 2000</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -125,18 +126,18 @@
 <p>非平凡点：① 这不是工程怪癖，而是信息以有限速度传播带来的根本约束——任何"跨越空间的协调"都受它支配，包括人类组织、跨时区团队，甚至脑区之间有传导延迟的神经系统。② CP 与 AP 不是给整个系统贴的标签，而是<em>按操作粒度</em>的取舍：账户余额选 C（宁可拒绝也不能错），点赞计数选 A（晚几秒一致无所谓）。③ 真正的灾难几乎都来自"<em>选错了边</em>"——对本该 A 的操作强求 C（系统一断就全停摆），或对本该 C 的操作贪图 A（数据错乱）。</p>
 <p>实践：遇到任何协调难题，先拆两个问题——"这里的分区是什么，谁和谁可能失联？""这个操作我要的是正确还是要的是响应？"先分类，再设计。</p>
 <div class="diagram">
-<svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
-<polygon points="260,40 70,200 450,200" fill="none" stroke="#0a6fb8" stroke-width="2"></polygon>
-<circle cx="260" cy="40" r="6" fill="#0a6fb8"></circle>
-<circle cx="70" cy="200" r="6" fill="#0a6fb8"></circle>
-<circle cx="450" cy="200" r="6" fill="#0a6fb8"></circle>
-<text x="260" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="#2d3436">C 一致性</text>
-<text x="60" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#2d3436">A 可用性</text>
-<text x="450" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#c44545">P 分区容错</text>
-<text x="450" y="236" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">（不可放弃）</text>
-<text x="260" y="135" text-anchor="middle" font-size="11" fill="#636e72">分区一旦发生</text>
-<text x="260" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="#0a6fb8">真正的选择 = 沿 C↔A 这条边取舍</text>
-<line x1="120" y1="200" x2="400" y2="200" stroke="#fdcb6e" stroke-width="3" stroke-dasharray="6,4"></line>
+<svg viewbox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="none" points="260,40 70,200 450,200" stroke="#0a6fb8" stroke-width="2"></polygon>
+<circle cx="260" cy="40" fill="#0a6fb8" r="6"></circle>
+<circle cx="70" cy="200" fill="#0a6fb8" r="6"></circle>
+<circle cx="450" cy="200" fill="#0a6fb8" r="6"></circle>
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="260" y="28">C 一致性</text>
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="60" y="222">A 可用性</text>
+<text fill="#c44545" font-size="13" font-weight="700" text-anchor="middle" x="450" y="222">P 分区容错</text>
+<text fill="#868e96" font-size="9" font-style="italic" text-anchor="middle" x="450" y="236">（不可放弃）</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="260" y="135">分区一旦发生</text>
+<text fill="#0a6fb8" font-size="12" font-weight="700" text-anchor="middle" x="260" y="152">真正的选择 = 沿 C↔A 这条边取舍</text>
+<line stroke="#fdcb6e" stroke-dasharray="6,4" stroke-width="3" x1="120" x2="400" y1="200" y2="200"></line>
 </svg>
 <div class="caption">CAP：P 是前提不是选项，剩下的只是分区时 C 与 A 的权衡</div>
 </div>
@@ -168,7 +169,7 @@
 </section>
 <!-- Card 2: 最终一致性 -->
 <section class="card c2">
-<h2>最终一致性 · Eventual Consistency</h2>
+<h2 data-tts="913e11d28a5402a2">最终一致性 · Eventual Consistency</h2>
 <div class="subtitle">"只要停止写入，所有副本终将收敛到同一状态。"</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -203,7 +204,7 @@
 </section>
 <!-- Card 3: 幂等性 -->
 <section class="card c3">
-<h2>幂等性 · Idempotency</h2>
+<h2 data-tts="4db9547f3134fe6c">幂等性 · Idempotency</h2>
 <div class="subtitle">"f(f(x)) = f(x)——执行两次和执行一次，结果相同。"</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -238,7 +239,7 @@
 </section>
 <!-- Card 4: 背压 -->
 <section class="card c4">
-<h2>背压 · Backpressure</h2>
+<h2 data-tts="49a289ebad6b6b6f">背压 · Backpressure</h2>
 <div class="subtitle">"下游跟不上时，向上游回压'慢一点'——不丢弃、也不崩溃。"</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -246,21 +247,21 @@
 <p>非平凡点：① 没有背压的系统在过载时<em>不是变慢，而是雪崩式崩溃</em>——队列无界增长 → 内存耗尽 → 整个系统挂掉，比单纯变慢糟糕得多。背压的价值，是把"灾难性失败"转成"优雅降级"。② 反直觉的核心：<strong>主动降速（排队、限流、拒绝）反而能维持更高的可持续吞吐量</strong>——贪婪地全力接收，会在崩溃后让吞吐直接归零。③ 应对过载有三招：缓冲（buffer，治标）、丢弃（drop，可接受时）、背压（治本）。神经系统也用背压——突触抑制与感觉门控防止大脑被输入淹没。</p>
 <p>实践：识别你生活与工作中的"<em>无界队列</em>"——永远在涨的待办、收件箱、孩子的活动表。无界队列迟早雪崩。给它装上背压：设定明确的接收上限，满了就回压（拒绝或延后），而不是默默硬扛到崩溃。</p>
 <div class="diagram">
-<svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
-<rect x="30" y="60" width="110" height="50" rx="6" fill="#1b8a5a"></rect>
-<text x="85" y="90" text-anchor="middle" font-size="12" fill="#fff">生产者</text>
-<rect x="225" y="60" width="110" height="50" rx="6" fill="#1b8a5a" opacity="0.55"></rect>
-<text x="280" y="84" text-anchor="middle" font-size="12" fill="#fff">队列</text>
-<text x="280" y="100" text-anchor="middle" font-size="9" fill="#fff">（有上限）</text>
-<rect x="420" y="60" width="110" height="50" rx="6" fill="#1b8a5a"></rect>
-<text x="475" y="90" text-anchor="middle" font-size="12" fill="#fff">消费者</text>
-<path d="M 140 85 L 220 85" fill="none" stroke="#636e72" stroke-width="2" marker-end="url(#a4)"></path>
-<path d="M 335 85 L 415 85" fill="none" stroke="#636e72" stroke-width="2" marker-end="url(#a4)"></path>
-<defs><marker id="a4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
-<path d="M 475 115 C 475 160, 85 160, 85 118" fill="none" stroke="#c44545" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#a4r)"></path>
-<defs><marker id="a4r" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#c44545"></path></marker></defs>
-<text x="280" y="155" text-anchor="middle" font-size="11" font-weight="700" fill="#c44545">回压信号：队列满 → 让生产者降速</text>
-<text x="280" y="30" text-anchor="middle" font-size="11" fill="#868e96" font-style="italic">没有这条红线 → 队列无界增长 → 雪崩</text>
+<svg viewbox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#1b8a5a" height="50" rx="6" width="110" x="30" y="60"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="85" y="90">生产者</text>
+<rect fill="#1b8a5a" height="50" opacity="0.55" rx="6" width="110" x="225" y="60"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="280" y="84">队列</text>
+<text fill="#fff" font-size="9" text-anchor="middle" x="280" y="100">（有上限）</text>
+<rect fill="#1b8a5a" height="50" rx="6" width="110" x="420" y="60"></rect>
+<text fill="#fff" font-size="12" text-anchor="middle" x="475" y="90">消费者</text>
+<path d="M 140 85 L 220 85" fill="none" marker-end="url(#a4)" stroke="#636e72" stroke-width="2"></path>
+<path d="M 335 85 L 415 85" fill="none" marker-end="url(#a4)" stroke="#636e72" stroke-width="2"></path>
+<defs><marker id="a4" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
+<path d="M 475 115 C 475 160, 85 160, 85 118" fill="none" marker-end="url(#a4r)" stroke="#c44545" stroke-dasharray="5,4" stroke-width="2"></path>
+<defs><marker id="a4r" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#c44545"></path></marker></defs>
+<text fill="#c44545" font-size="11" font-weight="700" text-anchor="middle" x="280" y="155">回压信号：队列满 → 让生产者降速</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="middle" x="280" y="30">没有这条红线 → 队列无界增长 → 雪崩</text>
 </svg>
 <div class="caption">背压 = 把下游拥塞回传给上游的负反馈环</div>
 </div>
