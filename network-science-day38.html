@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：网络科学思维 · 2026-05-29</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：网络科学思维</h1>
+<div class="meta">2026-05-29 · Day 38</div>
+</header>
+<!-- Card 1: 小世界网络 -->
+<section class="card c1">
+<h2>小世界网络 · Small-World Networks</h2>
+<div class="subtitle">"只需极少数长程捷径，就能让世界骤然变小。" — Watts &amp; Strogatz, 1998</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>小世界 = <strong>高聚类与短路径同时成立</strong>。规则网络（每人只连身边邻居）聚类高但绕一圈很远；随机网络路径短却毫无聚类。关键发现：只要把极少数（哪怕 1%）本地连接随机"重连"成跨越远方的捷径，平均路径长度就<strong>断崖式下降</strong>，而本地聚类几乎不变——于是同时拥有"紧密的小圈子"和"通往全世界的近路"。</p>
+<p>非平凡点：① 是<em>少数长程捷径</em>贡献了绝大部分"世界变小"，连接并不平权——删掉几条随机捷径路径暴涨，删掉本地连接几乎无感。② 短路径 ≠ 找得到路径。著名的"六度分隔"实验里链条平均约 6 步，但人们其实<em>看不见</em>这条 6 步路径——<strong>可达性不等于可导航性</strong>，能连到不代表你知道怎么连。③ 双刃：让创新与信息高速扩散的同一批捷径，也让病毒、谣言、金融风险同样高速扩散。结构本身既是高速公路，也是疫情通道。</p>
+<p>实践：想让一个想法或产品扩散，别把力气均摊到所有连接上——去找或搭建少数<em>跨群体的长程捷径</em>，它们才是缩短传播距离的杠杆。</p>
+<div class="diagram">
+<svg viewBox="0 0 540 220" xmlns="http://www.w3.org/2000/svg">
+<text x="120" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">规则网络（只连邻居）</text>
+<circle cx="120" cy="120" r="55" fill="none" stroke="#cdd5db" stroke-width="1.5"></circle>
+<g fill="#0a6fb8">
+<circle cx="120" cy="65" r="5"></circle><circle cx="159" cy="81" r="5"></circle><circle cx="175" cy="120" r="5"></circle><circle cx="159" cy="159" r="5"></circle><circle cx="120" cy="175" r="5"></circle><circle cx="81" cy="159" r="5"></circle><circle cx="65" cy="120" r="5"></circle><circle cx="81" cy="81" r="5"></circle>
+</g>
+<text x="120" y="205" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">聚类高 · 路径长</text>
+<path d="M 220 120 L 268 120" fill="none" marker-end="url(#arr)" stroke="#636e72" stroke-width="2"></path>
+<text x="244" y="110" text-anchor="middle" font-size="10" fill="#636e72">重连 1%</text>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
+<text x="420" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">小世界（+少数捷径）</text>
+<circle cx="420" cy="120" r="55" fill="none" stroke="#cdd5db" stroke-width="1.5"></circle>
+<g fill="#0a6fb8">
+<circle cx="420" cy="65" r="5"></circle><circle cx="459" cy="81" r="5"></circle><circle cx="475" cy="120" r="5"></circle><circle cx="459" cy="159" r="5"></circle><circle cx="420" cy="175" r="5"></circle><circle cx="381" cy="159" r="5"></circle><circle cx="365" cy="120" r="5"></circle><circle cx="381" cy="81" r="5"></circle>
+</g>
+<line x1="420" y1="65" x2="420" y2="175" stroke="#c44545" stroke-width="2"></line>
+<line x1="365" y1="120" x2="459" y2="81" stroke="#c44545" stroke-width="2"></line>
+<text x="420" y="205" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">聚类不变 · 路径骤短</text>
+</svg>
+<div class="caption">少数红色长程捷径，让平均路径长度断崖式下降</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>"六度分隔"寄信实验：让普通人把信通过自己认识的人逐手转寄给陌生目标，平均约经过 6 个人就送达。世界之所以"小"，靠的正是极少数横跨多个圈子的人当桥梁——多数人只在本地圈内打转，是那几个"连接者"把整张网缝合成了小世界。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 分布式系统：设计 gossip 协议或 P2P overlay 时，纯环形拓扑收敛慢，纯随机连接维护成本高；<strong>本地连接 + 少量长程链路</strong>的小世界拓扑，既低维护又快收敛——这正是许多服务网格与传播算法的底层设计。② 跨学科认知：你横跨 AI、佛学、神经科学的能力，本身就是认知网络里的"长程捷径"——别人在单一领域里要绕 6 步才联得上的两个概念，你一步就接通。这是跨界者的结构性优势，不是玄学。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Small-World Networks</strong> — high clustering and short path lengths coexist. Rewiring just a tiny fraction (even 1%) of local links into long-range shortcuts collapses average path length while clustering stays intact (Watts &amp; Strogatz). Non-trivial: a few shortcuts do most of the "shrinking" — links aren't equal; reachability ≠ navigability (the famous six-degree chains were ~6 steps, but people couldn't <em>see</em> the path); the same shortcuts that spread ideas also spread contagion and risk. To make something diffuse, invest in the few cross-cluster bridges, not in all links equally.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想让 [想法/产品/影响力] 在 [某个网络或群体] 中扩散。请用小世界网络分析：
+① 这个网络里，谁是同时连着多个圈子的"长程捷径"节点？
+② 我现在的努力是均摊在所有连接上，还是集中在少数桥接节点上？
+③ 给出 2 个具体动作：建立或激活哪条跨群体捷径，能最大化缩短扩散路径。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want [idea/product/influence] to spread through [a network or community]. Analyze with small-world networks:
+1. Who are the "long-range shortcut" nodes connecting otherwise-separate clusters?
+2. Am I spreading effort evenly across all links, or concentrating on the few bridges?
+3. Give 2 concrete moves: which cross-cluster shortcut to build or activate to maximally shorten diffusion paths.</div>
+</section>
+<!-- Card 2: 弱连接的力量 -->
+<section class="card c2">
+<h2>弱连接的力量 · The Strength of Weak Ties</h2>
+<div class="subtitle">"弱连接，而非密友，是新信息与新机会的最大来源。" — Mark Granovetter, 1973</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>强连接（亲密好友）之间信息高度<strong>冗余</strong>——你知道的，他们大多也知道。弱连接（点头之交）连向你触不到的圈子，带来<strong>非冗余的新信息</strong>。研究发现：人们找到新工作，多数靠"偶尔联系"的弱连接，而非天天见面的密友——因为密友的信息和你几乎重叠，机会藏在圈子之外。</p>
+<p>非平凡点：① 弱连接的价值不在"关系强度"，而在<em>桥接性</em>——它跨越了"结构洞"，连通两个本无往来的群体。强连接通常嵌在同一个稠密小团里，信息在内部反复回荡。② 站在结构洞两侧的人能做<em>信息套利</em>：把 A 圈的知识带到 B 圈。创新常发生在<strong>边界</strong>，而非中心。③ 功能不可混淆：弱连接提供"信息"，强连接提供"支持与信任"——维护一大批强连接成本高且回报递减，而战略性地激活一批低成本弱连接，反而能极大扩张你的信息半径。</p>
+<p>实践：定期"激活"久未联系的弱连接（一句问候、一次转发、一条有用的链接），成本极低，却是新机会进入你生活的主要入口。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Granovetter 的"找工作"研究：访谈那些刚换工作的人，发现多数职位线索来自"不常见面"的弱连接，而非密友。原因很反直觉——你和密友处在同一个信息回路里，他们能告诉你的，你基本已经知道；真正带来新机会的，是那些站在你圈子边缘、连向别处的弱连接。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI 时代的认知套利：你的弱连接网络（关注的不同领域的人、不同社区）决定了你能接触到多少"非冗余信号"。若信息源全在同一个同温层，再多也是冗余。主动维护跨领域弱连接 = 给认知装上多个独立传感器。② 重大机会的规律：无论是自己的职业转折还是孩子的成长资源，往往来自"朋友的朋友"，而非核心圈。把全部精力投在巩固核心圈，等于亲手关上了通往新机会的那扇门。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The Strength of Weak Ties</strong> — close friends (strong ties) share highly redundant information; you mostly already know what they know. Acquaintances (weak ties) bridge into clusters you can't otherwise reach, delivering non-redundant information (Granovetter). The value lies not in tie strength but in <em>bridging structural holes</em>; innovation and opportunity arise at boundaries, not centers. Functions differ: weak ties give information, strong ties give support and trust. Strategically activating low-cost weak ties widens your information radius far more than over-investing in a few strong ones.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想为 [目标：找机会 / 获取新信息 / 扩大影响] 优化我的关系网络。请用弱连接理论分析：
+① 我目前的信息主要来自强连接（同温层）还是弱连接（跨圈）？冗余度有多高？
+② 找出 3 个我可以低成本激活的弱连接，它们能桥接到哪些我现在触不到的圈子？
+③ 帮我区分：哪些需求该找强连接（支持/信任），哪些该找弱连接（新信息）？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to optimize my network for [goal: opportunity / new information / influence]. Analyze using weak-tie theory:
+1. Does my information come mostly from strong ties (echo chamber) or weak ties (cross-cluster)? How redundant is it?
+2. Identify 3 low-cost weak ties to reactivate — which currently-unreachable clusters do they bridge to?
+3. Distinguish which needs call for strong ties (support/trust) vs weak ties (novel information).</div>
+</section>
+<!-- Card 3: 无标度网络与偏好依附 -->
+<section class="card c3">
+<h2>无标度网络与偏好依附 · Scale-Free Networks &amp; Preferential Attachment</h2>
+<div class="subtitle">"富者愈富：新节点偏好连接已经热门的节点。" — Barabási &amp; Albert, 1999</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>许多真实网络（互联网、引用、社交、蛋白质相互作用）的连接度<strong>不是钟形分布，而是幂律分布</strong>：极少数"枢纽（hub）"占据海量连接，绝大多数节点只有寥寥几条。生成机制是<strong>偏好依附</strong>——新节点加入时更倾向连向已经热门的节点，形成"富者愈富"的正反馈。</p>
+<p>非平凡点：① 这不是谁设计的，而是<em>增长 + 偏好依附</em>自然涌现——任何带"累积优势"的系统（财富、引用、粉丝、城市规模）都会自发长出幂律尾巴。② <em>鲁棒与脆弱的悖论</em>：无标度网络对随机故障极其鲁棒（随机删大概率删到无关紧要的小节点），却对针对性攻击极其脆弱（敲掉几个 hub 全网就崩）。同一个结构，既"超稳"又"超脆"，取决于失效是随机还是定向。③ <strong>没有"典型节点"</strong>——"平均连接度"几乎没有意义，因为分布没有特征尺度（这正是 scale-free 的含义）。用平均值去思考一个幂律世界，等于系统性误判。</p>
+<p>实践：要守护系统，先识别 hub（它们是单点故障，需重点冗余）；要快速影响网络，先撬动 hub（它们是杠杆点）；但别把命运全押在 hub 上（它们也是最脆弱的攻击面）。</p>
+<div class="diagram">
+<svg viewBox="0 0 540 210" xmlns="http://www.w3.org/2000/svg">
+<text x="270" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">无标度网络：少数 hub 占据多数连接</text>
+<g stroke="#e3b3b3" stroke-width="1.2">
+<line x1="180" y1="110" x2="90" y2="60"></line><line x1="180" y1="110" x2="70" y2="120"></line><line x1="180" y1="110" x2="95" y2="170"></line><line x1="180" y1="110" x2="150" y2="55"></line><line x1="180" y1="110" x2="150" y2="170"></line><line x1="180" y1="110" x2="360" y2="110"></line>
+<line x1="360" y1="110" x2="450" y2="60"></line><line x1="360" y1="110" x2="470" y2="120"></line><line x1="360" y1="110" x2="445" y2="170"></line><line x1="360" y1="110" x2="390" y2="55"></line><line x1="360" y1="110" x2="390" y2="170"></line>
+</g>
+<g fill="#d98c8c"><circle cx="90" cy="60" r="5"></circle><circle cx="70" cy="120" r="5"></circle><circle cx="95" cy="170" r="5"></circle><circle cx="150" cy="55" r="5"></circle><circle cx="150" cy="170" r="5"></circle><circle cx="450" cy="60" r="5"></circle><circle cx="470" cy="120" r="5"></circle><circle cx="445" cy="170" r="5"></circle><circle cx="390" cy="55" r="5"></circle><circle cx="390" cy="170" r="5"></circle></g>
+<circle cx="180" cy="110" r="16" fill="#c44545"></circle>
+<circle cx="360" cy="110" r="16" fill="#c44545"></circle>
+<text x="180" y="114" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">hub</text>
+<text x="360" y="114" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">hub</text>
+</svg>
+<div class="caption">随机删小节点≈无感；定向打掉 hub = 全网瓦解</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>万维网的链接结构：少数大型站点被海量页面链接，绝大多数页面几乎无人链接，连接度服从幂律——Google 的 PageRank 正是利用这种 hub 结构来排序。学术引用同理：少数论文被引上万次，多数论文只有个位数引用。这种"赢家通吃"的形状，不是偶然，而是偏好依附的必然产物。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 分布式系统与安全：无标度拓扑解释了为什么系统能扛住随机宕机，却可能被一次针对核心节点的攻击瘫痪——容灾必须<strong>给 hub 做重点冗余</strong>，而非均匀冗余。② 个人杠杆（"AI 超级个体"）：你的影响力增长同样服从偏好依附——早期获得的关注会吸引更多关注，冷启动最难，但越过临界点后增长自我加速。策略：集中资源突破第一个 hub 级节点（一个关键平台、一个关键人），而非均匀撒网。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Scale-Free Networks &amp; Preferential Attachment</strong> — real networks (web, citations, social, protein) follow a power-law degree distribution: a few hubs hold most connections, most nodes have few. Mechanism: new nodes preferentially attach to already-popular ones ("rich get richer," Barabási &amp; Albert). Key points: this emerges from growth + preferential attachment, not design; it's simultaneously robust to random failure yet fragile to targeted attacks on hubs; there's no "typical node," so averages mislead (no characteristic scale). To protect a system, harden its hubs; to influence it fast, target hubs; but don't bet everything on hubs — they're the fragile points too.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在分析 / 设计 [一个网络：系统 / 社区 / 影响力布局]。请用无标度网络分析：
+① 这个网络里的 hub（超级节点）是谁 / 是什么？它们承载了多大比例的连接？
+② 鲁棒性审计：哪些 hub 是单点故障？遭遇针对性攻击会怎样？该给哪些 hub 加冗余？
+③ 若我想用最小投入最大化影响，该集中撬动哪个 hub，而不是均匀撒资源？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm analyzing/designing [a network: system / community / influence map]. Analyze using scale-free networks:
+1. Who/what are the hubs? What fraction of all connections do they carry?
+2. Robustness audit: which hubs are single points of failure, what happens under targeted attack, which need redundancy?
+3. If I want maximum impact for minimum investment, which hub should I concentrate on rather than spreading effort evenly?</div>
+</section>
+<!-- Card 4: 同质相吸与回音室 -->
+<section class="card c4">
+<h2>同质相吸与回音室 · Homophily &amp; Echo Chambers</h2>
+<div class="subtitle">"物以类聚——同质带来沟通的舒适，代价是信息的冗余。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>同质相吸（homophily）：人倾向于与"相似的人"建立连接（同龄、同观点、同背景）。在网络层面，这让整张网自发裂解成<strong>内部同质、彼此隔离的社群</strong>。再叠加算法推荐的正反馈，就形成<strong>回音室与过滤气泡</strong>——你只看到不断强化既有信念的信息。</p>
+<p>非平凡点：① 极化<em>不需要任何人想极化</em>——只要每个人都轻微偏好同类，加上信息沿连接传播，宏观隔离就会涌现（这与谢林的隔离模型同构：微观偏好 → 宏观分裂）。<strong>系统性问题未必有"坏人"</strong>。② 回音室里信噪比<em>看似</em>很高（大家都"认同"），实则信息冗余极高——都是同一信号的回响。这恰是弱连接理论的反面：回音室 = 弱连接的缺失。③ AI 推荐系统是同质化的<em>加速器</em>：它优化"参与度"，而参与度奖励同温层内容，于是算法把人推向越来越窄的气泡——技术在放大人性本就存在的结构倾向。</p>
+<p>实践：刻意"逆同质"——主动接触异质信息源，不是为了表态，而是为了打破信息冗余、获得真正的认知更新。定期给自己的信息网络做一次"多样性审计"。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>社交媒体上的政治极化：研究显示，人们绝大多数的转发与关注都指向与自己立场一致的账号，跨立场连接极其稀少，于是形成两个几乎不交流的回音室。更微妙的是，每个气泡内部都觉得自己代表"大多数"——因为他们眼中的世界，本就是被同质过滤后的样本。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI 工作流：若你只用一个模型、一种 prompt 风格、一个信息源来训练自己的判断，你是在给认知亲手砌回音室。主动引入异质视角（不同模型、专门唱反调的 prompt、对立观点）= 给思考装上"反共识传感器"。② 深度学习者的陷阱：你越深耕一个领域，圈子越同质，越容易把"圈内共识"误当"客观真理"。佛学讲"所知障"——知道得越多，反被已知遮蔽。定期跨出同温层，是认知健康的必要维护。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Homophily &amp; Echo Chambers</strong> — people preferentially connect with similar others (age, views, background); at the network level this self-segregates into internally homogeneous, mutually isolated clusters. Combined with recommender feedback, it produces echo chambers and filter bubbles. Key points: polarization emerges without anyone <em>intending</em> it — mild individual preference for similarity plus information flowing along ties suffices (isomorphic to Schelling's segregation model); echo chambers feel high signal-to-noise but are actually high in redundancy (the same signal echoing); recommender systems optimize engagement, which rewards in-group content, accelerating the narrowing. The antidote is deliberate counter-homophily — auditing your information network for genuine diversity, not comfort.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想检查 [我的信息环境 / 团队 / 某个社区] 是否陷入了回音室。请用同质相吸分析：
+① 我的主要信息源在 [立场 / 背景 / 视角] 上的多样性如何？哪里高度同质？
+② 哪些信号看似"很多人认同"，其实只是同一来源的冗余回响？
+③ 给出 3 个具体的"反同质"动作：接触哪些异质来源能最有效打破我的过滤气泡？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to check whether [my information diet / team / a community] has become an echo chamber. Analyze using homophily:
+1. How diverse are my main information sources in [stance/background/perspective]? Where is it highly homogeneous?
+2. Which signals that look "widely endorsed" are actually redundant echoes of a single source?
+3. Give 3 concrete counter-homophily moves: which heterogeneous sources would most effectively pop my filter bubble?</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>

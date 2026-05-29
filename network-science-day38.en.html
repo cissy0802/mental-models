@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Network Science Thinking · 2026-05-29</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Network Science Thinking</h1>
+<div class="meta">2026-05-29 · Day 38</div>
+</header>
+<!-- Card 1: Small-World Networks -->
+<section class="card c1">
+<h2>Small-World Networks</h2>
+<div class="subtitle">"A tiny number of long-range shortcuts is enough to make the world suddenly small." — Watts &amp; Strogatz, 1998</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>A small world means <strong>high clustering and short path lengths coexist</strong>. A regular network (each node linked only to nearby neighbors) has high clustering but long way-arounds; a random network has short paths but no clustering. The key finding: rewiring just a tiny fraction (even 1%) of local links into long-range shortcuts makes the average path length <strong>collapse</strong> while local clustering barely changes — so you get tight little circles <em>and</em> near-paths to the whole world at once.</p>
+<p>Non-trivial: (1) it's the <em>few long-range shortcuts</em> that do most of the "shrinking" — links aren't equal: delete a few random shortcuts and paths blow up; delete local links and you barely notice. (2) Short path ≠ findable path. The famous "six degrees" chains averaged ~6 steps, but people couldn't <em>see</em> that 6-step path — <strong>reachability is not navigability</strong>; being connectable doesn't mean you know how to connect. (3) Double-edged: the same shortcuts that let innovation and information spread fast also let viruses, rumors, and financial risk spread fast. The structure is both a highway and a contagion channel.</p>
+<p>Practice: to make an idea or product diffuse, don't spread effort evenly across all links — find or build the few <em>cross-cluster long-range shortcuts</em>; they're the lever that shortens the distance.</p>
+<div class="diagram">
+<svg viewBox="0 0 540 220" xmlns="http://www.w3.org/2000/svg">
+<text x="120" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">Regular (neighbors only)</text>
+<circle cx="120" cy="120" r="55" fill="none" stroke="#cdd5db" stroke-width="1.5"></circle>
+<g fill="#0a6fb8">
+<circle cx="120" cy="65" r="5"></circle><circle cx="159" cy="81" r="5"></circle><circle cx="175" cy="120" r="5"></circle><circle cx="159" cy="159" r="5"></circle><circle cx="120" cy="175" r="5"></circle><circle cx="81" cy="159" r="5"></circle><circle cx="65" cy="120" r="5"></circle><circle cx="81" cy="81" r="5"></circle>
+</g>
+<text x="120" y="205" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">high clustering · long paths</text>
+<path d="M 220 120 L 268 120" fill="none" marker-end="url(#arr)" stroke="#636e72" stroke-width="2"></path>
+<text x="244" y="110" text-anchor="middle" font-size="10" fill="#636e72">rewire 1%</text>
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
+<text x="420" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">Small-world (+few shortcuts)</text>
+<circle cx="420" cy="120" r="55" fill="none" stroke="#cdd5db" stroke-width="1.5"></circle>
+<g fill="#0a6fb8">
+<circle cx="420" cy="65" r="5"></circle><circle cx="459" cy="81" r="5"></circle><circle cx="475" cy="120" r="5"></circle><circle cx="459" cy="159" r="5"></circle><circle cx="420" cy="175" r="5"></circle><circle cx="381" cy="159" r="5"></circle><circle cx="365" cy="120" r="5"></circle><circle cx="381" cy="81" r="5"></circle>
+</g>
+<line x1="420" y1="65" x2="420" y2="175" stroke="#c44545" stroke-width="2"></line>
+<line x1="365" y1="120" x2="459" y2="81" stroke="#c44545" stroke-width="2"></line>
+<text x="420" y="205" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">clustering kept · paths plunge</text>
+</svg>
+<div class="caption">A few red long-range shortcuts make the average path length collapse</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The "six degrees" letter experiment: ordinary people were asked to forward a letter, hand to hand through acquaintances, toward a stranger — it arrived after ~6 people on average. The world is "small" precisely because of the few people who span many circles and act as bridges; most people only circulate within their local cluster, and it's those few connectors who stitch the whole net into a small world.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Distributed systems: designing a gossip protocol or P2P overlay, a pure ring topology converges slowly and a fully random one is costly to maintain; a small-world topology (<strong>local links + a few long-range edges</strong>) is both cheap and fast-converging — the underlying design of many service meshes and propagation algorithms. (2) Cross-disciplinary cognition: your ability to span AI, Buddhism, and neuroscience is itself a "long-range shortcut" in your conceptual network — two ideas others need ~6 steps to connect within one field, you connect in one. That's a structural advantage of the boundary-crosser, not mysticism.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want [idea/product/influence] to spread through [a network or community]. Analyze with small-world networks:
+1. Who are the "long-range shortcut" nodes connecting otherwise-separate clusters?
+2. Am I spreading effort evenly across all links, or concentrating on the few bridges?
+3. Give 2 concrete moves: which cross-cluster shortcut to build or activate to maximally shorten diffusion paths.</div>
+</section>
+<!-- Card 2: The Strength of Weak Ties -->
+<section class="card c2">
+<h2>The Strength of Weak Ties</h2>
+<div class="subtitle">"Weak ties, not close friends, are your greatest source of new information and opportunity." — Mark Granovetter, 1973</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Among strong ties (close friends), information is highly <strong>redundant</strong> — what you know, they mostly know too. Weak ties (acquaintances) reach into clusters you can't otherwise touch, delivering <strong>non-redundant new information</strong>. Research found people land new jobs mostly through "occasionally contacted" weak ties, not daily-seen close friends — because a close friend's information overlaps yours almost entirely; opportunity lives outside the circle.</p>
+<p>Non-trivial: (1) a weak tie's value isn't in tie strength but in its <em>bridging</em> — it spans a "structural hole," connecting two otherwise-unlinked groups. Strong ties usually sit inside one dense clique where information just echoes around. (2) Whoever stands on both sides of a structural hole can do <em>information arbitrage</em>: carry knowledge from cluster A into cluster B. Innovation tends to happen at the <strong>boundary</strong>, not the center. (3) Don't confuse functions: weak ties supply "information," strong ties supply "support and trust" — maintaining a large set of strong ties is costly with diminishing returns, while strategically activating low-cost weak ties hugely widens your information radius.</p>
+<p>Practice: periodically "reactivate" long-dormant weak ties (a hello, a forward, one useful link) — it costs almost nothing yet is the main doorway through which new opportunity enters your life.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Granovetter's "getting a job" study: interviewing people who had just changed jobs, he found most job leads came from "rarely seen" weak ties, not close friends. The reason is counterintuitive — you and your close friends share one information loop, so what they can tell you, you basically already know; what actually brings new opportunity are the weak ties on your periphery that connect elsewhere.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Cognitive arbitrage in the AI era: your weak-tie network (people in different fields, different communities you follow) determines how much "non-redundant signal" you can reach. If all sources sit in one echo chamber, more is still redundant. Actively maintaining cross-domain weak ties = mounting several independent sensors on your cognition. (2) The pattern of big opportunities: whether your own career pivot or a child's growth resources, they usually come from "a friend of a friend," not the core circle. Pouring all your energy into the core circle is shutting, with your own hands, the door to new opportunity.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to optimize my network for [goal: opportunity / new information / influence]. Analyze using weak-tie theory:
+1. Does my information come mostly from strong ties (echo chamber) or weak ties (cross-cluster)? How redundant is it?
+2. Identify 3 low-cost weak ties to reactivate — which currently-unreachable clusters do they bridge to?
+3. Distinguish which needs call for strong ties (support/trust) vs weak ties (novel information).</div>
+</section>
+<!-- Card 3: Scale-Free Networks & Preferential Attachment -->
+<section class="card c3">
+<h2>Scale-Free Networks &amp; Preferential Attachment</h2>
+<div class="subtitle">"Rich get richer: new nodes prefer to attach to already-popular nodes." — Barabási &amp; Albert, 1999</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Many real networks (the internet, citations, social graphs, protein interactions) have a degree distribution that is <strong>not bell-shaped but power-law</strong>: a few "hubs" hold a huge share of connections, while the vast majority of nodes have only a handful. The generating mechanism is <strong>preferential attachment</strong> — new nodes prefer to link to already-popular nodes, creating a "rich get richer" positive feedback.</p>
+<p>Non-trivial: (1) no one designs this; it <em>emerges</em> from growth + preferential attachment — any system with "cumulative advantage" (wealth, citations, followers, city size) spontaneously grows a power-law tail. (2) The <em>robust-yet-fragile paradox</em>: scale-free networks are extremely robust to random failure (delete a node at random and you likely hit an insignificant small one) yet extremely fragile to targeted attack (knock out a few hubs and the whole net collapses). One structure is both "ultra-stable" and "ultra-brittle," depending on whether failure is random or directed. (3) <strong>There is no "typical node"</strong> — the "average degree" is nearly meaningless because the distribution has no characteristic scale (this is what scale-free means). Reasoning about a power-law world with averages is systematic misjudgment.</p>
+<p>Practice: to protect a system, first identify its hubs (single points of failure that need focused redundancy); to influence a network fast, lever the hubs (they're the leverage points); but don't bet everything on hubs (they're also the most fragile attack surface).</p>
+<div class="diagram">
+<svg viewBox="0 0 540 210" xmlns="http://www.w3.org/2000/svg">
+<text x="270" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">Scale-free: a few hubs hold most links</text>
+<g stroke="#e3b3b3" stroke-width="1.2">
+<line x1="180" y1="110" x2="90" y2="60"></line><line x1="180" y1="110" x2="70" y2="120"></line><line x1="180" y1="110" x2="95" y2="170"></line><line x1="180" y1="110" x2="150" y2="55"></line><line x1="180" y1="110" x2="150" y2="170"></line><line x1="180" y1="110" x2="360" y2="110"></line>
+<line x1="360" y1="110" x2="450" y2="60"></line><line x1="360" y1="110" x2="470" y2="120"></line><line x1="360" y1="110" x2="445" y2="170"></line><line x1="360" y1="110" x2="390" y2="55"></line><line x1="360" y1="110" x2="390" y2="170"></line>
+</g>
+<g fill="#d98c8c"><circle cx="90" cy="60" r="5"></circle><circle cx="70" cy="120" r="5"></circle><circle cx="95" cy="170" r="5"></circle><circle cx="150" cy="55" r="5"></circle><circle cx="150" cy="170" r="5"></circle><circle cx="450" cy="60" r="5"></circle><circle cx="470" cy="120" r="5"></circle><circle cx="445" cy="170" r="5"></circle><circle cx="390" cy="55" r="5"></circle><circle cx="390" cy="170" r="5"></circle></g>
+<circle cx="180" cy="110" r="16" fill="#c44545"></circle>
+<circle cx="360" cy="110" r="16" fill="#c44545"></circle>
+<text x="180" y="114" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">hub</text>
+<text x="360" y="114" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">hub</text>
+</svg>
+<div class="caption">Delete a small node ≈ no effect; take out a hub = the net unravels</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The web's link structure: a few large sites are linked by countless pages while the vast majority of pages are barely linked at all — degree follows a power law, and Google's PageRank exploits exactly this hub structure to rank. Academic citations are the same: a few papers are cited tens of thousands of times, most only single digits. This "winner-take-all" shape isn't accidental; it's the inevitable product of preferential attachment.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Distributed systems and security: scale-free topology explains why a system survives random outages yet can be paralyzed by a single attack on a core node — disaster recovery must give <strong>focused redundancy to hubs</strong>, not uniform redundancy. (2) Personal leverage ("AI super-individual"): your influence also grows by preferential attachment — early attention attracts more attention; the cold start is hardest, but past the critical point growth self-accelerates. Strategy: concentrate resources to break through the first hub-level node (one key platform, one key person) rather than scattering effort.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm analyzing/designing [a network: system / community / influence map]. Analyze using scale-free networks:
+1. Who/what are the hubs? What fraction of all connections do they carry?
+2. Robustness audit: which hubs are single points of failure, what happens under targeted attack, which need redundancy?
+3. If I want maximum impact for minimum investment, which hub should I concentrate on rather than spreading effort evenly?</div>
+</section>
+<!-- Card 4: Homophily & Echo Chambers -->
+<section class="card c4">
+<h2>Homophily &amp; Echo Chambers</h2>
+<div class="subtitle">"Birds of a feather flock together — homophily buys the comfort of easy communication at the cost of redundant information."</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Homophily: people tend to connect with those who are "similar" (same age, views, background). At the network level this self-segregates the whole graph into <strong>internally homogeneous, mutually isolated clusters</strong>. Layer on the positive feedback of recommender algorithms and you get <strong>echo chambers and filter bubbles</strong> — you only see information that keeps reinforcing what you already believe.</p>
+<p>Non-trivial: (1) polarization <em>requires no one to intend it</em> — a mild individual preference for similarity, plus information flowing along ties, is enough for macro-segregation to emerge (isomorphic to Schelling's segregation model: micro preference → macro split). <strong>A systemic problem need not have any "bad actor."</strong> (2) Inside an echo chamber the signal-to-noise <em>seems</em> high (everyone "agrees"), but information is in fact highly redundant — all echoes of one signal. This is precisely the inverse of weak-tie theory: an echo chamber = the absence of weak ties. (3) Recommender systems <em>accelerate</em> homophily: they optimize "engagement," and engagement rewards in-group content, so the algorithm pushes people into ever-narrower bubbles — technology amplifying a structural tendency already in human nature.</p>
+<p>Practice: deliberately counter-homophily — actively seek out heterogeneous sources, not to make a statement but to break information redundancy and get genuine cognitive updates. Periodically run a "diversity audit" of your information network.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Political polarization on social media: studies show the vast majority of people's reshares and follows point to accounts that share their stance, with cross-stance links extremely sparse — forming two echo chambers that barely communicate. The subtler part: each bubble believes it represents "the majority," because the world they see is already a homophily-filtered sample.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) AI workflows: if you train your judgment on a single model, one prompt style, one source, you're hand-building an echo chamber for your cognition. Deliberately introducing heterogeneous perspectives (different models, a prompt explicitly told to play devil's advocate, opposing views) = mounting a "contrarian sensor" on your thinking. (2) The deep learner's trap: the more you specialize in one field, the more homogeneous your circle, and the easier it is to mistake "in-group consensus" for "objective truth." Buddhism speaks of the "obstacle of the known" — the more you know, the more you can be blinded by what you already know. Periodically stepping outside the bubble is necessary maintenance for cognitive health.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to check whether [my information diet / team / a community] has become an echo chamber. Analyze using homophily:
+1. How diverse are my main information sources in [stance/background/perspective]? Where is it highly homogeneous?
+2. Which signals that look "widely endorsed" are actually redundant echoes of a single source?
+3. Give 3 concrete counter-homophily moves: which heterogeneous sources would most effectively pop my filter bubble?</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Back to index</a>
+</footer>
+</div>
+</body>
+</html>
