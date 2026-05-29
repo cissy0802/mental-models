@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
@@ -112,12 +113,12 @@
 <body>
 <div class="container">
 <header class="page-header">
-<h1>思维模型详解：网络科学思维</h1>
+<h1 data-tts="dae09f245f13c303">思维模型详解：网络科学思维</h1>
 <div class="meta">2026-05-29 · Day 38</div>
 </header>
 <!-- Card 1: 小世界网络 -->
 <section class="card c1">
-<h2>小世界网络 · Small-World Networks</h2>
+<h2 data-tts="80afc95d80c32a22">小世界网络 · Small-World Networks</h2>
 <div class="subtitle">"只需极少数长程捷径，就能让世界骤然变小。" — Watts &amp; Strogatz, 1998</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -125,24 +126,24 @@
 <p>非平凡点：① 是<em>少数长程捷径</em>贡献了绝大部分"世界变小"，连接并不平权——删掉几条随机捷径路径暴涨，删掉本地连接几乎无感。② 短路径 ≠ 找得到路径。著名的"六度分隔"实验里链条平均约 6 步，但人们其实<em>看不见</em>这条 6 步路径——<strong>可达性不等于可导航性</strong>，能连到不代表你知道怎么连。③ 双刃：让创新与信息高速扩散的同一批捷径，也让病毒、谣言、金融风险同样高速扩散。结构本身既是高速公路，也是疫情通道。</p>
 <p>实践：想让一个想法或产品扩散，别把力气均摊到所有连接上——去找或搭建少数<em>跨群体的长程捷径</em>，它们才是缩短传播距离的杠杆。</p>
 <div class="diagram">
-<svg viewBox="0 0 540 220" xmlns="http://www.w3.org/2000/svg">
-<text x="120" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">规则网络（只连邻居）</text>
-<circle cx="120" cy="120" r="55" fill="none" stroke="#cdd5db" stroke-width="1.5"></circle>
+<svg viewbox="0 0 540 220" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="120" y="22">规则网络（只连邻居）</text>
+<circle cx="120" cy="120" fill="none" r="55" stroke="#cdd5db" stroke-width="1.5"></circle>
 <g fill="#0a6fb8">
 <circle cx="120" cy="65" r="5"></circle><circle cx="159" cy="81" r="5"></circle><circle cx="175" cy="120" r="5"></circle><circle cx="159" cy="159" r="5"></circle><circle cx="120" cy="175" r="5"></circle><circle cx="81" cy="159" r="5"></circle><circle cx="65" cy="120" r="5"></circle><circle cx="81" cy="81" r="5"></circle>
 </g>
-<text x="120" y="205" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">聚类高 · 路径长</text>
+<text fill="#868e96" font-size="10" font-style="italic" text-anchor="middle" x="120" y="205">聚类高 · 路径长</text>
 <path d="M 220 120 L 268 120" fill="none" marker-end="url(#arr)" stroke="#636e72" stroke-width="2"></path>
-<text x="244" y="110" text-anchor="middle" font-size="10" fill="#636e72">重连 1%</text>
-<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
-<text x="420" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">小世界（+少数捷径）</text>
-<circle cx="420" cy="120" r="55" fill="none" stroke="#cdd5db" stroke-width="1.5"></circle>
+<text fill="#636e72" font-size="10" text-anchor="middle" x="244" y="110">重连 1%</text>
+<defs><marker id="arr" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="420" y="22">小世界（+少数捷径）</text>
+<circle cx="420" cy="120" fill="none" r="55" stroke="#cdd5db" stroke-width="1.5"></circle>
 <g fill="#0a6fb8">
 <circle cx="420" cy="65" r="5"></circle><circle cx="459" cy="81" r="5"></circle><circle cx="475" cy="120" r="5"></circle><circle cx="459" cy="159" r="5"></circle><circle cx="420" cy="175" r="5"></circle><circle cx="381" cy="159" r="5"></circle><circle cx="365" cy="120" r="5"></circle><circle cx="381" cy="81" r="5"></circle>
 </g>
-<line x1="420" y1="65" x2="420" y2="175" stroke="#c44545" stroke-width="2"></line>
-<line x1="365" y1="120" x2="459" y2="81" stroke="#c44545" stroke-width="2"></line>
-<text x="420" y="205" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">聚类不变 · 路径骤短</text>
+<line stroke="#c44545" stroke-width="2" x1="420" x2="420" y1="65" y2="175"></line>
+<line stroke="#c44545" stroke-width="2" x1="365" x2="459" y1="120" y2="81"></line>
+<text fill="#868e96" font-size="10" font-style="italic" text-anchor="middle" x="420" y="205">聚类不变 · 路径骤短</text>
 </svg>
 <div class="caption">少数红色长程捷径，让平均路径长度断崖式下降</div>
 </div>
@@ -174,7 +175,7 @@
 </section>
 <!-- Card 2: 弱连接的力量 -->
 <section class="card c2">
-<h2>弱连接的力量 · The Strength of Weak Ties</h2>
+<h2 data-tts="e70244dff59842f5">弱连接的力量 · The Strength of Weak Ties</h2>
 <div class="subtitle">"弱连接，而非密友，是新信息与新机会的最大来源。" — Mark Granovetter, 1973</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -209,7 +210,7 @@
 </section>
 <!-- Card 3: 无标度网络与偏好依附 -->
 <section class="card c3">
-<h2>无标度网络与偏好依附 · Scale-Free Networks &amp; Preferential Attachment</h2>
+<h2 data-tts="3194c81daab75129">无标度网络与偏好依附 · Scale-Free Networks &amp; Preferential Attachment</h2>
 <div class="subtitle">"富者愈富：新节点偏好连接已经热门的节点。" — Barabási &amp; Albert, 1999</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -217,17 +218,17 @@
 <p>非平凡点：① 这不是谁设计的，而是<em>增长 + 偏好依附</em>自然涌现——任何带"累积优势"的系统（财富、引用、粉丝、城市规模）都会自发长出幂律尾巴。② <em>鲁棒与脆弱的悖论</em>：无标度网络对随机故障极其鲁棒（随机删大概率删到无关紧要的小节点），却对针对性攻击极其脆弱（敲掉几个 hub 全网就崩）。同一个结构，既"超稳"又"超脆"，取决于失效是随机还是定向。③ <strong>没有"典型节点"</strong>——"平均连接度"几乎没有意义，因为分布没有特征尺度（这正是 scale-free 的含义）。用平均值去思考一个幂律世界，等于系统性误判。</p>
 <p>实践：要守护系统，先识别 hub（它们是单点故障，需重点冗余）；要快速影响网络，先撬动 hub（它们是杠杆点）；但别把命运全押在 hub 上（它们也是最脆弱的攻击面）。</p>
 <div class="diagram">
-<svg viewBox="0 0 540 210" xmlns="http://www.w3.org/2000/svg">
-<text x="270" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#2d3436">无标度网络：少数 hub 占据多数连接</text>
+<svg viewbox="0 0 540 210" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="270" y="20">无标度网络：少数 hub 占据多数连接</text>
 <g stroke="#e3b3b3" stroke-width="1.2">
-<line x1="180" y1="110" x2="90" y2="60"></line><line x1="180" y1="110" x2="70" y2="120"></line><line x1="180" y1="110" x2="95" y2="170"></line><line x1="180" y1="110" x2="150" y2="55"></line><line x1="180" y1="110" x2="150" y2="170"></line><line x1="180" y1="110" x2="360" y2="110"></line>
-<line x1="360" y1="110" x2="450" y2="60"></line><line x1="360" y1="110" x2="470" y2="120"></line><line x1="360" y1="110" x2="445" y2="170"></line><line x1="360" y1="110" x2="390" y2="55"></line><line x1="360" y1="110" x2="390" y2="170"></line>
+<line x1="180" x2="90" y1="110" y2="60"></line><line x1="180" x2="70" y1="110" y2="120"></line><line x1="180" x2="95" y1="110" y2="170"></line><line x1="180" x2="150" y1="110" y2="55"></line><line x1="180" x2="150" y1="110" y2="170"></line><line x1="180" x2="360" y1="110" y2="110"></line>
+<line x1="360" x2="450" y1="110" y2="60"></line><line x1="360" x2="470" y1="110" y2="120"></line><line x1="360" x2="445" y1="110" y2="170"></line><line x1="360" x2="390" y1="110" y2="55"></line><line x1="360" x2="390" y1="110" y2="170"></line>
 </g>
 <g fill="#d98c8c"><circle cx="90" cy="60" r="5"></circle><circle cx="70" cy="120" r="5"></circle><circle cx="95" cy="170" r="5"></circle><circle cx="150" cy="55" r="5"></circle><circle cx="150" cy="170" r="5"></circle><circle cx="450" cy="60" r="5"></circle><circle cx="470" cy="120" r="5"></circle><circle cx="445" cy="170" r="5"></circle><circle cx="390" cy="55" r="5"></circle><circle cx="390" cy="170" r="5"></circle></g>
-<circle cx="180" cy="110" r="16" fill="#c44545"></circle>
-<circle cx="360" cy="110" r="16" fill="#c44545"></circle>
-<text x="180" y="114" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">hub</text>
-<text x="360" y="114" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">hub</text>
+<circle cx="180" cy="110" fill="#c44545" r="16"></circle>
+<circle cx="360" cy="110" fill="#c44545" r="16"></circle>
+<text fill="#fff" font-size="10" font-weight="700" text-anchor="middle" x="180" y="114">hub</text>
+<text fill="#fff" font-size="10" font-weight="700" text-anchor="middle" x="360" y="114">hub</text>
 </svg>
 <div class="caption">随机删小节点≈无感；定向打掉 hub = 全网瓦解</div>
 </div>
@@ -259,7 +260,7 @@
 </section>
 <!-- Card 4: 同质相吸与回音室 -->
 <section class="card c4">
-<h2>同质相吸与回音室 · Homophily &amp; Echo Chambers</h2>
+<h2 data-tts="8c1c22ae70461184">同质相吸与回音室 · Homophily &amp; Echo Chambers</h2>
 <div class="subtitle">"物以类聚——同质带来沟通的舒适，代价是信息的冗余。"</div>
 <div class="section-label">中文详解</div>
 <hr/>
