@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Algorithmic Thinking · 2026-05-30</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Daily: Algorithmic Thinking</h1>
+    <div class="meta">2026-05-30 · Day 39</div>
+  </header>
+
+  <!-- Card 1: Divide and Conquer -->
+  <section class="card c1">
+    <h2>Divide and Conquer</h2>
+    <div class="subtitle">"To solve a problem, find a way to make smaller versions of itself."</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Divide-and-conquer is not the shallow idea of "break the big problem into smaller ones." It requires that subproblems be <strong>structurally isomorphic to the original</strong> AND <strong>relatively independent</strong>. Only when both hold does recursion actually reduce complexity. Otherwise you've just moved code around without saving any work.</p>
+    <p>Non-trivial: (1) the merge step decides everything. The Master Theorem makes it formal — if merge cost ≥ subproblem cost, divide-and-conquer <em>doesn't pay</em>. This is why "split-then-combine" sounds appealing but often delivers no speedup. (2) The dominant failure mode is "pseudo-divide": subproblems share state, call back into each other, look split but are tightly coupled. Diagnostic: can two subproblems be solved by two people in two rooms without speaking? If no, the boundary is wrong. (3) Structurally isomorphic to the Buddhist deconstruction of self: what looks like one "big problem" is an aggregate; see it as a small number of independent strands and difficulty drops an order of magnitude.</p>
+    <p>Practice: before dividing, answer two questions — "How expensive is my merge?" and "How many hidden dependencies cross the subproblem boundary?" If either is high, <strong>stop dividing and pick a different strategy</strong>.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Merge sort, O(n log n): split the array in half, recurse, then linearly merge. Merge cost O(n) &lt; subproblem cost → the Master Theorem yields O(n log n). MapReduce is the engineering-scale incarnation — Google indexed petabytes by ensuring "map is independent, reduce is cheap." The moment reduce becomes expensive (cross-shard joins, complex aggregations), the divide-advantage evaporates and the framework turns into a performance killer.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Engineering: split an "AI system overhaul" into data layer / model layer / application layer / evaluation layer. If those four layers need a weekly 3-hour sync meeting to move forward, that's <em>pseudo-divide</em> — the boundary is wrong. True divide = the four teams take interface contracts and run independently for 90 days. (2) Learning a new field: split "introduction to quantum mechanics" into math basics / physical intuition / experimental facts / philosophical interpretations. The strands are relatively independent (interpretations don't change the math) and the merge is cheap (draw one concept map at the end). (3) <strong>The earliest symptom of pseudo-divide is meeting growth</strong> — if cross-subteam meetings climb exponentially, the subproblems aren't independent enough. Redraw boundaries; don't schedule more syncs.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm applying divide-and-conquer to [problem/project], split into subproblems [sub1, sub2, ...]. Stress-test me:
+1. Are these subproblems truly "structurally isomorphic + relatively independent"? Flag the two most likely hidden couplings.
+2. Estimate the merge-step cost — will it eat the parallelism gain?
+3. If you detect pseudo-divide, propose one re-partition that makes subproblems genuinely independent.</div>
+  </section>
+
+  <!-- Card 2: Dynamic Programming -->
+  <section class="card c2">
+    <h2>Dynamic Programming &amp; Memoization</h2>
+    <div class="subtitle">"Those who cannot remember the past are condemned to recompute it." — paraphrasing Santayana</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>The surface story is "trade space for time" — that's the appearance. The real requirement is that the problem simultaneously exhibits <strong>overlapping subproblems</strong> (the same computation is needed many times) AND <strong>optimal substructure</strong> (the global optimum can be assembled from subproblem optima). Miss either and DP degenerates into ordinary recursion or greedy.</p>
+    <p>Non-trivial: (1) everything hinges on <em>state definition</em>. Pick the wrong state and no clever transition can save you — you'll hit state-space explosion, going from O(n²) to O(n⁴). (2) Top-down memoization vs bottom-up tabulation have different mental shapes — the former is "cache on demand," lazy but close to natural thinking; the latter is "systematically fill the table," memory-hungry but more controllable. Beginners graduate from the first to the second. (3) Non-trivial observation: <em>most life problems are not DP problems</em> — they lack optimal substructure (you don't keep revisiting identical states; the environment drifts). Misapplying DP to life means polishing answers to past states that are no longer relevant, locking yourself into path dependence. (4) Structurally isomorphic to the Bellman equation in reinforcement learning: intelligence = learning which subproblems are worth memoizing and which are noise that shouldn't be cached.</p>
+    <p>Practice: before coding, ask "what's the dimensionality of my state space?" Each new dimension grows the table exponentially. If state exceeds 3 dimensions, compress or abstract first, then DP.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>0-1 knapsack: naive recursion is O(2ⁿ) and becomes uncomputable at 30 items. DP compresses it to O(n·W) via a 2D table (item index × remaining capacity) — milliseconds. The same subproblem "best value using items 1..i with capacity w" is hit millions of times; without memoization you re-climb the same tree over and over. Reinforcement learning's Q-learning is DP extended to stochastic environments — the Q-table is noisy memoization.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) AI agent engineering: every LLM call thinks from scratch = no memoization, exponential token waste. Add a "decision cache" layer to your agent — record "for similar past queries, what did I reason and conclude?" — collapsing repeat queries from O(K tokens) to O(1) lookup. Prerequisite: your queries actually have overlapping subproblems. (2) Personal decision lookup table: write recurring life decisions (take this project? attend this meeting?) as "criteria + past precedents" — next time a similar situation arises, look up, not re-derive, and decision fatigue collapses. (3) But beware: <strong>when the problem distribution drifts, the DP table expires</strong> — your child enters a new developmental stage, the AI paradigm shifts, the industry reorganizes — old tables instantly become stale. Healthy practice is periodic "rebuild" and dating each cache entry with an expiry.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I want to apply DP / memoization to [problem/workflow]. Please evaluate:
+1. Does this problem truly satisfy both "overlapping subproblems" AND "optimal substructure"? If either is missing, name it explicitly.
+2. If DP applies, propose the most parsimonious state definition and estimate the state-space dimensionality — if &gt; 3 dimensions, suggest how to compress.
+3. Flag which sub-results should <em>not</em> be cached (distribution drift, one-off events, out-of-distribution inputs).</div>
+  </section>
+
+  <!-- Card 3: Greedy & Local Optima -->
+  <section class="card c3">
+    <h2>Greedy &amp; Local Optima Trap</h2>
+    <div class="subtitle">"Each step looks optimal — and that's exactly why you're stuck on the wrong hill."</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Greedy = pick the locally best move at every step. Tempting because it's simple, fast, and "often good enough." But it's strictly optimal only on the rare problems with <strong>matroid structure</strong>. Most real problems are not matroids — greedy will reliably ship you to a <em>local-optimum trap</em>, with the far-off global peak forever invisible.</p>
+    <p>Non-trivial: (1) the mountain metaphor: greedy is "always step uphill," and you finish at the <em>nearest hilltop to your starting point</em>. The hilltop is not the highest peak in the range. (2) Engineering escapes from local optima come in three families — <em>simulated annealing</em> (allow occasional descent), <em>beam search</em> (keep K candidates), <em>random restart</em> (greedy from many starts). All three share the same move: tolerate temporary worsening. (3) The <em>inverse</em> cognitive trap from sunk-cost: sunk-cost is reluctance to let go of the past; greedy local optima is blindness to the far — one is rear-view blindness, the other is far-view blindness. (4) Structurally isomorphic to the Buddhist concept of <em>avidyā</em> (ignorance): blinded by the brightest nearby lamp, you can't see the global terrain. Awareness = switching from "best at each step" to "best overall" as the optimization target.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 30 200 Q 100 100 160 130 Q 220 160 280 80 Q 340 0 400 60 Q 460 100 530 180" fill="none" stroke="#636e72" stroke-width="2"/>
+        <circle cx="50" cy="190" r="6" fill="#c44545"/>
+        <text x="50" y="225" text-anchor="middle" font-size="11" fill="#c44545" font-weight="700">start</text>
+        <circle cx="155" cy="130" r="6" fill="#e17055"/>
+        <text x="155" y="118" text-anchor="middle" font-size="10" fill="#e17055" font-weight="700">local optimum</text>
+        <text x="155" y="155" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">greedy stops here</text>
+        <circle cx="310" cy="50" r="7" fill="#1b8a5a"/>
+        <text x="310" y="38" text-anchor="middle" font-size="10" fill="#1b8a5a" font-weight="700">global optimum</text>
+        <text x="310" y="75" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">needs a "descent" to reach</text>
+        <path d="M 50 190 L 80 165 L 110 145 L 140 135 L 155 130" stroke="#c44545" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+        <path d="M 155 130 L 200 150 L 240 130 L 280 90 L 310 55" stroke="#1b8a5a" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+        <text x="220" y="190" text-anchor="middle" font-size="10" fill="#7048b8" font-weight="700">simulated annealing accepts this descent</text>
+      </svg>
+      <div class="caption">Greedy hill-climbing only reaches the nearest hilltop; the global peak often requires going downhill first</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Dijkstra's shortest path is greedy AND globally optimal — because shortest-path on graphs has matroid structure (a confirmed shortest distance can't get shorter). But greedy on 0-1 knapsack fails — "pack the highest value-per-weight item first" misses the optimum at certain capacities. Coin change: greedy works for [1, 5, 10, 25] cents, but on [1, 3, 4] coins to make 6 it returns 4+1+1 (three coins) instead of optimal 3+3 (two coins). <strong>Whether greedy works depends on the problem's skeleton, not on your intuition.</strong></p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Career choice: jumping every year to "the next job with the biggest raise" is classic greedy. But the career function has no matroid structure — three years in management dulls technical depth; three years in pure technical work closes the management track. Step-wise local optimality locks you onto a small hilltop. (2) Antidote: deliberately "simulate-anneal" — accept one descent (a temporary pay cut, a hard pivot into AI, going abroad, founding something) to buy the option of jumping out of the local optimum. (3) Parenting: every day choosing "the path that triggers the least fuss" (more screen time, more toys) is greedy. You'll grind into a local optimum where the child permanently avoids hard things. The short-term uncomfortable "do the hard task together" move is the parenting version of simulated annealing. (4) Non-trivial AI corollary: <strong>a large language model is itself a giant greedy machine</strong> — token-by-token sampling of the most probable next move — which is precisely why beam search, temperature, and long-horizon planning exist as counter-greedy mechanisms.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>My current strategy in [domain/decision] is [describe how I pick each step]. Diagnose:
+1. Am I running a greedy algorithm? Does this problem have matroid structure that guarantees greedy is optimal?
+2. Which local-optimum hill am I likely stuck on? What does a higher global peak look like from afar?
+3. Design one concrete "simulated-annealing" move — which temporary descent to accept, and which cross-peak opportunity it buys.</div>
+  </section>
+
+  <!-- Card 4: Heuristics & Approximation -->
+  <section class="card c4">
+    <h2>Heuristics &amp; Approximation</h2>
+    <div class="subtitle">"Perfect is the enemy of good — and in NP-hard problems, perfect doesn't even exist in your lifetime."</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>When a problem is provably NP-hard, <strong>the optimum is unreachable</strong> — not "try harder" unreachable, but "the universe will end first" unreachable. You must trade optimality for tractability. But how you trade matters: good heuristics carry <em>approximation guarantees</em> (e.g., 1.5-approximate TSP); bad heuristics are guesses dressed up as method.</p>
+    <p>Non-trivial: (1) the closer a heuristic function tracks the true optimum, <em>the cheaper the search</em>. A*'s efficiency lives or dies by it — a bad heuristic degrades A* into BFS; a perfect heuristic linearizes the search. (2) <em>Heuristic strength = depth of structural understanding of the problem</em>. Counter-intuitive: heuristics aren't shortcuts around knowledge, they are compressed knowledge. (3) Structurally isomorphic to "intuition": human experience-based intuition is a heuristic function learned over a lifetime by the brain. But beware — a good heuristic is valid only <em>inside its training distribution</em>; out-of-distribution (new domain, new context), it silently fails. This is why senior experts crash on cross-domain moves. (4) Monte Carlo Tree Search (MCTS) + neural value function = the strongest general-purpose heuristic of our era (AlphaGo compressed the 10^170 Go search space into a playable game). And this is the lifeline of LLMs too: they are essentially "approximators that learned vast heuristics from human language" — strong inside familiar distributions, failing in the sparse long tail.</p>
+    <p>Practice: in a new domain, <strong>first admit your heuristic is empty</strong> and do honest slow search; only after enough data has accumulated should you trust the fast take. Skip this step and you'll exponentially amplify a wrong heuristic.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>The Traveling Salesman Problem is NP-hard — 50 cities means 50! routes, more than the universe's age can enumerate. Christofides' algorithm gives a 1.5-approximation guarantee (route length ≤ 1.5 × optimum), good enough in practice. AlphaGo doesn't enumerate Go: it's MCTS (heuristic sampling) + a learned value network (the heuristic function), turning the intractable into the tractable. Modern SAT solvers handle billion-variable formulas via stacked heuristics (DPLL, CDCL) that suppress exponential blow-up.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) AI agent planning: asking an LLM for "the complete optimal plan" is shoving an NP-hard problem into the context window — the result is hallucination collage. The better move is to hand it a set of <em>good heuristic functions</em> ("list your assumptions first," "ask 'why' at each step," "prune immediately on failure") and let it run heuristic search instead of brute force. (2) Major personal decisions: when the problem is too large to enumerate ("will I be satisfied 30 years from now?"), stop hunting for the optimum and switch to "approximately acceptable + preserve optionality" — add a 1.5× buffer around heuristic conclusions to absorb bias. (3) Parenting and education: abandon "the optimal education path" — it's NP-hard and the distribution will shift (the world in 10 years is unrecognizable). Design a small set of good heuristics ("prioritize meta-abilities," "preserve optionality," "periodically retrain your own heuristic function"). (4) Meta-insight: <strong>"experience" is essentially a heuristic function</strong> — measure experience not by years, but by approximation ratio and applicable distribution. Actively retraining when crossing domains is how senior people stay effective.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>The problem I face: [describe]. My intuition/experience says the answer is [describe]. Audit this heuristic:
+1. Is this problem NP-hard or near-NP-hard? If so, name plainly that the optimum is unreachable.
+2. Which training distribution did my current heuristic learn from? Is the present problem inside that distribution? Flag 2 out-of-distribution warning signs.
+3. Propose one strategy with explicit approximation-ratio awareness — what factor of optimum am I targeting, and how much buffer do I need against bias?</div>
+  </section>
+
+
+</div>
+</body>
+</html>

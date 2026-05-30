@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：算法思维 · 2026-05-30</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：算法思维</h1>
+<div class="meta">2026-05-30 · Day 39</div>
+</header>
+
+<!-- Card 1: 分治法 -->
+<section class="card c1">
+<h2>分治法 · Divide and Conquer</h2>
+<div class="subtitle">"To solve a problem, find a way to make smaller versions of itself."</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>分治不是"把大问题拆小"那么浅。它要求子问题<strong>结构同构于原问题</strong>，且<strong>相对独立</strong>——只有这两个条件同时成立，递归求解才会真正降低复杂度。否则你只是把代码搬了家，复杂度一点没省。</p>
+<p>非平凡点：① 合并步骤的成本决定一切。主定理（Master Theorem）告诉我们：若合并复杂度 ≥ 子问题求解复杂度，分治就<em>不划算</em>。这是为什么"先拆再合"听起来诱人，做完却没快。② 失败模式叫"伪分治"——子问题之间共享状态、互相回调，看似拆开实则强耦合。判别：两个子问题可不可以让两个不同的人在两个房间独立完成？不能 → 不是真分治。③ 与佛学"破我执"同构：所谓"大问题"其实是聚合相，看清它由几个独立缘起组成，难度自然下降一个数量级。</p>
+<p>实践：分治前先回答两个问题——"我的'合并'操作有多贵？""子问题之间有几条隐藏依赖？"两者任一为高，<strong>停止分治，改用其他策略</strong>。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>归并排序 O(n log n)：把数组对半切，递归排序，最后线性归并。归并代价 O(n) < 子问题代价 → 主定理保证整体 O(n log n)。MapReduce 是分治的工程级化身——Google 当年处理 PB 级网页索引，靠的就是"map 阶段独立、reduce 阶段廉价聚合"。一旦 reduce 步骤变贵（如需要跨 shard 的复杂 join），分治优势立刻消失，框架开始变成性能杀手。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：把"AI 系统改造"拆成数据层 / 模型层 / 应用层 / 评估层。如果这四层每周都要开 3 小时联调会才能推进，那是<em>伪分治</em>——边界画错了。真分治 = 四个 team 拿到接口契约后，能各自独立干 90 天。② 学新领域：把"量子力学入门"拆成数学基础 / 物理直觉 / 实验事实 / 哲学诠释，分别填充。子问题相对独立（哲学诠释不影响数学推导），合并是廉价的（最后画一张概念地图）。③ <strong>伪分治最常见的征兆是"协调会变多"</strong>——一旦你发现 sub-team 间会议指数上涨，意味着子问题不够独立，应该重画边界，而不是开更多会。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Divide and Conquer</strong> — not simply "breaking a big problem into small ones." Subproblems must be <em>structurally isomorphic</em> to the original AND <em>relatively independent</em>. Only when both hold does recursion truly reduce complexity. The Master Theorem makes this precise: if the merge cost dominates the subproblem cost, divide-and-conquer doesn't pay. The dominant failure mode is "pseudo-divide": subproblems share state or call back into each other, so you only moved the complexity around. Diagnostic: can two subproblems be solved by two people in two rooms without talking? If no, the boundary is wrong. The earliest symptom of pseudo-divide is exponential growth in coordination meetings — redraw boundaries, don't schedule more syncs.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正在用分治法处理 [问题/项目]，拆分为子问题 [子问题1, 子问题2, ...]。请压力测试：
+① 这些子问题是否真正"结构同构 + 相对独立"？标出最可能耦合的两条暗线；
+② 估计"合并步骤"的成本——它是否会吞掉分治带来的并行收益？
+③ 如果检测到伪分治，给出 1 个重画子问题边界的方案。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm applying divide-and-conquer to [problem/project], split into subproblems [sub1, sub2, ...]. Stress-test me:
+1. Are these subproblems truly "structurally isomorphic + relatively independent"? Flag the two most likely hidden couplings.
+2. Estimate the merge-step cost — will it eat the parallelism gain?
+3. If you detect pseudo-divide, propose one re-partition that makes subproblems genuinely independent.</div>
+</section>
+
+<!-- Card 2: 动态规划 -->
+<section class="card c2">
+<h2>动态规划与记忆化 · Dynamic Programming &amp; Memoization</h2>
+<div class="subtitle">"Those who cannot remember the past are condemned to recompute it." — paraphrasing Santayana</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>DP 的本质不是"用空间换时间"——那是表象。真正的 DP 要求问题同时满足两个性质：<strong>重叠子问题</strong>（同一计算被多次需要）+ <strong>最优子结构</strong>（全局最优可由子问题最优拼出）。少任一性质，DP 都退化为普通递归或贪心。</p>
+<p>非平凡点：① 一切的关键是<em>状态定义</em>。状态选错，再聪明的转移方程都救不回来——会陷入"状态空间爆炸"，从 O(n²) 升到 O(n⁴)。② 自顶向下记忆化 vs 自底向上填表：心智结构不同。前者是"按需 cache"，懒惰但贴近思考过程；后者是"系统性填表"，吃内存但更可控。新手用前者过渡到后者。③ 反平凡观察：<em>很多人生问题根本不是 DP 问题</em>——它们没有最优子结构（人不会持续在同一状态下做同一决策；环境也在变）。错用 DP 思路去"优化人生" = 在不可重复的轨迹上反复打磨已不再相关的过去状态，把自己锁在路径依赖里。④ 与强化学习的 Bellman 方程同构：智能 = 学会哪些子问题值得记忆化，哪些是噪声不必缓存。</p>
+<p>实践：动手前先问"我的状态空间维度是几？"维度每加一，表大小指数增长。如果状态超过 3 维，先压缩或抽象，再 DP。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>背包问题（0-1 knapsack）：朴素递归 O(2ⁿ) 在 30 件物品就算不动；DP 用一张二维表（物品序号 × 容量）压成 O(n·W)，几毫秒出解。同一子问题"前 i 件物品、剩余容量 w 的最优价值"被重复访问数百万次——不记忆化等于一次次重新爬同一棵树。强化学习的 Q-learning 是 DP 在不确定环境下的拓展：Q 表就是带噪声的记忆化。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI agent 工程：每次 LLM 调用都从零思考 = 没记忆化，token 成本指数浪费。给 agent 装一层"决策缓存"——记下"过去类似 query 我推理出什么 + 结论是什么"——把同类查询从 O(K tokens) 压成 O(1) 查表。前提：你的 query 真有重叠子结构。② 个人决策快查表：把反复出现的人生决策（要不要接这个项目？要不要参加这个会？）写成"判别清单 + 历史先例"，下次同类情境直接查表，把决策疲劳压到最小。③ 但要警惕：<strong>当问题分布在漂移，DP 表会过期</strong>——孩子上学龄、AI 范式更替、行业洗牌，旧表立即作废。健康做法是定期"重新填表"，并对每条缓存标"有效期"。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Dynamic Programming &amp; Memoization</strong> — the surface story is "trade space for time." The real requirement is two simultaneous properties: <em>overlapping subproblems</em> + <em>optimal substructure</em>. Miss either and DP collapses into ordinary recursion or greedy. The critical lever is <em>state definition</em>: get it wrong and even a clever transition can't save you — you'll hit state-space explosion. Top-down memoization is lazy and closer to natural thinking; bottom-up tabulation is eager and more controllable. Non-trivial trap: most life problems aren't DP problems — they lack optimal substructure (environments drift, you don't revisit identical states). Misapplying DP to life means polishing answers to obsolete past states, locking yourself into path dependence. When the problem's distribution shifts, the table expires; healthy practice is dating every cache entry and rebuilding periodically.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想用 DP / 记忆化加速 [问题/工作流]。请帮我评估：
+① 这个问题是否真同时满足"重叠子问题 + 最优子结构"？若缺其一，明确指出；
+② 如果适用 DP，给出 1 个最简洁的状态定义，并估算状态空间维度——超 3 维则给压维建议；
+③ 提示哪些子结果<em>不应</em>被缓存（环境漂移、分布外、一次性事件）。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to apply DP / memoization to [problem/workflow]. Please evaluate:
+1. Does this problem truly satisfy both "overlapping subproblems" AND "optimal substructure"? If either is missing, name it explicitly.
+2. If DP applies, propose the most parsimonious state definition and estimate the state-space dimensionality — if &gt; 3 dimensions, suggest how to compress.
+3. Flag which sub-results should <em>not</em> be cached (distribution drift, one-off events, out-of-distribution inputs).</div>
+</section>
+
+<!-- Card 3: 贪心算法与局部最优 -->
+<section class="card c3">
+<h2>贪心算法与局部最优陷阱 · Greedy &amp; Local Optima Trap</h2>
+<div class="subtitle">"Each step looks optimal — and that's exactly why you're stuck on the wrong hill."</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>贪心 = 每一步选当下最优。诱人因为简单、快、常常"够用"。但它只在<strong>极少数有特殊数学结构的问题（matroid）</strong>上严格最优。大多数现实问题不是 matroid——贪心会把你稳稳地送进<em>局部最优陷阱</em>，远处的全局最优峰永远看不到。</p>
+<p>非平凡点：① 山峰隐喻：贪心是"只往上爬"，最终停在<em>离起点最近的山顶</em>。山顶不等于山脉的最高峰。② 跳出局部最优的工程方法有三类——<em>模拟退火</em>（允许偶尔下降）、<em>束搜索</em>（同时保留 K 个候选）、<em>随机重启</em>（多次从不同起点贪心）。三者本质都是"允许暂时变差"。③ 与"沉没成本"是<em>反向</em>的认知陷阱：沉没成本是"舍不得过去花的"，贪心局部最优是"看不见远处更高的"——前者向后失明，后者向远失明。④ 与佛学"无明"同构：被眼前最亮的灯遮蔽，看不到全局地形。觉察 = 从"每步最优"切换到"整体最优"的视角。</p>
+<div class="diagram">
+<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+<path d="M 30 200 Q 100 100 160 130 Q 220 160 280 80 Q 340 0 400 60 Q 460 100 530 180" fill="none" stroke="#636e72" stroke-width="2"/>
+<circle cx="50" cy="190" r="6" fill="#c44545"/>
+<text x="50" y="225" text-anchor="middle" font-size="11" fill="#c44545" font-weight="700">起点</text>
+<circle cx="155" cy="130" r="6" fill="#e17055"/>
+<text x="155" y="118" text-anchor="middle" font-size="10" fill="#e17055" font-weight="700">局部最优</text>
+<text x="155" y="155" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">贪心停在这里</text>
+<circle cx="310" cy="50" r="7" fill="#1b8a5a"/>
+<text x="310" y="38" text-anchor="middle" font-size="10" fill="#1b8a5a" font-weight="700">全局最优</text>
+<text x="310" y="75" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">需要"下山"才能到达</text>
+<path d="M 50 190 L 80 165 L 110 145 L 140 135 L 155 130" stroke="#c44545" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+<path d="M 155 130 L 200 150 L 240 130 L 280 90 L 310 55" stroke="#1b8a5a" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+<text x="220" y="190" text-anchor="middle" font-size="10" fill="#7048b8" font-weight="700">模拟退火允许这段"下降"</text>
+</svg>
+<div class="caption">贪心爬山只能到达离起点最近的山顶；全局最优往往需要先"下山"</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Dijkstra 最短路是贪心，且全局最优——因为图最短路问题有 matroid 结构（一个被确认的最短距离不会再变小）。但用贪心解 0-1 背包就错——选"性价比最高的物品先装"在某些容量下达不到最优。同样，找零问题：在 [1, 5, 10, 25] 美分币制下贪心对，在 [1, 3, 4] 币制下凑 6 分贪心给出 4+1+1 三枚而非最优 3+3 两枚。<strong>贪心对不对，取决于问题骨架，不取决于直觉。</strong></p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 职业选择：每年都跳"涨薪最快的下一份工作" = 经典贪心。但职业函数没有 matroid 结构——做 3 年管理岗，技术深度就钝化；做 3 年纯技术，管理通道就关闭。每步局部最优会把你稳稳锁在一个"小山顶"。② 应对：刻意"模拟退火"——接受一次薪水暂降但能力维度跃迁的机会（如转 AI 方向、出国、创业），换跳出局部最优的可能。③ 育儿：每天用"她最不闹"的方式（看动画、买玩具）哄孩子 = 贪心。会贪到一个"她永远逃避难事"的局部最优。短期不舒服的"陪她搞难任务"，是育儿版的模拟退火。④ AI 时代的非平凡推论：<strong>大模型本身就是个超级贪心机器</strong>——逐 token 采样每步选概率最高，正是为什么需要 beam search、temperature、长上下文规划等机制来对抗局部最优。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Greedy &amp; Local Optima</strong> — pick the locally best move at every step. Tempting because it's simple and often "good enough." But strictly optimal only on problems with <em>matroid structure</em>; most real problems aren't matroids. Greedy reliably ships you to the nearest hilltop — which is rarely the highest peak. Escapes: <em>simulated annealing</em> (allow occasional descent), <em>beam search</em> (keep K candidates), <em>random restart</em>. All three share one move: tolerate temporary worsening. Distinct from sunk-cost: sunk-cost is blindness to the past; greedy local optima is blindness to the far. Non-trivial AI corollary: large language models are themselves greedy machines — token-by-token sampling of the highest-probability next move — which is exactly why beam search, temperature, and long-horizon planning exist as countermeasures.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我目前在 [领域/决策] 上的策略是 [描述当前每步如何选]。请诊断：
+① 我是不是在用贪心？这个问题有没有 matroid 结构能保证贪心最优？
+② 我可能被困在哪个局部最优峰？远处更高的"全局峰"长什么样？
+③ 设计一次具体的"模拟退火"动作——允许哪段暂时下降，换取怎样的跨峰机会。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My current strategy in [domain/decision] is [describe how I pick each step]. Diagnose:
+1. Am I running a greedy algorithm? Does this problem have matroid structure that guarantees greedy is optimal?
+2. Which local-optimum hill am I likely stuck on? What does a higher global peak look like from afar?
+3. Design one concrete "simulated-annealing" move — which temporary descent to accept, and which cross-peak opportunity it buys.</div>
+</section>
+
+<!-- Card 4: 启发式与近似 -->
+<section class="card c4">
+<h2>启发式与近似 · Heuristics &amp; Approximation</h2>
+<div class="subtitle">"Perfect is the enemy of good — and in NP-hard problems, perfect doesn't even exist in your lifetime."</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>当问题被证明是 NP 难，<strong>最优解算不动</strong>——不是"再努力一下"的问题，是宇宙寿命都算不完。这时必须放弃 optimality，换取 tractability。但放弃方式有讲究：好的启发式带<em>近似比保证</em>（如 1.5-近似的旅行商算法），坏的启发式只是瞎猜。</p>
+<p>非平凡点：① 启发函数<em>越接近真实最优</em>，搜索越省力。A* 的搜索效率完全取决于启发函数的质量——一个糟糕的启发让 A* 退化成 BFS，一个完美的启发让搜索变线性。② <em>启发式的强度 = 你对问题结构的理解深度</em>。这点反直觉：启发不是省事的近路，而是知识浓缩后的捷径。③ 与"直觉"同构：人类经验直觉就是大脑用一生学到的启发函数。但要警惕——好启发只在<em>训练分布内</em>有效，分布外（新领域、新场景）会沉默地失效。这是为什么资深者跨领域常翻车。④ 蒙特卡洛树搜索（MCTS）+ 神经网络价值函数 = 当代最强通用启发式（AlphaGo 围棋搜索空间 10^170，靠它压成可玩）。这正是 LLM 的命脉：大模型本质是"学了人类语料中海量启发式的近似器"——所以在熟悉分布内强，在长尾稀疏分布失效。</p>
+<p>实践：在新领域，<strong>先承认自己启发函数为空</strong>，老老实实做几轮慢搜索；积累后才能形成可信赖的启发。跳过这步 = 用错误启发指数放大错误。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>旅行商问题（TSP）是 NP 难——50 城市穷举是 50! 种路径，宇宙寿命算不完。Christofides 算法给出 1.5-近似保证（路径长度 ≤ 1.5 倍最优），实战足够好。AlphaGo 不是穷举围棋，是 MCTS（启发式采样）+ 价值网络（学习到的启发函数），把不可解的搜索变成可解的近似。现代 SAT 求解器解亿级变量公式，靠的也是层层启发式（DPLL、CDCL）压制指数爆炸。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI agent 规划：让 LLM 给"完整最优方案"是把 NP 难问题硬塞进上下文窗——结果必然是 hallucination 拼贴。更好的做法是给它一组<em>好启发函数</em>（"先列假设""每步问 why""失败立即剪枝"），让它走启发式搜索而非穷举。② 个人重大决策：当问题大到无法穷举（"30 年后我会满意吗？"），停止寻找最优解，转向"近似可接受 + 保留可选性"——并给启发结论加 1.5x 缓冲带防偏差。③ 育儿与教育：放弃"最优教育路径"——那是 NP 难且分布会变（10 年后世界已不同）。设计一组好启发（"优先培养元能力""保留可选性""定期更新自己的启发函数"）。④ 元洞察：<strong>"经验"的本质就是启发函数</strong>——衡量经验有没有用，不看年头，看启发函数的近似比与适用分布。跨领域时主动重训，是资深者保持有效的关键。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Heuristics &amp; Approximation</strong> — when a problem is provably NP-hard, the optimum is unreachable in any practical sense, so you trade optimality for tractability. The trade has structure: good heuristics carry <em>approximation guarantees</em> (e.g., 1.5-approximate TSP); bad ones are guesses dressed up. The closer a heuristic function tracks the true optimum, the cheaper the search — A*'s efficiency lives or dies by it. Counter-intuitive: <em>heuristic strength = depth of structural understanding</em>; heuristics aren't shortcuts around knowledge, they're compressed knowledge. Human "intuition" is a heuristic learned over a lifetime — strong inside its training distribution, silently failing outside it. This is why senior experts crash on cross-domain moves: heuristics don't transfer for free. LLMs are heuristic approximators trained on human-language priors; same strength, same blind spot. Practice: in a new domain, first admit your heuristic is empty and do honest slow search before trusting any fast take.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我面对的问题是 [描述]。直觉/经验告诉我答案是 [描述]。请帮我审计这个启发：
+① 这个问题是否 NP 难或近似 NP 难？若是，明确指出"最优解不可得"；
+② 我目前的启发函数是从哪个训练分布学来的？当前问题是否在分布内？给出 2 条分布外的危险信号；
+③ 给出 1 个有近似比意识的策略——"近似比目标"是多少倍最优，需要保留多大缓冲带防偏差。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>The problem I face: [describe]. My intuition/experience says the answer is [describe]. Audit this heuristic:
+1. Is this problem NP-hard or near-NP-hard? If so, name plainly that the optimum is unreachable.
+2. Which training distribution did my current heuristic learn from? Is the present problem inside that distribution? Flag 2 out-of-distribution warning signs.
+3. Propose one strategy with explicit approximation-ratio awareness — what factor of optimum am I targeting, and how much buffer do I need against bias?</div>
+</section>
+
+</div>
+</body>
+</html>
