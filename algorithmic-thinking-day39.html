@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
@@ -112,13 +113,12 @@
 <body>
 <div class="container">
 <header class="page-header">
-<h1>思维模型详解：算法思维</h1>
+<h1 data-tts="fa2098e6806e101d">思维模型详解：算法思维</h1>
 <div class="meta">2026-05-30 · Day 39</div>
 </header>
-
 <!-- Card 1: 分治法 -->
 <section class="card c1">
-<h2>分治法 · Divide and Conquer</h2>
+<h2 data-tts="e58b4395799a6894">分治法 · Divide and Conquer</h2>
 <div class="subtitle">"To solve a problem, find a way to make smaller versions of itself."</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -127,7 +127,7 @@
 <p>实践：分治前先回答两个问题——"我的'合并'操作有多贵？""子问题之间有几条隐藏依赖？"两者任一为高，<strong>停止分治，改用其他策略</strong>。</p>
 <div class="example-block">
 <div class="example-label">经典例子</div>
-<p>归并排序 O(n log n)：把数组对半切，递归排序，最后线性归并。归并代价 O(n) < 子问题代价 → 主定理保证整体 O(n log n)。MapReduce 是分治的工程级化身——Google 当年处理 PB 级网页索引，靠的就是"map 阶段独立、reduce 阶段廉价聚合"。一旦 reduce 步骤变贵（如需要跨 shard 的复杂 join），分治优势立刻消失，框架开始变成性能杀手。</p>
+<p>归并排序 O(n log n)：把数组对半切，递归排序，最后线性归并。归并代价 O(n) &lt; 子问题代价 → 主定理保证整体 O(n log n)。MapReduce 是分治的工程级化身——Google 当年处理 PB 级网页索引，靠的就是"map 阶段独立、reduce 阶段廉价聚合"。一旦 reduce 步骤变贵（如需要跨 shard 的复杂 join），分治优势立刻消失，框架开始变成性能杀手。</p>
 </div>
 <div class="example-block">
 <div class="example-label">场景 · BigCat</div>
@@ -151,10 +151,9 @@
 2. Estimate the merge-step cost — will it eat the parallelism gain?
 3. If you detect pseudo-divide, propose one re-partition that makes subproblems genuinely independent.</div>
 </section>
-
 <!-- Card 2: 动态规划 -->
 <section class="card c2">
-<h2>动态规划与记忆化 · Dynamic Programming &amp; Memoization</h2>
+<h2 data-tts="c14438a4f219afe9">动态规划与记忆化 · Dynamic Programming &amp; Memoization</h2>
 <div class="subtitle">"Those who cannot remember the past are condemned to recompute it." — paraphrasing Santayana</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -187,29 +186,28 @@
 2. If DP applies, propose the most parsimonious state definition and estimate the state-space dimensionality — if &gt; 3 dimensions, suggest how to compress.
 3. Flag which sub-results should <em>not</em> be cached (distribution drift, one-off events, out-of-distribution inputs).</div>
 </section>
-
 <!-- Card 3: 贪心算法与局部最优 -->
 <section class="card c3">
-<h2>贪心算法与局部最优陷阱 · Greedy &amp; Local Optima Trap</h2>
+<h2 data-tts="e14fc2d85e869e75">贪心算法与局部最优陷阱 · Greedy &amp; Local Optima Trap</h2>
 <div class="subtitle">"Each step looks optimal — and that's exactly why you're stuck on the wrong hill."</div>
 <div class="section-label">中文详解</div>
 <hr/>
 <p>贪心 = 每一步选当下最优。诱人因为简单、快、常常"够用"。但它只在<strong>极少数有特殊数学结构的问题（matroid）</strong>上严格最优。大多数现实问题不是 matroid——贪心会把你稳稳地送进<em>局部最优陷阱</em>，远处的全局最优峰永远看不到。</p>
 <p>非平凡点：① 山峰隐喻：贪心是"只往上爬"，最终停在<em>离起点最近的山顶</em>。山顶不等于山脉的最高峰。② 跳出局部最优的工程方法有三类——<em>模拟退火</em>（允许偶尔下降）、<em>束搜索</em>（同时保留 K 个候选）、<em>随机重启</em>（多次从不同起点贪心）。三者本质都是"允许暂时变差"。③ 与"沉没成本"是<em>反向</em>的认知陷阱：沉没成本是"舍不得过去花的"，贪心局部最优是"看不见远处更高的"——前者向后失明，后者向远失明。④ 与佛学"无明"同构：被眼前最亮的灯遮蔽，看不到全局地形。觉察 = 从"每步最优"切换到"整体最优"的视角。</p>
 <div class="diagram">
-<svg viewBox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
-<path d="M 30 200 Q 100 100 160 130 Q 220 160 280 80 Q 340 0 400 60 Q 460 100 530 180" fill="none" stroke="#636e72" stroke-width="2"/>
-<circle cx="50" cy="190" r="6" fill="#c44545"/>
-<text x="50" y="225" text-anchor="middle" font-size="11" fill="#c44545" font-weight="700">起点</text>
-<circle cx="155" cy="130" r="6" fill="#e17055"/>
-<text x="155" y="118" text-anchor="middle" font-size="10" fill="#e17055" font-weight="700">局部最优</text>
-<text x="155" y="155" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">贪心停在这里</text>
-<circle cx="310" cy="50" r="7" fill="#1b8a5a"/>
-<text x="310" y="38" text-anchor="middle" font-size="10" fill="#1b8a5a" font-weight="700">全局最优</text>
-<text x="310" y="75" text-anchor="middle" font-size="9" fill="#868e96" font-style="italic">需要"下山"才能到达</text>
-<path d="M 50 190 L 80 165 L 110 145 L 140 135 L 155 130" stroke="#c44545" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
-<path d="M 155 130 L 200 150 L 240 130 L 280 90 L 310 55" stroke="#1b8a5a" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
-<text x="220" y="190" text-anchor="middle" font-size="10" fill="#7048b8" font-weight="700">模拟退火允许这段"下降"</text>
+<svg viewbox="0 0 560 240" xmlns="http://www.w3.org/2000/svg">
+<path d="M 30 200 Q 100 100 160 130 Q 220 160 280 80 Q 340 0 400 60 Q 460 100 530 180" fill="none" stroke="#636e72" stroke-width="2"></path>
+<circle cx="50" cy="190" fill="#c44545" r="6"></circle>
+<text fill="#c44545" font-size="11" font-weight="700" text-anchor="middle" x="50" y="225">起点</text>
+<circle cx="155" cy="130" fill="#e17055" r="6"></circle>
+<text fill="#e17055" font-size="10" font-weight="700" text-anchor="middle" x="155" y="118">局部最优</text>
+<text fill="#868e96" font-size="9" font-style="italic" text-anchor="middle" x="155" y="155">贪心停在这里</text>
+<circle cx="310" cy="50" fill="#1b8a5a" r="7"></circle>
+<text fill="#1b8a5a" font-size="10" font-weight="700" text-anchor="middle" x="310" y="38">全局最优</text>
+<text fill="#868e96" font-size="9" font-style="italic" text-anchor="middle" x="310" y="75">需要"下山"才能到达</text>
+<path d="M 50 190 L 80 165 L 110 145 L 140 135 L 155 130" fill="none" stroke="#c44545" stroke-dasharray="4,3" stroke-width="2"></path>
+<path d="M 155 130 L 200 150 L 240 130 L 280 90 L 310 55" fill="none" stroke="#1b8a5a" stroke-dasharray="4,3" stroke-width="2"></path>
+<text fill="#7048b8" font-size="10" font-weight="700" text-anchor="middle" x="220" y="190">模拟退火允许这段"下降"</text>
 </svg>
 <div class="caption">贪心爬山只能到达离起点最近的山顶；全局最优往往需要先"下山"</div>
 </div>
@@ -239,10 +237,9 @@
 2. Which local-optimum hill am I likely stuck on? What does a higher global peak look like from afar?
 3. Design one concrete "simulated-annealing" move — which temporary descent to accept, and which cross-peak opportunity it buys.</div>
 </section>
-
 <!-- Card 4: 启发式与近似 -->
 <section class="card c4">
-<h2>启发式与近似 · Heuristics &amp; Approximation</h2>
+<h2 data-tts="8cfaac43304d575e">启发式与近似 · Heuristics &amp; Approximation</h2>
 <div class="subtitle">"Perfect is the enemy of good — and in NP-hard problems, perfect doesn't even exist in your lifetime."</div>
 <div class="section-label">中文详解</div>
 <hr/>
@@ -275,7 +272,6 @@
 2. Which training distribution did my current heuristic learn from? Is the present problem inside that distribution? Flag 2 out-of-distribution warning signs.
 3. Propose one strategy with explicit approximation-ratio awareness — what factor of optimum am I targeting, and how much buffer do I need against bias?</div>
 </section>
-
 </div>
 <script src="https://cissy0802.github.io/comments.js" defer></script>
 <script src="https://cissy0802.github.io/search.js" defer></script>
