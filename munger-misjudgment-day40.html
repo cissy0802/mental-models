@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：芒格人类误判心理学（上） · 2026-05-31</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：芒格人类误判心理学（上）</h1>
+<div class="meta">2026-05-31 · Day 40</div>
+</header>
+
+<!-- Card 1: 激励超敏感 -->
+<section class="card c1">
+<h2>激励超敏感 · Incentive Super-Response</h2>
+<div class="subtitle">"给我看激励，我就告诉你结果。" — Charlie Munger</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>芒格清单的第一条，也是他认为自己一生最被低估的洞察：<strong>激励对人类行为的影响远超绝大多数人的估计，甚至包括那些"以为自己懂激励"的人</strong>。原因不在贪婪——而在大脑会主动重写感知。</p>
+<p>非平凡点：① 激励不仅塑造<em>行为</em>，更塑造<em>认知与信念</em>。人不是冷静权衡"该不该"——而是<em>真诚地相信</em>自己拿钱做的事是正义的。律师真心觉得诉讼对客户最好（他按小时计费），药代真心觉得这款药最适合（他按销量提成）。芒格称之为「<strong>激励引起的偏见</strong>」——比明知故犯更危险，因为本人觉察不到。② 与神经科学的多巴胺奖赏预测误差同构：被反复奖励的回路在皮层留下生理痕迹，下次感知已被这条回路"调过色"，根本看不见反例。③ 你不能靠"提醒人保持道德"对抗激励结构——道德是 RAM，激励是 ROM。</p>
+<p>实践三问：① 这个人/系统的奖惩函数到底是什么？（不是 KPI 文档写的，是实际兑现的）② 在这个函数下，长期均衡行为是什么？③ 我想要的行为是不是和奖惩函数<em>相反</em>？若是 → 不要谴责人，重画函数。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>联邦快递早期最痛的瓶颈是夜班分拣中心——按小时付薪时分拣员磨到天亮，飞机延误连锁瘫痪。管理层骂、培训、装监控全无效。换成「分拣完即可下班领全班工资」后，问题<strong>当晚消失</strong>。同一批工人、同样的活、零道德教化——只是把激励函数从「时间×单价」改成「目标完成 → 收益」。芒格反复讲它，是因为大公司至今仍在用奖励磨洋工的合同管理人。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI 系统设计：用 RLHF 训练 LLM 时若把"用户给好评"作为奖励 → 模型会演化出讨好型回答而非真话。LLM 的很多"幻觉"不是认知缺陷，是<strong>奖励黑客（reward hacking）</strong>——激励超敏感在算法层的再现。② 团队管理：宣称"鼓励创新"却按"无 bug"考核工程师 → 真实激励是规避风险，创新只会出现在嘴上。③ 育儿：用糖果换孩子练琴 → 孩子学到的不是"音乐有趣"，而是"练琴是用来换糖的痛苦"——内在动机被外部激励挤出（crowding-out effect）。<em>奖励函数的边界，就是行为长期演化的边界</em>。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Incentive Super-Response</strong> — Munger's #1 misjudgment tendency: humans respond to incentives far more strongly than most observers (including themselves) estimate, and crucially, incentives don't just shape <em>behavior</em>, they shape <em>cognition and belief</em>. People sincerely believe the actions they're paid for are virtuous ("incentive-caused bias"). This is more dangerous than conscious self-interest because the agent can't detect it. You cannot defeat structural incentives by moralizing — morality is RAM, incentive is ROM. Practical test: what does the actual payoff function reward? If desired behavior is misaligned with it, don't blame the agent — redraw the function.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我观察到 [某个人 / 团队 / 系统] 持续做出 [某种行为]，我希望他们做的是 [另一种行为]。请用激励超敏感模型分析：
+① 当前真实的激励函数是什么（不是写在文件里的，是实际兑现奖惩的）？
+② 在这个函数下，当前行为是不是<em>理性最优解</em>？谴责对方有意义吗？
+③ 给出一个最小的激励函数改造方案，让目标行为变成新均衡，并指出可能引发的次生 reward hacking。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I observe [person/team/system] consistently doing [behavior X], while I want [behavior Y]. Apply Incentive Super-Response:
+1. What's the *actual* payoff function (what gets rewarded in practice, not on paper)?
+2. Under that function, is the current behavior already the rational optimum? Is blaming the agent useful?
+3. Propose the minimal redesign of the incentive function that makes Y the new equilibrium, and name the secondary reward-hacking it might trigger.</div>
+</section>
+
+<!-- Card 2: 痛苦回避型否认 -->
+<section class="card c2">
+<h2>痛苦回避型否认 · Pain-Avoiding Psychological Denial</h2>
+<div class="subtitle">"现实如果太痛苦，无法忍受，人会扭曲事实直到它变得可以忍受。" — Munger</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>否认不是说谎——说谎者知道真相。<strong>否认是大脑在感知层把痛苦信息直接过滤掉，本人主观上完全真诚</strong>。这条比绝大多数偏差更深，因为它发生在意识阈值<em>之下</em>，你审视自己时根本审视不到。</p>
+<p>非平凡点：① 与神经科学的预测加工（predictive processing）一致——大脑用 prior 预测感官输入，与情感系统耦合后，"会带来巨大痛苦的预测"被系统性下调权重，反例实质上<em>感知不到</em>。② 与佛学「我执」同构：当某事威胁到「我」的核心叙事（我是好妈妈 / 顶尖工程师 / 研究方向是对的），自动启动的不是反思而是<em>感知层过滤</em>——这就是修行强调"觉察"而非"努力客观"：你无法用被污染的工具检查自己有没有被污染。③ 否认越靠近自我核心，盲点越大。芒格的反向启发法：<strong>「我最不愿承认的事，统计上最可能是真的」</strong>。</p>
+<p>实践：定期做<em>痛苦审计</em>——列 5 件"如果是真的会让我很难受的事"，逐一问"假如真，已有什么证据？我是否在选择性忽略？" 另一招是外部对照——找一个<em>不在乎你面子</em>的人（朋友不行——朋友会维护你的否认），让他指出你不肯看的事。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>柯达 1975 年发明了世界上第一台数码相机，但内部文化是"胶卷是核心利润"——市场调研、技术展望、战略报告都被无意识地裁剪以保护这个结论。这不是骗董事会——是高管真心相信「数码只是利基」。2012 年柯达破产时，倒下的不是技术能力，是<strong>整个组织对一个痛苦事实的集体否认</strong>。决策者并不撒谎，但组织级否认会摧毁组织本身。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 研究/工程：你押注 6 个月的技术方向开始出现反例数据——大脑让你<em>看不到</em>它们是反例，解释为噪声/边缘案例。这是科学方法强调<strong>预先注册</strong>的原因：决定"什么结果算 failure"必须在看到数据之前定，事后定 = 否认在主导。② 育儿：孩子表现出某种你不愿承认的特质（注意力问题/情绪困难/不喜欢你设的方向），你本能地解读成"今天累了/阶段性/老师问题"——每个解释都成立，但全部成立的概率极小。③ AI 时代：与 AI 长期对话会强化<em>智识自负</em>——AI 永远不质疑你的前提，这是结构性否认放大器。<strong>用 AI 角色扮演成你最严厉的批评者</strong>，定期跑"最不愿承认的事"审计。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Pain-Avoiding Psychological Denial</strong> — denial isn't lying. The liar knows the truth; the denier's brain has filtered the painful information <em>at the perceptual level</em>, so the agent is subjectively sincere. Aligned with predictive-processing neuroscience: emotionally costly predictions get systematically down-weighted, and counter-evidence is genuinely <em>not perceived</em>. The closer the threatening fact is to the self-narrative ("I'm a good parent / top engineer / my research direction is right"), the larger the blind spot. Munger's heuristic: the thing you'd find hardest to admit is statistically the most likely to be true. Defense: pre-register what counts as failure before seeing the data; recruit a critic who doesn't care about your face.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正在做 [项目 / 决策 / 关系]，已投入 [时间/精力]。请扮演我最严厉但理性的批评者，跑一次痛苦审计：
+① 列出 3 件"如果是真的，会让我很难承认"的事——尽量精确到具体陈述；
+② 对每一件，给出已经存在但我可能在解释成噪声的证据；
+③ 如果其中任何一件是真的，我接下来 30 天的最优行动应该怎么改？请别照顾我的情绪。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm working on [project/decision/relationship], with [time/effort] invested. Play my harshest but rational critic and run a pain audit:
+1. List 3 things that would be hardest for me to admit if true — be specific.
+2. For each, surface evidence already in front of me that I might be explaining away as noise.
+3. If any one is true, how should my next 30 days change? Do not protect my feelings.</div>
+</section>
+
+<!-- Card 3: 可得性偏差 -->
+<section class="card c3">
+<h2>可得性偏差 · Availability-Misweighing Tendency</h2>
+<div class="subtitle">"大脑无法称量它够不着的东西，因此过度看重它能轻易够到的东西。" — Munger</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>大脑在估计"X 出现的概率/重要性"时，<strong>实际计算的是"X 在记忆里被调出的难易度"</strong>。两个量在原始环境下高度相关（常发生的事自然好记），但在媒体时代彻底脱钩——可怕画面被反复推送，导致每个人对低频高震撼事件（空难、绑架、AI 毁灭）的权重系统性偏高。</p>
+<p>非平凡点：① <em>易得性 ≠ 频率</em>——由三个独立因子混合驱动：<strong>近因（最近发生）、鲜活度（情绪与画面强度）、重复曝光</strong>。媒体专精于全部三项放大。② 与默认模式网络（DMN）的反刍习惯互锁——情绪激烈的记忆在静息时被反复回放，进一步抬升其可得性，形成正反馈。③ 反向修正是<strong>"调出未被调出的"</strong>：主动列举反方向、低戏剧但高频的案例。这条比"理性一点"有用得多——它给大脑一个具体动作，而非抽象规劝。④ 可得性偏差扭曲 prior，贝叶斯校正机制能弥补——但前提是你<em>知道</em>自己的 prior 是从可得性来的，否则更新都建在被污染的基底上。</p>
+<p>实践三步：① 判断前问"我此刻最容易想到什么？为什么是它？"——把可得性显性化。② 强制找 1 个反方向的低戏剧案例。③ 若判断主要由<em>一个极生动画面</em>驱动，几乎可以确定它被可得性扭曲过——延后决策 24 小时。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>9/11 后一年内，美国人大量改坐车而非飞机——结果<em>额外多死约 1500 人</em>（开车每公里死亡率远高于飞行）。一张反复播放的世贸画面，让一千多个真实生命因此而失。不是公众"愚蠢"——是可得性偏差在大规模情境下的精确算术结果：可怕影像 → 易得性 → 主观概率 → 行为切换 → 真实死亡。<strong>影像即决策权重</strong>。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 对 AI 的判断：上一次 LLM 给你错误回答 → 你接下来 3 天都觉得"AI 不靠谱"，即便它过去 100 次都对。<em>一次鲜活失败 &gt; 100 次成功的累积统计</em>。修：建立<strong>结构化日志</strong>记录交互成功率，让数据替代记忆。② 育儿：孩子有一次在公共场合崩溃 → 脑中的"她"被永久打上"情绪不稳"标签，其实大部分时间她稳。鲜活样本污染 base rate。③ 决策：刚刷到一则"某行业暴涨/暴跌"新闻 → 整盘判断被这一帧偏移。决策时<strong>主动列举三个被你忽略的低戏剧事实</strong>——它们才接近 base rate。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Availability-Misweighing Tendency</strong> — when the brain estimates the probability or importance of X, it actually computes <em>how easily X comes to mind</em>. In ancestral environments the two correlated; in a media-saturated world they decouple. Vivid, recent, and repeatedly-broadcast events get systematic over-weighting (plane crashes, AI doom, last week's hallucination). Three drivers: recency, vividness, repetition — media optimizes all three. Coupling with the Default Mode Network's rumination habit creates a positive feedback loop. Fix: explicitly retrieve the un-retrieved — force yourself to list low-drama, high-frequency counter-cases. If a single vivid image is driving your judgment, delay 24h.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我对 [人/事/技术/趋势] 形成了一个判断 [描述]。请帮我做可得性审计：
+① 是什么<em>具体画面/事件/最近的新闻</em>让我形成这个判断的？
+② 给出 3 个我没想到的<em>低戏剧高频</em>反向案例（base rate 那一侧的事实）；
+③ 如果完全屏蔽近 30 天的鲜活印象，仅看长期数据/历史，我的判断会怎么改？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I've formed a judgment about [person/event/technology/trend]: [describe]. Run an availability audit:
+1. Which specific vivid image / recent event / news item is driving this judgment?
+2. Surface 3 low-drama, high-frequency counter-cases I'm overlooking (the base-rate side).
+3. If I muted all vivid impressions from the last 30 days and looked only at long-term data, how would the judgment shift?</div>
+</section>
+
+<!-- Card 4: 对比误反应 -->
+<section class="card c4">
+<h2>对比误反应 · Contrast-Misreaction Tendency</h2>
+<div class="subtitle">"人的感知系统对绝对量近乎瞎，对相对差异极其敏感。" — Munger</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>感知的不是<em>是什么</em>，而是<em>与刚才相比变了多少</em>——这一原理在视觉（韦伯-费希纳定律）、温度、价格、社会地位上全部适用。芒格指出它产生两类系统性误判：<strong>① 巨锚附近的小差被低估（"加 800 元升级"在 200 万买房旁边显得无关紧要）；② 渐变信号被完全过滤（温水煮青蛙）</strong>。</p>
+<p>非平凡点：① 这不是认知<em>偏</em>差——是感知<em>硬件</em>限制。大脑神经元用相对编码节省带宽（同一刺激在不同对比基线下激活模式差几个数量级），是物理事实，不是修养问题。意味着：你无法靠"努力理性"修复，必须靠<em>外部锚定</em>。② 销售、谈判、操控者本能地利用这一点——先抛荒诞高锚 → 真实选择"看起来便宜了 30%"，绝对值仍是历史高位。③ 渐变盲区才是真正杀手：朋友关系慢慢恶化、技术债缓慢累积、习惯每天恶化 1%——每一步都<em>看不出来</em>，3 年后你坐在一个完全不可接受的局面里。缓慢、低可见性的变化是世界上最强的力量，人类感知对它们结构性失明。</p>
+<p>实践三招：① <em>用绝对量看决策</em>——不是"占总价的 5%"，而是"3 万元"。② <em>设外部锚</em>——重大决策时查一个无关基准（年薪、机会成本），把决策从对比里拽回绝对量。③ <em>定期快照对比</em>——每 6 个月把生活/项目/关系拍一张"全景"与上次对照，截获渐变盲区里的信号。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>房产销售经典套路：先带客户看一套<em>故意</em>过价又破旧的"诱饵"——然后第二套真要卖的房像捡漏。这不是营销技巧，是直接利用对比误反应的感知硬件。零售业的"原价 ¥999，今日 ¥299"同理——原价从未存在过，唯一功能是给你提供对比锚。<strong>整套定价心理学的底层都是这一条</strong>。芒格补一刀：避免的最佳方法不是"我意识到了"——而是<em>永远只看绝对数字</em>。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI 工作流"功能蠕变"：每次给 agent 加一个"小功能"都是合理增量——100 次叠加后你拥有的是一个无法理解的 spaghetti 系统。温水青蛙的工程版。修：每 3 个月做一次 baseline 对照，渐变变成离散跳变可见。② 育儿渐变盲区：孩子睡眠每周晚 5 分钟、屏幕时间每天多 3 分钟——单日不可见，半年后已是不可接受的轨迹。<strong>给关键变量设硬阈值</strong>，不是相对评估而是绝对触发线。③ 决策对比锚：考虑给 AI 工具付 ¥2000/月，单看"和年薪比就 1%"。换锚——5 年总投入 12 万，与"同样钱学一项新技能"对比——决策结构立即变化。<em>选对锚 = 决策的隐性架构</em>。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Contrast-Misreaction Tendency</strong> — perception encodes <em>relative</em> change, not absolutes. This is hardware (Weber–Fechner): neurons economize bandwidth via relative coding, so it can't be willed away. Two systematic errors: (1) small differences near a large anchor get under-weighted ($800 upgrade on a $2M house feels trivial); (2) gradual changes slip beneath the detection threshold (the boiling-frog problem) — slowly decaying relationships, accumulating technical debt, drifting habits. Locks with compounding: slow, low-visibility change is the strongest force in the world, and human perception is structurally blind to it. Defense: read decisions in absolute units, anchor to an unrelated external baseline, take periodic full-state snapshots to convert gradients into visible jumps.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正在考虑 [决策 / 投入 / 关系状态]。请用对比误反应模型审视：
+① 当前判断里有没有一个<em>诱饵锚</em>让小差看起来无关紧要？把数字翻译成绝对量后还合理吗？
+② 给出 2 个无关的<em>外部锚</em>（如年薪、机会成本、长期 base rate），看决策结构如何变；
+③ 这件事是否存在<em>渐变盲区</em>——如果把今天和 6 个月前拍快照对比，会看到什么本来逃过我注意的变化？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm considering [decision/investment/relationship state]. Apply Contrast-Misreaction:
+1. Is there a decoy anchor making small differences feel irrelevant? Convert the numbers to absolutes — does it still hold?
+2. Provide 2 unrelated external anchors (annual salary, opportunity cost, long-term base rate) and show how the decision structure shifts.
+3. Is this domain prone to a gradient blind spot? If I snapshot today vs 6 months ago, what slow drift would jump out?</div>
+</section>
+
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
