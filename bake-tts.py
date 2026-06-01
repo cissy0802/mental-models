@@ -60,7 +60,7 @@ def plain_text(attr_value: str) -> str:
 def normalize_for_tts(text: str) -> str:
     """Light normalization. Azure handles smart quotes / em-dash fine, but
     fixing nbsp etc. avoids weird pauses."""
-    return text.replace(" ", " ")  # nbsp → regular space
+    return text.replace(" ", " ")  # nbsp → regular space
 
 
 def ssml_escape(text: str) -> str:
@@ -148,7 +148,7 @@ def synth_long(key: str, region: str, voice_name: str, text: str) -> bytes:
         )
         if result.returncode != 0:
             result = subprocess.run(
-                ["ffmpeg", "-y", "-f", "concat", "-safe", "0",
+                ["ffmpeg", "-y", "-f", "-f", "concat", "-safe", "0",
                  "-i", str(manifest), "-c:a", "libmp3lame", "-b:a", "128k",
                  str(out)],
                 capture_output=True,
@@ -478,3 +478,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+# 2026-06-01: re-trigger bake for June quota reset
