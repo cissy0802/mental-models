@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：芒格人类误判心理学（下） · 2026-06-01</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：芒格人类误判心理学（下）</h1>
+<div class="meta">2026-06-01 · Day 41</div>
+</header>
+<!-- Card 1: 过度自信 -->
+<section class="card c1">
+<h2>过度自信 · Excessive Self-Regard Tendency</h2>
+<div class="subtitle">"我们都以为自己的孩子、自己的车、自己的结论，比客观应得的更好。" — 改述自 Munger</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>人类系统性地<strong>高估自己——以及一切被打上"我的"标签的东西</strong>：我的判断、我的方案、我的团队、我的孩子。经典的湖畔小镇效应（Lake Wobegon effect）：问任何人群"你开车技术是否在平均线以上"，约九成的人说"是"——数学上不可能。</p>
+<p>非平凡点：① 机制不是虚荣，而是<em>"由己生爱"</em>——一旦想法或物件成为"我的"，大脑自动加权（与禀赋效应同源：卖自己杯子的要价，远高于买同款的出价）。② 过度自信<em>本身不该被羞耻</em>——它是行动的燃料，没有它没人敢创业、敢生孩子。问题永远是<strong>校准</strong>，不是消灭。③ 它在<em>反馈慢而嘈杂</em>的领域最致命：下棋打牌反馈快，自负被迅速纠正；投资、战略、育儿反馈以年计，自负可滋养十年不破。④ 与 Dunning-Kruger 同构：能力越低越看不到自己无能的边界——因为"评估自己做得好不好"恰恰需要那项缺失的能力。</p>
+<p>实践：把"对决策的信心"和"对自己正确的信心"分开——前者高没问题，后者要带概率。芒格的铁律是：<strong>"在我能把对方的论点讲得比对方还好之前，我没资格持有自己的观点。"</strong> 另一招是给预测<em>标概率、记台账</em>，事后校准——你会发现自己说"九成把握"时，真实命中率往往只有六成。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>外科医生与交易员是过度自信研究的重灾区：经验越丰富、地位越高，越倾向于把"运气好的结果"归因为"我判断准"。一项对交易员的研究显示，自评信心最高的那一组，实际收益反而最差——他们交易过频，每一次都"确信这把对"。反馈被损益噪声淹没，自负于是无限续命。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 设计 AI 系统：你亲手画的那套 agent 架构，会被你<strong>系统性高估</strong>——因为它是"我的"。对治不是更努力地客观，而是请一个不在乎你面子的人做红队（red team），或让另一个 LLM 专门扮演"拆台者"列出这套设计会怎么崩。② 育儿：父母对"我最懂我的孩子"几乎全员过度自信——而这恰是反馈最慢的领域。把对孩子的判断当成<em>带概率的假设</em>，留出"我可能读错了"的空间，比笃定更接近真相。<em>越笃定的领域，越要怀疑那只是没有反馈而已。</em></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Excessive Self-Regard Tendency</strong> — humans systematically overrate themselves and anything tagged "mine": my judgment, my plan, my child (the Lake Wobegon effect: ~90% rate themselves above-average drivers). The mechanism isn't vanity but <em>endowment</em> — once an idea becomes "mine," the brain over-weights it. Overconfidence isn't shameful; it's the fuel for action — the problem is always calibration, not elimination. It's deadliest where feedback is slow and noisy (investing, strategy, parenting); fast-feedback domains (chess, poker) self-correct. Munger's antidote: "I'm not entitled to an opinion until I can state the other side's case better than they can." Separate confidence-in-a-decision from confidence-in-being-right, attach probabilities, and keep a calibration ledger.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我对 [某个判断 / 方案 / 计划] 很有信心，把握大约 [X成]。请用过度自信模型给我做校准：
+① 我这份信心里，有多少来自证据，有多少来自"这是我的"（禀赋效应）？
+② 这个领域的反馈快还是慢？我上一次被现实纠正是什么时候？
+③ 请扮演拆台者，把"我错了"这一面的论证讲到比我自己还强，并指出我最可能高估的那个环节。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm confident about [a judgment / plan], roughly [X]% sure. Calibrate me using the Excessive Self-Regard model:
+1. How much of this confidence comes from evidence vs. the fact that it's "mine" (endowment effect)?
+2. Is feedback in this domain fast or slow? When was I last corrected by reality?
+3. Play devil's advocate: argue the "I'm wrong" side better than I could, and name the single step I'm most likely overrating.</div>
+</section>
+<!-- Card 2: 嫉妒驱动 -->
+<section class="card c2">
+<h2>嫉妒驱动 · Envy / Jealousy Tendency</h2>
+<div class="subtitle">"驱动这个世界的不是贪婪，而是嫉妒。" — Munger</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>芒格反复强调：人类大量的非理性、内耗与社会动荡，根源不是贪婪而是<strong>嫉妒</strong>。它是七宗罪里最荒谬的一种——<em>纯粹的痛苦，没有任何愉悦回报</em>。贪吃至少有快感，嫉妒连一秒爽都没有，只是看着别人好而自己难受。</p>
+<p>非平凡点：① 嫉妒是<em>相对的、就近的</em>——我们不嫉妒马斯克，只嫉妒身边高半级的同事、考得比自家好的邻居孩子。罗素有句话："乞丐不嫉妒百万富翁，只嫉妒收入更高的乞丐。"<strong>决定你痛苦的不是绝对处境，而是你选了谁当参照系。</strong>② 社交媒体把嫉妒<em>工业化</em>了——它把全世界的高光片段拼成你的参照系，于是你 24 小时活在"人人都比我好"的幻象里。③ 嫉妒对当事人<em>隐形</em>——它从不以"我嫉妒"出现，而伪装成"这不公平"。满嘴"公平"时，要警惕底下是不是嫉妒在说话。④ 与佛学「随喜」（mudita）正相反：随喜是为他人之好而由衷欢喜，是可训练的能力，也是嫉妒的直接解药。</p>
+<p>实践：把"听到别人好消息时心里那一下不舒服"当成<em>嫉妒的报警器</em>——这一下闪念骗不了人。然后做两件事：一是<strong>主动缩小、换掉参照系</strong>（取关让你内耗的账号）；二是刻意练习随喜——把"凭什么是他"改写成"他做对了什么，我能学什么"，嫉妒就转化成了学习的燃料。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>薪酬透明的研究反复发现一个反直觉结果：人们对工资的满意度，更多取决于"和同事比"而非绝对数额。全员涨薪、但有人涨得多，常让涨得少的人比涨薪前<em>更不满</em>——绝对收入升了，参照系却把它变成损失。芒格因此说，嫉妒是企业内部最被低估的破坏力，公开的薪酬差距能毁掉一支原本满意的团队。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 作为追求"AI 超级个体"的技术人：很容易陷入和同行比 GitHub star、比评测分、比融资额的内耗——而这些参照系多半是算法喂的。换成"去年的自己"，嫉妒立刻失去燃料。② 育儿里最隐蔽的陷阱：很多"鸡娃"的真正驱动，是<strong>父母对其他父母的嫉妒</strong>，借孩子成绩来比拼——孩子成了大人嫉妒的代偿工具。先察觉这层，才能把"别人家孩子"请出教育现场。<em>嫉妒治不好，但参照系可以换。</em></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Envy / Jealousy Tendency</strong> — Munger insists it's envy, not greed, that drives most human irrationality. Envy is the one deadly sin with zero upside: pure suffering, no pleasure. It's <em>relative and local</em> — we don't envy billionaires, we envy the peer one rung up (Russell: "Beggars don't envy millionaires; they envy other beggars who do better"). Your pain is set not by your absolute condition but by your chosen reference group — and social media industrializes envy by making everyone's highlight reel your reference group. Envy is invisible to the envier, disguising itself as "unfairness." Its direct antidote is the Buddhist <em>muditā</em> (sympathetic joy), a trainable capacity. Practice: treat the sting at others' good news as an envy alarm, then shrink/swap your reference group and convert "why them?" into "what did they get right that I can learn?"
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我最近因为 [某个人 / 某件事] 持续感到不舒服或不甘心。请用嫉妒驱动模型帮我拆解：
+① 我现在用的参照系是谁？这个参照系是我主动选的，还是被环境/算法喂给我的？
+② 剥掉"这不公平"的外衣，底下有多少其实是嫉妒？
+③ 给我一个"随喜 + 学习"的改写：从对方身上我具体能学什么，以及如何把参照系换成"过去的我"。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I keep feeling uneasy or resentful about [a person / event]. Use the Envy Tendency model to dissect it:
+1. Who is my current reference group? Did I choose it, or was it fed to me by my environment/algorithms?
+2. Strip away the "this is unfair" framing — how much underneath is actually envy?
+3. Give me a "muditā + learning" reframe: what specifically can I learn from them, and how do I reset my reference group to "my past self"?</div>
+</section>
+<!-- Card 3: 一致性偏见 -->
+<section class="card c3">
+<h2>一致性偏见 · Commitment &amp; Consistency Tendency</h2>
+<div class="subtitle">"人心很像人的卵子——第一颗精子进去后，它就关上了大门。" — Munger</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>一旦人公开表态、或为某事付出了努力，大脑就会<strong>锁死这个立场</strong>，因为"承认自己前后不一"本身是种痛苦，它会主动扭曲后续证据来维护一致。芒格那个著名比喻：人脑像卵子，<em>第一个结论钻进去，门就关上</em>，再好的反证也进不来。</p>
+<p>非平凡点：① 承诺越<em>公开、越费力</em>，锁得越死——这正是邪教、传销、入会仪式的核心机制：先让你做一件公开而高成本的事（缴费、拉人、宣誓），此后大脑会自动生产理由维护它，因为退出等于承认"我当初被骗了"。② 它和身份绑定：观点一旦变成"我是什么样的人"，改变它就像<em>自我的一小次死亡</em>，于是人宁可对抗事实也不愿对抗自我叙事。③ "得寸进尺"（foot-in-the-door）：先骗到小承诺，大承诺就顺理成章。④ 与沉没成本咬合：已投入的不甘，叠加"不想显得善变"，双重锁死。</p>
+<p>实践：① <strong>把表态推迟</strong>——尤其别太早公开站队，话说出口那一刻起，你就开始为它辩护而非检验它。② 把信念当假设来持有，提前写下<em>"杀死条件"</em>：出现什么证据我就认错。预先写好的退出门槛，能绕过当下的一致性疼痛。③ 主动奖励自己改主意——正如那句广为流传的话：经常正确的人，往往也是经常改变主意的人。改主意不是丢脸，是更新成功。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>邪教与传销的入会设计是一致性偏见的纯粹标本：几乎都要求新人尽早做一件<em>公开且高成本</em>的事——当众宣誓、上交积蓄、拉自己的亲友。一旦做了，大脑为避免"我是被骗的傻瓜"这一剧痛，会自动生产无数理由证明组织是对的。外人看是洗脑，内核只是一致性倾向被精准武器化。反过来用则是良性的：戒烟戒酒时<em>公开承诺</em>能显著提高成功率。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 技术决策：你在全公司会上力推过某套架构/某个技术选型，半年后数据说它不行——一致性偏见会让你<strong>越辩护越用力</strong>，因为推翻它等于推翻"当初拍板的我"。解法：把它从"我的方案"重命名为"v1 假设"，公开宣布"我们当时基于 X 选了它，现在 X 变了"，给自己一个体面的下台阶。② 育儿：脱口而出定了一条规矩，事后发现不合理，却因为"不能在孩子面前显得善变/没权威"而硬撑——这是用孩子的成长给你的一致性买单。坦白"妈妈/爸爸想得不周到，我们改一下"，反而示范了最珍贵的能力：基于证据更新自己。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Commitment &amp; Consistency Tendency</strong> — once we take a position, especially publicly or effortfully, the brain locks it in to avoid the pain of appearing inconsistent, distorting later evidence to defend it. Munger: "The human mind is a lot like the human egg — once one sperm gets in, it shuts down to others." The more public and costly the commitment, the tighter the lock — which is exactly how cults and pyramid schemes work (front-load a costly, public act). Beliefs fused with identity make changing your mind feel like a small ego-death. Defenses: delay public commitment; hold beliefs as hypotheses with pre-written "kill criteria"; and reward yourself for changing your mind — people who are right a lot tend to change their minds a lot.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在 [某个观点 / 决策 / 立场] 上越来越难松口，但隐约觉得证据在变。请用一致性偏见模型帮我解锁：
+① 我当初是在多公开、多费力的情况下做这个承诺的？锁得有多死？
+② 我现在的辩护，有多少是为了"事情本身对"，多少是为了"不否定当初的我"？
+③ 给我写 2-3 条具体的"杀死条件"，并设计一个体面的、不丢面子的转身说法。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I find it harder and harder to back down on [a view / decision], yet the evidence seems to be shifting. Use the Commitment &amp; Consistency model to unlock me:
+1. How public and effortful was my original commitment? How tight is the lock?
+2. How much of my defense is "the thing is actually right" vs. "not negating my past self"?
+3. Write me 2–3 concrete "kill criteria," and craft a face-saving way to reverse course.</div>
+</section>
+<!-- Card 4: Lollapalooza 效应 -->
+<section class="card c4">
+<h2>Lollapalooza 效应 · The Lollapalooza Effect</h2>
+<div class="subtitle">"真正极端的结果，几乎总是好几种心理倾向同时朝一个方向叠加的产物。" — 改述自 Munger</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>这是芒格整套清单的<strong>压轴定理</strong>：当多个心理倾向<em>同时朝同一方向</em>发挥作用时，结果不是简单相加，而是<strong>相乘、共振、临界引爆</strong>——产生远超各项之和的极端后果。狂热、恐慌、泡沫、邪教、抢购，几乎都不是单一偏差，而是多偏差合流。</p>
+<p>非平凡点：① 绝大多数"大事件"都是<em>多偏差合流</em>，而非单点失误——这正是单因素分析屡屡失灵的原因：你逐一检查每个偏差都觉得"还好"，却漏看了它们叠加的乘积。② 它与复杂性科学的<em>临界点 / 相变 / 正反馈</em>同构：单个分子的小扰动可忽略，但同向扰动达到临界质量，整个系统会突然跳到新相态（水→冰）。③ Lollapalooza 既能<em>无意触发</em>（市场泡沫），也能被<em>刻意工程化</em>（赌场、拍卖、销售话术故意同时挂上多个钩子）。④ 关键推论：<strong>你无法靠"逐个内省偏差"抓住合流</strong>——必须用清单整体扫描。这正是芒格坚持"格栅理论（latticework）+ 检查清单"的原因。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="120" y="22">多个倾向 · 同向叠加</text>
+<rect fill="#1b8a5a" height="26" opacity="0.85" rx="4" width="150" x="20" y="40"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="95" y="58">社会认同</text>
+<rect fill="#1b8a5a" height="26" opacity="0.85" rx="4" width="150" x="20" y="78"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="95" y="96">稀缺 / FOMO</text>
+<rect fill="#1b8a5a" height="26" opacity="0.85" rx="4" width="150" x="20" y="116"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="95" y="134">权威背书</text>
+<rect fill="#1b8a5a" height="26" opacity="0.85" rx="4" width="150" x="20" y="154"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="95" y="172">一致性 / 承诺</text>
+<path d="M 180 53 C 250 60, 250 110, 300 115" fill="none" stroke="#636e72" stroke-width="1.5"></path>
+<path d="M 180 91 C 240 100, 250 110, 300 115" fill="none" stroke="#636e72" stroke-width="1.5"></path>
+<path d="M 180 129 C 240 122, 250 118, 300 117" fill="none" stroke="#636e72" stroke-width="1.5"></path>
+<path d="M 180 167 C 250 160, 250 125, 300 119" fill="none" marker-end="url(#arr4)" stroke="#636e72" stroke-width="1.5"></path>
+<defs><marker id="arr4" markerheight="10" markerwidth="10" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
+<circle cx="345" cy="116" fill="#c44545" r="30"></circle>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="345" y="113">临界</text>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="345" y="127">引爆</text>
+<path d="M 378 116 L 430 116" fill="none" marker-end="url(#arr4b)" stroke="#c44545" stroke-width="2.5"></path>
+<defs><marker id="arr4b" markerheight="10" markerwidth="10" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#c44545"></path></marker></defs>
+<text fill="#c44545" font-size="22" font-weight="700" text-anchor="middle" x="495" y="110">×</text>
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="495" y="135">极端结果</text>
+<text fill="#868e96" font-size="10" font-style="italic" text-anchor="middle" x="280" y="210">不是 1+1+1+1，而是 a×b×c×d —— 同向合流 → 相变</text>
+</svg>
+<div class="caption">Lollapalooza：多个同向偏差达到临界质量 → 相乘引爆，而非线性相加</div>
+</div>
+<p>实践：当某件事让你感到<em>压倒性地、不容置疑地诱人或正确</em>时——这种"过于丝滑"的感觉本身就是报警器。停下来问：<strong>此刻有哪 3-4 个偏差正在同向叠加？</strong>把它们一一列出，合流的魔力往往当场瓦解。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>芒格最爱举的例子是家庭聚会式的直销售货会：你被熟人邀到她家（喜爱/信任）、主人先送你小礼物（互惠）、当场看到别人都在下单（社会认同）、"今天限量、错过没有"（稀缺）、再让你当众报个数（承诺一致）——<strong>五六个钩子同时拉</strong>，于是一屋子理性的成年人买下一堆自己根本不需要的塑料盒。单看每个钩子你都能抵抗，合流之下却几乎无人幸免。这就是被工程化的 Lollapalooza。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI 赛道的某些融资/产品狂热，正是教科书级的 Lollapalooza：社会认同（人人都在做 agent）+ 稀缺/FOMO（错过这波就没了）+ 权威背书（大佬都投了）+ 一致性（已公开下注就得追加）同向叠加，把整个行业的估值推到相变点。识别它，能让你在狂热里保持一份冷静的仓位。② 反向善用：想让一个好习惯在自己或团队里"自然发生"，就<strong>主动把多个正向倾向叠到一起</strong>——公开承诺 + 同伴社群 + 即时反馈 + 身份认同，四力同向，行为改变会从"靠意志硬撑"跳变为"顺水推舟"。<em>Lollapalooza 是中性引擎：看你把哪些力对齐到哪个方向。</em></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The Lollapalooza Effect</strong> — Munger's capstone: when several psychological tendencies act <em>in the same direction at once</em>, the result isn't additive but multiplicative — they resonate and tip past a critical threshold into extreme outcomes (manias, panics, bubbles, cults, buying frenzies). Most big real-world events are multi-bias confluences, not single-bias errors — which is why single-factor analysis fails: each bias checked alone looks tolerable, but you miss their product. Structurally identical to complexity science's critical points / phase transitions / positive feedback. A Lollapalooza can be accidental (market bubbles) or deliberately engineered (casinos, auctions, sales scripts). Key defense: you can't catch a confluence by introspecting one bias at a time — you need a whole-checklist scan (Munger's latticework). When something feels overwhelmingly compelling, suspect a Lollapalooza and list which 3–4 biases are stacking.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正面对 [某个让我感觉"压倒性地诱人/正确"的决策、机会或潮流]。请用 Lollapalooza 效应给我做合流扫描：
+① 此刻有哪 3-5 个心理倾向正在同向叠加（如社会认同、稀缺、权威、承诺一致、过度自信、嫉妒）？
+② 它们是自然合流，还是有人刻意工程化把这些钩子挂在一起？
+③ 假如逐一拆掉每个钩子，这个机会还剩多少真实价值？给我一个能在狂热中保持冷静的行动建议。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm facing [a decision / opportunity / trend that feels overwhelmingly compelling]. Run a Lollapalooza confluence scan:
+1. Which 3–5 psychological tendencies are stacking in the same direction right now (social proof, scarcity, authority, commitment/consistency, overconfidence, envy)?
+2. Is this a natural confluence, or has someone deliberately engineered the hooks together?
+3. If I removed each hook one by one, how much real value remains? Give me an action that keeps me calm amid the frenzy.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
