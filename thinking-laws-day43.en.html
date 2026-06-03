@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Laws of Thinking · 2026-06-03</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Laws of Thinking</h1>
+<div class="meta">2026-06-03 · Day 43</div>
+</header>
+
+<!-- Card 1: Map Is Not the Territory -->
+<section class="card c1">
+<h2>Map Is Not the Territory</h2>
+<div class="subtitle">"A map is not the territory it represents, but if correct, it has a similar structure to the territory — which is the reason for its usefulness." — Alfred Korzybski, 1931</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Everything in your head about the world — concepts, language, models, intuitions — is a <strong>map</strong>; the real world is the <strong>territory</strong>. Most pain and error come from one place: <strong>mistaking the map for the territory itself</strong>. This isn't pessimistic agnosticism — quite the opposite. Maps do differ in quality, but the test isn't "does it equal the territory" (never possible); it's <em>"is it structurally similar to the territory, and good enough for the current purpose?"</em></p>
+<p>Non-trivial: (1) maps <em>self-reinforce</em> — you filter perception through the map, and feedback is filtered by the same map, so it always "looks right" (isomorphic to confirmation bias). The only escape is <strong>actively seeking where the map predicts wrongly</strong>, not evidence that it holds. (2) Isomorphic to the brain's predictive processing: the brain is a prediction machine constantly updating maps, and perception is a "reality-constrained hallucination" — your prior map determines what you can see. (3) Isomorphic to the Buddhist "finger pointing at the moon": stare at the finger (the concept) and you'll never see the moon (the real).</p>
+<p>Practical test: <strong>a good map is <em>deliberately</em> distorted for a purpose</strong>. Ask yourself — what purpose was the map I'm using drawn for? Switch the purpose, and will it instantly mislead me?</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The London Tube map is severely distorted geographically — lines straightened, station spacing equalized, the Thames simplified. But for its one purpose, "how do I change trains to get there," it beats any to-scale map. That's the essence of a good map: <em>fidelity sacrificed for purpose</em>. The moment you use it to estimate "how far is the walk between two stations," it lies to you — because that's not what it was drawn for.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: the map in your head of "how a distributed system should behave" and the live system (the territory) diverge — and almost every incident happens <strong>in the seam between them</strong>: "I assumed this endpoint was idempotent." Seniority isn't a more precise map; it's <em>always remembering you hold a map</em> and instrumenting the seams. (2) AI: user profiles and embedding vectors are maps, the real person is the territory; model performance collapses when a team mistakes the map for the territory, forgetting it only approximates under the purpose it was trained for.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My core belief about [domain/system/person] is: [describe my "map"]. Run a map-vs-territory audit:
+1. What purpose was this map originally drawn for? Am I now using it to judge things beyond that purpose?
+2. Name 2–3 likely gaps where map and territory diverge — places I assume X but reality may differ.
+3. Give me one concrete observation or experiment that actively tests where the map breaks.</div>
+</section>
+
+<!-- Card 2: Hanlon's Razor -->
+<section class="card c2">
+<h2>Hanlon's Razor</h2>
+<div class="subtitle">"Never attribute to malice that which is adequately explained by stupidity (negligence, incompetence)."</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>When someone's behavior hurts you, the brain's default is to read it as <strong>malice aimed at you</strong> (psychology calls this the hostile attribution bias). Hanlon's Razor is a <em>Bayesian prior-corrector</em>: across the probability distribution, negligence, incompetence, miscommunication, and random noise are <strong>far more common than deliberate harm</strong>. So on a negative outcome, put your prior mass on "non-malice" first, then check whether the evidence really forces an update.</p>
+<p>Non-trivial: (1) this isn't naive optimism, it's <em>statistical calibration</em> — most things that hurt you have no scheming mastermind behind them, just a mess. (2) <strong>The upgraded razor</strong>: often the truth is neither malice nor stupidity but <em>"the person made a rational choice under constraints and incentives you can't see."</em> This inverts the fundamental attribution error — we habitually explain others' behavior by character while ignoring their situation. The stronger formulation: <strong>explain by constraints and incentives before character</strong>. (3) Systems-thinking link: blaming a person's stupidity or malice often <em>masks a systemic cause</em> — a bad process that makes even smart people fail. Quality management settled this long ago: most errors are rooted in the system, not the individual.</p>
+<p>Boundary: the razor isn't an absolution. When "stupidity" forms a <em>stable, directional pattern</em> (it conveniently always benefits them), update your prior — repeated "innocent mistakes" may be strategy.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>An email goes into a black hole. First reaction: "He looks down on me, he's deliberately leaving me hanging." But switch to his side: 200 unread sit in the inbox, your email slid to the second screen, he meant to "reply after this crunch" and forgot. <em>Malice</em> is the most expensive hypothesis to sustain, yet the one the brain grabs first. Attributing malice makes you fire back a barbed follow-up, <em>escalating</em> a lapse into real hostility — self-fulfilling.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Collaboration: a colleague doesn't implement the agreed interface contract and your module breaks. Attribute "he's deliberately sabotaging me" → the relationship fractures; attribute "he missed the doc / misunderstood / has constraints I can't see" → you align instead of going to war, and the problem actually gets solved. (2) Parenting: a child "deliberately" knocks over a cup or "willfully" stalls — usually it's undeveloped hand-eye coordination or a bid for attention. Misreading a developmental issue as defiance triggers punishment and damages attachment. <strong>Attributing malice almost always turns a small thing into a big one</strong>; ask "what constraint or capability gap made this possible" and you'll nearly always find a more actionable fix.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Something happened that feels aimed at me: [describe the event + my current attribution]. Apply Hanlon's Razor:
+1. List 3 non-malice explanations (negligence / competence / miscommunication / randomness).
+2. Give 1 "constraints & incentives" explanation — under what situation would the person rationally act this way?
+3. Counter-check: is there real evidence for a malice/strategy hypothesis? If so, which reproducible pattern should make me update my prior?</div>
+</section>
+
+<!-- Card 3: Dunbar's Number -->
+<section class="card c3">
+<h2>Dunbar's Number</h2>
+<div class="subtitle">The processing power of the human neocortex sets a hard ceiling — around 150 — on the number of stable social relationships.</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>The number of stable social relationships a human can maintain isn't unlimited; it's constrained by neocortical processing to <strong>roughly 150</strong>. More importantly, it isn't one number but a set of <em>concentric circles</em>: ≈5 intimates, 15 close friends, 50 friends, 150 acquaintances, then 500 and 1500. Each layer outward, <strong>bandwidth and depth decay sharply</strong>.</p>
+<p>Non-trivial: (1) relationship maintenance has a <em>cognitive cost</em> — each tie consumes "social investment" (contact, memory, emotional sync). 150 isn't a moral choice, it's a <strong>bandwidth ceiling</strong>; past it, a relationship degrades from "an internal model of a real person" into "a label." (2) Social media creates <em>pseudo-Dunbar inflation</em>: you think you know 2000 people, but the brain truly models only ~150; the rest are one-way parasocial projections that drain attention without real reciprocity. (3) <strong>Organizational corollary</strong>: once a group crosses ~150, the implicit "everyone-knows-everyone" trust can no longer carry coordination, and the organization is forced to substitute hierarchy, process, and rules. This is essentially the "full-mesh complexity explosion" of a social network — the cost of pairwise connection rises with the square of headcount, so past a point you must shift from mesh to hierarchy.</p>
+<p>Practice: <strong>tier your social investment explicitly</strong> by concentric circle. Attention is scarce, and maintaining the wrong layer (letting a layer-150 person consume your layer-5 time) is a hidden, high opportunity cost.</p>
+<div class="diagram">
+<svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
+<circle cx="210" cy="130" r="120" fill="#fbe9e9" stroke="#c44545" stroke-width="1" opacity="0.5"/>
+<circle cx="210" cy="130" r="90" fill="#f7d6d6" stroke="#c44545" stroke-width="1" opacity="0.6"/>
+<circle cx="210" cy="130" r="60" fill="#f0baba" stroke="#c44545" stroke-width="1" opacity="0.7"/>
+<circle cx="210" cy="130" r="32" fill="#c44545" stroke="#c44545" stroke-width="1"/>
+<text x="210" y="127" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">5</text>
+<text x="210" y="142" text-anchor="middle" font-size="9" fill="#fff">intimates</text>
+<text x="210" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#a83232">15 close</text>
+<text x="210" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#a83232">50 friends</text>
+<text x="210" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#a83232">150 acquaintances (ceiling)</text>
+<text x="210" y="252" text-anchor="middle" font-size="10" fill="#868e96">each layer outward → bandwidth &amp; depth decay sharply</text>
+</svg>
+<div class="caption">Dunbar's Number: stable ties aren't one number but bandwidth-decaying concentric circles</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>W. L. Gore (maker of Gore-Tex) deliberately caps each factory at ~150 people: once exceeded, it builds a new plant nearby rather than expanding. The reasoning is direct — beyond that number, the "everyone knows everyone's name, coordinate by tacit understanding" mode fails, forcing a switch to hierarchy and rules that would strangle the innovation culture. A textbook case of treating Dunbar's number as an <em>axiom of organizational design</em>.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) The AI super-individual: you can use a swarm of agents to scale your <em>execution bandwidth</em> a hundredfold, but the "core circle" you can deeply collaborate with and truly model is still Dunbar-bound — tools amplify throughput, not relationship bandwidth. Seeing this boundary keeps you from pouring energy into "managing a network you can't actually sustain." (2) Energy management: audit your social investment by concentric circle — are outer-layer weak ties quietly eating the time owed to your innermost 5? The compounding of relationships only really happens in the inner two layers.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here's my current relationship / collaboration network: [describe whom I contact regularly, the scale, my energy allocation]. Audit it with Dunbar's concentric circles:
+1. Sort these relationships into the ≈5 / 15 / 50 / 150 layers; flag which layer is over-invested and which is neglected.
+2. Identify 1–2 "pseudo-Dunbar" ties — parasocial relationships that drain attention without real reciprocity.
+3. Propose one concrete reallocation that returns energy to the innermost two (compounding) layers.</div>
+</section>
+
+<!-- Card 4: Gödel's Incompleteness -->
+<section class="card c4">
+<h2>Gödel's Incompleteness</h2>
+<div class="subtitle">Any sufficiently strong, consistent formal system contains true statements unprovable within it, and cannot prove its own consistency from within. — Kurt Gödel, 1931</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Gödel proved that any formal system <em>strong enough to express basic arithmetic</em> and <em>consistent</em> must be <strong>incomplete</strong> — there exist true-but-unprovable statements — and the system <strong>cannot prove its own consistency using its own rules</strong>. Draw the boundary first: this is a <em>precise mathematical result</em>, not a "nothing is knowable" mystical abuse. But it has a rigorous, transferable structural core — <strong>any self-consistent closed system has blind spots: it cannot verify all its own truths using only its own rules, nor self-certify its consistency</strong>.</p>
+<p>Non-trivial transfers: (1) no rule system (law, KPIs, code standards, contracts) can <em>pre-enumerate every case</em>; it always hits boundary cases "undecidable from within," and then you must jump to a <strong>meta-level</strong> — human discretion, new axioms, external judgment. Goodhart's Law ("when a measure becomes a target, it ceases to be a good measure") is the practical version of this blind spot: a metric system can't, from within, plug the hole of being gamed. (2) <em>Self-referential verification has limits</em>: you can't use a set of assumptions to test those same assumptions — auditing needs an outside view. (3) AI / consciousness link: a model can't judge the truth of its own output from within, which is exactly why "self-consistency" is insufficient to guarantee correctness and external grounding plus human checking are needed; whether a formal system can fully capture the mind remains an open tension.</p>
+<p>Practical signal: when you keep "grinding" inside a system but can never decide right from wrong, it's often not that you're not trying hard enough — it's that <strong>it's time to ascend a meta-level</strong>: bring in external arbitration, a new premise, or another's perspective, rather than spinning inside the original system.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The liar's paradox — "this sentence is false." If true, then false; if false, then true; the system collapses at the self-reference. Gödel's genius: he <em>precisely encoded</em> this seemingly verbal self-reference into an arithmetic statement ("this statement is unprovable within the system"), proving incompleteness isn't a trick of language but the structural fate no sufficiently strong formal system can escape.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: a test suite can never prove it "tested everything" — who tests the tests? No such proof exists within the system, so you need an <strong>outside</strong> backstop: code review, formal verification, chaos engineering. Treating "tests pass" as "code is correct" mistakes an incomplete system for a complete one. (2) Governance and self-knowledge: any KPI scheme gets gamed (a Gödel-style blind spot) and must keep a layer of human judgment as a backstop; likewise, you can't fully audit your own thinking framework using only that same framework — which is exactly why <em>others' feedback, meditation, and anomalous data</em> are irreplaceable: they're the "meta-level" outside your own cognitive system.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I rely on this system to judge / govern / verify: [describe the system — a KPI scheme / test suite / rule set / self-reflection process]. Analyze it through Gödel's "blind spot" lens:
+1. On what kind of boundary cases is this system most likely unable to decide from within?
+2. Where does it try to "self-certify consistency" — verify itself using its own rules? Name the risk.
+3. Propose one concrete meta-level backstop: which external perspective / new premise / outside arbitration would patch the blind spot.</div>
+</section>
+
+<footer class="footer">
+<a href="index.en.html">&larr; Back to Index</a>
+</footer>
+</div>
+</body>
+</html>
