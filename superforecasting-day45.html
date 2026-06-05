@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：超级预测科学 · 2026-06-05</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1 data-tts="58974961e6d8f163">思维模型详解：超级预测科学</h1>
+<div class="meta">2026-06-05 · Day 45</div>
+</header>
+
+<!-- Card 1: 校准 vs 锐度 -->
+<section class="card c1">
+<h2 data-tts="bbec0f2531f922a1">校准 vs 锐度 · Calibration vs Resolution</h2>
+<div class="subtitle">一个好预测有两种彼此独立的美德——别只追求其中一种</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>预测质量不是单一维度，而是两个正交的能力。<strong>校准</strong>：当你说"70%"时，这类事件真的有 70% 发生——你的概率说的是实话。<strong>锐度</strong>（也叫分辨度）：你敢于离开基础率给出果断的概率（90% 或 10%），而不是怯懦地贴着 50% 不动。</p>
+<p>非平凡点：① 这两者会<em>互相拉扯</em>。一个气象员在年降雨率 30% 的城市永远报"30% 降雨"——他校准完美，却毫无锐度，因此毫无信息价值；反过来，到处喊 95% 来显得果断，则会摧毁校准。② <strong>真正的高手是同时做到两者</strong>：只在证据真正支持时才果断，其余时候诚实地停在不确定区。③ 一个深刻的数学事实：预测误差可以被<em>分解</em>为"校准项 + 锐度项"——这意味着复盘时不该只问"猜对没有"，而要分别问"我的概率诚实吗"和"我敢不敢离开中庸"。两种病要两种药：校准差靠记录反馈来治，锐度差靠积累领域知识来治。</p>
+<p>实践判别：把你过去说"80% 把握"的事全捞出来，看实际兑现率。若远低于 80% → 过度自信（校准病）；若你从不敢说出 80% 以上 → 锐度不足（信息没榨干）。</p>
+<div class="diagram">
+<svg viewbox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="60" y1="30" y2="250"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="380" y1="250" y2="250"></line>
+<line stroke="#1b8a5a" stroke-dasharray="5,4" stroke-width="2" x1="60" x2="380" y1="250" y2="30"></line>
+<text fill="#1b8a5a" font-size="11" x="250" y="80">完美校准（对角线）</text>
+<path d="M 60 250 Q 180 220 300 130 T 380 110" fill="none" stroke="#c44545" stroke-width="2.5"></path>
+<text fill="#c44545" font-size="11" x="150" y="200">过度自信曲线</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="220" y="285">你说的概率 →</text>
+<text fill="#636e72" font-size="11" transform="rotate(-90 20 140)" text-anchor="middle" x="20" y="140">实际兑现率 →</text>
+<text fill="#868e96" font-size="9" x="40" y="255">0</text>
+<text fill="#868e96" font-size="9" x="372" y="265">1</text>
+</svg>
+<div class="caption">可靠性图：报高概率的事却常落空 → 曲线压在对角线下方 = 过度自信</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>天气预报是人类校准最好的行业之一。说"明天 70% 降雨"的那些日子，长期统计下来确实约 70% 下了雨——因为预报员每天都拿到次日的真实反馈，被迫诚实。这也揭示了校准的来源：<strong>高频 + 即时反馈</strong>。绝大多数职业（经济学家、战略家）之所以校准糟糕，正是因为预测周期长、反馈稀疏，错了也无人记账。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>机器学习里的"模型校准"是同一个概念：一个分类器输出 0.9 置信度时，理应有 90% 真的为正例。但现代深度网络<strong>系统性过度自信</strong>——输出 0.99 却只对 80% 的时间，需要用温度缩放等手段校准。同理，当 LLM 语气笃定地给出答案，它的"语言自信"和"真实正确率"往往不对齐。把这套迁移到自己身上：在工作排期里给每个估计标一个概率，季度末复盘兑现率——你会发现自己也是个"未经校准的网络"。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Calibration vs Resolution</strong> — forecast quality has two orthogonal virtues. <em>Calibration</em>: when you say 70%, the event happens 70% of the time — your probabilities tell the truth. <em>Resolution (sharpness)</em>: you dare to leave the base rate and commit to decisive probabilities rather than hugging 50%. They trade off: a forecaster who always reports the base rate is perfectly calibrated but useless; shouting 95% to seem bold destroys calibration. Elite forecasters achieve both — decisive only when evidence warrants. Forecast error decomposes into a calibration term and a resolution term, so debriefs should ask two separate questions: were my probabilities honest, and did I dare to move off the middle? Calibration is cured by feedback; resolution by domain knowledge.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>这是我最近对 [领域/项目] 做的一批带概率的预测：[列出"事件 + 我给的概率 + 实际结果"]。请：
+① 估计我的校准——把预测按概率分桶，对比每桶的实际兑现率，判断我是过度自信还是过度保守；
+② 估计我的锐度——我是否大量预测都挤在 40%–60%，不敢果断？
+③ 分别给出提升校准和提升锐度的一条具体动作。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is a batch of my recent probabilistic forecasts about [domain/project]: [list "event + my probability + actual outcome"]. Please:
+1. Assess my calibration — bucket forecasts by probability, compare each bucket's stated probability to its realized hit rate, and judge whether I'm overconfident or underconfident.
+2. Assess my resolution — are most of my forecasts clustered in 40%–60%, afraid to commit?
+3. Give one concrete action to improve calibration and one to improve resolution.</div>
+</section>
+
+<!-- Card 2: 布里尔分数 -->
+<section class="card c2">
+<h2 data-tts="798f8aa7cf85d596">布里尔分数 · Brier Score</h2>
+<div class="subtitle">用一个数字给概率预测打分——而且这个数字逼你说实话</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>布里尔分数把一次概率预测的好坏压成一个数：<strong>误差 =（你给的概率 − 实际结果）的平方</strong>，结果用 1 表示发生、0 表示没发生。一批预测取平均，<em>越低越好</em>，0 是神。它同时奖励"猜得准"和"对不确定性诚实"。</p>
+<p>非平凡点：① 它是一个<strong>"恰当评分规则"（proper scoring rule）</strong>——数学上能证明，让你期望得分最高的唯一策略，就是<em>报出你真实相信的概率</em>。任何虚报（为显得果断而夸大、为安全而缩水）都会让长期得分变差。这一点极深刻：规则本身把"诚实"变成了最优解，无法被博弈。② <em>平方惩罚</em>带来不对称：信誓旦旦说 95% 却落空，受罚远重于老实承认 60%。于是它天然压制过度自信。③ 它把"对/错"这种二元评分换成了连续评分——二元评分恰恰奖励嘴硬、惩罚细腻的人，这正是公共话语里大嗓门胜出的根源。</p>
+<p>实践：建一本"预测账本"，每条写下事件、概率、截止日。结算后算布里尔分数，并和一个<em>笨基准</em>（永远报基础率）比——赢不了基准，说明你的"洞见"是噪音。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>一项大型预测研究用布里尔分数横评了数千名志愿者对国际事件的判断，结果筛出一小批"超级预测者"，其分数稳定优于能接触机密情报的专业分析员。关键不在他们神机妙算，而在<strong>这套打分让真实能力无处藏身</strong>——长期、可累计、不能靠一次走运蒙混。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>训练分类模型时常用的对数损失（log loss / 交叉熵）本质上也是一个恰当评分规则，和布里尔同源——它逼着模型不仅猜对类别，还要把置信度调到诚实，这正是模型被"训练得校准"的数学原因。把它用到个人决策上，和第 42 期的<em>决策日记</em>正好咬合：日记记下当时的概率与理由，布里尔分数则给这本日记一个可量化的成绩单。坚持一年，你对自己判断力的认知会从"感觉还行"变成"有据可查"。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Brier Score</strong> — collapses a probabilistic forecast into one number: (your probability − outcome)², where outcome is 1 if it happened, 0 if not; average over many forecasts, lower is better. It's a <em>proper scoring rule</em>: math proves the only way to maximize your expected score is to report your true belief — honesty becomes the optimal, ungameable strategy. The quadratic penalty is asymmetric: being confidently wrong (95% that fails) is punished far more than admitting 60%, so it suppresses overconfidence. It replaces binary right/wrong grading, which rewards the loud and punishes nuance. Practice: keep a forecast ledger, score it, and compare against a dumb base-rate baseline — if you can't beat the baseline, your "insight" is noise.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在为 [决策/项目] 做一组预测，想用布里尔分数评估。这是我的预测：[事件 + 概率 + 已知结果]。请：
+① 算出我的平均布里尔分数；
+② 用"永远报基础率"作为笨基准，对比我有没有超过它；
+③ 指出哪几条是"自信地错了"（高概率却落空），它们贡献了多少惩罚，下次该如何收敛。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm forecasting for [decision/project] and want to evaluate with the Brier score. Here are my forecasts: [event + probability + known outcome]. Please:
+1. Compute my average Brier score.
+2. Compare it against a dumb baseline that always reports the base rate — did I beat it?
+3. Identify the "confidently wrong" forecasts (high probability that failed), how much penalty they contributed, and how I should rein in next time.</div>
+</section>
+
+<!-- Card 3: 狐狸与刺猬 -->
+<section class="card c3">
+<h2 data-tts="d7f46f2fd7a8dd4b">狐狸与刺猬 · Fox vs Hedgehog</h2>
+<div class="subtitle">"狐狸知道很多事，刺猬只知道一件大事。" 而狐狸预测得更准</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>这个隐喻把人的认知风格分两类。<strong>刺猬</strong>：有一套宏大理论，把万物都塞进这个框架，自信、敢下断言、媒体宠儿。<strong>狐狸</strong>：杂食，同时持有许多互相竞争的小模型，自我怀疑，频繁更新，与不确定性和平共处。一项跨二十年的大型研究发现：<strong>狐狸的长期预测准确率显著高于刺猬</strong>，而且专家越有名、越上电视，往往越不准。</p>
+<p>非平凡点：① 最反直觉的是<em>名气与准确度负相关</em>——上镜需要的是简洁、笃定、戏剧性，这恰恰是刺猬的特征，也恰恰是预测的毒药。② 狐狸的优势可以用机器学习解释清楚：狐狸<strong>本质上是一个"集成模型"</strong>。随机森林之所以打败单棵决策树，是因为许多各有偏差的弱模型一平均，方差被抵消。狐狸脑中并行运行多个视角再加权，就是在做同样的事。③ 刺猬的失败不是因为蠢，而是因为<em>一个强先验拒绝被数据更新</em>——他把所有反例解释成"暂时的例外"，于是再多证据也无法纠错。</p>
+<p>实践：每当你发现自己用一个理论解释了眼前的<em>一切</em>，警报就该响——这通常不是洞察深，而是你成了刺猬。强迫自己写下"如果我错了，最可能错在哪"，是给自己装上狐狸的第二只眼。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>那项长期追踪显示，对国际政治大胆断言的知名专家，准确率竟<strong>不比随机猜测好多少</strong>，部分甚至更差；而默默无闻、说话满是"一方面……另一方面"的狐狸型分析者反而领先。教训刺耳：在复杂、开放的系统里，<em>果断的简洁是一种系统性偏差</em>，不是能力的标志。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>集成学习的类比对技术人最顺手：别迷信"一个优雅大理论解释整个领域"（比如"scaling law 解释 AI 的一切"），那是刺猬陷阱；真正稳健的判断来自把多个视角加权集成。育儿同理——别皈依任何单一教养流派（依恋、虎妈、蒙氏），各取一瓢、按孩子的实际反馈不断调权，才是狐狸式父母。<strong>当你越笃定一个框架能解释全部，越要怀疑自己在过拟合。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Fox vs Hedgehog</strong> — "The fox knows many things; the hedgehog knows one big thing." The hedgehog holds one grand theory, forces everything into it, is confident and media-friendly. The fox is eclectic, runs many competing models, self-doubts, and updates often. A landmark 20-year study found foxes forecast far better than hedgehogs — and the more famous and telegenic the expert, the worse the accuracy, because TV rewards simplicity and certainty, which are forecasting poison. The fox's edge is essentially an <em>ensemble model</em>: like a random forest beating a single tree, averaging many biased weak views cancels variance. The hedgehog fails not from stupidity but from a strong prior that refuses to update, explaining away every counter-example. Alarm bell: when one theory explains <em>everything</em>, you've become a hedgehog.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我对 [议题] 的判断目前主要建立在这一套核心理论/框架上：[描述]。请帮我做"狐狸化"压力测试：
+① 找出 3 个与我不同、甚至冲突的解释视角，各自会如何预测结局；
+② 指出我是否在把反例都解释成"例外"（刺猬的典型症状）；
+③ 给出一个把这几种视角加权集成的综合判断，而不是单一断言。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My judgment on [issue] currently rests mainly on this core theory/framework: [describe]. Run a "foxification" stress test:
+1. Surface 3 different, even conflicting, explanatory lenses and how each would forecast the outcome.
+2. Point out whether I'm explaining away counter-examples as "exceptions" (the classic hedgehog symptom).
+3. Give a combined judgment that weighs and ensembles these lenses, rather than a single confident claim.</div>
+</section>
+
+<!-- Card 4: 外视与基础率 -->
+<section class="card c4">
+<h2 data-tts="cc9f3e75c54277c7">外视与基础率 · Outside View &amp; Base Rate</h2>
+<div class="subtitle">先问"同类事情通常怎样"，再问"我这件有何特殊"——顺序不能反</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p><strong>内视</strong>：从这件事的具体细节出发推理——"我的项目情况特殊，三周能搞定"。<strong>外视</strong>：先找到一个<em>参照类</em>（一群同类的事），看它们的<em>基础率</em>——"过去 10 个类似项目，按时完成的有几个？"超级预测的第一诫就是：<strong>先锚定基础率，再用本案的特殊性去微调</strong>，绝不从一张白纸开始。</p>
+<p>非平凡点：① 我们系统性忽略基础率，因为内视的故事<em>鲜活生动</em>，而参照类<em>枯燥</em>——这就是"规划谬误"的根源：几乎所有人都低估装修、写论文、做项目要花的时间，因为每次都觉得"这回不一样"。② 这其实就是<strong>贝叶斯更新</strong>的另一种说法：基础率是<em>先验</em>，本案的特殊证据是<em>似然</em>，正确做法是从先验出发、按证据强弱调整。从内视开始 = 丢掉先验从零估计，方差大得离谱。③ 关键技巧是<em>会选参照类</em>：参照类太窄（"和我一模一样的项目"）会让你回到内视；太宽则失去信息。好的参照类是"在决定成败的结构特征上相似"的那一群。</p>
+<p>实践：任何估计开口前，先问一句"<em>这属于哪一类事，那一类的历史成绩是多少</em>"。把这个数字写下来当锚，再谈你这件的特殊之处。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>大型基建几乎必然超期超预算——因为每个项目方都用内视讲一个"我们这次管理更好"的故事，无视那个冷冰冰的参照类基础率。后来"参照类预测"被写进一些公共投资规范：强制要求先调出同类项目的真实超支分布作为起点，再调整。仅仅是<strong>换了估计的起点</strong>，预测就大幅靠谱。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>给一个 AI 功能排期，团队的内视是"这次需求清楚，两周够"。外视：翻出过去 10 个 sprint 的实际交付，基础率可能是"声称两周的活，中位数花了五周"——这才是你的先验，再据本次的真特殊性微调。和第 7 期<em>贝叶斯思维</em>正好接续：基础率就是先验。分布式系统里估某类节点的故障率也一样——别对"这台服务器"凭空推理，去看一整群同型号节点的历史故障分布，那是远更可靠的起点。<strong>外视不是悲观，是把先验放回它该在的位置。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Outside View &amp; Base Rate</strong> — the <em>inside view</em> reasons from a case's specifics ("my project is special, three weeks"). The <em>outside view</em> first finds a reference class and its base rate ("of 10 similar projects, how many finished on time?"). The superforecaster's first commandment: anchor on the base rate, then adjust for this case's specifics — never start from a blank slate. We ignore base rates because the inside story is vivid and the reference class is dull — the root of the planning fallacy. Structurally this is Bayesian updating: the base rate is the prior, the case-specific evidence is the likelihood. Starting from the inside view discards the prior and explodes variance. The key skill is choosing the right reference class: similar on the structural features that decide success. Outside view isn't pessimism — it's putting the prior back where it belongs.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我要预测/估计 [具体事件：结果、时长或成本]。我的内视判断是 [我的直觉估计 + 理由]。请帮我切换到外视：
+① 提出 2–3 个合适的参照类，说明各自的相似性在哪；
+② 给出每个参照类的历史基础率作为先验起点；
+③ 从基础率出发，按我这件的真实特殊性做有节制的调整，给出最终概率/区间，并提醒我别滑回内视。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I need to forecast/estimate [specific event: outcome, duration, or cost]. My inside-view take is [my gut estimate + reasoning]. Help me switch to the outside view:
+1. Propose 2–3 suitable reference classes and explain the relevant similarity of each.
+2. Give the historical base rate of each as a prior starting point.
+3. Starting from the base rate, make a disciplined adjustment for this case's genuine specifics, give a final probability/range, and warn me if I'm sliding back into the inside view.</div>
+</section>
+
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>

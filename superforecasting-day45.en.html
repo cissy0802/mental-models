@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: The Science of Superforecasting · 2026-06-05</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: The Science of Superforecasting</h1>
+<div class="meta">2026-06-05 · Day 45</div>
+</header>
+
+<!-- Card 1: Calibration vs Resolution -->
+<section class="card c1">
+<h2>Calibration vs Resolution</h2>
+<div class="subtitle">A good forecast has two independent virtues — don't chase only one</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Forecast quality isn't one dimension but two orthogonal abilities. <strong>Calibration</strong>: when you say "70%," events of that kind really happen 70% of the time — your probabilities tell the truth. <strong>Resolution (sharpness)</strong>: you dare to leave the base rate and commit to decisive probabilities (90% or 10%) rather than timidly hugging 50%.</p>
+<p>Non-trivial: (1) The two <em>pull against each other</em>. A weatherman in a city with a 30% annual rain rate who always reports "30% rain" is perfectly calibrated yet carries zero information value; conversely, shouting 95% everywhere to look decisive destroys calibration. (2) <strong>The real expert achieves both</strong>: decisive only when the evidence truly warrants, honestly parked in the uncertain zone otherwise. (3) A deep mathematical fact: forecast error <em>decomposes</em> into a calibration term plus a resolution term — so a debrief shouldn't just ask "did I get it right" but separately "were my probabilities honest" and "did I dare to leave the middle." Two ailments, two cures: poor calibration is treated with feedback; poor resolution with domain knowledge.</p>
+<p>Diagnostic: pull out everything you once called "80% sure" and check the realized rate. Far below 80% → overconfidence (a calibration ailment); never daring to say above 80% → insufficient resolution (you left information on the table).</p>
+<div class="diagram">
+<svg viewbox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="60" y1="30" y2="250"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="380" y1="250" y2="250"></line>
+<line stroke="#1b8a5a" stroke-dasharray="5,4" stroke-width="2" x1="60" x2="380" y1="250" y2="30"></line>
+<text fill="#1b8a5a" font-size="11" x="240" y="80">perfect calibration</text>
+<path d="M 60 250 Q 180 220 300 130 T 380 110" fill="none" stroke="#c44545" stroke-width="2.5"></path>
+<text fill="#c44545" font-size="11" x="140" y="200">overconfident curve</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="220" y="285">stated probability →</text>
+<text fill="#636e72" font-size="11" transform="rotate(-90 20 140)" text-anchor="middle" x="20" y="140">observed frequency →</text>
+<text fill="#868e96" font-size="9" x="40" y="255">0</text>
+<text fill="#868e96" font-size="9" x="372" y="265">1</text>
+</svg>
+<div class="caption">Reliability diagram: high-probability calls that keep failing → curve sits below the diagonal = overconfidence</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Weather forecasting is one of humanity's best-calibrated fields. On days called "70% rain," it really rains about 70% over the long run — because forecasters get next-day ground truth and are forced to be honest. This reveals the source of calibration: <strong>high frequency plus immediate feedback</strong>. Most professions (economists, strategists) are badly calibrated precisely because their horizons are long, feedback is sparse, and no one keeps score.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>"Model calibration" in machine learning is the same concept: a classifier outputting 0.9 confidence should be correct 90% of the time. But modern deep networks are <strong>systematically overconfident</strong> — output 0.99 yet right only 80% of the time, needing temperature scaling to recalibrate. Likewise, when an LLM sounds certain, its "linguistic confidence" and true accuracy often don't align. Turn it on yourself: tag every estimate in your project plan with a probability, then review hit rates each quarter — you'll find you're also an "uncalibrated network."</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is a batch of my recent probabilistic forecasts about [domain/project]: [list "event + my probability + actual outcome"]. Please:
+1. Assess my calibration — bucket forecasts by probability, compare each bucket's stated probability to its realized hit rate, and judge whether I'm overconfident or underconfident.
+2. Assess my resolution — are most of my forecasts clustered in 40%–60%, afraid to commit?
+3. Give one concrete action to improve calibration and one to improve resolution.</div>
+</section>
+
+<!-- Card 2: Brier Score -->
+<section class="card c2">
+<h2>Brier Score</h2>
+<div class="subtitle">Score a probabilistic forecast with one number — and that number forces you to be honest</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>The Brier score compresses how good a probabilistic forecast was into one number: <strong>error = (your probability − outcome)²</strong>, where outcome is 1 if it happened, 0 if not. Average over many forecasts; <em>lower is better</em>, 0 is godlike. It rewards both "being accurate" and "being honest about uncertainty."</p>
+<p>Non-trivial: (1) It's a <strong>proper scoring rule</strong> — it can be proven that the only strategy maximizing your expected score is to <em>report the probability you truly believe</em>. Any misreport (inflating to look decisive, shrinking to play safe) worsens your long-run score. This is profound: the rule itself makes honesty optimal and ungameable. (2) The <em>quadratic penalty</em> is asymmetric: swearing 95% and being wrong is punished far more than honestly saying 60%. So it naturally suppresses overconfidence. (3) It replaces binary right/wrong grading — and binary grading is exactly what rewards the loud and punishes the nuanced, the root of why big voices win in public discourse.</p>
+<p>Practice: keep a "forecast ledger" — event, probability, deadline. After resolution, compute the Brier score and compare it to a <em>dumb baseline</em> (always report the base rate). If you can't beat the baseline, your "insight" is noise.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>A large forecasting tournament used the Brier score to grade thousands of volunteers judging world events, and surfaced a small band of "superforecasters" whose scores beat professional analysts with access to classified intelligence. The point isn't that they were oracles — it's that <strong>this scoring leaves real skill nowhere to hide</strong>: long-run, cumulative, impossible to fake with one lucky call.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>Log loss (cross-entropy), the loss function for training classifiers, is essentially a proper scoring rule from the same family as Brier — it forces a model not just to predict the class but to tune its confidence honestly, which is the mathematical reason models can be "trained to be calibrated." Applied to personal decisions, it dovetails with the Decision Journal (Day 42): the journal records the probability and reasoning at the time, and the Brier score gives that journal a quantifiable report card. Do it for a year and your sense of your own judgment shifts from "feels fine" to "documented."</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm forecasting for [decision/project] and want to evaluate with the Brier score. Here are my forecasts: [event + probability + known outcome]. Please:
+1. Compute my average Brier score.
+2. Compare it against a dumb baseline that always reports the base rate — did I beat it?
+3. Identify the "confidently wrong" forecasts (high probability that failed), how much penalty they contributed, and how I should rein in next time.</div>
+</section>
+
+<!-- Card 3: Fox vs Hedgehog -->
+<section class="card c3">
+<h2>Fox vs Hedgehog</h2>
+<div class="subtitle">"The fox knows many things; the hedgehog knows one big thing." And the fox forecasts better</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>This metaphor splits cognitive styles into two. The <strong>hedgehog</strong> holds one grand theory, crams everything into it, is confident, makes bold claims, and is a media darling. The <strong>fox</strong> is omnivorous, holds many competing small models at once, self-doubts, updates often, and is at peace with uncertainty. A landmark 20-year study found that <strong>foxes' long-run accuracy far exceeds hedgehogs'</strong> — and the more famous and telegenic the expert, the worse they tend to be.</p>
+<p>Non-trivial: (1) The most counter-intuitive part is that <em>fame correlates negatively with accuracy</em> — being on TV demands simplicity, certainty, and drama, which are exactly hedgehog traits and exactly forecasting poison. (2) The fox's advantage is cleanly explained by machine learning: a fox is essentially an <strong>ensemble model</strong>. A random forest beats a single decision tree because averaging many biased weak models cancels variance. A fox runs several lenses in parallel and weights them — doing the same thing. (3) The hedgehog fails not from stupidity but because <em>a strong prior refuses to be updated</em> by data — every counter-example is explained away as "a temporary exception," so no amount of evidence can correct course.</p>
+<p>Practice: whenever you notice one theory explaining <em>everything</em> in front of you, an alarm should ring — that's usually not depth of insight but you turning into a hedgehog. Forcing yourself to write down "if I'm wrong, where am I most likely wrong" installs the fox's second eye.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>That long-running study showed famous experts who made bold claims about international politics were <strong>barely better than random guessing</strong>, some even worse; meanwhile obscure, fox-type analysts full of "on the one hand… on the other" came out ahead. The harsh lesson: in complex, open systems, <em>decisive simplicity is a systematic bias</em>, not a mark of skill.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>The ensemble-learning analogy comes naturally to a technologist: don't worship "one elegant grand theory explaining a whole field" (e.g., "scaling laws explain everything in AI") — that's the hedgehog trap; robust judgment comes from weighting and ensembling many lenses. Same with parenting — don't convert to any single school (attachment, tiger, Montessori); take a bit from each and keep re-weighting based on the child's actual response, the fox-parent way. <strong>The more certain you are that one framework explains it all, the more you should suspect you're overfitting.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My judgment on [issue] currently rests mainly on this core theory/framework: [describe]. Run a "foxification" stress test:
+1. Surface 3 different, even conflicting, explanatory lenses and how each would forecast the outcome.
+2. Point out whether I'm explaining away counter-examples as "exceptions" (the classic hedgehog symptom).
+3. Give a combined judgment that weighs and ensembles these lenses, rather than a single confident claim.</div>
+</section>
+
+<!-- Card 4: Outside View & Base Rate -->
+<section class="card c4">
+<h2>Outside View &amp; Base Rate</h2>
+<div class="subtitle">First ask "how do cases like this usually go," then "what's special about mine" — never reverse the order</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>The <strong>inside view</strong> reasons from a case's specifics — "my project is special, three weeks will do." The <strong>outside view</strong> first finds a <em>reference class</em> (a set of similar cases) and looks at its <em>base rate</em> — "of the last 10 similar projects, how many finished on time?" The superforecaster's first commandment: <strong>anchor on the base rate, then adjust for this case's specifics</strong>, never starting from a blank slate.</p>
+<p>Non-trivial: (1) We systematically ignore base rates because the inside story is <em>vivid</em> while the reference class is <em>dull</em> — the root of the planning fallacy: nearly everyone underestimates how long a renovation, a paper, or a project will take, because each time it feels "different this time." (2) This is just another name for <strong>Bayesian updating</strong>: the base rate is the <em>prior</em>, the case-specific evidence is the <em>likelihood</em>, and the right move is to start from the prior and adjust by evidence strength. Starting from the inside view = discarding the prior and estimating from scratch, with absurdly high variance. (3) The key skill is <em>choosing the reference class</em>: too narrow ("a project exactly like mine") collapses back to the inside view; too broad loses information. A good reference class is similar on the structural features that decide success.</p>
+<p>Practice: before any estimate leaves your mouth, ask "<em>what class of thing is this, and what's that class's track record</em>." Write that number down as the anchor, then discuss what's special about yours.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Large infrastructure almost always runs late and over budget — because every project team uses the inside view to tell a "we'll manage better this time" story, ignoring the cold reference-class base rate. "Reference-class forecasting" was later written into some public-investment guidance: it mandates pulling the real overrun distribution of similar projects as the starting point, then adjusting. <strong>Just changing the starting point</strong> made forecasts dramatically more reliable.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>Scheduling an AI feature, the team's inside view is "the spec is clear, two weeks is enough." Outside view: dig out the actual delivery of the last 10 sprints; the base rate might be "two-week claims took a median of five weeks" — that's your prior, then fine-tune for what's genuinely special this time. This dovetails with Bayesian Thinking (Day 7): the base rate is the prior. In distributed systems, estimating a node class's failure rate works the same — don't reason about "this one server" in a vacuum; look at the historical failure distribution of a whole fleet of the same model, a far more reliable starting point. <strong>The outside view isn't pessimism — it's putting the prior back where it belongs.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I need to forecast/estimate [specific event: outcome, duration, or cost]. My inside-view take is [my gut estimate + reasoning]. Help me switch to the outside view:
+1. Propose 2–3 suitable reference classes and explain the relevant similarity of each.
+2. Give the historical base rate of each as a prior starting point.
+3. Starting from the base rate, make a disciplined adjustment for this case's genuine specifics, give a final probability/range, and warn me if I'm sliding back into the inside view.</div>
+</section>
+
+<footer class="footer">
+<a href="index.en.html">&larr; Back to Index</a>
+</footer>
+</div>
+</body>
+</html>
