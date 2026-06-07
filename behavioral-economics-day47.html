@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：行为经济学进阶 · 2026-06-07</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：行为经济学进阶</h1>
+<div class="meta">2026-06-07 · Day 47</div>
+</header>
+<!-- Card 1: 心理账户 -->
+<section class="card c1">
+<h2>心理账户 · Mental Accounting</h2>
+<div class="subtitle">"一块钱并不总是等于一块钱——大脑会先给它贴上标签。" — 源自 Richard Thaler 的行为经济学</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>标准经济学有一条铁律：钱是<strong>完全可替代的</strong>——工资里的 100 元、奖金里的、捡到的，价值完全相同。心理账户揭穿了这个假设：大脑会把钱分门别类塞进<strong>互不相通的心理账本</strong>——「生活费」省着花，「中奖的钱」大手大脚，「教育基金」一分不动。账户之间不通汇，于是同一笔钱在不同标签下，行为天差地别。</p>
+<p>非平凡点：① 心理账户既是 bug 也是 feature。它扭曲理性（同样的钱该一视同仁），却也是一种<em>自控工具</em>——把钱分桶隔离，是用心理边界对抗意志力薄弱。② <em>交易效用</em>：你愿意为海滩度假村里的同一瓶啤酒多付钱，不是因为啤酒更好，而是「参考价格」变了——商家正是靠操纵参考价来制造「划算感」。③ 沉没成本谬误其实是心理账户的推论：一个没「结清」的账户让人难受，于是硬把难看的电影看完，只为给账户画上句号。④ 与分布式系统同构：把全局资源人为<em>分区</em>成隔离的桶，牺牲了 fungibility（全局最优），换来可控性与防挥霍——本质是「全局效率 vs 局部可控」的权衡。</p>
+<p>实践判别：当你对两笔金额相同的钱<em>态度不同</em>时，问一句——「如果这笔钱换个来源/标签，我还会这么花吗？」答案为否，就是心理账户在替你做决定。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>经典的「丢票实验」：丢了 100 元现金的人，大多照常买 100 元的演出票；但若丢的是已买好的那张票，多数人就不再补票了——因为「看这场演出」的账户已经花掉 100 元，再花就是 200 元，太贵。总损失一样，行为却相反，只因记进了不同账本。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 年终奖与工资是同样的钱，但奖金更容易被冲动消费、或投进高风险标的——因为它被记进了「意外之财」账户。反过来用它：发奖金当天就转入长期账户，让「省着花」的标签自动生效。② 把 AI 订阅、云算力统统记成「实验经费」反而最容易超支——「实验」这个标签天然宽容。给它设硬上限，逼它回到统一预算。③ 教孩子理财别讲大道理，给她三个透明罐子：「花的」「存的」「给的」。心理账户从娃娃抓起，是一种<strong>看得见的自控脚手架</strong>。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Mental Accounting</strong> — standard economics assumes money is fungible: a dollar is a dollar. In reality the brain files money into non-interchangeable mental "accounts" (rent money is guarded, windfall money is splurged). This is both a bug (identical money should be treated identically) and a feature (partitioning is a self-control device against weak willpower). Key corollaries: <em>transaction utility</em> (you pay more for the same beer at a fancy resort because your reference price shifts) and the sunk-cost fallacy (an unclosed account hurts, so you finish the bad movie just to "settle" it). Structurally it's a global-efficiency vs local-controllability trade-off — like partitioning a shared resource. Test: would I spend this money differently if it carried a different label or source?
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我最近在 [某笔钱 / 某项开支] 上的行为是 [描述]。请用「心理账户」帮我诊断：
+① 我是不是给这笔钱贴了某个标签（如「意外之财」「实验经费」「沉没的」），导致我对它和普通的钱区别对待？
+② 这个心理账户此刻是在帮我（自控）还是在害我（挥霍 / 沉没成本）？
+③ 给 1 个具体动作：要么换标签让它服务于我的目标，要么把它并回统一预算重新评估。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My recent behavior around [a sum of money / a category of spending] is [describe]. Use Mental Accounting to diagnose:
+1. Have I labeled this money (e.g., "windfall," "experiment budget," "sunk") in a way that makes me treat it differently from ordinary money?
+2. Is this mental account currently helping me (self-control) or hurting me (overspending / sunk-cost)?
+3. Give one concrete move: either re-label it to serve my goal, or merge it back into a unified budget for honest re-evaluation.</div>
+</section>
+<!-- Card 2: 禀赋效应 -->
+<section class="card c2">
+<h2>禀赋效应 · Endowment Effect</h2>
+<div class="subtitle">"一旦它成了『我的』，放弃它就变成了一种损失。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>禀赋效应：<strong>一旦你拥有某物，对它的估值会立刻上升。</strong>经典的马克杯实验里，刚拿到杯子的人开价要七元才肯卖，没拿到的人却只愿出三元买——同一个杯子，「卖价」常是「买价」的两倍。拥有这件事本身，凭空给物品镀了一层金。</p>
+<p>非平凡点：① 它的根源是<em>损失厌恶</em>——失去拥有物的痛，大于得到它的快。所以禀赋效应不是「我更懂它的价值」，而是「放弃 = 损失」，而损失被大脑放大了。② 它远不止于物品，更适用于<em>观点、身份、现状</em>——你对自己持有的想法也有禀赋效应，这正是确认偏误背后的情感引擎：放弃一个旧观点，感觉像在割肉。③ 「拥有」可以纯属心理：<em>免费试用</em>就是在制造禀赋——一旦「它已经是我的」，退订就成了「损失」。整个订阅经济都建立在这台机器上。④ 与佛学的「我执」同构：把无常的占有当成自我的延伸，于是放手即痛。破除禀赋效应，是一种「无我」的微型实修。</p>
+<p>实践判别（零基重估法）：<strong>「如果我现在并不拥有它，我会花多少钱把它买回来？」</strong>当「买回价」远低于你舍不得放手的「卖出价」时，差额就是禀赋效应在收的「智商税」。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>股市里的「死攥亏损股」：买入价 100、现价 60 的股票，很多人死也不卖，宁愿等它「回本」。理由不是基本面——而是卖出 = 兑现损失 = 给账户画上一个痛苦的句号。同样的钱，若问他们「现价 60，你现在会买吗？」答案往往是「不会」。既然不会买，逻辑上就该卖；不卖，正是禀赋效应 + 损失厌恶在作祟。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 屯了一硬盘「总有一天会读」的论文、一堆没上的课、一段早该重写的旧代码——都舍不得删。用零基重估法：「如果今天从零开始，我还会主动获取它吗？」答案为否，就该清掉。② 你对亲手设计的架构、调好的 prompt 链有强烈禀赋效应，这会蒙蔽客观判断——刻意问「如果这是别人交来的方案，我会给几分？」③ 孩子舍不得扔旧玩具，不是不懂事——禀赋效应从小就满格。理解这点会让你更耐心，也可用「捐给更需要的小朋友」把「损失」重新框成「给予」，化解那份痛。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Endowment Effect</strong> — once you own something, you instantly value it more. In the classic mug experiment, sellers demand ~2× what buyers will pay for the identical mug. The root is <em>loss aversion</em>: giving up a possession hurts more than acquiring it pleases, so it's not "I understand its value better," it's "letting go = loss," and loss is amplified. It extends beyond objects to <em>beliefs, identity, and the status quo</em> — you're endowed with your own opinions (the emotional engine of confirmation bias). Ownership can be purely psychological: free trials manufacture endowment, which is why the whole subscription economy runs on it. The de-bias tool is zero-based revaluation: "If I didn't already own this, how much would I pay to buy it back?" The gap between that and your reluctant selling price is the tax the endowment effect collects.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正纠结要不要放弃 / 卖掉 / 删掉 [某物 / 某观点 / 某方案]：[描述现状]。请用「禀赋效应」帮我做零基重估：
+① 如果我此刻并不拥有它，我愿意花多少代价把它买回来？把这个「买回价」和我舍不得放手的「卖出价」做对比。
+② 我对它的高估，有多少来自真实价值，多少来自「放弃 = 损失」的痛？
+③ 给一个能把「损失」重新框定的角度（如「释放出空间 / 注意力」），帮我降低放手的心理阻力。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm agonizing over whether to give up / sell / delete [an object / belief / plan]: [describe]. Use the Endowment Effect for a zero-based revaluation:
+1. If I didn't already own it, how much would I pay to acquire it now? Contrast this "buy-back price" with the "selling price" I'm clinging to.
+2. How much of my high valuation is real value vs. the pain of "letting go = loss"?
+3. Offer a reframe that turns the "loss" into a gain (e.g., reclaimed space / attention) to lower the psychological barrier to release.</div>
+</section>
+<!-- Card 3: IKEA 效应 -->
+<section class="card c3">
+<h2>IKEA 效应 · The IKEA Effect</h2>
+<div class="subtitle">"劳动孕育爱——你亲手组装的，在你眼里就是更值钱。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>IKEA 效应：<strong>人对自己亲手参与创造的东西，估值会系统性偏高。</strong>自己组装的家具，哪怕歪歪扭扭，你也觉得它比同款成品更好看、更值钱。劳动本身，注入了情感价值。</p>
+<p>非平凡点：① 它不只是沉没成本。沉没成本是「我已经投入，不甘心」；IKEA 效应是<em>付出努力的过程本身创造了意义和依恋</em>——是正向的爱，不是被动的不甘。② 它是禀赋效应的「主动增强版」：自己造的东西，禀赋更牢。③ 双刃剑——好的一面：让用户、孩子、团队<em>参与</em>创造，承诺与投入会飙升（半成品蛋糕粉的历史就是证据：全自动版本「太省事」反而卖不动，改成「需要你自己打一个鸡蛋」后大卖）。坏的一面：对自己的作品、方案、代码丧失客观判断力。④ <em>关键边界条件</em>：只在「成功完成」时生效——半途而废的作品非但不增值，还可能贬值。这解释了为何「让人有参与感」必须配「让人能完成」。⑤ AI 时代的新张力：AI 替你生成的东西，你的 IKEA 效应很弱（你没出力）——这<em>有利于客观评判</em>，却<em>不利于承诺与珍惜</em>。人机协同里要刻意保留「你的劳动印记」，否则产出虽多，归属感却空。</p>
+<p>实践判别：评价自己的作品时，套用「换人测试」——<strong>「假如这是别人交给我的，我会打几分？」</strong>自评与换人评之间的落差，就是 IKEA 效应的加成。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>折纸实验：让人自己折青蛙或纸鹤，再给作品出价，结果接近专家折的同款——而旁观者只愿出零头。同一张纸，「我折的」三个字就让估值翻了几倍。商业上，宜家把「组装」这个本该是成本的环节，变成了情感黏性的来源。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 你亲手搭的笔记系统、自己调的 Obsidian 库——客观上未必比现成工具强，但你会高估它，因为是你一砖一瓦垒的。判别：让外人用一周，看真实反馈。② 工程团队里，「不是我们造的」(NIH) 会让人轻视外部方案；它的镜像是「我们造的」被过度珍视，明明该弃用却死守。两者都是 IKEA 效应。③ 育儿里它是宝贵的引擎：孩子自己搭的乐高、自己做的手工，别急着替他「优化纠正」——那份歪扭里住着他的投入和成就感。<strong>保护他的 IKEA 效应，就是保护他的内在动机。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The IKEA Effect</strong> — people systematically overvalue what they helped create. Self-assembled furniture feels more valuable than the identical pre-built version; in studies, people price their own folded origami near expert-level. It's not mere sunk cost (passive reluctance) — the <em>act of effort itself manufactures meaning and attachment</em> (active love). It's the proactive amplifier of the endowment effect. Double-edged: letting users/kids/teams co-create skyrockets their commitment (the half-baked cake-mix lesson: adding "crack your own egg" made it sell), but it destroys objective judgment of your own work. Crucial boundary: it only fires on <em>successful completion</em> — abandoned projects don't gain value. AI-era tension: AI-generated output triggers weak IKEA effect (you didn't labor), which aids objectivity but starves ownership — preserve your "labor signature" deliberately. De-bias tool: the swap test — "If someone else handed me this, what score would I give it?"
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我做了 [作品 / 方案 / 系统 / 代码]，正在评估它好不好 / 要不要继续投入：[描述]。请用「IKEA 效应」帮我祛魅：
+① 套用「换人测试」：假如这是陌生人交给我的同一份东西，我会客观打几分？我的自评高出多少？
+② 我的高估，有多少来自它真好，多少来自「这是我亲手做的」？
+③ 如果是我想让别人（团队 / 孩子 / 用户）更投入某件事，请反向设计：在哪个环节加入「让他亲手做成一点」，能制造健康的 IKEA 效应？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I made [a work / plan / system / code] and I'm judging its quality or whether to keep investing: [describe]. Use the IKEA Effect to de-bias me:
+1. Run the swap test: if a stranger handed me this exact thing, what objective score would I give it? How much higher is my self-rating?
+2. How much of my high valuation is "it's genuinely good" vs. "I made it with my own hands"?
+3. If instead I want someone (team / child / user) more invested, design in reverse: at which step should I add "let them complete a piece by hand" to create a healthy IKEA effect?</div>
+</section>
+<!-- Card 4: 默认选项与助推 -->
+<section class="card c4">
+<h2>默认选项与助推 · Default Options &amp; Nudge</h2>
+<div class="subtitle">"不强制、不改变激励，只改变预设值，就能改变千万人的行为。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>人有强烈的<strong>默认偏好</strong>：倾向于不动预设选项——惰性、现状偏误，加上「默认 = 推荐」的暗示，三股力合流。于是，<strong>改变默认值——不强制、不动激励、不减少自由——就能大幅改变行为。</strong>这就是「助推」：一种「自由主义的家长制」，既保留你说不的权利，又把好选项摆在你最省力的路径上。</p>
+<p>非平凡点：① 没有「中立」的默认——只要存在预设选项，<em>选择架构师</em>就已在替众人做选择。真问题从来不是「要不要影响」，而是「朝哪个方向、是否透明」。② 行为的最大杠杆往往不是<em>动机</em>，而是<em>摩擦</em>：想让人多做某事，就让它成为默认、最省事；想让人少做，就给它加摩擦。改环境，比改意志力可靠得多。③ 助推与<em>操纵</em>（暗黑模式）的分界线在三条：是否为被助推者的利益、是否透明可逆、是否尊重其自主选择的能力。同一招术，越界即作恶。④ 与软件工程的「合理默认值 / 约定优于配置」同构：好的默认值承载了设计者的智慧，是产品中最强、却最隐形的引导。</p>
+<div class="diagram">
+<svg viewbox="0 0 520 230" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="260" y="22">器官捐献率：只因默认值不同</text>
+<!-- baseline -->
+<line stroke="#ced4da" stroke-width="1" x1="60" x2="500" y1="185" y2="185"></line>
+<!-- opt-in bar (low) -->
+<rect fill="#c44545" height="28" rx="3" width="200" x="180" y="60"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="end" x="372" y="79">约 15%</text>
+<text fill="#495057" font-size="12" text-anchor="end" x="170" y="79">选择「加入」(opt-in)</text>
+<!-- opt-out bar (high) -->
+<rect fill="#1b8a5a" height="28" rx="3" width="430" x="180" y="120"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="start" x="190" y="139">约 90%+</text>
+<text fill="#495057" font-size="12" text-anchor="end" x="170" y="139">默认捐献，可「退出」(opt-out)</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="middle" x="260" y="172">同样的人、同样的偏好——只是把空白表格的默认勾选换了个方向</text>
+<text fill="#1b8a5a" font-size="12" font-weight="700" text-anchor="middle" x="260" y="210">摩擦 ≈ 0，行为差距 ≈ 6 倍</text>
+</svg>
+<div class="caption">默认值是最隐形、却最强大的选择架构杠杆</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>器官捐献：需主动「加入」(opt-in) 的国家，登记率常只有两位数低位；而默认即捐献、需主动「退出」(opt-out) 的国家，登记率高达九成以上。人没变、偏好没变，只是表格上默认方向不同。同理，退休储蓄改为「自动加入、可退出」后，参与率从约五成跃升到九成——一个默认值，改写了千万人的晚年。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 设计自己的环境 = 给自己设默认。想多读书，把书放床头、手机扔客厅；想少刷手机，删掉 app、开灰度屏（给刷手机加摩擦）。<strong>改默认，远比每天靠意志力硬扛可靠。</strong>② 做产品或带团队：好的默认配置就是最强引导，远胜写一摞文档去「教育」用户——绝大多数人永远用默认值。③ 设计 AI agent 时，给它的默认行为、默认 prompt 模板，是整个系统最大的行为杠杆——改一行默认，胜过事后纠正一百次。④ 育儿不靠天天说教，而靠设计家庭「默认」：零食不进家门，书随手可及。你是孩子环境的选择架构师——请有意识地、为他的利益、透明地设计这些默认。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Default Options &amp; Nudge</strong> — people have a powerful default bias (inertia + status-quo bias + "default = recommendation"). So changing the default — without force, without altering incentives, without removing freedom — massively shifts behavior. This is the nudge: "libertarian paternalism." Key points: (1) there's no neutral default — once a preset exists, the <em>choice architect</em> is already choosing for people; the real question is direction and transparency. (2) The biggest lever is often <em>friction</em>, not motivation: make the desired action the default/easiest, add friction to the undesired. Redesigning the environment beats willpower. (3) Nudge vs. manipulation (dark patterns) divides on three lines: is it for the nudged person's benefit, is it transparent and reversible, does it respect their autonomy. (4) Isomorphic to "sensible defaults / convention over configuration" in software — good defaults carry the designer's wisdom so 99% of users get a good outcome with zero configuration. Classic proof: organ-donation opt-in (~15%) vs. opt-out (90%+), and auto-enrollment retirement savings.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想让 [自己 / 团队 / 用户 / 孩子] 多做 [行为 A]、少做 [行为 B]，目前情况是 [描述]。请用「默认选项与助推」帮我设计：
+① 当前的「默认值」和「摩擦分布」是怎样的？它在暗中把人推向哪边？
+② 给 2 个改默认 / 调摩擦的具体动作：让 A 成为最省力路径，给 B 加阻力（不靠说教和意志力）。
+③ 自检三条伦理红线：这个助推是否为对方的利益、是否透明可逆、是否尊重对方说不的权利？指出任何越界为操纵的风险。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want [myself / team / users / my child] to do more [behavior A] and less [behavior B]; current situation: [describe]. Use Default Options &amp; Nudge to design:
+1. What are the current defaults and friction distribution? Which way are they silently pushing people?
+2. Give 2 concrete moves to change defaults / adjust friction: make A the path of least resistance, add friction to B (no lectures, no willpower).
+3. Ethics check on three lines: is this nudge for their benefit, is it transparent and reversible, does it respect their right to say no? Flag any risk of crossing into manipulation.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>

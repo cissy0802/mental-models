@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Behavioral Economics Advanced · 2026-06-07</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Behavioral Economics Advanced</h1>
+<div class="meta">2026-06-07 · Day 47</div>
+</header>
+<!-- Card 1: Mental Accounting -->
+<section class="card c1">
+<h2>Mental Accounting</h2>
+<div class="subtitle">"A dollar is not always a dollar — the brain labels it first." — from Richard Thaler's behavioral economics</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Standard economics has an iron law: money is <strong>perfectly fungible</strong> — $100 from your salary, $100 from a bonus, $100 you found on the street are all worth exactly the same. Mental accounting shatters this: the brain files money into <strong>non-interchangeable mental ledgers</strong> — "living expenses" are guarded, "lottery money" is splurged, the "education fund" is untouchable. The accounts don't exchange, so the same money behaves wildly differently under different labels.</p>
+<p>Non-trivial: (1) Mental accounting is both a bug and a feature. It distorts rationality (identical money should be treated identically), yet it's also a <em>self-control device</em> — partitioning money into buckets is using psychological boundaries against weak willpower. (2) <em>Transaction utility</em>: you'll pay more for the same beer at a beach resort, not because the beer is better but because your "reference price" shifted — merchants manipulate that reference to manufacture a sense of "a great deal." (3) The sunk-cost fallacy is a corollary: an unclosed account feels bad, so you sit through the dull movie just to "settle" it. (4) Isomorphic to distributed systems: artificially <em>partitioning</em> a shared resource into isolated buckets sacrifices fungibility (global optimum) to gain controllability and prevent splurging — a "global efficiency vs. local control" trade-off.</p>
+<p>Practical test: when you treat two equal sums of money <em>differently</em>, ask — "If this money had a different source/label, would I still spend it this way?" If no, mental accounting is making the decision for you.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The "lost ticket" study: people who lost $100 in cash mostly still buy the $100 show ticket; but if they lost an already-purchased ticket, most won't re-buy — because the "see this show" account already spent $100, and spending again means $200, too expensive. Identical total loss, opposite behavior, only because it landed in different ledgers.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) A year-end bonus and salary are the same money, but the bonus is more easily splurged or thrown into high-risk bets — it's filed under "windfall." Use this in reverse: transfer the bonus to a long-term account the day it arrives, so the "spend carefully" label kicks in automatically. (2) Filing all AI subscriptions and compute spend under "experiment budget" is the easiest path to overspending — "experiment" is an inherently forgiving label. Set a hard ceiling to force it back into a unified budget. (3) Teach kids money not with lectures but with three transparent jars: "spend / save / give." Mental accounting from childhood is a <strong>visible scaffold for self-control</strong>.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My recent behavior around [a sum of money / a category of spending] is [describe]. Use Mental Accounting to diagnose:
+1. Have I labeled this money (e.g., "windfall," "experiment budget," "sunk") in a way that makes me treat it differently from ordinary money?
+2. Is this mental account currently helping me (self-control) or hurting me (overspending / sunk-cost)?
+3. Give one concrete move: either re-label it to serve my goal, or merge it back into a unified budget for honest re-evaluation.</div>
+</section>
+<!-- Card 2: Endowment Effect -->
+<section class="card c2">
+<h2>Endowment Effect</h2>
+<div class="subtitle">"Once it becomes 'mine,' giving it up turns into a loss."</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>The endowment effect: <strong>once you own something, you instantly value it more.</strong> In the classic mug experiment, people who just received a mug demand around $7 to sell it, while those without it will only pay $3 to buy — the same mug, "selling price" often double the "buying price." Ownership alone plates the object in gold.</p>
+<p>Non-trivial: (1) The root is <em>loss aversion</em> — the pain of losing a possession exceeds the pleasure of gaining it. So the endowment effect isn't "I understand its value better," it's "letting go = loss," and loss is amplified by the brain. (2) It extends far beyond objects to <em>beliefs, identity, and the status quo</em> — you're endowed with your own opinions too, the emotional engine behind confirmation bias: abandoning an old belief feels like cutting flesh. (3) "Ownership" can be purely psychological: <em>free trials</em> manufacture endowment — once "it's already mine," canceling becomes a "loss." The entire subscription economy runs on this machine. (4) Isomorphic to the Buddhist notion of attachment to self (我执): treating impermanent possession as an extension of the self, so release brings pain. Defeating the endowment effect is a micro-practice of "non-self."</p>
+<p>Practical test (zero-based revaluation): <strong>"If I didn't already own it, how much would I pay to buy it back?"</strong> When the "buy-back price" is far below the "selling price" you're clinging to, the gap is the "tax" the endowment effect collects.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Clutching losing stocks: a stock bought at 100, now at 60, that many refuse to sell, waiting to "break even." The reason isn't fundamentals — selling = realizing the loss = a painful full stop on the account. Ask them "at 60, would you buy it now?" and the answer is usually "no." If they wouldn't buy, logic says sell; not selling is the endowment effect plus loss aversion at work.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) A hard drive of papers you'll "read someday," a pile of unwatched courses, a chunk of old code long overdue for a rewrite — you can't bear to delete any. Apply zero-based revaluation: "Starting from zero today, would I actively acquire it?" If no, clear it. (2) You have a strong endowment effect toward architectures you designed and prompt chains you tuned, which blinds objective judgment — deliberately ask "if someone else submitted this, what score would I give?" (3) A child refusing to part with old toys isn't being difficult — the endowment effect is maxed out from an early age. Understanding this makes you more patient, and you can reframe "loss" as "giving" ("donate it to a child who needs it more") to dissolve the pain.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm agonizing over whether to give up / sell / delete [an object / belief / plan]: [describe]. Use the Endowment Effect for a zero-based revaluation:
+1. If I didn't already own it, how much would I pay to acquire it now? Contrast this "buy-back price" with the "selling price" I'm clinging to.
+2. How much of my high valuation is real value vs. the pain of "letting go = loss"?
+3. Offer a reframe that turns the "loss" into a gain (e.g., reclaimed space / attention) to lower the psychological barrier to release.</div>
+</section>
+<!-- Card 3: The IKEA Effect -->
+<section class="card c3">
+<h2>The IKEA Effect</h2>
+<div class="subtitle">"Labor leads to love — what you assembled with your own hands is simply worth more in your eyes."</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>The IKEA effect: <strong>people systematically overvalue what they helped create.</strong> Self-assembled furniture, however crooked, feels better-looking and more valuable to you than the identical pre-built version. Labor itself injects emotional value.</p>
+<p>Non-trivial: (1) It's not mere sunk cost. Sunk cost is "I've already invested, I can't quit"; the IKEA effect is that <em>the act of effort itself creates meaning and attachment</em> — active love, not passive reluctance. (2) It's the proactive amplifier of the endowment effect: what you built yourself carries a stronger endowment. (3) Double-edged — upside: letting users, kids, or teams <em>co-create</em> skyrockets commitment (the half-baked cake-mix lesson: the fully automatic version was "too easy" and didn't sell; adding "crack your own egg" made it a hit). Downside: you lose objective judgment of your own work, plans, and code. (4) <em>Crucial boundary condition</em>: it only fires on "successful completion" — abandoned projects don't gain value, and may even lose it. This is why "give people a sense of participation" must be paired with "let them be able to finish." (5) AI-era tension: AI-generated output triggers a weak IKEA effect (you didn't labor) — which <em>aids objective evaluation</em> but <em>starves commitment and care</em>. In human-AI collaboration, deliberately preserve "your labor signature," or output is plentiful but ownership is hollow.</p>
+<p>Practical test: when judging your own work, run the swap test — <strong>"If someone else handed me this, what score would I give it?"</strong> The gap between self-rating and swap-rating is the IKEA bonus.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The origami study: have people fold a frog or crane themselves, then price their creation — it comes near the price of an expert's identical fold, while bystanders will only pay a fraction. Same sheet of paper; "I folded it" multiplies the valuation several-fold. Commercially, IKEA turned "assembly" — what should be a cost — into a source of emotional stickiness.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) The note-taking system you built by hand, the Obsidian vault you tuned yourself — objectively not necessarily better than off-the-shelf tools, but you overvalue it because you laid it brick by brick. Test: let an outsider use it for a week and watch the real feedback. (2) On engineering teams, "not invented here" (NIH) makes people dismiss external solutions; its mirror is overvaluing "what we built," clinging to it long after it should be retired. Both are the IKEA effect. (3) In parenting it's a precious engine: the Lego your child built, the crafts they made — don't rush to "optimize and correct" them. Inside that crookedness lives their effort and pride. <strong>Protecting their IKEA effect is protecting their intrinsic motivation.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I made [a work / plan / system / code] and I'm judging its quality or whether to keep investing: [describe]. Use the IKEA Effect to de-bias me:
+1. Run the swap test: if a stranger handed me this exact thing, what objective score would I give it? How much higher is my self-rating?
+2. How much of my high valuation is "it's genuinely good" vs. "I made it with my own hands"?
+3. If instead I want someone (team / child / user) more invested, design in reverse: at which step should I add "let them complete a piece by hand" to create a healthy IKEA effect?</div>
+</section>
+<!-- Card 4: Default Options & Nudge -->
+<section class="card c4">
+<h2>Default Options &amp; Nudge</h2>
+<div class="subtitle">"No coercion, no change in incentives — just change the preset, and you change millions of behaviors."</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>People have a powerful <strong>default bias</strong>: a tendency to leave the preset untouched — inertia, status-quo bias, plus the "default = recommendation" cue, three forces converging. So <strong>changing the default — without force, without altering incentives, without removing freedom — massively shifts behavior.</strong> This is the "nudge": a "libertarian paternalism" that preserves your right to say no while placing the good option on your path of least resistance.</p>
+<p>Non-trivial: (1) There's no "neutral" default — the moment a preset exists, the <em>choice architect</em> is already choosing for everyone. The real question is never "to influence or not," but "in which direction, and transparently?" (2) The biggest lever is often not <em>motivation</em> but <em>friction</em>: to make people do more of something, make it the default and easiest; to make them do less, add friction. Redesigning the environment beats willpower. (3) The line between a nudge and <em>manipulation</em> (dark patterns) runs along three tests: is it for the nudged person's benefit, is it transparent and reversible, does it respect their capacity for autonomous choice. The same tactic, once it crosses the line, is malice. (4) Isomorphic to "sensible defaults / convention over configuration" in software: good defaults carry the designer's wisdom — the strongest yet most invisible guidance in a product.</p>
+<div class="diagram">
+<svg viewbox="0 0 520 230" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="260" y="22">Organ donation rates: only the default differs</text>
+<line stroke="#ced4da" stroke-width="1" x1="60" x2="500" y1="185" y2="185"></line>
+<rect fill="#c44545" height="28" rx="3" width="200" x="180" y="60"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="end" x="372" y="79">~15%</text>
+<text fill="#495057" font-size="12" text-anchor="end" x="170" y="79">Choose to "opt in"</text>
+<rect fill="#1b8a5a" height="28" rx="3" width="430" x="180" y="120"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="start" x="190" y="139">~90%+</text>
+<text fill="#495057" font-size="12" text-anchor="end" x="170" y="139">Donate by default, can "opt out"</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="middle" x="260" y="172">Same people, same preferences — only the pre-checked box flipped</text>
+<text fill="#1b8a5a" font-size="12" font-weight="700" text-anchor="middle" x="260" y="210">Friction ≈ 0, behavior gap ≈ 6×</text>
+</svg>
+<div class="caption">The default is the most invisible yet most powerful choice-architecture lever</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Organ donation: in countries where you must actively "opt in," registration rates are often in the low double digits; in countries where donation is the default and you must "opt out," rates reach 90%+. People didn't change, preferences didn't change — only the default direction on the form. Likewise, switching retirement savings to "auto-enroll, can opt out" lifted participation from about half to nine in ten — one default rewrote millions of retirements.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Designing your own environment = setting your own defaults. To read more, put books by the bed and the phone in the living room; to scroll less, delete the apps and switch to grayscale (add friction to scrolling). <strong>Changing the default is far more reliable than grinding through willpower every day.</strong> (2) In products or teams: good default configs are the strongest guidance, far beyond a stack of docs that "educate" users — the vast majority always stay on the default. (3) When designing an AI agent, its default behaviors and default prompt templates are the system's biggest behavioral lever — changing one default line beats correcting it a hundred times after the fact. (4) Parenting isn't daily lecturing but designing the family's "defaults": no snacks in the house, books within reach everywhere. You are the choice architect of your child's environment — design those defaults deliberately, for their benefit, transparently.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want [myself / team / users / my child] to do more [behavior A] and less [behavior B]; current situation: [describe]. Use Default Options &amp; Nudge to design:
+1. What are the current defaults and friction distribution? Which way are they silently pushing people?
+2. Give 2 concrete moves to change defaults / adjust friction: make A the path of least resistance, add friction to B (no lectures, no willpower).
+3. Ethics check on three lines: is this nudge for their benefit, is it transparent and reversible, does it respect their right to say no? Flag any risk of crossing into manipulation.</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">&larr; Back to Index</a>
+</footer>
+</div>
+</body>
+</html>
