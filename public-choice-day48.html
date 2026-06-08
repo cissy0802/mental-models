@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：公共选择与集体行动 · 2026-06-08</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：公共选择与集体行动</h1>
+<div class="meta">2026-06-08 · Day 48</div>
+</header>
+<!-- Card 1: 阿罗不可能定理 -->
+<section class="card c1">
+<h2>阿罗不可能定理 · Arrow's Impossibility Theorem</h2>
+<div class="subtitle">"把每个人的偏好加总，没有一种『公平』算法能不出毛病。" — 源自 Kenneth Arrow 的社会选择理论</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>阿罗证明了一件反直觉的事：当存在三个及以上选项、三个及以上投票人时，<strong>不存在任何一种投票或排序规则，能同时满足几条最朴素的公平要求</strong>——既尊重全体一致的偏好、又不让无关选项干扰、还不出现独裁者。换句话说，<strong>完美的偏好聚合机制在数学上不存在</strong>。任何民主投票、任何打分排序，都必然在某条公平原则上悄悄让步。</p>
+<p>非平凡点：① 它不是说「投票没用」，而是说「没有完美的投票」——每种规则都在偷偷牺牲某条公理，区别只在牺牲哪条。② <em>孔多塞悖论</em>是它的直观内核：三个人对 A、B、C 各有理性偏好，多数票却可能转圈——A 胜 B、B 胜 C、C 又胜 A。<strong>个体都理性，集体却不传递</strong>——理性在聚合时凭空蒸发，是一种典型的涌现失灵。③ 「无关选项独立性」被现实反复打破：加进一个注定落选的第三方，竟能翻转 A 与 B 的胜负（搅局者效应）。于是真正的权力不在投票本身，而在<strong>谁设置议程、谁决定投票顺序</strong>。</p>
+<p>实践判别：别再追求「最公平」的聚合方式——它不存在。把你正在牺牲哪条公平原则<strong>摊到明面上</strong>，按场景挑代价最可接受的那一种。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>三方选举里的「搅局者效应」：理念相近的 B、C 两位候选人分走了同一批选票，反而把胜利送给立场相反的 A。选民的真实偏好一点没变，只因多了个注定落选的无关选项，结果就被翻转——这正是「无关选项独立性」失守的现场。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① RLHF 的本质就是一道阿罗难题——把成千上万标注者两两比较的偏好，聚合成「一个」奖励模型。有用、无害、诚实这几个维度上的排序天然打架，不存在无损的聚合，所谓「对齐」永远是在公理之间取舍。② 团队用投票给需求排优先级，常陷入孔多塞循环：换个投票顺序就换个结论。识破之后，与其反复投票，不如<strong>明确决策维度、由负责人定锚</strong>——这正是「非独裁」做不到时的务实退路。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Arrow's Impossibility Theorem</strong> — with 3+ options and 3+ voters, no preference-aggregation rule can simultaneously satisfy a handful of minimal fairness axioms (unanimity/Pareto, independence of irrelevant alternatives, non-dictatorship). A perfect way to turn individual preferences into a collective ranking simply doesn't exist; every voting or scoring system silently violates one axiom. The intuitive core is the <em>Condorcet paradox</em>: rational individuals can produce an intransitive collective preference that cycles (A&gt;B&gt;C&gt;A) — rationality evaporates in aggregation. Because independence of irrelevant alternatives fails in practice (the spoiler effect), real power lies in agenda-setting, not voting. Modern instance: RLHF is an Arrow problem — aggregating thousands of pairwise human preferences into one reward model across conflicting dimensions has no lossless solution, so "alignment" is always a trade-off among axioms.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正在用 [投票 / 打分 / 排序 / 多目标聚合] 的方式做一个集体决策：[描述场景与候选项]。请用「阿罗不可能定理」帮我看清：
+① 我现在的聚合规则，悄悄牺牲了哪条公平原则（全体一致 / 无关选项独立 / 非独裁）？
+② 这里有没有孔多塞循环或搅局者效应的风险？换个投票顺序，结论会不会变？
+③ 既然完美聚合不存在，给我 1 个务实方案：要么明确锚定决策维度，要么把取舍摊开让所有人知情。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm making a collective decision via [voting / scoring / ranking / multi-objective aggregation]: [describe the setup and options]. Use Arrow's Impossibility Theorem to clarify:
+1. Which fairness axiom is my current aggregation rule silently violating (unanimity / independence of irrelevant alternatives / non-dictatorship)?
+2. Is there a risk of a Condorcet cycle or spoiler effect — would changing the voting order change the outcome?
+3. Since no perfect aggregation exists, give me one pragmatic move: either anchor the decision on explicit dimensions, or surface the trade-off so everyone decides informed.</div>
+</section>
+<!-- Card 2: 公地悲剧 -->
+<section class="card c2">
+<h2>公地悲剧 · Tragedy of the Commons</h2>
+<div class="subtitle">"毁掉共享资源的，往往不是坏人，而是结构。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>公地悲剧：一项<strong>有限、人人可用、又难以排他</strong>的共享资源，会因为每个人理性地多占一点而被耗尽——收益归个人独享，损耗却由全体分摊。每个牧民都明白草场会退化，但「我不多放羊，别人也会放」，于是人人加码，直到草场荒芜。<strong>毁掉公地的不是坏人，而是结构</strong>：把好人放进同样的激励里，结局一模一样。</p>
+<p>非平凡点：① 既然根源是结构而非道德，解法也必须是结构性的——讲道理、靠自觉几乎无效。② 但「要么私有化、要么政府管制」是个假二选一：对公共资源治理的研究表明，社区完全能自发长出第三条路——<strong>清晰边界、低成本监督、逐级递增的惩罚</strong>，让一群人长期可持续地共管一片公地。③ 它有个镜像叫<em>反公地悲剧</em>：当一件事的否决权被太多人持有，结果是谁都没法用、资源白白闲置（产权过度碎片化）。④ 核心永远是那道裂缝：<strong>得利者与承担成本者不是同一拨人</strong>（外部性）。看清这道裂缝，才知道该往哪里补。</p>
+<div class="diagram">
+<svg viewbox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 Z" fill="#c44545"></path></marker>
+</defs>
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="260" y="20">公地悲剧：理性个体驱动的自我强化循环</text>
+<rect fill="#fdecea" height="42" rx="6" stroke="#c44545" width="180" x="170" y="38"></rect>
+<text fill="#8a2b2b" font-size="12.5" text-anchor="middle" x="260" y="64">个体多占一点（私人得利）</text>
+<rect fill="#fdecea" height="42" rx="6" stroke="#c44545" width="170" x="320" y="150"></rect>
+<text fill="#8a2b2b" font-size="12.5" text-anchor="middle" x="405" y="169">人人更急着抢</text>
+<text fill="#8a2b2b" font-size="11" text-anchor="middle" x="405" y="184">（没我也被占）</text>
+<rect fill="#fdecea" height="42" rx="6" stroke="#c44545" width="170" x="30" y="150"></rect>
+<text fill="#8a2b2b" font-size="12.5" text-anchor="middle" x="115" y="169">共享资源更快枯竭</text>
+<text fill="#8a2b2b" font-size="11" text-anchor="middle" x="115" y="184">（成本全体分摊）</text>
+<path d="M 198 80 Q 95 110 110 148" fill="none" marker-end="url(#ah)" stroke="#c44545" stroke-width="2"></path>
+<path d="M 200 174 L 316 174" fill="none" marker-end="url(#ah)" stroke="#c44545" stroke-width="2"></path>
+<path d="M 405 148 Q 425 110 320 80" fill="none" marker-end="url(#ah)" stroke="#c44545" stroke-width="2"></path>
+<text fill="#c44545" font-size="13" font-weight="700" text-anchor="middle" x="260" y="122">R 越转越快</text>
+</svg>
+<div class="caption">没有外部规则时，理性的循环把共享资源推向枯竭</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>公共草场上人人多放羊、公海里人人多捕鱼——单个看都理性，合起来却把共享资源榨干。没人愿意节制，因为节制的成本自己全担，省下的收益却被所有人稀释。结构不变，劝诫无用。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 一份共享的工程代码库就是典型公地：人人图快往里塞补丁（私人收益：早点交付），没人愿意重构（公共成本：整体腐化）。<strong>技术债的本质就是一场缓慢的公地悲剧。</strong>解法不是骂人不自觉，而是建结构：明确 owner、把重构计入排期、用 CI 门槛设「逐级惩罚」。② 全社会的注意力也是一块公地，正被推荐算法争相开采——每个 app 多抢你三秒，合起来把你的专注力耗成碎片。③ 家里的共享空间、共担家务同理：与其指望自觉，不如和孩子一起立「清晰边界 + 轮值规则」，这正是公共治理的家庭微缩版。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Tragedy of the Commons</strong> — a finite, shared, non-excludable resource gets exhausted because each user rationally takes a bit more while the depletion cost is spread across everyone: private gain, socialized cost. Every herder knows the pasture will degrade, but "if I don't graze more, someone else will," so all overgraze until ruin. The commons is destroyed not by bad people but by structure — swap in saints and the outcome is the same, so the fix must be structural, not moral exhortation. "Privatize or let the state regulate" is a false binary: communities can self-govern a commons sustainably through clear boundaries, low-cost monitoring, and graduated sanctions (Ostrom). Its mirror image is the <em>anticommons</em> — too many veto-holders leave a resource unused. The core crack is always the same: those who benefit and those who bear the cost are different people (an externality).
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我面对一个共享资源被过度消耗的局面：[描述这块「公地」——代码库 / 注意力 / 预算 / 公共空间等]。请用「公地悲剧」帮我分析：
+① 这里的「私人收益、全体成本」裂缝具体长什么样？谁在多占，成本被摊给了谁？
+② 别从道德入手——给我 2 个结构性解法（清晰边界 / 低成本监督 / 逐级惩罚 / 明确 owner），让可持续成为理性选择。
+③ 有没有矫枉过正、滑向「反公地悲剧」（太多人握有否决权、资源闲置）的风险？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm facing a shared resource being overused: [describe the "commons" — codebase / attention / budget / shared space]. Use the Tragedy of the Commons to analyze:
+1. What exactly is the "private gain, collective cost" crack here? Who is over-taking, and onto whom is the cost spread?
+2. Skip the moralizing — give me 2 structural fixes (clear boundaries / low-cost monitoring / graduated sanctions / a named owner) that make sustainability the rational choice.
+3. Is there a risk of over-correcting into an "anticommons" (too many veto-holders, resource left idle)?</div>
+</section>
+<!-- Card 3: 集体行动困境 -->
+<section class="card c3">
+<h2>集体行动困境 · The Logic of Collective Action</h2>
+<div class="subtitle">"共同的利益，不会自动变成共同的行动。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>集体行动的逻辑揭穿了一个温情的幻觉：<strong>共同利益并不会自动催生共同行动</strong>。哪怕一群人都明显受益于某个目标，理性的个体也往往不会主动出力——因为成果由全体共享（公共的），出力的成本却由自己独担（私人的）。于是人人都盼着「别人去做」，结果谁都不做。<strong>而且群体越大，每个人越无所谓</strong>：我这份贡献微不足道，反正有没有我，好处照拿。</p>
+<p>非平凡点：① 这解释了一条铁律——<strong>小而集中的利益，总能打败大而分散的利益</strong>。少数既得利益者动机强、好组织，沉默的大多数则人人搭便车，于是政策常被小集团俘获。② 解药是<em>选择性激励</em>：光靠集体目标动员不了人，必须给参与者<strong>专属的私人好处或惩罚</strong>（会员福利、社会声望、点名表扬）。③ 还有个反直觉推论——「小人物剥削大人物」：群体里最在乎这件事的大玩家，往往被迫独自买单，小成员安心搭车（联盟里出钱最多的，常是那个最离不开它的）。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>工会、环保、压低物价——人人受益，却罕有人主动组织或上街。一张选票、一次声援，个体看来微不足道，于是搭便车成了理性默认，集体目标悬空。反倒是少数有组织的游说团体能精准动员，把利益拨向自己。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 开源项目是活标本：极少数维护者扛起百万使用者的依赖，绝大多数人只索取、不回馈。它能续命，全靠「选择性激励」——声誉、履历、招聘机会这些<strong>专属于贡献者的私人回报</strong>。② 团队复盘里人人都说「构建太慢、该治理了」，散会却没人动手——典型的集体行动困境。<strong>别再开会呼吁，要给私人钩子</strong>：指定 owner、把它写进某人的 OKR、公开表彰修好的人。③ 想在学校组织家长协作，也别只喊「为了孩子」，得设计专属激励，否则人人观望。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The Logic of Collective Action (Olson)</strong> — shared interest does NOT automatically produce shared action. Even when a whole group clearly benefits from a goal, rational individuals often won't pitch in, because the payoff is shared (public) while the effort is private; everyone waits for "someone else" and no one acts. The larger the group, the weaker each member's incentive — my contribution is negligible and I get the benefit anyway. This yields an iron rule: small, concentrated interests beat large, diffuse ones (policy capture by lobbies). Olson's remedy is <em>selective incentives</em> — you can't mobilize people on the collective good alone; you must attach a private reward or punishment exclusive to participants (member perks, status, public recognition). A counterintuitive corollary, "exploitation of the great by the small": the big player who values the good most ends up footing the bill while small members free-ride.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>有一件大家都认同该做、却迟迟没人动手的集体好事：[描述这件事和涉及的群体]。请用「集体行动的逻辑」帮我破局：
+① 拆解这里「收益公共、成本私人」的结构，以及群体规模如何稀释了每个人的动机。
+② 别再靠呼吁共同利益——给我 2 个「选择性激励」设计：用专属于参与者的声望 / 福利 / 点名（正向）或代价（负向）把人撬动起来。
+③ 是不是存在「小人物剥削大人物」——某个最在乎的人正被迫独自买单？该如何重新分摊？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>There's a collective good everyone agrees should happen but no one acts on: [describe it and the group involved]. Use the Logic of Collective Action to break the deadlock:
+1. Unpack the "public payoff, private cost" structure, and how group size dilutes each person's incentive.
+2. Stop appealing to shared interest — give me 2 selective-incentive designs: use reputation / perks / public recognition (positive) or costs (negative) exclusive to participants to mobilize people.
+3. Is there "exploitation of the great by the small" — one person who cares most being forced to foot the bill alone? How should the load be redistributed?</div>
+</section>
+<!-- Card 4: 公共品悖论 -->
+<section class="card c4">
+<h2>公共品悖论 · The Public Goods Paradox</h2>
+<div class="subtitle">"越是人人都想要，越因人人想白嫖而稀缺。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>公共品有两条定义性特征：<strong>非排他</strong>（没法阻止不付钱的人使用）和<strong>非竞争</strong>（你用不影响我用）。灯塔、清洁空气、国防、知识都是如此。正是这两条，让市场系统性地<strong>供给不足</strong>：既然没法对受益者收费，又因为多一个人用边际成本几乎为零、定价理应是零……那谁来买单？于是人人都等别人出钱，好东西反而造不出来。<strong>这就是悖论：越是人人都想要的东西，越因为人人都想白嫖而稀缺。</strong></p>
+<p>非平凡点：① 失灵的两台引擎要分开看：<em>非排他</em>扼杀了收费动机，<em>非竞争</em>意味着最优价格本就是零、却也意味着零收入。② 所以才需要政府、赞助、或巧妙的机制（众筹的「达标才扣款」、配捐）来人为制造排他或协调付费。③ <strong>信息与知识是终极公共品</strong>：数字商品的非竞争性几乎拉满——复制无限、边际成本趋零，纯市场必然供给不足。这正是开源、公共科研、乃至 AI 之争的底层张力：训练是私人成本，产出的能力却近乎公共品。④ 数字时代真正的战场，是「人为制造排他」——DRM、付费墙、API key，都是给本可零成本共享的东西硬筑围墙。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>公共广播的「筹款周」：节目人人能听（非排他、非竞争），于是多数人不捐、坐等少数人掏钱，电台只好年年苦苦募款。国防、防疫、灯塔同理——人人受益，却没人愿单独付费，最后只能靠强制税收或集体机制来供给。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 团队里的共享文档与知识就是块公共品：写文档是私人成本，好处大家白拿，于是文档长期欠奉、知识困在个人脑里。解法是制造「排他感」——把写文档计入考核、给作者署名与声望。② 给开源模型、公共数据集做贡献也是同一困境：你的算力是私人成本，能力红利却归全人类。③ 连家里也有：谁来维护那本共享日历、谁记录孩子的成长档案？看清它是公共品，就别再等「自然有人做」，要明确指派、给出专属认可。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The Public Goods Paradox</strong> — public goods have two defining traits: non-excludability (you can't stop non-payers from using them) and non-rivalry (my use doesn't diminish yours) — lighthouses, clean air, defense, knowledge. These two traits make markets systematically under-provide them: you can't charge beneficiaries, and since one more user costs ~zero the efficient price is zero anyway — so who pays? Everyone waits for someone else, and the good everyone wants goes unbuilt. The paradox: the more universally desired a good is, the scarcer it becomes precisely because everyone wants it for free. Two failure engines: non-excludability kills the incentive to charge; non-rivalry means the optimal price is zero (hence no revenue). That's why we need governments, patronage, or clever mechanisms (assurance contracts, matching funds). Information and knowledge are the ultimate public goods — digital non-rivalry is near-total (infinite copies, ~zero marginal cost), so the real modern battle is manufacturing artificial excludability (DRM, paywalls, API keys), the deep tension under open source, public science, and AI.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我面对一个「大家都想要、却没人愿意创造 / 维护」的东西：[描述这个公共品——团队文档 / 共享工具 / 开源贡献 / 家庭事务]。请用「公共品悖论」帮我分析：
+① 它的「非排他、非竞争」具体体现在哪？为什么会陷入人人白嫖、无人供给？
+② 给我 2 个供给方案：如何人为制造「排他感」或协调付费（计入考核 / 署名声望 / 达标才启动的众筹式承诺 / 配捐）？
+③ 谁是那个最该被激励去供给它的关键人？专属回报该怎么给？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm facing something everyone wants but no one will create/maintain: [describe the public good — team docs / shared tooling / open-source contribution / household task]. Use the Public Goods Paradox to analyze:
+1. How do non-excludability and non-rivalry show up here, and why does it collapse into everyone free-riding and no one providing?
+2. Give me 2 provisioning fixes: how to manufacture "excludability" or coordinate payment (tie it to evaluation / authorship &amp; reputation / an assurance-contract-style "only if enough commit" / matching funds)?
+3. Who is the key person most worth incentivizing to provide it, and what exclusive reward should they get?</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>

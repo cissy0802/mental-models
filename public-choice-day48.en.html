@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Public Choice &amp; Collective Action · 2026-06-08</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Public Choice &amp; Collective Action</h1>
+<div class="meta">2026-06-08 · Day 48</div>
+</header>
+<!-- Card 1: Arrow's Impossibility Theorem -->
+<section class="card c1">
+<h2>Arrow's Impossibility Theorem</h2>
+<div class="subtitle">"Add up everyone's preferences, and no 'fair' algorithm escapes a flaw." — from Kenneth Arrow's social choice theory</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Arrow proved something counterintuitive: with 3+ options and 3+ voters, <strong>no voting or ranking rule can simultaneously satisfy a handful of the most modest fairness requirements</strong> — respecting a unanimous preference, letting no irrelevant option interfere, and producing no dictator. In other words, <strong>a perfect preference-aggregation mechanism does not exist mathematically</strong>. Every democratic vote, every scoring or ranking, must silently concede on some fairness principle.</p>
+<p>Non-trivial: (1) It doesn't say "voting is useless," it says "there's no perfect vote" — every rule secretly sacrifices one axiom; they differ only in which. (2) The <em>Condorcet paradox</em> is its intuitive core: three people with rational preferences over A, B, C can produce a majority that cycles — A beats B, B beats C, C beats A. <strong>Each individual is rational, yet the collective isn't transitive</strong> — rationality evaporates in aggregation, a textbook emergence failure. (3) "Independence of irrelevant alternatives" breaks down constantly in reality: adding a sure-loser third party can flip A vs. B (the spoiler effect). So real power lies not in voting itself but in <strong>who sets the agenda and decides the voting order</strong>.</p>
+<p>Practical test: stop chasing the "fairest" aggregation — it doesn't exist. Make <strong>which fairness principle you're sacrificing explicit</strong>, and pick the one whose cost is most acceptable for the context.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The "spoiler effect" in a three-way election: two like-minded candidates B and C split the same bloc of votes, handing victory to the opposed candidate A. Voters' true preferences didn't change at all — just one sure-loser irrelevant option flipped the result. That's "independence of irrelevant alternatives" failing in the wild.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) RLHF is fundamentally an Arrow problem — aggregating thousands of annotators' pairwise preferences into "one" reward model. Rankings on helpfulness, harmlessness, and honesty inherently clash; no lossless aggregation exists, so "alignment" is forever a trade-off among axioms. (2) Teams voting to prioritize features often fall into Condorcet cycles: change the voting order, change the conclusion. Once you see it, instead of re-voting endlessly, <strong>fix the decision dimensions and let an owner anchor the call</strong> — the pragmatic fallback when "non-dictatorship" can't hold.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm making a collective decision via [voting / scoring / ranking / multi-objective aggregation]: [describe the setup and options]. Use Arrow's Impossibility Theorem to clarify:
+1. Which fairness axiom is my current aggregation rule silently violating (unanimity / independence of irrelevant alternatives / non-dictatorship)?
+2. Is there a risk of a Condorcet cycle or spoiler effect — would changing the voting order change the outcome?
+3. Since no perfect aggregation exists, give me one pragmatic move: either anchor the decision on explicit dimensions, or surface the trade-off so everyone decides informed.</div>
+</section>
+<!-- Card 2: Tragedy of the Commons -->
+<section class="card c2">
+<h2>Tragedy of the Commons</h2>
+<div class="subtitle">"What destroys a shared resource is usually not bad people, but structure."</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Tragedy of the commons: a <strong>finite, freely usable, hard-to-exclude</strong> shared resource gets exhausted because each person rationally takes a bit more — the gain accrues privately while the depletion is spread across everyone. Every herder knows the pasture will degrade, but "if I don't graze more, others will," so all pile on until the pasture is barren. <strong>The commons is destroyed not by bad people but by structure</strong>: swap in saints under the same incentives and the outcome is identical.</p>
+<p>Non-trivial: (1) Since the root is structural, not moral, the fix must be structural too — reasoning and goodwill barely work. (2) But "privatize or let the state regulate" is a false binary: research on governing the commons shows communities can spontaneously grow a third path — <strong>clear boundaries, low-cost monitoring, and graduated sanctions</strong> — letting a group co-manage a commons sustainably for the long run. (3) Its mirror is the <em>anticommons</em>: when too many people hold veto rights, no one can use it and the resource sits idle (over-fragmented ownership). (4) The core is always the same crack: <strong>those who benefit and those who bear the cost are not the same people</strong> (an externality). See the crack, and you know where to patch.</p>
+<div class="diagram">
+<svg viewbox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 Z" fill="#c44545"></path></marker>
+</defs>
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="260" y="20">Tragedy of the commons: a self-reinforcing loop driven by rational individuals</text>
+<rect fill="#fdecea" height="42" rx="6" stroke="#c44545" width="190" x="165" y="38"></rect>
+<text fill="#8a2b2b" font-size="12" text-anchor="middle" x="260" y="64">Each takes a bit more (private gain)</text>
+<rect fill="#fdecea" height="42" rx="6" stroke="#c44545" width="170" x="320" y="150"></rect>
+<text fill="#8a2b2b" font-size="11.5" text-anchor="middle" x="405" y="168">Everyone grabs faster</text>
+<text fill="#8a2b2b" font-size="10.5" text-anchor="middle" x="405" y="183">(taken anyway without me)</text>
+<rect fill="#fdecea" height="42" rx="6" stroke="#c44545" width="170" x="30" y="150"></rect>
+<text fill="#8a2b2b" font-size="11.5" text-anchor="middle" x="115" y="168">Resource depletes faster</text>
+<text fill="#8a2b2b" font-size="10.5" text-anchor="middle" x="115" y="183">(cost shared by all)</text>
+<path d="M 198 80 Q 95 110 110 148" fill="none" marker-end="url(#ah)" stroke="#c44545" stroke-width="2"></path>
+<path d="M 200 174 L 316 174" fill="none" marker-end="url(#ah)" stroke="#c44545" stroke-width="2"></path>
+<path d="M 405 148 Q 425 110 320 80" fill="none" marker-end="url(#ah)" stroke="#c44545" stroke-width="2"></path>
+<text fill="#c44545" font-size="13" font-weight="700" text-anchor="middle" x="260" y="122">R: spins ever faster</text>
+</svg>
+<div class="caption">With no external rules, the rational loop drives a shared resource toward ruin</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Everyone grazing more sheep on a common pasture, everyone fishing more from open seas — each looks rational, but together they wring the shared resource dry. No one restrains, because restraint's cost is borne by you alone while the saved benefit is diluted across all. Structure unchanged, exhortation useless.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) A shared engineering codebase is a textbook commons: everyone shoves in quick patches for speed (private gain: ship sooner), no one wants to refactor (public cost: overall rot). <strong>Tech debt is fundamentally a slow tragedy of the commons.</strong> The fix isn't scolding people for selfishness but building structure: a named owner, refactoring on the roadmap, CI gates as "graduated sanctions." (2) Society's attention is also a commons being strip-mined by recommendation algorithms — each app grabbing three more seconds, together shredding your focus. (3) Shared spaces and chores at home are the same: rather than hoping for goodwill, set "clear boundaries + a rotation" with your kid — a household miniature of commons governance.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm facing a shared resource being overused: [describe the "commons" — codebase / attention / budget / shared space]. Use the Tragedy of the Commons to analyze:
+1. What exactly is the "private gain, collective cost" crack here? Who is over-taking, and onto whom is the cost spread?
+2. Skip the moralizing — give me 2 structural fixes (clear boundaries / low-cost monitoring / graduated sanctions / a named owner) that make sustainability the rational choice.
+3. Is there a risk of over-correcting into an "anticommons" (too many veto-holders, resource left idle)?</div>
+</section>
+<!-- Card 3: The Logic of Collective Action -->
+<section class="card c3">
+<h2>The Logic of Collective Action</h2>
+<div class="subtitle">"A common interest does not automatically become a common action."</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>The logic of collective action exposes a comforting illusion: <strong>shared interest does not automatically produce shared action</strong>. Even when a whole group clearly benefits from a goal, rational individuals often won't pitch in — because the result is shared by all (public) while the effort is borne by oneself (private). So everyone hopes "someone else will do it," and no one does. <strong>And the larger the group, the more indifferent each member becomes</strong>: my contribution is negligible, and I get the benefit with or without me.</p>
+<p>Non-trivial: (1) This explains an iron rule — <strong>small, concentrated interests always beat large, diffuse ones</strong>. A few vested interests are highly motivated and easy to organize; the silent majority all free-ride, so policy is often captured by small cliques. (2) The remedy is <em>selective incentives</em>: the collective goal alone won't mobilize anyone — you must give participants <strong>a private reward or punishment exclusive to them</strong> (member perks, social status, public recognition). (3) A counterintuitive corollary, "exploitation of the great by the small": the big player who cares most about the thing is often forced to foot the bill alone, while small members free-ride comfortably (in an alliance, the one paying the most is usually the one who needs it most).</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Unions, environmental protection, lower consumer prices — everyone benefits, yet few volunteer to organize or take to the streets. One vote, one show of support seems negligible to the individual, so free-riding becomes the rational default and the collective goal hangs unfulfilled. Meanwhile a few organized lobbies mobilize precisely and tilt the benefits toward themselves.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Open source is a living specimen: a tiny few maintainers shoulder the dependencies of millions, while the vast majority only take and never give back. It survives only on "selective incentives" — reputation, résumé, hiring opportunities, the <strong>private returns exclusive to contributors</strong>. (2) In a team retro everyone says "the build is too slow, we should fix it," yet after the meeting no one acts — a textbook collective-action problem. <strong>Stop calling for it in meetings; give a private hook</strong>: name an owner, write it into someone's OKR, publicly credit whoever fixes it. (3) To organize parent collaboration at school, don't just chant "for the kids" — design exclusive incentives, or everyone will wait and watch.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>There's a collective good everyone agrees should happen but no one acts on: [describe it and the group involved]. Use the Logic of Collective Action to break the deadlock:
+1. Unpack the "public payoff, private cost" structure, and how group size dilutes each person's incentive.
+2. Stop appealing to shared interest — give me 2 selective-incentive designs: use reputation / perks / public recognition (positive) or costs (negative) exclusive to participants to mobilize people.
+3. Is there "exploitation of the great by the small" — one person who cares most being forced to foot the bill alone? How should the load be redistributed?</div>
+</section>
+<!-- Card 4: The Public Goods Paradox -->
+<section class="card c4">
+<h2>The Public Goods Paradox</h2>
+<div class="subtitle">"The more universally wanted a thing is, the scarcer it gets — because everyone wants it free."</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Public goods have two defining traits: <strong>non-excludability</strong> (you can't stop non-payers from using them) and <strong>non-rivalry</strong> (my use doesn't diminish yours). Lighthouses, clean air, defense, knowledge — all of these. Precisely these two traits make markets systematically <strong>under-provide</strong> them: you can't charge beneficiaries, and since one more user costs ~zero the efficient price is zero anyway… so who pays? Everyone waits for someone else, and the good everyone wants goes unbuilt. <strong>That's the paradox: the more universally desired a good is, the scarcer it becomes precisely because everyone wants it for free.</strong></p>
+<p>Non-trivial: (1) Separate the two failure engines: <em>non-excludability</em> kills the incentive to charge; <em>non-rivalry</em> means the optimal price is itself zero — which also means zero revenue. (2) That's why we need governments, patronage, or clever mechanisms (assurance contracts' "charge only if the threshold is met," matching funds) to manufacture excludability or coordinate payment. (3) <strong>Information and knowledge are the ultimate public goods</strong>: digital non-rivalry is near-total — infinite copies, marginal cost approaching zero — so a pure market necessarily under-provides. This is the deep tension under open source, public science, and even the AI debates: training is a private cost, but the resulting capability is nearly a public good. (4) The real modern battlefield is "manufacturing artificial excludability" — DRM, paywalls, API keys all build walls around things that could be shared at zero cost.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Public radio's "pledge week": anyone can listen (non-excludable, non-rival), so most don't donate and wait for a few to pay, and the station must beg for funds year after year. Defense, disease control, lighthouses are the same — everyone benefits, no one will pay alone, so they can only be provided via compulsory taxation or collective mechanisms.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Shared docs and knowledge in a team are a public good: writing docs is a private cost, the benefit is taken for free by all, so docs are chronically under-written and knowledge stays trapped in individual heads. The fix is manufacturing "excludability" — tie doc-writing to evaluation, give authors credit and reputation. (2) Contributing to open models and public datasets is the same dilemma: your compute is a private cost, but the capability dividend goes to all of humanity. (3) Even at home: who maintains the shared calendar, who logs the child's growth record? Once you see it's a public good, stop waiting for "someone will naturally do it" — assign it explicitly and give exclusive recognition.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm facing something everyone wants but no one will create/maintain: [describe the public good — team docs / shared tooling / open-source contribution / household task]. Use the Public Goods Paradox to analyze:
+1. How do non-excludability and non-rivalry show up here, and why does it collapse into everyone free-riding and no one providing?
+2. Give me 2 provisioning fixes: how to manufacture "excludability" or coordinate payment (tie it to evaluation / authorship &amp; reputation / an assurance-contract-style "only if enough commit" / matching funds)?
+3. Who is the key person most worth incentivizing to provide it, and what exclusive reward should they get?</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">&larr; Back to Index</a>
+</footer>
+</div>
+</body>
+</html>
