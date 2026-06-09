@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Daily: Mechanism Design &amp; Incentives · 2026-06-09</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Mechanism Design &amp; Incentives</h1>
+<div class="meta">2026-06-09 · Day 49</div>
+</header>
+<!-- Card 1: Incentive Compatibility -->
+<section class="card c1">
+<h2>Incentive Compatibility</h2>
+<div class="subtitle">"A good rule makes each person's selfish calculation lead exactly to the result you want."</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Mechanism design is <strong>"reverse game theory"</strong>: game theory takes the rules and predicts how people will play; mechanism design flips it — <strong>you fix the outcome you want, then engineer the rules that force that outcome</strong>. Its core goal is incentive compatibility — designing the rules of the game so that <strong>the action each participant takes in pursuit of their own interest is exactly the action you want them to take</strong>. Telling the truth, exerting effort, not exploiting loopholes becomes their dominant strategy, not a moral demand.</p>
+<p>Non-trivial: (1) It swaps "rely on people's conscience" for "rely on structure automatically" — you needn't assume participants are noble, only make betrayal unprofitable. (2) There's a powerful <em>revelation principle</em>: any outcome a mechanism can achieve can be reproduced by a simple "truth-telling is optimal" mechanism, so the designer can focus on one question — <strong>how to make honesty pay</strong>. (3) Its opposite is <em>Goodhart's Law</em>: "When a measure becomes a target, it ceases to be a good measure." Once incentives are misaligned, people optimize the metric itself rather than the real purpose behind it — the textbook symptom of a failed mechanism.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The "I cut, you choose" rule for splitting a cake: the one cutting knows the other picks first, so to avoid shortchanging themselves they must cut as evenly as possible. No one preaches fairness, yet fairness happens automatically — the rule channels "selfishness" into "justice." That's incentive compatibility at its simplest.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) When designing KPIs/OKRs, ask first: <strong>"If the team optimized only this number and ignored my true intent entirely, what would happen?"</strong> If the answer is absurd, the incentive isn't compatible and will be gamed (case counts soar, quality collapses). (2) An RLHF reward model is essentially a mechanism-design problem: if the reward can be reward-hacked, the model learns to please the scorer rather than be genuinely useful — half the difficulty of alignment is designing an ungameable, incentive-compatible reward.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm designing incentives/metrics for [team / product / collaboration], aiming for [the outcome I actually want], with candidate metrics [current metrics]. Use Incentive Compatibility to stress-test:
+1. If participants coldly optimize this metric while ignoring my true intent, how would they game it? (Goodhart's Law)
+2. How can I redesign the rules so that telling the truth / genuinely exerting effort becomes their dominant strategy, not a matter of goodwill?
+3. Give me one more incentive-compatible alternative, and name what it trades off.</div>
+</section>
+<!-- Card 2: Principal-Agent Problem -->
+<section class="card c2">
+<h2>Principal-Agent Problem</h2>
+<div class="subtitle">"You hire someone to act for you, but what they can see — and what they want — differ from yours."</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The principal-agent problem: a <strong>principal</strong> hires an <strong>agent</strong> to act on their behalf, but two cracks sit between them — <strong>misaligned goals</strong> (the agent has private interests) and <strong>asymmetric information</strong> (the principal can't see whether the agent truly exerted effort). This structural crack breeds two classic risks: ex-post <em>moral hazard</em> (shirking or self-dealing after the contract, since you can't see it), and ex-ante <em>adverse selection</em> (agents hide their true "type"; the murkiest are keenest to apply).</p>
+<p>Non-trivial: (1) The root isn't "bad people" but <strong>"invisibility"</strong> — with fully transparent information you'd just verify by outcome and the agency problem vanishes. (2) The mainstream fix ties the agent's payoff <strong>to observable results</strong> (commission, equity, pay-for-performance), but this pushes risk onto the agent — so there's a permanent trade-off <strong>between strong incentives and overloading the agent with risk</strong>. (3) Agency chains nest: shareholders → board → CEO → middle managers → staff, each link leaking a layer of incentive, so <strong>the longer the chain, the further goals drift</strong>.</p>
+<div class="diagram">
+<svg viewbox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah2" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 Z" fill="#7048b8"></path></marker>
+</defs>
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="260" y="22">Principal-Agent: two cracks</text>
+<rect fill="#f3effa" height="48" rx="6" stroke="#7048b8" width="150" x="30" y="50"></rect>
+<text fill="#4a2d80" font-size="13" font-weight="700" text-anchor="middle" x="105" y="71">Principal</text>
+<text fill="#4a2d80" font-size="11" text-anchor="middle" x="105" y="88">(wants outcome)</text>
+<rect fill="#f3effa" height="48" rx="6" stroke="#7048b8" width="150" x="340" y="50"></rect>
+<text fill="#4a2d80" font-size="13" font-weight="700" text-anchor="middle" x="415" y="71">Agent</text>
+<text fill="#4a2d80" font-size="11" text-anchor="middle" x="415" y="88">(own agenda)</text>
+<path d="M 180 66 L 336 66" fill="none" marker-end="url(#ah2)" stroke="#7048b8" stroke-width="2"></path>
+<text fill="#7048b8" font-size="11.5" text-anchor="middle" x="258" y="60">delegates · pays</text>
+<text fill="#c44545" font-size="12" font-weight="700" text-anchor="middle" x="258" y="135">Crack 1: misaligned goals</text>
+<text fill="#c44545" font-size="12" font-weight="700" text-anchor="middle" x="258" y="160">Crack 2: asymmetric info (effort unseen)</text>
+<text fill="#1b8a5a" font-size="11.5" text-anchor="middle" x="258" y="190">Patch: tie pay to observable outcomes + monitoring</text>
+</svg>
+<div class="caption">If effort is invisible, tie pay to visible results — at the cost of pushing risk onto the agent</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Shareholders vs. professional managers: shareholders want long-term value; the manager may prefer short-term optics, a personal bonus, and status. Shareholders can't watch every decision, so they use stock options to bind the manager's wallet to the share price — making "good for the company" also "good for me."</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) You delegate a complex task to an AI agent; its implicit goals (finish fast, burn fewer tokens) need not equal yours (do it thoroughly) — <strong>this is AI alignment as a principal-agent problem in miniature</strong>. The patch is the same: "tie to outcomes + add monitoring" — define verifiable success criteria and require it to leave inspectable traces at key steps. (2) Outsourcing, hiring, and remote work follow suit: rather than micromanage (information cost is huge), structure pay so the agent benefits most precisely when doing the right thing.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>As the principal, I'm delegating [task / responsibility] to [agent: employee / contractor / AI agent / partner]; what I truly want is [goal]. Use the Principal-Agent model to design:
+1. What do the goal misalignment and information asymmetry look like here? Where might moral hazard and adverse selection show up?
+2. Which outcomes can I observe? How do I tie pay/acceptance to those observable signals so the agent benefits most by doing the right thing?
+3. How much risk does strong incentive shift onto the agent? Give me a design balancing incentive strength against risk-bearing.</div>
+</section>
+<!-- Card 3: Auction Theory -->
+<section class="card c3">
+<h2>Auction Theory</h2>
+<div class="subtitle">"A well-designed auction extracts true valuations bidders might not even want to state."</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>An auction is far more than "highest bidder wins"; it's a <strong>price-discovery and information-revelation</strong> machine: when no one wants to show their hand, the rules "force out" the true valuations scattered across everyone's minds. The most counterintuitive move is the <strong>second-price auction</strong> (sealed bids, highest wins, but pays the second-highest price): because what you pay is decoupled from what you bid, <strong>neither lowballing nor inflating helps, and bidding your true value becomes the dominant strategy</strong>. That's incentive compatibility applied to pricing.</p>
+<p>Non-trivial: (1) The <em>Revenue Equivalence Theorem</em>: under ideal conditions, English, Dutch, first-price, and second-price formats give the seller <strong>the same expected revenue</strong> — the format war matters less than imagined; what truly counts is attracting enough serious bidders. (2) The <em>Winner's Curse</em>: when the true value is unknown to all (common value — oil fields, M&amp;A), <strong>the winner is often exactly whoever overestimated most wildly</strong> — winning the auction is itself the bad news that "you bid too high." The rational response is to shade your bid downward in advance.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Real-time bidding in internet advertising: every time you open a page, countless advertisers bid in milliseconds for that impression. Platforms commonly use second-price-style rules precisely so advertisers can <strong>bid their true value with confidence</strong> without second-guessing rivals — mechanism design becomes the bedrock of a multi-hundred-billion-dollar business.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Cloud spot instances are a real-time auction: idle compute is won cheaply but reclaimed when prices spike. Understanding the auction lets you place fault-tolerant tasks there to save cost and keep critical tasks on stable resources. (2) To allocate scarce internal resources (GPU quota, expert hours, plum projects), rather than relying on grabbing or a boss's fiat, design a lightweight auction (e.g., bidding with virtual credits) so whoever truly needs it most reveals themselves. (3) In M&amp;A, bidding wars, and talent fights, <strong>always beware the Winner's Curse</strong>: if you won, it may simply be because you overestimated it more than everyone else.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm facing how to allocate/price a scarce resource: [describe the resource, the participants, and the outcome I want — max efficiency / max revenue / the one who needs it most gets it]. Use Auction Theory to design:
+1. Which auction format fits, and why? Would a second-price design let people bid their true value safely?
+2. Is there a Winner's Curse risk here (unknown common value, won by grabbing)? How much should I shade bids down?
+3. Beyond agonizing over format, what matters more for the outcome (e.g., attracting more serious bidders)?</div>
+</section>
+<!-- Card 4: Signaling -->
+<section class="card c4">
+<h2>Signaling</h2>
+<div class="subtitle">"A credible signal is one a faker can't afford to imitate — its value lies in the cost of faking it."</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>When one party holds private information (I'm truly skilled / my product truly lasts) that the other can't directly verify, how do you transmit it <strong>credibly</strong>? The answer lies not in "what you say" but in <strong>"what you do — and something a faker can't imitate"</strong>. The key is <em>cost asymmetry</em>: a signal is unfakeable only when it's cheap for the genuine article and expensive enough for the fake to be not worth it, letting the market separate signalers from the silent (a separating equilibrium). <strong>Verbal promises anyone can make, so they're worthless; costly actions a fake can't copy, so they carry value.</strong></p>
+<p>Non-trivial: (1) The famous <em>education signaling</em> view: a degree's value <strong>lies in considerable part not in what you learned but in the fact that "being able to endure it" itself screens out those lacking ability or grit</strong> — it's a hard-to-fake ability signal, even if the course content is long forgotten. (2) This explains why so much "seemingly wasteful" behavior is rationally there: warranties and no-questions returns signal quality; a founder staking their own net worth signals <strong>skin in the game</strong>. (3) A new meaning in the AI era: when text, code, and work can all be mass-generated by large models at near-zero cost, <strong>"cheap signals" depreciate en masse</strong>, while cost-asymmetric, hard-to-mass-fake signals (real long-term investment, verifiable past track records) become more valuable.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The peacock's huge, heavy, predator-attracting tail: precisely because it's a "handicap," a weak peacock simply can't afford it, so it becomes an honest signal of health — peahens choosing by it won't be deceived. Biology calls this the "handicap principle": a signal's credibility comes exactly from a cost too high for fakes to bear.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) For a technologist, a solid body of open-source contributions and a verifiable project track record is a stronger ability signal than any self-introduction — <strong>it's hard to fake because it's the sediment of real long-term investment</strong>. (2) In hiring and partnerships, rather than listen to what someone says, watch what cost-asymmetric action they'll take: will they build a small sample first, will they share the risk? (3) When you need to establish credibility amid AI-flooded content, stop piling up cheap output — <strong>signal with what others can't imitate</strong>: original depth of insight, a public and verifiable long-term record.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to credibly signal [a hard-to-verify quality of mine: skill / quality / sincerity / capability] to [audience: employer / client / partner / market], but talk alone won't do. Use Signaling to design:
+1. Which signals are cost-asymmetric — cheap for the real me, prohibitively expensive for a fake to imitate?
+2. Are my current signals "cheap signals" (anyone can claim / mass-produce them) and therefore depreciating?
+3. Give me 2 hard-to-fake high-credibility signals (e.g., skin in the game, a verifiable track record, doing a small sample first), and rank them by ROI.</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Back to Index</a>
+</footer>
+</div>
+</body>
+</html>

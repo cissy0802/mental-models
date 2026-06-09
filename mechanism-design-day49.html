@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：机制设计与激励 · 2026-06-09</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：机制设计与激励</h1>
+<div class="meta">2026-06-09 · Day 49</div>
+</header>
+<!-- Card 1: 激励相容 -->
+<section class="card c1">
+<h2>激励相容 · Incentive Compatibility</h2>
+<div class="subtitle">"好的规则，让每个人自私的算计，恰好通向你想要的结果。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>机制设计是<strong>"反向的博弈论"</strong>：博弈论给定规则、推演人们会怎么玩；机制设计反过来，<strong>先定好你想要的结果，再倒推出能逼出这个结果的规则</strong>。它的核心目标就是激励相容——设计游戏规则，让每个参与者<strong>追求自身利益的那个动作，恰好就是你希望他做的动作</strong>。讲真话、肯出力、不钻空子，成为他的占优策略，而不是道德要求。</p>
+<p>非平凡点：① 它把"靠人自觉"换成"靠结构自动"——你不必假设参与者高尚，只需让背叛无利可图。② 有一条强力的<em>显示原理</em>：任何机制能达成的结果，都能由一个"讲真话就是最优"的简单机制复现。这意味着设计者可以只盯着一个问题——<strong>怎样让说真话变得划算</strong>。③ 它的反面是<em>古德哈特定律</em>："当指标变成目标，它就不再是好指标。" 一旦激励不相容，人们就会优化指标本身、而非指标背后的真实目的——这正是机制失败的典型征兆。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>"我切你选"的分蛋糕规则：负责切的人知道对方会先挑，为了自己那块不吃亏，他必然尽量切得均等。没人讲公平，公平却自动发生——规则把"自私"导向了"公正"，这就是激励相容最朴素的样子。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 设计 KPI/OKR 时，先问一句：<strong>"如果团队只优化这个数字、完全不管我的真实意图，会发生什么？"</strong> 答案若荒谬，这套激励就不相容，必被钻空子（用例数刷上去、质量塌下来）。② RLHF 的奖励模型本质就是一道机制设计题：若奖励可被"reward hacking"，模型会学会讨好评分而非真正有用——对齐之难，一半难在设计一个无法被钻空子的、激励相容的奖励。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Incentive Compatibility</strong> — mechanism design is "reverse game theory": instead of taking the rules and predicting play, you fix the outcome you want and engineer rules that force it. A mechanism is incentive-compatible when each participant's self-interested action is exactly the action you want — telling the truth, exerting effort, not gaming the system becomes their dominant strategy, not a moral demand. It replaces "trust people to be good" with "make defection unprofitable." The <em>revelation principle</em> says any achievable outcome can be implemented by a simple truth-telling mechanism, so the designer can focus on one question: how to make honesty pay. Its failure mode is <em>Goodhart's Law</em> — when a measure becomes a target, it ceases to be a good measure; once incentives misalign, people optimize the metric instead of the goal behind it (e.g., reward hacking in RLHF).
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我要为 [团队 / 产品 / 协作 场景] 设计一套激励或考核规则，目标是 [你真正想要的结果]，候选指标是 [现有指标]。请用「激励相容」帮我压力测试：
+① 假设参与者只会冷酷地优化这个指标、无视我的真实意图，他会怎么钻空子？（古德哈特定律）
+② 怎么改造规则，让"说真话 / 真出力"成为他的占优策略，而不是靠自觉？
+③ 给我 1 个更激励相容的替代设计，并指出它牺牲了什么。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm designing incentives/metrics for [team / product / collaboration], aiming for [the outcome I actually want], with candidate metrics [current metrics]. Use Incentive Compatibility to stress-test:
+1. If participants coldly optimize this metric while ignoring my true intent, how would they game it? (Goodhart's Law)
+2. How can I redesign the rules so that telling the truth / genuinely exerting effort becomes their dominant strategy, not a matter of goodwill?
+3. Give me one more incentive-compatible alternative, and name what it trades off.</div>
+</section>
+<!-- Card 2: 委托代理 -->
+<section class="card c2">
+<h2>委托代理 · Principal-Agent Problem</h2>
+<div class="subtitle">"你雇人替你做事，但他看得见的、想要的，和你都不一样。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>委托代理问题：<strong>委托人</strong>（principal）请<strong>代理人</strong>（agent）替自己行事，但两者之间横着两道裂缝——<strong>目标不一致</strong>（代理人有自己的小算盘）和<strong>信息不对称</strong>（委托人看不清代理人到底有没有尽力）。这道结构性裂缝衍生出两类经典风险：事后的<em>道德风险</em>（签约后偷懒、谋私，反正你看不见），和事前的<em>逆向选择</em>（代理人隐藏自己的真实"类型"，浑水摸鱼者反而更愿意来）。</p>
+<p>非平凡点：① 问题的根不是"人坏"，而是<strong>"看不见"</strong>——信息若完全透明，按结果验收即可，代理问题自然消失。② 主流解法是把代理人的回报<strong>与可观测的结果挂钩</strong>（提成、期权、对赌），但这会把风险转嫁给代理人——于是永远要在<strong>"强激励"与"让代理人承担过多风险"之间权衡</strong>。③ 委托链可以层层嵌套：股东→董事会→CEO→中层→员工，每一环都漏一层激励，<strong>越长的代理链，目标漂移得越远</strong>。</p>
+<div class="diagram">
+<svg viewbox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ah2" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L7,3 L0,6 Z" fill="#7048b8"></path></marker>
+</defs>
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="260" y="22">委托代理：两道裂缝</text>
+<rect fill="#f3effa" height="48" rx="6" stroke="#7048b8" width="150" x="30" y="50"></rect>
+<text fill="#4a2d80" font-size="13" font-weight="700" text-anchor="middle" x="105" y="71">委托人</text>
+<text fill="#4a2d80" font-size="11" text-anchor="middle" x="105" y="88">（想要结果）</text>
+<rect fill="#f3effa" height="48" rx="6" stroke="#7048b8" width="150" x="340" y="50"></rect>
+<text fill="#4a2d80" font-size="13" font-weight="700" text-anchor="middle" x="415" y="71">代理人</text>
+<text fill="#4a2d80" font-size="11" text-anchor="middle" x="415" y="88">（有自己算盘）</text>
+<path d="M 180 66 L 336 66" fill="none" marker-end="url(#ah2)" stroke="#7048b8" stroke-width="2"></path>
+<text fill="#7048b8" font-size="11.5" text-anchor="middle" x="258" y="60">委托 · 付酬</text>
+<text fill="#c44545" font-size="12" font-weight="700" text-anchor="middle" x="258" y="135">裂缝① 目标不一致</text>
+<text fill="#c44545" font-size="12" font-weight="700" text-anchor="middle" x="258" y="160">裂缝② 信息不对称（看不见努力）</text>
+<text fill="#1b8a5a" font-size="11.5" text-anchor="middle" x="258" y="190">补缝：把报酬挂到可观测结果上 + 监督</text>
+</svg>
+<div class="caption">看不见努力，就得把报酬绑到看得见的结果上——代价是把风险转给代理人</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>股东与职业经理人：股东要长期价值，经理人可能更想要短期账面好看、自己的奖金和地位。股东无法时刻盯着每个决策，于是用股票期权把经理人的钱包绑到公司股价上——让"为公司好"也变成"为自己好"。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 你委托一个 AI agent 去执行复杂任务，它的隐性目标（尽快交差、少耗 token）未必等于你的目标（把事做扎实）——<strong>这正是 AI 对齐的微缩版委托代理</strong>。补缝的办法同样是"挂结果 + 加监督"：明确可验收的成功标准，关键步骤要求它留下可检查的痕迹。② 外包、招人、远程协作同理：与其事无巨细地监工（信息成本极高），不如把报酬结构设计成"代理人做对事时他自己最受益"。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The Principal-Agent Problem</strong> — a principal hires an agent to act on their behalf, but two cracks sit between them: misaligned goals (the agent has private interests) and asymmetric information (the principal can't see whether the agent truly exerted effort). This breeds <em>moral hazard</em> (shirking or self-dealing after the contract, since it's unobservable) and <em>adverse selection</em> (agents hide their true "type" before the contract; the worst types are keenest to apply). The root isn't bad people but invisibility — with perfect information you'd just verify by outcome. The standard fix is tying the agent's payoff to observable results (commission, equity, pay-for-performance), but that pushes risk onto the agent, forcing a permanent trade-off between strong incentives and overloading the agent with risk. Agency chains nest (shareholders → board → CEO → staff), and the longer the chain, the further goals drift. AI alignment is a principal-agent problem in miniature.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我（委托人）要把 [任务 / 职责] 交给 [代理人：员工 / 外包 / AI agent / 合作方] 去做，我真正想要的是 [目标]。请用「委托代理」帮我设计：
+① 这里的"目标不一致"和"信息不对称"分别长什么样？道德风险和逆向选择各可能出现在哪？
+② 我能观测到哪些结果？怎么把报酬 / 验收绑到这些可观测信号上，让他做对事时自己最受益？
+③ 强激励会把多少风险转给代理人？给我一个在"激励力度"和"风险承担"之间平衡的方案。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>As the principal, I'm delegating [task / responsibility] to [agent: employee / contractor / AI agent / partner]; what I truly want is [goal]. Use the Principal-Agent model to design:
+1. What do the goal misalignment and information asymmetry look like here? Where might moral hazard and adverse selection show up?
+2. Which outcomes can I observe? How do I tie pay/acceptance to those observable signals so the agent benefits most by doing the right thing?
+3. How much risk does strong incentive shift onto the agent? Give me a design balancing incentive strength against risk-bearing.</div>
+</section>
+<!-- Card 3: 拍卖理论 -->
+<section class="card c3">
+<h2>拍卖理论 · Auction Theory</h2>
+<div class="subtitle">"设计得当的拍卖，能逼出连出价人自己都未必愿说的真实估值。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>拍卖远不只是"价高者得"，它是一台<strong>价格发现 + 信息揭示</strong>的机器：在没人愿意透露底牌时，用规则把分散在各人脑中的真实估值"逼"出来。最反直觉的一招是<strong>次价拍卖</strong>（密封出价、最高者赢、但只付第二高的价）：因为你付多少和你出多少脱了钩，<strong>瞒报或虚高都没好处，照真实估值出价反而成了占优策略</strong>。这正是把激励相容用在了定价上。</p>
+<p>非平凡点：① <em>收益等价定理</em>：在理想条件下，英式、荷式、首价、次价等多种形式，给卖家带来的<strong>期望收益其实一样</strong>——形式之争往往不如想象中重要，真正要紧的是吸引足够多的认真竞买者。② <em>赢家诅咒</em>：当标的真实价值人人未知（共同价值，如油田、并购），<strong>赢的那个往往恰恰是高估最离谱的那个</strong>——赢得竞拍本身就是"你出价太高了"的坏消息。理性的应对是预先把出价向下修正。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>互联网广告的实时竞价：每次你打开页面，背后是无数广告主在毫秒间为这个曝光位出价。平台普遍采用次价式规则，正是为了让广告主<strong>放心按真实价值出价</strong>、无需费心揣测对手——机制设计直接变成了千亿级生意的地基。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 云上的竞价实例（spot instance）就是一场实时拍卖：闲置算力低价竞得，但价高时会被回收。理解拍卖机制，才能把容错任务放上去省成本、把关键任务留在稳定资源上。② 团队内部分配稀缺资源（GPU 配额、专家工时、好项目），与其靠争抢或领导拍板，不如设计一场轻量拍卖（如用虚拟积分竞价），让真正最需要的人显形。③ 在并购、竞标、抢人时，<strong>时刻警惕赢家诅咒</strong>：你赢了，很可能只是因为你比所有人都更高估了它。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Auction Theory</strong> — an auction isn't just "highest bidder wins"; it's a price-discovery and information-revelation machine that extracts truthful valuations no one wants to disclose. The most counterintuitive design is the <em>second-price (Vickrey) auction</em>: sealed bids, highest wins, but pays the second-highest price. Because what you pay is decoupled from what you bid, neither lowballing nor inflating helps — bidding your true value becomes the dominant strategy (incentive compatibility applied to pricing). The <em>Revenue Equivalence Theorem</em> shows that under ideal conditions English, Dutch, first-price, and second-price auctions yield the same expected revenue, so attracting enough serious bidders matters more than the format. The <em>Winner's Curse</em> warns that in common-value auctions (oil fields, M&amp;A) the winner is often whoever overestimated most — winning is itself bad news, so rational bidders shade their bids down.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我面对一个"如何分配 / 定价稀缺资源"的问题：[描述资源、参与者、以及你想要的结果——效率最高 / 收益最大 / 最需要的人拿到]。请用「拍卖理论」帮我设计：
+① 用哪种拍卖形式合适？为什么？次价式能不能让大家放心出真实估值？
+② 这里有没有"赢家诅咒"风险（标的真实价值未知、靠抢）？我该把出价向下修正多少？
+③ 比起纠结形式，我更该做什么来提升结果（如吸引更多认真的竞买者）？</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm facing how to allocate/price a scarce resource: [describe the resource, the participants, and the outcome I want — max efficiency / max revenue / the one who needs it most gets it]. Use Auction Theory to design:
+1. Which auction format fits, and why? Would a second-price design let people bid their true value safely?
+2. Is there a Winner's Curse risk here (unknown common value, won by grabbing)? How much should I shade bids down?
+3. Beyond agonizing over format, what matters more for the outcome (e.g., attracting more serious bidders)?</div>
+</section>
+<!-- Card 4: 信号传递 -->
+<section class="card c4">
+<h2>信号传递 · Signaling</h2>
+<div class="subtitle">"可信的信号，一定是冒牌货模仿不起的那种——贵在'造假成本'。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>当一方握有私人信息（我真的很优秀 / 我的产品真的耐用），而对方无法直接核验时，怎样才能<strong>可信地</strong>传递？答案不在"说什么"，而在<strong>"做什么——而且这件事冒牌货模仿不起"</strong>。关键是<em>成本不对称</em>：一个信号只有当它对真货便宜、对假货昂贵到不划算时，才不可伪造，市场才会把"发出信号者"和"沉默者"区分开（分离均衡）。<strong>嘴上的承诺人人会说，所以一文不值；烧钱的行动假货学不来，所以才值钱。</strong></p>
+<p>非平凡点：① 著名的<em>文凭信号理论</em>：一纸学历的价值，<strong>有相当一部分不在于学到了什么，而在于"能熬下来"这件事本身就筛掉了能力或毅力不足的人</strong>——它是难以伪造的能力信号，哪怕课程内容早已忘光。② 这解释了大量"看似浪费"的行为为何理性存在：保修期、无条件退货是质量信号；创业者押上自己身家是<strong>风险共担</strong>信号。③ AI 时代的新含义：当文字、代码、作品都能被大模型批量生成、近乎零成本，<strong>"廉价信号"集体贬值</strong>，那些成本不对称、难以批量伪造的信号（真实的长期投入、可验证的过往战绩）反而更值钱。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>孔雀那条又大又沉、招天敌的尾巴：正因为它是个"累赘"，体弱的雄孔雀根本养不起，所以它成了诚实的健康信号——母孔雀据此择偶不会被骗。生物学称之为"累赘原理"：信号的可信，恰恰来自它高昂到假货承受不起的代价。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 对技术人而言，一份扎实的开源贡献、可考的项目战绩，是比任何自我介绍都强的能力信号——<strong>它难以伪造，因为它是长期真实投入的沉淀</strong>。② 招聘与合作中，与其听对方怎么说，不如看他愿意付出什么"成本不对称"的行动：愿不愿意先做一个小样、愿不愿意风险共担。③ 当你要在 AI 泛滥的内容里建立可信度，别再堆砌廉价产出——<strong>用别人模仿不起的东西做信号</strong>：原创的深度洞察、公开可验证的长期记录。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Signaling</strong> — when one party holds private information (I'm truly skilled / my product truly lasts) that the other can't verify, credibility comes not from what you say but from doing something a fake couldn't afford to imitate. The key is <em>cost asymmetry</em>: a signal is unfakeable only when it's cheap for the genuine type and prohibitively expensive for the fake, which lets the market separate signalers from the silent (a separating equilibrium). Talk is cheap, so it's worthless; costly action can't be mimicked, so it carries information. The classic <em>education signaling</em> view holds that a degree's value lies partly not in what was learned but in the fact that enduring it screens out those lacking ability or grit. This rationalizes "wasteful" behaviors: warranties signal quality; founders risking their own capital signal skin in the game; the peacock's costly tail (the handicap principle) signals fitness. In the AI era, as text, code, and work become near-free to mass-generate, cheap signals collapse in value while cost-asymmetric, hard-to-fake ones (real long-term investment, verifiable track records) become more valuable.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想向 [对象：雇主 / 客户 / 合作方 / 市场] 可信地传递 [我的某种难以直接核验的素质：能力 / 质量 / 诚意 / 实力]，但空口无凭。请用「信号传递」帮我设计：
+① 哪些信号是"成本不对称"的——对真实的我便宜、对冒牌货昂贵到学不来？
+② 我现在用的信号是不是"廉价信号"（谁都能说 / 能批量造），因而正在贬值？
+③ 给我 2 个难以伪造的高可信信号（如风险共担、可验证的过往战绩、先做小样），并排出投入产出优先级。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to credibly signal [a hard-to-verify quality of mine: skill / quality / sincerity / capability] to [audience: employer / client / partner / market], but talk alone won't do. Use Signaling to design:
+1. Which signals are cost-asymmetric — cheap for the real me, prohibitively expensive for a fake to imitate?
+2. Are my current signals "cheap signals" (anyone can claim / mass-produce them) and therefore depreciating?
+3. Give me 2 hard-to-fake high-credibility signals (e.g., skin in the game, a verifiable track record, doing a small sample first), and rank them by ROI.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
