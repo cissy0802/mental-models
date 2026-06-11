@@ -37,6 +37,16 @@ TITLE=$(grep -oE '<title>[^<]+' "$PRIMARY" | head -1 | sed 's|<title>||')
 [ -z "$TITLE" ] && TITLE="$PRIMARY"
 MSG="${MSG:-Add #$N: $TITLE}"
 
+# ---------- TOPICS guard (anti echo-chamber) ----------
+# Topics are pre-curated by BigCat. Routines must NOT invent/append their own
+# topics when TOPICS.md runs out — that drifts toward self-repetition.
+if [ -f TOPICS.md ] && ! git diff --quiet TOPICS.md 2>/dev/null; then
+  echo "ERROR: TOPICS.md was modified by this run. Do NOT self-generate topics."
+  echo "       If TOPICS.md is exhausted: send a PushNotification asking BigCat"
+  echo "       to refill topics (or pause this routine), publish nothing, exit."
+  exit 1
+fi
+
 # ---------- Per-file validations ----------
 for F in $NEW_FILES; do
   [ ! -f "$F" ] && continue
