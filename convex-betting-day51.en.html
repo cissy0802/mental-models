@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Convex Bets &amp; Hedging · 2026-06-11</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Daily: Convex Bets &amp; Hedging</h1>
+    <div class="meta">2026-06-11 · Day 51</div>
+  </header>
+
+  <!-- Card 1: Kelly Criterion -->
+  <section class="card c1">
+    <h2>Kelly Criterion</h2>
+    <div class="subtitle">Bet size should be proportional to your edge and inversely to the odds' risk — not "go all-in whenever EV is positive"</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Most people assume "positive expected value means bet, and the bigger the EV the more you bet." The Kelly Criterion says: in <strong>repeated bets</strong>, what you should maximize isn't single-shot arithmetic expectation but the long-run <strong>geometric growth rate</strong> of wealth — the growth rate of <em>log(wealth)</em>. The difference is fatal: full-betting a positive-EV wager, as long as there's any chance of going to zero, leads almost surely to ruin over repetition — because ruin is an <strong>absorbing state</strong>. In a multiplicative world, one zero eats all prior gains.</p>
+    <p>Non-trivial: (1) Kelly's optimal fraction = <strong>edge ÷ odds</strong> — essentially a tax on volatility: the larger your edge, the more you bet; the more dispersed the odds (higher variance), the less. (2) Almost everyone should use <strong>half-Kelly</strong>: you systematically overestimate your edge, and overbetting is punished asymmetrically — slight underbetting costs a sliver of growth, while slight overbetting wrecks long-run growth and can turn a positive-EV bet into negative growth. Half-Kelly is a <em>margin of safety</em>. (3) Kelly is the same object as Shannon's information rate: the optimal growth rate is exactly your "information rate" relative to the market — <strong>your edge is your information</strong>. With no real informational advantage, the optimal stake is zero.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+        <line x1="55" y1="190" x2="490" y2="190" stroke="#adb5bd" stroke-width="1.5"/>
+        <line x1="55" y1="30" x2="55" y2="205" stroke="#adb5bd" stroke-width="1.5"/>
+        <path d="M 55 150 Q 160 55 235 60 Q 330 66 400 130 L 455 205" fill="none" stroke="#0a6fb8" stroke-width="2.5"/>
+        <line x1="235" y1="60" x2="235" y2="190" stroke="#1b8a5a" stroke-dasharray="4,4" stroke-width="1.5"/>
+        <circle cx="235" cy="60" r="4" fill="#1b8a5a"/>
+        <text x="235" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#1b8a5a">optimal f* (full Kelly)</text>
+        <line x1="150" y1="98" x2="150" y2="190" stroke="#b78a07" stroke-dasharray="4,4" stroke-width="1.2"/>
+        <text x="150" y="90" text-anchor="middle" font-size="10" fill="#b78a07">half-Kelly</text>
+        <text x="430" y="150" text-anchor="middle" font-size="11" font-weight="700" fill="#c44545">overbet → growth turns negative</text>
+        <text x="270" y="228" text-anchor="middle" font-size="11" fill="#636e72">bet fraction f →</text>
+        <text x="20" y="115" text-anchor="middle" font-size="11" fill="#636e72" transform="rotate(-90 20 115)">long-run growth →</text>
+      </svg>
+      <div class="caption">Growth is single-peaked in bet size: underbetting costs little, overbetting is punished hard and goes negative</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>Give someone a biased coin landing heads 60% of the time, with free betting over 300 flips. Kelly says bet about 20% of current bankroll each time. In experiments, most educated players either occasionally go all-in (one unlucky flip wipes them out) or bet random small amounts — and badly underperform Kelly, despite <em>knowing the coin favors them</em>, because they don't grasp that <em>bet sizing is the key variable</em>. <strong>Right call, wrong size, still a loss.</strong></p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>Betting your entire savings and all spare time on a single AI startup idea — even with positive EV — violates Kelly: ruin risk collapses your life's geometric growth. The correct move is to size by edge: allocate more where you genuinely have an information advantage (AI, distributed systems), less or nothing where you're merely following the crowd, and always keep a buffer that no single failure can zero out. <strong>Career, health, parenting are all repeated games; going all-in on any one is anti-Kelly.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I face a repeated decision/bet: [describe the opportunity, your win probability, odds/upside-downside]. Use the Kelly framework to:
+1. Estimate whether it's positive- or negative-EV and the rough optimal bet fraction.
+2. Stress-test where I'm likely overestimating my edge, and suggest a conservative half-Kelly size.
+3. Flag any ruin / irreversible tail in this bet; if present, advise how much further to cut the size.</div>
+  </section>
+
+  <!-- Card 2: Convex Betting -->
+  <section class="card c2">
+    <h2>Convex Betting</h2>
+    <div class="subtitle">Engineer a payoff curve that is "convex" to uncertainty: capped downside, open upside — the more volatility, the more you earn</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>The essence of convex betting isn't "predicting right" but <strong>arranging a payoff shape</strong>: losses have a clear ceiling (capped), gains have none (open-ended). Such a position is <em>convex</em> — by Jensen's inequality, uncertainty itself creates value for you: the wilder the volatility, the higher the convex position's expected payoff. <strong>You don't need to know which bet pays off, only that every bet is "affordable to lose, unbounded to win," letting time and volatility do the sorting.</strong></p>
+    <p>Non-trivial: (1) The opposite of convex is <em>concave</em> — many seemingly robust strategies are actually concave: capped gains, bottomless disaster, like "picking up pennies in front of a steamroller," earning small money steadily until one black swan takes it all. Knowing whether your position is convex or concave matters more than predicting the market. (2) The <strong>barbell strategy</strong>: split resources into two ends — the vast majority ultra-safe (survival), a small slice on extreme convex bets (chasing the fat-tailed upside), deliberately avoiding the "false-safe" concave middle. (3) Isomorphic to biological evolution: mutation is a flood of convex bets — most vanish harmlessly (loss capped at the individual), occasionally one yields a huge fitness leap (upside open). Complex systems advance precisely through cheap convex trial-and-error.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg">
+        <line x1="55" y1="150" x2="490" y2="150" stroke="#adb5bd" stroke-width="1.5"/>
+        <line x1="120" y1="25" x2="120" y2="205" stroke="#adb5bd" stroke-width="1.5"/>
+        <path d="M 60 132 L 210 132 Q 320 132 490 35" fill="none" stroke="#7048b8" stroke-width="2.5"/>
+        <line x1="60" y1="132" x2="210" y2="132" stroke="#1b8a5a" stroke-dasharray="4,4" stroke-width="1.2"/>
+        <text x="130" y="172" text-anchor="middle" font-size="10" fill="#1b8a5a">downside capped (affordable)</text>
+        <text x="410" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#7048b8">upside open (fat tail)</text>
+        <text x="280" y="222" text-anchor="middle" font-size="11" fill="#636e72">outcome (volatility) →</text>
+        <text x="22" y="110" text-anchor="middle" font-size="11" fill="#636e72" transform="rotate(-90 22 110)">payoff →</text>
+      </svg>
+      <div class="caption">Convex payoff curve: truncated on the left, unbounded on the right — volatility is your friend</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>A venture portfolio: seven or eight of ten investments go to zero (each loss capped at the principal), but a single 100× return wins the whole fund. VC never earns the "average" — it earns the <em>fat tail</em>. Options are a natural convex instrument too: the buyer can lose at most the premium, while the upside scales with the underlying's surge. <strong>Convex strategies' returns are carried by a tiny number of extreme positive events, not by the average of the many.</strong></p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>The "AI super-individual" is essentially a portfolio of cheap convex bets: write public essays, open-source small tools, run small experiments, proactively forge weak ties — each with a downside of merely "a few wasted hours" and an upside of "possibly seen by millions, drawing unexpected connections or opportunities." A stable but capped job is concave; what actually amplifies you is a fat-tailed breakout from one of these cheap bets. <strong>Parenting is the same: let a child explore broadly and cheaply rather than going all-in early on one "success path" — you're betting on the convexity of exploration, not on any single prediction.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm considering committing to [project/bet/resource allocation]. Examine it through a convexity lens:
+1. Is its payoff shape convex (capped downside, open upside) or concave (capped gains, bottomless disaster)?
+2. If concave, how could I reshape it into convex — where to cap the loss, how to open the upside?
+3. Help me design a barbell: which part should be ultra-safe, and which small slice should bet on convex fat tails.</div>
+  </section>
+
+  <!-- Card 3: Tail-Risk Hedging -->
+  <section class="card c3">
+    <h2>Tail-Risk Hedging</h2>
+    <div class="subtitle">Proactively pay a premium against "low-probability, huge-loss" tails — the goal is to survive to the next round, not to make money</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Tail-risk hedging is the mirror image of convex betting: you <strong>pay a small, long-run negative-EV premium</strong> to buy a convex payout that triggers when a rare but devastating event hits. Its purpose isn't profit but ensuring you're <strong>never zeroed out by a single catastrophe</strong> — only by staying at the table do you get to enjoy compounding.</p>
+    <p>Non-trivial: (1) The core is <strong>ergodicity</strong>: a positive arithmetic group-average return does not mean a single individual survives over time. Because ruin is an irreversible absorbing state, an individual who will inevitably meet the tail over time gets slowly pushed toward certain ruin by a bet whose "group expectation is positive." So paying for tail protection isn't irrational timidity — it's the correct response to <em>irreversibility</em>. (2) You must distinguish <strong>recoverable losses from unrecoverable (ruin) losses</strong> — buy protection only for the latter; boldly bear volatility on the former. Spending premium on recoverable small swings is burning money. (3) It's psychologically brutal: people's aversion to "steady small premium losses" far exceeds their fear of "rare catastrophe," so they cancel coverage right before the crash. Only those who can stomach small losses through 99% of calm can catch the convex payout in the 1%.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>A dedicated tail-hedging strategy: small premium losses year after year in calm times, looking like "constantly wasting money"; yet when a crash like 2008 or 2020 hits, a single payout can reach dozens of times the stake — enough to carry all those years of premiums and still profit hugely. A plainer version is redundancy and backups — you pay storage for copies you'll "almost never need," precisely to insure against the one irreversible disk-failure catastrophe.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>Disaster recovery in distributed systems is engineered tail hedging: replicas, circuit breakers, rate limiting, graceful degradation — a "redundant waste" in normal times that prevents the whole site from going to zero during failure. At life scale: a cash buffer, portable cross-domain skills, and health habits are premiums against the irreversible tails of "job loss, industry disruption, illness." <strong>The right question order is: first ask "what could take me out of the game entirely," then insure that — rather than fixating on daily small swings.</strong> In the AI era, continuous learning is itself a premium against your current skills being disrupted in one stroke.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>My situation/system: [describe]. Run a tail-risk check-up:
+1. List the 3 tail events most likely to take me out of the game / cause irreversible ruin.
+2. Separate recoverable losses (bear the volatility) from unrecoverable ones (hedge them).
+3. For the unrecoverable ones, propose the lowest-cost hedge/redundancy, and justify whether the premium is worth it.</div>
+  </section>
+
+  <!-- Card 4: Insurance Thinking -->
+  <section class="card c4">
+    <h2>Insurance Thinking</h2>
+    <div class="subtitle">Rationally pay to transfer "risks that could bankrupt you" — not to buy peace of mind on small, calculable risks</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Insurance thinking collapses the previous three models into one decision rule: <strong>the right use of insurance is to transfer risks that "could take you out," not to transfer small risks you can "calculate and afford."</strong> Most people buy it exactly backwards — paying premiums on phone-screen cracks and appliance warranties (usually negative-EV and affordable, which should be <em>self-insured</em>) while going bare on serious illness, liability, or income loss (low-probability, ruinous, which should be <em>transferred</em>).</p>
+    <p>Non-trivial: (1) Insurance is "negative-EV but positive-utility" — because utility is <strong>concave</strong> in wealth: losing a fortune hurts far more than gaining one delights, so spending a little to shave off the huge pain in the left tail is rational. This is the same object as Kelly: both protect geometric growth and dodge the absorbing state. (2) <strong>Self-insuring requires a buffer</strong>: your reserves are your own insurance company. Without a buffer you can only transfer the unbearable risk out. (3) The reverse trap is <strong>moral hazard</strong> — once insured, people unconsciously take more risk; the hedge itself changes the system, so you need "skin in the game" to realign incentives. (4) It echoes the Buddhist notion of impermanence: buying insurance is <em>acknowledging the uncontrollable and reserving slack for the unexpected</em>, not fantasizing about total control — a form of humility, not fear.</p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 520 250" xmlns="http://www.w3.org/2000/svg">
+        <line x1="70" y1="210" x2="490" y2="210" stroke="#adb5bd" stroke-width="1.5"/>
+        <line x1="70" y1="20" x2="70" y2="210" stroke="#adb5bd" stroke-width="1.5"/>
+        <line x1="280" y1="20" x2="280" y2="210" stroke="#dfe6e9" stroke-width="1"/>
+        <line x1="70" y1="115" x2="490" y2="115" stroke="#dfe6e9" stroke-width="1"/>
+        <text x="175" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#1b8a5a">self-insure / bear</text>
+        <text x="175" y="95" text-anchor="middle" font-size="10" fill="#868e96">small loss · low freq</text>
+        <text x="385" y="75" text-anchor="middle" font-size="12" font-weight="700" fill="#b78a07">insure / transfer</text>
+        <text x="385" y="95" text-anchor="middle" font-size="10" fill="#868e96">large loss · low freq</text>
+        <text x="175" y="165" text-anchor="middle" font-size="11" fill="#636e72">ignore / reduce exposure</text>
+        <text x="175" y="183" text-anchor="middle" font-size="10" fill="#868e96">small loss · high freq</text>
+        <text x="385" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="#c44545">exit now</text>
+        <text x="385" y="183" text-anchor="middle" font-size="10" fill="#868e96">large loss · high freq</text>
+        <text x="280" y="234" text-anchor="middle" font-size="11" fill="#636e72">severity per event →</text>
+        <text x="24" y="115" text-anchor="middle" font-size="11" fill="#636e72" transform="rotate(-90 24 115)">frequency →</text>
+      </svg>
+      <div class="caption">Risk quadrant: pay premiums only for "top-right · rare, huge loss"; self-insure the bottom-left</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>A household buys every phone plan, screen protection, and appliance extended warranty, bleeding small money yearly — yet lacks adequate critical-illness and family liability coverage. This is the textbook "pay for small certainties, go bare on large uncertainties." A correct insurance budget should flow almost entirely toward the few low-frequency catastrophes that could actually break the family's finances, leaving small recoverable losses to be absorbed by your own reserves. <strong>Spend premiums on the cutting edge (the left tail), not on peace of mind.</strong></p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>Draw a risk quadrant for yourself and your family: place each possible loss by "frequency × severity." Top-right (low-frequency, family-ending losses: serious illness, prolonged income loss, major liability) → insure; bottom-left (high-frequency but affordable annoyances: gadget wear) → self-insure. Technical people especially tend to get this backwards — over-insuring small risks while being utterly unprepared for the real tails. <strong>First build an "own insurance company" cash buffer, then transfer out the few tails that the buffer can't absorb.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>Here's my current risk/insurance setup: [list existing coverage/buffer, main worries]. Rebalance it with insurance thinking:
+1. Place my risks on a frequency × severity quadrant; mark what to self-insure vs transfer.
+2. Find where I'm overpaying for small certainties and where I'm bare against large tails.
+3. Propose an adjustment: how much cash buffer to build first, then which unbearable tails to transfer out.</div>
+  </section>
+
+</div>
+</body>
+</html>
