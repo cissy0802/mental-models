@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Money &amp; the Foundations of Finance · 2026-06-12</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Models Daily: Money &amp; the Foundations of Finance</h1>
+    <div class="meta">2026-06-12 · Day 52</div>
+  </header>
+
+  <!-- Card 1: The Nature of Interest Rates -->
+  <section class="card c1">
+    <h2>The Nature of Interest Rates</h2>
+    <div class="subtitle">An interest rate isn't a number a bank sets — it's the price of the commodity called "time"</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>At bottom, <strong>the interest rate is the price of time — the exchange rate that converts "future money" into "present money."</strong> What is 100 a year from now worth today? The interest rate is the slope of that discount. Beneath it lies a deep fact: humans innately prefer "now" over "later" (time preference), and the interest rate is the market price of that preference.</p>
+    <p>Non-trivial: (1) the rate is the <em>economy's universal discount rate</em> — when it moves, every asset's present value is repriced. Low rates make distant future cash flows valuable (growth stocks, long-horizon projects soar); hikes steeply discount the future, and <strong>"story-in-the-distance" assets crash first</strong>. (2) The rate is the <em>opportunity cost of capital</em>: the pass mark for any investment is the risk-free rate — below it, you're better off just collecting interest. (3) Isomorphic to neuroscience's <em>temporal discounting</em> — the brain discounts delayed rewards hyperbolically (steep near, flat far), so people sacrifice large future gains for small immediate ones. The interest rate externalizes that subjective discount into an objective price.</p>
+    <p>Practice: every long-term decision implies a discount rate. Ask yourself, "how steeply am I discounting the future?" — too steep = short-sighted; too shallow = sacrificing the present for a distant mirage.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>The Fed's aggressive 2022 rate hikes — Nasdaq growth stocks halved in a year, while "cash-flow-now" value stocks held up relatively well. The same companies' fundamentals barely changed; what changed was the discount rate. Raise rates, and "the story of the future" gets marked down across the board.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Investing in an AI project: in a low-rate era, the narrative "it'll pay off in ten years" can support a rich valuation; raise rates and the market only respects "cash flow today." (2) Personal decisions are the same — spending two years learning a deep skill trades "certain present gain" for "uncertain future return"; your implicit discount rate decides whether it pays. (3) Coaching a child in delayed gratification is, literally, helping flatten the over-steep hyperbolic discount curve in her brain. <strong>The invisible discount rate quietly governs every choice across time.</strong></p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm facing a decision across time: [describe, e.g. invest in a project / learn a skill / spend now vs save]. Use the lens "interest rate = the price of time":
+1. What implicit discount rate does this decision embed — am I discounting the future steeply or shallowly?
+2. If the risk-free rate rose by [X]%, how would this decision's attractiveness change?
+3. Is my preference for now-vs-later a rational tradeoff, or hyperbolic discounting acting on instinct?</div>
+  </section>
+
+  <!-- Card 2: Inflation -->
+  <section class="card c2">
+    <h2>Inflation as a Shrinking Ruler</h2>
+    <div class="subtitle">"Prices going up" is the effect, not the cause — the ruler that measures value is itself shrinking</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>The popular definition of inflation — "prices rise" — is <strong>the effect, not the cause</strong>. The real mechanism: money, as the "ruler of value," is itself getting shorter. When money is printed faster than real wealth grows, the purchasing power in each unit is diluted — <strong>things aren't more expensive, the ruler is shorter</strong>.</p>
+    <p>Non-trivial: (1) inflation is first a <em>distribution problem</em>, not a price problem. New money isn't sprinkled evenly; it has an <em>injection order</em> (the Cantillon effect): those who get it first (near the money spigot) buy at old prices; those who get it last (ordinary wage-earners, savers) face already-risen prices — a hidden transfer from "those far from the printer" to "those near it." (2) Isomorphic to <em>information entropy</em>: prices are signals telling you where scarcity is; inflation adds noise to every signal, so the economy can't tell "is this rise real demand or a monetary phantom?" — inflation's deepest harm is <strong>distorted price signals</strong>, and misallocation follows. (3) Mild inflation is a lubricant; hyperinflation is a solvent — once expectations self-reinforce ("more expensive tomorrow, spend today"), money's store-of-value function collapses and the economy regresses to barter.</p>
+    <p>Practice: to judge "am I richer?", use real purchasing power, not paper numbers. Asset up 8%, inflation 6% — your real return is only 2%.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>In hyperinflationary episodes (such as Weimar Germany historically) — when people expect money to lose value daily, they rush to buy goods the moment wages land, the velocity of money explodes, prices rise further, and a self-reinforcing death spiral forms. Money's "ruler" function fails completely, leaving only barter.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Money: leaving cash idle for years = silently accepting that inflation erodes its purchasing power; "not investing" is itself a choice carrying a negative real rate. (2) There's "inflation" at the cognitive level too: when a word ("disruptive," "paradigm," "AI-empowered") is overused, the information it carries is diluted until it means almost nothing — <strong>concepts inflate and devalue too</strong>. (3) Time budget: if you label everything "important," "important" itself inflates and can no longer sort true priorities.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I want to assess [an asset / income / savings setup] under inflation. Use the lens "inflation = a shrinking ruler":
+1. Convert the nominal numbers to real (inflation-adjusted) ones — what's my true growth?
+2. In this situation, am I a beneficiary (near the money printer) or a diluted party (far from it)?
+3. Have I overused any concept/label to the point of "conceptual inflation" (so diluted it carries no information)? Flag it if so.</div>
+  </section>
+
+  <!-- Card 3: Leverage & the Debt Cycle -->
+  <section class="card c3">
+    <h2>Leverage &amp; the Debt Cycle</h2>
+    <div class="subtitle">Debt separates spending from repayment in time — that's where cycles come from</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Leverage = using borrowed money to amplify a position. It <strong>amplifies gains and losses symmetrically, but amplifies risk asymmetrically</strong> — because past a threshold, a loss triggers a forced liquidation, turning a "temporary paper loss" into "permanent ruin." The essence of debt: <strong>borrowing purchasing power from your future self, who must repay by consuming less.</strong></p>
+    <p>Non-trivial: (1) debt creates <em>cycles</em> because it separates "spending" from "repaying" in time: the borrowing phase pulls demand forward (boom), the repayment phase suppresses it (bust). This is one of the core engines of why economies cycle rather than grow smoothly. (2) <em>Short-term debt cycles</em> (a few years, steered by central-bank rates) ride atop a <em>long-term debt cycle</em> (decades, debt/income ratios accumulating until no one can borrow more). The most dangerous spot is the long-cycle top: short-term everything looks fine, but the system has no room left to add leverage, and a small shock triggers deleveraging. (3) <em>Deleveraging</em> is reflexive (echoing Day 51's convexity): everyone sells assets to repay → asset prices fall → collateral shrinks → forced to sell more, a downward spiral. This is leverage's "concavity" — linear gains on the way up, collapse-style losses on the way down.</p>
+    <p>Practice: before any leverage, ask "could the worst case zero me out?" <strong>Only those who can survive the deleveraging earn the right to enjoy the leveraged boom.</strong></p>
+
+    <div class="diagram">
+      <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="180" x2="540" y2="180" stroke="#adb5bd" stroke-width="1.5"/>
+        <text x="535" y="196" text-anchor="end" font-size="10" fill="#868e96">time →</text>
+        <path d="M 40 150 Q 180 90 300 80 T 540 60" fill="none" stroke="#7048b8" stroke-width="2" stroke-dasharray="6,4"/>
+        <text x="46" y="120" font-size="11" font-weight="700" fill="#7048b8">Long-term debt cycle (decades, debt/income builds)</text>
+        <path d="M 40 150 Q 80 120 120 150 T 200 150 Q 240 110 280 145 T 360 140 Q 400 95 440 135 T 540 70" fill="none" stroke="#c44545" stroke-width="2.5"/>
+        <text x="300" y="205" font-size="11" font-weight="700" fill="#c44545">Short-term debt cycles (years, central-bank rates)</text>
+        <circle cx="475" cy="100" r="5" fill="#c44545"/>
+        <text x="475" y="92" text-anchor="middle" font-size="10" font-weight="700" fill="#c44545">long-cycle top = deleveraging trigger</text>
+      </svg>
+      <div class="caption">Short cycles ride atop the long cycle — the danger hides at the long-cycle top</div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>The 2008 financial crisis = the top of a real-estate long-term debt cycle. Households and banks layered on leverage on the premise that "house prices won't fall"; once they corrected, shrinking collateral triggered a chain deleveraging, and Lehman fell. The boom looked sturdy, but leverage had already drained the system's buffer.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Startups/investing: borrowing to go all-in on high growth pays spectacularly with the wind at your back, but one cash-flow break and you're out — the Kelly criterion (Day 51) tells you the bet size, the debt cycle warns you not to be fully levered at the cycle top. (2) Personal energy "leverage": pulling all-nighters borrows from future health — output spikes short-term (boom), to be repaid with a longer recovery (bust), and the interest rises with age. (3) Parenting: using rewards/pressure to "borrow" a child's compliance now overdraws her intrinsic motivation, to be repaid with interest later.</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm considering using leverage/debt: [describe, e.g. borrow to invest, loan to start up, overdraw energy/time]. Analyze via "leverage &amp; the debt cycle":
+1. In the worst case, could this leverage trigger a margin-call-style permanent wipeout? Where's the threshold?
+2. Where am I in the relevant cycle (market / project / body) — bottom with room, or top with no buffer left?
+3. If I use leverage, design a "capped downside" so I can survive the deleveraging and reach the next boom.</div>
+  </section>
+
+  <!-- Card 4: Money Illusion -->
+  <section class="card c4">
+    <h2>Money Illusion</h2>
+    <div class="subtitle">Mistaking nominal numbers for real value — reading a warping ruler</div>
+
+    <div class="section-label">In Depth</div>
+    <hr>
+    <p>Money illusion = <strong>mistaking nominal numbers for real value</strong>. The brain naturally thinks in "money on paper" rather than "what it buys." A 10% raise under 12% inflation feels like a gain, yet purchasing power fell — nominal up, real down.</p>
+    <p>Non-trivial: (1) it's a special case of the <em>framing effect</em> applied to money: the same reality, described in a "nominal" frame vs a "real" frame, produces opposite emotions and decisions. People accept "a 2% raise with 4% inflation" far more readily than "a direct 2% pay cut with zero inflation" — though the real purchasing power is identical. This makes inflation a tool for "painless pay cuts." (2) At root it's a <em>map-territory</em> confusion: nominal price is the map, real purchasing power is the territory; you read a warping ruler while believing you're measuring a fixed distance. (3) It's most toxic over long horizons: under mild inflation, "my house doubled in ten years" sounds great, but net of inflation and holding costs it may merely have broken even — <strong>the illusion makes people misjudge real wealth growth</strong>.</p>
+    <p>Practice: for every cross-time money comparison, force it into <strong>real (inflation-adjusted) terms</strong> before judging. Add a mental conversion layer to every nominal number.</p>
+
+    <div class="example-block">
+      <div class="example-label">Classic example</div>
+      <p>During the high-inflation 1970s, many workers felt life was improving because "wages kept rising," while real wages stagnated or even fell — nominal growth masked real stagnation. The illusion delayed people's alarm over stagflation, and delayed the response.</p>
+    </div>
+    <div class="example-block">
+      <div class="example-label">BigCat scenario</div>
+      <p>(1) Investment reviews: don't feel good off nominal returns; the real return is what's left after inflation. Cash "looks like it hasn't lost," but its purchasing power quietly shrinks. (2) Negotiating pay/valuation: before assessing an offer or a project's return, ask "is this nominal or real?" — don't get framed by a pretty nominal number. (3) More broadly, any judgment that substitutes "size of a number" for "actual meaning" is a variant of money illusion: follower counts, KPIs, paper counts — staring at the nominal metric feels great while real value may have long decoupled (echoing Day 50's Goodhart's Law).</p>
+    </div>
+
+    <div class="section-label">AI Prompt</div>
+    <hr>
+    <div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I want to judge the real meaning of [a return / raise / asset gain / some metric]. Use "money illusion = nominal ≠ real" to de-mystify:
+1. Convert the nominal number to real value (strip inflation/costs) — is the real change positive or negative?
+2. Am I emotionally captured by the nominal frame? How would I see it in a real frame?
+3. Is there a "big number masquerading as real value" trap here (KPI, followers, valuation)? Has real value decoupled from the nominal metric?</div>
+  </section>
+
+  <footer class="footer">
+    <a href="index.en.html">← Back to index</a>
+  </footer>
+</div>
+</body>
+</html>
