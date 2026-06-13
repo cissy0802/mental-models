@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：演化心理学 · 2026-06-13</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1 data-tts="c966e3401bdcfd29">思维模型详解：演化心理学</h1>
+<div class="meta">2026-06-13 · Day 53</div>
+</header>
+<!-- Card 1: 适应器视角 -->
+<section class="card c1">
+<h2 data-tts="cd14eed642dd6a65">适应器视角 · Adaptationist Perspective</h2>
+<div class="subtitle">"心智不是一台通用计算机，而是一柄瑞士军刀。" — 演化心理学的核心比喻</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>适应器视角主张：<strong>心智不是一块白板，也不是一台通用 CPU，而是一组各司其职的专用模块</strong>——识别人脸、侦测欺骗者、择偶、躲避捕食者，各自由独立的"心理回路"处理。每个回路都是自然选择为解决某个<em>反复出现的祖先问题</em>而打磨出来的"适应器"。</p>
+<p>非平凡点：① <em>功能问题先于机制问题</em>。要理解一个心理特征，先问"它当年是为解决什么问题而被选择出来的"，再倒推其机制——这是一种逆向工程。② <em>近因与远因两层"为什么"</em>：饿的近因是血糖下降，远因是"不进食会减少繁殖机会"。两层都对，但回答的是不同问题，混为一谈是常见错误。③ <em>专用而非通用，正是系统性偏差的根源</em>：模块在祖先环境里高效，搬到现代环境里却会"误触发"。④ 重要的自我纠偏：<strong>不是每个特征都是适应器</strong>。有些是副产品（如鼻梁本为呼吸，却恰好架眼镜），有些是随机漂变。看到什么都编一个"演化故事"（just-so story）是这套视角最大的滥用。健康的用法是提出<em>可被证伪的功能假说</em>，而不是事后编圆。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>沃森选择任务：抽象逻辑版（"若卡片一面是元音，另一面必是偶数，该翻哪几张？"）正确率极低；但换成等价的<em>社会契约</em>版（"喝酒必须满 18 岁，该查谁？"），正确率骤升。同一条逻辑，换上"侦测违规者"的外衣，专用的<strong>欺骗者侦测模块</strong>立刻被激活。这强烈暗示：人脑不是在跑通用逻辑，而是在跑一组领域特异的程序。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 这与你熟悉的"读没有文档的遗留代码"同构——你无法直接看懂实现，只能从结构反推"它当初要满足的需求是什么"。对人脑用同样的手法：一个看似非理性的情绪反应，先问"它在祖先环境里解决了什么"。② 对比 AI：LLM 接近"通用计算"，人脑是"模块拼装"——这恰恰解释了为何人类有系统性偏差而强通用模型没有，也提示<strong>人机协同的真正价值在于互补，而非让人去模仿通用计算</strong>。③ 育儿：孩子怕黑、怕陌生大型动物，远比怕汽车、怕插座来得"自然"——因为前者是祖先环境里的真实威胁。理解这点，就不会用"讲道理"去对抗一个根本不在讲道理层面的恐惧回路。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Adaptationist Perspective</strong> — the mind is not a blank slate or a general-purpose CPU, but a bundle of <em>domain-specific modules</em> (face recognition, cheater detection, mate choice, predator avoidance), each an "adaptation" shaped by selection to solve a recurrent ancestral problem. Key moves: ask the <em>functional</em> question ("what problem did this evolve to solve?") and reverse-engineer the mechanism; separate <em>proximate</em> causes (blood sugar) from <em>ultimate</em> causes (reproductive success). Crucial caveat: not everything is an adaptation — some traits are byproducts (spandrels) or drift. Avoid "just-so stories"; generate <em>falsifiable</em> functional hypotheses instead. The Wason selection task shows it vividly: people fail abstract logic but excel at the identical logic dressed as a social contract — the cheater-detection module switches on.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我观察到一个看似非理性的行为/情绪：[描述行为]。请用适应器视角分析：
+① 提出 2 个可证伪的"功能假说"——这个反应在祖先环境里可能解决了什么问题？
+② 区分它的"近因"（当下触发的生理/心理机制）和"远因"（演化上的功能）；
+③ 警惕"just-so story"：指出哪个假说证据更薄弱，以及它可能其实是副产品而非适应器。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I've observed a seemingly irrational behavior/emotion: [describe]. Analyze it through the adaptationist lens:
+1. Propose 2 falsifiable "functional hypotheses" — what ancestral problem might this have solved?
+2. Distinguish its proximate cause (the immediate physiological/psychological trigger) from its ultimate cause (evolutionary function).
+3. Guard against just-so stories: flag which hypothesis is weakest, and whether it might be a byproduct rather than a true adaptation.</div>
+</section>
+<!-- Card 2: 进化失配 -->
+<section class="card c2">
+<h2 data-tts="a30781a9f24d3316">进化失配 · Evolutionary Mismatch</h2>
+<div class="subtitle">基因以万年为单位演化，环境以十年为单位剧变——失配就在这道速度差里</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>适应器是为<em>祖先环境</em>量身打造的。问题是：文化与技术的演化速度，远远甩开了基因的演化速度。于是那些当年高度适应的回路，搬到现代环境里反而<strong>系统性地误触发</strong>。这不是"人坏了"，而是<strong>人没变、环境变了</strong>——bug 不在我们身上，而在这道速度差里。</p>
+<p>非平凡点：① <em>超常刺激</em>（supernormal stimulus）是失配的关键机制——把祖先环境里的真实信号做"夸张放大"，劫持奖赏回路。垃圾食品（祖先稀缺的糖/脂被工业浓缩）、社交媒体的点赞（祖先靠真实声望、现在靠数字计数）、短视频（不停喂新奇刺激），都比它们模仿的真实事物更强烈地拉动我们。② 失配是<em>具体而非笼统的</em>：不是"现代一切都坏"，而是特定回路在特定现代刺激下失灵。③ <strong>解药是设计环境，而非死磕意志力</strong>：既然问题出在刺激，最有效的干预是改变你暴露在什么刺激下，而不是反复对抗一个被设计来劫持你的回路。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="520" y1="180" y2="180"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="60" y1="30" y2="180"></line>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="290" y="205">时间 →</text>
+<text fill="#868e96" font-size="10" text-anchor="end" transform="rotate(-90 24 105)" x="24" y="105">变化速度</text>
+<!-- gene curve: nearly flat -->
+<path d="M 60 165 Q 300 160 520 150" fill="none" stroke="#1b8a5a" stroke-width="2.5"></path>
+<text fill="#1b8a5a" font-size="11" font-weight="700" x="430" y="140">基因适应（慢）</text>
+<!-- culture curve: exponential -->
+<path d="M 60 170 Q 380 168 470 40" fill="none" stroke="#c44545" stroke-width="2.5"></path>
+<text fill="#c44545" font-size="11" font-weight="700" text-anchor="end" x="455" y="35">技术/环境（快）</text>
+<!-- mismatch gap -->
+<line stroke="#7048b8" stroke-dasharray="4,3" stroke-width="1.5" x1="475" x2="475" y1="48" y2="150"></line>
+<text fill="#7048b8" font-size="11" font-weight="700" text-anchor="middle" x="475" y="100" transform="rotate(0)">←失配→</text>
+<text fill="#7048b8" font-size="10" text-anchor="middle" x="290" y="55">差距 = 误触发与超常刺激乘虚而入的空间</text>
+</svg>
+<div class="caption">进化失配：两条曲线的速度差，就是现代"心理 bug"的栖息地</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>对糖和脂肪的强烈渴求，在食物稀缺的祖先环境里是<em>救命的优势</em>——能多囤一点热量就多一分生存机会。同一套味觉偏好搬到糖脂随手可得的现代，就变成了肥胖与代谢病的推手。回路一字未改，只是它所处的环境从"稀缺"翻转成了"过剩"。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 这在你眼里其实就是机器学习里的<strong>分布漂移</strong>（distribution shift）：模型在训练分布（祖先环境）上表现优异，部署到新分布（现代环境）上性能崩塌——人脑就是一个在旧分布上训练、却被迫在新分布上运行的模型。② 与多巴胺奖赏预测误差（见 Day 35）直接咬合：超常刺激不断制造"超预期奖赏"，把奖赏回路调校到现实永远满足不了的基线。③ 育儿最实用：孩子对短视频/游戏的"上瘾"，本质是超常刺激劫持了为真实社交与探索而生的回路。对策不是天天和意志力拔河，而是<strong>设计环境</strong>——默认不可得、提高摩擦、用真实的高质量刺激（运动、面对面玩耍）去占位。改环境，远比改孩子省力。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Evolutionary Mismatch</strong> — adaptations were built for the ancestral environment, but culture and technology evolve far faster than genes. Circuits that were once adaptive now <em>systematically misfire</em>; the bug isn't in us, it's in the speed gap. The key mechanism is the <em>supernormal stimulus</em>: exaggerated versions of ancestral cues that hijack reward circuits — junk food (concentrated sugar/fat), social-media likes (digitized reputation), short-form video. Mismatch is specific, not "everything modern is bad." The cure is to <strong>design your environment, not fight willpower</strong>: change the stimuli you're exposed to rather than battling a circuit engineered to hijack you. Engineering analogue: distribution shift — a model trained on one distribution failing on another.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我有一个想戒掉/想理解的现代习惯：[描述习惯，如刷短视频/暴食/查手机]。请用进化失配框架分析：
+① 这个习惯劫持的是哪个为祖先环境而生的回路？它原本要解决什么问题？
+② 指出其中的"超常刺激"——它把哪个真实信号做了夸张放大？
+③ 给出 3 个"改环境而非靠意志力"的具体干预（提高摩擦/默认不可得/真实刺激占位）。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I have a modern habit I want to understand/quit: [describe, e.g. doomscrolling/overeating/phone-checking]. Analyze it via evolutionary mismatch:
+1. Which ancestral circuit does this hijack, and what problem did that circuit originally solve?
+2. Identify the "supernormal stimulus" — which real signal is being exaggerated?
+3. Give 3 concrete "design the environment, not willpower" interventions (add friction / make it the non-default / crowd it out with a real stimulus).</div>
+</section>
+<!-- Card 3: 性选择 -->
+<section class="card c3">
+<h2 data-tts="024c8d50d4853ac3">性选择 · Sexual Selection</h2>
+<div class="subtitle">达尔文的"第二种选择"——不为活得久，只为传得开</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>自然选择优化"活下去"，性选择优化"传下去"——两者常常<strong>互相冲突</strong>。孔雀的尾巴拖累逃命，却提升求偶成功率。选择真正优化的从不是个体的福祉，而是<em>基因的扩散</em>。性选择有两条路径：同性间竞争（如雄鹿用角格斗）与异性间选择（如雌孔雀挑尾巴）。</p>
+<p>非平凡点：① <em>代价高昂的信号才是诚实信号</em>（handicap principle）：孔雀尾巴之所以是可信的"我基因好"广告，恰恰因为它<strong>昂贵到只有真正强壮者才负担得起</strong>。能伪造的信号一文不值；难以伪造的累赘才有信息量。② <em>失控选择</em>（Fisherian runaway）是一个正反馈循环：偏好与被偏好的特征互相强化、共同放大，可以把尾巴推到荒谬的程度——这是演化里少见的"指数失控"。③ 推论：很多看似浪费、夸张、非理性的人类行为，放到"信号"的透镜下立刻显出功能——它们在向特定受众传递难以伪造的品质。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>孔雀尾巴是教科书案例：它显著拉低生存率（更易被捕食、消耗资源），却因雌性的偏好而被持续放大。这正说明性选择能<em>逆着</em>自然选择推进——只要繁殖收益盖过生存损失，基因就乐见这笔"亏本买卖"。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 代价高昂的信号在现代职场无处不在：一个技术上"过度精雕"的开源副项目，本质是一条<strong>孔雀尾巴</strong>——它昂贵、难伪造，向雇主诚实地广播"我有余力做到这个程度"。看懂这点，你就能<em>有意识地</em>选择信号：把精力投在难以伪造、目标受众真正在看的地方，而非廉价的自我标榜。② 炫耀性消费、刷存在感式的过度加班，都是同一逻辑——理解其信号功能，才能不被卷入失控循环。③ 这也是一个典型的<strong>正反馈系统</strong>（呼应你熟悉的反馈循环）：Fisherian runaway 与社交媒体上的"地位竞赛"结构同构，都会自我加速到失去理性边界。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Sexual Selection</strong> — Darwin's "second selection": not optimizing for survival but for reproduction, and the two often <em>conflict</em>. The peacock's tail hurts survival yet boosts mating success — selection optimizes gene propagation, not individual welfare. Two modes: intrasexual competition (combat) and intersexual choice (display). The key idea is the <em>handicap principle</em>: a signal is honest precisely because it is <strong>costly</strong> — only genuinely fit individuals can afford the burden, so unfakeable handicaps carry real information. <em>Fisherian runaway</em> is a positive-feedback loop in which preference and trait co-amplify to absurd extremes. Lens for humans: much "wasteful" or exaggerated behavior reveals its function once seen as costly signaling to a target audience.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想理解/优化某个"信号"行为：[描述场景，如个人品牌/作品集/职场表现]。请用性选择与代价高昂信号分析：
+① 我当前发出的信号里，哪些是"廉价可伪造"的、哪些是"昂贵难伪造"的？后者才有信息量；
+② 我的目标"受众"真正在看的是什么信号？我有没有在错的地方花力气？
+③ 是否存在"失控循环"风险（我在和别人比拼一个无止境放大的指标）？如何退出。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to understand/optimize a "signaling" behavior: [describe, e.g. personal brand / portfolio / workplace performance]. Analyze via sexual selection & costly signaling:
+1. Among the signals I currently send, which are "cheap and fakeable" vs "costly and hard to fake"? Only the latter carry information.
+2. What signal is my target "audience" actually watching? Am I spending effort in the wrong place?
+3. Is there a "runaway loop" risk (am I in an ever-escalating status contest)? How do I exit it?</div>
+</section>
+<!-- Card 4: 亲缘选择 -->
+<section class="card c4">
+<h2 data-tts="afbd77908a0f34f4">亲缘选择 · Kin Selection</h2>
+<div class="subtitle">"我愿为两个兄弟或八个表亲献出生命。" — 用基因之眼看利他</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>为什么生物会为亲属牺牲？汉密尔顿法则给出冷峻的答案：<strong>当 rB &gt; C 时，利他基因就会扩散</strong>——r 是亲缘关系系数，B 是受益者得到的繁殖收益，C 是利他者付出的代价。换句话说，帮亲属传播的，正是你自己也携带的那份基因。</p>
+<p>非平凡点：① <em>选择的单位从"个体"下移到"基因"</em>（基因之眼视角）。个体只是基因为复制自己而临时搭建的"载具"。这一视角转换，让原本无法解释的利他行为瞬间自洽。② 它既解释了亲情与家族纽带，也解释了<em>误触发</em>：祖先环境里"身边的人多半是亲属"，于是大脑用"熟悉、相似、共处"等线索来近似亲缘——现代社会里，这套线索被<strong>共同语言、同乡、同袍、同一面旗帜</strong>轻易激活，制造出对"拟亲"群体的强烈忠诚。部落主义、民族主义，本质是亲缘回路在非亲属身上的误触发。③ 它给"无私"祛魅但不贬低：理解机制，反而能让我们<em>有意识地</em>把这份回路扩展到它本不覆盖的对象。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 210" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="280" y="24">汉密尔顿法则 · rB &gt; C</text>
+<!-- self -->
+<circle cx="280" cy="70" fill="#1b8a5a" r="22"></circle>
+<text fill="#fff" font-size="11" text-anchor="middle" x="280" y="74">我</text>
+<!-- relatives -->
+<g>
+<rect fill="#1b8a5a" height="34" opacity="0.9" rx="5" width="120" x="40" y="120"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="100" y="135">子女 / 同胞</text>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="100" y="150">r = 0.5</text>
+</g>
+<g>
+<rect fill="#1b8a5a" height="34" opacity="0.6" rx="5" width="120" x="220" y="120"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="280" y="135">侄甥 / 祖孙</text>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="280" y="150">r = 0.25</text>
+</g>
+<g>
+<rect fill="#1b8a5a" height="34" opacity="0.35" rx="5" width="120" x="400" y="120"></rect>
+<text fill="#fff" font-size="11" text-anchor="middle" x="460" y="135">表/堂亲</text>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="460" y="150">r = 0.125</text>
+</g>
+<line stroke="#adb5bd" stroke-width="1.5" x1="280" x2="100" y1="92" y2="120"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="280" x2="280" y1="92" y2="120"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="280" x2="460" y1="92" y2="120"></line>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="280" y="185">关系越近，r 越大，利他门槛越低——"为八个表亲 ≈ 为一个自己"</text>
+</svg>
+<div class="caption">亲缘选择：利他不是道德，而是基因的算术</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>工蜂自身不繁殖，却拼命哺育蜂后的后代——长期是利他之谜。亲缘选择给出答案：膜翅目特殊的遗传方式让姐妹间的亲缘系数高达 0.75，<em>比工蜂自己生育还更能传播自身基因</em>。于是"放弃生育、抚养姐妹"反而是基因层面的最优解。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 基因之眼视角对你这样的分布式背景格外亲切：把基因看作<strong>自私的"数据副本"</strong>，生物体只是复制和传播它的节点——这与分布式系统里"数据为中心、节点为载具"的视角惊人地同构。② 现代最实用的推论是看穿<em>拟亲触发</em>：公司用"我们是一家人"、品牌用"家人们"来调用你的亲缘忠诚回路，本质是在非亲属身上借用 r 值。识破它，才能分清哪些忠诚值得给、哪些是被劫持。③ 育儿：父母对孩子近乎无条件的巨大投入（r = 0.5）正是亲缘选择最强烈的表达——理解这点不会让爱贬值，反而提醒我们：这份回路如此强大，<strong>值得被有意识地、也向血缘之外的人慷慨地扩展</strong>。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Kin Selection</strong> — Hamilton's rule: an altruistic gene spreads when <strong>rB &gt; C</strong>, where r is relatedness, B the recipient's reproductive benefit, C the altruist's cost. Helping relatives propagates the very genes you carry. This requires shifting the <em>unit of selection</em> from the organism to the gene (the "gene's-eye view"): the organism is a vehicle genes build to copy themselves. It explains family bonds — and their <em>misfires</em>: ancestrally, nearby people were usually kin, so the brain approximates relatedness via cues like familiarity, similarity, and co-residence. Modern groups (shared language, nationality, a flag) hijack these cues into fierce loyalty toward "fictive kin" — the root of tribalism. Demystifying altruism doesn't cheapen it; understanding the circuit lets us consciously extend it beyond blood.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在分析一段忠诚/利他/牺牲行为：[描述场景，如对公司/团队/某群体的投入]。请用亲缘选择与基因之眼视角分析：
+① 这里的"利他"对象是真亲属，还是被"拟亲线索"（共同语言/身份/旗帜）激活的非亲属？
+② 套用 rB &gt; C 的直觉：我付出的代价 C 与对方收益 B 是否值得？谁在从这份忠诚里获益？
+③ 哪些忠诚是我想<em>有意识保留并扩展</em>的，哪些是被他人劫持的"拟亲触发"，该如何抽身。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm analyzing an act of loyalty/altruism/sacrifice: [describe, e.g. devotion to a company/team/group]. Analyze via kin selection & the gene's-eye view:
+1. Is the "recipient" actual kin, or a non-relative activated by "fictive-kin cues" (shared language/identity/flag)?
+2. Apply the rB &gt; C intuition: is my cost C worth the recipient's benefit B? Who actually profits from this loyalty?
+3. Which loyalties do I want to consciously keep and extend, and which are hijacked fictive-kin triggers I should step back from?</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
