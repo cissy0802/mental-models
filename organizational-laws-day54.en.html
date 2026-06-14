@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Organizational &amp; Bureaucratic Laws · 2026-06-14</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Organizational &amp; Bureaucratic Laws</h1>
+<div class="meta">2026-06-14 · Day 54</div>
+</header>
+<!-- Card 1: Brooks's Law -->
+<section class="card c1">
+<h2>Brooks's Law</h2>
+<div class="subtitle">"Adding manpower to a late software project makes it later." — Fred Brooks, The Mythical Man-Month, 1975</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The counter-intuitive point isn't that people are lazy — it's that <strong>the "man-month" itself is a myth: people and time aren't interchangeable</strong>. Adding hands slows you down via three hard mechanisms: (1) <strong>ramp-up</strong> — newcomers produce almost nothing for weeks and drain veterans' time to onboard them; (2) <strong>communication overhead grows as n(n-1)/2</strong> — 3 people = 3 channels, 6 people = 15. Work added is linear, but coordination cost explodes <em>quadratically</em>; (3) <strong>non-partitionability</strong> — some tasks simply can't be split, as in Brooks's line, "nine women can't make a baby in one month."</p>
+<p>Non-trivial: (1) it's isomorphic to <em>Amdahl's Law</em> in distributed systems — the small non-parallelizable serial bottleneck caps the speedup from adding cores. Adding people ≈ adding cores; communication ≈ synchronization overhead — the same math. (2) It's a <em>complexity phenomenon</em>: coordination cost balloons superlinearly like a fully-connected graph, so "just hire a few more" is almost always an illusory fix. (3) The real remedy isn't more people but <strong>shrinking the communication surface</strong> — modularization, clean interfaces, reduced scope (echoing Conway's Law: the org's communication structure gets etched into the code).</p>
+<div class="diagram">
+<svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<text x="140" y="22" text-anchor="middle" font-size="12" fill="#2d3436" font-weight="700">3-person team</text>
+<line x1="140" y1="55" x2="95" y2="150" stroke="#0a6fb8" stroke-width="1.5"/>
+<line x1="140" y1="55" x2="185" y2="150" stroke="#0a6fb8" stroke-width="1.5"/>
+<line x1="95" y1="150" x2="185" y2="150" stroke="#0a6fb8" stroke-width="1.5"/>
+<circle cx="140" cy="55" r="13" fill="#0a6fb8"/>
+<circle cx="95" cy="150" r="13" fill="#0a6fb8"/>
+<circle cx="185" cy="150" r="13" fill="#0a6fb8"/>
+<text x="140" y="195" text-anchor="middle" font-size="13" fill="#636e72" font-weight="700">3 channels</text>
+<text x="405" y="22" text-anchor="middle" font-size="12" fill="#2d3436" font-weight="700">6-person team</text>
+<line x1="460" y1="105" x2="433" y2="153" stroke="#c44545" stroke-width="1"/>
+<line x1="460" y1="105" x2="378" y2="153" stroke="#c44545" stroke-width="1"/>
+<line x1="460" y1="105" x2="350" y2="105" stroke="#c44545" stroke-width="1"/>
+<line x1="460" y1="105" x2="378" y2="57" stroke="#c44545" stroke-width="1"/>
+<line x1="460" y1="105" x2="433" y2="57" stroke="#c44545" stroke-width="1"/>
+<line x1="433" y1="153" x2="378" y2="153" stroke="#c44545" stroke-width="1"/>
+<line x1="433" y1="153" x2="350" y2="105" stroke="#c44545" stroke-width="1"/>
+<line x1="433" y1="153" x2="378" y2="57" stroke="#c44545" stroke-width="1"/>
+<line x1="433" y1="153" x2="433" y2="57" stroke="#c44545" stroke-width="1"/>
+<line x1="378" y1="153" x2="350" y2="105" stroke="#c44545" stroke-width="1"/>
+<line x1="378" y1="153" x2="378" y2="57" stroke="#c44545" stroke-width="1"/>
+<line x1="378" y1="153" x2="433" y2="57" stroke="#c44545" stroke-width="1"/>
+<line x1="350" y1="105" x2="378" y2="57" stroke="#c44545" stroke-width="1"/>
+<line x1="350" y1="105" x2="433" y2="57" stroke="#c44545" stroke-width="1"/>
+<line x1="378" y1="57" x2="433" y2="57" stroke="#c44545" stroke-width="1"/>
+<circle cx="460" cy="105" r="12" fill="#c44545"/>
+<circle cx="433" cy="153" r="12" fill="#c44545"/>
+<circle cx="378" cy="153" r="12" fill="#c44545"/>
+<circle cx="350" cy="105" r="12" fill="#c44545"/>
+<circle cx="378" cy="57" r="12" fill="#c44545"/>
+<circle cx="433" cy="57" r="12" fill="#c44545"/>
+<text x="405" y="195" text-anchor="middle" font-size="13" fill="#c44545" font-weight="700">15 channels</text>
+<text x="280" y="222" text-anchor="middle" font-size="11" fill="#868e96" font-style="italic">double the people → communication cost ∝ n(n-1)/2, quadratic; work added is only linear</text>
+</svg>
+<div class="caption">Brooks's Law: adding people adds coordination cost, not capacity</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Brooks drew the law from running IBM's OS/360 operating system: after the project slipped, they threw people at it, and the training cost plus the exploding communication overhead consumed all the added capacity — progress went backward, not forward. It became software engineering's most expensive lesson: the "add people" button managers love most is exactly the one a late project should never press.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>The AI era gives the law a new edition: when you stop adding people and start adding <em>agents</em>, does it still hold? It depends on <strong>whether those agents must coordinate</strong>. If they share context and edit the same artifact → the n² cost returns (the hard part of multi-agent systems is orchestration, not single-unit capability). The "AI super-individual" leverage partly comes from <em>collapsing the communication graph to a single node</em> — one person decides, bypassing the Brooks tax. So the right scaling question isn't "add a few more agents," it's "can I carve the task into independent, non-communicating chunks?"</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>Our project [describe] is late and we're considering adding [N] people/agents. Stress-test with Brooks's Law:
+1. Estimate the new communication channels (n(n-1)/2) and ramp-up cost; judge whether net capacity is positive or negative.
+2. Identify the non-partitionable serial bottleneck (the Amdahl segment) that more people can't fix.
+3. Propose one "shrink the communication surface" alternative instead of adding people — how to carve the work into independent, non-communicating chunks.</div>
+</section>
+<!-- Card 2: The Peter Principle -->
+<section class="card c2">
+<h2>The Peter Principle</h2>
+<div class="subtitle">"In a hierarchy, every employee tends to rise to their level of incompetence." — Laurence Peter, 1969</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The mechanism is brutally simple: <strong>promotion rewards performance in the <em>current</em> role, but the new role demands a <em>different</em> skill set</strong>. So you keep getting promoted until you land in a job you can't do well — and promotion stops there. Pushed to the limit: every post tends to end up occupied by someone incompetent at it, and the actual work gets done by those who haven't <em>yet</em> reached their level of incompetence.</p>
+<p>Non-trivial: (1) it's fundamentally an <em>optimization using the wrong proxy</em> — treating "past performance" as a proxy for "fitness for the next role." It's the organizational version of Goodhart's Law: once "current performance" becomes the promotion target, it stops being a reliable signal of ability. (2) The root sickness is conflating <em>doing the work</em> with <em>managing the work</em> — a top engineer ≠ a top engineering manager; two different skill sets. (3) The fix isn't to stop promoting but to change the selection function: <strong>dual ladders (technical track / management track each capped separately), promote on "ability already demonstrated at the next level" rather than "results at the current one," and trial-in-role before confirming</strong>. (4) A curious corollary is "creative incompetence" — deliberately appearing slightly bad at irrelevant things to dodge a promotion that would push you past your ceiling.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The most common script: promote the company's #1 salesperson to sales manager. The organization loses twice — it forfeits a top closer and gains a poor manager, because "closing your own deals" and "teaching a team to close, forecast, and manage morale" are entirely different skills. Armies, hospitals, and universities run this script everywhere: the best doctor is pushed into being a dean, and from then on neither sees patients nor runs the hospital well.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Personal growth: a senior technologist moving toward "super-individual" hits <em>their own</em> Peter ceiling — going from writing code to orchestrating a swarm of AI agents and making architectural trade-offs demands product judgment and systems design, not faster typing. The tell: your strongest old skill is becoming the lowest-marginal-utility one in the new role. (2) Parenting is isomorphic: a child excelling at one stage (say, rote memory in early grades) is no reason to "promote" expectations to the next stage — which may demand abstract reasoning or self-regulation, a different skill set. <strong>Predicting fitness for the next level from results at the last is the Peter Principle inside the family.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm considering [promoting someone / taking on a new role myself]. Current role: [describe]. Target role: [describe]. Apply the Peter Principle:
+1. List the core skills each role truly requires; flag which ones don't overlap — the non-overlap is the risk zone.
+2. Assess how poorly "excelling now" actually predicts "competence in the new role."
+3. Propose one design that lowers the failure odds (trial-in-role, dual ladder, or a different evaluation axis).</div>
+</section>
+<!-- Card 3: Pournelle's Iron Law of Bureaucracy -->
+<section class="card c3">
+<h2>Pournelle's Iron Law of Bureaucracy</h2>
+<div class="subtitle">"In any bureaucracy, the people devoted to the bureaucracy itself end up in control, and those dedicated to its goals have less and less influence." — Jerry Pournelle</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Every organization holds two kinds of people: the <strong>mission people</strong> (there for the goal the org exists to achieve) and the <strong>organization people</strong> (loyal to the institution itself). The law says: over time, the organization people win control. Why? Because <em>internal power is decided by internal games, not external goals</em> — the organization people optimize exactly what confers internal power (budget, headcount, process compliance, managing upward), while the mission people optimize external outcomes. Two tracks; only the first leads straight to the center of power.</p>
+<p>Non-trivial: (1) it's a pure <em>selection-pressure</em> argument — the org is a fitness landscape, and any trait that wins internal power gets selected and amplified; "mission orientation" simply isn't the trait that wins the internal game. Same family as evolution and the principal-agent problem (the org becomes its own principal). (2) It's an organizational <em>entropy</em>: without continuous energy injected (external competition, founder tension, accountability), the system drifts toward "self-preservation," its lowest-energy state — process for process's sake, meetings for meetings' sake. (3) Every countermeasure points to re-introducing external pressure: stay small, bind to real market/competition feedback, keep founder-grade mission intensity, and periodically tear down and rebuild. (4) Key diagnostic: <strong>when "good for the org" conflicts with "good for the mission," which does your organization default to?</strong> The answer is the dial showing how far the law has already run.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Universities and public schools are textbook cases: the count, pay, and clout of administrative and compliance staff grow, over the long run, far faster than those of the teachers who actually educate — the people who run the school gradually outweigh the people who teach. Any institution old enough, large enough, and short on external competitive pressure shows the same trajectory: a department built for a mission slowly becomes an entity that runs mainly to sustain its own existence.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Inside a company: the platform/infra team founded to "enable product teams" quietly evolves into a gate that exists to weigh its own process — it starts protecting its approval authority rather than the delivery speed it once promised. The tell: the number of processes rises while the outcome metric it's meant to serve doesn't move. (2) Super-individual angle: a solo operator's biggest structural advantage is <em>zero bureaucratic density</em> — no organization person can seize power from you. But beware a subtle version: even <strong>your own tools and systems can "go organization-people"</strong> — you start maintaining the note system for the note system's sake, building process for process's sake, not for output. Ask regularly: "Is this step serving the outcome, or serving the system itself?"</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>My organization is [describe]. Run a "drift checkup" using the Iron Law of Bureaucracy:
+1. Separate which current behaviors/units serve the mission from which serve the institution itself.
+2. Identify 2 processes that are "good for the org but not clearly good for the mission," and gauge how far the drift has gone.
+3. Propose one concrete move that re-injects external pressure and pulls power back toward the mission people.</div>
+</section>
+<!-- Card 4: Parkinson's Law of Triviality -->
+<section class="card c4">
+<h2>Parkinson's Law of Triviality</h2>
+<div class="subtitle">"The time spent on any item is in inverse proportion to the money involved." — C. Northcote Parkinson, 1957 (a.k.a. "bikeshedding")</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Parkinson's classic parable: a committee approves a multi-million-dollar nuclear reactor in two minutes (no one truly understands it), then argues 45 minutes over the few-hundred-dollar <em>bike shed</em> (everyone has an opinion), and debates the coffee budget longest of all. The law in one line: <strong>discussion time is inversely proportional to an item's importance</strong>. The driver isn't laziness but <em>accessibility</em>: trivial things are comprehensible to all and carry almost no risk of "being wrong" exposing your ignorance; major decisions are the opposite — challenging the reactor design would reveal you don't understand it, so everyone wisely stays quiet.</p>
+<p>Non-trivial: (1) it's <em>attention misallocation</em> hijacked by comprehensibility rather than importance — same root as availability bias: the brain mistakes "easy to process" for "worth processing." (2) Software calls it <em>bikeshedding</em>: an hour spent on variable naming and indentation style in a PR, while a risky concurrency change sails through. (3) The deep cost is that <strong>the organization's cognitive bandwidth gets eaten by cheap opinions</strong> — everyone wants to leave an "I participated" mark, and the trivial item is the safest place to leave one. (4) Defenses are all structural: <strong>allocate agenda time inversely to stakes (the bigger the call, the more it's timeboxed to a small expert group; the smaller, the more it's delegated or defaulted), kill the debate with tooling (let a linter/formatter make style "non-discussable"), and raise the cost of cheap opinions</strong>. (5) Echoing energy management: trivial decisions drain decision-making the most, so automating or defaulting them frees scarce attention for the real reactor.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>It's the reactor-vs-bike-shed committee parable itself — so precise that "bikeshedding" became global engineering slang. The biggest, costliest, most irreversible decision (the reactor) gets waved through because no one can follow it; the smallest, cheapest, most universally comprehensible one (what color to paint the bike shed) absorbs the whole meeting's energy. The livelier the debate, the more it often signals the item is irrelevant.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: rather than relitigating tabs vs spaces in code review, add a linter/formatter to make that entire class of debate <em>non-discussable</em> — structurally eliminate bikeshedding and reserve review firepower for architecture and concurrency safety. (2) AI workflow: spending an afternoon repeatedly tweaking a prompt's wording (trivial, controllable, and satisfying) while dodging the hard question "is this agent architecture even right?" is textbook self-soothing bikeshedding. Set a rule: no editing prompt copy until the architecture question is settled. (3) Home: the energy a family burns on "which restaurant tonight" should go to real reactors like "which school" or "what family values." <strong>Defaulting or rotating trivial decisions frees attention for the major ones.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>Here's the agenda and time breakdown of our last [meeting/review/decision]: [describe]. Diagnose with Parkinson's Law of Triviality:
+1. Flag items where "discussion time ÷ real importance" is badly skewed (the bikeshedding targets).
+2. Explain why exactly these trivial items captured the attention (accessibility / desire to leave a mark / risk of exposing ignorance).
+3. Propose a structural fix: which debates to kill outright with tooling/defaults, and which to timebox and hand to a small expert group.</div>
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：组织与官僚定律 · 2026-06-14</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：组织与官僚定律</h1>
+<div class="meta">2026-06-14 · Day 54</div>
+</header>
+<!-- Card 1: 布鲁克斯定律 -->
+<section class="card c1">
+<h2>布鲁克斯定律 · Brooks's Law</h2>
+<div class="subtitle">"向延期的软件项目增加人手，只会让它更晚。" —— Fred Brooks，《人月神话》，1975</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>这条定律的反直觉之处在于：它不是说人懒，而是说<strong>「人月」本身是个神话——人和时间不可互换</strong>。增加人手反而拖慢进度，有三个硬机制：① <strong>爬坡期</strong>：新人头几周几乎零产出，还要消耗老人的时间带他；② <strong>沟通开销按 n(n-1)/2 增长</strong>——3 人 3 条沟通线，6 人就是 15 条。要做的工作只线性增加，协调成本却是<em>平方级</em>暴涨；③ <strong>不可分割性</strong>：有些任务天生没法切开并行，正如 Brooks 那句"九个女人也没法一个月生出孩子"。</p>
+<p>非平凡点：① 它和分布式系统里的 <em>Amdahl 定律</em>同构——不可并行的那一小段串行瓶颈，决定了加再多核也提速有限。加人 ≈ 加核，沟通 ≈ 同步开销，本质是同一个数学。② 它是一个<em>复杂性现象</em>：协调成本像全连接图一样超线性膨胀，所以"再招点人"几乎总是治标的幻觉。③ 真正的解药不是加人，而是<strong>降低沟通面</strong>——模块化、定义清晰接口、缩减范围（与康威定律呼应：组织通信结构会刻进代码）。④ 与佛学"有为法"互参：每加一个人，都在系统里多种下一组关系与依赖，这些缘起会反过来束缚整体。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="140" y="22">3 人团队</text>
+<line stroke="#0a6fb8" stroke-width="1.5" x1="140" x2="95" y1="55" y2="150"></line>
+<line stroke="#0a6fb8" stroke-width="1.5" x1="140" x2="185" y1="55" y2="150"></line>
+<line stroke="#0a6fb8" stroke-width="1.5" x1="95" x2="185" y1="150" y2="150"></line>
+<circle cx="140" cy="55" fill="#0a6fb8" r="13"></circle>
+<circle cx="95" cy="150" fill="#0a6fb8" r="13"></circle>
+<circle cx="185" cy="150" fill="#0a6fb8" r="13"></circle>
+<text fill="#636e72" font-size="13" font-weight="700" text-anchor="middle" x="140" y="195">3 条沟通线</text>
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="405" y="22">6 人团队</text>
+<line stroke="#c44545" stroke-width="1" x1="460" x2="433" y1="105" y2="153"></line>
+<line stroke="#c44545" stroke-width="1" x1="460" x2="378" y1="105" y2="153"></line>
+<line stroke="#c44545" stroke-width="1" x1="460" x2="350" y1="105" y2="105"></line>
+<line stroke="#c44545" stroke-width="1" x1="460" x2="378" y1="105" y2="57"></line>
+<line stroke="#c44545" stroke-width="1" x1="460" x2="433" y1="105" y2="57"></line>
+<line stroke="#c44545" stroke-width="1" x1="433" x2="378" y1="153" y2="153"></line>
+<line stroke="#c44545" stroke-width="1" x1="433" x2="350" y1="153" y2="105"></line>
+<line stroke="#c44545" stroke-width="1" x1="433" x2="378" y1="153" y2="57"></line>
+<line stroke="#c44545" stroke-width="1" x1="433" x2="433" y1="153" y2="57"></line>
+<line stroke="#c44545" stroke-width="1" x1="378" x2="350" y1="153" y2="105"></line>
+<line stroke="#c44545" stroke-width="1" x1="378" x2="378" y1="153" y2="57"></line>
+<line stroke="#c44545" stroke-width="1" x1="378" x2="433" y1="153" y2="57"></line>
+<line stroke="#c44545" stroke-width="1" x1="350" x2="378" y1="105" y2="57"></line>
+<line stroke="#c44545" stroke-width="1" x1="350" x2="433" y1="105" y2="57"></line>
+<line stroke="#c44545" stroke-width="1" x1="378" x2="433" y1="57" y2="57"></line>
+<circle cx="460" cy="105" fill="#c44545" r="12"></circle>
+<circle cx="433" cy="153" fill="#c44545" r="12"></circle>
+<circle cx="378" cy="153" fill="#c44545" r="12"></circle>
+<circle cx="350" cy="105" fill="#c44545" r="12"></circle>
+<circle cx="378" cy="57" fill="#c44545" r="12"></circle>
+<circle cx="433" cy="57" fill="#c44545" r="12"></circle>
+<text fill="#c44545" font-size="13" font-weight="700" text-anchor="middle" x="405" y="195">15 条沟通线</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="middle" x="280" y="222">人数翻倍 → 沟通成本 ∝ n(n-1)/2，平方级暴涨；工作量只线性增加</text>
+</svg>
+<div class="caption">布鲁克斯定律：加人加的是协调成本，不是产能</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>Brooks 写这条定律源自他主持 IBM OS/360 操作系统的亲身教训：项目延期后疯狂加人，结果新人的培训成本与暴涨的沟通成本，吃掉了所有增援带来的产能，进度不进反退。这成了软件工程史上最贵的一课——管理者最爱的那个"加人"按钮，恰恰是延期项目最不该按的。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>AI 时代这条定律有了新版本：当你不再加人、而是加 <em>agent</em> 时，它还成立吗？答案取决于<strong>这些 agent 是否需要互相协调</strong>。若它们共享上下文、会改同一份产物 → n² 的协调成本照样回来（多 agent 系统的真正难点正在编排，不在单体能力）。"AI 超级个体"的杠杆，部分恰恰来自<em>把沟通图压缩成 1 个节点</em>——你一个人决策，绕过了 Brooks 税。所以扩张时的正确问法不是"再加几个 agent"，而是"能不能把任务切成互不沟通的独立块"。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Brooks's Law</strong> — "Adding manpower to a late software project makes it later." The "man-month" is a myth: people and time aren't interchangeable. Three mechanisms: (1) ramp-up — newcomers are unproductive at first and drain veterans' time; (2) communication overhead grows as n(n-1)/2 — quadratic coordination cost against linear added work; (3) non-partitionability — "nine women can't make a baby in a month." It's isomorphic to Amdahl's Law: a serial bottleneck caps the speedup from extra cores. The real fix isn't more people but a smaller communication surface — modularization, clean interfaces, reduced scope. In the AI era, agent swarms re-incur the n² cost whenever they must coordinate; the super-individual's edge is collapsing the communication graph to a single node.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我们的项目 [描述] 已经延期，正在考虑加 [N] 个人/agent。请用布鲁克斯定律帮我压力测试：
+① 估算新增的沟通线条数（n(n-1)/2）和爬坡期成本，判断净产能是正是负；
+② 找出任务里"不可分割"、加人也救不了的串行瓶颈（Amdahl 段）；
+③ 给出 1 个"降低沟通面"而非"加人"的替代方案（如何把工作切成互不依赖的独立块）。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Our project [describe] is late and we're considering adding [N] people/agents. Stress-test with Brooks's Law:
+1. Estimate the new communication channels (n(n-1)/2) and ramp-up cost; judge whether net capacity is positive or negative.
+2. Identify the non-partitionable serial bottleneck (the Amdahl segment) that more people can't fix.
+3. Propose one "shrink the communication surface" alternative instead of adding people — how to carve the work into independent, non-communicating chunks.</div>
+</section>
+<!-- Card 2: 彼得原理 -->
+<section class="card c2">
+<h2>彼得原理 · The Peter Principle</h2>
+<div class="subtitle">"在层级组织里，每个人都倾向于晋升到自己不能胜任的位置。" —— Laurence Peter，1969</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>机制极其简洁却致命：<strong>晋升是对「当前岗位」表现的奖励，而新岗位要的却是「另一套能力」</strong>。于是你会一路被提拔，直到爬上一个自己干不好的位置——晋升就此停住。推到极致：每个职位最终都倾向于被一个不胜任它的人占据，真正把活干完的，是那些<em>还没爬到自己不胜任层级</em>的人。</p>
+<p>非平凡点：① 它本质是一个<em>优化用错了代理指标</em>的错误——拿"过去的表现"当"未来岗位适配度"的代理，正是古德哈特定律的组织版：一旦"当前业绩"变成晋升靶子，它就不再是能力的可靠信号。② 病根在于把<em>"做事的能力"和"管事的能力"混为一谈</em>——顶级工程师 ≠ 顶级工程经理，二者是两套技能。③ 解药不是不晋升，而是改变选择函数：<strong>双通道（技术轨/管理轨各自封顶）、按"下一级已展现的能力"而非"当前级业绩"提拔、先试岗再转正</strong>。④ 还有个冷知识叫"刻意的不胜任"——有人故意在无关紧要的事上显得稍差，以躲开把自己推过能力天花板的晋升。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>最常见的剧本：把全公司业绩第一的销售提拔成销售经理。结果组织同时损失两次——丢了一个顶级 sales，换来一个糟糕的 manager，因为"自己签单"和"教会一群人签单、做预测、管情绪"是完全不同的技能。军队、医院、大学里到处是这个剧本：最好的医生被推去当院长，从此既不看病也管不好医院。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 个人成长：资深技术人走向"超级个体"时，会撞上<em>自己的</em>彼得天花板——从一线写代码，到编排一群 AI agent、做架构与取舍，需要的是产品判断和系统设计能力，不是更快地敲代码。识别它的信号：你最强的旧技能，正在新角色里变成边际效用最低的那个。② 育儿同构：孩子在某一阶段表现优异（比如机械记忆强的低年级），别据此就把期待"晋升"到下一阶段——下一阶段要的可能是抽象推理或自我调节，是另一套能力。<strong>用上一关的成绩预测下一关的胜任，是彼得原理在家庭里的翻版。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The Peter Principle</strong> — "In a hierarchy, every employee tends to rise to their level of incompetence." Promotion rewards performance in the <em>current</em> role, but the next role demands a <em>different</em> skill set; so you keep rising until you reach a job you're bad at, and promotion stops. At the limit, every post tends to be held by someone incompetent at it, and the real work is done by those not yet at their ceiling. It's the organizational version of Goodhart's Law: once "current performance" becomes the promotion target, it stops being a reliable signal of fitness for the higher role. Root cause: conflating "doing the work" with "managing the work." Fixes: dual career ladders, promote on next-level demonstrated ability (not current-level results), and trial-in-role before confirming.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在考虑 [晋升某人 / 自己接受某个新角色]。当前角色是 [描述]，目标角色是 [描述]。请用彼得原理帮我审视：
+① 列出两个角色各自真正需要的核心技能，标出哪些不重叠——不重叠的部分就是风险区；
+② 判断"当前出色"在多大程度上其实预测不了"新岗位胜任"；
+③ 给出 1 个降低踩坑概率的设计（如试岗、双通道、或换一个评估维度）。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm considering [promoting someone / taking on a new role myself]. Current role: [describe]. Target role: [describe]. Apply the Peter Principle:
+1. List the core skills each role truly requires; flag which ones don't overlap — the non-overlap is the risk zone.
+2. Assess how poorly "excelling now" actually predicts "competence in the new role."
+3. Propose one design that lowers the failure odds (trial-in-role, dual ladder, or a different evaluation axis).</div>
+</section>
+<!-- Card 3: Pournelle 官僚铁律 -->
+<section class="card c3">
+<h2>官僚铁律 · Pournelle's Iron Law of Bureaucracy</h2>
+<div class="subtitle">"任何组织里，效忠组织本身的人，终将掌权；而献身于组织使命的人，影响力越来越小。" —— Jerry Pournelle</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>任何组织里都有两类人：<strong>「使命派」</strong>（为了组织要达成的目标而来）和<strong>「组织派」</strong>（效忠的是组织这个机构本身）。铁律说：长期来看，组织派一定会赢得控制权。原因是<em>组织内部的权力，是由内部博弈而非外部目标决定的</em>——组织派优化的恰恰是决定内部权力的东西（预算、编制、流程合规、向上管理），而使命派优化的是外部成果。两条赛道，前者直通权力中心。</p>
+<p>非平凡点：① 这是一个纯粹的<em>选择压力</em>论证：组织是一片适应度地形，凡是能在内部赢得权力的性状都会被选择并放大——而"使命导向"偏偏不是那个能赢内部游戏的性状。这和演化、和委托代理（组织最终变成自己的委托人）同源。② 它也是组织版的<em>熵增</em>：没有持续注入能量（外部竞争、创始人张力、问责），系统就会自发滑向"自我保存"这个最低能态——流程为流程服务，会议为会议服务。③ 抵抗手段全都指向"重新引入外部压力"：保持小规模、绑定真实的市场/竞争反馈、创始人式的使命强度、以及周期性的破旧立新。④ 关键诊断问题：<strong>当"对组织好"和"对使命好"冲突时，你的组织默认选哪个？</strong>答案就是铁律已经走了多远的刻度。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>大学与公立学校是教科书级案例：行政与合规人员的数量、薪资、话语权增速，长期远超真正教书育人的教师——管学校的逐渐压过教书的。任何足够老、足够大、又缺乏外部竞争压力的机构都会显现同样的轨迹：最初为使命而建的部门，慢慢变成一个主要为维持自身存在而运转的实体。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 公司里：那个最初为"赋能业务团队"而设的平台/基建组，会悄悄演化成一道以流程自重的关卡——它开始保护的是自己的审批权，而非当初承诺的交付速度。识别信号：流程数量在涨，但它要服务的成果指标没动。② 超级个体视角：单人运作的最大结构性优势，就是<em>官僚密度为零</em>——没有组织派能在你这里夺权。但要警惕一个隐蔽版本：连你<strong>自己的工具与系统也会"组织派化"</strong>——你开始为维护笔记系统而维护笔记系统、为搭流程而搭流程，而不是为产出。定期问自己："这一步到底在服务成果，还是在服务这套系统本身？"</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Pournelle's Iron Law of Bureaucracy</strong> — In any organization there are two kinds of people: the <em>mission people</em> (devoted to the goal) and the <em>organization people</em> (devoted to the institution itself). Over time the organization people win control, because internal power is decided by internal games, not external goals — and they optimize exactly what confers internal power (budget, headcount, process compliance) while mission people optimize outcomes. It's a pure selection-pressure argument (the org is a fitness landscape favoring institution-loyalty) and an entropy analog: without continuous energy (competition, founder tension, accountability) the system drifts toward self-preservation. Resistance means re-injecting external pressure: stay small, bind to real market feedback, keep founder-level mission intensity. Key diagnostic: when "good for the org" conflicts with "good for the mission," which does it default to?
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我所在/管理的组织是 [描述]。请用官僚铁律做一次"漂移体检"：
+① 帮我区分当前哪些行为/部门在为"使命"服务，哪些在为"组织自身"服务；
+② 找出 2 个"对组织好但对使命未必好"的现行流程，判断铁律走到了哪一格；
+③ 给出 1 个重新注入外部压力、把权力拉回使命派的具体动作。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My organization is [describe]. Run a "drift checkup" using the Iron Law of Bureaucracy:
+1. Separate which current behaviors/units serve the <em>mission</em> from which serve the <em>institution itself</em>.
+2. Identify 2 processes that are "good for the org but not clearly good for the mission," and gauge how far the drift has gone.
+3. Propose one concrete move that re-injects external pressure and pulls power back toward the mission people.</div>
+</section>
+<!-- Card 4: 帕金森琐碎法则 -->
+<section class="card c4">
+<h2>帕金森琐碎法则 · Parkinson's Law of Triviality</h2>
+<div class="subtitle">"一个议题花掉的讨论时间，与它涉及的金额成反比。" —— C. Northcote Parkinson，1957（又称"自行车棚效应"）</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>Parkinson 那个经典寓言：委员会审批一座千万级核反应堆，两分钟通过（没人真懂）；轮到几百块的<em>自行车棚</em>，激辩四十五分钟（人人都有看法）；到了茶水间的咖啡预算，吵得最久。法则一句话：<strong>讨论时间和议题的重要性成反比</strong>。机制不在懒，而在<em>可及性</em>：琐事人人都看得懂、都能插一嘴，且"说错了"几乎没有暴露无知的风险；重大决策恰好相反——挑战反应堆设计会暴露你不懂，于是大家明智地闭嘴。</p>
+<p>非平凡点：① 这是一种被"可理解性"而非"重要性"劫持的<em>注意力错配</em>，和可得性偏差同根——大脑把"容易处理"误当成"值得处理"。② 软件圈直接把它叫 <em>bikeshedding</em>：PR 里为变量命名、缩进风格吵一小时，却给一个有风险的并发改动一路放行。③ 深层成本是<strong>组织的认知带宽被廉价意见吃光</strong>——每个人都想留下"我参与了决策"的痕迹，而琐事是最安全的留痕处。④ 防御策略全是结构性的：<strong>按风险大小反向分配议程时间（越大越限时给专家小组、越小越授权或走默认）、用工具直接消灭可争论性（让 linter/格式化器把风格之争变成"不可讨论"）、抬高廉价意见的成本</strong>。⑤ 与能量管理呼应：琐碎决策最消耗决策力，把它们自动化或默认化，才能把稀缺的注意力留给真正的反应堆。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>就是那个反应堆 vs 自行车棚的委员会寓言本身——它如此精准，以至"自行车棚"成了全球工程师的行话。最大、最贵、最不可逆的决定（核反应堆）因无人能懂而草草放行；最小、最便宜、最人人可懂的决定（自行车棚刷什么漆）反而吸走了整场会议的能量。开会开得越热闹，往往说明议题越无关紧要。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：与其在 code review 里反复争 tabs vs spaces，不如上 linter/formatter 把整类争论<em>变成不可讨论</em>——结构性地消灭 bikeshedding，把评审火力留给架构与并发安全。② AI 工作流：花一下午反复微调一句 prompt 的措辞（琐碎、可控、还很有成就感），却一直回避"这个 agent 架构到底对不对"的硬问题——这是典型的自我安慰式 bikeshedding。设个规则：架构问题没定，禁止动 prompt 文案。③ 家庭：一家人为"今晚吃哪家"耗光的精力，本该留给"选哪所学校、立什么家庭价值观"这类真反应堆。<strong>把琐碎决策默认化/轮值化，是给重大决策腾出注意力。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Parkinson's Law of Triviality (Bikeshedding)</strong> — "Time spent on an item is inversely proportional to the money involved." In the parable, a committee waves through a multi-million reactor in minutes (no one understands it) but argues 45 minutes over a bike shed (everyone has an opinion). The driver is <em>accessibility</em>, not laziness: trivial items are comprehensible to all and carry no risk of exposing ignorance, while challenging the reactor design would. It's attention misallocation hijacked by comprehensibility — same root as availability bias. In software it's literally "bikeshedding": an hour on variable naming, a rubber stamp on a risky concurrency change. Defenses are structural: allocate agenda time inversely to stakes, kill the debate with tooling (let a linter make style "non-discussable"), raise the cost of cheap opinions, and default/delegate the trivial so scarce attention reaches the real reactor.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>这是我们最近一次 [会议/评审/决策] 的议程和耗时分布：[描述]。请用帕金森琐碎法则诊断：
+① 标出哪些议题的"讨论时间 ÷ 实际重要性"严重失衡（即被 bikeshedding 的对象）；
+② 分析为什么恰恰是这些琐事吸走了注意力（可及性 / 留痕需求 / 暴露无知的风险）；
+③ 给出 1 套结构性对策：哪些该用工具/默认值直接消灭争论，哪些该限时丢给专家小组。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here's the agenda and time breakdown of our last [meeting/review/decision]: [describe]. Diagnose with Parkinson's Law of Triviality:
+1. Flag items where "discussion time ÷ real importance" is badly skewed (the bikeshedding targets).
+2. Explain why exactly these trivial items captured the attention (accessibility / desire to leave a mark / risk of exposing ignorance).
+3. Propose a structural fix: which debates to kill outright with tooling/defaults, and which to timebox and hand to a small expert group.</div>
+</section>
+</div>
+</body>
+</html>
