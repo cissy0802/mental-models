@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models: Writing &amp; Thinking on the Page · 2026-06-16</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models: Writing &amp; Thinking on the Page</h1>
+<div class="meta">2026-06-16 · Day 56</div>
+</header>
+<!-- Card 1: Writing Is Thinking -->
+<section class="card c1">
+<h2>Writing Is Thinking</h2>
+<div class="subtitle">Writing isn't transcribing finished thoughts — it's the process of getting clear itself</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The deepest misconception is treating writing as the <strong>"output of thought"</strong> — as if a complete idea already exists in your head and writing merely copies it down. The truth is the reverse: before you write it down, you feel you understand, and that's just the <em>illusion of explanatory depth</em> — it feels clear until you touch pen to paper and find holes everywhere. Writing breaks that illusion because it forces <strong>serialization</strong>: thought in the head is parallel, associative, graph-shaped, while a sentence is a single line. Flattening a graph into a line forces you to answer the questions your mind glosses over — what comes first, what causes what, where does this step break?</p>
+<p>Non-trivial: (1) the page is an <em>external working memory that doesn't decay</em>. Your head holds only three or four chunks at once, so any complex argument overflows; writing externalizes the intermediate results, letting you handle far more complexity than your skull can. (2) Writing is a <em>compiler</em> for thought — wherever intuition is vague, the sentence won't compile, forcing you to supply the missing definition on the spot. (3) Structurally isomorphic to Buddhist contemplation: insight meditation (vipassanā) makes automatic thoughts "observable"; writing lands the fuzzy thought on paper and turns it into an <em>object you can examine</em>, opening a gap between you and your thought. (4) Compared to distributed systems: thinking only in the head is "eventually consistent, with no log" — you can't even replay it yourself; writing is an <em>append-only log</em> you can re-read, audit, and use to locate which step went wrong.</p>
+<p>Practice: <strong>write to discover, not to record.</strong> The first draft is "thinking on paper" and is supposed to be ugly — split "generate" from "edit," and don't let your inner editor strangle exploration before the thought has formed.</p>
+<div class="diagram">
+<svg viewbox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="120" y="20">In the head: parallel graph</text>
+<circle cx="120" cy="95" fill="#0a6fb8" r="14"></circle>
+<circle cx="60" cy="60" fill="#0a6fb8" opacity="0.8" r="11"></circle>
+<circle cx="185" cy="55" fill="#0a6fb8" opacity="0.8" r="11"></circle>
+<circle cx="55" cy="140" fill="#0a6fb8" opacity="0.8" r="11"></circle>
+<circle cx="180" cy="145" fill="#0a6fb8" opacity="0.8" r="11"></circle>
+<line stroke="#0a6fb8" stroke-width="1.3" x1="120" x2="60" y1="95" y2="60"></line>
+<line stroke="#0a6fb8" stroke-width="1.3" x1="120" x2="185" y1="95" y2="55"></line>
+<line stroke="#0a6fb8" stroke-width="1.3" x1="120" x2="55" y1="95" y2="140"></line>
+<line stroke="#0a6fb8" stroke-width="1.3" x1="120" x2="180" y1="95" y2="145"></line>
+<line opacity="0.5" stroke="#0a6fb8" stroke-dasharray="3,3" stroke-width="1" x1="60" x2="185" y1="60" y2="55"></line>
+<line opacity="0.5" stroke="#0a6fb8" stroke-dasharray="3,3" stroke-width="1" x1="55" x2="180" y1="140" y2="145"></line>
+<path d="M 250 100 L 305 100" fill="none" marker-end="url(#arr)" stroke="#636e72" stroke-width="2"></path>
+<defs><marker id="arr" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
+<text fill="#636e72" font-size="10" text-anchor="middle" x="278" y="90">serialize</text>
+<text fill="#2d3436" font-size="12" font-weight="700" text-anchor="middle" x="445" y="20">On paper: one line</text>
+<circle cx="340" cy="95" fill="#c44545" r="10"></circle>
+<circle cx="390" cy="95" fill="#c44545" r="10"></circle>
+<circle cx="500" cy="95" fill="#c44545" r="10"></circle>
+<circle cx="550" cy="95" fill="#c44545" r="10"></circle>
+<line stroke="#636e72" stroke-width="1.5" x1="350" x2="380" y1="95" y2="95"></line>
+<line stroke="#c44545" stroke-dasharray="4,3" stroke-width="1.5" x1="400" x2="490" y1="95" y2="95"></line>
+<line stroke="#636e72" stroke-width="1.5" x1="510" x2="540" y1="95" y2="95"></line>
+<text fill="#c44545" font-size="10" font-style="italic" text-anchor="middle" x="445" y="130">gap = where you hadn't thought it through</text>
+</svg>
+<div class="caption">Flattening graph-shaped thought into a line exposes the gaps you thought you'd understood</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Late in his life, the physicist Richard Feynman watched a historian call his desk full of drafts a "record" of his thinking. Feynman corrected him on the spot: this isn't a record — <em>what happens on the paper is the thinking itself; I actually did that work on the paper.</em> That line captures the essence: the equations and crossings-out aren't traces left afterward, they're the scene where cognition happens. Likewise, "if you can't write it clearly, you don't yet understand it" — being unable to explain is rarely an expression problem; it's an understanding that hasn't formed.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: write the design doc before building the AI agent system — the doc isn't a record of a "finished design," it's where <strong>the design reveals itself to be broken as you write it out</strong>: when you're forced to write the call sequence across multiple agents step by step, the race condition your mind kept skipping finally appears. (2) Parenting: before explaining a concept to a school-age child, force yourself to write it in three sentences — you'll find precisely the shakiest part of your own understanding, which is usually exactly where the child will get stuck. <strong>If you can't write it, you don't really know it.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here are my rough, unsorted thoughts on [topic/decision]: [paste your draft/notes].
+Treat this as me "thinking on paper" and use writing to break my illusion of understanding:
+1. Point out 2–3 places I think I explained but where the logic actually breaks or a term is undefined.
+2. For each, pose one sharp question I must answer before I can think it through.
+3. Don't polish it into clean prose — the goal is to expose what I haven't actually figured out.</div>
+</section>
+<!-- Card 2: One Idea at a Time -->
+<section class="card c2">
+<h2>One Idea at a Time</h2>
+<div class="subtitle">One idea per sentence, one point per paragraph — the reader's working memory is the bottleneck</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The core constraint lives not in the writer but in the reader: human working memory holds only three or four chunks at once. A sentence stuffed with three ideas forces the reader to <em>parse, buffer, and relate</em> three things simultaneously — overload, then reread. One reread and reading throughput collapses. So "one idea at a time" isn't a matter of rhetorical taste; it's the <strong>physical discipline of respecting the reader's cognitive bandwidth</strong>.</p>
+<p>Non-trivial: (1) <em>complexity is conserved.</em> The tangle you didn't untie for the reader while writing doesn't vanish — it's handed off, intact, to <strong>every</strong> reader, multiplied by the readership. Ten extra minutes spent untangling saves a thousand readers the decoding effort each. This is the trade-off engineers know: <em>compress at write-time, or push the decompression cost onto every read.</em> (2) The idea boundary is the unit of revision — <em>a sentence that resists every attempt to split it usually signals that the underlying thought is still tangled</em> (see Card 1: a muddy sentence is the shadow of muddy thinking). (3) Isomorphic to a single-threaded event loop: throughput comes from slicing tasks small and letting them flow through, not from one giant blocking call — one idea per sentence feeds the reader's brain small tasks. (4) Sentences carry an order contract too: <em>start each with old information (an anchor) and end with the new</em>, so new knowledge hooks onto the old knowledge just established and the chain never breaks.</p>
+<p>Practice: one sentence = one subject doing one thing. When you find yourself stacking "and... which... because...," stop and split. Test: can the reader restate the sentence's point in one short clause? If not, you haven't split it enough.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The scientific abstract is this discipline's ultimate training ground: within a strict word count, each sentence advances exactly one step — one for background, one for the gap, one for method, one for results, one for significance. A reader (the reviewer) can reconstruct the whole logic in thirty seconds, not because the sentences are ornate but because <em>each lays one brick, and each brick rests on the one before</em>. Delete any sentence and the chain loses a link — that's the combined effect of "one idea per sentence" plus "open with old information."</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: in code review, <strong>one logical change per commit, one claim per sentence</strong>. A 200-line commit that does three things is the prose equivalent of a long sentence crammed with three ideas — the reviewer is forced to parse in parallel and stalls. Splitting it into three small commits is splitting the long sentence into short ones. (2) Parenting: give a school-age child "put away the toys, then wash your hands, then come eat" all at once and their working memory can't hold three steps — they'll likely do only the last. One thing at a time, finish it, then the next — exactly the same logic as writing. <strong>What you don't slice small for the reader/listener, they pay for in overload.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is a passage I wrote: [paste paragraph].
+Audit it for reader cognitive bandwidth, using "one idea at a time":
+1. Flag every sentence carrying 2+ ideas that would force a reread.
+2. Split each into "one idea per sentence" clauses, and where possible start each with old info and end with new.
+3. Name the single point this paragraph is meant to prove — if it's actually proving two, suggest how to split it into two paragraphs.</div>
+</section>
+<!-- Card 3: Active Voice -->
+<section class="card c3">
+<h2>Active Voice</h2>
+<div class="subtitle">"Who did what" — active voice forces you to name names; passive voice is best at hiding them</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Active voice has the structure <strong>"actor → action → object,"</strong> which aligns with the causal structure of reality and with the way the mind natively models events as "who did what." Passive voice hides the actor — "mistakes were made" — grammatically complete, yet <em>the "who" that should be responsible has vanished into thin air</em>. Passive is sometimes used precisely to hide the agent, and that is exactly why it deserves suspicion.</p>
+<p>Non-trivial: (1) voice is not just style but an <em>ontological choice</em>: active forces you to fill in both the "who" and the "what," so hidden assumptions and missing responsible parties get pushed into the open. (2) In a design doc, passive is where bugs hide — "the data is processed" omits which service, when, and with what guarantee; <em>passive voice is a dangling edge in the causality graph</em>, while active forces you to connect it to a concrete node. (3) Active is usually shorter and faster to read: passive adds scaffolding ("was ... by"), one more layer for the reader to decode each time. (4) But keep proportion: when the object is genuinely the topic, or the actor is unknown or irrelevant, passive is correct — "the sample was heated to 80°C," where attention belongs on the sample, not on whose hand moved. <em>The rule is "default active, deliberate passive," not "ban passive."</em></p>
+<p>Practice: scan the draft for every "was/were ... -ed" and "by," and at each ask: <em>who is the actor of this action — am I hiding them on purpose, or just being lazy?</em> If there's no reason to hide, switch to active and put the "who" back into the sentence.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>"Mistakes were made" is a specimen of political language in the English-speaking world — it admits an error while leaving the person who erred mysteriously absent. George Orwell, in "Politics and the English Language," long ago named the move: vague passive voice plus abstract nouns is the standard instrument political language uses to <em>obscure responsibility and numb judgment</em>. Here voice isn't a question of flair but of honesty — active voice forces out the subject that was deliberately left off.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: in a postmortem, "the database was overloaded" and "the retry logic hammered the database until it overloaded" are two different documents — <strong>the former has nothing to fix, the latter points straight at the actor, and therefore at the fix</strong>. A postmortem in passive voice reads as if no one was at fault, so no one will change anything. (2) Parenting: model honest agency. "The vase got broken" erases the child's (and your own) hand from the sentence; stating "who did what" plainly is how you teach responsibility. <strong>Active voice is "skin in the game" at the level of prose — keep the name in the sentence.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is something I wrote (e.g., a design doc / postmortem / announcement): [paste text].
+Run a "voice and accountability" audit:
+1. Find every passive sentence and name the agent it hides.
+2. For each, judge whether hiding the actor is deliberate (the object is genuinely the topic) or just lazy — rewrite the lazy ones as active.
+3. Flag sentences that make "no one responsible," and rewrite them as active sentences that name the actor and point to a fixable target.</div>
+</section>
+<!-- Card 4: Subtraction Beats Addition -->
+<section class="card c4">
+<h2>Subtraction Beats Addition</h2>
+<div class="subtitle">"Omit needless words" — good writing improves mostly by cutting, not by adding</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The default instinct for improving anything is to <strong>add</strong>: add a paragraph of explanation, add a qualifier, add a transition. Research shows again and again that, faced with something to improve, people overwhelmingly add and barely think to subtract. Yet writing improves mainly by <em>cutting</em>. <strong>Every word spends the reader's attention budget</strong>, so a word that doesn't earn its keep is a net tax levied on every reader.</p>
+<p>Non-trivial: (1) subtraction is harder than addition for two reasons. First, <em>cutting is invisible labor</em> — adding produces a new artifact to show, while deleting leaves no visible sign you did anything. Second, <em>loss aversion</em> — you're killing words you birthed yourself ("kill your darlings," cut the sentence you're proudest of). (2) The deepest cut isn't words but <em>ideas</em>: the bravest stroke deletes the entire paragraph you're proudest of because it doesn't serve the reader's main line. The criterion is always the reader's path, never your reluctance. (3) Subtraction <em>compounds</em>: removing the weakest link both raises the average and removes a failure mode — the same logic shared by via negativa, YAGNI, and Occam's razor: <em>getting stronger by removing</em> is steadier than getting stronger by adding. (4) In the AI era this model's weight is rising: generation is now infinitely cheap, so the <em>scarce skill shifts from "being able to write it" to "daring and knowing how to cut"</em> — trimming the model's sprawl down to bone.</p>
+<p>Practice: <strong>write long, then cut 30%.</strong> For each sentence ask: if I delete this, does the reader lose anything they genuinely need? No — cut it. Schedule "deletion" as a separate pass, and read your own draft with a subtractive eye.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The writing bible <em>The Elements of Style</em> compresses the whole book into one iron rule: <em>"Omit needless words."</em> Vigorous writing is concise; a sentence should contain no unnecessary words, as a drawing should have no unnecessary lines. And the much-quoted line: <em>"I would have written a shorter letter, but I didn't have the time"</em> — writing short costs more effort than writing long, because short means you've already done all the hard cutting on the reader's behalf. Deleting is never laziness; it's higher-order labor.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: the best PRs are often <strong>net-negative lines</strong> — deleting a feature or a config option removes, in one stroke, its maintenance cost and a whole surface of bugs. "Today I made the codebase shorter" is often worth more than "I added a feature." (2) AI workflow: you have the model draft, but what really decides quality is the <em>cutting blade</em> you apply afterward — trimming three pages to half a page, where the surviving density is your judgment. (3) Communication: say less, and the unsaid carries its own weight. <strong>For prose, for code, for speech alike, subtraction is the badly underrated half of the craft.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is something I wrote: [paste text]. Put on a "deletion mindset" and cut it by ~30% without losing anything the reader genuinely needs:
+1. Mark deletable filler, clichés, and empty transitions sentence by sentence, and show the trimmed version.
+2. Identify 1–2 passages I'm probably proudest of that don't serve the main line — recommend cutting them and explain why the piece is stronger without them.
+3. Return the tightened full text and tell me how many words it dropped.</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Back to Index</a>
+</footer>
+</div>
+</body>
+</html>
