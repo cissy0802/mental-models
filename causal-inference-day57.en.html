@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Causal Inference · 2026-06-17</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Causal Inference</h1>
+<div class="meta">2026-06-17 · Day 57</div>
+</header>
+
+<!-- Card 1: Ladder of Causation -->
+<section class="card c1">
+<h2>The Ladder of Causation</h2>
+<div class="subtitle">"Data never speaks for itself — the question gives data its causal meaning." — paraphrasing Judea Pearl</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The Ladder of Causation sorts every "is X related to Y?" question into <strong>three rungs, each needing information the rung below cannot supply</strong>. Rung 1, <em>Association</em>: seeing X makes Y likelier, written P(Y|X) — observation, correlation, where curve-fitting stops; the question is "if I <em>see</em> …, what then?" Rung 2, <em>Intervention</em>: if I actively set X to a value, written do(X), what happens to Y — and P(Y|do(X)) usually differs from P(Y|X), because the latter can be polluted by confounders. Rung 3, <em>Counterfactual</em>: for an event that already happened, "had X not occurred, would Y differ?" — the home of attribution, blame, and regret.</p>
+<p>Non-trivial: (1) you <strong>cannot climb the ladder for free</strong> — purely observational data in principle cannot answer interventional questions unless you inject a set of causal assumptions (a "who-affects-whom" diagram). This is the root of "big data ≠ causal knowledge": no amount of P(Y|X) yields P(Y|do(X)). (2) Today's deep learning sits almost entirely on rung 1 — it fits a joint distribution, not "the world after the mechanism is changed," which is why it's called glorified curve-fitting. (3) For AI agents: only a system that can reason counterfactually can truly plan and attribute — "had that step not gone wrong, the task would have succeeded" is a rung-3 capability that pure pattern matching can't deliver.</p>
+<p>Practical test: for any "X causes Y" claim, <strong>first locate which rung it stands on</strong>. Headlines almost always smuggle rung 1 (correlation) up to rung 2 (causation). Just ask: was this observed, or verified by intervention?</p>
+<div class="diagram">
+<svg viewbox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#cfe3f2" height="46" rx="6" width="360" x="20" y="150"></rect>
+<text fill="#0a6fb8" font-size="13" font-weight="700" x="34" y="170">1. Association</text>
+<text fill="#3a6a8a" font-size="11" x="34" y="188">P(Y|X) · "see X, more likely to see Y" · observe</text>
+<rect fill="#9ac3e0" height="46" rx="6" width="360" x="60" y="92"></rect>
+<text fill="#0a4d80" font-size="13" font-weight="700" x="74" y="112">2. Intervention</text>
+<text fill="#173f5f" font-size="11" x="74" y="130">P(Y|do(X)) · "I set X, what happens to Y" · experiment</text>
+<rect fill="#5a9bd0" height="46" rx="6" width="360" x="100" y="34"></rect>
+<text fill="#fff" font-size="13" font-weight="700" x="114" y="54">3. Counterfactual</text>
+<text fill="#eaf3fb" font-size="11" x="114" y="72">"had X not happened, would Y differ" · attribution</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="end" x="500" y="120">each rung up needs</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="end" x="500" y="136">more causal assumptions</text>
+</svg>
+<div class="caption">The Ladder: observe → intervene → counterfactual, rising information demands</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The smoking–lung-cancer debate. Tobacco companies once argued "maybe some gene causes both a taste for smoking and a susceptibility to cancer" — precisely questioning whether rung-1 correlation could climb to rung-2 causation. What finally settled it was not more correlational numbers but <strong>introducing the mechanism</strong> (the biological pathway by which tar is carcinogenic) plus interventional evidence such as animal experiments, anchoring the conclusion on the interventional rung, not the observational one.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>You notice "engineers who use a certain AI tool produce more." That's rung 1. But it may be that "already-strong people are the ones who adopt new tools" (self-selection confounding). To climb to rung 2, run an A/B test: <strong>randomly assign</strong> who gets the tool first. Otherwise a blanket rollout may yield nothing. Same in parenting — "kids who read more get better grades" is a rung-1 observation; "would making a particular child read more raise their grades?" is the rung-2 intervention you actually care about, and the two answers need not agree.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is a claim I encountered: [assertion about X and Y / a dataset / a headline]. Apply the Ladder of Causation:
+1. Which rung does it actually stand on — association, intervention, or counterfactual? Justify.
+2. If it's being used causally (rung 2), list 2 likely confounders that could make mere correlation look causal.
+3. Propose the minimal design to "climb one rung" and verify it (randomized experiment / natural experiment / which causal diagram is required).</div>
+</section>
+
+<!-- Card 2: Counterfactual Reasoning -->
+<section class="card c2">
+<h2>Counterfactual Reasoning</h2>
+<div class="subtitle">"X is a cause of Y means: had there been no X, there would have been no Y."</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The counterfactual is the top rung: for an event that <em>already happened</em>, ask "had it not been so, what would the result be?" It requires constructing, in your mind, a parallel world that doesn't exist (the potential outcome). Attribution (did it cause this?), blame (whose fault?), regret (I could have…), fairness (would they be hired if the gender were different?) — these judgments are <strong>all counterfactual</strong>, and without them they make no sense.</p>
+<p>Non-trivial: (1) the core difficulty is <strong>missing data</strong> — for one person you can observe only "recovered after taking the drug" or "the no-drug case," never both halves; this is the "fundamental problem of causal inference." So individual counterfactuals can't be directly observed, only estimated (via comparable controls, randomization) as an <em>average</em> effect. (2) Distinguish <em>necessary</em> from <em>sufficient</em> causes: the last straw that breaks the camel is a sufficient trigger, but the accumulated load underneath is the necessary cause — fixating on the last step misattributes. (3) It echoes Buddhist <em>dependent origination</em> yet differs: dependent origination stresses that conditions aggregate to give rise to things; the counterfactual goes further, asking "<em>remove which one</em> condition and the result collapses?" — the very tool for locating the but-for cause.</p>
+<p>Practice: when attributing, force the counterfactual — "remove this factor, would the outcome still happen?" If the answer is "it happens anyway," it's not a real cause, only an <strong>accompaniment</strong>. This instantly punctures hindsight-style false attribution.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The legal "but-for test": is the defendant's act a cause of the harm? The judge asks — "<em>but for</em> the defendant's act, would the harm still have occurred?" If it still would (the harm had another sufficient cause), the act is not a factual cause. The entire framework of tort causation rests on this counterfactual hypothesis, not on mere "before-and-after" sequence.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>A production-incident postmortem. Don't stop at "the last deploy triggered the crash" (the last straw). Ask the counterfactual: "without this deploy, would the system still crash?" If memory was already near the ceiling, the crash was only a matter of time — <strong>the real cause is capacity planning; the deploy was just the trigger</strong>. Mistake the trigger for the disease and the next trigger crashes you again. Same with kids: "he threw a tantrum because I took the tablet" may just be the trigger; one counterfactual question reveals that being tired or hungry was the necessary load.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm attributing this outcome: [event / incident / success or failure], currently to [the cause I believe]. Stress-test with counterfactual reasoning:
+1. Run the but-for test: remove my proposed cause — would the outcome still happen? Decide if it's a real cause or mere accompaniment / trigger.
+2. Separate the "necessary load" from the "last straw" here; tell me if I've mistaken a trigger for the root cause.
+3. Name 1–2 deeper causes I'm overlooking whose removal would actually change the outcome.</div>
+</section>
+
+<!-- Card 3: Instrumental Variables -->
+<section class="card c3">
+<h2>Instrumental Variables</h2>
+<div class="subtitle">"When you can't run the experiment, find a lever that nature randomized for you."</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>When an unseen confounder (U affects both X and Y) lurks between X and Y, the raw X→Y regression coefficient is <strong>biased</strong>. An instrumental variable (IV) is a clever lever: find a variable Z satisfying three conditions — (1) <em>relevance</em>: Z affects X; (2) <em>exclusion</em>: Z affects Y <em>only</em> through X, by no other path; (3) <em>independence</em>: Z is unrelated to the confounder U (Z is "as if randomly assigned"). Then the part of X's variation caused by Z is "clean," and using it to explain Y recovers the true causal X→Y effect.</p>
+<p>Intuition: Z is like <strong>a natural experiment nature ran for you</strong> — it randomly nudged X without touching the dirty confounders. You explain Y using only "the slice of X movement that Z induced," which shields out the confounding.</p>
+<p>Non-trivial: (1) the most fragile is the <em>exclusion</em> restriction, and it is <strong>untestable by data</strong> — you can only argue with domain knowledge that "Z really takes no back door." The moment Z has a second path to Y, the IV estimate collapses entirely. (2) The <em>weak-instrument</em> problem: if Z barely moves X, the estimate is swallowed by amplified bias and variance — a weak instrument is more dangerous than none. (3) IV estimates a "Local Average Treatment Effect" (LATE): it holds only for those "<em>whose X was moved by Z</em>," and may not extrapolate to everyone.</p>
+<div class="diagram">
+<svg viewbox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar" markerheight="9" markerwidth="9" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L8,3 z" fill="#636e72"></path></marker></defs>
+<circle cx="70" cy="120" fill="#c44545" r="26"></circle>
+<text fill="#fff" font-size="16" font-weight="700" text-anchor="middle" x="70" y="126">Z</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="70" y="165">instrument</text>
+<circle cx="240" cy="120" fill="#0a6fb8" r="26"></circle>
+<text fill="#fff" font-size="16" font-weight="700" text-anchor="middle" x="240" y="126">X</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="240" y="165">treatment</text>
+<circle cx="410" cy="120" fill="#1b8a5a" r="26"></circle>
+<text fill="#fff" font-size="16" font-weight="700" text-anchor="middle" x="410" y="126">Y</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="410" y="165">outcome</text>
+<circle cx="325" cy="40" fill="#868e96" r="22"></circle>
+<text fill="#fff" font-size="14" font-weight="700" text-anchor="middle" x="325" y="45">U</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="325" y="18">confounder (unseen)</text>
+<line marker-end="url(#ar)" stroke="#636e72" stroke-width="2" x1="98" x2="210" y1="120" y2="120"></line>
+<line marker-end="url(#ar)" stroke="#636e72" stroke-width="2" x1="268" x2="380" y1="120" y2="120"></line>
+<line marker-end="url(#ar)" stroke="#adb5bd" stroke-dasharray="4,3" stroke-width="1.6" x1="312" x2="260" y1="58" y2="100"></line>
+<line marker-end="url(#ar)" stroke="#adb5bd" stroke-dasharray="4,3" stroke-width="1.6" x1="338" x2="392" y1="58" y2="100"></line>
+<text fill="#c44545" font-size="11" font-weight="700" text-anchor="middle" x="155" y="110">clean push</text>
+<text fill="#868e96" font-size="10" font-style="italic" text-anchor="middle" x="70" y="60">Z ⊥ U (no back door)</text>
+</svg>
+<div class="caption">IV: Z affects Y only through X and is unrelated to confounder U — pry out a clean X→Y</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Estimating "how much does one extra year of schooling raise income." A direct comparison is biased — abler people both study more and earn more (ability is the unseen confounder). Economists used "month of birth" as the instrument: compulsory-schooling laws set school entry and drop-out by age, forcing people born in different months to attend a few months more or fewer, while <strong>month of birth itself is unrelated to ability</strong>. That quasi-random difference pried out the true return to education.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>You want to know "does using an internal AI assistant really raise performance?" Confounder: go-getters both love AI and perform well. Find an instrument — say the company <strong>rolls out licenses in batches</strong>, with order decided by employee-ID suffix or department. The activation timing is exogenous, like a lottery, unrelated to personal drive, so you can use it to pry out AI's causal effect rather than the "strong-stay-strong" self-selection illusion. The key is to first argue that activation timing <em>truly</em> takes no other back door to performance.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want the causal effect of [X] on [Y], but can't randomize, and worry about confounding by [suspected confounders]. Help me find an instrument:
+1. Brainstorm 2–3 candidate quasi-random exogenous shocks (policy start dates, geographic borders, lotteries, staggered rollout) as instrument Z.
+2. Check each against the three conditions — relevance, exclusion (most critical: any back door?), independence — and flag the weakest.
+3. Remind me which subpopulation the estimate applies to (LATE) and whether it generalizes to my real target.</div>
+</section>
+
+<!-- Card 4: Simpson's Paradox -->
+<section class="card c4">
+<h2>Simpson's Paradox</h2>
+<div class="subtitle">"A trend that holds in every subgroup can reverse once they're pooled."</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>The same dataset points one way when <strong>split into groups and the opposite way when pooled</strong>. For example, every department admits women at an equal-or-higher rate than men, yet the school total favors men. It's not an arithmetic error but a lurking grouping variable (a confounder) at work.</p>
+<p>Non-trivial: (1) the key insight is that <strong>data alone cannot tell you whether to look split or pooled</strong> — that depends on the causal structure and must be settled by a causal diagram. If the grouping variable is a "confounder" (affecting both treatment and outcome), stratify; if it's a "mediator" (the treatment acts on the outcome <em>through</em> it), stratifying wrongly blocks the real effect. <em>Same numbers, different causal story, opposite correct answer.</em> (2) So the cure for Simpson's paradox is not statistics but a <em>causal model</em>: draw who-affects-whom first, then decide what to control for — a miniature of all causal inference. (3) It's everywhere: pooled averages mislead systematically, especially when group sizes or baselines differ widely.</p>
+<p>Practice: for any "overall trend," first ask — is there a lurking grouping variable telling the opposite story inside each group? Conversely, for any "subgroup conclusion," ask: <em>should</em> this grouping be controlled for at all? Whether to split is settled by the causal diagram, not by the data itself.</p>
+<div class="diagram">
+<svg viewbox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#ced4da" stroke-width="1.5" x1="50" x2="50" y1="20" y2="175"></line>
+<line stroke="#ced4da" stroke-width="1.5" x1="50" x2="490" y1="175" y2="175"></line>
+<text fill="#868e96" font-size="10" text-anchor="middle" transform="rotate(-90 22 100)" x="22" y="100">Y (outcome)</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="270" y="198">X (treatment / input)</text>
+<line stroke="#1b8a5a" stroke-width="2.5" x1="80" x2="210" y1="150" y2="100"></line>
+<line stroke="#1b8a5a" stroke-width="2.5" x1="300" x2="450" y1="85" y2="35"></line>
+<text fill="#1b8a5a" font-size="11" font-weight="700" x="92" y="135">Group A ↗</text>
+<text fill="#1b8a5a" font-size="11" font-weight="700" x="350" y="60">Group B ↗</text>
+<line stroke="#c44545" stroke-dasharray="6,4" stroke-width="2.5" x1="80" x2="450" y1="120" y2="150"></line>
+<text fill="#c44545" font-size="11" font-weight="700" x="240" y="170">pooled ↘ (reversed!)</text>
+<circle cx="80" cy="150" fill="#1b8a5a" r="3.5"></circle>
+<circle cx="210" cy="100" fill="#1b8a5a" r="3.5"></circle>
+<circle cx="300" cy="85" fill="#1b8a5a" r="3.5"></circle>
+<circle cx="450" cy="35" fill="#1b8a5a" r="3.5"></circle>
+</svg>
+<div class="caption">Simpson's Paradox: both groups rise, yet the pooled trend falls — the grouping variable misleads</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The classic UC Berkeley graduate-admissions case. Overall, men were admitted at a higher rate than women, suggesting bias; but split by department, most departments admitted women at a <em>slightly higher</em> rate. The reason: women applied more to competitive, low-admission-rate departments, while men clustered in easier-to-enter ones. The true explanatory variable is "<strong>department applied to</strong>," which pooling completely masked.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>You A/B test two model versions; overall B has a higher conversion rate, so you want to ship B to everyone. Split first — stratify by user type. Quite possibly <strong>A is better in every segment</strong>, and B's traffic just happened to land on easy-to-convert, highly active users (uneven splitting = confounding). Ship to all without stratifying and you roll out a worse model. Same with a child's grades: don't just watch the class-average move up or down; split by ability tier and the trend may fully reverse.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I see an aggregate trend / comparison: [describe the data and conclusion, e.g. B beats A overall]. Help me screen for Simpson's Paradox:
+1. List 2–3 lurking grouping variables most likely to tell the opposite story within subgroups (user type, department, time period).
+2. For each, decide whether it's a confounder or a mediator — and thus whether to stratify.
+3. Give a minimal stratified-check plan, and tell me the correct action if the conclusion reverses.</div>
+</section>
+
+<footer class="footer">
+<a href="index.en.html">&larr; Back to Index</a>
+</footer>
+</div>
+</body>
+</html>

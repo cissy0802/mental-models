@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：因果推断 · 2026-06-17</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：因果推断</h1>
+<div class="meta">2026-06-17 · Day 57</div>
+</header>
+
+<!-- Card 1: 因果阶梯 -->
+<section class="card c1">
+<h2>因果阶梯 · The Ladder of Causation</h2>
+<div class="subtitle">"数据本身从不说话——是问题让数据有了因果含义。" — 概括 Judea Pearl</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>因果阶梯把所有"X 和 Y 有关系吗"的问题分成<strong>三层，每一层都需要下一层无法提供的信息</strong>。第一层<em>关联</em>：看到 X 更可能看到 Y，记作 P(Y|X)，这是观察、相关、曲线拟合停留的地方，问题形式是"如果我<em>看到</em>……会怎样"。第二层<em>干预</em>：如果我主动把 X 设成某值，记作 do(X)，Y 会怎样——P(Y|do(X)) 通常不等于 P(Y|X)，因为后者可能被混杂因素污染。第三层<em>反事实</em>：对已发生的个案问"如果当初没做 X，Y 会不会不同"，归因、责任、后悔都在这一层。</p>
+<p>非平凡点：① 阶梯<strong>不能凭空向上跨越</strong>——纯观察数据原则上回答不了干预问题，除非你额外注入一组因果假设（一张"谁影响谁"的因果图）。这就是"大数据 ≠ 因果知识"的根源：再多 P(Y|X) 也推不出 P(Y|do(X))。② 当今深度学习几乎全停在第一层——它拟合的是联合分布，不是"改变机制后的世界"，这正是把它叫作"高级曲线拟合"的要害。③ 对 AI agent 的推论：能做反事实推理的系统，才谈得上真正的规划与归因——"要不是那步走错，任务本会成功"是第三层的能力，纯模式匹配给不出。</p>
+<p>实践判别：遇到任何"X 导致 Y"的论断，<strong>先定位它站在第几层</strong>。媒体标题几乎都偷偷把第一层（相关）说成第二层（因果）。只需问一句：这是观察到的，还是干预验证过的？</p>
+<div class="diagram">
+<svg viewbox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#cfe3f2" height="46" rx="6" width="360" x="20" y="150"></rect>
+<text fill="#0a6fb8" font-size="13" font-weight="700" x="34" y="170">① 关联 Association</text>
+<text fill="#3a6a8a" font-size="11" x="34" y="188">P(Y|X) · "看到 X，更可能看到 Y" · 观察</text>
+<rect fill="#9ac3e0" height="46" rx="6" width="360" x="60" y="92"></rect>
+<text fill="#0a4d80" font-size="13" font-weight="700" x="74" y="112">② 干预 Intervention</text>
+<text fill="#173f5f" font-size="11" x="74" y="130">P(Y|do(X)) · "我动手改 X，Y 会怎样" · 实验</text>
+<rect fill="#5a9bd0" height="46" rx="6" width="360" x="100" y="34"></rect>
+<text fill="#fff" font-size="13" font-weight="700" x="114" y="54">③ 反事实 Counterfactual</text>
+<text fill="#eaf3fb" font-size="11" x="114" y="72">"若当初不做 X，Y 会不同吗" · 归因/后悔</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="end" x="500" y="120">每升一层，</text>
+<text fill="#868e96" font-size="11" font-style="italic" text-anchor="end" x="500" y="136">需多注入因果假设</text>
+</svg>
+<div class="caption">因果阶梯：观察 → 干预 → 反事实，越往上信息要求越高</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>吸烟与肺癌之争。当年烟草公司辩称"也许某种基因同时导致『爱吸烟』和『易患癌』"——这正是在质疑：第一层的相关数据能否爬到第二层的因果。最终钉死结论靠的不是更多相关数字，而是<strong>引入机制</strong>（焦油致癌的生物路径）加上动物实验等干预层旁证，才把因果落在干预层而非观察层。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>你发现"用了某 AI 工具的工程师产出更高"。这是第一层。但很可能是"本来就强的人才会主动尝鲜"（自选择混杂）。要爬到第二层，得做 A/B：<strong>随机分配</strong>谁先用工具。否则贸然全员推广，可能颗粒无收。育儿同理——"爱读书的孩子成绩好"是第一层观察；"让一个孩子多读书会不会提分"才是你真正想知道的第二层干预，两者答案未必一致。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The Ladder of Causation</strong> (Pearl) sorts every "does X cause Y?" question into three rungs, each needing information the rung below cannot supply. <em>Association</em> — P(Y|X), seeing X makes Y likelier; pure observation, where curve-fitting and most ML stop. <em>Intervention</em> — P(Y|do(X)), what happens if I actively set X; generally ≠ P(Y|X) because the latter can be confounded. <em>Counterfactual</em> — "had X not happened, would Y differ?", the realm of attribution, blame, regret. You cannot climb the ladder from data alone: observational P(Y|X) never yields P(Y|do(X)) without an injected causal model. "Big data" ≠ "causal knowledge." First locate which rung a claim stands on.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我看到一个结论：[X 与 Y 的关系论断 / 数据/标题]。请用因果阶梯帮我审视：
+① 它实际站在第几层——关联、干预，还是反事实？给出判断依据；
+② 若它被当作因果（第二层）使用，列出 2 个最可能的混杂因素，它们能让相关看起来像因果；
+③ 给出一个能把它"升一层"验证的最小方案（随机实验 / 准实验 / 需要哪张因果图）。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is a claim I encountered: [assertion about X and Y / a dataset / a headline]. Apply the Ladder of Causation:
+1. Which rung does it actually stand on — association, intervention, or counterfactual? Justify.
+2. If it's being used causally (rung 2), list 2 likely confounders that could make mere correlation look causal.
+3. Propose the minimal design to "climb one rung" and verify it (randomized experiment / natural experiment / which causal diagram is required).</div>
+</section>
+
+<!-- Card 2: 反事实推理 -->
+<section class="card c2">
+<h2>反事实推理 · Counterfactual Reasoning</h2>
+<div class="subtitle">"X 是 Y 的原因，意味着：若无 X，则无 Y。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>反事实是因果阶梯的最高层：对一个<em>已经发生</em>的具体事件，问"如果当时不这样，结果会怎样"。它要求你在脑中构造一个并不存在的平行世界（潜在结果）。归因（是它造成的吗）、责任（怪谁）、后悔（我本可以）、公平（若性别不同会被录用吗）——这些判断<strong>全是反事实</strong>，离开它就无从谈起。</p>
+<p>非平凡点：① 根本难题是<strong>缺失数据</strong>——同一个人，你只能观察到"吃药后康复"或"不吃药的情形"之一，永远看不到另一半，这叫"因果推断的根本问题"。所以个体反事实无法直接观测，只能靠假设（可比的对照、随机化）去估计<em>平均</em>效应。② 必须分清"必要因"与"充分因"：压垮骆驼的最后一根稻草是充分的触发，前面累积的稻草才是必要的负载——只盯最后一步会归错因。③ 与佛学"缘起"呼应却有别：缘起强调诸条件聚合而生，反事实更进一步追问"<em>抽掉哪一个</em>条件，结果会塌"——这正是定位关键因（but-for cause）的思维工具。</p>
+<p>实践：做归因时强制问一句反事实——"把这个因素抽掉，结果还会发生吗？"若答案是"照样发生"，那它不是真正的原因，只是<strong>伴随</strong>。这一招能瞬间戳破"事后诸葛"式的虚假归因。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>法律里的"若非检验"（but-for test）：被告的行为是否构成损害的原因？判官问的是——"<em>若非</em>被告这么做，损害是否仍会发生？"若仍会发生（损害另有充分原因），则被告行为不构成事实原因。整套侵权因果判定，就建立在这个反事实假想之上，而非建立在"先后发生"之上。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>线上故障复盘。别停在"最后那次部署触发了崩溃"（最后一根稻草）。问反事实："若没这次部署，系统还会崩吗？"——若内存早已逼近上限，崩溃只是迟早，<strong>真正的因是容量规划，部署只是扳机</strong>。把扳机当病根，下次换个扳机照样崩。带孩子也一样："他发脾气是因为我没收了平板"可能只是扳机，反事实一问，累了或饿了的状态才是那根必要的负载。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Counterfactual Reasoning</strong> — the top rung: for an event that already happened, ask "had X not occurred, would Y differ?" Attribution, blame, regret, and fairness are all counterfactual judgments. Its core difficulty is missing data — for one individual you observe only the factual outcome, never the counterfactual half (the "fundamental problem of causal inference"), so individual counterfactuals are estimated, not seen. Distinguish <em>necessary</em> from <em>sufficient</em> causes: the last straw is a sufficient trigger, but the accumulated load is the necessary cause. Practical test: remove the factor — would the outcome still occur? If yes, it's mere accompaniment, not a cause (the legal "but-for" test).
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我要给这个结果做归因：[事件/故障/成败的结果]，我目前归因于 [我认定的原因]。请用反事实推理压力测试：
+① 做"若非检验"：抽掉我认定的原因，结果还会发生吗？据此判断它是真正的因还是只是伴随/扳机；
+② 区分这里的"必要负载"与"最后一根稻草"，指出我是否把扳机错当成了病根；
+③ 列出 1-2 个被我忽略、但抽掉后结果会改变的更深层原因。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm attributing this outcome: [event / incident / success or failure], currently to [the cause I believe]. Stress-test with counterfactual reasoning:
+1. Run the but-for test: remove my proposed cause — would the outcome still happen? Decide if it's a real cause or mere accompaniment / trigger.
+2. Separate the "necessary load" from the "last straw" here; tell me if I've mistaken a trigger for the root cause.
+3. Name 1–2 deeper causes I'm overlooking whose removal would actually change the outcome.</div>
+</section>
+
+<!-- Card 3: 工具变量 -->
+<section class="card c3">
+<h2>工具变量 · Instrumental Variables</h2>
+<div class="subtitle">"当你不能做实验，就找一个老天替你随机的'撬棍'。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>当 X 与 Y 之间藏着看不见的混杂因素（U 同时影响 X 和 Y），直接回归 X→Y 得到的系数是<strong>有偏的</strong>。工具变量（IV）是一根巧妙的撬棍：找一个变量 Z，满足三个条件——① <em>相关性</em>：Z 影响 X；② <em>排他性</em>：Z 只通过 X 影响 Y，不走任何别的路；③ <em>独立性</em>：Z 与混杂 U 无关（Z 像被随机分配的）。于是 Z 引起的那部分 X 变化是"干净的"，用它解释 Y，估出的 X→Y 才是因果效应。</p>
+<p>直觉：Z 就像<strong>老天爷帮你做的一次自然实验</strong>——它随机地推了 X 一把，却没碰那些脏的混杂。你只用"Z 引起的那部分 X 波动"去解释 Y，等于把混杂屏蔽在外。</p>
+<p>非平凡点：① 最脆弱的是<em>排他性</em>假设，且<strong>无法被数据检验</strong>——你只能用领域知识论证"Z 真的不走后门"。一旦 Z 有第二条通往 Y 的路，IV 估计全盘崩坏。② <em>弱工具</em>问题：若 Z 对 X 的影响很微弱，估计会被放大的偏差和方差吞没——弱工具比没工具更危险。③ IV 估的是"局部平均处理效应"（LATE）：只对那些"<em>被 Z 推动而改变了 X</em>"的人群成立，未必能外推到所有人。</p>
+<div class="diagram">
+<svg viewbox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ar" markerheight="9" markerwidth="9" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L8,3 z" fill="#636e72"></path></marker></defs>
+<circle cx="70" cy="120" fill="#c44545" r="26"></circle>
+<text fill="#fff" font-size="16" font-weight="700" text-anchor="middle" x="70" y="126">Z</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="70" y="165">工具变量</text>
+<circle cx="240" cy="120" fill="#0a6fb8" r="26"></circle>
+<text fill="#fff" font-size="16" font-weight="700" text-anchor="middle" x="240" y="126">X</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="240" y="165">处理</text>
+<circle cx="410" cy="120" fill="#1b8a5a" r="26"></circle>
+<text fill="#fff" font-size="16" font-weight="700" text-anchor="middle" x="410" y="126">Y</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="410" y="165">结果</text>
+<circle cx="325" cy="40" fill="#868e96" r="22"></circle>
+<text fill="#fff" font-size="14" font-weight="700" text-anchor="middle" x="325" y="45">U</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="325" y="18">混杂(看不见)</text>
+<line marker-end="url(#ar)" stroke="#636e72" stroke-width="2" x1="98" x2="210" y1="120" y2="120"></line>
+<line marker-end="url(#ar)" stroke="#636e72" stroke-width="2" x1="268" x2="380" y1="120" y2="120"></line>
+<line marker-end="url(#ar)" stroke="#adb5bd" stroke-dasharray="4,3" stroke-width="1.6" x1="312" x2="260" y1="58" y2="100"></line>
+<line marker-end="url(#ar)" stroke="#adb5bd" stroke-dasharray="4,3" stroke-width="1.6" x1="338" x2="392" y1="58" y2="100"></line>
+<text fill="#c44545" font-size="11" font-weight="700" text-anchor="middle" x="155" y="110">干净的推力</text>
+<text fill="#868e96" font-size="10" font-style="italic" text-anchor="middle" x="70" y="60">Z ⊥ U（不连后门）</text>
+</svg>
+<div class="caption">工具变量：Z 只经 X 影响 Y，且与混杂 U 无关——借它撬出干净的 X→Y</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>研究"多上一年学能提高多少收入"。直接比较有偏——能力强的人既多读书又高收入（能力是看不见的混杂）。经济学家用"出生月份"当工具：义务教育法按年龄划线入学/允许退学，使不同出生月份的人被迫多读或少读几个月书，而<strong>出生月份本身与个人能力无关</strong>。靠这点准随机的差异，撬出了教育的真实回报。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>你想知道"公司内部用 AI 助手是否真的提升绩效"。混杂：积极进取的人既爱用 AI 又绩效高。找工具变量——比如公司<strong>分批发放 license</strong>，按工号尾号或部门随机决定先后开通。开通时机像抽签一样外生，与个人动机无关，就能用它撬出 AI 的因果效应，而不是"强者恒强"的自选择假象。关键是先论证：开通早晚<em>真的</em>没走别的后门影响绩效。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Instrumental Variables (IV)</strong> — when an unseen confounder U drives both X and Y, the raw X→Y regression is biased. An instrument Z is a lever satisfying three conditions: (1) relevance — Z affects X; (2) exclusion — Z affects Y <em>only</em> through X; (3) independence — Z is unrelated to U, as if randomly assigned. The Z-induced variation in X is "clean," recovering the true causal effect. Caveats: the exclusion restriction is the most fragile assumption and is <em>untestable</em> by data — defend it with domain knowledge; weak instruments (Z barely moves X) are worse than none; IV estimates a Local Average Treatment Effect (LATE), valid only for those whose X was moved by Z.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想估计 [X] 对 [Y] 的因果效应，但不能做随机实验，担心混杂 [可能的混杂因素]。请帮我找工具变量：
+① 头脑风暴 2-3 个候选"准随机外生冲击"（政策生效、地理边界、抽签、分批开通等）作为工具 Z；
+② 逐一检验三条件：相关性、排他性（最关键，是否有别的后门）、独立性，指出哪个最可疑；
+③ 提醒我估出的是哪部分人群的效应（LATE），能否外推到我真正关心的对象。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want the causal effect of [X] on [Y], but can't randomize, and worry about confounding by [suspected confounders]. Help me find an instrument:
+1. Brainstorm 2–3 candidate quasi-random exogenous shocks (policy start dates, geographic borders, lotteries, staggered rollout) as instrument Z.
+2. Check each against the three conditions — relevance, exclusion (most critical: any back door?), independence — and flag the weakest.
+3. Remind me which subpopulation the estimate applies to (LATE) and whether it generalizes to my real target.</div>
+</section>
+
+<!-- Card 4: 辛普森悖论 -->
+<section class="card c4">
+<h2>辛普森悖论 · Simpson's Paradox</h2>
+<div class="subtitle">"每个子群里都成立的趋势，合并后可能整个反转。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>同一份数据，<strong>分组看是一个方向，合并看是相反方向</strong>。例如：每个科系女性录取率都不低于男性，但全校汇总却显示男性录取率更高。这不是算错，是一个潜藏的分组变量（混杂）在作祟。</p>
+<p>非平凡点：① 关键洞察是——<strong>数据本身不能告诉你该看分组还是看合并</strong>，这取决于因果结构，必须由因果图裁决。若分组变量是"混杂"（同时影响处理和结果），就该分层看；若它是"中介"（处理正是通过它去影响结果），分层反而会把真实效应错误地挡掉。<em>同一组数字，因果故事不同，正确答案相反。</em>② 所以辛普森悖论的解药不是统计而是<em>因果模型</em>：先画出"谁影响谁"，再决定控制什么——这正是因果推断全部要义的微缩。③ 它无处不在：聚合后的平均会系统性地骗人，尤其当各组的规模或基线差异很大时。</p>
+<p>实践：看到任何"整体趋势"，先问——有没有一个潜藏的分组变量，在各组内部讲着相反的故事？反过来，看到"分组结论"也要问：这个分组到底<em>该不该</em>控制？拆与不拆，由因果图裁决，而非由数据本身决定。</p>
+<div class="diagram">
+<svg viewbox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#ced4da" stroke-width="1.5" x1="50" x2="50" y1="20" y2="175"></line>
+<line stroke="#ced4da" stroke-width="1.5" x1="50" x2="490" y1="175" y2="175"></line>
+<text fill="#868e96" font-size="10" text-anchor="middle" transform="rotate(-90 22 100)" x="22" y="100">Y（结果）</text>
+<text fill="#868e96" font-size="10" text-anchor="middle" x="270" y="198">X（处理 / 投入）</text>
+<line stroke="#1b8a5a" stroke-width="2.5" x1="80" x2="210" y1="150" y2="100"></line>
+<line stroke="#1b8a5a" stroke-width="2.5" x1="300" x2="450" y1="85" y2="35"></line>
+<text fill="#1b8a5a" font-size="11" font-weight="700" x="92" y="135">A 组 ↗</text>
+<text fill="#1b8a5a" font-size="11" font-weight="700" x="360" y="60">B 组 ↗</text>
+<line stroke="#c44545" stroke-dasharray="6,4" stroke-width="2.5" x1="80" x2="450" y1="120" y2="150"></line>
+<text fill="#c44545" font-size="11" font-weight="700" x="250" y="170">合并后 ↘（反转！）</text>
+<circle cx="80" cy="150" fill="#1b8a5a" r="3.5"></circle>
+<circle cx="210" cy="100" fill="#1b8a5a" r="3.5"></circle>
+<circle cx="300" cy="85" fill="#1b8a5a" r="3.5"></circle>
+<circle cx="450" cy="35" fill="#1b8a5a" r="3.5"></circle>
+</svg>
+<div class="caption">辛普森悖论：A、B 两组内部都上升，合并趋势却向下——分组变量在捣鬼</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>加州大学伯克利分校研究生录取的经典案例。整体看男性录取率高于女性，疑似性别歧视；但按系拆开，多数系女性录取率反而<em>略高</em>。原因：女性更多申请竞争激烈、整体录取率低的热门系，男性集中在相对好进的系。真正的解释变量是"<strong>申请的系</strong>"，合并把它彻底掩盖了。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>你 A/B 测两个模型版本，整体看 B 转化率更高，于是想全量上 B。先拆——按用户类型分层。很可能<strong>每个细分群里 A 都更好</strong>，只是 B 的流量恰好被分到了容易转化的高活跃用户身上（分流不均＝混杂）。不分层就全量，你会推广一个其实更差的模型。看孩子成绩也一样：别只盯班级平均分的升降，拆到每个能力档，趋势可能完全相反。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Simpson's Paradox</strong> — a trend that holds within every subgroup can reverse once the groups are pooled (e.g., each department admits women at an equal-or-higher rate, yet the school total favors men). It's not an arithmetic error but a lurking grouping variable. The deep point: data alone can't tell you whether to look pooled or split — only the causal structure can. If the grouping variable is a <em>confounder</em>, stratify; if it's a <em>mediator</em>, stratifying wrongly blocks the real effect. Same numbers, different causal story, opposite correct answer. The cure is a causal model, not more statistics: draw who-affects-whom first, then decide what to control for.
+</div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我看到一个整体趋势/对比结论：[描述数据和结论，如 B 方案整体优于 A]。请帮我排查辛普森悖论：
+① 列出 2-3 个最可能"在子群内讲相反故事"的潜藏分组变量（用户类型、科系、时间段等）；
+② 对每个变量判断它是混杂还是中介——据此决定该不该分层；
+③ 给出一个最小的分层核对方案，告诉我若结论反转，正确的行动该是什么。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I see an aggregate trend / comparison: [describe the data and conclusion, e.g. B beats A overall]. Help me screen for Simpson's Paradox:
+1. List 2–3 lurking grouping variables most likely to tell the opposite story within subgroups (user type, department, time period).
+2. For each, decide whether it's a confounder or a mediator — and thus whether to stratify.
+3. Give a minimal stratified-check plan, and tell me the correct action if the conclusion reverses.</div>
+</section>
+
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
