@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：信息论思维 · 2026-06-18</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：信息论思维</h1>
+<div class="meta">2026-06-18 · Day 58</div>
+</header>
+<!-- Card 1: 香农熵 -->
+<section class="card c1">
+<h2>香农熵 · Shannon Entropy</h2>
+<div class="subtitle">"Information is the resolution of uncertainty." — Claude Shannon</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>熵不是"混乱程度"，而是<strong>一个概率分布的平均意外度</strong>——你对结果越不确定，它的熵越高。香农的公式 H = −Σ p·log p 量化的是：平均而言，揭晓一个结果能消除多少不确定性。单位是 bit，1 bit = 把可能性砍掉一半所需的信息。</p>
+<p>非平凡点：① <strong>信息 ≠ 意义</strong>。香农刻意剥掉了语义——一次抛硬币和一个生死攸关的决定都可以恰好是 1 bit。熵度量的是"消除了多少不确定"，不是"内容多重要"。② <strong>意外度 = −log p</strong>：越罕见的事件携带越多信息。"太阳照常升起"几乎零信息，"今天发生日食"信息量巨大。这也解释了为什么新闻天然偏爱小概率事件——高信息量不等于高价值。③ 熵在<em>均匀分布</em>时取最大：你对结果一无所知时，不确定性最高。④ 与热力学熵同构：玻尔兹曼的 S 与香农的 H 是同一个数学对象，这不是巧合——两者都在数"系统能处于多少种等可能的微观状态"。⑤ 与大脑的预测加工同源：感知系统持续预测下一刻的输入，而"惊讶"（预测误差）正是 −log p，大脑无时无刻不在最小化它。</p>
+<p>实践判别：判断一条信息有没有价值，问"它把我对某件事的不确定性降低了多少？" 读完一份报告，如果你心里的概率分布纹丝不动 → 这份报告的信息量是零，无论它有多长。</p>
+<div class="diagram">
+<svg viewbox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="430" y1="180" y2="180"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="50" y1="30" y2="180"></line>
+<path d="M 50 180 Q 240 -40 430 180" fill="none" stroke="#0a6fb8" stroke-width="2.5"></path>
+<line stroke="#c44545" stroke-dasharray="4,4" stroke-width="1.2" x1="240" x2="240" y1="50" y2="180"></line>
+<circle cx="240" cy="50" fill="#c44545" r="4"></circle>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="240" y="42">H 最大 = 1 bit</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="50" y="197">p=0</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="240" y="197">p=0.5</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="430" y="197">p=1</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="240" y="214">事件概率 p</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" transform="rotate(-90 18 105)" x="18" y="105">熵 H（不确定性）</text>
+</svg>
+<div class="caption">二元熵：完全可预测（p=0 或 1）时熵为零，最不确定（p=0.5）时熵最大</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>英语文本的冗余。字母分布极不均匀（e 极频繁，z 极罕见），加上拼写与语法规则，英文每个字母的实际信息量只有约 1 bit，远低于 26 个字母均匀分布时的 4.7 bit。这正是你能读懂残缺句子（"今天天气很＿＿"）的原因——语言天然冗余，而<strong>冗余就是抗噪</strong>。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 评估会议与资料：开两小时会后，你对决策的概率判断毫无变化 → 这两小时的熵贡献为零，是纯仪式。② AI：大模型的困惑度（perplexity）就是交叉熵的指数——模型对下一个 token 的"平均意外度"；困惑度低 = 模型对语言的不确定性小。③ 育儿：孩子说"我不知道"可能恰恰是高熵的诚实信号；逼她给一个低熵的确定答案，反而是在制造假信息。<strong>先看清不确定性有多大，再决定要不要急着消除它。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Shannon Entropy</strong> — entropy isn't "disorder," it's the <em>average surprise</em> of a probability distribution: the less certain you are about an outcome, the higher its entropy. H = −Σ p·log p measures how much uncertainty is resolved, on average, when the outcome is revealed (in bits). Key: information ≠ meaning — Shannon stripped semantics deliberately. Surprise = −log p, so rare events carry more information. Entropy is maximal under a uniform distribution. It's the same mathematical object as Boltzmann's thermodynamic entropy, and the same quantity the predictive brain minimizes as "surprise." Practical test of any message: by how much did it shrink your uncertainty? If your probability estimate didn't move, its information content was zero.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我要评估 [一份报告/一次会议/一个数据源] 的信息价值。请用香农熵的视角帮我：
+① 在接触它之前，我对 [关键问题] 的判断分布大致是什么？接触之后又是什么？
+② 据此估计它真正消除了多少不确定性（高/中/零）；
+③ 如果信息量接近零，指出它是"纯仪式"还是"只在确认已知"，并给出一个能带来高信息量的替代来源。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Help me assess the information value of [a report / meeting / data source] through the lens of Shannon entropy:
+1. Before encountering it, what was my belief distribution over [the key question]? After?
+2. Estimate how much uncertainty it actually removed (high / medium / zero).
+3. If the information content is near zero, say whether it's pure ritual or mere confirmation of the known, and propose one higher-information alternative source.</div>
+</section>
+<!-- Card 2: 信道容量 -->
+<section class="card c2">
+<h2>信道容量 · Channel Capacity</h2>
+<div class="subtitle">香农 1948 含噪信道编码定理——可靠通信可以逼近，但有一道硬墙</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>任何带噪声的信道都有一个<strong>容量上限 C</strong>：只要传输速率低于 C，就能通过编码把错误率压到任意低；一旦超过 C，无论多聪明的编码，错误率都消不掉。这是香农最反直觉的定理——<strong>在不可靠的信道上实现近乎完美的通信是可能的，但有一道硬墙</strong>。</p>
+<p>非平凡点：① 这是一个<strong>锐利的相变</strong>，不是平滑退化。低于 C，错误率可以→0；高于 C，错误率被锁死在某个正值之上。工程里很多"还能再压榨一点吗"的问题，答案其实是非黑即白的。② 可靠性是用<strong>冗余 + 延迟</strong>买来的：要逼近 C 又零错误，编码块必须够长，延迟随之上升。这是通信的根本权衡——你无法同时要高速率、零错误、零延迟。③ 容量公式 C = B·log(1 + S/N) 给出两个旋钮：带宽 B 和信噪比 S/N。但信噪比带来的容量增益是<em>对数级</em>的——<strong>靠堆功率（提高 S/N）改善通信，回报递减得极快</strong>。④ "信道"可迁移到任何受噪声限制的传输：教学、组织沟通、人机协作，各有各的容量墙。</p>
+<p>实践：当沟通反复失败，先分清"是发送的内容有问题，还是信道容量被超了？" 一次会议塞进 10 个决策点 = 远超人类工作记忆这条信道的容量，必然丢包。解法不是说得更大声（提功率），而是降速率（一次只讲一件）或加冗余（换个角度重说一遍）。</p>
+<div class="diagram">
+<svg viewbox="0 0 460 210" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="430" y1="170" y2="170"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="50" y1="25" y2="170"></line>
+<path d="M 50 165 L 250 165 Q 270 165 275 120 L 290 40" fill="none" stroke="#7048b8" stroke-width="2.5"></path>
+<line stroke="#c44545" stroke-dasharray="4,4" stroke-width="1.2" x1="262" x2="262" y1="35" y2="170"></line>
+<text fill="#c44545" font-size="12" font-weight="700" text-anchor="middle" x="262" y="28">C</text>
+<text fill="#1b8a5a" font-size="11" text-anchor="middle" x="150" y="158">可压到 ≈0</text>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="360" y="70">错误率锁死</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="240" y="190">传输速率 R →</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" transform="rotate(-90 18 100)" x="18" y="100">无法消除的错误率</text>
+</svg>
+<div class="caption">越过容量 C 是一道锐利的墙：墙内错误率可压到任意低，墙外被锁死</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>旅行者号探测器在数十亿公里外、信号微弱到几乎淹没在噪声里，却仍能传回清晰照片——靠的是纠错编码（给每一位数据裹上精心设计的冗余）。信道糟到极点，但只要速率压在容量之下，照片就能被完整还原。这就是"墙内"的奇迹。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 教孩子：她的注意力 + 词汇量构成一条窄信道。一口气讲三个新概念 = 超容量，全部丢失。逼近容量的方法是冗余——同一个点用故事、画图、动手三种方式重复，而不是讲得更快。② 人机协作：上下文窗口就是信道，prompt 工程本质上是"信道编码"——把你的意图编成在模型噪声下仍能正确解码的形式。③ 团队：两个团队之间"开会才说话" = 一条低带宽信道（呼应康威定律，D33）；硬把大量协作塞过这条窄信道，必然长出厚重的防御性接口。<strong>先估容量，再决定塞多少。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Channel Capacity</strong> — every noisy channel has a hard ceiling C: transmit below it and coding can drive the error rate arbitrarily low; transmit above it and no code, however clever, can remove the errors. Shannon's most counterintuitive result: near-perfect communication over an unreliable channel is possible — up to a wall. It's a sharp phase transition, not gradual decay. Reliability is bought with redundancy plus latency (longer codes). In C = B·log(1 + S/N), gains from raising signal-to-noise are only logarithmic, so brute-forcing power has fast-diminishing returns. The concept transfers to any noise-limited transport — teaching, org communication, human-AI collaboration. When communication keeps failing, first ask: is the content wrong, or is the channel over capacity?
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在 [某个沟通/教学/协作场景] 里反复失败。请用信道容量的视角诊断：
+① 这条"信道"的容量大致由什么限制（注意力/工作记忆/带宽/上下文窗口）？
+② 我是不是在超容量发送（一次塞太多）？给出"降速率"和"加冗余"两条具体改法；
+③ 我有没有在用"提功率"（说得更大声/更频繁）去解一个容量问题？指出回报为什么递减。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I keep failing at [a communication / teaching / collaboration setting]. Diagnose it via channel capacity:
+1. What limits this "channel's" capacity (attention / working memory / bandwidth / context window)?
+2. Am I transmitting over capacity (too much at once)? Give one "lower the rate" and one "add redundancy" fix.
+3. Am I throwing "more power" (louder / more often) at what is really a capacity problem? Explain why the returns diminish.</div>
+</section>
+<!-- Card 3: 编码与压缩 -->
+<section class="card c3">
+<h2>编码与压缩 · Coding &amp; Compression</h2>
+<div class="subtitle">"Compression is comprehension." — 信源编码定理把压缩与理解画上了等号</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>压缩的本质是<strong>剥除冗余</strong>：把高频符号编成短码、低频符号编成长码，平均长度就能逼近熵这个理论下界。香农的信源编码定理给出硬底线——<strong>无损压缩不可能把信息压得比它的熵更短</strong>，纯随机数据根本不可压缩。</p>
+<p>非平凡点：① <strong>压缩 = 理解</strong>，这是信息论最深的一个等式。一个能把数据压得很短的模型，等于找到了数据里的结构和规律；死记是零压缩（逐字背下来），理解是高压缩（抓住生成规则）。柯尔莫哥洛夫复杂度把这点推到极致：一个对象的复杂度 = 能生成它的最短程序——规律越多，程序越短，越可压缩。② <strong>抽象就是有损压缩</strong>：地图、模型、概念都在主动丢弃细节，换取可处理性。关键不是"压不压"，而是"丢掉的是不是你不需要的那部分"——这正是好抽象与坏抽象之分（见 D33）。③ 与科学、奥卡姆剃刀同构：好理论 = 对观测的最短编码，用最少假设覆盖最多现象。④ 与学习的泛化同源：模型若只是背下训练集 = 没压缩，必然过拟合；能压缩 = 抓到了可迁移的规律。</p>
+<p>实践：检验你是否真懂一样东西，看你能否<strong>把它压短而不失真</strong>——用一句话讲清它的核心生成规则。压不短，往往说明还没理解，只是在搬运细节。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>摩尔斯电码早在 1838 年就凭直觉用上了最优编码思想——最高频的字母 E 编成最短的一个点"·"，罕见的 Q 编成长串。这与一个世纪后香农信源编码定理"短码给高频符号"的结论完全一致：好的编码，就是让常见的东西更省力。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 笔记：好笔记不是抄全，而是有损压缩——写摘要的动作逼你去找结构，找不到结构就压不动；压缩失败本身就是"我还没懂"的诚实信号。② AI：大模型本质上是把整个互联网做了一次有损压缩，"理解"在信息论意义上就等同于压缩能力；这也是为什么"会复述"和"会压成一句话"是两种不同的能力。③ 知识体系：读完 50 篇论文后能画出一张地图（少数原理生成多数结论）= 你把这个领域压缩了；若只能逐篇复述 = 还停在零压缩。<strong>能压缩，才算真的拥有。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Coding &amp; Compression</strong> — compression is the removal of redundancy: short codes for frequent symbols, long codes for rare ones, with average length bounded below by entropy (Shannon's source-coding theorem). Lossless compression can never beat the entropy; truly random data is incompressible. The deep equation: <em>compression = comprehension</em>. A model that compresses data well has found its structure; memorization is zero compression, understanding is high compression. Kolmogorov complexity pushes this to the limit — an object's complexity is the length of the shortest program that generates it. Abstraction is lossy compression (throwing away detail you don't need); science and Occam's razor are the shortest encoding of observations; generalization in learning is compression. Test of real understanding: can you compress it to one sentence without distortion?
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想检验自己是否真懂 [某个概念/领域/系统]。请用"压缩=理解"的框架考我：
+① 让我先把它压成一句话的"生成规则"，再指出我压掉的是不是真正的冗余、有没有失真；
+② 如果我只能罗列细节、压不短，诊断我是卡在"零压缩的记忆"阶段，还是抓错了核心；
+③ 给出一个把它压得更短、又不丢关键结构的更优"编码"。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to test whether I really understand [a concept / field / system]. Use the "compression = comprehension" frame:
+1. Have me compress it to a one-sentence generative rule, then judge whether what I dropped was real redundancy or a distortion.
+2. If I can only list details and can't compress, diagnose whether I'm stuck at "zero-compression memorization" or grasping the wrong core.
+3. Offer a shorter "encoding" that loses no essential structure.</div>
+</section>
+<!-- Card 4: 互信息 -->
+<section class="card c4">
+<h2>互信息 · Mutual Information</h2>
+<div class="subtitle">I(X;Y) — 知道一个变量，能让你对另一个变量的不确定性减少多少</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>互信息 I(X;Y) 度量<strong>知道 X 能让你对 Y 的不确定性减少多少</strong>：I(X;Y) = H(Y) − H(Y|X)。它对称、非负，当且仅当 X 与 Y 相互独立时为零。</p>
+<p>非平凡点：① <strong>互信息是相关系数的彻底升级版</strong>。相关系数只能捕捉线性关系，两个变量可以相关系数为零却高度依赖（如 Y=X²）；互信息捕捉<em>任意形式</em>的依赖，是"X 到底含不含 Y 的信息"的终极判据。② 一个信号或指标的价值 = <strong>它与你真正关心的目标之间的互信息</strong>。KPI 之所以会失效（古德哈特定律，见 D50），正是因为你优化的代理指标与真实目标之间的互信息被亲手破坏了。③ 信道容量在数学上就是<strong>互信息的最大值</strong>——这把四个模型缝成了一体：通信、编码、不确定性、依赖，本是同一套语言。④ 与表征学习同源："信息瓶颈"原理说，好的学习 = 把输入 X 里无关的细节压掉、同时尽量保留与目标 Y 的互信息；大脑与神经网络都在做这件事——构造与"对未来有用的东西"互信息最大的内部表征。</p>
+<p>实践：决定要不要采集某个数据、问某个问题、盯某个仪表盘，先问<strong>"它和我要决策的事，互信息有多高？"</strong> 高互信息 = 看了能改变判断；零互信息 = 再精确也是噪声。多数人收集的"数据"，其实与真实决策的互信息接近零。</p>
+<div class="diagram">
+<svg viewbox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="190" cy="100" fill="#1b8a5a" fill-opacity="0.18" r="80" stroke="#1b8a5a" stroke-width="2"></circle>
+<circle cx="270" cy="100" fill="#0a6fb8" fill-opacity="0.18" r="80" stroke="#0a6fb8" stroke-width="2"></circle>
+<text fill="#1b8a5a" font-size="13" font-weight="700" text-anchor="middle" x="140" y="55">H(X)</text>
+<text fill="#0a6fb8" font-size="13" font-weight="700" text-anchor="middle" x="320" y="55">H(Y)</text>
+<text fill="#495057" font-size="11" text-anchor="middle" x="150" y="105">H(X|Y)</text>
+<text fill="#495057" font-size="11" text-anchor="middle" x="310" y="105">H(Y|X)</text>
+<text fill="#c44545" font-size="12" font-weight="700" text-anchor="middle" x="230" y="98">I(X;Y)</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="230" y="118">互信息</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="230" y="188">重叠 = 共享的信息；独立时无重叠，互信息为零</text>
+</svg>
+<div class="caption">互信息 = 两个变量不确定性的重叠部分；它捕捉任意（含非线性）依赖</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>医学检验的价值不在于它多精密，而在于检验结果与真实病情之间的互信息。一个对所有人都报阳性的检测，结果与病情的互信息为零——再"准"也毫无诊断价值。这也是为什么罕见病的筛查要格外当心假阳性：基础率极低时，一次阳性带来的互信息远比直觉想象的小。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 选指标：盯一个与最终结果互信息低的代理指标（比如"代码行数"之于"软件价值"），越优化越跑偏——这就是古德哈特定律的信息论根源。② 注意力分配：信息过载时代，真正稀缺的不是信息，而是"与你的决策高互信息的信息"；过滤的本质，是按互信息给信息排序。③ 提问：一个好问题，是答案与你真正想知道的事互信息最大的那个问题；多数无效沟通，都耗在问互信息接近零的问题上。<strong>不是信息越多越好，而是互信息越高越好。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Mutual Information</strong> — I(X;Y) = H(Y) − H(Y|X) measures how much knowing X reduces your uncertainty about Y. It's symmetric, non-negative, and zero iff X and Y are independent. It's a strict upgrade over correlation: correlation catches only linear dependence (Y=X² can have zero correlation yet full dependence), while mutual information catches dependence of <em>any</em> form. The value of any signal or metric equals its mutual information with the outcome you actually care about — which is exactly why proxy metrics fail (Goodhart's Law) when you destroy that shared information. Channel capacity is, mathematically, the maximum of mutual information — uniting all four models. The Information Bottleneck frames learning as compressing X while preserving its mutual information with the target Y. Before collecting data or asking a question, ask: how high is its mutual information with what I must decide?
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在用 [某个指标/数据源/问题] 来支撑 [某个决策]。请用互信息的视角审查：
+① 这个信号与我真正关心的结果之间，互信息估计是高、中，还是接近零？
+② 它有没有"线性相关看着不错、其实依赖很弱"或反之的情况？
+③ 若互信息低，指出我是否落入了古德哈特陷阱，并提出一个与目标互信息更高的替代信号。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm using [a metric / data source / question] to support [a decision]. Audit it via mutual information:
+1. Is this signal's mutual information with the outcome I truly care about high, medium, or near zero?
+2. Is there a "looks linearly correlated but barely dependent" mismatch, or the reverse?
+3. If it's low, tell me whether I've fallen into a Goodhart trap, and propose a substitute signal with higher mutual information with the goal.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>

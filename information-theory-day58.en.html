@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Daily: Information-Theoretic Thinking · 2026-06-18</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Information-Theoretic Thinking</h1>
+<div class="meta">2026-06-18 · Day 58</div>
+</header>
+<!-- Card 1: Shannon Entropy -->
+<section class="card c1">
+<h2>Shannon Entropy</h2>
+<div class="subtitle">"Information is the resolution of uncertainty." — Claude Shannon</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Entropy isn't "disorder," it's the <strong>average surprise of a probability distribution</strong> — the less certain you are about an outcome, the higher its entropy. Shannon's H = −Σ p·log p quantifies, on average, how much uncertainty is resolved when the outcome is revealed. The unit is the bit: 1 bit = the information needed to cut the possibilities in half.</p>
+<p>Non-trivial: (1) <strong>information ≠ meaning</strong>. Shannon stripped away semantics deliberately — a coin flip and a life-or-death decision can both be exactly 1 bit. Entropy measures "how much uncertainty was removed," not "how important the content is." (2) <strong>Surprise = −log p</strong>: rarer events carry more information. "The sun rose again" has near-zero information; "there was a solar eclipse today" has a lot. This is also why news naturally favors low-probability events — high information ≠ high value. (3) Entropy is maximal under a <em>uniform</em> distribution: you're most uncertain when you know nothing about the outcome. (4) It's isomorphic to thermodynamic entropy — Boltzmann's S and Shannon's H are the same mathematical object, both counting "how many equally likely microstates a system can occupy." (5) It's the same quantity the predictive brain minimizes: perception constantly predicts the next input, and "surprise" (prediction error) is exactly −log p.</p>
+<p>Practical test: to judge whether a piece of information has value, ask "by how much did it lower my uncertainty about something?" If your internal probability estimate didn't budge after reading a report, its information content was zero — no matter how long it was.</p>
+<div class="diagram">
+<svg viewbox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="430" y1="180" y2="180"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="50" y1="30" y2="180"></line>
+<path d="M 50 180 Q 240 -40 430 180" fill="none" stroke="#0a6fb8" stroke-width="2.5"></path>
+<line stroke="#c44545" stroke-dasharray="4,4" stroke-width="1.2" x1="240" x2="240" y1="50" y2="180"></line>
+<circle cx="240" cy="50" fill="#c44545" r="4"></circle>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="240" y="42">H max = 1 bit</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="50" y="197">p=0</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="240" y="197">p=0.5</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="430" y="197">p=1</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="240" y="214">event probability p</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" transform="rotate(-90 18 105)" x="18" y="105">entropy H (uncertainty)</text>
+</svg>
+<div class="caption">Binary entropy: zero when fully predictable (p=0 or 1), maximal when most uncertain (p=0.5)</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The redundancy of English text. Letter frequencies are wildly uneven (e very frequent, z very rare), and with spelling and grammar rules, each English letter actually carries only about 1 bit — far below the 4.7 bits of 26 equiprobable letters. That's exactly why you can read a mutilated sentence ("the weather today is ___"): language is inherently redundant, and <strong>redundancy is noise resistance</strong>.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Evaluating meetings and documents: if after a two-hour meeting your probability judgment about the decision hasn't changed, its entropy contribution was zero — pure ritual. (2) AI: an LLM's perplexity is the exponential of cross-entropy — the model's "average surprise" at the next token; low perplexity = low uncertainty about language. (3) Parenting: a child's "I don't know" may be an honest high-entropy signal; forcing a low-entropy certain answer manufactures false information instead. <strong>See how large the uncertainty is first, then decide whether to rush to remove it.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>Help me assess the information value of [a report / meeting / data source] through the lens of Shannon entropy:
+1. Before encountering it, what was my belief distribution over [the key question]? After?
+2. Estimate how much uncertainty it actually removed (high / medium / zero).
+3. If the information content is near zero, say whether it's pure ritual or mere confirmation of the known, and propose one higher-information alternative source.</div>
+</section>
+<!-- Card 2: Channel Capacity -->
+<section class="card c2">
+<h2>Channel Capacity</h2>
+<div class="subtitle">Shannon's 1948 noisy-channel coding theorem — reliable communication can be approached, but there's a hard wall</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Every noisy channel has a <strong>capacity ceiling C</strong>: transmit below it and coding can drive the error rate arbitrarily low; cross it and no code, however clever, can remove the errors. This is Shannon's most counterintuitive result — <strong>near-perfect communication over an unreliable channel is possible, but there's a hard wall</strong>.</p>
+<p>Non-trivial: (1) it's a <strong>sharp phase transition</strong>, not gradual decay. Below C, the error rate can go to 0; above C, it's locked above some positive value. Many engineering "can we squeeze a bit more?" questions actually have black-and-white answers. (2) Reliability is bought with <strong>redundancy + latency</strong>: to approach C with zero error, code blocks must be long, so latency rises. You cannot have high rate, zero error, and zero latency at once. (3) The formula C = B·log(1 + S/N) gives two knobs — bandwidth B and signal-to-noise ratio S/N — but the gain from SNR is only <em>logarithmic</em>, so <strong>brute-forcing power has fast-diminishing returns</strong>. (4) "Channel" transfers to any noise-limited transport: teaching, organizational communication, human-AI collaboration each have their own capacity wall.</p>
+<p>Practice: when communication keeps failing, first separate "is the content wrong, or has the channel exceeded capacity?" Cramming 10 decision points into one meeting = far over the capacity of human working memory, so packets get dropped. The fix isn't speaking louder (more power) but lowering the rate (one thing at a time) or adding redundancy (re-explain from another angle).</p>
+<div class="diagram">
+<svg viewbox="0 0 460 210" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="430" y1="170" y2="170"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="50" y1="25" y2="170"></line>
+<path d="M 50 165 L 250 165 Q 270 165 275 120 L 290 40" fill="none" stroke="#7048b8" stroke-width="2.5"></path>
+<line stroke="#c44545" stroke-dasharray="4,4" stroke-width="1.2" x1="262" x2="262" y1="35" y2="170"></line>
+<text fill="#c44545" font-size="12" font-weight="700" text-anchor="middle" x="262" y="28">C</text>
+<text fill="#1b8a5a" font-size="11" text-anchor="middle" x="150" y="158">drivable to ≈0</text>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="365" y="70">error locked in</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="240" y="190">transmission rate R →</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" transform="rotate(-90 18 100)" x="18" y="100">irreducible error rate</text>
+</svg>
+<div class="caption">Crossing capacity C is a sharp wall: inside, error can be driven arbitrarily low; outside, it's locked in</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The Voyager probes, billions of kilometers out with a signal nearly buried in noise, still return crisp photos — thanks to error-correcting codes (every data bit wrapped in carefully designed redundancy). The channel is terrible, yet as long as the rate stays below capacity, the image is fully recovered. That's the "inside-the-wall" miracle.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Teaching a child: her attention + vocabulary form a narrow channel. Three new concepts at once = over capacity, all lost. The way to approach capacity is redundancy — repeat the same point via story, drawing, and hands-on, not by talking faster. (2) Human-AI collaboration: the context window is the channel, and prompt engineering is essentially "channel coding" — encoding your intent so it decodes correctly under the model's noise. (3) Teams: two teams that "only talk in meetings" form a low-bandwidth channel (echoing Conway's Law, D33); forcing heavy collaboration through it inevitably grows thick defensive interfaces. <strong>Estimate capacity first, then decide how much to push through.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I keep failing at [a communication / teaching / collaboration setting]. Diagnose it via channel capacity:
+1. What limits this "channel's" capacity (attention / working memory / bandwidth / context window)?
+2. Am I transmitting over capacity (too much at once)? Give one "lower the rate" and one "add redundancy" fix.
+3. Am I throwing "more power" (louder / more often) at what is really a capacity problem? Explain why the returns diminish.</div>
+</section>
+<!-- Card 3: Coding & Compression -->
+<section class="card c3">
+<h2>Coding &amp; Compression</h2>
+<div class="subtitle">"Compression is comprehension." — the source-coding theorem equates compression with understanding</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Compression is fundamentally the <strong>removal of redundancy</strong>: short codes for frequent symbols, long codes for rare ones, with average length approaching entropy, the theoretical floor. Shannon's source-coding theorem sets the hard limit — <strong>lossless compression can never make information shorter than its entropy</strong>; truly random data is incompressible.</p>
+<p>Non-trivial: (1) <strong>compression = understanding</strong>, information theory's deepest equation. A model that compresses data into something short has found its structure and regularities; rote memorization is zero compression (storing it verbatim), understanding is high compression (capturing the generative rule). Kolmogorov complexity takes this to the limit: an object's complexity = the length of the shortest program that generates it — more regularity, shorter program, more compressible. (2) <strong>Abstraction is lossy compression</strong>: maps, models, and concepts actively discard detail to gain tractability. The question isn't "compress or not" but "is what you threw away the part you didn't need?" — exactly the line between good and bad abstraction (see D33). (3) Isomorphic to science and Occam's razor: a good theory is the shortest encoding of observations, covering the most phenomena with the fewest assumptions. (4) Same family as generalization in learning: a model that merely memorizes the training set hasn't compressed and will overfit; one that compresses has captured transferable structure.</p>
+<p>Practice: to test whether you truly understand something, see if you can <strong>compress it without distortion</strong> — state its core generative rule in one sentence. If you can't shorten it, you usually haven't understood it; you're just moving details around.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Morse code, as far back as 1838, intuitively used the optimal-coding idea — the most frequent letter, E, gets the shortest symbol, a single dot "·," while the rare Q gets a long string. This matches Shannon's source-coding theorem a century later ("short codes for frequent symbols") exactly: good coding makes the common things cheaper.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Notes: good notes aren't a full transcription but a lossy compression — the act of writing a summary forces you to find structure, and if there's none to find, you can't compress; failure to compress is itself an honest signal of "I don't get it yet." (2) AI: an LLM is essentially a lossy compression of the entire internet, and "understanding" in the information-theoretic sense just is compression ability; this is why "can paraphrase" and "can compress to one sentence" are two different skills. (3) Knowledge systems: after reading 50 papers, being able to draw one map (a few principles generating most conclusions) = you've compressed the field; only being able to recite paper by paper = still at zero compression. <strong>Only what you can compress do you truly own.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I want to test whether I really understand [a concept / field / system]. Use the "compression = comprehension" frame:
+1. Have me compress it to a one-sentence generative rule, then judge whether what I dropped was real redundancy or a distortion.
+2. If I can only list details and can't compress, diagnose whether I'm stuck at "zero-compression memorization" or grasping the wrong core.
+3. Offer a shorter "encoding" that loses no essential structure.</div>
+</section>
+<!-- Card 4: Mutual Information -->
+<section class="card c4">
+<h2>Mutual Information</h2>
+<div class="subtitle">I(X;Y) — how much knowing one variable reduces your uncertainty about another</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Mutual information I(X;Y) measures <strong>how much knowing X reduces your uncertainty about Y</strong>: I(X;Y) = H(Y) − H(Y|X). It's symmetric, non-negative, and zero iff X and Y are independent.</p>
+<p>Non-trivial: (1) <strong>mutual information is a thorough upgrade over correlation</strong>. Correlation catches only linear relationships; two variables can have zero correlation yet be highly dependent (e.g. Y=X²). Mutual information catches dependence of <em>any</em> form — the ultimate test of "does X contain information about Y?" (2) The value of a signal or metric = <strong>its mutual information with the outcome you actually care about</strong>. KPIs fail (Goodhart's Law, see D50) precisely because you've destroyed the mutual information between the proxy you optimize and the real goal. (3) Channel capacity is, mathematically, the <strong>maximum of mutual information</strong> — stitching all four models into one: communication, coding, uncertainty, and dependence are the same language. (4) Same family as representation learning: the Information Bottleneck principle says good learning = compressing away the irrelevant detail in input X while preserving as much mutual information with target Y as possible; brains and neural networks both do this — building internal representations with maximal mutual information with "what's useful for the future."</p>
+<p>Practice: before collecting some data, asking some question, or watching some dashboard, ask <strong>"how high is its mutual information with what I must decide?"</strong> High mutual information = looking at it can change your judgment; zero = it's noise, however precise. Most of the "data" people collect has near-zero mutual information with the real decision.</p>
+<div class="diagram">
+<svg viewbox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="190" cy="100" fill="#1b8a5a" fill-opacity="0.18" r="80" stroke="#1b8a5a" stroke-width="2"></circle>
+<circle cx="270" cy="100" fill="#0a6fb8" fill-opacity="0.18" r="80" stroke="#0a6fb8" stroke-width="2"></circle>
+<text fill="#1b8a5a" font-size="13" font-weight="700" text-anchor="middle" x="140" y="55">H(X)</text>
+<text fill="#0a6fb8" font-size="13" font-weight="700" text-anchor="middle" x="320" y="55">H(Y)</text>
+<text fill="#495057" font-size="11" text-anchor="middle" x="150" y="105">H(X|Y)</text>
+<text fill="#495057" font-size="11" text-anchor="middle" x="310" y="105">H(Y|X)</text>
+<text fill="#c44545" font-size="12" font-weight="700" text-anchor="middle" x="230" y="98">I(X;Y)</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="230" y="118">mutual info</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="230" y="188">overlap = shared information; independent → no overlap, MI is zero</text>
+</svg>
+<div class="caption">Mutual information = the overlap of two variables' uncertainty; it captures any (incl. nonlinear) dependence</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The value of a medical test lies not in how precise it is but in the mutual information between its result and the true condition. A test that comes back positive for everyone has zero mutual information with the disease — however "accurate," it's diagnostically worthless. This is also why rare-disease screening must beware false positives: when the base rate is tiny, one positive carries far less mutual information than intuition suggests.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Choosing metrics: fixating on a proxy with low mutual information with the real outcome (e.g. "lines of code" vs "software value") drifts further off the more you optimize it — the information-theoretic root of Goodhart's Law. (2) Attention allocation: in an age of information overload, the true scarcity isn't information but "information with high mutual information to your decision"; filtering is essentially ranking information by mutual information. (3) Asking questions: a good question is the one whose answer has maximal mutual information with what you truly need to know; most ineffective communication is spent asking questions with near-zero mutual information. <strong>It's not more information that's better, but higher mutual information.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm using [a metric / data source / question] to support [a decision]. Audit it via mutual information:
+1. Is this signal's mutual information with the outcome I truly care about high, medium, or near zero?
+2. Is there a "looks linearly correlated but barely dependent" mismatch, or the reverse?
+3. If it's low, tell me whether I've fallen into a Goodhart trap, and propose a substitute signal with higher mutual information with the goal.</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Back to index</a>
+</footer>
+</div>
+</body>
+</html>
