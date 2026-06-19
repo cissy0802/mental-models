@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Daily: Cybernetics &amp; Feedback Regulation · 2026-06-19</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Cybernetics &amp; Feedback Regulation</h1>
+<div class="meta">2026-06-19 · Day 59</div>
+</header>
+<!-- Card 1: Negative Feedback -->
+<section class="card c1">
+<h2>Negative Feedback</h2>
+<div class="subtitle">The core mechanism of cybernetics: a system senses error, corrects in reverse, and pulls itself back to target</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Negative feedback is <strong>the engine of all stability</strong>: a system continuously measures the <strong>error</strong> between "where I am now" and "the target," then acts to shrink it. Thermostats, air conditioners, cruise control, body-temperature regulation, an organization's after-action correction — all share the same loop: compare, correct, compare again.</p>
+<p>Non-trivial: (1) <strong>goal-directed behavior needs no "intention."</strong> A purely mechanical feedback loop can act as if it's "pursuing a goal." Cybernetics thus redefined the machine: purpose can be an <em>emergent property</em> of feedback structure, without presupposing a thinking subject — its deep challenge to cognitive science and consciousness studies. (2) <strong>It runs on error, not commands</strong>: it needn't predict the world or hold a full plan, only measure how far it is from target. A more robust control philosophy than feed-forward planning: <strong>don't predict, just correct</strong>. (3) <strong>The gain–stability tradeoff</strong>: harder correction (high gain) returns faster but more easily overshoots and oscillates (a setup for Card 3). (4) The price of strong negative feedback is that it <strong>resists all change — including the change you want</strong>; it's inherently conservative and intervention-resistant, the root of "policy resistance" in organizations.</p>
+<p>Practice: to hit a goal reliably, rather than forcing it with willpower, <strong>install a feedback loop</strong> — quantify the target, shorten the measurement cycle, let correction happen automatically. Losing weight via daily weigh-in feedback is far more reliable than resolve.</p>
+<div class="diagram">
+<svg viewbox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#eaf3fa" height="40" rx="6" stroke="#0a6fb8" stroke-width="1.5" width="80" x="40" y="80"></rect>
+<text fill="#0a6fb8" font-size="12" text-anchor="middle" x="80" y="104">Comparator</text>
+<rect fill="#eaf3fa" height="40" rx="6" stroke="#0a6fb8" stroke-width="1.5" width="80" x="200" y="80"></rect>
+<text fill="#0a6fb8" font-size="11" text-anchor="middle" x="240" y="104">Act / System</text>
+<rect fill="#eaf3fa" height="40" rx="6" stroke="#0a6fb8" stroke-width="1.5" width="80" x="360" y="80"></rect>
+<text fill="#0a6fb8" font-size="12" text-anchor="middle" x="400" y="104">Sensor</text>
+<line stroke="#636e72" stroke-width="1.5" x1="120" x2="195" y1="100" y2="100" marker-end="url(#a1)"></line>
+<line stroke="#636e72" stroke-width="1.5" x1="280" x2="355" y1="100" y2="100" marker-end="url(#a1)"></line>
+<path d="M 400 140 L 400 175 L 80 175 L 80 125" fill="none" stroke="#c44545" stroke-width="1.5" marker-end="url(#a2)"></path>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="157" y="92">error</text>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="240" y="170">reverse correction (−)</text>
+<text fill="#0a6fb8" font-size="11" text-anchor="middle" x="80" y="62">target →</text>
+<defs>
+<marker id="a1" markerHeight="6" markerWidth="6" orient="auto" refX="5" refY="3"><path d="M0,0 L6,3 L0,6 Z" fill="#636e72"></path></marker>
+<marker id="a2" markerHeight="6" markerWidth="6" orient="auto" refX="5" refY="3"><path d="M0,0 L6,3 L0,6 Z" fill="#c44545"></path></marker>
+</defs>
+</svg>
+<div class="caption">The negative-feedback loop: the measured state is sent back in reverse, continuously canceling deviation — stability is born here</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The steam engine's centrifugal governor: as speed rises, the flyballs swing out under centrifugal force and automatically close the steam valve, dropping the speed back; as it slows, the balls draw in and the valve opens. With no "command" at all, pure mechanism holds a constant speed. It was an unsung hero of the Industrial Revolution and cybernetics' earliest inspiration — the first time a machine "looked after itself."</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Life itself is a collection of negative feedback: blood sugar, temperature, and blood pressure are all held by homeostasis — deviate and you're pulled back. (2) AI: gradient descent is essentially negative feedback — using loss (error) to correct weights in reverse; the reward signal in reinforcement learning is also error-driven. (3) Self-management: replace "wanting to focus" with a measurable loop (log daily deep-work hours → see the gap → micro-adjust); far steadier than relying on resolve. <strong>Build the loop first, then talk about willpower.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I want [a goal / habit / metric] to hold steady, but I keep relying on willpower and bouncing back. Help me design it as a negative-feedback control loop:
+1. What measurable quantity should "error" be? What are the target and current values?
+2. What measurement cycle fits (too long loses control, too short overreacts)?
+3. When error appears, what is the smallest, automated correction? Design it as a closed loop that doesn't depend on willpower.</div>
+</section>
+<!-- Card 2: Positive Feedback / Runaway -->
+<section class="card c2">
+<h2>Positive Feedback / Runaway</h2>
+<div class="subtitle">Output reinforces input — the same mechanism is both growth engine and collapse engine</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Positive feedback <strong>amplifies deviation</strong>: output reinforces input, so the more it deviates the faster it goes. Unlike negative feedback, which pulls a system back to a point, it <strong>pushes the system away</strong> from its current state — into exponential growth, or exponential collapse.</p>
+<p>Non-trivial: (1) positive feedback is neither "stable" nor "unstable" — it produces <strong>blow-up and departure</strong>. The same snowball is a "virtuous circle" going up and a "vicious circle" going down; structurally identical. (2) <strong>Pure positive feedback is rare and short-lived in nature</strong>: it either hits a resource ceiling (taken over by negative feedback, bending exponential growth into an S-curve) or burns the system through. What endures is always a fine balance of positive and negative. (3) <strong>A critical point is a phase transition</strong>: when positive-feedback gain overpowers negative-feedback restraint, the system crosses the critical point into runaway — the shared mathematical shape of bubbles, stampedes, and avalanches (echoing the "critical point" in Systems Thinking, D3). (4) Positive feedback is <strong>the engine of lock-in and path dependence</strong>: network effects, the Matthew effect, and standards wars all amplify <em>tiny initial differences</em> into winner-take-all.</p>
+<p>Practice: first identify which kind of positive feedback you're in. For virtuous loops (compounding, word of mouth, skill), find the <strong>lowest-cost spark</strong>, ignite it deliberately and protect it from interruption; for vicious loops (debt spirals, anxiety→insomnia→more anxiety), the key isn't trying harder but <strong>installing a negative-feedback circuit-breaker</strong> to cut the loop before it runs away.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Microphone howl: the speaker's sound is picked up again by the mic → amplified → louder → picked up again… within a few hundred milliseconds it screams to the limit. The most vivid embodiment of positive feedback — you don't need a louder initial sound, just a closed loop, and the system races to the extreme on its own. A bank run is its social version: someone withdraws → others panic → more withdraw → liquidity dries up; a tiny disturbance amplified into collapse.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Finance: the "deleveraging spiral" of leverage + panic — a drop triggers selling, selling deepens the drop. (2) AI: a recommender's echo chamber is societal-scale positive feedback — you click extreme content → the system pushes more → you see it as more extreme → you click more; that's how filter bubbles self-reinforce. (3) Personal growth: the compounding of reputation, skill, and wealth is a virtuous positive loop you can ignite — hardest early, but once the loop turns it self-accelerates. <strong>Ignite virtuous loops; brake vicious ones.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I'm in [a growth / decline / spiral situation] and want to see the positive-feedback structure behind it. Help me:
+1. Draw the loop: how does output reinforce input? Is it turning virtuous or vicious?
+2. Is any negative feedback restraining it? Roughly where is the critical point?
+3. If virtuous, where is the lowest-cost spark to ignite it? If vicious, at which point in the loop does a circuit-breaker work best?</div>
+</section>
+<!-- Card 3: Delay and Oscillation -->
+<section class="card c3">
+<h2>Delay and Oscillation</h2>
+<div class="subtitle">Feedback is never instant — delay turns gentle correction into overshoot, swing-back, and oscillation</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Real-world feedback always carries <strong>delay</strong>: sensing takes time, transmission takes time, and effects take even longer to show. Once negative feedback carries a delay, it stops gently restoring the system and instead <strong>overshoots, swings back, and oscillates</strong> — long enough delays even diverge into instability.</p>
+<p>Non-trivial: (1) <strong>delay can turn "stable negative feedback" into "an oscillating system,"</strong> and the longer the delay the more dangerous. This is the most counterintuitive part: people think more force returns to target faster, but in a delayed system, <strong>high gain + long delay = amplified oscillation</strong> — push harder and it swings wider. (2) So the right response is often counterintuitive — <strong>either lower the gain (correct gently, patiently) or shorten the delay</strong>, not push harder. (3) Oscillation is a system "chasing a target it can only see in its past": you correct an error from several steps ago, and by the time the correction lands, the world has changed. (4) The bullwhip effect, inventory cycles, and "over-tighten / over-loosen" policy swings are all the same delayed-feedback oscillation. (5) A good controller <strong>models the delay and adds feed-forward compensation</strong> — using prediction to offset lag; exactly how the brain uses predictive processing to counter neural transmission delay.</p>
+<p>Practice: in slow-feedback systems, <strong>patience is a control strategy, not a virtue</strong>. When an intervention takes a long time to show, the most dangerous thing is to keep adding force on instant feel. Estimate the loop's delay first, then decide how much force to apply.</p>
+<div class="diagram">
+<svg viewbox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="40" x2="450" y1="100" y2="100"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="40" x2="40" y1="20" y2="180"></line>
+<path d="M 40 160 C 90 160 100 30 140 30 C 175 30 180 165 215 165 C 245 165 250 55 285 55 C 315 55 320 140 350 140 C 380 140 385 80 415 85 C 435 88 445 100 450 100" fill="none" stroke="#c44545" stroke-width="2.5"></path>
+<line stroke="#1b8a5a" stroke-dasharray="5,4" stroke-width="1.5" x1="40" x2="450" y1="100" y2="100"></line>
+<text fill="#1b8a5a" font-size="11" text-anchor="start" x="398" y="116">target</text>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="140" y="22">overshoot</text>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="215" y="180">swing back</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="245" y="197">time → (longer delay, larger amplitude)</text>
+</svg>
+<div class="caption">Delayed negative feedback: correction is always half a beat late, so the system swings above and below the target rather than converging smoothly</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Adjusting an old shower faucet: water-temperature feedback is delayed, so you crank the hot side because it's cold → still cold in the pipe → crank more → suddenly scalding → frantically crank cold → overshoot to icy again… bouncing between hot and cold. The problem isn't the faucet but the delay between "your action" and "the temperature change." The supply chain's bullwhip effect is the amplified version: small swings in end demand, transmitted through layers of delay, become violent capacity oscillations upstream.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Parenting and management: today's intervention shows its effect weeks later; piling on force by instant reaction manufactures "over-manage / over-loosen" policy swings. (2) AI/systems: monitoring lag in distributed systems makes auto-scaling jitter and oscillate (echoing backpressure, D37); too large a learning rate (gain) makes training loss diverge. (3) Health: the diet–binge cycle is exactly delayed feedback + over-correction. Key: identify the loop's delay; better to <strong>lower the gain and give it time</strong> than to force harder when you can't yet see the effect.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>In [a slow-feedback area: parenting / team management / health / investing], I seem to keep over-correcting and swinging back and forth. Diagnose it via delay and oscillation:
+1. Roughly how long is the delay in this loop, from "I act" to "I see the effect"?
+2. Am I increasing force (high gain) because I don't see results fast enough? How does that amplify oscillation?
+3. Give me two fixes: one to "lower the gain (correct gently and patiently)" and one to "shorten the delay (get the feedback signal faster)."</div>
+</section>
+<!-- Card 4: Requisite Variety -->
+<section class="card c4">
+<h2>Requisite Variety</h2>
+<div class="subtitle">Ashby's Law: "Only variety can absorb variety" — the fundamental lower bound on control</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Ashby's Law of Requisite Variety sets a <strong>hard lower bound</strong> on control: for a controller to regulate a system, the number of <strong>responses it can produce (its variety) must be at least the number of disturbances the system can present</strong>. In a phrase — <strong>only variety can absorb variety</strong>. You cannot govern a complex environment with a controller simpler than it.</p>
+<p>Non-trivial: (1) this is an unavoidable lower bound, with only two routes to stay in control: <strong>raise the controller's variety</strong> (more responses, richer mental models) or <strong>lower the controlled system's variety</strong> (simplify the environment, cut disturbance sources). (2) It explains <strong>why over-simplified rules and management inevitably fail</strong>: governing a reality with 500 situations using 5 rules guarantees many cases slip through (echoing the metric traps of D50 and bureaucratic rigidity). (3) It draws <strong>the boundary of automation</strong>: automation can only absorb the few kinds of change it was designed for; anything beyond its variety must be backstopped by a human — the theoretical basis of human-AI collaboration, and why fully automated systems always keep a person in the loop. (4) Pushed to cognition: <strong>the richness of your mental models sets how complex a world you can handle</strong>.</p>
+<p>Practice: when a situation keeps beating you, don't first ask "am I trying hard enough?" but <strong>"does my response variety match this problem's complexity?"</strong> The way out is either to add tools and perspectives, or to actively bring the problem's complexity down.</p>
+<div class="diagram">
+<svg viewbox="0 0 480 170" xmlns="http://www.w3.org/2000/svg">
+<text fill="#636e72" font-size="12" text-anchor="start" x="30" y="40">Disturbance variety</text>
+<rect fill="#c44545" fill-opacity="0.25" height="26" stroke="#c44545" stroke-width="1.5" width="290" x="160" y="24"></rect>
+<text fill="#636e72" font-size="12" text-anchor="start" x="30" y="100">Controller variety</text>
+<rect fill="#1b8a5a" fill-opacity="0.25" height="26" stroke="#1b8a5a" stroke-width="1.5" width="310" x="160" y="84"></rect>
+<text fill="#1b8a5a" font-size="13" font-weight="700" text-anchor="middle" x="240" y="150">controller variety ≥ disturbance variety → controllable</text>
+</svg>
+<div class="caption">The kinds of response a controller can produce must be at least the kinds of disturbance the environment can throw, or some cases stay unmanageable</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The immune system: pathogen variety is nearly infinite, so the body's countermove is to generate a vast, near-random repertoire of antibodies — matching variety with variety, always finding one that roughly fits, then cloning and amplifying it. This is the biological prototype of requisite variety — meeting unpredictable invasion by stocking enough <em>kinds</em> of response, not enough of one wonder drug.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Teams/organizations: against a volatile market, a team with a single playbook will collapse in some situations; variety of skills and perspectives is the reserve that resists uncertainty. (2) AI super-individual: one person + AI can outperform a former team precisely because AI vastly expands your "response variety" — your reachable state space grows; but if real-world disturbance variety exceeds you + AI combined, it still runs out of control. (3) Parenting: a child's states are endlessly variable, so one fixed script (low variety) will fail at some moment; keeping flexibility and multiple responses beats tightening the rules. <strong>Not more effort, but more variety — matched to the complexity you must handle.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">English Prompt</div>I keep getting beaten by [a recurring situation: management / parenting / a class of problems]. Analyze it through requisite variety (Ashby's Law):
+1. What kinds of "disturbances" does this environment throw out, and roughly how many kinds?
+2. How many does my current "repertoire of responses" cover? Where are the gaps?
+3. Give me two routes: one to "raise my response variety" (which tools / perspectives / people to add) and one to "lower the environment's disturbance variety" (how to simplify or narrow the problem).</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Home</a>
+</footer>
+</div>
+</body>
+</html>
