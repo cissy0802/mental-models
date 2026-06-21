@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：认知多样性 · 2026-06-21</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：认知多样性</h1>
+<div class="meta">2026-06-21 · Day 61</div>
+</header>
+<!-- Card 1: Page 多样性定理 -->
+<section class="card c1">
+<h2>Page 多样性定理 · Diversity Trumps Ability</h2>
+<div class="subtitle">在足够难的问题上，认知多样的群体能稳定胜过「全是最强个体」的群体</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>这个定理的核心不是鸡汤，而是一个<strong>恒等式</strong>：群体预测误差 = 成员平均误差 − 成员之间的多样性。多样性在这里是一个会从总误差里<em>减出去</em>的数学项，不是「加分的软福利」。这意味着：哪怕新成员个人能力略低，只要他带来的多样性大于他带进来的误差，群体整体会更准。</p>
+<p>非平凡点：① 一个由「最强个体的克隆」组成的团队，多样性项 = 0 → 群体误差 = 个体误差，集体毫无聚合增益——再聪明也只是「一个人想了很多遍」。② 这正是机器学习里<em>集成学习</em>（随机森林、bagging）跑赢单一强模型的原因：把误差<em>去相关</em>的弱学习器平均起来，错误彼此抵消。③ 所以「多样性」必须是<em>相关且有用</em>的——不同的解题模型与启发式，而非肤浅的标签差异；问题也必须足够难（简单问题没有可被多样性消解的误差空间）。④ 推论很反直觉：招人时一味挑「履历最强」，往往是在用相同训练背景买来<em>高度相关的盲区</em>。</p>
+<p>实践判别：评估一个团队，别只问「平均水平多高」，要问「成员的错误会不会一起犯」。错误高度相关 → 人再多也等于一个人。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>群众估牛重的实验：单个人估得七零八落，但几百人估值的平均数惊人地接近真值。原因正是误差去相关——有人高估有人低估，系统性偏差被抵消。预测市场、维基百科的可靠性都站在同一条数学定律上。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：搭多 agent 系统做方案评审，别用 4 个同模型、同 prompt、同温度的副本——它们的错误高度相关，多样性项接近 0，聚合不出任何增益。换成不同模型 / 不同视角 prompt（一个挑逻辑、一个挑风险、一个挑用户），误差才去相关。② 团队：清一色同校同背景的研究小组，平均能力很高，但<strong>多样性项几乎为零，整组像一个人在推理</strong>。刻意引入一个背景迥异的人，常比再加一个「同款高手」更能降低集体误判。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Page's Diversity Theorem (Diversity Trumps Ability)</strong> — rests on an identity: <em>crowd error = average individual error − prediction diversity</em>. Diversity is a term that literally subtracts from collective error, not a feel-good extra. A team of clones of the best performer has zero diversity → group error equals individual error, no aggregation gain. This is exactly why ensemble methods (random forests, bagging) beat single strong models: averaging <em>decorrelated</em> errors cancels them. The diversity must be relevant (different useful models/heuristics) and the problem hard enough. Don't ask only "how able is the team" — ask "will their errors correlate?" Correlated errors mean many people reason like one.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我要组建一个团队/AI 评审组来解决 [问题]，候选成员/视角是 [列表]。请用「群体误差 = 平均误差 − 多样性」分析：
+① 哪些成员的错误最可能高度相关（同样的盲区）？
+② 为了提升多样性项，我应该补进哪种迥异的背景或模型，哪怕它单项能力略弱？
+③ 给出一个 4 人组合，最大化「去相关」而非「平均最强」。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm assembling a team / AI review panel to solve [problem]. Candidate members/perspectives: [list]. Using "crowd error = average error − diversity":
+1. Which members' errors are most likely to be correlated (shared blind spots)?
+2. To raise the diversity term, which distinct background or model should I add, even if its individual ability is slightly lower?
+3. Propose a 4-member set that maximizes decorrelation, not "highest average ability."</div>
+</section>
+<!-- Card 2: 异类视角红利 -->
+<section class="card c2">
+<h2>异类视角红利 · Outsider Perspective Dividend</h2>
+<div class="subtitle">难住内行的问题，常被边缘人或外行解开——不是因为更聪明，而是带着另一套工具箱</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>同一领域的专家共享同一套训练，于是也<strong>共享同一组盲区</strong>。当一个问题用本领域的标准工具箱无解时，它往往用另一个领域的<em>标准</em>工具箱就是常规题。外行的价值不在智商，而在他的「默认解法库」还没被这个领域的惯例修剪掉。</p>
+<p>非平凡点：① 这与 Page 定理同源——内行群体的误差高度相关（多样性项低），所以系统性卡在同一个地方。② 机制是「功能固着」的反面：内行看到锤子就想到钉子，外行没有这个条件反射，反而看见别的可能。③ 红利是真实的，但<em>含噪声</em>——外行也会抛出大量幼稚错误想法。所以要的是一种「广播式」机制（把问题抛给足够多元的人群，再筛出那颗罕见的金子），而非寄望某个外行必然对。④ 与禅宗「初心」（shoshin）同构：初学者心中有许多可能，专家心中只剩少数——专精本质是一种压缩，丢掉了「无关」选项，但答案有时恰在被丢掉的那堆里。</p>
+<p>实践：遇到死结，先问「哪个<em>邻近</em>领域天天处理这类结构？」然后去借它的标准解法，而不是在本领域里更用力。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>开放式难题众包平台的数据显示：悬赏多年的硬problem，解出者往往来自该学科的<em>边缘或外部</em>——离核心学科越远，反而越可能解开。化学难题被一个材料外的人用另一套方法破解，是这类平台反复出现的剧本。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：分布式系统的不少利器都是「外行红利」——流行病学的传播模型成了 gossip 协议，控制论的反馈调节成了 backpressure。作为 AI 超级个体，<strong>刻意从主场之外进口框架</strong>，是你独有的杠杆。② 育儿：你身在局中，反而看不清孩子和你之间的某个动力循环；一个「外人」（老师、另一位家长）一句话点破，正因为他不在这套默契里。给关键难题主动找一个领域外的旁观者，是低成本的高回报动作。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Outsider Perspective Dividend</strong> — problems that stump insiders are often cracked by people at the margin of, or outside, the field. Not because outsiders are smarter, but because they bring a different default solution library; their tools haven't been pruned by the field's conventions. A problem unsolvable with one field's standard toolkit can be routine with another's. Same root as Page's theorem: insiders' errors are correlated, so the field stalls at the same spot. The dividend is real but noisy — outsiders also propose many naive ideas, so you need a broadcast-and-filter mechanism, not faith in any one outsider. Kin to Zen <em>shoshin</em> (beginner's mind): expertise compresses away "irrelevant" options, but the answer sometimes lives among the discarded ones.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在 [领域] 卡住的难题是 [描述]，本领域的标准做法都试过了。请扮演外行红利引擎：
+① 列出 3 个<em>邻近但不同</em>的领域，它们天天处理与我这个问题结构相似的情形；
+② 各给出该领域的标准解法，并把它「翻译」回我的问题；
+③ 标出哪一个最可能是被我的领域惯例提前修剪掉的盲区。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm stuck on [problem] in [field]; I've tried the field's standard approaches. Act as an outsider-dividend engine:
+1. List 3 adjacent-but-different fields that routinely handle problems structurally similar to mine.
+2. Give each field's standard solution and translate it back into my problem.
+3. Flag which one is most likely a blind spot my field's conventions pruned away early.</div>
+</section>
+<!-- Card 3: 杂交优势 -->
+<section class="card c3">
+<h2>杂交优势 · Hybrid Vigor (Heterosis)</h2>
+<div class="subtitle">两条不同血统的杂交后代常强于任一亲本——但有一个「最佳遗传距离」</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>生物学里，两条差异较大的近交系杂交，子一代往往比父母双方都更强健（杂交优势）；反过来，近亲繁殖会让有害隐性基因不断累积、表达（近交衰退）。把它当类比迁移：<strong>把两条不同「血统」的思想、文化或学科组合起来，常得到强于任一纯系的新变体</strong>。</p>
+<p>非平凡点：① 它与 Page 定理是<em>两种不同的多样性收益</em>——Page 讲的是预测<em>聚合</em>（误差相抵），杂交优势讲的是生成式<em>重组</em>（产出全新强变体）。一个是平均，一个是杂交。② 思想上的「近交衰退」真实存在：只引用自己、只和同温层对话的回音室，会悄悄累积一堆无人质疑的「有害隐性假设」——因为大家共享它，没人去检验。③ 最关键也最少人讲的一点：存在<em>最佳遗传距离</em>。太近（两种口味的同一学科）= 近交，杂不出优势；太远且无桥可接 = 杂交不亲和（生物学叫「远交衰退」），强行拼接只剩混乱。真正的红利在「<em>近到能整合、远到不冗余</em>」的那段距离。④ 还有一个诚实的限制：杂交优势主要体现在子一代，<em>不会自动稳定遗传</em>——一次漂亮的跨界组合，不保证能轻松「育成纯系」反复复制。</p>
+<p>实践：盘点你常接触的思想血统。如果近一年只在「同系」里打转，主动嫁接一条距离适中的异系；如果什么都拼但拼不出东西，可能是配得太远、缺了中间的转译桥。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>20 世纪的杂交玉米：把不同自交系杂交，单产出现跨越式提升，几乎重塑了现代农业。它是「最佳距离上的重组 &gt; 任一纯系」最干净的实证。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 跨学科：神经科学 × 机器学习杂交出了深度学习；佛学的观照训练 × 临床心理学杂交出了正念减压。这些都不是「外行红利」式的一次借用，而是两条血统的稳定重组。② 个人定位：你自身的稀缺价值，恰恰来自你是一个<strong>少见血统的杂交体</strong>——AI / 分布式 × 育儿 × 意识与佛学。这正是「近到能整合、远到不冗余」的甜区。提醒：别去拼两种过于相近的领域（如两种 ML 流派），杂不出优势；也别奢望这种组合会自动稳定，每一次都仍需亲手培育。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Hybrid Vigor (Heterosis)</strong> — crossing two distinct lineages often yields offspring stronger than either parent; inbreeding does the reverse (harmful recessives accumulate). As a metaphor: combining two different "lineages" of ideas/disciplines yields recombinations stronger than either pure line. Distinct from Page's theorem — that's about <em>aggregating</em> predictions (errors cancel); this is generative <em>recombination</em> (new strong variants). Echo chambers are intellectual inbreeding: shared, unchallenged "deleterious recessive" assumptions. The least-discussed key: there's an <em>optimal genetic distance</em> — too close (two flavors of one field) = no vigor; too far with no bridge = incompatibility (outbreeding depression). The dividend lives at "close enough to integrate, far enough to be non-redundant." And vigor shows mainly in the F1 — a brilliant cross doesn't automatically breed true.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想在 [主题/项目] 上做一次跨界杂交。我的主场是 [领域 A]。请：
+① 推荐 3 条「遗传距离适中」的异系领域（近到能整合、远到不冗余），并排除掉太近或太远的；
+② 对每条，指出 A 与它重组后最可能产生的那个强变体是什么；
+③ 提醒我每个组合里可能存在的「不亲和」风险点，以及需要补的转译桥。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to cross-breed ideas for [topic/project]. My home field is [field A]. Please:
+1. Recommend 3 lineages at an optimal "genetic distance" (close enough to integrate, far enough to be non-redundant); exclude those too close or too far.
+2. For each, name the strong variant most likely to emerge from recombining it with A.
+3. Flag the incompatibility ("outbreeding") risk in each pairing and the translation bridge I'd need to build.</div>
+</section>
+<!-- Card 4: 反共识价值 -->
+<section class="card c4">
+<h2>反共识价值 · Contrarian Value</h2>
+<div class="subtitle">「正确」不够；价值只活在你的判断与共识之间的缝隙里——但绝大多数反共识都是错的</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>光是「对」并不产生超额价值。价值只诞生于<strong>「你是对的」且「很少人同意你」</strong>同时成立的那一格。若所有人都已相信某事，价值要么已被市场定价、要么早已被人做完——你的正确没有边际收益。</p>
+<p>非平凡点：① 把判断放进二维矩阵：对/错 × 共识/反共识。只有「对 + 反共识」一格产生 edge；「对 + 共识」= 无 edge（已定价/已做完）；「错 + 反共识」= 烧钱。这种不对称才是重点。② 这把前三个模型串了起来——多样性、异类视角、杂交，<em>生成</em>出非共识的判断；反共识价值是收割条件，告诉你只有「正确的少数派」才能拿到回报。③ 必须警惕的反向陷阱：绝大多数反共识之所以是反共识，正因为它们<em>是错的</em>——「非共识」里「正确」的基础率很低。所以纪律不是「为反而反」，而是「找到那个你有<em>实打实理由</em>认定群众错了的罕见情形」——一个信息优势或模型优势，而非身份认同式的唱反调（为了显得独特而反对，是最常见的失败模式）。④ 与凸性下注同构（见 Day 51）：当你独自正确时，竞争者寥寥，整份奖赏归你——回报是凸的。所以哪怕「正确反共识」概率不高，期望值仍可能很高。</p>
+<p>实践：任何一个判断，先定位它在矩阵的哪一格。落在「对 + 共识」→ 没有 edge，别投入；想宣称「对 + 反共识」→ 必须先说清你凭什么比共识更懂这一件事。</p>
+<div class="diagram">
+<svg viewbox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="60" x2="430" y1="150" y2="150"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="245" x2="245" y1="30" y2="270"></line>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="150" y="22">反共识</text>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="345" y="22">共识</text>
+<text fill="#636e72" font-size="11" text-anchor="end" x="52" y="95">正确</text>
+<text fill="#636e72" font-size="11" text-anchor="end" x="52" y="215">错误</text>
+<rect fill="#1b8a5a" height="100" opacity="0.9" rx="6" width="160" x="70" y="40"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="150" y="82">对 + 反共识</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="150" y="104">← 唯一的 edge</text>
+<rect fill="#b2bec3" height="100" opacity="0.7" rx="6" width="160" x="260" y="40"></rect>
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="340" y="82">对 + 共识</text>
+<text fill="#2d3436" font-size="11" text-anchor="middle" x="340" y="104">已定价 / 已做完</text>
+<rect fill="#c44545" height="100" opacity="0.85" rx="6" width="160" x="70" y="160"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="150" y="202">错 + 反共识</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="150" y="224">烧钱（基础率最高）</text>
+<rect fill="#b2bec3" height="100" opacity="0.55" rx="6" width="160" x="260" y="160"></rect>
+<text fill="#2d3436" font-size="13" font-weight="700" text-anchor="middle" x="340" y="202">错 + 共识</text>
+<text fill="#2d3436" font-size="11" text-anchor="middle" x="340" y="224">随大流一起错</text>
+</svg>
+<div class="caption">反共识价值矩阵：edge 只在左上角，而它恰是基础率最低的一格</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>投资与创业里反复出现：一个点子越显而易见，它的剩余价值越低。回报最高的押注往往是「当时几乎没人信、事后才证明对」的那种；许多影响力极大的研究论文，最初也因为太非共识而被拒稿。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI 超级个体：你的杠杆来自一个别人还没下的正确赌注——一套别人还不信的工作流或工具。等所有人都信了，它已是「对 + 共识」，红利消失。② 关键纪律：把它和「身份式唱反调」分开。<strong>真正的反共识价值，必须配一个你能说清的具体 edge</strong>（你掌握了别人没有的信息，或你的模型在这一点上确实更准），否则你只是落进基础率最高的「错 + 反共识」格。判断自己：我反对，是因为我真懂得更多，还是因为反对让我显得独特？</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Contrarian Value</strong> — being right isn't enough; outsized value lives only where you are <em>both right and non-consensus</em>. If everyone already believes it, the value is priced in (markets) or already built (startups). Map it on a 2×2: right/wrong × consensus/contrarian. Only "right + contrarian" yields edge; "right + consensus" = no edge; "wrong + contrarian" = costly. This is the harvesting condition for the first three models: diversity, outsider views, and hybridization <em>generate</em> non-consensus positions, but only the correct minority captures the payoff. Crucial caveat: most contrarian views are wrong (that's why they're contrarian) — the base rate of "non-consensus AND right" is low. The discipline isn't to oppose for its own sake (identity contrarianism), but to find the rare case where you have a real informational or model edge. Like convex bets: when you're right and alone, you take the whole prize.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我有一个判断/赌注：[描述]。请用反共识价值矩阵压力测试我：
+① 它落在「对/错 × 共识/反共识」哪一格？给出当下的主流共识是什么；
+② 如果我宣称是「对 + 反共识」，逼我说清具体 edge：我到底掌握了什么别人没有的信息或更准的模型？
+③ 诚实评估：我是不是在为反而反（身份式唱反调）？若是，警示我最可能掉进「错 + 反共识」的地方。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I hold a belief/bet: [describe]. Stress-test me with the contrarian-value matrix:
+1. Which cell is it in (right/wrong × consensus/contrarian)? State the current mainstream consensus.
+2. If I claim "right + contrarian," force me to name my concrete edge: what information or sharper model do I actually have that others don't?
+3. Honestly assess whether I'm being contrarian for identity's sake; if so, warn me where I'm most likely landing in "wrong + contrarian."</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>

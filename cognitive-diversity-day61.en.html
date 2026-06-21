@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Cognitive Diversity · 2026-06-21</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Cognitive Diversity</h1>
+<div class="meta">2026-06-21 · Day 61</div>
+</header>
+<!-- Card 1 -->
+<section class="card c1">
+<h2>Diversity Trumps Ability · Page's Diversity Theorem</h2>
+<div class="subtitle">On hard enough problems, a cognitively diverse group reliably beats a group of "all the best individuals"</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>The core isn't a feel-good slogan; it's an <strong>identity</strong>: crowd prediction error = average individual error − diversity among members. Here diversity is a mathematical term that gets <em>subtracted</em> from total error, not a soft perk. The implication: even a member with slightly lower individual ability lowers group error if the diversity they add exceeds the error they bring.</p>
+<p>Non-trivial: (1) A team of clones of the best performer has a diversity term of 0 → group error = individual error, no aggregation gain — however brilliant, it's just "one person thinking many times." (2) This is exactly why <em>ensemble learning</em> (random forests, bagging) beats single strong models: averaging weak learners whose errors are <em>decorrelated</em> cancels them. (3) So the diversity must be <em>relevant and useful</em> — different solving models and heuristics, not surface labels; the problem must be hard enough (easy problems leave no error for diversity to cancel). (4) Counterintuitive corollary: hiring purely for "strongest résumé" often buys <em>highly correlated blind spots</em> via shared training.</p>
+<p>Practical test: don't only ask "how able is this team," ask "will their errors be committed together?" Highly correlated errors mean many people equal one person.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The ox-weight guessing experiment: individuals are wildly off, but the average of several hundred guesses lands strikingly close to the true value — precisely because errors decorrelate (some high, some low, systematic bias cancels). Prediction markets and Wikipedia's reliability rest on the same law.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: building a multi-agent review system, don't use 4 copies of the same model, same prompt, same temperature — their errors are highly correlated, the diversity term is near 0, no aggregation gain. Use different models / different-perspective prompts (one hunts logic, one risk, one the user) so errors decorrelate. (2) Team: a research group all from the same school and background has high average ability but <strong>a near-zero diversity term — the whole group reasons like one person</strong>. Deliberately adding one person with a radically different background often cuts collective error more than adding another "same-flavor" expert.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm assembling a team / AI review panel to solve [problem]. Candidate members/perspectives: [list]. Using "crowd error = average error − diversity":
+1. Which members' errors are most likely to be correlated (shared blind spots)?
+2. To raise the diversity term, which distinct background or model should I add, even if its individual ability is slightly lower?
+3. Propose a 4-member set that maximizes decorrelation, not "highest average ability."</div>
+</section>
+<!-- Card 2 -->
+<section class="card c2">
+<h2>Outsider Perspective Dividend</h2>
+<div class="subtitle">Problems that stump insiders are often cracked by outsiders — not because they're smarter, but because they carry a different toolkit</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Experts in one field share the same training, and therefore <strong>share the same blind spots</strong>. When a problem has no solution in this field's standard toolkit, it's often routine with another field's <em>standard</em> toolkit. An outsider's value isn't IQ — it's that their default solution library hasn't been pruned by this field's conventions.</p>
+<p>Non-trivial: (1) Same root as Page's theorem — an insider group's errors are highly correlated (low diversity term), so they systematically stall in the same place. (2) The mechanism is the inverse of functional fixedness: insiders see a hammer and think nails; outsiders lack that reflex and see other possibilities. (3) The dividend is real but <em>noisy</em> — outsiders also throw out many naive wrong ideas. So you want a "broadcast" mechanism (pose the problem to a diverse enough crowd, then filter for the rare gem), not faith that any one outsider must be right. (4) Isomorphic to Zen <em>shoshin</em> (beginner's mind): the beginner's mind holds many possibilities, the expert's only a few — expertise is a compression that discards "irrelevant" options, but the answer sometimes lives among the discarded.</p>
+<p>Practice: hit a dead end, first ask "which <em>adjacent</em> field handles this structure daily?" Then borrow its standard solution, rather than pushing harder inside your own field.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Data from open-innovation crowdsourcing platforms: hard problems bountied for years are disproportionately solved by people at the <em>margin of, or outside,</em> the focal discipline — the further from the core, the more likely to solve. A chemistry problem cracked by someone outside materials science with a different method is a recurring script on such platforms.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: many distributed-systems tools are "outsider dividends" — epidemiology's spread models became gossip protocols, control theory's feedback regulation became backpressure. As an AI super-individual, <strong>deliberately importing frameworks from outside your home field</strong> is your unique leverage. (2) Parenting: being inside the loop, you can't see a dynamic between you and your child; an "outsider" (a teacher, another parent) names it in one sentence precisely because they're not in the shared default. Finding a domain-outsider observer for a key problem is a cheap, high-return move.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm stuck on [problem] in [field]; I've tried the field's standard approaches. Act as an outsider-dividend engine:
+1. List 3 adjacent-but-different fields that routinely handle problems structurally similar to mine.
+2. Give each field's standard solution and translate it back into my problem.
+3. Flag which one is most likely a blind spot my field's conventions pruned away early.</div>
+</section>
+<!-- Card 3 -->
+<section class="card c3">
+<h2>Hybrid Vigor (Heterosis)</h2>
+<div class="subtitle">Crossing two distinct lineages often beats either parent — but there's an "optimal genetic distance"</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>In biology, crossing two fairly distinct inbred lines yields F1 offspring more vigorous than either parent (hybrid vigor); conversely, inbreeding lets harmful recessives accumulate and express (inbreeding depression). As a transferred metaphor: <strong>combining two different "lineages" of ideas, cultures, or disciplines often yields a new variant stronger than either pure line</strong>.</p>
+<p>Non-trivial: (1) It's a <em>different</em> diversity payoff from Page's theorem — Page is about <em>aggregating</em> predictions (errors cancel); hybrid vigor is generative <em>recombination</em> (producing a new strong variant). One averages, the other crosses. (2) Intellectual "inbreeding depression" is real: echo chambers that cite only themselves and talk only to the in-group quietly accumulate unchallenged "deleterious recessive" assumptions — unexamined because everyone shares them. (3) The key, least-discussed point: there's an <em>optimal genetic distance</em>. Too close (two flavors of one discipline) = inbreeding, no vigor; too far with no bridge = incompatibility ("outbreeding depression"), and forced splicing yields only chaos. The real dividend lives at "<em>close enough to integrate, far enough to be non-redundant</em>." (4) An honest limit: vigor shows mainly in the F1 and <em>doesn't automatically breed true</em> — one beautiful cross doesn't guarantee an easily repeatable "pure line."</p>
+<p>Practice: inventory the intellectual lineages you contact. If you've circled the "same line" all year, graft on a moderately distant line; if you splice everything but nothing emerges, you may be pairing things too far apart, missing the translation bridge.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>20th-century hybrid corn: crossing distinct inbred lines produced step-change yield gains that reshaped modern agriculture — the cleanest evidence that "recombination at the optimal distance &gt; either pure line."</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Cross-disciplinary: neuroscience × machine learning crossed into deep learning; Buddhist contemplative training × clinical psychology crossed into mindfulness-based stress reduction. These aren't one-off "outsider" borrowings but stable recombinations of two lineages. (2) Personal positioning: your scarce value comes precisely from being a <strong>rare hybrid lineage</strong> — AI / distributed systems × parenting × consciousness and Buddhism. That's the sweet spot of "close enough to integrate, far enough to be non-redundant." Caveat: don't splice two overly similar fields (e.g., two ML schools) — no vigor; and don't expect the combination to stabilize on its own, each cross still needs hands-on cultivation.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to cross-breed ideas for [topic/project]. My home field is [field A]. Please:
+1. Recommend 3 lineages at an optimal "genetic distance" (close enough to integrate, far enough to be non-redundant); exclude those too close or too far.
+2. For each, name the strong variant most likely to emerge from recombining it with A.
+3. Flag the incompatibility ("outbreeding") risk in each pairing and the translation bridge I'd need to build.</div>
+</section>
+<!-- Card 4 -->
+<section class="card c4">
+<h2>Contrarian Value</h2>
+<div class="subtitle">"Right" isn't enough; value lives only in the gap between your judgment and consensus — yet most contrarian views are wrong</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Merely being "right" produces no outsized value. Value arises only where <strong>"you are right" and "few agree with you"</strong> both hold. If everyone already believes something, the value is either priced in (markets) or already built — your correctness has no marginal return.</p>
+<p>Non-trivial: (1) Put judgment on a 2×2: right/wrong × consensus/contrarian. Only "right + contrarian" yields edge; "right + consensus" = no edge (priced in / already done); "wrong + contrarian" = burns money. The asymmetry is the point. (2) This ties the first three models together — diversity, outsider views, and hybridization <em>generate</em> non-consensus judgments; contrarian value is the harvesting condition, telling you only the "correct minority" collects the reward. (3) The trap to guard against: most contrarian views are contrarian precisely because they're <em>wrong</em> — the base rate of "non-consensus AND right" is low. So the discipline isn't "oppose for opposition's sake," but "find the rare case where you have a <em>real reason</em> to believe the crowd is wrong" — an informational or model edge, not identity-driven contrarianism (opposing to seem distinctive is the most common failure mode). (4) Isomorphic to convex betting (see Day 51): when you're right and alone, competitors are few and the whole prize is yours — the payoff is convex. So even a low probability of "correct + contrarian" can carry high expected value.</p>
+<p>Practice: for any judgment, first locate its cell. Landing in "right + consensus" → no edge, don't invest. To claim "right + contrarian," you must first articulate why you understand this one thing better than consensus.</p>
+<div class="diagram">
+<svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+<line x1="60" y1="150" x2="430" y2="150" stroke="#adb5bd" stroke-width="1.5"></line>
+<line x1="245" y1="30" x2="245" y2="270" stroke="#adb5bd" stroke-width="1.5"></line>
+<text x="150" y="22" text-anchor="middle" font-size="11" fill="#636e72">Contrarian</text>
+<text x="345" y="22" text-anchor="middle" font-size="11" fill="#636e72">Consensus</text>
+<text x="52" y="95" text-anchor="end" font-size="11" fill="#636e72">Right</text>
+<text x="52" y="215" text-anchor="end" font-size="11" fill="#636e72">Wrong</text>
+<rect x="70" y="40" width="160" height="100" rx="6" fill="#1b8a5a" opacity="0.9"></rect>
+<text x="150" y="82" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">Right + Contrarian</text>
+<text x="150" y="104" text-anchor="middle" font-size="11" fill="#fff">← the only edge</text>
+<rect x="260" y="40" width="160" height="100" rx="6" fill="#b2bec3" opacity="0.7"></rect>
+<text x="340" y="82" text-anchor="middle" font-size="13" fill="#2d3436" font-weight="700">Right + Consensus</text>
+<text x="340" y="104" text-anchor="middle" font-size="11" fill="#2d3436">priced in / already done</text>
+<rect x="70" y="160" width="160" height="100" rx="6" fill="#c44545" opacity="0.85"></rect>
+<text x="150" y="202" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">Wrong + Contrarian</text>
+<text x="150" y="224" text-anchor="middle" font-size="11" fill="#fff">burns money (highest base rate)</text>
+<rect x="260" y="160" width="160" height="100" rx="6" fill="#b2bec3" opacity="0.55"></rect>
+<text x="340" y="202" text-anchor="middle" font-size="13" fill="#2d3436" font-weight="700">Wrong + Consensus</text>
+<text x="340" y="224" text-anchor="middle" font-size="11" fill="#2d3436">wrong with the herd</text>
+</svg>
+<div class="caption">Contrarian-value matrix: edge sits only in the top-left — the very cell with the lowest base rate</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>A recurring pattern in investing and startups: the more obvious an idea, the lower its residual value. The highest-return bets are often "almost no one believed it at the time, proven right only later"; many high-impact research papers were initially rejected for being too non-consensus.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) AI super-individual: your leverage comes from a correct bet others haven't yet placed — a workflow or tool nobody believes in yet. Once everyone believes, it's "right + consensus" and the dividend is gone. (2) Key discipline: separate it from "identity contrarianism." <strong>Genuine contrarian value must come with a concrete edge you can articulate</strong> (you hold information others don't, or your model is genuinely sharper on this point); otherwise you've simply landed in the highest-base-rate "wrong + contrarian" cell. Self-check: am I opposing because I truly understand more, or because opposing makes me feel distinctive?</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I hold a belief/bet: [describe]. Stress-test me with the contrarian-value matrix:
+1. Which cell is it in (right/wrong × consensus/contrarian)? State the current mainstream consensus.
+2. If I claim "right + contrarian," force me to name my concrete edge: what information or sharper model do I actually have that others don't?
+3. Honestly assess whether I'm being contrarian for identity's sake; if so, warn me where I'm most likely landing in "wrong + contrarian."</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Home</a>
+</footer>
+</div>
+</body>
+</html>
