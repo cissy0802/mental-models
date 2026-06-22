@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：群体智慧与协作机制 · 2026-06-22</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：群体智慧与协作机制</h1>
+<div class="meta">2026-06-22 · Day 62</div>
+</header>
+<!-- Card 1: 群体智慧聚合 -->
+<section class="card c1">
+<h2>群体智慧聚合 · Wisdom of Crowds</h2>
+<div class="subtitle">在四个条件同时满足时，一群普通人的聚合判断能稳定胜过专家——而第一个被破坏的条件往往是「独立性」</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>群体之所以「聪明」，不靠某个聪明人，而靠四个条件同时成立：<strong>多样性、独立性、分散性、聚合机制</strong>。多样性保证每人带来不同的信息片段；独立性保证误差互不传染；分散性让每人扎根于自己的局部知识；聚合机制把这些碎片合成一个判断。少一条，群体就从「智慧」塌缩成「乌合」。</p>
+<p>非平凡点：① 四条里<strong>独立性是承重墙</strong>，也是最先被现实拆掉的一根。一旦人们能看见彼此的答案、听见大嗓门先发言，社会认同与从众就让误差<em>相关化</em>——几百个独立估计本来高低相抵，趋于真值；可一旦互相影响，整群人会一起滑向同一个偏差，这正是羊群、泡沫、会议室里「附议」的来源。② 所以「先讨论再决定」常常<em>降低</em>群体智慧：讨论制造了相关性。真正的智慧藏在那段「还没人开口」的独立性里。③ 聚合机制不是细节而是设计：同时匿名投票 ≠ 轮流发言被锚定；取中位数能抗离群值。④ 与 Page 多样性定理（见 Day 61）同源——群体误差 = 平均误差 − 多样性；这里进一步指出：让多样性真正发挥的前提，是误差彼此<em>独立</em>。</p>
+<p>实践判别：想从一群人榨出智慧，先问「他们的判断是各自独立给出的，还是已经互相看过、互相影响过了？」若是后者，你拿到的不是 N 个样本，而是 1 个被放大的样本。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>益智答题节目里，「问现场观众」的正确率高达九成，远超「求助专家朋友」。一屋子普通人各按各的判断匿名按键，碎片信息被聚合成一个惊人准确的多数——前提正是每人独立作答，没有先听旁人怎么按。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：敏捷估点用的「计划扑克」本质就是一套保护独立性的群体智慧机制——所有人<strong>同时翻牌</strong>，就是为了不让先开口的资深工程师锚定全场。若改成轮流报数，独立性瞬间崩塌，估值收敛到第一个声音上。② AI：让一个模型对同一问题独立采样多次再投票（self-consistency）能提升准确率，但前提是各次采样<em>去相关</em>；同模型、同 prompt、温度为零地跑 N 遍，N 个答案几乎完全相同，等于只问了一次——没有独立性，就没有群体智慧。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Wisdom of Crowds</strong> — a crowd's aggregated judgment beats experts when four conditions hold together: <em>diversity, independence, decentralization, and an aggregation mechanism</em>. Independence is the load-bearing wall and the first one reality demolishes: once people see each other's answers, social proof correlates their errors and the crowd collapses into a herd. So "discuss first, then decide" often <em>lowers</em> collective intelligence — deliberation manufactures correlation. The aggregation rule is design, not detail: simultaneous anonymous voting ≠ sequential, anchored speaking; medians resist outliers, means don't. Same root as Page's theorem (crowd error = average error − diversity), but adds: diversity only pays off if the errors are <em>independent</em>. Practical test: are these judgments given independently, or have people already influenced one another? If the latter, you don't have N samples — you have one, amplified.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我要从一群人/多个 AI 那里聚合出对 [问题] 的判断。请用群体智慧的四个条件审查我的流程：
+① 多样性、独立性、分散性、聚合机制，哪一条最可能被破坏？
+② 我现在的收集方式（[描述：开会讨论 / 匿名投票 / 轮流发言…]）会不会让误差相关化？
+③ 给我一套具体的聚合机制（提问方式 + 汇总规则），最大化独立性、抑制从众。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to aggregate a judgment on [problem] from a group of people / multiple AIs. Audit my process with the four conditions of crowd wisdom:
+1. Of diversity, independence, decentralization, and aggregation, which is most likely being broken?
+2. Will my current collection method ([describe: open discussion / anonymous vote / sequential turns…]) correlate the errors?
+3. Give me a concrete aggregation mechanism (how to ask + how to combine) that maximizes independence and suppresses herding.</div>
+</section>
+<!-- Card 2: 预测市场 -->
+<section class="card c2">
+<h2>预测市场 · Prediction Markets</h2>
+<div class="subtitle">把意见变成有成本的赌注，价格就成了概率——这是把廉价表态转换成真实信息的机器</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>预测市场让人对「某事会不会发生」下注，合约价格随买卖浮动，最终的<strong>价格就是市场估计的概率</strong>。它之所以常胜过民调和专家，是因为换了一种聚合方式：不是简单数人头，而是<em>给信息加权、给信念定价</em>。</p>
+<p>非平凡点：① 它解决了「廉价表态」问题。嘴上的意见是免费的，所以充满噪声、客套和讨好；而下注是有成本的，<strong>逼人把私有信息和真实信心兑换成头寸</strong>——知道得越多、越确信，下注越重，于是市场自动按信息含量加权。② 它把分散在无数人脑中、谁也无法集中掌握的知识碎片，压缩进一个数字。这正是哈耶克「价格即信息」的洞见：没有任何人需要知道全貌，市场会从碎片里萃取出整体估计。③ 机制的灵魂是「皮肤在游戏里」——错了赔钱，对了赚钱，这层激励让说真话变得对自己有利，等于一套天然的诚实过滤器。④ 边界要诚实：薄市场（参与者太少）易被操纵、噪声大；只对<em>可裁决、有明确结果</em>的问题有效；还有系统性的「热门偏差」。它不是水晶球，是一台问对了问题就很准的聚合器。</p>
+<p>实践：当你想知道一件事的真实概率、又怀疑大家在说场面话时，把问题改造成一个「赌注」——哪怕只用声誉或小额积分计分，真实信号立刻浮现。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>选举预测市场长期比许多民调更准；一些公司内部开设预测市场，让员工押注「项目能否如期交付」，结果常比管理层的官方时间表更接近现实——因为押注的人没有讨好上级的动机，只想押对。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 决策：与其在评审会上问团队「这版能按时上线吗」（人人点头让老板高兴），不如开一个小型内部盘口让大家匿名下注。声誉与积分一旦上桌，真实概率立刻从一片「没问题」里浮出水面。② AI 超级个体：给自己的预测<em>标价</em>。对每个判断写下概率、事后用校准分数（Brier score）结算，等于给自己办一个一人预测市场——让信念付出代价，是最快的去偏方法。这与机制设计的「激励相容」（见 Day 49）同构：当说真话恰好最有利时，真话才会涌现。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Prediction Markets</strong> — people bet on whether events will happen; the contract price <em>is</em> the market's probability estimate. They beat polls and experts by aggregating differently: weighting by information and pricing conviction, not counting heads. They solve the "cheap talk" problem — opinions are free and noisy, but bets are costly, forcing people to convert private information and true confidence into positions (the more you know, the more you stake). This compresses knowledge dispersed across many minds into one number — Hayek's "price as information." The soul of the mechanism is skin in the game: a natural honesty filter where truth-telling pays. Caveats: thin markets are manipulable and noisy; it only works for resolvable questions; long-shot bias persists. Not a crystal ball — an aggregator that's sharp when the right question is asked.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想知道 [某事件/某判断] 的真实概率，但怀疑相关的人都在说场面话。请帮我把它设计成一个预测市场：
+① 把问题改写成一个「可裁决、有明确结果」的下注命题；
+② 设计计分方式（声誉 / 积分 / 校准分数），让说真话对参与者最有利；
+③ 指出这个市场可能太「薄」或被操纵的风险，以及如何缓解。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want the true probability of [event/judgment], but I suspect everyone involved is giving polite talk. Help me design it as a prediction market:
+1. Rewrite the question into a resolvable, clearly-settled betting proposition.
+2. Design the scoring (reputation / points / calibration score) so that truth-telling is what pays participants most.
+3. Flag where this market could be too "thin" or manipulable, and how to mitigate it.</div>
+</section>
+<!-- Card 3: 蜂群效应 -->
+<section class="card c3">
+<h2>蜂群效应 · Swarm Intelligence</h2>
+<div class="subtitle">没有指挥官，只有遵循局部规则的简单个体——全局智能从交互中涌现，而非藏在任何一个成员脑中</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>蚁群找到最短路径，蜂群选定新巢址，鸟群整齐变向——<strong>没有任何个体掌握全局，也没有中央指挥</strong>。智能是整个系统的属性，从大量简单个体按局部规则的交互中<em>涌现</em>出来。</p>
+<p>非平凡点：① 核心机制叫「共识主动性」（stigmergy）：个体不直接通信，而是<em>改造环境</em>，再由环境引导他人。蚂蚁不互相喊话，只在路上留信息素，后来者沿浓的走、又叠加新信息素——协调发生在共享的痕迹里，而非点对点的指令里。② 它的算力来自一对<strong>正负反馈的平衡</strong>：信息素的累积是正反馈（好路越走越香），蒸发是负反馈（坏路慢慢淡去）。少了蒸发，群体会过早锁死在第一条凑合的路上——<em>遗忘在这里是功能，不是缺陷</em>，它保住了适应新情况的能力。③ 这与分布式系统同构（无主节点、局部规则、全局涌现，正是 gossip 协议与蚁群优化算法的来源），也直指意识难题——大脑里并没有一个「中央的我」，意识或许正是上千亿神经元这群「蚂蚁」涌现出的图案。这与佛学的<em>无我</em>（anatta）惊人共鸣：自我是涌现的过程，不是端坐其中的小人。</p>
+<p>实践：要让一群简单单元产生集体智能，别急着设一个总指挥；去设计三样东西——局部规则、一块大家都能读写的「共享环境」、以及一个「遗忘/蒸发」机制防止过早锁死。</p>
+<div class="diagram">
+<svg viewbox="0 0 460 210" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#c44545" height="44" opacity="0.9" rx="6" width="150" x="20" y="40"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="95" y="58">个体走过</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="95" y="74">留下信息素</text>
+<rect fill="#7048b8" height="44" opacity="0.85" rx="6" width="150" x="290" y="40"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="365" y="58">环境(痕迹)增强</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="365" y="74">浓路更吸引后来者</text>
+<line marker-end="url(#ah)" stroke="#636e72" stroke-width="1.5" x1="170" x2="288" y1="62" y2="62"></line>
+<text fill="#1b8a5a" font-size="11" text-anchor="middle" x="229" y="52">正反馈</text>
+<line marker-end="url(#ah)" stroke="#636e72" stroke-width="1.5" x1="290" x2="172" y1="150" y2="150"></line>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="229" y="142">更多个体沿浓路走</text>
+<line stroke="#adb5bd" stroke-dasharray="4 3" stroke-width="1.5" x1="365" x2="365" y1="84" y2="150"></line>
+<line stroke="#adb5bd" stroke-dasharray="4 3" stroke-width="1.5" x1="95" x2="95" y1="150" y2="84"></line>
+<rect fill="#fafbfc" height="34" rx="6" stroke="#adb5bd" stroke-width="1.2" width="180" x="140" y="170"></rect>
+<text fill="#636e72" font-size="11.5" text-anchor="middle" x="230" y="191">信息素蒸发 = 负反馈(遗忘)，防止锁死坏路</text>
+<defs>
+<marker id="ah" markerHeight="6" markerWidth="7" orient="auto" refX="6" refY="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#636e72"></path>
+</marker>
+</defs>
+</svg>
+<div class="caption">共识主动性：协调发生在被改造的环境里；正反馈聚合 + 负反馈防锁死</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>蚁群找最短路：没有蚂蚁「知道」哪条最短，但短路往返快、信息素叠得密，渐渐胜出。蜜蜂选新巢更精妙——侦察蜂各自勘察、用舞蹈为心仪地点拉票，当某处的「票数」越过法定阈值，整群就此起飞，全程没有蜂王下令。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：蚁群优化是真实算法，用来解路由与调度；设计多 agent 系统时，与其让一个主控逐一派活，不如让 agent 通过<strong>一块共享的工作区</strong>（共同的代码库、一份公共草稿）间接协调——这正是共识主动性的工程版。② 意识：你关注的「中央的我是否存在」，在这里得到一个可操作的隐喻——心智可能就是一个神经元蜂群，没有中枢，只有涌现。把无我从哲学命题变成系统直觉：自我是模式，不是指挥官。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Swarm Intelligence</strong> — ants find shortest paths, bees pick nest sites, birds turn in unison, with no individual holding the global picture and no central controller. Intelligence is a property of the whole system, <em>emerging</em> from simple agents following local rules. The core mechanism is <em>stigmergy</em>: agents don't message each other directly; they modify the environment (pheromone trails) and the environment guides others. Its computing power comes from a balance of positive feedback (trail reinforcement — good paths grow stronger) and negative feedback (evaporation — bad paths fade). Without evaporation the swarm locks prematurely onto the first mediocre path: <em>forgetting is a feature, not a flaw</em>. Isomorphic to distributed systems (no master, local rules, emergent global behavior) and to consciousness — there may be no "central self," only an emergent pattern of a neuron-swarm, echoing the Buddhist <em>anatta</em> (no-self).
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想用「蜂群 / 共识主动性」的思路重新设计 [一个团队协作 / 多 agent 系统 / 流程]，现在它依赖一个中央指挥很容易堵塞。请：
+① 设计每个个体只需遵守的 2–3 条局部规则；
+② 设计一块大家都能读写的「共享环境」，让协调通过它间接发生，而非点对点指令；
+③ 加一个「蒸发 / 遗忘」机制，防止系统过早锁死在第一个凑合的方案上。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to redesign [a team workflow / multi-agent system / process] using swarm intelligence and stigmergy; right now it depends on a central controller that bottlenecks easily. Please:
+1. Design 2–3 local rules each individual agent must follow.
+2. Design a shared environment everyone can read and write, so coordination happens through it indirectly, not via point-to-point commands.
+3. Add an "evaporation / forgetting" mechanism to stop the system from locking prematurely onto the first mediocre solution.</div>
+</section>
+<!-- Card 4: 维基模式 -->
+<section class="card c4">
+<h2>维基模式 · The Wiki Model</h2>
+<div class="subtitle">大规模开放协作产出高质量，不是尽管开放，而是因为开放——关键在「坏编辑可廉价撤销，好编辑永久留存」的不对称</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>维基百科、开源软件这类大规模协作，质量并非来自某位作者的天才，而来自一套机制：<strong>极低的贡献成本 + 极低的纠错成本 + 一个收敛标准</strong>。任何人都能改，但任何破坏也能被一键还原。</p>
+<p>非平凡点：① 它的引擎是一个<strong>不对称</strong>：坏编辑的代价被「可撤销」封顶（几秒还原），好编辑却会永久沉淀。下行有界、上行无界——于是系统像棘轮一样<em>单向地</em>向质量爬升。这与凸性下注（见 Day 51）是同一个数学骨架：让损失有上限、收益没上限。开放之所以安全，正因为撤销便宜。② 它本质是一个<em>演化过程</em>：编辑是变异，回滚与共识是选择，好版本被留存遗传——和生物进化共享同一台机器，不需要设计者就能逼近优秀。③ 还有「Linus 定律」：眼睛足够多，bug 无所遁形。④ 失效条件也明确：贡献必须<em>模块化、可独立提交</em>（一句句改得动，整本书重写就不行），撤销必须便宜，且要有收敛规范（如中立视角）。少了任一条，开放就退化成混乱。</p>
+<p>实践：想让任何东西靠群体长期变好，先把两个成本压到极低——<em>贡献成本</em>和<em>纠错（撤销）成本</em>。当改它很容易、撤销它更容易，开放就从风险变成了红利。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>维基百科以开放编辑做到了与老牌百科全书相当的准确度，规模却大出几个数量级；Linux 内核由全球数千名素未谋面的人协作而成。两者都不靠总编辑的全知，而靠「人人能改、坏改易回滚、好改永留存」的累积纠错。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：git + Pull Request 评审就是维基模式——之所以敢让众人往主干提交，是因为每个改动可审、可回滚，下行被封顶。把「撤销成本」做低，是开放协作能成立的前提。② AI 超级个体：把你的知识库 / 第二大脑当成「一个人的维基」来运营——<strong>把自己记录的摩擦降到最低（贡献成本低），并让每条都可修改可回退</strong>，它就会像维基一样靠累积纠错单向变好。别追求一次写对，追求让它<em>容易被改对</em>。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>The Wiki Model</strong> — large-scale open collaboration (Wikipedia, open source) produces quality not despite openness but because of it. The engine is an <em>asymmetry</em>: a bad edit's cost is capped by cheap reversibility (revert in seconds), while good edits persist — bounded downside, unbounded upside, so the system ratchets one-directionally toward quality. Same skeleton as convex bets (cap losses, leave gains open); openness is safe precisely because reversal is cheap. It's an evolutionary process: edits are variation, reverts/consensus are selection, retained versions are inheritance — quality without a designer. Plus Linus's Law: with enough eyeballs, bugs are shallow. Failure conditions: contributions must be modular and independently submittable, reversal cheap, and there must be a convergence norm. Most contributions come from a tiny minority (power law), but the long tail catches the errors.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想用「维基模式」让 [一个文档 / 代码库 / 知识库 / 社区产出] 靠群体长期自我改善。请：
+① 诊断我现在的贡献成本和纠错（撤销）成本哪个太高，怎么压低；
+② 检查贡献是否足够「模块化、可独立提交」，不够的话怎么拆；
+③ 设计一个收敛规范（标准 / 共识机制），防止开放退化成混乱。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to use the wiki model so that [a doc / codebase / knowledge base / community output] self-improves through the crowd over time. Please:
+1. Diagnose whether my contribution cost or my error-correction (revert) cost is too high, and how to lower it.
+2. Check whether contributions are modular and independently submittable; if not, how to break them down.
+3. Design a convergence norm (standard / consensus mechanism) to keep openness from degrading into chaos.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>

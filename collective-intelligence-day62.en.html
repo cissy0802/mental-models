@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Collective Intelligence &amp; Collaboration · 2026-06-22</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Collective Intelligence &amp; Collaboration</h1>
+<div class="meta">2026-06-22 · Day 62</div>
+</header>
+<!-- Card 1 -->
+<section class="card c1">
+<h2>Wisdom of Crowds · Aggregating Group Judgment</h2>
+<div class="subtitle">When four conditions hold together, a crowd of ordinary people reliably beats experts — and the first one reality breaks is "independence"</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>A crowd is "smart" not because of any smart member, but because four conditions hold at once: <strong>diversity, independence, decentralization, and an aggregation mechanism</strong>. Diversity ensures each person brings a different fragment of information; independence ensures errors don't infect one another; decentralization roots each person in their local knowledge; aggregation fuses the fragments into one judgment. Drop one and the crowd collapses from "wisdom" into "mob."</p>
+<p>Non-trivial: (1) Of the four, <strong>independence is the load-bearing wall</strong> — and the first reality tears down. Once people see each other's answers, or hear the loud voice speak first, social proof and herding <em>correlate</em> the errors. Hundreds of independent estimates that would have cancelled high-against-low instead slide together toward one bias — the source of herds, bubbles, and boardroom "I second that." (2) So "discuss first, then decide" often <em>lowers</em> collective intelligence: deliberation manufactures correlation. The real wisdom lives in the moment before anyone has spoken. (3) The aggregation rule is design, not detail: simultaneous anonymous voting ≠ sequential, anchored speaking; a median resists outliers. (4) Same root as Page's Diversity Theorem (Day 61) — crowd error = average error − diversity — with the added point: diversity only pays off if the errors are <em>independent</em>.</p>
+<p>Practical test: to extract wisdom from a group, first ask, "Are these judgments given independently, or have people already seen and influenced each other?" If the latter, you don't have N samples — you have one, amplified.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>On a TV quiz show, "ask the audience" is right about nine times in ten, far beating "phone an expert friend." A roomful of ordinary people each pressing a button on their own judgment, anonymously, gets aggregated into a strikingly accurate majority — precisely because each answers independently, without hearing how others voted.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: agile "planning poker" is essentially a mechanism for protecting independence — everyone <strong>reveals their card simultaneously</strong>, so the senior engineer who speaks first can't anchor the room. Switch to going around in turns and independence collapses, with estimates converging on the first voice. (2) AI: having one model independently sample a problem several times and then vote (self-consistency) boosts accuracy — but only if the samples are <em>decorrelated</em>. Same model, same prompt, temperature zero, run N times yields N near-identical answers: that's asking once. No independence, no crowd wisdom.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to aggregate a judgment on [problem] from a group of people / multiple AIs. Audit my process with the four conditions of crowd wisdom:
+1. Of diversity, independence, decentralization, and aggregation, which is most likely being broken?
+2. Will my current collection method ([describe: open discussion / anonymous vote / sequential turns…]) correlate the errors?
+3. Give me a concrete aggregation mechanism (how to ask + how to combine) that maximizes independence and suppresses herding.</div>
+</section>
+<!-- Card 2 -->
+<section class="card c2">
+<h2>Prediction Markets</h2>
+<div class="subtitle">Turn opinions into costly bets and the price becomes a probability — a machine that converts cheap talk into real information</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>A prediction market lets people bet on whether something will happen; the contract price floats with trading, and the final <strong>price is the market's estimated probability</strong>. It often beats polls and experts because it aggregates differently: not by counting heads, but by <em>weighting information and pricing conviction</em>.</p>
+<p>Non-trivial: (1) It solves the "cheap talk" problem. Spoken opinions are free, so they fill up with noise, politeness, and people-pleasing; a bet is costly, <strong>forcing people to convert private information and true confidence into a position</strong> — the more you know and the surer you are, the more you stake, so the market automatically weights by information content. (2) It compresses knowledge dispersed across countless minds, which no one could centralize, into a single number. This is Hayek's insight that price is information: no one needs to know the whole, yet the market extracts a whole-system estimate from the fragments. (3) The soul of the mechanism is skin in the game — wrong costs you, right pays you — an incentive layer that makes truth-telling personally advantageous, a natural honesty filter. (4) Be honest about the limits: thin markets (too few participants) are manipulable and noisy; it only works for <em>resolvable, clearly-settled</em> questions; and there's a systematic long-shot bias. It's not a crystal ball — it's an aggregator that's sharp when the right question is asked.</p>
+<p>Practical: when you want the true probability of something but suspect everyone is giving polite talk, reshape the question into a "bet" — even scored only in reputation or small points, the real signal surfaces at once.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Election prediction markets have long beaten many polls; some companies run internal markets where employees bet on "will the project ship on time," and the result often lands closer to reality than management's official schedule — because the bettors have no incentive to flatter the boss, only to bet correctly.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Decision-making: rather than asking your team in a review "can we ship this on time?" (everyone nods to please the boss), open a small internal book and let people bet anonymously. Once reputation and points are on the table, the true probability surfaces out of a sea of "no problem." (2) AI super-individual: <em>price</em> your own predictions. Write a probability for each judgment, settle later with a calibration score (Brier score) — that's running a one-person prediction market on yourself; making beliefs pay a price is the fastest debiasing tool. Isomorphic to incentive-compatibility in mechanism design (Day 49): truth emerges when truth-telling is exactly what pays.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want the true probability of [event/judgment], but I suspect everyone involved is giving polite talk. Help me design it as a prediction market:
+1. Rewrite the question into a resolvable, clearly-settled betting proposition.
+2. Design the scoring (reputation / points / calibration score) so that truth-telling is what pays participants most.
+3. Flag where this market could be too "thin" or manipulable, and how to mitigate it.</div>
+</section>
+<!-- Card 3 -->
+<section class="card c3">
+<h2>Swarm Intelligence</h2>
+<div class="subtitle">No commander, only simple individuals following local rules — global intelligence emerges from interaction, not from any one member's head</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Ant colonies find the shortest path, bee swarms pick a new nest site, flocks turn in unison — <strong>no individual holds the global picture, and there is no central command</strong>. Intelligence is a property of the whole system, <em>emerging</em> from the interaction of many simple agents following local rules.</p>
+<p>Non-trivial: (1) The core mechanism is <em>stigmergy</em>: individuals don't communicate directly, they <em>modify the environment</em>, which then guides others. Ants don't shout at each other; they leave pheromone on the trail, and later ants follow the stronger trail and reinforce it — coordination happens in the shared traces, not in point-to-point commands. (2) Its computing power comes from a balance of <strong>positive and negative feedback</strong>: pheromone accumulation is positive feedback (good paths get more attractive), evaporation is negative feedback (bad paths fade). Without evaporation the swarm locks prematurely onto the first mediocre path — <em>forgetting here is a feature, not a flaw</em>; it preserves the ability to adapt. (3) This is isomorphic to distributed systems (no master node, local rules, emergent global behavior — the origin of gossip protocols and ant-colony optimization), and points straight at the hard problem of consciousness — there is no "central self" in the brain; mind may be the pattern emerging from billions of neuron-"ants," echoing the Buddhist <em>anatta</em> (no-self): the self is an emergent process, not a homunculus seated within.</p>
+<p>Practical: to get collective intelligence from simple units, don't rush to appoint a commander; design three things — local rules, a shared "environment" everyone can read and write, and a "forgetting/evaporation" mechanism to prevent premature lock-in.</p>
+<div class="diagram">
+<svg viewbox="0 0 460 210" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#c44545" height="44" opacity="0.9" rx="6" width="150" x="20" y="40"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="95" y="58">Agent passes</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="95" y="74">leaves pheromone</text>
+<rect fill="#7048b8" height="44" opacity="0.85" rx="6" width="150" x="290" y="40"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="365" y="58">Trail strengthens</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="365" y="74">attracts more agents</text>
+<line marker-end="url(#ah)" stroke="#636e72" stroke-width="1.5" x1="170" x2="288" y1="62" y2="62"></line>
+<text fill="#1b8a5a" font-size="11" text-anchor="middle" x="229" y="52">positive feedback</text>
+<line marker-end="url(#ah)" stroke="#636e72" stroke-width="1.5" x1="290" x2="172" y1="150" y2="150"></line>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="229" y="142">more agents take strong trail</text>
+<line stroke="#adb5bd" stroke-dasharray="4 3" stroke-width="1.5" x1="365" x2="365" y1="84" y2="150"></line>
+<line stroke="#adb5bd" stroke-dasharray="4 3" stroke-width="1.5" x1="95" x2="95" y1="150" y2="84"></line>
+<rect fill="#fafbfc" height="34" rx="6" stroke="#adb5bd" stroke-width="1.2" width="220" x="120" y="170"></rect>
+<text fill="#636e72" font-size="11.5" text-anchor="middle" x="230" y="191">evaporation = negative feedback, prevents lock-in</text>
+<defs>
+<marker id="ah" markerHeight="6" markerWidth="7" orient="auto" refX="6" refY="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#636e72"></path>
+</marker>
+</defs>
+</svg>
+<div class="caption">Stigmergy: coordination happens in the modified environment; positive feedback aggregates, negative feedback prevents lock-in</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Ants finding the shortest path: no ant "knows" which route is shortest, but the short route is traversed faster and accumulates denser pheromone, gradually winning out. Bees choosing a nest site are subtler still — scout bees survey on their own and "dance" to campaign for their favored spot; when one site's "vote count" crosses a quorum threshold, the whole swarm takes off, with no queen issuing orders.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: ant-colony optimization is a real algorithm for routing and scheduling; when designing a multi-agent system, rather than having one controller hand out tasks one by one, let agents coordinate indirectly through <strong>a shared workspace</strong> (a common codebase, a public scratchpad) — the engineering version of stigmergy. (2) Consciousness: your question of "is there a central self" gets an operational metaphor here — mind may simply be a neuron-swarm, no center, only emergence. It turns no-self from a philosophical claim into a systems intuition: the self is a pattern, not a commander.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to redesign [a team workflow / multi-agent system / process] using swarm intelligence and stigmergy; right now it depends on a central controller that bottlenecks easily. Please:
+1. Design 2–3 local rules each individual agent must follow.
+2. Design a shared environment everyone can read and write, so coordination happens through it indirectly, not via point-to-point commands.
+3. Add an "evaporation / forgetting" mechanism to stop the system from locking prematurely onto the first mediocre solution.</div>
+</section>
+<!-- Card 4 -->
+<section class="card c4">
+<h2>The Wiki Model</h2>
+<div class="subtitle">Large-scale open collaboration produces quality not despite openness but because of it — the key is the asymmetry of "bad edits cheaply reverted, good edits permanently retained"</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Large-scale collaboration like Wikipedia and open source produces quality not from any single author's genius, but from a mechanism: <strong>very low contribution cost + very low error-correction cost + a convergence standard</strong>. Anyone can edit, but any vandalism can be reverted with one click.</p>
+<p>Non-trivial: (1) Its engine is an <strong>asymmetry</strong>: a bad edit's cost is capped by reversibility (revert in seconds), while a good edit settles permanently. Bounded downside, unbounded upside — so the system ratchets <em>one-directionally</em> upward in quality. Same skeleton as convex bets (Day 51): cap the loss, leave the gain open. Openness is safe precisely because reverting is cheap. (2) It is essentially an <em>evolutionary process</em>: edits are variation, reverts and consensus are selection, good versions are retained and inherited — sharing the same machine as biological evolution, approaching excellence with no designer. (3) Plus Linus's Law: given enough eyeballs, all bugs are shallow. (4) Its failure conditions are clear too: contributions must be <em>modular and independently submittable</em> (you can fix sentence by sentence, but not rewrite a whole book at once), reverting must be cheap, and there must be a convergence norm (such as a neutral point of view). Drop any one and openness degrades into chaos.</p>
+<p>Practical: to make anything improve through the crowd over time, first drive two costs very low — the <em>contribution cost</em> and the <em>error-correction (revert) cost</em>. When editing it is easy and undoing it is easier, openness turns from a risk into a dividend.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Wikipedia achieved accuracy comparable to established encyclopedias through open editing, at orders of magnitude greater scale; the Linux kernel was built collaboratively by thousands of people who never met. Neither relies on an omniscient editor-in-chief — both rely on cumulative error-correction: anyone can edit, bad edits revert easily, good edits stay forever.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: git + pull-request review is the wiki model — we dare let many people commit to the trunk because every change is reviewable and revertible, with the downside capped. Making "revert cost" low is the precondition for open collaboration to work at all. (2) AI super-individual: run your knowledge base / second brain as a "wiki for one" — <strong>drive your own capture friction to the minimum (low contribution cost) and make every entry editable and revertible</strong>, and it will improve one-directionally through cumulative correction, just like a wiki. Don't aim to write it right once; aim to make it <em>easy to be edited right</em>.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to use the wiki model so that [a doc / codebase / knowledge base / community output] self-improves through the crowd over time. Please:
+1. Diagnose whether my contribution cost or my error-correction (revert) cost is too high, and how to lower it.
+2. Check whether contributions are modular and independently submittable; if not, how to break them down.
+3. Design a convergence norm (standard / consensus mechanism) to keep openness from degrading into chaos.</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Home</a>
+</footer>
+</div>
+</body>
+</html>
