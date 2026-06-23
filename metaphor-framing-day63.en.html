@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Models Daily: Metaphor &amp; Framing Wars · 2026-06-23</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: Metaphor &amp; Framing Wars</h1>
+<div class="meta">2026-06-23 · Day 63</div>
+</header>
+<!-- Card 1 -->
+<section class="card c1">
+<h2>Conceptual Metaphor</h2>
+<div class="subtitle">Metaphor is not decoration of language but the skeleton of thought itself — you think you're using metaphor to describe the world, but metaphor is doing your thinking for you</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>We can barely think about abstractions (time, argument, ideas) directly; we can only <strong>borrow one concrete domain to understand an abstract one</strong>. "ARGUMENT IS WAR" — so we "attack" positions, "defend" claims, "demolish" the other side; arguments have winners and losers. "TIME IS MONEY" — so time can be "spent," "saved," "wasted." This mapping from a concrete <em>source domain</em> to an abstract <em>target domain</em> is systematic yet invisible: say casually "our relationship has reached a crossroads," and the whole "LOVE IS A JOURNEY" metaphor is quietly running underneath.</p>
+<p>Non-trivial: (1) The metaphor isn't in the words, it's in the thought. "ARGUMENT IS WAR" isn't a few figurative terms but an entire <strong>treat-the-other-as-enemy</strong> cognitive stance — it pre-decides what you can see and do. (2) The most powerful consequence: <strong>change the metaphor and you change the whole space of available actions</strong>. Imagine "ARGUMENT IS DANCE" — the goal becomes jointly completing a graceful dance; no winners, only how well you coordinate. Same situation, every possibility transformed. (3) This is core evidence for <em>embodied cognition</em>: abstract thought is not free-floating logic but rooted in sensorimotor experience — "important is big," "intimate is close," "moral is clean," all grown from infant bodily experience. The mind is not a disembodied symbol processor but a body shaped over and over by metaphor.</p>
+<p>Practical: when something stalls you, first ask "which metaphor am I thinking about it with?" — surfacing the metaphor is what earns you the right to swap it.</p>
+<div class="diagram">
+<svg viewbox="0 0 470 196" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#7048b8" height="40" opacity="0.9" rx="6" width="150" x="20" y="20"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="95" y="45">Source: WAR</text>
+<rect fill="#0a6fb8" height="40" opacity="0.9" rx="6" width="150" x="300" y="20"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="375" y="45">Target: ARGUMENT</text>
+<line marker-end="url(#ah)" stroke="#636e72" stroke-width="1.4" x1="172" x2="298" y1="42" y2="42"></line>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="235" y="33">systematic map</text>
+<text fill="#495057" font-size="12.5" text-anchor="middle" x="95" y="92">attack · defend</text>
+<text fill="#495057" font-size="12.5" text-anchor="middle" x="95" y="114">ground · win/lose</text>
+<text fill="#495057" font-size="12.5" text-anchor="middle" x="375" y="92">rebut · justify</text>
+<text fill="#495057" font-size="12.5" text-anchor="middle" x="375" y="114">position · right/wrong</text>
+<line stroke="#adb5bd" stroke-dasharray="4 3" stroke-width="1.2" x1="95" x2="375" y1="100" y2="100"></line>
+<rect fill="#fafbfc" height="34" rx="6" stroke="#adb5bd" stroke-width="1.2" width="320" x="75" y="150"></rect>
+<text fill="#636e72" font-size="11.5" text-anchor="middle" x="235" y="171">Swap the source → "ARGUMENT IS DANCE": the action space changes</text>
+<defs>
+<marker id="ah" markerheight="6" markerwidth="7" orient="auto" refx="6" refy="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#636e72"></path>
+</marker>
+</defs>
+</svg>
+<div class="caption">Metaphor = a systematic source-to-target mapping; swap the mapping and what you can think and do changes</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>"ARGUMENT IS WAR" vs "ARGUMENT IS DANCE." The first makes you want to win and overpower; the second makes you want to dance together and coordinate. Language is only the surface — what's really swapped is your perception of the whole thing and the actions available to you: one conversation, two utterly different sets of possibilities.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) AI / cognitive science: "the mind is a computer" is a metaphor that ruled for half a century — it makes "memory," "storage," "bandwidth," "running a program" feel self-evident, while quietly erasing emotion, body, and embodiment. Switch to "the brain is a prediction machine" or "the mind is an ecosystem" and the research directions shift instantly. (2) Every technical abstraction you make is a metaphor choice — "neural network," "attention," "training" — each illuminating and concealing. <strong>Noticing which metaphor you're thinking with is a meta-skill of the AI super-individual.</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm thinking through / discussing [an abstract problem or situation]. Run a "conceptual metaphor audit":
+1. Identify the metaphors I and others are using to frame it (e.g. war, journey, market, machine).
+2. For each, what does it illuminate and what does it quietly hide?
+3. Give me 2 fresh source-domain metaphors and explain which previously-invisible options each one would surface.</div>
+</section>
+<!-- Card 2 -->
+<section class="card c2">
+<h2>Framing Wars</h2>
+<div class="subtitle">Whoever defines the frame wins before the debate begins — and the moment you rebut using their frame, you reinforce it for them</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>A frame is the default structure for understanding something. The real battlefield is usually not the facts but <strong>which frame becomes default</strong>. "Tax relief" buries an entire frame in two words — tax is an affliction, relief is rescue, the taxer a villain. Before you've made any argument, your stance is pre-decided by the term. A framing war is the fight over which frame gets to name the battlefield.</p>
+<p>Non-trivial: (1) The most counter-intuitive law: <strong>negating a frame activates it</strong>. Tell someone "don't think of an elephant" and an elephant appears in their head. So when you rebut with the opponent's term ("I'm against so-called tax relief"), every repetition exposes and reinforces their frame. (2) The real victory isn't winning the debate inside their frame but <strong>making your own frame the unthinking default</strong> — the same money called a "membership fee" or a "fine," the same tax called "estate tax" or "death tax." The war ends at the naming stage. (3) Same root as anchoring, but deeper: anchoring shifts a number, framing shifts the whole problem space. (4) Be honest about the boundary: a frame is a neutral tool, usable to reveal or to manipulate. Spotting framing wars is first of all a defense — seeing which frame is doing your thinking for you.</p>
+<p>Practical: when a word makes you instantly take a side, don't rush to agree or rebut — ask "what does this word treat as a given?" Unpack the naming first, then decide whether to accept the battlefield.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The same tax is "estate tax" to one side and "death tax" to the other; on the same issue, the two sides call themselves "pro-life" and "pro-choice." Neither will fight under the other's name — because accepting the other's word is accepting their entire worldview, and the stance is half-lost before a single argument.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Technical narratives: the same AI technology framed as "AI replaces humans" or "AI augments humans into super-individuals" steers regulation, investment, and adoption in opposite directions — the narrative war is a framing war. (2) Engineering review: framing "eventual consistency" as "weak consistency" (sounds like a defect) or "highly available and scalable" (sounds like a strength) often produces opposite verdicts on identical underlying mechanics. <strong>See through this and you can drag the debate back from "whose word sounds nicer" to "what's the actual underlying tradeoff."</strong></p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here's a debate about [an issue / product narrative / technical argument]; the key wording in play is: [paste the opponent's phrasing]. Help me fight this framing war:
+1. Unpack which frame their wording presupposes and what it treats as a given.
+2. Warn me which "rebuttals" would actually activate and reinforce their frame.
+3. Give me my own naming / frame so I don't fight on their battlefield, and explain where it redirects attention.</div>
+</section>
+<!-- Card 3 -->
+<section class="card c3">
+<h2>Reframing</h2>
+<div class="subtitle">Most breakthroughs aren't answering the question right but changing to the right question — reframing alters the boundary of the problem, not the answer inside the frame</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Reframing is the constructive use of framing: facing a stuck situation, don't try harder inside the old frame — <strong>change the frame organizing the problem so that new options appear</strong>. The classic "slow elevator problem": tenants complain the elevator is too slow, engineers price every speed-up and all are too expensive; then someone reframes "the elevator is too slow" into "the wait is too boring" and installs mirrors by the doors — the complaints vanish. The elevator never got faster; the problem changed.</p>
+<p>Non-trivial: (1) <strong>The frame determines the entire solution space.</strong> Under "speed it up," mirrors aren't even a candidate; reframe and they become optimal. That's why reframing is the highest-leverage move — it doesn't search within the solutions, it shifts the space the solutions live in (cf. leverage points, Day 3: the highest leverage is changing the paradigm itself). (2) It's not spin or self-deception: reframing requires the <em>same facts</em> to still hold under the new frame, only reorganized. In negotiation, reframing "a clash of positions" into "an alignment of interests," or "split the pie" into "grow the pie," releases real options, not rhetoric. (3) Name the shadow side: reframing that slides into <strong>denying the real problem</strong> degenerates into toxic positivity — framing "the system actually crashed" as "a growth opportunity." The discipline: reframe to <em>open options</em>, not to <em>evade reality</em>.</p>
+<div class="diagram">
+<svg viewbox="0 0 480 210" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#636e72" height="52" opacity="0.9" rx="6" width="120" x="14" y="79"></rect>
+<text fill="#fff" font-size="12.5" font-weight="700" text-anchor="middle" x="74" y="100">Same facts</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="74" y="118">elevator is slow</text>
+<rect fill="#0a6fb8" height="44" opacity="0.9" rx="6" width="146" x="170" y="18"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="243" y="38">Frame A: too slow</text>
+<text fill="#fff" font-size="10.5" text-anchor="middle" x="243" y="54">→ speed it up</text>
+<rect fill="#1b8a5a" height="44" opacity="0.9" rx="6" width="146" x="170" y="148"></rect>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="243" y="168">Frame B: boring wait</text>
+<text fill="#fff" font-size="10.5" text-anchor="middle" x="243" y="184">→ fill the wait</text>
+<rect fill="#fafbfc" height="44" rx="6" stroke="#adb5bd" stroke-width="1.2" width="132" x="338" y="18"></rect>
+<text fill="#495057" font-size="11" text-anchor="middle" x="404" y="38">new motor, etc.</text>
+<text fill="#c44545" font-size="11" text-anchor="middle" x="404" y="54">all expensive ✗</text>
+<rect fill="#fafbfc" height="44" rx="6" stroke="#adb5bd" stroke-width="1.2" width="132" x="338" y="148"></rect>
+<text fill="#495057" font-size="11" text-anchor="middle" x="404" y="168">install mirrors</text>
+<text fill="#1b8a5a" font-size="11" text-anchor="middle" x="404" y="184">near-zero cost ✓</text>
+<line marker-end="url(#ah2)" stroke="#636e72" stroke-width="1.4" x1="134" x2="168" y1="92" y2="44"></line>
+<line marker-end="url(#ah2)" stroke="#636e72" stroke-width="1.4" x1="134" x2="168" y1="118" y2="166"></line>
+<line marker-end="url(#ah2)" stroke="#636e72" stroke-width="1.4" x1="316" x2="336" y1="40" y2="40"></line>
+<line marker-end="url(#ah2)" stroke="#636e72" stroke-width="1.4" x1="316" x2="336" y1="170" y2="170"></line>
+<defs>
+<marker id="ah2" markerheight="6" markerwidth="7" orient="auto" refx="6" refy="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#636e72"></path>
+</marker>
+</defs>
+</svg>
+<div class="caption">The frame determines the solution space: change the question, and the optimal answer that didn't exist appears</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Mirrors for the slow elevator. Reframe "an engineering speed problem" into "a psychological waiting problem" and a near-zero-cost solution appears instantly — one that simply didn't exist in the original frame. Change the problem, and the answer goes from nothing to obvious.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) Engineering: instead of asking "why is the system so slow" (endless performance tuning), reframe as "which SLO is unmet, and for whom" — you often find you needn't speed up the whole thing at all. Reframing "the model isn't accurate enough" as "the task boundary is drawn wrong" often beats labeling another hundred thousand examples. (2) Buddhism: the "turning of thought" and prajñā wisdom you're drawn to are reframing at its core — <strong>the same circumstance, viewed through a different frame, and the entire psychological solution space changes</strong>. Reframe impermanence from "threat" to "the inherent flow of things," and the structure of suffering loosens.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm stuck on a problem: [describe the situation + how I currently define the problem]. Inside the old frame I've already tried [attempted solutions], none worked. Help me reframe:
+1. What is my implicit problem frame, and what does it assume "must be so"?
+2. Give me 3 different reframings, each opening a new solution space.
+3. Flag which reframings would actually be evading the real problem rather than opening options.</div>
+</section>
+<!-- Card 4 -->
+<section class="card c4">
+<h2>Dead Metaphor</h2>
+<div class="subtitle">Used long enough, a metaphor "dies" — losing its figurative force and being taken as literal reality; and the dead metaphor is most dangerous precisely because it no longer looks like a metaphor, so it's no longer scrutinized</div>
+<div class="section-label">In Depth</div>
+<hr>
+<p>Metaphors have a life cycle: vivid at first, everyone feels them as figures of speech; used long enough they <strong>"die" into literal meaning</strong> — "the leg of a table," "the foot of a mountain," "grasp an idea," "the heart of the matter." No one feels these as figurative anymore. A dead metaphor still carries its original mapping; the mapping has merely gone invisible and is taken as <em>reality itself</em>.</p>
+<p>Non-trivial: (1) Dead metaphors are far more dangerous than live ones: <strong>because they no longer look like metaphors, they escape scrutiny</strong>. "Time is money" is so thoroughly dead that we no longer notice it shaping our whole relationship to time — idleness as "waste," life as a "ledger." (2) The cure is to <em>revive the dead metaphor</em>: treat it as a figure of speech again and its smuggled assumptions resurface, open to challenge (same root as "the map is not the territory," Day 43 — a dead metaphor is a map mistaken for the territory itself). (3) <em>Nominalization</em> is the worst zone: freezing a <em>process</em> into a <em>thing</em> — "self," "mind," "memory" are dynamic processes that language solidifies into something that seems to sit there, prompting grammar-manufactured pseudo-questions like "where is my true self?"</p>
+<p>Practical: periodically audit the words you use most and most unthinkingly — the more a word feels like "that's just what it means," the more likely it's a dead metaphor presetting the world for you.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>"The leg of a table," "a mountain ridge," "time is flowing" — completely dead, no one reads them as figures. "The invisible hand of the market" is half-dead: it still quietly personifies the market into an intentional coordinator; revive it and ask "whose hand, and by what right does it coordinate?" and a lot of intuitions about markets start to loosen.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>(1) AI: "training" a model is a dead metaphor that makes RLHF sound like animal taming or teaching, hiding that underneath it's just <strong>gradient descent fitting a statistical surface in high dimensions</strong>. Revive the metaphor and your intuitions about "alignment" and "will the model deceive" shift wholesale — you're not disciplining a student, you're sculpting a surface. Tech jargon is almost all dead metaphors — "cloud," "memory," "virus," "firewall," "neural network" — each quietly presetting your assumptions. (2) Consciousness / Buddhism: the "no-self" (anatta) you're drawn to is precisely the reviving of the biggest dead metaphor — "the self." Restore the noun "I" to its underlying verb-like process (a ceaselessly arising-and-passing stream of awareness) and the question "who am I really?" reopens.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is a set of core words I keep using in [a domain / a line of thinking / a piece of writing]: [list 3-6 words]. Run a "dead-metaphor revival":
+1. Point out which are actually dead metaphors and what their original source-domain mapping was.
+2. What assumptions does each smuggle in that I'm now treating as "reality itself"?
+3. Revive or replace one or two of them and show how my intuition about the matter would shift.</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Home</a>
+</footer>
+</div>
+</body>
+</html>

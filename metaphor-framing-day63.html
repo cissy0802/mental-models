@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：隐喻与框架战争 · 2026-06-23</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：隐喻与框架战争</h1>
+<div class="meta">2026-06-23 · Day 63</div>
+</header>
+<!-- Card 1: 概念隐喻 -->
+<section class="card c1">
+<h2>概念隐喻 · Conceptual Metaphor</h2>
+<div class="subtitle">隐喻不是语言的装饰，而是思维本身的骨架——你以为你在用隐喻描述世界，其实是隐喻在替你思考</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>我们几乎无法直接思考抽象事物（时间、争论、想法），只能<strong>借一个具体领域去理解一个抽象领域</strong>。"争论是战争"——所以我们"攻击"对方的立场、"防守"自己的论点、把对方"驳倒"，争论有输赢；"时间是金钱"——所以时间能"花费""节省""浪费"。这套从具体域（源域）到抽象域（靶域）的映射是系统的，却是隐形的：你随口说"我们的关系走到了十字路口"，背后整套"爱情是旅程"的隐喻在悄悄运转。</p>
+<p>非平凡点：① 隐喻不在词里，在思维里。"争论是战争"不是几个比喻用词，而是一整套<strong>把对手当敌人</strong>的认知姿态——它预先决定了你在争论里能看见什么、能做什么。② 由此推出最有力的一条：<strong>换一个隐喻，就换一套可见的行动空间</strong>。设想"争论是舞蹈"——目标变成共同完成一支优美的舞，没有输赢，只有配合得好不好。同一件事，思维的可能性全变了。③ 这正是<em>具身认知</em>的核心证据：抽象思维并非悬空的逻辑符号，而是扎根于身体的感觉运动经验——"重要是大""亲密是近""道德是干净"，都是从婴儿期的身体体验里长出来的。心智不是无实体的符号处理器，而是被身体的隐喻反复塑形的产物。</p>
+<p>实践：当一件事让你卡住，先问"我现在是用哪个隐喻在想它？"——把那个隐喻显形，你才有资格换掉它。</p>
+<div class="diagram">
+<svg viewbox="0 0 470 196" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#7048b8" height="40" opacity="0.9" rx="6" width="150" x="20" y="20"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="95" y="45">源域：战争</text>
+<rect fill="#0a6fb8" height="40" opacity="0.9" rx="6" width="150" x="300" y="20"></rect>
+<text fill="#fff" font-size="13" font-weight="700" text-anchor="middle" x="375" y="45">靶域：争论</text>
+<line marker-end="url(#ah)" stroke="#636e72" stroke-width="1.4" x1="172" x2="298" y1="42" y2="42"></line>
+<text fill="#636e72" font-size="11" text-anchor="middle" x="235" y="33">系统映射</text>
+<text fill="#495057" font-size="12.5" text-anchor="middle" x="95" y="92">进攻 · 防守</text>
+<text fill="#495057" font-size="12.5" text-anchor="middle" x="95" y="114">阵地 · 胜负</text>
+<text fill="#495057" font-size="12.5" text-anchor="middle" x="375" y="92">反驳 · 辩护</text>
+<text fill="#495057" font-size="12.5" text-anchor="middle" x="375" y="114">立场 · 对错</text>
+<line stroke="#adb5bd" stroke-dasharray="4 3" stroke-width="1.2" x1="95" x2="375" y1="100" y2="100"></line>
+<rect fill="#fafbfc" height="34" rx="6" stroke="#adb5bd" stroke-width="1.2" width="300" x="85" y="150"></rect>
+<text fill="#636e72" font-size="11.5" text-anchor="middle" x="235" y="171">换源域 → "争论是舞蹈"：行动空间随之全变</text>
+<defs>
+<marker id="ah" markerheight="6" markerwidth="7" orient="auto" refx="6" refy="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#636e72"></path>
+</marker>
+</defs>
+</svg>
+<div class="caption">隐喻 = 源域到靶域的系统映射；映射一换，能想能做的全变</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>"争论是战争" vs "争论是舞蹈"。前者让你想赢、想压倒；后者让你想共舞、想配合。语言只是表层，真正被替换的是你对整件事的感知和你能采取的动作。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI／认知科学："心智是计算机"是一个统治了半个世纪的隐喻——它让"记忆""存储""带宽""运行程序"显得天经地义，却悄悄抹掉了情绪、身体与具身。换成"大脑是预测机器"或"心智是生态系统"，研究方向立刻不同。② 你做的每一次技术抽象，都是一次隐喻选择："神经网络""注意力""训练"，既照亮也遮蔽。<strong>意识到自己正在用哪个隐喻思考，是 AI 超级个体的一项元能力</strong>。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Conceptual Metaphor</strong> (Lakoff &amp; Johnson) — metaphor is not decoration of language but the structure of thought itself. We can barely think about abstractions (time, argument, ideas) directly; we map them from a concrete <em>source domain</em> onto an abstract <em>target domain</em>. "ARGUMENT IS WAR": we attack positions, defend claims, win or lose. "TIME IS MONEY": we spend, save, waste it. The mapping is systematic yet invisible. Key consequences: (1) the metaphor isn't in the words, it's in the cognitive stance — it pre-decides what you can see and do; (2) <strong>change the metaphor and you change the entire space of available actions</strong> — imagine "ARGUMENT IS DANCE" and there are no winners, only coordination; (3) this is core evidence for <em>embodied cognition</em> — abstract thought is grounded in sensorimotor experience ("important is big," "intimate is close"). The mind is not a disembodied symbol processor but a body shaped by metaphor.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正在思考／讨论 [某个抽象问题或处境]。请帮我做一次「概念隐喻审计」：
+① 找出我和别人正在用哪些隐喻来谈它（如"战争""旅程""市场""机器"）；
+② 每个隐喻照亮了什么、又悄悄遮蔽了什么？
+③ 给我 2 个全新的源域隐喻，并说明换上它之后，会浮现哪些原来看不见的行动选项。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm thinking through / discussing [an abstract problem or situation]. Run a "conceptual metaphor audit":
+1. Identify the metaphors I and others are using to frame it (e.g. war, journey, market, machine).
+2. For each, what does it illuminate and what does it quietly hide?
+3. Give me 2 fresh source-domain metaphors and explain which previously-invisible options each one would surface.</div>
+</section>
+<!-- Card 2: 框架战争 -->
+<section class="card c2">
+<h2>框架战争 · Framing Wars</h2>
+<div class="subtitle">谁定义了框架，谁就在辩论开始前赢了——而你一旦用对方的框架去反驳，就在替对方加固它</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>框架（frame）是理解一件事的缺省结构。真正的战场往往不是事实，而是<strong>哪个框架成为缺省</strong>。"减税纾困"四个字就埋好了整个框架——税是一种"苦难"，减税是"解救"，征税者是"加害者"。你还没开始讲道理，立场已被这个词预先决定。框架战争，就是争夺"用哪套框架来命名这片战场"。</p>
+<p>非平凡点：① 最反直觉的一条：<strong>否定一个框架，反而激活它</strong>。叫人"别想大象"，他脑里立刻浮出大象。所以当你用对方的词去反驳（"我反对所谓减税纾困"），你每说一次，就替对方的框架曝光一次、加固一次。② 真正的胜利不是在对方的框架里赢得辩论，而是<strong>让你自己的框架成为人们不假思索的缺省</strong>——同一笔钱，叫"会员费"还是"罚款"；同一项税，叫"遗产税"还是"死亡税"。战争在命名阶段就已结束。③ 它与认知里的"锚定"同源，但更深：锚定只挪动一个数字，框架挪动的是整个问题空间。④ 边界要诚实：框架是中性工具，既能揭示也能操纵。识别框架战争，首先是一种防御——看清别人正用什么框架替你思考。</p>
+<p>实践：听到一个让你立刻站队的词，先别急着赞成或反驳，问"这个词把什么预设当成了理所当然？"——拆开命名，再决定要不要接受这片战场。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>同一项税，一方叫"遗产税"，另一方叫"死亡税"；同一个议题，双方分别自称"维护生命"与"维护选择"。谁都不肯在对方的命名里应战——因为接受对方的词，就是接受对方的整套世界观，立场已经输了一半。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 技术叙事：同一项 AI 技术，框架成"AI 取代人类"还是"AI 增强人类、成就超级个体"，会左右监管、投资与采用的整个走向——叙事之争其实是框架之争。② 工程评审：把"最终一致性"框成"弱一致"（听着像缺陷）还是"高可用、可扩展"（听着像优势），常常在同样的底层机制上得出相反结论。<strong>识破这一点，你就能把争论从"谁的词更动听"拉回"底层权衡到底是什么"</strong>。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Framing Wars</strong> — a frame is the default structure for understanding something, and the real battlefield is usually not the facts but <em>which frame becomes default</em>. "Tax relief" pre-loads an entire frame: tax is an affliction, relief is rescue, the taxer a villain — your stance is decided before any argument. The most counter-intuitive law: <strong>negating a frame activates it</strong>. Tell someone "don't think of an elephant" and they picture one; argue against the opponent's term and you reinforce it each time. The real victory is not winning inside their frame but making <em>your</em> frame the unthinking default — "estate tax" vs "death tax," "membership fee" vs "fine." Same root as anchoring, but deeper: anchoring shifts a number, framing shifts the whole problem space. Frames are neutral tools — usable to reveal or to manipulate — so spotting framing wars is first of all a defense: seeing which frame is doing your thinking for you.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>这是一场关于 [某议题／某产品叙事／某技术辩论] 的争论，相关说法是：[贴上对方的关键措辞]。请帮我打这场框架战争：
+① 拆解对方的措辞里预设了哪套框架，把什么当成了理所当然；
+② 提醒我哪些"反驳"其实会激活并加固对方的框架；
+③ 给我一套自己的命名／框架，让我不在对方的战场上应战，并说明它把焦点引向哪里。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here's a debate about [an issue / product narrative / technical argument]; the key wording in play is: [paste the opponent's phrasing]. Help me fight this framing war:
+1. Unpack which frame their wording presupposes and what it treats as a given.
+2. Warn me which "rebuttals" would actually activate and reinforce their frame.
+3. Give me my own naming / frame so I don't fight on their battlefield, and explain where it redirects attention.</div>
+</section>
+<!-- Card 3: 重新框定 -->
+<section class="card c3">
+<h2>重新框定 · Reframing</h2>
+<div class="subtitle">大多数突破不是答对了问题，而是换对了问题——重新框定改变的是问题的边界，而非框内的答案</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>重新框定（reframing）是框架战争的建设性用法：面对一个卡死的局面，不在原框架里更努力，而是<strong>换一个组织问题的框架，让全新的选项浮现</strong>。经典的"慢电梯问题"：租户抱怨电梯太慢，工程师把提速方案算了个遍，都太贵；后来有人把问题从"电梯太慢"重新框定为"等待太无聊"，于是在电梯口装了镜子——抱怨消失了。电梯没变快，问题变了。</p>
+<p>非平凡点：① <strong>框架决定了整个解空间</strong>。在"提速"的框架里，装镜子根本不是一个候选答案；换了框架，它才成为最优解。这就是为什么重新框定是杠杆最高的一步——它不在解里找，而是动了解所栖身的那个空间（与 Day 3 的"杠杆点"同理：最高的杠杆点是改变范式本身）。② 它不是粉饰或自欺：重新框定要求<em>同一组事实</em>在新框架下依然成立，只是被重新组织。谈判中把"立场之争"重新框定为"利益之合"，把"分蛋糕"框成"做大蛋糕"，释放的是真实选项，不是话术。③ 阴影面要点破：重新框定一旦滑向<strong>否认真问题</strong>，就堕落成毒鸡汤——把"系统真的崩了"框成"成长的机会"。纪律在于：重新框定是为了<em>打开选项</em>，不是为了<em>逃避现实</em>。</p>
+<div class="diagram">
+<svg viewbox="0 0 480 210" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#636e72" height="52" opacity="0.9" rx="6" width="120" x="14" y="79"></rect>
+<text fill="#fff" font-size="12.5" font-weight="700" text-anchor="middle" x="74" y="100">同一组事实</text>
+<text fill="#fff" font-size="11" text-anchor="middle" x="74" y="118">电梯就是慢</text>
+<rect fill="#0a6fb8" height="44" opacity="0.9" rx="6" width="140" x="172" y="18"></rect>
+<text fill="#fff" font-size="12.5" font-weight="700" text-anchor="middle" x="242" y="38">框架A：电梯太慢</text>
+<text fill="#fff" font-size="10.5" text-anchor="middle" x="242" y="54">→ 提速</text>
+<rect fill="#1b8a5a" height="44" opacity="0.9" rx="6" width="140" x="172" y="148"></rect>
+<text fill="#fff" font-size="12.5" font-weight="700" text-anchor="middle" x="242" y="168">框架B：等待太无聊</text>
+<text fill="#fff" font-size="10.5" text-anchor="middle" x="242" y="184">→ 消磨等待</text>
+<rect fill="#fafbfc" height="44" rx="6" stroke="#adb5bd" stroke-width="1.2" width="130" x="338" y="18"></rect>
+<text fill="#495057" font-size="11.5" text-anchor="middle" x="403" y="38">解空间：换电机</text>
+<text fill="#c44545" font-size="11.5" text-anchor="middle" x="403" y="54">全都很贵 ✗</text>
+<rect fill="#fafbfc" height="44" rx="6" stroke="#adb5bd" stroke-width="1.2" width="130" x="338" y="148"></rect>
+<text fill="#495057" font-size="11.5" text-anchor="middle" x="403" y="168">解空间：装镜子</text>
+<text fill="#1b8a5a" font-size="11.5" text-anchor="middle" x="403" y="184">近乎零成本 ✓</text>
+<line marker-end="url(#ah2)" stroke="#636e72" stroke-width="1.4" x1="134" x2="170" y1="92" y2="44"></line>
+<line marker-end="url(#ah2)" stroke="#636e72" stroke-width="1.4" x1="134" x2="170" y1="118" y2="166"></line>
+<line marker-end="url(#ah2)" stroke="#636e72" stroke-width="1.4" x1="312" x2="336" y1="40" y2="40"></line>
+<line marker-end="url(#ah2)" stroke="#636e72" stroke-width="1.4" x1="312" x2="336" y1="170" y2="170"></line>
+<defs>
+<marker id="ah2" markerheight="6" markerwidth="7" orient="auto" refx="6" refy="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#636e72"></path>
+</marker>
+</defs>
+</svg>
+<div class="caption">框架决定解空间：换一个问题，原来不存在的最优解才浮现</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>慢电梯装镜子。把"工程提速问题"重新框定为"心理等待问题"，一个几乎零成本的方案瞬间出现——而它在原来的框架里压根不存在。问题换了，答案就从无到有。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 工程：与其问"系统为什么这么慢"（陷入无尽的性能调优），不如重新框定为"哪个 SLO 没被满足、对谁重要"——常常发现根本不必让全局变快。把"模型不够准"重新框定为"任务边界划错了"，往往比再标十万条数据更有效。② 佛学：你深感兴趣的"转念"与般若智慧，内核就是重新框定——<strong>同一个境遇，换一个观看它的框架，整片心理解空间随之改变</strong>。把无常从"威胁"重新框定为"事物本来的流动"，痛苦的结构就松动了。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Reframing</strong> — the constructive use of framing: facing a stuck situation, don't try harder inside the old frame; <strong>change the frame organizing the problem so new options appear</strong>. The classic "slow elevator problem": tenants complain it's slow, every speed-up is too expensive — until someone reframes "the elevator is too slow" into "the wait is too boring" and installs mirrors. The elevator never sped up; the problem changed. Non-trivial: (1) the frame determines the entire solution space — under "speed up," mirrors aren't even a candidate; reframe and they become optimal. That's why reframing is the highest-leverage move — it shifts the space the solutions live in (cf. leverage points, Day 3: the highest leverage is changing the paradigm). (2) It's not spin: the <em>same facts</em> must still hold under the new frame, only reorganized — "positions" into "interests," "split the pie" into "grow the pie." (3) Shadow side: reframing that slides into <em>denying the real problem</em> becomes toxic positivity. The discipline: reframe to open options, not to evade reality.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我被一个问题卡住了：[描述处境 + 我现在是怎么定义这个问题的]。我在原框架里已经试过 [已试过的方案]，都不行。请帮我重新框定：
+① 我现在隐含的问题框架是什么？它把什么默认成了"必须如此"？
+② 给我 3 个不同的重新框定，每个都打开一片新的解空间；
+③ 提醒我哪些重新框定其实是在逃避真问题，而非打开选项。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm stuck on a problem: [describe the situation + how I currently define the problem]. Inside the old frame I've already tried [attempted solutions], none worked. Help me reframe:
+1. What is my implicit problem frame, and what does it assume "must be so"?
+2. Give me 3 different reframings, each opening a new solution space.
+3. Flag which reframings would actually be evading the real problem rather than opening options.</div>
+</section>
+<!-- Card 4: 死隐喻 -->
+<section class="card c4">
+<h2>死隐喻 · Dead Metaphor</h2>
+<div class="subtitle">隐喻用久了会"死"——失去比喻感、被当成字面现实；而死隐喻最危险，正因为它不再像隐喻，于是不再被审查</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>隐喻有生命周期：鲜活时人人感到它是比喻，用久了就<strong>"死"成字面意义</strong>——"桌子腿""山脚""抓住一个想法""问题的核心"，没人再觉得这些是比喻。死隐喻仍在搬运它原初的映射，只是这套映射已经隐形，被当成了"现实本身"。</p>
+<p>非平凡点：① 死隐喻比活隐喻危险得多：<strong>因为它不再像隐喻，所以逃过了审查</strong>。"时间就是金钱"死得太透，以至我们不再察觉它在塑造我们与时间的全部关系——把闲下来当"浪费"，把人生当"收支"。② 解药是<em>复活死隐喻</em>：把它重新当成一个比喻来端详，被它偷偷夹带的预设就重新现形、可被质疑。这与"地图非疆域"（见 Day 43）同源——死隐喻就是一张被误当成疆域本身的地图。③ "名词化"是死隐喻的重灾区：把一个<em>过程</em>冻结成一个<em>实体</em>——"自我""心智""记忆"，本是动态的过程，被语言凝固成仿佛端坐在那里的东西，于是我们去问"我的真实自我在哪"这种被语法制造出来的假问题。</p>
+<p>实践：定期审计你最常用、最不假思索的词——越觉得它"本来就是这意思"，越可能是一个在替你预设世界的死隐喻。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>"桌子腿""山脊""时间在流逝"——彻底死透，没人再当比喻。而"市场看不见的手"半死不活：它仍在偷偷把市场拟人化成一个有意图的调度者；一旦复活它、追问"到底是谁的手、凭什么协调"，许多关于市场的直觉就会松动。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI："训练"模型是一个死隐喻，它让 RLHF 听起来像驯兽或教书，掩盖了底层不过是<strong>梯度下降在高维曲面上的统计拟合</strong>。复活这个隐喻，你对"对齐""模型会不会骗人"的直觉会整个改变——你不是在管教一个学生，而是在塑形一片曲面。技术行话几乎全是死隐喻："云""内存""病毒""防火墙""神经网络"，每一个都在悄悄替你设定预设。② 意识／佛学：你关注的"无我"，恰恰是在复活一个最大的死隐喻——"自我"。把名词"我"还原成它本来的动词性过程（不断生灭的觉知之流），"我究竟是谁"这个问题就被重新打开了。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Dead Metaphor</strong> — metaphors have a life cycle: vivid at first, then used so often they "die" into literal meaning. "The leg of a table," "the foot of a mountain," "grasp an idea," "the heart of the matter" — no one feels these as figurative anymore. A dead metaphor still carries its original mapping, but the mapping has gone invisible and is taken as <em>reality itself</em>. That's why dead metaphors are far more dangerous than live ones: <strong>because they no longer look like metaphors, they escape scrutiny</strong>. "Time is money" is so dead we don't notice it shaping our whole relationship to time (idleness as "waste," life as a "ledger"). The cure is to <em>revive</em> the dead metaphor — treat it as a figure of speech again and its smuggled assumptions resurface, open to challenge (same root as "the map is not the territory," Day 43). Worst offender: <em>nominalization</em> — freezing a process into a thing ("self," "mind," "memory"), which manufactures pseudo-questions like "where is my true self?"
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>这是我在 [某领域／某段思考／某篇文字] 里反复使用的一组核心词：[列出 3-6 个词]。请帮我做一次「死隐喻复活」：
+① 指出其中哪些其实是死隐喻，它们原本的源域映射是什么；
+② 每个死隐喻偷偷夹带了哪些预设，正被我当成"现实本身"？
+③ 复活或替换其中一两个，看看我对这件事的直觉会如何改变。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>Here is a set of core words I keep using in [a domain / a line of thinking / a piece of writing]: [list 3-6 words]. Run a "dead-metaphor revival":
+1. Point out which are actually dead metaphors and what their original source-domain mapping was.
+2. What assumptions does each smuggle in that I'm now treating as "reality itself"?
+3. Revive or replace one or two of them and show how my intuition about the matter would shift.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
