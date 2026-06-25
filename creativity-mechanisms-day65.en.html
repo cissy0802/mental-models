@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mental Models Daily: The Mechanisms of Creativity · 2026-06-25</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>Mental Models Daily: The Mechanisms of Creativity</h1>
+<div class="meta">2026-06-25 · Day 65</div>
+</header>
+<!-- Card 1 -->
+<section class="card c1">
+<h2>Thought Experiments</h2>
+<div class="subtitle">The experiment you can't run in reality, you can run in your head — push a premise to its limit and watch what breaks first</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>A thought experiment is running an experiment in the imagination when the real one can't be done, is too expensive, too dangerous, or simply needn't be done: take a premise, follow the logic to an extreme, and watch what follows or what breaks first. Its non-trivial nature: <strong>this is not daydreaming but a rigorous device</strong>. Reality can never give you pure conditions (a perfect vacuum, a frictionless plane, a perfectly rational agent), yet a thought experiment conjures exactly such an idealized world, isolating the <strong>single variable</strong> you want to test and stripping away every confound reality won't let you remove.</p>
+<p>Non-trivial: (1) A good thought experiment <strong>imports no new external information</strong> — it merely drags into view a conclusion already latent in your premises but invisible until now. Galileo refuted "heavy things fall faster" without dropping a single stone, by a pure logical contradiction. (2) Its weapon is the <strong>limit</strong>: push a parameter to 0 or infinity and structure hidden at everyday scales stands out — Einstein chasing a light beam saw "simultaneity" collapse. (3) It yields not a guess but a <strong>decisive contradiction or consequence</strong>: the moment pushing to the extreme produces self-contradiction, the original premise must be revised. This is its power as a creative device — testing, for free and in safety, possibilities reality can never touch.</p>
+<p>Practical: meeting an assumption you take for granted, actively ask "what if I push it to the extreme?" — drag the variable to 0 or infinity and see whether the conclusion still stands. If it collapses, you've found a hidden premise.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>Galileo's refutation of "heavy things fall faster": tie a heavy and a light stone together. By Aristotle, the light one slows the heavy one, so the pair falls slower than the heavy stone alone; yet bound together they weigh more, so should fall faster — the same case yields two opposite conclusions. The logic self-contradicts, and the only way out is: fall rate has nothing to do with weight. Not a single stone dropped, and the conclusion is settled.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>Designing a system or AI architecture, a limiting thought experiment best exposes hidden assumptions: "If latency were zero, data infinite, and one machine could hold everything, would this design still have a reason to exist?" — pushing parameters to the extreme instantly reveals which premise the architecture secretly leans on. The Buddhist kōan is the same device: "What was your original face before your parents were born?" demands no answer but pushes the mind to the end of its concepts, forcing it past its own categorical boundaries.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I have an assumption I've been taking for granted without ever really testing: [describe the assumption or design premise]. Help me interrogate it with a thought experiment:
+1. Push the key variable to an extreme (toward 0 or infinity) — does the conclusion still hold?
+2. If following the premise to its end produces a contradiction, which hidden assumption is to blame?
+3. Design the smallest, cleanest idealized scenario that would either falsify the assumption or expose the condition it truly depends on.</div>
+</section>
+<!-- Card 2 -->
+<section class="card c2">
+<h2>Remote Association</h2>
+<div class="subtitle">Creativity isn't creation from nothing — it's connecting two normally distant concepts, unexpectedly yet aptly</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>A foundational mechanism of creativity: linking two concepts that normally sit far apart in your semantic network, unexpectedly yet aptly. Psychology probes it with the Remote Associates Test (RAT): given three seemingly unrelated words, find the fourth that connects them all. <strong>Novelty is never creation from nothing; it is the surprising-but-fitting link between distant nodes.</strong></p>
+<p>Non-trivial: (1) What separates creativity from nonsense is the aptness constraint: far + apt = creative, far + inapt = gibberish, near + apt = cliché. <strong>A real idea must be both surprising and, in hindsight, obvious.</strong> (2) Mechanically, creative people have flatter "associative hierarchies": given a cue word, the conventional mind rushes to the one dominant association and stops, while the creative mind keeps weaker, remoter associations reachable. (3) This explains why ideas surface in the shower, on a walk, or as you fall asleep — the default mode network (DMN), relaxed, wanders and throws up remote candidates, whereas focused, directed search locks you near the cue. Metaphor and analogy are this machine's output.</p>
+<p>Practical: when stuck, don't stare harder at the problem itself — that only reinforces the nearest, conventional associations. Actively pull a word or image from an unrelated field and force the brain to bridge; or simply leave, and let the DMN go fishing in the distance for you.</p>
+<div class="diagram">
+<svg viewbox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.2" x1="95" x2="52" y1="120" y2="80"></line>
+<line stroke="#adb5bd" stroke-width="1.2" x1="95" x2="58" y1="120" y2="162"></line>
+<line stroke="#adb5bd" stroke-width="1.2" x1="95" x2="138" y1="120" y2="168"></line>
+<circle cx="52" cy="80" fill="#e9ecef" r="13" stroke="#adb5bd"></circle>
+<circle cx="58" cy="162" fill="#e9ecef" r="13" stroke="#adb5bd"></circle>
+<circle cx="138" cy="168" fill="#e9ecef" r="13" stroke="#adb5bd"></circle>
+<line stroke="#7048b8" stroke-dasharray="6 4" stroke-width="2.2" x1="115" x2="372" y1="111" y2="78"></line>
+<circle cx="95" cy="120" fill="#7048b8" r="21"></circle>
+<text fill="#fff" font-size="11" font-weight="700" text-anchor="middle" x="95" y="124">cue</text>
+<circle cx="395" cy="72" fill="#1b8a5a" r="23"></circle>
+<text fill="#fff" font-size="10.5" font-weight="700" text-anchor="middle" x="395" y="76">distant</text>
+<text fill="#7048b8" font-size="11" text-anchor="middle" x="250" y="80">creative link (far · apt)</text>
+<text fill="#868e96" font-size="10.5" text-anchor="middle" x="92" y="205">conventional links (near · cliché-prone)</text>
+</svg>
+<div class="caption">Ordinary association rushes to the nearest node and stops; creativity builds a bridge to a distant node that is still apt</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The invention of Velcro: an engineer walking his dog noticed how burdock burrs clung stubbornly to clothing, and bridged "the hooks of a plant's seed" — a node deep in biology — to "fastening fabric," an engineering problem. The distance is enormous, yet the connection is exactly apt — the very signature of creativity.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>AI repeatedly advances by remote association: the "attention" mechanism borrows from attention in cognitive science; "simulated annealing" in optimization borrows from the annealing process in metallurgy; "genetic algorithms" borrow from biological evolution. Each time, the structure of a distant field is carried over to illuminate a local problem. <strong>Someone like BigCat, spanning AI, distributed systems, Buddhism, and neuroscience, holds a natural edge</strong> — the wider your semantic network is spread, the more distant nodes you can bridge to, and the connections others can't see, you can.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm stuck on a problem with no fresh solution in sight: [describe the problem]. Use remote association to break it open:
+1. Give me 3 domains utterly unrelated to this problem on the surface (e.g. biology, architecture, the kitchen, music), and extract one core mechanism from each.
+2. Force a bridge from each mechanism to my problem, producing links that are surprising yet apt in hindsight.
+3. Among these, pick the one that is both most distant and most fitting, and expand it into a concrete plan.</div>
+</section>
+<!-- Card 3 -->
+<section class="card c3">
+<h2>Constraint-Driven Creativity</h2>
+<div class="subtitle">A blank canvas paralyzes; a harsh limit forces out the non-obvious solution</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>A counterintuitive fact: constraints are usually not creativity's enemy but its fuel. A blank canvas paralyzes; a harsh limit forces out non-obvious solutions. "Necessity is the mother of invention" names exactly this. <strong>Unlimited freedom inflates the search space so much that you can only retreat to the most familiar, lowest-effort default</strong>; an apt constraint cuts away the obvious old paths and pushes you into territory never explored.</p>
+<p>Non-trivial: (1) The blank-page paradox: total freedom often yields not creation but decision paralysis plus regression to cliché — you grab the first familiar thing that comes to mind. The role of a constraint is precisely to <strong>remove that default and force genuine search to happen</strong>. (2) Hence masters impose constraints on themselves: someone wrote a classic children's book under a fifty-word limit; the rules of regulated verse, the syllables of a haiku, a tweet's character cap — bind first, then dance. (3) But constraints have a sweet spot: too loose is no constraint, too tight and nothing fits — they work by <strong>reshaping the search landscape</strong>, funneling effort from the divergent wilderness into one narrow slot, forcing out solutions that loose conditions would never produce.</p>
+<p>Practical: facing a task so open-ended you can't begin, actively add an artificial constraint — "use only what's already here," "halve the budget," "say it in one sentence." A constraint is not a compromise but a lens that focuses creativity.</p>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The Apollo 13 accident: with CO2 about to exceed safe levels, ground engineers had to build a working scrubber from only what was aboard — a sock, the cover of a manual, duct tape. It was precisely this near-brutal constraint that forced out an ingenious solution no open-ended brief would ever have reached. The tighter the limit, the cleverer the solution.</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>Engineering's most elegant algorithms are often born of the tightest constraints: a latency budget cut to the bone, memory down to scraps, "ten times less compute" — these are what forced out architectural innovations like model distillation and quantization. In product, the restraint of an MVP (do one thing only) forces clarity about core value. <strong>The same holds for contemplative practice and art</strong>: the rules of sitting meditation, the bonds of poetic form — precisely by removing trivial choices, they free up attention. Freedom lies not in the absence of form, but within form.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I have a task that's either too open-ended to start or stubbornly short on fresh ideas: [describe the task]. Use constraint-driven creativity to help me:
+1. Give me 3 artificial constraints (e.g. "use only existing resources," "halve the budget," "explain it in one sentence," "ban the most obvious solution").
+2. For each constraint, force out a solution I'd never have reached without it.
+3. Judge which constraint lands in the sweet spot — tight enough to force novelty, not so tight that nothing fits.</div>
+</section>
+<!-- Card 4 -->
+<section class="card c4">
+<h2>Combinatorial Innovation</h2>
+<div class="subtitle">Almost nothing is built from scratch — innovation is the recombination of existing building blocks</div>
+<div class="section-label">In Depth</div>
+<hr/>
+<p>Almost nothing is built from scratch — innovation is overwhelmingly the recombination of existing building blocks. The iPhone = phone + iPod + internet device; the vast majority of patents cite prior patents. <strong>The creative act is not conjuring matter from nothing, but selecting existing parts and fitting them together seamlessly.</strong></p>
+<p>Non-trivial: (1) Recombination, not creation ex nihilo: internalize this and the anxiety of "originality" dissolves — you need not invent new atoms, only find old parts no one has yet joined. (2) The "adjacent possible": each new combination itself becomes a new building block, opening doors that previously did not exist at all — so innovation compounds, accelerating, and therefore <strong>timing is crucial</strong>: you cannot leap two steps beyond the adjacent possible, because those parts aren't built yet. (3) Combinations explode with the number of blocks (N parts yield ~2^N subsets), so the true bottleneck is not raw material but <strong>recognition</strong> — spotting, among astronomically many combinations, the rare and valuable pairing. This is the logic of evolution (gene recombination) and of large language models (recombining patterns seen in training): the more diverse your stock of blocks, the more likely you collide with a combination others can't see.</p>
+<p>Practical: when seeking to innovate, don't first ask "what brand-new thing can I build," but rather "what existing parts are at hand that no one has yet joined together?" — shifting effort from "creating raw material" to "recognizing combinations."</p>
+<div class="diagram">
+<svg viewbox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar" markerheight="6" markerwidth="7" orient="auto" refx="6" refy="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#868e96"></path>
+</marker>
+</defs>
+<rect fill="#dfeefa" height="30" rx="5" stroke="#0a6fb8" width="44" x="22" y="34"></rect>
+<text fill="#0a6fb8" font-size="13" text-anchor="middle" x="44" y="54">A</text>
+<rect fill="#dfeefa" height="30" rx="5" stroke="#0a6fb8" width="44" x="22" y="84"></rect>
+<text fill="#0a6fb8" font-size="13" text-anchor="middle" x="44" y="104">B</text>
+<rect fill="#dfeefa" height="30" rx="5" stroke="#0a6fb8" width="44" x="22" y="134"></rect>
+<text fill="#0a6fb8" font-size="13" text-anchor="middle" x="44" y="154">C</text>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="68" x2="186" y1="49" y2="70"></line>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="68" x2="186" y1="99" y2="78"></line>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="68" x2="186" y1="99" y2="128"></line>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="68" x2="186" y1="149" y2="136"></line>
+<rect fill="#e7dffa" height="30" rx="5" stroke="#7048b8" width="62" x="190" y="59"></rect>
+<text fill="#7048b8" font-size="11.5" text-anchor="middle" x="221" y="79">A+B</text>
+<rect fill="#e7dffa" height="30" rx="5" stroke="#7048b8" width="62" x="190" y="119"></rect>
+<text fill="#7048b8" font-size="11.5" text-anchor="middle" x="221" y="139">B+C</text>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="252" x2="368" y1="74" y2="100"></line>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="252" x2="368" y1="134" y2="108"></line>
+<rect fill="#d8f0e4" height="30" rx="5" stroke="#1b8a5a" width="76" x="372" y="89"></rect>
+<text fill="#1b8a5a" font-size="11.5" text-anchor="middle" x="410" y="109">A+B+C</text>
+<text fill="#868e96" font-size="10.5" text-anchor="middle" x="408" y="135">adjacent possible →</text>
+</svg>
+<div class="caption">Each new combination becomes a new block, pushing the frontier of the "adjacent possible" outward — which is why innovation compounds</div>
+</div>
+<div class="example-block">
+<div class="example-label">Classic example</div>
+<p>The iPhone invented no brand-new technology: the touchscreen, the mobile phone, the music player, the browser all already existed. What Jobs's team did was combine them, into a single slab of glass, in an unprecedented way. What's truly scarce is never the parts, but the eye to see that "these long-existing things can be joined like this."</p>
+</div>
+<div class="example-block">
+<div class="example-label">BigCat scenario</div>
+<p>AI is itself a model of combinatorial innovation: the Transformer = attention + existing sequence models; RLHF (reinforcement learning from human feedback) = reinforcement learning + human feedback + language models. Every breakthrough is a new arrangement of old blocks. Biological evolution is even more so — it designs no wholly new organ, only recombines existing genes and structures. <strong>For a BigCat pursuing the "AI super-individual," the greatest moat is exactly the uniqueness of this combination library</strong>: pack the blocks of AI, distributed systems, Buddhism, and neuroscience into one mind, and the combinations you can assemble are beyond the reach of anyone confined to a single field.</p>
+</div>
+<div class="section-label">AI Prompt</div>
+<hr/>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to innovate in a certain direction but keep feeling there's "nothing genuinely new to build": [describe your field or problem]. Use combinatorial innovation to reframe it:
+1. List the mature "building blocks" in this field (technologies, methods, concepts, resources).
+2. Then pull in a set of blocks from an unrelated field in my background.
+3. Give me 3 cross-domain combinations no one has tried yet, and point out which is most likely to sit in the "adjacent possible" — buildable now, yet opening into new space.</div>
+</section>
+<footer class="footer">
+<a href="index.en.html">← Home</a>
+</footer>
+</div>
+</body>
+</html>

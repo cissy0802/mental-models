@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：创造力的机制 · 2026-06-25</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：创造力的机制</h1>
+<div class="meta">2026-06-25 · Day 65</div>
+</header>
+<!-- Card 1: 思想实验 -->
+<section class="card c1">
+<h2>思想实验 · Thought Experiments</h2>
+<div class="subtitle">你无法在现实里做的实验，可以在头脑里做——把一个前提推到极限，看什么先崩塌</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>思想实验，是当现实中的实验做不了、太贵、太危险，或根本不必做时，在头脑里把它跑一遍：取一个前提，沿着逻辑推到极端，看会推出什么、什么先崩塌。它的非平凡之处在于——<strong>这不是空想，而是一种严谨的装置</strong>：现实永远给不了你纯净的条件（绝对真空、无摩擦平面、完全理性的人），思想实验却能凭空搭出这样一个理想世界，把你想检验的那<strong>一个变量</strong>单独拎出来，剔除所有现实里甩不掉的干扰。</p>
+<p>非平凡点：① 好的思想实验<strong>不从外部引入任何新信息</strong>——它只是把早已潜伏在你前提里、却一直看不见的结论，逼到台面上。伽利略没扔一块石头，仅凭一个逻辑矛盾就推翻了"重的物体落得快"。② 它的武器是<strong>极限</strong>：把某个参数推到 0 或无穷大，被日常尺度掩盖的结构就会凸显——爱因斯坦追着一束光跑，才看见了"同时性"的崩溃。③ 它逼出的不是猜测，而是<strong>决定性的矛盾或后果</strong>：一旦推到极端发现自相矛盾，原前提就必须修正。这正是它作为创造装置的力量——免费而安全地，检验那些现实中无法触碰的可能。</p>
+<p>实践：遇到一个你默认成立的假设，主动追问"如果把它推到极端会怎样"——把变量拉到 0 或无穷，看结论是否还站得住。崩了，你就找到了一条藏起来的前提。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>伽利略反驳"重物落得快"：把一重一轻两块石头绑在一起。按亚里士多德，轻的会拖慢重的，所以整体比单独的重物落得慢；可绑在一起后总重量更大，又该落得更快——同一件事推出两个相反结论。逻辑自相矛盾，唯一出路是：落速根本与重量无关。一块石头没扔，结论已定。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>设计系统或 AI 架构时，做一次极限思想实验最能照出隐藏假设："如果延迟为零、数据无限、单台机器能装下一切，这套设计还有存在的理由吗？"——把参数推到极端，立刻看清架构到底在偷偷依赖哪一条前提。佛学的公案是同一种装置：「父母未生你前，本来面目是什么」并不索要一个答案，而是把心智推到概念的尽头，逼它越过自己的分类边界。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Thought Experiments</strong> — running an experiment in the imagination when reality won't let you: take a premise, push it to its logical extreme, and watch what follows or what breaks first. It is not daydreaming but a rigorous device: reality can never give you pure conditions (a perfect vacuum, a frictionless plane, a perfectly rational agent), yet a thought experiment conjures exactly that idealized world, isolating the single variable you want to test. Non-trivial: (1) a good one imports no new external information — it merely drags into view a conclusion already latent in your premises; Galileo refuted "heavy things fall faster" without dropping a single stone, by a pure contradiction. (2) Its weapon is the limit — push a parameter to 0 or infinity and structure hidden at everyday scales stands out (Einstein chasing a light beam saw simultaneity collapse). (3) It yields not a guess but a decisive contradiction or consequence, forcing the premise to be revised. Key terms: idealization, limiting case, reductio ad absurdum.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我有一个一直默认成立、却没真正检验过的假设：[描述这个假设或设计前提]。请帮我用「思想实验」逼问它：
+① 把其中的关键变量推到极端（拉到 0 或无穷大），结论还成立吗？
+② 如果顺着前提推到底出现了自相矛盾，是哪条隐藏假设在作祟？
+③ 设计一个最小、最干净的理想情境，让这个假设要么被证伪、要么暴露出它真正依赖的条件。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I have an assumption I've been taking for granted without ever really testing: [describe the assumption or design premise]. Help me interrogate it with a thought experiment:
+1. Push the key variable to an extreme (toward 0 or infinity) — does the conclusion still hold?
+2. If following the premise to its end produces a contradiction, which hidden assumption is to blame?
+3. Design the smallest, cleanest idealized scenario that would either falsify the assumption or expose the condition it truly depends on.</div>
+</section>
+<!-- Card 2: 远距离联想 -->
+<section class="card c2">
+<h2>远距离联想 · Remote Association</h2>
+<div class="subtitle">创造不是无中生有，而是把两个平时离得很远的概念，意外却恰当地接上</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>创造力的一个底层机制：把两个在你的语义网络里平时离得很远的概念，意外却恰当地连起来。心理学用"远距离联想测验"（RAT）来测它：给三个看似无关的词，找出能同时联系它们的第四个词。<strong>新颖从不是无中生有，而是远端节点之间那个出人意料又妥帖的连接。</strong></p>
+<p>非平凡点：① 决定一个联想是创造还是胡扯的，是"恰当"这道约束：远 + 恰当 = 创造，远 + 不恰当 = 胡言，近 + 恰当 = 陈词滥调。<strong>真正的创意必须同时满足"出人意料"和"事后看来理所当然"。</strong>② 机制上，创造力高的人"联想层级"更平：给一个线索词，普通人迅速扑向那个最主导的常规联想就停了，创造者却让更弱、更远的联想也保持可达。③ 这解释了为什么洗澡、散步、入睡前最容易冒出好点子——默认模式网络（DMN）在放松时四处游走、抛出远距离候选，而专注的定向搜索反而把你锁死在线索附近。隐喻和类比，正是这台机器的产物。</p>
+<p>实践：卡住时，别更用力地盯着问题本身——那只会强化最近的常规联想。主动去一个无关领域取一个词、一个意象，强迫大脑架桥；或干脆离开，让 DMN 替你去远处打捞。</p>
+<div class="diagram">
+<svg viewbox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.2" x1="95" x2="52" y1="120" y2="80"></line>
+<line stroke="#adb5bd" stroke-width="1.2" x1="95" x2="58" y1="120" y2="162"></line>
+<line stroke="#adb5bd" stroke-width="1.2" x1="95" x2="138" y1="120" y2="168"></line>
+<circle cx="52" cy="80" fill="#e9ecef" r="13" stroke="#adb5bd"></circle>
+<circle cx="58" cy="162" fill="#e9ecef" r="13" stroke="#adb5bd"></circle>
+<circle cx="138" cy="168" fill="#e9ecef" r="13" stroke="#adb5bd"></circle>
+<line stroke="#7048b8" stroke-dasharray="6 4" stroke-width="2.2" x1="115" x2="372" y1="111" y2="78"></line>
+<circle cx="95" cy="120" fill="#7048b8" r="21"></circle>
+<text fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" x="95" y="124">线索</text>
+<circle cx="395" cy="72" fill="#1b8a5a" r="23"></circle>
+<text fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle" x="395" y="76">远端</text>
+<text fill="#7048b8" font-size="11.5" text-anchor="middle" x="250" y="80">创造性连接（远 · 恰当）</text>
+<text fill="#868e96" font-size="10.5" text-anchor="middle" x="92" y="205">常规联想（近 · 易陈词滥调）</text>
+</svg>
+<div class="caption">普通联想扑向最近的节点就停了；创造是架起一座通往远端、却依然恰当的桥</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>魔术贴的发明：工程师遛狗时发现牛蒡的刺果牢牢钩住衣物，把"植物种子的倒钩"这个远在生物学的节点，连到了"织物扣合"这个工程问题上。距离极远，连接却极恰当——这正是创造的标志。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>AI 领域反复靠远距离联想推进："注意力"机制借自认知科学的注意；优化里的"模拟退火"借自冶金的退火工艺；"遗传算法"借自生物进化。每一次都是把一个远方学科的结构搬来，照亮本地的问题。<strong>像 BigCat 这样横跨 AI、分布式、佛学、神经科学的人，天然占优势</strong>——语义网络铺得越宽，能架桥的远端节点就越多，别人看不到的连接你能看到。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Remote Association</strong> — a foundational mechanism of creativity: linking two concepts that normally sit far apart in your semantic network, unexpectedly yet aptly. Mednick's Remote Associates Test probes it. Novelty is never creation from nothing; it is the surprising-but-fitting bridge between distant nodes. Non-trivial: (1) what separates creativity from nonsense is the aptness constraint — far + apt = creative, far + inapt = gibberish, near + apt = cliché; a real idea is both surprising and, in hindsight, obvious. (2) Creative people have flatter associative hierarchies: given a cue, the conventional mind rushes to the one dominant association and stops, while the creative mind keeps weaker, remoter associations reachable. (3) This is why ideas surface in the shower or on a walk — the default mode network (DMN), relaxed, wanders and throws up remote candidates, whereas focused search locks you near the cue. Metaphor and analogy are this machine's output. Key terms: associative hierarchy, default mode network, incubation.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我卡在一个想不出新解的问题上：[描述这个问题]。请用「远距离联想」帮我破局：
+① 给我 3 个与这个问题表面毫不相关的领域（如生物、建筑、厨房、音乐），各从中取一个核心机制；
+② 强行把每个机制架桥到我的问题上，给出"出人意料但事后看恰当"的连接；
+③ 在这些连接里，挑出最远又最贴切的一个，展开成具体方案。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm stuck on a problem with no fresh solution in sight: [describe the problem]. Use remote association to break it open:
+1. Give me 3 domains utterly unrelated to this problem on the surface (e.g. biology, architecture, the kitchen, music), and extract one core mechanism from each.
+2. Force a bridge from each mechanism to my problem, producing links that are surprising yet apt in hindsight.
+3. Among these, pick the one that is both most distant and most fitting, and expand it into a concrete plan.</div>
+</section>
+<!-- Card 3: 约束驱动创造 -->
+<section class="card c3">
+<h2>约束驱动创造 · Constraint-Driven Creativity</h2>
+<div class="subtitle">空白的画布让人瘫痪，严苛的限制反而逼出非显而易见的解</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>反直觉的事实：约束往往不是创造力的敌人，而是它的燃料。一张全白的画布让人瘫痪，一道苛刻的限制反而逼出非显而易见的解。"需要是发明之母"说的正是这件事。<strong>无限的自由会把搜索空间撑得太大，大到你只能退回最熟悉、最省力的那个默认选项</strong>；而一个恰当的约束，砍掉了那些显而易见的老路，把你推进从没探过的区域。</p>
+<p>非平凡点：① 空白页悖论：完全的自由带来的常常不是创造，而是决策瘫痪加上向陈词滥调的退化——你会抓住第一个想到的熟悉东西。约束的作用，正是<strong>移除那个默认选项，强迫真正的搜索发生</strong>。② 因此高手主动给自己上约束：有人用五十个单词的限制写出经典童书，律诗的格律、俳句的音节、推文的字数，都是先自缚再起舞。③ 但约束有个甜区：太松等于没有，太紧则什么都塞不进——它通过<strong>重塑搜索的地形</strong>来起作用，把精力从发散的旷野汇聚到一条窄缝，逼出在宽松条件下永远不会出现的解。</p>
+<p>实践：面对一个开放到无从下手的任务，主动加一道人为约束——"只能用现有的东西""砍掉一半预算""一句话讲完"。约束不是妥协，而是把创造力聚焦的透镜。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>阿波罗 13 号事故：飞船上二氧化碳即将超标，地面工程师必须只用舱内现有的东西——一只袜子、一本手册的封面、胶带——拼出一个能用的滤毒装置。正是这个近乎残酷的约束，逼出了一个开放式命题下绝不会想到的精巧方案。限制越死，解越妙。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>工程里最漂亮的算法，常诞生于最紧的约束：延迟预算砍到极限、内存只剩零头、"算力少十倍"——正是这些逼出了模型蒸馏、量化这类架构创新。产品上，MVP 的克制（只做一件事）逼出对核心价值的清醒。<strong>连修行与艺术也是如此</strong>：打坐的规矩、格律的束缚，恰恰通过消除琐碎的选择，把注意力解放出来——自由不在没有形式，而在形式之内。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Constraint-Driven Creativity</strong> — counterintuitively, constraints are usually not creativity's enemy but its fuel. A blank canvas paralyzes; a harsh limit forces non-obvious solutions. Unlimited freedom inflates the search space so much that you retreat to the most familiar, lowest-effort default; an apt constraint prunes the obvious paths and pushes you into unexplored territory. Non-trivial: (1) the blank-page paradox — total freedom yields not creation but decision paralysis plus regression to cliché (you grab the first familiar thing); a constraint removes that default and forces genuine search. (2) Hence masters impose constraints on themselves: a fifty-word limit, the rules of a sonnet, the syllables of a haiku, a tweet's character cap — bind first, then dance. (3) Constraints have a sweet spot: too loose is no constraint, too tight and nothing fits — they work by reshaping the search landscape, funneling effort into a narrow slot that forces out solutions free conditions would never produce. Key terms: blank-page paradox, self-imposed constraint, search-space pruning.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我有一个开放到无从下手、或迟迟出不来新意的任务：[描述这个任务]。请用「约束驱动创造」帮我：
+① 给我 3 道人为约束（如"只能用现有资源""预算砍半""必须一句话说清""不许用最常见的那个方案"）；
+② 针对每道约束，逼出一个在没有它时绝不会想到的解法；
+③ 评估哪道约束落在"甜区"——紧到能逼出新意、又不至于什么都塞不进。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I have a task that's either too open-ended to start or stubbornly short on fresh ideas: [describe the task]. Use constraint-driven creativity to help me:
+1. Give me 3 artificial constraints (e.g. "use only existing resources," "halve the budget," "explain it in one sentence," "ban the most obvious solution").
+2. For each constraint, force out a solution I'd never have reached without it.
+3. Judge which constraint lands in the sweet spot — tight enough to force novelty, not so tight that nothing fits.</div>
+</section>
+<!-- Card 4: 组合式创新 -->
+<section class="card c4">
+<h2>组合式创新 · Combinatorial Innovation</h2>
+<div class="subtitle">几乎没有什么是凭空造出来的——创新是已有积木的重新组合</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>几乎没有什么是凭空造出来的——创新绝大多数是已有积木的重新组合。iPhone = 电话 + iPod + 上网设备；绝大多数专利都引用在先的专利。<strong>创造性的动作不是无中生有，而是从已有的零件里选取、拼接，让它们严丝合缝。</strong></p>
+<p>非平凡点：① 组合而非创世：把这一点想透，会化解你对"原创"的焦虑——你不必发明新原子，只需找到尚未被人拼在一起的旧零件。② "相邻可能"：每一个新组合本身又成为新的积木，打开了原先根本不存在的门——所以创新会复利式加速，也因此<strong>时机至关重要</strong>：你跨不到相邻可能之外两步的地方，那里的零件还没造出来。③ 组合数随积木数量呈爆炸式增长（N 个零件有约 2 的 N 次方个子集），于是真正的瓶颈不是原料，而是<strong>识别</strong>——在天文数字般的组合里认出那个稀有而有价值的搭配。这正是进化的逻辑（基因的重组），也是大模型的逻辑（重组训练中见过的模式）：积木库越多样，越可能撞见别人看不见的组合。</p>
+<p>实践：想创新时，先别问"我能造出什么全新的东西"，改问"手边有哪些现成的零件，还没有人把它们拼在一起？"——把精力从"创造原料"转到"识别组合"。</p>
+<div class="diagram">
+<svg viewbox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar" markerheight="6" markerwidth="7" orient="auto" refx="6" refy="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#868e96"></path>
+</marker>
+</defs>
+<rect fill="#dfeefa" height="30" rx="5" stroke="#0a6fb8" width="44" x="22" y="34"></rect>
+<text fill="#0a6fb8" font-size="13" text-anchor="middle" x="44" y="54">A</text>
+<rect fill="#dfeefa" height="30" rx="5" stroke="#0a6fb8" width="44" x="22" y="84"></rect>
+<text fill="#0a6fb8" font-size="13" text-anchor="middle" x="44" y="104">B</text>
+<rect fill="#dfeefa" height="30" rx="5" stroke="#0a6fb8" width="44" x="22" y="134"></rect>
+<text fill="#0a6fb8" font-size="13" text-anchor="middle" x="44" y="154">C</text>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="68" x2="186" y1="49" y2="70"></line>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="68" x2="186" y1="99" y2="78"></line>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="68" x2="186" y1="99" y2="128"></line>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="68" x2="186" y1="149" y2="136"></line>
+<rect fill="#e7dffa" height="30" rx="5" stroke="#7048b8" width="62" x="190" y="59"></rect>
+<text fill="#7048b8" font-size="11.5" text-anchor="middle" x="221" y="79">A+B</text>
+<rect fill="#e7dffa" height="30" rx="5" stroke="#7048b8" width="62" x="190" y="119"></rect>
+<text fill="#7048b8" font-size="11.5" text-anchor="middle" x="221" y="139">B+C</text>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="252" x2="368" y1="74" y2="100"></line>
+<line marker-end="url(#ar)" stroke="#868e96" stroke-width="1.3" x1="252" x2="368" y1="134" y2="108"></line>
+<rect fill="#d8f0e4" height="30" rx="5" stroke="#1b8a5a" width="76" x="372" y="89"></rect>
+<text fill="#1b8a5a" font-size="11.5" text-anchor="middle" x="410" y="109">A+B+C</text>
+<text fill="#868e96" font-size="10.5" text-anchor="middle" x="410" y="135">相邻可能 →</text>
+</svg>
+<div class="caption">每个新组合又成为新积木，把"相邻可能"的边界往外推——创新因此复利式加速</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>iPhone 并没有发明任何一项全新技术：触摸屏、移动电话、音乐播放器、浏览器都已存在。乔布斯团队做的，是把它们以前所未有的方式组合进一块玻璃。真正稀缺的从不是零件，而是看出"这些早已存在的东西可以这样拼"的眼光。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>AI 本身就是组合式创新的范本：Transformer = 注意力 + 已有的序列模型；RLHF（基于人类反馈的强化学习）= 强化学习 + 人类反馈 + 语言模型。每一步突破都是旧积木的新拼法。生物进化更是如此——它不设计全新器官，只重组已有的基因与结构。<strong>对追求"AI 超级个体"的 BigCat，最大的护城河正是这个组合库的独特性</strong>：把 AI、分布式系统、佛学、神经科学的积木装进同一个脑子，你能拼出的组合，是任何单一领域的人都够不到的。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Combinatorial Innovation</strong> — almost nothing is created from scratch; innovation is overwhelmingly the recombination of existing building blocks. The iPhone = phone + iPod + internet device; most patents cite prior patents. The creative act is not conjuring matter from nothing but selecting existing parts and fitting them together. Non-trivial: (1) recombination, not creation ex nihilo — internalize this and the anxiety of "originality" dissolves: you need not invent new atoms, only find old parts no one has yet joined. (2) The adjacent possible (Kauffman): each new combination itself becomes a building block, opening doors that previously did not exist — so innovation compounds, and timing is crucial, because you cannot reach two steps beyond the adjacent possible (those parts aren't built yet). (3) Combinations explode with the number of blocks (N parts yield ~2^N subsets), so the true bottleneck is not raw material but recognition — spotting the rare, valuable pairing among astronomically many. This is the logic of evolution (gene recombination) and of large language models (recombining patterns seen in training): the more diverse your stock of blocks, the more likely you collide with a combination others can't see. Key terms: adjacent possible, recombination, combinatorial explosion.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想在某个方向上做出创新，但总觉得"没什么全新的东西可造"：[描述你的领域或问题]。请用「组合式创新」帮我换个思路：
+① 列出这个领域里已经成熟的"积木"（技术、方法、概念、资源）；
+② 再从我背景里另一个不相干的领域，调一批积木过来；
+③ 给出 3 个跨两边、还没人拼过的组合，并指出哪个最可能落在"相邻可能"里——现在就能造、又通向新空间。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to innovate in a certain direction but keep feeling there's "nothing genuinely new to build": [describe your field or problem]. Use combinatorial innovation to reframe it:
+1. List the mature "building blocks" in this field (technologies, methods, concepts, resources).
+2. Then pull in a set of blocks from an unrelated field in my background.
+3. Give me 3 cross-domain combinations no one has tried yet, and point out which is most likely to sit in the "adjacent possible" — buildable now, yet opening into new space.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
