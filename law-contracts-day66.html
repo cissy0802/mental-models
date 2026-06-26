@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：法律与契约思维 · 2026-06-26</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：法律与契约思维</h1>
+<div class="meta">2026-06-26 · Day 66</div>
+</header>
+<!-- Card 1: 对抗式 vs 合作式 -->
+<section class="card c1">
+<h2>对抗式 vs 合作式 · Adversarial vs Cooperative</h2>
+<div class="subtitle">有两种逼近真相的方式：让对立双方互相撕咬，或让一个中立者亲自查证——选错了，真相就沉底</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>法律给了我们两套截然不同的"查明真相"的机器。英美的<strong>对抗制</strong>：控辩双方各执一词、用尽全力攻击对方，法官只当中立裁判，真相从这场受规则约束的冲突里浮现。欧陆的<strong>纠问／合作制</strong>：法官亲自下场调查、主动追查真相。两者的根本差异不在谁更文明，而在<strong>它们对"人"的假设</strong>——对抗制假设每个人都有偏见、都会美化自己，于是干脆不去信任任何单方，而是把偏见制度化、让它们对冲。</p>
+<p>非平凡点：① 对抗制最深的洞见是<strong>真相可以被"工程"出来，而非依赖某个可信的好人</strong>：你不需要一个圣人法官，只需要两个动机相反的偏见者，加上一套约束他们的规则。② 但它有一个隐形支柱——<strong>元层面的中立与规则</strong>。一旦裁判被收买、或失去规则约束，对抗就退化成谁嗓门大、谁资源多的街头斗殴，真相反被埋得更深。③ 选择标准：当各方利益对立、可能有人作恶时，对抗制更稳健（双方互为监督）；当各方真心共享目标时，合作制更高效，省掉对抗那笔巨大的内耗。</p>
+<p>实践：判断一件事该用哪套机器，先问"参与者会不会互相隐瞒？"会 → 制造结构化对立并设好裁判；不会 → 让中立者直接查证，别为对抗而对抗。</p>
+<div class="diagram">
+<svg viewbox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar1" markerheight="6" markerwidth="7" orient="auto" refx="6" refy="3">
+<path d="M0,0 L7,3 L0,6 Z" fill="#868e96"></path>
+</marker>
+</defs>
+<rect fill="#eef2f7" height="34" rx="6" stroke="#0a6fb8" width="160" x="160" y="20"></rect>
+<text fill="#0a6fb8" font-size="12" font-weight="700" text-anchor="middle" x="240" y="42">中立裁判 + 规则</text>
+<line stroke="#adb5bd" stroke-dasharray="5 4" stroke-width="1.3" x1="200" x2="120" y1="54" y2="100"></line>
+<line stroke="#adb5bd" stroke-dasharray="5 4" stroke-width="1.3" x1="280" x2="360" y1="54" y2="100"></line>
+<circle cx="95" cy="120" fill="#0a6fb8" r="26"></circle>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="95" y="124">正方</text>
+<circle cx="385" cy="120" fill="#c44545" r="26"></circle>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="385" y="124">反方</text>
+<line marker-end="url(#ar1)" stroke="#868e96" stroke-width="1.7" x1="123" x2="206" y1="120" y2="120"></line>
+<line marker-end="url(#ar1)" stroke="#868e96" stroke-width="1.7" x1="357" x2="274" y1="120" y2="120"></line>
+<circle cx="240" cy="120" fill="#1b8a5a" r="30"></circle>
+<text fill="#fff" font-size="12" font-weight="700" text-anchor="middle" x="240" y="124">≈真相</text>
+<text fill="#868e96" font-size="10.5" text-anchor="middle" x="240" y="180">两股相反的全力，在规则夹击下对撞</text>
+</svg>
+<div class="caption">真相不靠信任某一方，而从规则约束下的对撞中浮现</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>法庭：检方拼命证明有罪，辩方拼命证明无罪，法官与陪审团不预设立场。制度并不指望某一方诚实，而是让两股相反的全力，在规则的夹击下逼出接近真相的判断。一旦裁判失中立，整套机器立刻失灵。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>机器学习里的<strong>生成对抗网络（GAN）</strong>是同一套哲学的数学化：生成器拼命造假、判别器拼命识假，两者在对抗中共同逼出以假乱真的结果——没有哪一方"知道"真相，真相是对抗的产物。同理还有代码评审（作者 vs 评审者）、AI 安全里的红队、乃至用"辩论"做对齐。对 BigCat：<strong>当你不确定一个方案是否可靠，与其找一个"权威"拍板，不如制造一场有裁判的对抗</strong>——让最锋利的反方来攻击它，扛得住攻击的才可信。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Adversarial vs Cooperative</strong> — two machines for reaching truth. The adversarial system (common law) sets two opposed parties each pushing their side to the limit while a neutral arbiter decides; truth emerges from rule-bound conflict. The inquisitorial/cooperative system (civil law) has the judge actively investigate. The deep difference lies in their assumption about people: the adversarial design assumes everyone is biased and self-serving, so instead of trusting any single party it institutionalizes the biases and lets them cancel out. Non-trivial: (1) truth can be <em>engineered</em> out of structured opposition rather than relying on a trustworthy saint — you need not a wise judge but two oppositely-motivated parties plus rules. (2) Its hidden pillar is meta-level neutrality and rules; capture the referee or drop the rules and it degrades into a brawl where the loudest or best-resourced wins, burying truth deeper. (3) Use adversarial when parties may act in bad faith (mutual policing); use cooperative when goals are genuinely shared (far less overhead). Key terms: adversarial system, inquisitorial system, neutral arbiter, structured conflict.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我要判断一个方案／结论是否可靠：[描述这个方案或结论]。请帮我用「对抗式」逼出它的真实成色：
+① 扮演最锋利的反方，用尽全力攻击它，找出最致命的漏洞；
+② 再扮演正方为它辩护，看哪些攻击能被挡住、哪些挡不住；
+③ 作为中立裁判，基于这场对抗给出结论：它在哪些条件下可信、哪些条件下会崩。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I need to judge whether a plan or conclusion is sound: [describe the plan or conclusion]. Use an adversarial process to reveal its true quality:
+1. Play the sharpest opposing counsel and attack it with everything, surfacing its most fatal flaws.
+2. Then play its defender and see which attacks can be parried and which cannot.
+3. As a neutral arbiter, rule on the basis of this clash: under what conditions it holds, and under what conditions it breaks.</div>
+</section>
+<!-- Card 2: 默认规则 -->
+<section class="card c2">
+<h2>默认规则 · Default Rules</h2>
+<div class="subtitle">大多数人永远不会去改设定——所以"默认值"才是真正的规则制定者</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>契约法里区分两种条款：<strong>默认规则</strong>（你不另行约定时自动适用）和<strong>强制规则</strong>（约定也无法排除）。法律里大量是默认规则——它们替你没写到的地方填空。这个区分看似技术，却藏着一条统治现实的力量：<strong>因为绝大多数人从不去改默认值，默认是什么，结果就几乎是什么。</strong>器官捐献"默认参加"还是"默认不参加"，同样的人群，捐献率天差地别；退休金自动加入，参与率立刻翻倍。</p>
+<p>非平凡点：① 默认之所以有统治力，靠的是<strong>惰性、现状偏误，以及"系统替我选了，大概是对的"这种背书效应</strong>——它是阻力最小的路径，而人总沿阻力最小的路径走。② 设计默认值有两种相反哲学：<strong>多数派默认</strong>——设成大多数人想要的，省去交易成本；<strong>惩罚性默认</strong>——故意设成没人想要的，逼掌握信息的一方开口说明、把私有信息亮出来。后者是反直觉的高招：用"难受的缺省"撬动信息披露。③ 推论：你若设计系统、制度或产品，<strong>你设的默认值就是你的实际政策</strong>——因为 95% 的人不会动它。"我提供了选项"是一种幻觉，你真正提供的是那个默认。</p>
+<p>实践：要改变群体行为，别先去说服，先去改默认值——它比任何说服都有效；反过来，凡是"默认开启"的设定都值得你亲自检查一遍，那才是真正作用在你身上的规则。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>器官捐献：默认"已同意、需主动退出"的国家，同意率常达九成以上；默认"未同意、需主动加入"的国家常不足三成。两边的人并无本质不同，差的只是那个谁都懒得去改的默认箭头指向哪。一个不改一行法条、只翻转默认方向的设计，就能撬动百万人的选择。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>软件世界把这条法则奉为圭臬——<strong>"约定优于配置"</strong>：框架给一套合理默认，绝大多数人从不修改，于是默认配置就是系统对 95% 用户的实际行为。作为设计者，你的默认值不是"建议"，而是产品的事实形态。反向用法同样锋利：把某个危险操作设成<strong>没有默认、必须显式指定</strong>（如不给超时设默认值，逼调用者自己想清楚）——这正是法律里的"惩罚性默认"，用强制开口来防止人无意识地踩坑。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Default Rules</strong> — contract law distinguishes default rules (apply unless parties contract around them) from mandatory rules (cannot be waived). Most law is default rules, filling the gaps. The technical-looking distinction hides a force that governs reality: because almost no one ever changes the default, the default is effectively the rule. Opt-in vs opt-out organ donation yields wildly different rates among near-identical populations; auto-enrollment doubles retirement saving. Non-trivial: (1) defaults rule through inertia, status-quo bias, and the endorsement effect ("the system chose it, so it's probably right") — they are the path of least resistance, and people follow it. (2) Two opposite design philosophies: majoritarian defaults (set to what most want, minimizing transaction costs) vs penalty defaults (deliberately set to what nobody wants, forcing the informed party to speak up and reveal private information). (3) Therefore your default <em>is</em> your policy — 95% never move it; "I offered a choice" is an illusion, what you offered was the default. Key terms: default vs mandatory rules, majoritarian default, penalty default, status-quo bias.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想改变某个群体／用户的行为，或正在设计一个系统的设定：[描述场景与目标行为]。请用「默认规则」帮我：
+① 找出当前的默认值是什么、它实际把人导向了哪里（而非我以为的"选项自由"）；
+② 给出"多数派默认"方案：把默认设成多数人本就想要的，降低摩擦；
+③ 再给出"惩罚性默认"方案：哪个环节该故意设成必须显式选择，以逼出关键信息或防止无意识犯错。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to change a group's or users' behavior, or I'm designing a system's settings: [describe the situation and the target behavior]. Use default rules to help me:
+1. Identify the current default and where it actually steers people (not the illusory freedom of "options").
+2. Propose a majoritarian default: set it to what most people already want, reducing friction.
+3. Propose a penalty default: which step should deliberately require an explicit choice, to force out key information or prevent unconscious mistakes.</div>
+</section>
+<!-- Card 3: 不完全契约 -->
+<section class="card c3">
+<h2>不完全契约 · Incomplete Contracts</h2>
+<div class="subtitle">没有一纸契约能写尽未来——真正决定胜负的，是没写到的地方归谁说了算</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>一个拿过诺贝尔经济学奖的洞见：<strong>任何契约都必然不完全</strong>。世界太复杂、未来无法穷尽预见、把每种情形都写清楚的成本高到不可行——于是所有真实契约都留着缺口。一旦承认这一点，关键问题立刻从"如何写完美"变成<strong>"那些没写到的情形，归谁说了算"</strong>。</p>
+<p>非平凡点：① 这正是"企业为何存在"的答案：<strong>所有权的本质，是对契约没覆盖的情形的"剩余控制权"</strong>。你收购一家公司，不是因为你能把一切写进合同，而是为了在合同沉默处握有拍板权。② 追求"完美契约"既不可能也有害——它脆弱、写不尽，还释放出不信任的信号；高手不堆条款，而是<strong>设计好"填补缺口的机制"</strong>：治理结构、长期关系、可重新协商的余地。当合同必然有洞，是信任与重复博弈在填洞。③ 越是长期、越是不可预见的关系，契约越该"薄"而机制越该"厚"。</p>
+<p>实践：下次想把一份协议／规范写到滴水不漏时，停一下——把精力从"穷举条款"转向"约定好出现意外时由谁、按什么程序来决定"。缺口不可消除，但缺口的处置权可以事先安排。</p>
+<div class="diagram">
+<svg viewbox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#fbeeee" height="150" rx="10" stroke="#c44545" stroke-dasharray="7 5" stroke-width="1.4" width="430" x="25" y="25"></rect>
+<text fill="#c44545" font-size="12.5" font-weight="700" text-anchor="middle" x="240" y="48">未预见的情形 · 缺口</text>
+<text fill="#c44545" font-size="10.5" text-anchor="middle" x="240" y="162">由「剩余控制权」裁断</text>
+<rect fill="#dff0e6" height="60" rx="8" stroke="#1b8a5a" stroke-width="1.4" width="150" x="165" y="78"></rect>
+<text fill="#1b8a5a" font-size="12.5" font-weight="700" text-anchor="middle" x="240" y="104">契约写明</text>
+<text fill="#1b8a5a" font-size="10" text-anchor="middle" x="240" y="121">（一小座岛）</text>
+</svg>
+<div class="caption">契约只覆盖中间这座小岛；真正决定胜负的，是岛外那片由剩余控制权统治的海</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>长期雇佣与大型工程合同：没人能预见数年里的每种变故，合同必然留白。于是谁握有"未尽事宜如何办"的决定权，谁就握住了真正的主动——这也是为什么并购争的从来不是条款本身，而是控制权归属。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p><strong>AI 对齐问题，本质就是一份无法写完的契约</strong>：你无法把"我到底想要什么"完整地写进奖励函数，模型便钻进你没写到的缝隙——奖励黑客、规格博弈（specification gaming）。人类意图与模型目标之间的缺口，是不可消除的"契约不完全"。软件世界同理：API 永远无法规定全部行为，于是海勒姆定律说"所有可观察行为终将被人依赖"，未定义行为就是合同的留白。<strong>结论是一致的：与其幻想写出完备规格，不如设计好"缺口出现时由谁、按何机制裁断"。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Incomplete Contracts</strong> — a Nobel-winning insight: every contract is necessarily incomplete. The world is too complex, the future not fully foreseeable, and specifying every contingency is prohibitively costly — so all real contracts leave gaps. Once you accept this, the key question shifts from "how to write the perfect contract" to "who decides in the situations it didn't cover." Non-trivial: (1) this is the answer to why firms exist — ownership is residual control rights over contractually-unspecified situations; you acquire a company not because you can write everything down but to hold the deciding power where the contract is silent. (2) Chasing a "complete contract" is both impossible and harmful — brittle, endless, and a signal of distrust; experts don't pile up clauses but design gap-filling mechanisms: governance, long-term relationships, room to renegotiate. Trust and repeated games fill the holes. (3) The more long-term and unforeseeable the relationship, the thinner the contract and the thicker the mechanism should be. Key terms: incompleteness, residual control rights, theory of the firm, relational contracts.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正在拟定一份协议、规范或制度，想把它写得尽量周全：[描述这份契约和它要管的关系]。请用「不完全契约」帮我换个重心：
+① 指出哪些情形我根本无法事先穷尽预见（缺口在哪）；
+② 与其堆条款，不如设计"缺口出现时由谁来决定、按什么程序"——给出剩余控制权与治理机制的安排；
+③ 评估这段关系该用"薄合同 + 厚机制"还是"厚合同"，并说明理由。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm drafting an agreement, spec, or policy and want it as watertight as possible: [describe the contract and the relationship it governs]. Use incomplete contracts to shift my focus:
+1. Point out which contingencies I simply cannot foresee in advance (where the gaps are).
+2. Instead of piling up clauses, design who decides when a gap appears, and by what procedure — an arrangement of residual control rights and governance.
+3. Judge whether this relationship wants a "thin contract + thick mechanism" or a "thick contract," and explain why.</div>
+</section>
+<!-- Card 4: 切斯特顿栅栏 -->
+<section class="card c4">
+<h2>切斯特顿栅栏 · Chesterton's Fence</h2>
+<div class="subtitle">在你弄清一道栅栏为什么立在那儿之前，别急着拆掉它</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>切斯特顿的寓言：路中间立着一道莫名其妙的栅栏，改革者说"我看不出它有什么用，拆了它"。聪明的回应是——<strong>"正因为你看不出它的用处，我才不准你拆；先去弄清它为什么在那儿，弄清了再来拆。"</strong>这是一条关于认知谦逊的铁律：<strong>一样东西"看不出理由"，首先是你无知的证据，而不是它无用的证据。</strong></p>
+<p>非平凡点：① 它对抗的是改革者的傲慢：能存活至今的规则、结构、传统，往往是被某些你此刻看不见的理由筛选下来的（与 Lindy 效应、进化选择同源）。② 但它<strong>绝不是为保守而保守</strong>——一旦你真正弄懂了栅栏的来由，你完全有资格、甚至有责任拆掉它（如果那个理由已不复存在）。它约束的不是"能不能改"，而是<strong>动作的次序：先理解，再行动。</strong>③ 它防的是<strong>二阶效应</strong>：栅栏的作用常常要等你拆掉、牛跑光了，才显形。</p>
+<p>实践：面对任何"这东西明显多余、删掉它"的冲动，先停下来回答一个问题——"如果它真没用，为什么当初有人特意立它、且一直没人拆？"答不上来，就说明你还没资格动它。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>切斯特顿的原始寓言本身：田野里一道看似无用的栅栏。真正的改革者不是看它碍眼就拆，而是先查清它当年为何而立——也许它正拦着某些你没看见的牛。看不见理由，恰恰是"该停下查证"的信号，而非"可以动手"的许可。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p><strong>遗留代码里那行"看起来毫无意义"的 sleep、重试、或多余的锁</strong>，最容易招来"顺手清理一下"的手——而它往往正悄悄挡着一个竞态条件，一删就是线上事故：它是承重的栅栏。分布式系统里那个"冗余得多余"的设计，常常是有人用一次惨痛故障换来的。生物进化里也满是这种栅栏：曾被当作无用的"垃圾 DNA"、阑尾，后来发现各有其功能。<strong>连佛门戒律也是栅栏</strong>——每条戒都是因一桩具体事件而立，不解其因便轻废，等于拆掉一道你没看见其作用的围栏。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Chesterton's Fence</strong> — Chesterton's parable: a fence stands inexplicably across a road; a reformer says "I see no use in it, tear it down." The wise reply: "Precisely because you don't see its use, I won't let you remove it — go find out why it's there, and then come back to remove it." It is an iron rule of epistemic humility: a thing's lack of an obvious reason is first evidence of your ignorance, not of its uselessness. Non-trivial: (1) it counters the reformer's arrogance — rules, structures, and traditions that survived were often selected for reasons invisible to you now (kin to the Lindy effect and evolutionary selection). (2) It is not conservatism for its own sake — once you truly understand the fence's origin, you are entitled, even obliged, to remove it if that reason no longer holds; it constrains not whether you may change, but the order of operations: understand first, then act. (3) It guards against second-order effects — the fence's function often reveals itself only after you remove it and the cattle escape. Key terms: epistemic humility, second-order effects, Lindy effect, order of operations.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我想删除／改掉一个看起来多余或过时的东西（一段代码、一条规则、一个流程、一项传统）：[描述它]。请用「切斯特顿栅栏」拦住我的冲动：
+① 先别评价该不该拆——帮我重建它当初被立起来的可能理由（哪怕现在看不出）；
+② 列出如果贸然拆掉，可能爆发的二阶效应与隐藏依赖；
+③ 给出判断：那个最初的理由今天还成立吗？若已消失，再告诉我可以放心拆。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I want to delete or change something that looks redundant or outdated (a piece of code, a rule, a process, a tradition): [describe it]. Use Chesterton's Fence to check my impulse:
+1. Before judging whether to remove it, help me reconstruct the reasons it may have been put there in the first place (even if invisible now).
+2. List the second-order effects and hidden dependencies that could erupt if I remove it rashly.
+3. Give a verdict: does that original reason still hold today? If it has vanished, then tell me I can safely remove it.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
