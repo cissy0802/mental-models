@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：数学结构即心智 · 2026-06-27</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：数学结构即心智</h1>
+<div class="meta">2026-06-27 · Day 67</div>
+</header>
+
+<!-- Card 1: 线性代数 基与变换 -->
+<section class="card c1">
+<h2>基与变换 · Basis &amp; Transformation</h2>
+<div class="subtitle">同一个对象，换一组坐标轴去看，难题可能瞬间瓦解——很多问题之所以难，只是你站错了基</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>线性代数的核心不是"算矩阵"，而是一个深刻的认识论命题：<strong>一个对象本身是不变的，但你用哪组「基」（坐标轴）去描述它，决定了它看起来有多复杂</strong>。同一个向量，在一组基下坐标杂乱无章，换一组基可能只剩一个分量。换基（change of basis）= 换视角，而某些视角能让纠缠的问题自动解开。</p>
+<p>非平凡点：① <em>特征向量</em>是一个变换"只拉伸、不旋转"的那几个方向——它们是系统的<strong>天然坐标轴</strong>。找到特征基，复杂的耦合变换就变成各分量互不干扰的简单缩放（对角化）。找特征向量，本质是问"这个系统在什么方向上保持自己"。② 看似五花八门的技术——傅里叶变换、主成分分析（PCA）、词向量嵌入——底层都是同一件事：<strong>换到一组让问题变线性、变可分的基</strong>。③ 深度学习的整个革命可以一句话概括：自动学出一组基，让原本缠在一起的数据在新坐标里变得线性可分。"表示"（representation）即"选基"。</p>
+<div class="diagram">
+<svg viewbox="0 0 520 200" xmlns="http://www.w3.org/2000/svg">
+<text fill="#636e72" font-size="11" text-anchor="middle" x="120" y="18">标准基：分量纠缠</text>
+<line stroke="#dfe6e9" stroke-width="1" x1="40" x2="200" y1="150" y2="150"></line>
+<line stroke="#dfe6e9" stroke-width="1" x1="120" x2="120" y1="60" y2="150"></line>
+<line marker-end="url(#a1)" stroke="#0a6fb8" stroke-width="2.5" x1="120" x2="185" y1="150" y2="80"></line>
+<text fill="#0a6fb8" font-size="10" x="150" y="105">v = (a, b)</text>
+<path d="M 235 105 L 285 105" fill="none" marker-end="url(#a1)" stroke="#636e72" stroke-width="2"></path>
+<text fill="#636e72" font-size="10" text-anchor="middle" x="260" y="96">换基</text>
+<text fill="#1b8a5a" font-size="11" text-anchor="middle" x="400" y="18">特征基：只剩一个方向</text>
+<line stroke="#dfe6e9" stroke-dasharray="4,3" stroke-width="1" x1="320" x2="480" y1="150" y2="80"></line>
+<line marker-end="url(#a2)" stroke="#1b8a5a" stroke-width="2.5" x1="320" x2="455" y1="150" y2="90"></line>
+<text fill="#1b8a5a" font-size="10" x="400" y="130">v = (λ, 0)</text>
+<defs>
+<marker id="a1" markerheight="9" markerwidth="9" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#0a6fb8"></path></marker>
+<marker id="a2" markerheight="9" markerwidth="9" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#1b8a5a"></path></marker>
+</defs>
+</svg>
+<div class="caption">同一向量，换到合适的基，描述被极度压缩——问题没变，复杂度变了</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>傅里叶变换：一段杂乱的声波，在时间轴上看是一团扭动的曲线，几乎无从下手；换到频率基（以正弦波为坐标轴），同一段信号变成几根清晰的竖线——降噪、压缩、调音瞬间变成简单操作。<strong>信号没变，换了基，难题就消失了。</strong></p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>大语言模型的词向量嵌入：词被放进高维空间，"国王 − 男人 + 女人 ≈ 女王"之所以成立，是因为模型学出的基让"性别""王权"等语义恰好对齐成了独立坐标轴。同理，一个卡住的产品决策——若你在"成本 vs 体验"这组纠缠的轴上反复权衡，不妨换一组基（如"可逆性 vs 学习价值"），原本的两难常常就<strong>解耦</strong>成两个能分别拍板的问题。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Basis &amp; Transformation</strong> — an object is invariant, but the <em>basis</em> (coordinate axes) you describe it in decides how complex it looks. A change of basis is a change of perspective; the right one makes a tangled problem decouple. <em>Eigenvectors</em> are the directions a transformation only stretches, never rotates — a system's natural axes; finding them (diagonalization) turns coupled dynamics into independent scalings. Fourier transforms, PCA, and word embeddings are all one move: re-express the data in a basis where the problem becomes linear and separable. In deep learning, "representation" just means "choice of basis." Many problems are hard only because you're standing in the wrong basis.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正卡在一个权衡里：[描述问题，及我当前用来衡量的两三个维度]。请用「换基」的视角帮我：
+① 指出我现在隐含使用的「坐标轴」是哪几条，它们之间是否纠缠（动一个就牵动另一个）；
+② 提出 2 组不同的「基」（替代维度），在哪一组下这个两难会解耦成可分别决策的子问题；
+③ 找出这个问题的「特征方向」——哪个方向上系统其实保持不变、最值得我下注。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm stuck in a tradeoff: [describe the problem and the 2-3 dimensions I currently weigh it on]. Use the "change of basis" lens:
+1. Name the coordinate axes I'm implicitly using, and whether they're entangled (moving one drags the other).
+2. Propose 2 alternative bases (sets of dimensions); say which one makes the dilemma decouple into separately decidable subproblems.
+3. Identify the "eigen-direction" of this problem — the axis along which the system stays invariant and is most worth betting on.</div>
+</section>
+
+<!-- Card 2: 拓扑 连续与不变量 -->
+<section class="card c2">
+<h2>连续与不变量 · Continuity &amp; Invariants</h2>
+<div class="subtitle">咖啡杯和甜甜圈是"同一个"——拓扑教你忽略尺寸细节，只盯住那些撕不破、拉不掉的东西</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>拓扑学研究的是<strong>在连续形变（拉伸、弯曲，但不撕裂、不粘合）下保持不变的性质</strong>。一只有把手的咖啡杯，可以被连续地捏成一个甜甜圈——在拓扑眼里它们是同一个东西，因为都只有"一个洞"。这套思维的力量在于：当你不再纠结距离、角度、大小这些可变的细节，转而追问"什么东西无论怎么形变都改不掉"，你就抓住了系统的本质骨架。</p>
+<p>非平凡点：① 拓扑不变量（连通性、洞的数量、边界）只在<strong>发生撕裂时才跳变</strong>——这意味着它们对噪声、微扰天然鲁棒，平时怎么晃都不变，要变就是质变。这正是相变、身份延续、临界点的数学语言。② "能不能从 A 走到 B"是纯拓扑问题，和距离无关——这是它比度量更根本的地方。③ 与佛学呼应：一条河、一个"我"，在连续形变中不断变化，却似乎有某个不变量（相续之流）贯穿；而拓扑也允许另一种答案——也许根本没有不变量，只有形变本身（无我）。关键是先分清：哪些是会变的细节，哪些是撕开才会断的骨架。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>柯尼斯堡七桥问题：能否一次走遍七座桥而每座只过一次？欧拉的洞见是——<strong>把岛和桥的具体形状、距离全部抹掉，只留下"谁和谁相连"这张连接图</strong>。一旦化简到纯连通结构，答案立刻清晰（不可能）。这是拓扑思维的奠基时刻：解题的关键是先扔掉不相关的度量细节。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>分布式系统里的"网络分区"本质是一个拓扑事件：连通性不是慢慢变差，而是在某一刻<strong>不连续地断裂</strong>，于是 CAP 的取舍被迫上演——一致性与可用性只能保一个。再看育儿：孩子的核心气质是一个拓扑不变量，它会随成长被连续地拉伸、塑形，但你无法靠外力"撕"掉它。聪明的做法不是对抗这个不变量，而是顺着它做连续形变——把同一股能量引向不同的出口。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Continuity &amp; Invariants</strong> — topology studies what survives continuous deformation (stretching, bending — no tearing or gluing). A coffee mug equals a donut: both have one hole. The power is in dropping mutable details (distance, size, angle) to ask what <em>can't</em> change without a tear. Topological invariants (connectedness, number of holes, boundaries) jump only at a tear, so they're robust to noise — they're the math of phase transitions, identity persistence, and critical points. "Can you get from A to B" is purely topological, independent of distance. The discipline: separate the deformable details from the skeleton that only breaks when torn.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在分析这个系统／关系／计划：[描述]。请用「拓扑不变量」的视角帮我分离骨架与细节：
+① 哪些是可连续形变的「细节」（数字、规模、形态，变了也不伤本质）；
+② 哪些是「不变量」（撕开才会断的核心——连通性、依赖、身份、底层结构）；
+③ 当前有没有逼近某个「撕裂点」（会让不变量发生不连续跳变／质变）？该如何提前察觉。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm analyzing this system / relationship / plan: [describe]. Use the "topological invariant" lens to separate skeleton from detail:
+1. Which parts are continuously deformable details (numbers, scale, shape — can change without harming the essence)?
+2. Which are invariants (the core that only breaks when torn — connectivity, dependencies, identity, underlying structure)?
+3. Is anything approaching a "tearing point" (a discontinuous jump / phase change in an invariant)? How can I detect it early?</div>
+</section>
+
+<!-- Card 3: 范畴论 组合与同构 -->
+<section class="card c3">
+<h2>组合与同构 · Composition &amp; Isomorphism</h2>
+<div class="subtitle">别看东西是什么做的，看它和别的东西怎么连、怎么接——本质藏在箭头里，不在盒子里</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>范畴论提出一个激进的视角转换：<strong>不要研究对象的内部构造，去研究对象之间的「箭头」（映射）以及这些箭头如何组合</strong>。一个事物的本质，不在于它由什么材料构成，而在于它如何与其他事物建立关系、如何被串接。这恰好是软件工程里"看接口、不看实现"原则的数学源头——一个模块是什么不重要，重要的是它的输入输出类型和能否与别的模块干净地拼接。</p>
+<p>非平凡点：① <em>可组合性</em>是整个游戏的核心：如果 A→B 和 B→C 能可靠地拼成 A→C，你就能堆叠出任意复杂的系统而不失控。这是<strong>模块化的数学</strong>——乐高之所以是乐高，全靠接口能组合。② <em>同构</em>是"类比"的严格版本：当两个结构之间存在可逆且保持组合关系的映射，它们在数学上就是同一个东西——一个领域里证明的每条定理，都能原样搬到另一个领域。认出"我这个排班问题其实和图着色问题同构"，就等于免费继承了后者全部已解决的成果。③ 函子（functor）= 保结构的翻译，是把整张关系网严丝合缝映射过去的"靠谱类比"。</p>
+<div class="diagram">
+<svg viewbox="0 0 460 150" xmlns="http://www.w3.org/2000/svg">
+<circle cx="70" cy="75" fill="#c44545" r="22"></circle>
+<text fill="#fff" font-size="13" text-anchor="middle" x="70" y="80">A</text>
+<circle cx="230" cy="75" fill="#c44545" r="22"></circle>
+<text fill="#fff" font-size="13" text-anchor="middle" x="230" y="80">B</text>
+<circle cx="390" cy="75" fill="#c44545" r="22"></circle>
+<text fill="#fff" font-size="13" text-anchor="middle" x="390" y="80">C</text>
+<path d="M 94 70 Q 150 45 206 70" fill="none" marker-end="url(#ar)" stroke="#636e72" stroke-width="2"></path>
+<text fill="#636e72" font-size="12" text-anchor="middle" x="150" y="40">f</text>
+<path d="M 254 70 Q 310 45 366 70" fill="none" marker-end="url(#ar)" stroke="#636e72" stroke-width="2"></path>
+<text fill="#636e72" font-size="12" text-anchor="middle" x="310" y="40">g</text>
+<path d="M 90 100 Q 230 145 370 100" fill="none" marker-end="url(#ar)" stroke="#c44545" stroke-dasharray="5,4" stroke-width="2"></path>
+<text fill="#c44545" font-size="12" text-anchor="middle" x="230" y="138">g ∘ f（组合）</text>
+<defs><marker id="ar" markerheight="9" markerwidth="9" orient="auto" refx="8" refy="3"><path d="M0,0 L0,6 L9,3 z" fill="#636e72"></path></marker></defs>
+</svg>
+<div class="caption">关注箭头与组合：A→B→C 能干净拼成 A→C，系统才能无限堆叠而不崩</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>函数组合与"接口而非实现"：Unix 管道 <code>cat | grep | sort</code> 是范畴论精神的活样本——每个命令是一支箭头（输入流→输出流），你不关心它内部怎么写，只要类型能接上，就能任意串接成强大的流水线。整个 Unix 哲学，就是一句"让小程序可组合"。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>设计 AI agent 流水线：每个 agent 就是一支箭头（输入类型→输出类型），系统能否跑通，取决于上一个的输出类型能否干净接上下一个的输入——<strong>设计 agent 即设计可组合的态射</strong>。而当你发现"团队的任务调度难题"与"图着色问题"同构，就能把后者成熟的算法整套搬过来，省下从头思考的成本。认出同构，是跨学科迁移最锋利的一招。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Composition &amp; Isomorphism</strong> — category theory's radical move: don't study an object's internals, study the <em>arrows</em> (morphisms) between objects and how they compose. A thing's essence is how it relates and chains, not what it's made of — the math behind "program to the interface, not the implementation." <em>Composability</em> is the whole game: if A→B and B→C reliably compose into A→C, you can stack arbitrarily complex systems — the mathematics of modularity. <em>Isomorphism</em> is the rigorous form of analogy: when an invertible, composition-preserving map exists between two structures, every theorem transfers for free. Recognizing your scheduling problem is isomorphic to graph coloring inherits the whole solved theory.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在设计／拆解这个系统：[描述]。请用「组合与同构」的视角分析：
+① 把它拆成一组「箭头」（每个组件的输入类型→输出类型），指出哪两个接口拼接处类型对不齐、会成为脆弱点；
+② 哪些环节的「内部实现」我其实不该关心，只需盯住接口契约；
+③ 这个问题是否与某个已被充分研究的经典问题「同构」？若是，能直接搬过来的成熟解法是什么。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm designing / decomposing this system: [describe]. Use the "composition &amp; isomorphism" lens:
+1. Break it into arrows (each component's input type → output type); flag the two interfaces where types don't line up cleanly and will be fragile.
+2. Which parts' internal implementation should I deliberately ignore, watching only the interface contract?
+3. Is this problem isomorphic to a well-studied classic one? If so, what mature solution can I import wholesale?</div>
+</section>
+
+<!-- Card 4: 降维与相似 -->
+<section class="card c4">
+<h2>降维与相似 · Dimensionality &amp; Similarity</h2>
+<div class="subtitle">智能就是找到那几条真正要紧的轴，把高维世界压扁——但"相似"从来不是绝对的，它取决于你压成了哪个空间</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>高维数据几乎总是蜷缩在一个低维"流形"上：看似有成百上千个变量，真正自由变动的方向其实只有寥寥几条。<strong>智能的一个核心动作，就是找出那几条要紧的轴、把其余压掉</strong>——这就是压缩，也是抽象。而"相似"这个概念有个常被忽略的陷阱：<strong>不指定空间和度量，谈相似毫无意义</strong>。两个事物在一种投影下挨得很近，换一种投影可能正相反。</p>
+<p>非平凡点：① 好的降维保留要紧信息、丢掉噪声，这和卡片一的"选基"（如 PCA）是同一件事的两面。② <em>维度灾难</em>：在高维空间里，体积会向外壳集中，"任意两点的距离趋于相等"——于是"最近邻"几乎失去意义，低维里好用的直觉成片失效。这反直觉，却是高维数据处理绕不开的坑。③ 对 BigCat：嵌入向量、语义检索、向量数据库，全都在"某个学出来的低维空间里定义相似度"——检索质量 = 降维质量。④ 但务必记住：降维是<strong>有损</strong>的，是一张地图而非疆域本身。把一个人压成三个标签很高效，代价是被压掉的那一维，往往正是这次最该看的那一维。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>任何一张世界地图：把三维地球投影到二维纸面，必然有所失真——麦卡托投影为了保角度，把高纬度的格陵兰岛画得比实际大得多。<strong>每一种降维都在保住某样东西的同时牺牲另一样</strong>；问题永远是"这次我该保住哪一维"。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>RAG（检索增强生成）与语义搜索：系统把文档和问题都压进同一个嵌入空间，靠向量的余弦相似度取回相关片段——召回好不好，取决于这次降维有没有保住"真正决定相关性"的那几条语义轴。日常决策同理：评估一个候选人或方案时，你其实在心里把它降到两三个维度上打分，<strong>真正的风险是你恰好把那条最关键的维度投影没了</strong>。先问一句"我是不是压掉了要紧的轴"，常能救回一个糟糕的判断。</p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Dimensionality &amp; Similarity</strong> — high-dimensional data usually lives on a low-dimensional manifold; intelligence is finding the few axes that matter and projecting away the rest (compression = abstraction). A hidden trap: "similar" is meaningless without specifying the space and metric — two things near in one projection can be opposite in another. Good reduction keeps signal and drops noise (the flip side of choosing a basis, e.g. PCA). The <em>curse of dimensionality</em>: in high dimensions, distances concentrate and nearest-neighbor loses meaning — low-dim intuitions break. Embeddings, semantic search, and vector DBs all define similarity in a learned low-dim space, so retrieval quality equals reduction quality. But reduction is lossy — a map, not the territory; the dimension you projected away is often the one that mattered most.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我要评估／比较这些选项：[描述对象]，目标是 [描述我想要的结果]。请用「降维与相似」的视角检查我：
+① 我正隐含地把它们压到哪两三条「轴」上打分？这组轴是否漏掉了对目标最关键的一维；
+② 在我选的这个空间里，"相似／更好"成立；换一个合理的空间，结论会不会反转？
+③ 给出一个被我「投影掉」但可能致命的维度，并说明怎样把它重新纳入考量。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm evaluating / comparing these options: [describe], aiming for [desired outcome]. Use the "dimensionality &amp; similarity" lens to check me:
+1. Which 2-3 axes am I implicitly scoring them on? Does this set omit the dimension most critical to the goal?
+2. In the space I chose, "similar / better" holds — would the conclusion flip in another reasonable space?
+3. Name one dimension I've projected away that could be decisive, and how to fold it back into the decision.</div>
+</section>
+
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
