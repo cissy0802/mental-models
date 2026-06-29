@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>思维模型详解：动态思维 — 时间·积累·路径 · 2026-06-29</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 24px 72px; }
+  .page-header { text-align: center; margin-bottom: 48px; }
+  .page-header h1 { font-size: 32px; margin: 0 0 8px; color: #2d3436; letter-spacing: 1px; }
+  .page-header .meta { color: #868e96; font-size: 14px; letter-spacing: 2px; }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 6px solid #ccc;
+  }
+  .card.c1 { border-left-color: #0a6fb8; }
+  .card.c2 { border-left-color: #7048b8; }
+  .card.c3 { border-left-color: #c44545; }
+  .card.c4 { border-left-color: #1b8a5a; }
+  .card h2 { font-size: 24px; margin: 0 0 4px; color: #2d3436; }
+  .card .subtitle { font-size: 14px; color: #636e72; font-style: italic; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .section-label {
+    display: inline-block;
+    font-variant: small-caps;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+  }
+  .c1 .section-label { color: #0a6fb8; }
+  .c2 .section-label { color: #7048b8; }
+  .c3 .section-label { color: #c44545; }
+  .c4 .section-label { color: #1b8a5a; }
+  .card hr { border: none; border-top: 1px solid #ecf0f1; margin: 0 0 14px; }
+  .card p { margin: 10px 0; font-size: 15px; }
+  .example-block {
+    background: #f1f3f5;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #495057;
+    border-left: 3px solid #adb5bd;
+  }
+  .example-block .example-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #636e72;
+    margin-bottom: 4px;
+  }
+  .summary-en {
+    background: #fafbfc;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 14px;
+    color: #495057;
+    line-height: 1.7;
+  }
+  .prompt-box {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 13.5px;
+    color: #5d4e1f;
+    border-left: 3px solid #fdcb6e;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.65;
+    white-space: pre-wrap;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #b78a07;
+    margin-bottom: 6px;
+    font-family: inherit;
+  }
+  .prompt-box.en { background: #eef6ff; color: #1b3a5e; border-left-color: #4a9eff; }
+  .prompt-box.en .prompt-label { color: #1b6db8; }
+  .diagram { background: #fafbfc; border: 1px solid #e9ecef; border-radius: 8px; padding: 18px; margin: 14px 0; text-align: center; }
+  .diagram svg { max-width: 100%; height: auto; }
+  .diagram .caption { font-size: 12px; color: #868e96; margin-top: 8px; letter-spacing: 1px; }
+  .footer { text-align: center; margin-top: 56px; padding-top: 24px; border-top: 1px solid #e9ecef; }
+  .footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
+  .footer a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .card { padding: 24px 20px; }
+    .page-header h1 { font-size: 24px; }
+    .card h2 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="page-header">
+<h1>思维模型详解：动态思维 — 时间·积累·路径</h1>
+<div class="meta">2026-06-29 · Day 68</div>
+</header>
+
+<!-- Card 1: 现时偏误 / 双曲贴现 -->
+<section class="card c1">
+<h2>现时偏误 · Present Bias / Hyperbolic Discounting</h2>
+<div class="subtitle">"今天的你和明天的你，是两个利益并不一致的决策者。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>人对未来的折现不是<em>匀速</em>的。理性模型假设你以恒定利率贴现未来（指数贴现），那样的人永远不会反悔。但真实的人是<strong>双曲贴现</strong>：越近的延迟扣得越狠，越远的延迟几乎不扣。"明天 vs 后天"你斤斤计较，"一年后 vs 一年零一天后"你毫不在乎——尽管两者都只差一天。</p>
+<p>这条曲线的形状直接生出一个非平凡后果：<strong>偏好反转</strong>。远看时你坚定地选"更大但更晚"的回报（健康、存款、深度工作）；可当"更小但更快"的诱惑逼近眼前，曲线突然窜高，你当场叛变。拖延、戒不掉、年初计划年中崩，根子都在这里——不是"意志薄弱"，是<em>此刻的你和长远的你本就是两个不同的决策者</em>。这与佛学的"无我/相续"惊人同构：并没有一个连续不变的"我"在做决定，而是<em>一串前后利益冲突的"自我"在接力</em>。</p>
+<p>关键推论：靠"下次一定忍住"必输，因为每场<em>局部</em>战斗都由现时自我赢得。真正有效的是<strong>承诺装置</strong>（precommitment）——让远见的自我提前给冲动的自我上锁，夺走未来弱者手里的选择权；并改造贴现的输入：把远期回报<em>拉到眼前变具体</em>，把当下成本<em>变可见</em>。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="530" y1="190" y2="190"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="50" y1="30" y2="190"></line>
+<text fill="#868e96" font-size="11" x="20" y="35">价值</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="490" y="208">时间 →</text>
+<!-- reward markers -->
+<line stroke="#0a6fb8" stroke-dasharray="3,3" stroke-width="1" x1="360" x2="360" y1="70" y2="190"></line>
+<line stroke="#7048b8" stroke-dasharray="3,3" stroke-width="1" x1="440" x2="440" y1="40" y2="190"></line>
+<text fill="#0a6fb8" font-size="10" text-anchor="middle" x="360" y="203">小·快</text>
+<text fill="#7048b8" font-size="10" text-anchor="middle" x="440" y="203">大·慢</text>
+<!-- hyperbolic curves rising to each reward -->
+<path d="M 60 185 Q 280 178 360 70" fill="none" stroke="#0a6fb8" stroke-width="2.5"></path>
+<path d="M 60 178 Q 300 168 440 40" fill="none" stroke="#7048b8" stroke-width="2.5"></path>
+<!-- crossover -->
+<circle cx="250" cy="172" fill="#c44545" r="4"></circle>
+<text fill="#c44545" font-size="10" font-weight="700" text-anchor="middle" x="250" y="160">偏好反转点</text>
+<text fill="#7048b8" font-size="10" text-anchor="start" x="120" y="120">远看：选大·慢</text>
+<text fill="#0a6fb8" font-size="10" text-anchor="start" x="300" y="135">逼近：叛变成小·快</text>
+</svg>
+<div class="caption">双曲贴现：两条曲线相交 → 同一个人在不同时点偏好反转</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>奥德修斯过海妖塞壬之岛：他知道歌声响起时"未来的自己"必会扑向死亡，于是命水手把自己<em>绑在桅杆上、用蜡封住众人耳朵</em>——经典的承诺装置，远见自我提前剥夺了冲动自我的选择权。行为经济学里的"为明天多存钱"计划同构：人不愿现在减薪存钱，却愿承诺"<em>未来</em>每次加薪自动多存一部分"——因为对遥远的日期，现时偏误失效了。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI 工作流：设计 agent 的奖励时，若只奖励即时可见的输出，agent 会"双曲贴现"地牺牲长期目标（如为短回复牺牲正确性）——长程任务必须显式引入对未来状态的承诺式约束，而非指望它"自觉"。② 深度工作：靠意志力对抗手机必败；把手机锁进另一个房间（承诺装置）才有效。③ 育儿：与其反复说教"先写作业"，不如和孩子<em>共同设计</em>一个无法临时反悔的结构（固定时段、设备托管）。<strong>不要和冲动的当下自我硬碰硬，要替远见的自我提前布好局。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Present Bias / Hyperbolic Discounting</strong> — humans discount the future hyperbolically, not exponentially: near delays are penalized steeply, distant ones barely at all. This curve shape produces <em>preference reversal</em> — from afar you commit to the larger-later reward, but as the smaller-sooner temptation approaches, you defect. Procrastination and weakness of will aren't moral failures; your present self and future self are literally different decision-makers (echoing the Buddhist no-continuous-self). Willpower loses because the present self wins every local fight. The fix is <em>precommitment</em> (Ulysses contracts): let the farsighted self lock the impulsive self out of the choice, and make distant rewards and present costs vivid.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在 [目标/习惯] 上反复"远看坚定、临近叛变"。请用现时偏误/双曲贴现分析：
+① 指出我的"现时自我"在哪个临界点夺权，是什么即时诱惑触发了偏好反转；
+② 别给我"更自律"的建议——给出 2 个具体的承诺装置，让未来的我无法临时反悔；
+③ 怎样把远期回报拉到眼前变具体、把当下成本变可见，从而改变贴现的输入。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I keep being "firm from afar, defecting up close" on [goal/habit]. Analyze via present bias / hyperbolic discounting:
+1. Pinpoint where my present self seizes control and which immediate temptation triggers the preference reversal.
+2. Don't tell me to "be more disciplined" — give 2 concrete precommitment devices that make my future self unable to defect.
+3. How can I make the distant reward vivid now and the present cost visible, changing the inputs to my discounting?</div>
+</section>
+
+<!-- Card 2: 边际效用递减 -->
+<section class="card c2">
+<h2>边际效用递减 · Diminishing Marginal Utility</h2>
+<div class="subtitle">"钻石近乎无用却昂贵，水维系生命却近乎免费——价值悖论的解药。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>每多一单位，带来的新增满足都小于前一单位——效用曲线是<strong>上凸（凹函数）</strong>的。第一口水救命，第十杯水无感。这条朴素曲线却是一连串重要结论的共同母体：① <strong>风险厌恶</strong>——因为曲线上凸，一笔确定的钱比期望值相等的赌局更有价值（数学上即 E[u(x)] &lt; u(E[x])）；② <strong>分散与多元</strong>——把资源摊到多条递减曲线上，总效用高于把一条曲线推到饱和；③ <strong>金钱的价值是对数的</strong>——同样一块钱，对穷人远比对富人值钱，这也是再分配能提升总效用的根据。</p>
+<p>非平凡点：递减是几乎一切事物"最优剂量"背后的隐藏结构——信息、练习、功能、甚至意义感，过了拐点再加就是浪费乃至有害。聪明的动作不是把某个输入<em>最大化</em>，而是找到曲线的<em>膝点</em>就停手，把省下的资源投到另一条尚陡的曲线上。与神经科学呼应：大脑编码的是<em>变化量</em>而非绝对水平（多巴胺奖赏预测误差、享乐适应），所以任何稳定不变的好处，效用都会衰减趋零——这就是"享乐跑步机"。逃离它的杠杆是<em>新异与多样</em>：能把递减曲线重新拨回陡峭起点。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>"水与钻石悖论"：水的<em>总</em>效用极高（没它会死），但供给充足，<em>边际</em>效用近乎零，故价低；钻石总效用低却稀缺，边际效用高，故昂贵。价格反映的从来是边际而非总量——这一区分化解了困扰早期经济学的价值悖论，也提醒我们：别把"对我多重要"和"再多一单位值多少"混为一谈。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 学习配置：在一个主题上的第 5 小时，新增收获远小于在一个新领域的第 1 小时——跨学科迁移本质上就是在<em>套利</em>边际效用递减，把注意力从饱和曲线挪到陡峭曲线。② AI 产品：第 20 个功能对用户的边际效用可能为负（复杂度反噬），算力也一样，与其堆参数不如换条曲线。③ 育儿：第三个兴趣班的边际收益常已为负，孩子的空闲与无聊反而是更陡的那条曲线。<strong>不要最大化单一输入，要在多条递减曲线之间做边际配平。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Diminishing Marginal Utility</strong> — each additional unit yields less added satisfaction; the utility curve is concave. From this one curve flow risk aversion (concavity means a sure amount beats an equal-EV gamble, since E[u(x)] &lt; u(E[x])), diversification, and the logarithmic value of money (a dollar is worth more to the poor). The deeper move: don't maximize an input — find the <em>knee</em> of the curve and stop, reallocating to another still-steep curve. Neuroscience rhymes: the brain encodes deltas, not levels (dopamine prediction error, hedonic adaptation), so any constant good decays toward zero utility — the hedonic treadmill — and novelty/variety is what resets the curve. The water-diamond paradox dissolves once you separate total from marginal value.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我正在把大量 [时间/金钱/算力/注意力] 投入 [某个输入]。请用边际效用递减审视：
+① 估计这条曲线的"膝点"大概在哪，我是否已越过拐点在做无效堆叠；
+② 列出 2 条目前更陡峭的替代曲线，把边际资源挪过去能多换多少总效用；
+③ 哪些"稳定不变的好处"正被享乐适应吃掉？用什么新异/多样把曲线拨回陡峭。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm pouring lots of [time/money/compute/attention] into [one input]. Examine it via diminishing marginal utility:
+1. Estimate where this curve's knee is — have I crossed the bend into wasteful stacking?
+2. List 2 currently-steeper alternative curves; how much total utility would shifting marginal resources there buy?
+3. Which "constant goods" are being eaten by hedonic adaptation, and what novelty/variety could reset the curve to steep?</div>
+</section>
+
+<!-- Card 3: 颠覆式创新 -->
+<section class="card c3">
+<h2>颠覆式创新 · Disruptive Innovation</h2>
+<div class="subtitle">克里斯坦森《创新者的窘境》——在位者输，常常不是做错，而是把每件事都做对了。</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>颠覆者很少从正面打败巨头。它从<strong>低端或全新市场</strong>切入，产品在主流客户看重的指标上<em>更差</em>，却更便宜、更简单、更方便。在位者看不上这块薄利市场，理性地把资源投向高端高毛利客户——而这恰恰是陷阱。当颠覆者沿<em>自己</em>的轨迹持续改进，终有一天越过主流客户"够用"的门槛，在位者多年堆砌的高端性能此时已<strong>过度供给</strong>，瞬间变得无人买单。</p>
+<p>非平凡点：杀死在位者的不是懒惰或愚蠢，而是<em>正确的资源分配</em>——倾听最好的客户、追逐最高的毛利，每一步都"对"，合力却是自杀。这是结构性陷阱（创新者的窘境），不是能力问题。务必区分<strong>颠覆式</strong>与<strong>延续式</strong>创新：绝大多数改进是延续式（让好产品更好，利于在位者）；"颠覆"一词被严重滥用，真正的颠覆必然伴随"一开始更差、却便宜/简单到打开了非消费市场"。与生物进化同构：新物种总是从生态位<em>边缘</em>入侵而非中心；在位者像被困在一座适应度高峰上的局部最优，看得见邻峰却跨不过中间的山谷。</p>
+<p>实践判别：盯住两件事——<em>你在哪些维度"过度服务"了客户</em>（性能已超出他们能消化的），以及<em>哪里有"更差但更便宜"的东西正沿轨迹爬上来</em>。前者是你暴露的腹部，后者是逼近的牙齿。</p>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>钢铁小型电炉厂从最低端的螺纹钢起家——质量差、利润薄，大型一体化钢厂乐得退出这块鸡肋，转去守高端板材。小厂用低端利润持续升级工艺，一级级蚕食角钢、棒材，最终攻入板材高地，把"理性放弃低端"的巨头逼到墙角。数码相机对胶片、流媒体对租碟，是同一剧本：在位者每一步退守都"合理"，加起来却是溃败。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① AI 浪潮的主旋律就是颠覆式：更小/更便宜/开源的模型从低端起步，以"够用且极廉"吃掉被高端模型过度服务的大量任务。② "AI 超级个体"本身即颠覆者——一个人用廉价工具做到 80% 的咨询/开发产出、收 1% 的价，正从下方掏空过度服务的机构。③ 反向自检：你自己提供的价值里，哪一块是"远超对方真实所需的高端性能"？那正是最先被"够用版"替掉的部分。<strong>别问"我能否做得更精致"，要问"哪里的够用版正在便宜十倍地逼近"。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Disruptive Innovation</strong> (Christensen) — disruptors rarely beat incumbents head-on. They enter at the low end or a new market with a product that's <em>worse</em> on the metrics mainstream customers value, but cheaper, simpler, more convenient. Incumbents rationally cede the thin-margin segment and chase high-margin customers — the trap. As the disruptor improves along its own trajectory, it eventually clears the "good enough" threshold and the incumbent's accumulated high-end performance becomes <em>oversupply</em>: worthless. What kills the incumbent is correct resource allocation, not laziness — a structural dilemma. Distinguish disruptive from sustaining innovation (most improvement is sustaining). Like evolution, invasion comes from the margins, not the center. Watch where you over-serve customers, and where a "worse-but-cheaper" thing is climbing toward you.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我/我们的产品或角色是 [描述]，主流客户/受众最看重 [指标]。请用颠覆式创新分析：
+① 我在哪些维度"过度服务"了——性能已超出对方能消化的范围，成了暴露的腹部？
+② 有没有"一开始更差、但便宜/简单到打开非消费市场"的东西正沿自己的轨迹爬上来？
+③ 区分我面临的是延续式还是真正的颠覆式威胁，并给出一条"自我颠覆"而非死守高端的路径。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>My product/role is [describe]; mainstream customers value [metrics]. Analyze via disruptive innovation:
+1. On which dimensions am I over-serving — performance beyond what they can absorb, an exposed belly?
+2. Is there a "worse-at-first but cheap/simple enough to open non-consumption" entrant climbing its own trajectory toward me?
+3. Distinguish whether I face a sustaining or a truly disruptive threat, and give one path to self-disrupt rather than defend the high end.</div>
+</section>
+
+<!-- Card 4: 遍历性 -->
+<section class="card c4">
+<h2>遍历性 · Ergodicity</h2>
+<div class="subtitle">"别用一个你根本不存在于其中的平均值，替自己的一生做决定。"</div>
+<div class="section-label">中文详解</div>
+<hr/>
+<p>一个系统是<strong>遍历的</strong>，当且仅当它的<em>时间均值</em>（一条轨迹沿时间走完）等于<em>群体均值</em>（无数条轨迹在同一瞬间的平均）。物理学常假设遍历，但人生与市场里大量过程是<strong>非遍历</strong>的——尤其当动态是<em>乘法性</em>的、且存在<em>不可回头的毁灭点</em>时。此时用"期望值"替活在<em>一条</em>时间路径上的个体做决定，会系统性地骗你。</p>
+<p>非平凡点（经典抛硬币博弈）：每轮赢则 +50%、输则 −40%，群体期望值为正、看似该玩；但几乎<em>每一条</em>个体轨迹随时间趋于归零，时间均值的增长率为负。群体均值之所以为正，全靠极少数暴富者把平均拉高——而你只能活其中一条路。正确的目标不是算术期望，而是<strong>几何（对数）增长率</strong>，它惩罚波动、绝不与毁灭点妥协。这正是凯利公式、塔勒布"风险共担"与一切"避免归零"直觉的数学根：<em>一旦存在吸收壁（破产、死亡、声誉崩塌），它不可被另一个人的收益"平均补偿"。</em></p>
+<p>实践判别：决策前先问——<strong>我在对平行世界取平均，还是对我自己的时间取平均？</strong> 只要路径上有吸收壁，无论期望值多诱人，都改用时间均值，把"先活下来"置于"最大化期望"之上。</p>
+<div class="diagram">
+<svg viewbox="0 0 560 230" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="530" y1="190" y2="190"></line>
+<line stroke="#adb5bd" stroke-width="1.5" x1="50" x2="50" y1="20" y2="190"></line>
+<text fill="#868e96" font-size="11" x="14" y="25">财富</text>
+<text fill="#868e96" font-size="11" text-anchor="middle" x="490" y="208">时间 →</text>
+<!-- faint individual paths drifting down -->
+<path d="M 50 150 L 130 110 L 210 145 L 290 130 L 370 165 L 450 178 L 520 185" fill="none" opacity="0.5" stroke="#1b8a5a" stroke-width="1.5"></path>
+<path d="M 50 150 L 130 165 L 210 150 L 290 172 L 370 168 L 450 183 L 520 188" fill="none" opacity="0.35" stroke="#1b8a5a" stroke-width="1.5"></path>
+<!-- bold typical path to ruin -->
+<path d="M 50 150 L 130 120 L 210 150 L 290 168 L 370 178 L 450 186 L 520 189" fill="none" stroke="#1b8a5a" stroke-width="3"></path>
+<text fill="#1b8a5a" font-size="10" text-anchor="start" x="300" y="160">个体时间路径 → 趋于归零</text>
+<!-- ensemble mean rising dashed -->
+<path d="M 50 150 L 200 120 L 350 95 L 520 70" fill="none" stroke="#c44545" stroke-dasharray="5,4" stroke-width="2.5"></path>
+<text fill="#c44545" font-size="10" font-weight="700" text-anchor="end" x="515" y="60">群体均值（期望值）↑</text>
+<text fill="#868e96" font-size="9" text-anchor="start" x="60" y="40">+50% / −40% 每轮</text>
+</svg>
+<div class="caption">非遍历：群体均值上升，几乎每条个体路径却趋于归零——期望值骗了你</div>
+</div>
+<div class="example-block">
+<div class="example-label">经典例子</div>
+<p>俄罗斯轮盘赌：哪怕单次"期望收益"被设计成正的，你也不能反复玩——"死亡"是吸收壁，一旦命中，后面所有正期望都与你无关，"幸存者平均赚了钱"对躺下的那个人毫无意义。抛硬币博弈是温和版：群体账面赚钱，个体随时间归零。期望值衡量的是"平行世界的你们"，而你只活一条。</p>
+</div>
+<div class="example-block">
+<div class="example-label">场景 · BigCat</div>
+<p>① 投资：仓位大小要用几何增长率而非算术期望——押注须小到能"活着复利到下一轮"，这正是凯利与安全边际的内核。② AI 部署：一个"99% 安全"的动作重复一千次，失败近乎必然——风险在时间上累积，是非遍历的，不能用单次期望安慰自己。③ 育儿：有些对孩子的风险是不可逆吸收壁，须与普通"正期望"风险区别对待。<strong>先问有没有归零点；只要有，先活下来永远压倒最大化期望。</strong></p>
+</div>
+<div class="section-label">English Summary</div>
+<hr/>
+<div class="summary-en">
+<strong>Ergodicity</strong> — a system is ergodic only when its <em>time average</em> (one trajectory over time) equals its <em>ensemble average</em> (many trajectories at one instant). Much of life and markets is non-ergodic, especially under multiplicative dynamics with an absorbing barrier (ruin, death). The classic coin flip (+50% / −40% per round) has positive ensemble expectation yet almost every individual path drifts to zero — the mean is propped up by a few lucky outliers you'll never be. The right object is the geometric (log) growth rate, which penalizes volatility and never compromises with ruin — the math behind the Kelly criterion, skin in the game, and every "avoid going to zero" instinct. Averaging over parallel worlds you don't inhabit is the subtlest error in a non-ergodic world. Always ask: am I averaging over parallel worlds, or over my own time? If there's an absorbing barrier, survival beats maximizing expectation.
+    </div>
+<div class="section-label">AI Prompts</div>
+<hr/>
+<div class="prompt-box">
+<div class="prompt-label">中文提示词</div>我在考虑这个决策/赌注：[描述，含可能的收益、概率与最坏结果]。请用遍历性审视：
+① 这是对"平行世界取平均"还是对"我自己的时间取平均"？两者结论是否分叉？
+② 路径上是否存在吸收壁（破产/出局/声誉崩塌/健康不可逆）？若有，期望值就是误导。
+③ 给出按几何增长率/"先活下来"逻辑的版本：该如何缩小仓位、或直接拒绝。</div>
+<div class="prompt-box en">
+<div class="prompt-label">English Prompt</div>I'm weighing this decision/bet: [describe, with payoffs, probabilities, and worst case]. Examine via ergodicity:
+1. Is this an average over parallel worlds or over my own time? Do the two conclusions diverge?
+2. Is there an absorbing barrier on the path (ruin, getting knocked out, reputation collapse, irreversible health harm)? If so, expected value misleads.
+3. Give the geometric-growth / "survive first" version: how to shrink the bet size, or simply decline.</div>
+</section>
+<footer class="footer">
+<a href="index.html">← 返回首页</a>
+</footer>
+</div>
+</body>
+</html>
