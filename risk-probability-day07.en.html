@@ -55,11 +55,6 @@
     <div class="divider"><span class="label">English Summary</span><hr></div>
     <div class="summary">Bayesian Thinking treats beliefs as probability distributions, not binary verdicts. Each new piece of evidence — including its absence — multiplies your prior by a likelihood ratio to yield an updated posterior. Strong priors resist single data points; vague priors get hijacked by noise. The discipline: write priors explicitly, specify what evidence would shift them, and reconcile actual updates against intuition.</div>
     <div class="divider"><span class="label">AI Prompts</span><hr></div>
-    <div class="prompt-block"><span class="tag">Chinese Template</span>
-请帮我用贝叶斯思维分析以下决策：[决策内容]。
-我当前的先验判断是 [概率%]，依据是 [理由]。
-新出现的证据是 [证据描述]。
-请：1) 评估这个证据在"假设成立"与"假设不成立"两种情形下出现的相对概率（似然比）；2) 计算更新后的后验概率；3) 指出我可能忽略的反向证据；4) 给出 3 个能进一步显著更新概率的关键观察点。</div>
     <div class="prompt-block"><span class="tag">English Template</span>
 Apply Bayesian reasoning to my decision: [decision].
 My current prior is [X%], based on [reasoning].
@@ -79,9 +74,6 @@ Please: 1) Estimate the likelihood ratio; 2) Compute the updated posterior; 3) F
     <div class="divider"><span class="label">English Summary</span><hr></div>
     <div class="summary">Black Swans are rare, high-impact, retrospectively-rationalized events that dominate outcomes in power-law systems. Forecasting their probability is futile; engineering survivability is not. Apply barbell strategies — extreme safety paired with bounded high-risk exposure — and maintain a "never" list that prevents any single variable from inflicting irreversible loss. Position structurally for positive Black Swans as well: optionality compounds.</div>
     <div class="divider"><span class="label">AI Prompts</span><hr></div>
-    <div class="prompt-block"><span class="tag">Chinese Template</span>
-请帮我对以下计划/系统做黑天鹅压力测试：[计划描述]
-请分别列出：1) 3 个负向黑天鹅情景（罕见但毁灭性）；2) 3 个正向黑天鹅情景（罕见但巨大利好）；3) 当前结构中能"一击致命"的单点脆弱性；4) 为同时降低负向风险、提高正向暴露的杠铃式调整建议。</div>
     <div class="prompt-block"><span class="tag">English Template</span>
 Stress-test the following plan for Black Swan exposure: [plan].
 Please provide: 1) Three plausible negative tail scenarios with cascading effects; 2) Three positive tail scenarios I could structurally capture; 3) Single points of failure that could cause ruin; 4) A barbell-style restructuring to reduce downside while preserving upside optionality.</div>
@@ -99,9 +91,6 @@ Please provide: 1) Three plausible negative tail scenarios with cascading effect
     <div class="divider"><span class="label">English Summary</span><hr></div>
     <div class="summary">Antifragility is a step beyond robustness: systems that gain from disorder, volatility, and stressors via convex payoffs. Overprotection — sterile environments, failure-free trajectories, suppressed volatility — manufactures hidden fragility. Engineer antifragility by capping downside, exposing yourself to small recoverable stressors, diversifying into many low-correlation bets, and treating every shock as a free diagnostic signal.</div>
     <div class="divider"><span class="label">AI Prompts</span><hr></div>
-    <div class="prompt-block"><span class="tag">Chinese Template</span>
-请用反脆弱框架审视我的 [系统/项目/习惯]：[详细描述]
-分析：1) 它目前属于脆弱、坚韧还是反脆弱？依据是什么？2) 哪些隐性"过度保护"在制造长期脆弱？3) 我可以引入哪些可控的小剂量压力源（凸性暴露）？4) 给出一份为期 30 天的反脆弱化改造清单。</div>
     <div class="prompt-block"><span class="tag">English Template</span>
 Apply the antifragility framework to my [system/project/habit]: [description]
 Analyze: 1) Is it fragile, robust, or antifragile, and why? 2) Which hidden over-protections are accumulating long-term fragility? 3) What small, recoverable stressors could introduce convexity? 4) Provide a 30-day antifragility retrofit plan with measurable signals.</div>
@@ -119,9 +108,6 @@ Analyze: 1) Is it fragile, robust, or antifragile, and why? 2) Which hidden over
     <div class="divider"><span class="label">English Summary</span><hr></div>
     <div class="summary">Expected Value Thinking decouples decision quality from single outcomes: EV = Σ (probability × payoff). Hunt for asymmetric opportunities where downside is bounded but upside is uncapped. Use EV for repeatable decisions, but switch to ruin-avoidance (Kelly-style sizing) for irreversible ones. Audit decisions by their EV at the time of choice, not by whether luck happened to land in your favor.</div>
     <div class="divider"><span class="label">AI Prompts</span><hr></div>
-    <div class="prompt-block"><span class="tag">Chinese Template</span>
-请帮我对以下决策做期望值分析：[决策内容]
-请：1) 列出 3-5 个可能结果，估算每个的概率与价值；2) 计算综合期望值并标注关键不确定性；3) 判断该决策是否属于"下行有限、上行非对称"机会；4) 如属一次性不可逆决策，请用 ruin-avoidance 视角重新评估并给出建议投入比例。</div>
     <div class="prompt-block"><span class="tag">English Template</span>
 Run an expected-value analysis on this decision: [decision]
 Please: 1) Enumerate 3-5 possible outcomes with probability and payoff; 2) Compute the EV and flag the most uncertain input; 3) Assess whether the structure is asymmetric (bounded downside, uncapped upside); 4) If the decision is one-shot/irreversible, re-evaluate under a ruin-avoidance lens and recommend a sizing/exposure level.</div>
