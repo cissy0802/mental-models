@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Model Index — Find by Problem Type</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f7f7f5;
+    color: #2d3436;
+    line-height: 1.75;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .page-header h1 {
+    font-size: 32px;
+    margin: 0 0 8px;
+    color: #2d3436;
+    letter-spacing: 1px;
+  }
+  .page-header .meta {
+    color: #868e96;
+    font-size: 14px;
+    letter-spacing: 1px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* Prompt Section */
+  .prompt-section {
+    background: #1e272e;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .prompt-section h2 {
+    color: #fdcb6e;
+    font-size: 18px;
+    margin: 0 0 6px;
+    letter-spacing: 1px;
+  }
+  .prompt-section .hint {
+    color: #b2bec3;
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .prompt-box {
+    background: #2d3436;
+    border: 1px solid #636e72;
+    border-radius: 8px;
+    padding: 18px 20px;
+    color: #dfe6e9;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    position: relative;
+  }
+  .prompt-box .placeholder {
+    color: #fdcb6e;
+    font-weight: 600;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #636e72;
+    color: #dfe6e9;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: #6c5ce7; }
+  .copy-btn.copied { background: #00b894; }
+
+  .prompt-section h3 {
+    color: #dfe6e9;
+    font-size: 14px;
+    margin: 28px 0 8px;
+    letter-spacing: 1px;
+  }
+  .prompt-section h3:first-of-type { margin-top: 0; }
+  .prompt-section .lang-label {
+    display: inline-block;
+    background: #6c5ce7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .prompt-section .lang-label.en { background: #00b894; }
+  .prompt-divider {
+    border: none;
+    border-top: 1px solid #636e72;
+    margin: 28px 0;
+  }
+  .usage-tip {
+    background: rgba(108,92,231,0.12);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #dfe6e9;
+    line-height: 1.7;
+  }
+  .usage-tip strong { color: #fdcb6e; }
+  .usage-tip ol {
+    margin: 8px 0 0 18px;
+    padding: 0;
+  }
+  .usage-tip li { margin-bottom: 4px; }
+
+  /* Category Cards */
+  .category {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-left: 5px solid #ccc;
+  }
+  .category h3 {
+    font-size: 18px;
+    margin: 0 0 4px;
+    color: #2d3436;
+  }
+  .category .scenario {
+    font-size: 13px;
+    color: #636e72;
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .model-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    display: inline-block;
+    background: #f1f3f5;
+    color: #495057;
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    cursor: default;
+  }
+  .tag[href] { cursor: pointer; }
+  .tag[href]:hover {
+    background: #6c5ce7;
+    color: #fff;
+  }
+  .tag .day-ref {
+    font-size: 10px;
+    color: #adb5bd;
+    margin-left: 4px;
+  }
+  .tag[href]:hover .day-ref { color: rgba(255,255,255,0.7); }
+
+  /* Color coding for categories */
+  .cat-decision    { border-left-color: #6c5ce7; }
+  .cat-bias        { border-left-color: #e17055; }
+  .cat-system      { border-left-color: #00b894; }
+  .cat-strategy    { border-left-color: #0984e3; }
+  .cat-comm        { border-left-color: #fd79a8; }
+  .cat-learn       { border-left-color: #00cec9; }
+  .cat-risk        { border-left-color: #d63031; }
+  .cat-efficiency  { border-left-color: #fdcb6e; }
+  .cat-behavior    { border-left-color: #a29bfe; }
+  .cat-business    { border-left-color: #55efc4; }
+  .cat-science     { border-left-color: #74b9ff; }
+  .cat-invest      { border-left-color: #fab1a0; }
+  .cat-leadership  { border-left-color: #636e72; }
+  .cat-negotiate   { border-left-color: #ffeaa7; }
+  .cat-time        { border-left-color: #81ecec; }
+  .cat-conscious   { border-left-color: #a29bfe; }
+  .cat-relate      { border-left-color: #fd79a8; }
+  .cat-info        { border-left-color: #00cec9; }
+  .cat-ethics      { border-left-color: #e17055; }
+  .cat-ai          { border-left-color: #6c5ce7; }
+  .cat-cross       { border-left-color: #00b894; }
+  .cat-energy      { border-left-color: #fdcb6e; }
+  .cat-game        { border-left-color: #e17055; }
+  .cat-upgrade     { border-left-color: #a29bfe; }
+  .cat-eastern     { border-left-color: #2d6a4f; }
+  .cat-military    { border-left-color: #355070; }
+  .cat-entrepreneur { border-left-color: #00876c; }
+  .cat-parenting   { border-left-color: #d6336c; }
+  .cat-neuro       { border-left-color: #ff6b9d; }
+  .cat-network     { border-left-color: #4263eb; }
+  .cat-algo        { border-left-color: #5f3dc4; }
+  .cat-munger      { border-left-color: #b8860b; }
+  .cat-munger2     { border-left-color: #9c6f00; }
+  .cat-toolbox     { border-left-color: #2a9d8f; }
+  .cat-forecast    { border-left-color: #0a6fb8; }
+  .cat-evopsych    { border-left-color: #1b8a5a; }
+  .cat-swlaw       { border-left-color: #0a6fb8; }
+
+  .section-divider {
+    text-align: center;
+    margin: 48px 0 28px;
+    position: relative;
+  }
+  .section-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #dfe6e9;
+  }
+  .section-divider span {
+    position: relative;
+    background: #f7f7f5;
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #636e72;
+    letter-spacing: 3px;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #e9ecef;
+  }
+  .footer a {
+    color: #6c5ce7;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .container { padding: 28px 14px 48px; }
+    .page-header h1 { font-size: 24px; }
+    .prompt-section { padding: 20px 16px; }
+    .prompt-box { font-size: 12px; padding: 14px; }
+    .category { padding: 18px 16px; }
+    .category h3 { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="page-header">
+    <h1>Mental Model Index</h1>
+    <div class="meta">When you hit a problem, use the prompt below to have AI match the best tool from 70+ models</div>
+  </header>
+
+  <!-- Prompt Section -->
+  <section class="prompt-section">
+    <h2>How to Use: Let AI Match a Mental Model for You</h2>
+    <div class="usage-tip">
+      <strong>How to use:</strong>
+      <ol>
+        <li>Copy the Chinese or English prompt below</li>
+        <li>Replace <strong>[...]</strong> with your specific problem</li>
+        <li>Send it to any AI (Claude / ChatGPT / Gemini, etc.)</li>
+        <li>The AI matches the 2-3 best-fitting models from the library and gives you analysis and an action plan</li>
+      </ol>
+    </div>
+
+    <span class="lang-label">Chinese Prompt</span>
+    <div class="prompt-box" id="prompt-zh"><button class="copy-btn" onclick="copyById('prompt-zh', this)">Copy</button>You are a mental model advisor. I'll describe a specific problem, and you'll match the best models from my library to help me analyze it.
+
+## My Problem
+[Describe in 2-3 sentences: ① What the problem is ② Key context ③ Where you're stuck or confused]
+
+## Your Tasks
+
+### Step 1: Diagnose the Problem Type
+First, identify the nature of this problem: Decision-making? Cognitive bias? System complexity? Strategic positioning? Risk assessment? Efficiency bottleneck? Communication? Or a cross-category hybrid?
+
+### Step 2: Match Models (pick 2-3 most relevant)
+For each recommended model, explain:
+- **Why it fits**: Which structural feature of my problem aligns with this model
+- **Model insight**: What does this model's lens reveal that I haven't seen yet
+- **Specific action**: What should I do right now based on this model (be concrete and actionable)
+
+### Step 3: Combined Framework
+How do these models complement each other? Provide an integrated analysis and action roadmap.
+
+### Step 4: Counter-check
+Is there any model that might give the opposite advice? If so, flag what I should watch out for.
+
+## Mental Model Library
+
+[Decision & Choice] First Principles, Second-Order Thinking, Inversion, Occam's Razor, Opportunity Cost, Expected Value, BATNA
+[Cognitive Debiasing] Confirmation Bias, Anchoring, Survivorship Bias, Sunk Cost Fallacy, Loss Aversion, Framing Effect
+[Systems Understanding] Feedback Loops, Leverage Points, Theory of Constraints, Emergence, Complex Adaptive Systems, Butterfly Effect, Path Dependence
+[Strategy & Positioning] Game Theory, Competitive Advantage, Moats, Flywheel Effect, Comparative Advantage, Ecological Niche, Red Queen Effect
+[Risk & Uncertainty] Bayesian Thinking, Black Swan, Antifragile, Margin of Safety, Mean Reversion, Law of Large Numbers, Power Law, Nonlinear Thinking
+[Efficiency & Execution] Pareto Principle, Parkinson's Law, Time Blocking, MVP Thinking, Iterative Thinking, Lindy Effect
+[Communication & Persuasion] Pyramid Principle, Cialdini's 6 Principles, Framing Effect, Narrative Thinking, Win-Win, Anchoring & Concession, Interests vs Positions
+[Learning & Growth] Deliberate Practice, T-Shaped Talent, Cross-Domain Transfer, Analogical Thinking, Hypothesis-Testing, Falsifiability, Controlled Variables
+[Behavior & Psychology] Peak-End Rule, Flow State, Habit Loop, Loss Aversion
+[Business & Product] Network Effects, Platform Thinking, Long Tail, Marginal Cost, User Journey, Product-Market Fit, Occam's Design, Iterative Thinking
+[Investment & Wealth] Margin of Safety, Mean Reversion, Compound Effect, Asset Allocation
+[Leadership & Collaboration] Servant Leadership, Situational Leadership, Circle of Competence, Delegation & Trust
+[Philosophy & Metacognition] Socratic Questioning, Raft of Knowledge, Knowing Your Ignorance, Intellectual Humility
+[Scientific Method] Hypothesis-Testing, Falsifiability, Controlled Variables, Correlation ≠ Causation
+[Time & Complexity] Lindy Effect, Butterfly Effect, Path Dependence, Complex Adaptive Systems
+[Consciousness & Awareness] Mindful Awareness, Metacognition, Yogācāra (Consciousness-Only), Observer Effect
+[Relationships] Emotional Bank Account, Nonviolent Communication, Empathy Map, Trust Equation
+[Ecology & Evolution] Survival of the Fittest, Red Queen Effect, Symbiosis, Ecological Niche
+[Economics] Opportunity Cost, Comparative Advantage, Supply-Demand Equilibrium, Externalities
+[Information & Knowledge] Signal-to-Noise Ratio, Feynman Technique, Knowledge Graph, Forgetting Curve
+[Ethics & Values] Trolley Problem, Utilitarianism vs Deontology, Veil of Ignorance, Moral Intuition
+[AI & Super-Individual] Human-AI Collaboration, Prompt Engineering Mindset, AI-Augmented Cognition, Compute Leverage
+[Cross-Disciplinary Transfer] Physics Metaphors, Biological Analogies, Historical Rhythms, Mathematical Modeling
+[Energy & Attention] Attention Residue, Decision Fatigue, Energy Management, Deep Work
+[Games & Cooperation] Prisoner's Dilemma, Nash Equilibrium, Repeated Games, Tit-for-Tat
+[Cognitive Upgrade] Mental Model Updating, Paradigm Shift, Cognitive Dissonance, Growth Mindset
+[Eastern Wisdom] Dao Follows Nature (Wuwei), Doctrine of the Mean (Zhongyong), Unity of Knowing-Acting, Emptiness & Dependent Origination
+[Military Strategy] OODA Loop, Center of Gravity (Clausewitz), Fog of War, Indirect Approach (Liddell Hart)
+[Entrepreneurship & 0→1] Contrarian Truth (Thiel), 0→1 vs 1→N, Founder-Market Fit (FMF), J-Curve
+[Engineering Philosophy & Software Design] Levels of Abstraction, Conway's Law, Technical Debt, YAGNI & Premature Abstraction
+[Parenting & Developmental Psychology] Critical & Sensitive Periods, ZPD & Scaffolding, Secure Attachment, Self-Determination Theory
+[Neuroscience] Neuroplasticity, Predictive Processing, Default Mode Network, Dopamine RPE
+[Thinking in Physics] Entropy & Dissipative Structures, Phase Transitions, Resonance, Superposition & Optionality
+[Distributed Systems] CAP Theorem, Eventual Consistency, Idempotency, Backpressure
+[Network Science] Small-World Networks, Strength of Weak Ties, Scale-Free Networks & Preferential Attachment, Homophily & Echo Chambers
+[Algorithmic Thinking] Divide and Conquer, Dynamic Programming & Memoization, Greedy & Local Optima Trap, Heuristics & Approximation
+[Munger's Misjudgment Psychology I] Incentive Super-Response, Pain-Avoiding Denial, Availability-Misweighing, Contrast-Misreaction
+[Munger's Misjudgment Psychology II] Excessive Self-Regard, Envy / Jealousy, Commitment & Consistency, The Lollapalooza Effect
+[Decision-Making Toolbox] Checklists, Pre-mortem, Red Teaming, Decision Journal
+[Laws of Thinking] Map Is Not the Territory, Hanlon's Razor, Dunbar's Number, Gödel's Incompleteness
+[Taleb Advanced] Skin in the Game, Via Negativa, Barbell Strategy, Naive Interventionism
+[Superforecasting] Calibration vs Resolution, Brier Score, Fox vs Hedgehog, Outside View & Base Rate
+[Explore vs Exploit] Multi-Armed Bandit, Optimal Stopping (Secretary Problem / 37% Rule), UCB & Thompson Sampling, ε-Greedy & Annealing
+[Behavioral Economics (Thaler)] Mental Accounting, Endowment Effect, The IKEA Effect, Default Options & Nudge
+[Public Choice & Collective Action] Arrow's Impossibility Theorem, Tragedy of the Commons, The Logic of Collective Action, The Public Goods Paradox
+[Mechanism Design & Incentives] Incentive Compatibility, Principal-Agent Problem, Auction Theory, Signaling
+[Metric Traps] Goodhart's Law, Campbell's Law, Surrogation, Motivation Crowding
+[Convex Bets & Hedging] Kelly Criterion, Convex Betting, Tail-Risk Hedging, Insurance Thinking
+[Money & Finance Foundations] Interest Rates, Inflation, Leverage & the Debt Cycle, Money Illusion
+[Evolutionary Psychology] Adaptationist Perspective, Evolutionary Mismatch, Sexual Selection, Kin Selection
+[Organizational & Bureaucratic Laws] Brooks's Law, The Peter Principle, Pournelle's Iron Law of Bureaucracy, Parkinson's Law of Triviality (Bikeshedding)
+[Selected Laws of Software Engineering] Gall's Law, Postel's Robustness Principle, Hyrum's Law, Wirth's Law
+[Writing & Thinking on the Page] Writing Is Thinking, One Idea at a Time, Active Voice, Subtraction Beats Addition
+[Causal Inference] Ladder of Causation (Pearl), Counterfactual Reasoning, Instrumental Variables, Simpson's Paradox
+[Information-Theoretic Thinking] Shannon Entropy, Channel Capacity, Coding & Compression, Mutual Information
+[Cybernetics & Feedback Regulation] Negative Feedback, Positive Feedback / Runaway, Delay & Oscillation, Requisite Variety (Ashby)
+[Diffusion of Innovations] Early Adopters (Rogers), Crossing the Chasm (Moore), Tipping Point Threshold, S-Curve Saturation
+[Cognitive Diversity] Diversity Trumps Ability (Page), Outsider Perspective Dividend, Hybrid Vigor (Heterosis), Contrarian Value
+[Collective Intelligence & Collaboration] Wisdom of Crowds (Surowiecki), Prediction Markets, Swarm Intelligence (Stigmergy), The Wiki Model
+[Metaphor & Framing Wars] Conceptual Metaphor (Lakoff), Framing Wars, Reframing, Dead Metaphor
+[Fuzzy & Grayscale Thinking] Fuzzy Sets (Zadeh), Vagueness ≠ Uncertainty, Tolerance of Ambiguity, Grayscale Judgment
+[The Mechanisms of Creativity] Thought Experiments, Remote Association, Constraint-Driven Creativity, Combinatorial Innovation (Adjacent Possible)
+[Legal & Contract Thinking] Adversarial vs Cooperative, Default Rules (Penalty Defaults), Incomplete Contracts (Residual Control Rights), Chesterton's Fence
+[Mathematical Structures as Mind] Basis & Transformation (Eigenvectors / Change of Basis), Continuity & Invariants (Topology), Composition & Isomorphism (Category Theory), Dimensionality & Similarity (Manifolds / Curse of Dimensionality)
+[Dynamic Thinking: Time, Accumulation, Path] Present Bias (Hyperbolic Discounting / Preference Reversal), Diminishing Marginal Utility (Concave Utility / The Knee), Disruptive Innovation (Christensen / Performance Oversupply), Ergodicity (Time Average ≠ Ensemble Average)</div>
+
+    <hr class="prompt-divider">
+
+    <span class="lang-label en">English Prompt</span>
+    <div class="prompt-box" id="prompt-en"><button class="copy-btn" onclick="copyById('prompt-en', this)">Copy</button>You are a mental model advisor. I'll describe a specific problem, and you'll match the best models from my library to help me analyze it.
+
+## My Problem
+[Describe in 2-3 sentences: ① What the problem is ② Key context ③ Where you're stuck or confused]
+
+## Your Tasks
+
+### Step 1: Diagnose the Problem Type
+First, identify the nature of this problem: Decision-making? Cognitive bias? System complexity? Strategic positioning? Risk assessment? Efficiency bottleneck? Communication? Or a cross-category hybrid?
+
+### Step 2: Match Models (pick 2-3 most relevant)
+For each recommended model, explain:
+- **Why it fits**: Which structural feature of my problem aligns with this model
+- **Model insight**: What does this model's lens reveal that I haven't seen yet
+- **Specific action**: What should I do right now based on this model (be concrete and actionable)
+
+### Step 3: Combined Framework
+How do these models complement each other? Provide an integrated analysis and action roadmap.
+
+### Step 4: Counter-check
+Is there any model that might give the opposite advice? If so, flag what I should watch out for.
+
+## Mental Model Library
+
+[Decision & Choice] First Principles, Second-Order Thinking, Inversion, Occam's Razor, Opportunity Cost, Expected Value, BATNA
+[Cognitive Debiasing] Confirmation Bias, Anchoring, Survivorship Bias, Sunk Cost Fallacy, Loss Aversion, Framing Effect
+[Systems Understanding] Feedback Loops, Leverage Points, Theory of Constraints, Emergence, Complex Adaptive Systems, Butterfly Effect, Path Dependence
+[Strategy & Positioning] Game Theory, Competitive Advantage, Moats, Flywheel Effect, Comparative Advantage, Ecological Niche, Red Queen Effect
+[Risk & Uncertainty] Bayesian Thinking, Black Swan, Antifragile, Margin of Safety, Mean Reversion, Law of Large Numbers, Power Law, Nonlinear Thinking
+[Efficiency & Execution] Pareto Principle, Parkinson's Law, Time Blocking, MVP Thinking, Iterative Thinking, Lindy Effect
+[Communication & Persuasion] Pyramid Principle, Cialdini's 6 Principles, Framing Effect, Narrative Thinking, Win-Win, Anchoring & Concession, Interests vs Positions
+[Learning & Growth] Deliberate Practice, T-Shaped Talent, Cross-Domain Transfer, Analogical Thinking, Hypothesis-Testing, Falsifiability, Controlled Variables
+[Behavior & Psychology] Peak-End Rule, Flow State, Habit Loop, Loss Aversion
+[Business & Product] Network Effects, Platform Thinking, Long Tail, Marginal Cost, User Journey, Product-Market Fit, Occam's Design, Iterative Thinking
+[Investment & Wealth] Margin of Safety, Mean Reversion, Compound Effect, Asset Allocation
+[Leadership & Collaboration] Servant Leadership, Situational Leadership, Circle of Competence, Delegation & Trust
+[Philosophy & Metacognition] Socratic Questioning, Raft of Knowledge, Knowing Your Ignorance, Intellectual Humility
+[Scientific Method] Hypothesis-Testing, Falsifiability, Controlled Variables, Correlation ≠ Causation
+[Time & Complexity] Lindy Effect, Butterfly Effect, Path Dependence, Complex Adaptive Systems
+[Consciousness & Awareness] Mindful Awareness, Metacognition, Yogācāra (Consciousness-Only), Observer Effect
+[Relationships] Emotional Bank Account, Nonviolent Communication, Empathy Map, Trust Equation
+[Ecology & Evolution] Survival of the Fittest, Red Queen Effect, Symbiosis, Ecological Niche
+[Economics] Opportunity Cost, Comparative Advantage, Supply-Demand Equilibrium, Externalities
+[Information & Knowledge] Signal-to-Noise Ratio, Feynman Technique, Knowledge Graph, Forgetting Curve
+[Ethics & Values] Trolley Problem, Utilitarianism vs Deontology, Veil of Ignorance, Moral Intuition
+[AI & Super-Individual] Human-AI Collaboration, Prompt Engineering Mindset, AI-Augmented Cognition, Compute Leverage
+[Cross-Disciplinary Transfer] Physics Metaphors, Biological Analogies, Historical Rhythms, Mathematical Modeling
+[Energy & Attention] Attention Residue, Decision Fatigue, Energy Management, Deep Work
+[Games & Cooperation] Prisoner's Dilemma, Nash Equilibrium, Repeated Games, Tit-for-Tat
+[Cognitive Upgrade] Mental Model Updating, Paradigm Shift, Cognitive Dissonance, Growth Mindset
+[Eastern Wisdom] Dao Follows Nature (Wuwei), Doctrine of the Mean (Zhongyong), Unity of Knowing-Acting, Emptiness &amp; Dependent Origination
+[Military Strategy] OODA Loop, Center of Gravity (Clausewitz), Fog of War, Indirect Approach (Liddell Hart)
+[Entrepreneurship & 0→1] Contrarian Truth (Thiel), 0→1 vs 1→N, Founder-Market Fit (FMF), J-Curve
+[Engineering Philosophy & Software Design] Levels of Abstraction, Conway's Law, Technical Debt, YAGNI & Premature Abstraction
+[Parenting & Developmental Psychology] Critical & Sensitive Periods, ZPD & Scaffolding, Secure Attachment, Self-Determination Theory
+[Neuroscience] Neuroplasticity, Predictive Processing, Default Mode Network, Dopamine RPE
+[Thinking in Physics] Entropy & Dissipative Structures, Phase Transitions, Resonance, Superposition & Optionality
+[Distributed Systems] CAP Theorem, Eventual Consistency, Idempotency, Backpressure
+[Network Science] Small-World Networks, Strength of Weak Ties, Scale-Free Networks &amp; Preferential Attachment, Homophily &amp; Echo Chambers
+[Algorithmic Thinking] Divide and Conquer, Dynamic Programming &amp; Memoization, Greedy &amp; Local Optima Trap, Heuristics &amp; Approximation
+[Munger's Misjudgment Psychology I] Incentive Super-Response, Pain-Avoiding Denial, Availability-Misweighing, Contrast-Misreaction
+[Munger's Misjudgment Psychology II] Excessive Self-Regard, Envy / Jealousy, Commitment &amp; Consistency, The Lollapalooza Effect
+[Decision-Making Toolbox] Checklists, Pre-mortem, Red Teaming, Decision Journal
+[Laws of Thinking] Map Is Not the Territory, Hanlon's Razor, Dunbar's Number, Gödel's Incompleteness
+[Taleb Advanced] Skin in the Game, Via Negativa, Barbell Strategy, Naive Interventionism
+[Superforecasting] Calibration vs Resolution, Brier Score, Fox vs Hedgehog, Outside View &amp; Base Rate
+[Explore vs Exploit] Multi-Armed Bandit, Optimal Stopping (Secretary Problem / 37% Rule), UCB &amp; Thompson Sampling, ε-Greedy &amp; Annealing
+[Behavioral Economics (Thaler)] Mental Accounting, Endowment Effect, The IKEA Effect, Default Options &amp; Nudge
+[Public Choice &amp; Collective Action] Arrow's Impossibility Theorem, Tragedy of the Commons, The Logic of Collective Action, The Public Goods Paradox
+[Mechanism Design &amp; Incentives] Incentive Compatibility, Principal-Agent Problem, Auction Theory, Signaling
+[Metric Traps] Goodhart's Law, Campbell's Law, Surrogation, Motivation Crowding
+[Convex Bets &amp; Hedging] Kelly Criterion, Convex Betting, Tail-Risk Hedging, Insurance Thinking
+[Money &amp; Finance Foundations] Interest Rates, Inflation, Leverage &amp; the Debt Cycle, Money Illusion
+[Evolutionary Psychology] Adaptationist Perspective, Evolutionary Mismatch, Sexual Selection, Kin Selection
+[Organizational &amp; Bureaucratic Laws] Brooks's Law, The Peter Principle, Pournelle's Iron Law of Bureaucracy, Parkinson's Law of Triviality (Bikeshedding)
+[Selected Laws of Software Engineering] Gall's Law, Postel's Robustness Principle, Hyrum's Law, Wirth's Law
+[Writing &amp; Thinking on the Page] Writing Is Thinking, One Idea at a Time, Active Voice, Subtraction Beats Addition
+[Causal Inference] Ladder of Causation (Pearl), Counterfactual Reasoning, Instrumental Variables, Simpson's Paradox
+[Information-Theoretic Thinking] Shannon Entropy, Channel Capacity, Coding &amp; Compression, Mutual Information
+[Cybernetics &amp; Feedback Regulation] Negative Feedback, Positive Feedback / Runaway, Delay &amp; Oscillation, Requisite Variety (Ashby)
+[Diffusion of Innovations] Early Adopters (Rogers), Crossing the Chasm (Moore), Tipping Point Threshold, S-Curve Saturation
+[Cognitive Diversity] Diversity Trumps Ability (Page), Outsider Perspective Dividend, Hybrid Vigor (Heterosis), Contrarian Value
+[Collective Intelligence &amp; Collaboration] Wisdom of Crowds (Surowiecki), Prediction Markets, Swarm Intelligence (Stigmergy), The Wiki Model
+[Metaphor &amp; Framing Wars] Conceptual Metaphor (Lakoff), Framing Wars, Reframing, Dead Metaphor
+[Fuzzy &amp; Grayscale Thinking] Fuzzy Sets (Zadeh), Vagueness ≠ Uncertainty, Tolerance of Ambiguity, Grayscale Judgment
+[The Mechanisms of Creativity] Thought Experiments, Remote Association, Constraint-Driven Creativity, Combinatorial Innovation (Adjacent Possible)
+[Legal &amp; Contract Thinking] Adversarial vs Cooperative, Default Rules (Penalty Defaults), Incomplete Contracts (Residual Control Rights), Chesterton's Fence
+[Mathematical Structures as Mind] Basis &amp; Transformation (Eigenvectors / Change of Basis), Continuity &amp; Invariants (Topology), Composition &amp; Isomorphism (Category Theory), Dimensionality &amp; Similarity (Manifolds / Curse of Dimensionality)
+[Dynamic Thinking: Time, Accumulation, Path] Present Bias (Hyperbolic Discounting / Preference Reversal), Diminishing Marginal Utility (Concave Utility / The Knee), Disruptive Innovation (Christensen / Performance Oversupply), Ergodicity (Time Average ≠ Ensemble Average)</div>
+  </section>
+
+  <div class="section-divider"><span>Browse by Problem Type</span></div>
+
+  <!-- Category 1: Decision -->
+  <div class="category cat-decision">
+    <h3>Decision & Choice</h3>
+    <div class="scenario">"Should I do X?" · "How do I choose between A and B?" · "What is this decision really about?"</div>
+    <div class="model-tags">
+      <a class="tag" href="decision-making-day01.en.html">First Principles<span class="day-ref">D1</span></a>
+      <a class="tag" href="decision-making-day01.en.html">Second-Order Thinking<span class="day-ref">D1</span></a>
+      <a class="tag" href="decision-making-day01.en.html">Inversion<span class="day-ref">D1</span></a>
+      <a class="tag" href="decision-making-day01.en.html">Occam's Razor<span class="day-ref">D1</span></a>
+      <a class="tag" href="economics-day13.en.html">Opportunity Cost<span class="day-ref">D13</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Expected Value<span class="day-ref">D7</span></a>
+      <a class="tag" href="negotiation-day16.en.html">BATNA<span class="day-ref">D16</span></a>
+    </div>
+  </div>
+
+  <!-- Category 2: Bias -->
+  <div class="category cat-bias">
+    <h3>Cognitive Debiasing</h3>
+    <div class="scenario">"Is my judgment distorted by bias?" · "Why was it obvious in hindsight but invisible at the time?"</div>
+    <div class="model-tags">
+      <a class="tag" href="cognitive-biases-day02.en.html">Confirmation Bias<span class="day-ref">D2</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Anchoring<span class="day-ref">D2</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Survivorship Bias<span class="day-ref">D2</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Sunk Cost Fallacy<span class="day-ref">D2</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Loss Aversion<span class="day-ref">D9</span></a>
+      <a class="tag" href="communication-day05.en.html">Framing Effect<span class="day-ref">D5</span></a>
+      <a class="tag" href="scientific-method-day12.en.html">Correlation ≠ Causation<span class="day-ref">D12</span></a>
+    </div>
+  </div>
+
+  <!-- Category 3: System -->
+  <div class="category cat-system">
+    <h3>Systems Understanding</h3>
+    <div class="scenario">"Why does local optimization make the whole worse?" · "Why is the system out of control?" · "Why do small changes trigger big consequences?"</div>
+    <div class="model-tags">
+      <a class="tag" href="systems-thinking-day03.en.html">Feedback Loops<span class="day-ref">D3</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Leverage Points<span class="day-ref">D3</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Theory of Constraints<span class="day-ref">D3</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Emergence<span class="day-ref">D3</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Complex Adaptive Systems<span class="day-ref">D20</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Butterfly Effect<span class="day-ref">D20</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Path Dependence<span class="day-ref">D20</span></a>
+      <a class="tag" href="economics-day13.en.html">Externalities<span class="day-ref">D13</span></a>
+    </div>
+  </div>
+
+  <!-- Category 4: Strategy -->
+  <div class="category cat-strategy">
+    <h3>Strategy & Competition</h3>
+    <div class="scenario">"How do I build a lasting advantage?" · "Where is my moat?" · "How do I position myself in the competition?"</div>
+    <div class="model-tags">
+      <a class="tag" href="strategy-day04.en.html">Game Theory<span class="day-ref">D4</span></a>
+      <a class="tag" href="strategy-day04.en.html">Competitive Advantage<span class="day-ref">D4</span></a>
+      <a class="tag" href="strategy-day04.en.html">Moats<span class="day-ref">D4</span></a>
+      <a class="tag" href="strategy-day04.en.html">Flywheel Effect<span class="day-ref">D4</span></a>
+      <a class="tag" href="economics-day13.en.html">Comparative Advantage<span class="day-ref">D13</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Ecological Niche<span class="day-ref">D18</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Red Queen Effect<span class="day-ref">D18</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Survival of the Fittest<span class="day-ref">D18</span></a>
+    </div>
+  </div>
+
+  <!-- Category 5: Risk -->
+  <div class="category cat-risk">
+    <h3>Risk & Uncertainty</h3>
+    <div class="scenario">"How do I handle an unpredictable future?" · "Is this risk worth taking?" · "How do I decide under uncertainty?"</div>
+    <div class="model-tags">
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Black Swan<span class="day-ref">D7</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Antifragile<span class="day-ref">D7</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Margin of Safety<span class="day-ref">D14</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Mean Reversion<span class="day-ref">D14</span></a>
+      <a class="tag" href="mathematical-thinking-day17.en.html">Law of Large Numbers<span class="day-ref">D17</span></a>
+      <a class="tag" href="mathematical-thinking-day17.en.html">Power Law<span class="day-ref">D17</span></a>
+      <a class="tag" href="mathematical-thinking-day17.en.html">Nonlinear Thinking<span class="day-ref">D17</span></a>
+    </div>
+  </div>
+
+  <!-- Category 6: Efficiency -->
+  <div class="category cat-efficiency">
+    <h3>Efficiency & Execution</h3>
+    <div class="scenario">"How do I do more in less time?" · "Where should I start for maximum effect?" · "How do I avoid over-planning?"</div>
+    <div class="model-tags">
+      <a class="tag" href="efficiency-execution-day08.en.html">Pareto Principle<span class="day-ref">D8</span></a>
+      <a class="tag" href="efficiency-execution-day08.en.html">Parkinson's Law<span class="day-ref">D8</span></a>
+      <a class="tag" href="efficiency-execution-day08.en.html">Time Blocking<span class="day-ref">D8</span></a>
+      <a class="tag" href="efficiency-execution-day08.en.html">MVP Thinking<span class="day-ref">D8</span></a>
+      <a class="tag" href="product-thinking-day19.en.html">Iterative Thinking<span class="day-ref">D19</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Lindy Effect<span class="day-ref">D20</span></a>
+      <a class="tag" href="product-thinking-day19.en.html">Occam's Design<span class="day-ref">D19</span></a>
+    </div>
+  </div>
+
+  <!-- Category 7: Communication -->
+  <div class="category cat-comm">
+    <h3>Communication & Persuasion</h3>
+    <div class="scenario">"How do I get the other side to truly listen?" · "How do I express complex ideas clearly?" · "How do I get the best outcome in a negotiation?"</div>
+    <div class="model-tags">
+      <a class="tag" href="communication-day05.en.html">Pyramid Principle<span class="day-ref">D5</span></a>
+      <a class="tag" href="communication-day05.en.html">Cialdini's 6 Principles<span class="day-ref">D5</span></a>
+      <a class="tag" href="communication-day05.en.html">Narrative Thinking<span class="day-ref">D5</span></a>
+      <a class="tag" href="negotiation-day16.en.html">Win-Win<span class="day-ref">D16</span></a>
+      <a class="tag" href="negotiation-day16.en.html">Anchoring & Concession<span class="day-ref">D16</span></a>
+      <a class="tag" href="negotiation-day16.en.html">Interests vs Positions<span class="day-ref">D16</span></a>
+      <a class="tag" href="relationships-day22.en.html">Nonviolent Communication<span class="day-ref">D22</span></a>
+    </div>
+  </div>
+
+  <!-- Category 8: Learning -->
+  <div class="category cat-learn">
+    <h3>Learning & Growth</h3>
+    <div class="scenario">"How do I master new skills more efficiently?" · "How do I build cross-disciplinary capability?" · "How do I verify that what I learned is correct?"</div>
+    <div class="model-tags">
+      <a class="tag" href="innovation-learning-day06.en.html">Deliberate Practice<span class="day-ref">D6</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">T-Shaped Talent<span class="day-ref">D6</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">Cross-Domain Transfer<span class="day-ref">D6</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">Analogical Thinking<span class="day-ref">D6</span></a>
+      <a class="tag" href="scientific-method-day12.en.html">Hypothesis-Testing<span class="day-ref">D12</span></a>
+      <a class="tag" href="scientific-method-day12.en.html">Falsifiability<span class="day-ref">D12</span></a>
+      <a class="tag" href="scientific-method-day12.en.html">Controlled Variables<span class="day-ref">D12</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Socratic Questioning<span class="day-ref">D11</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Feynman Technique<span class="day-ref">D23</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Forgetting Curve<span class="day-ref">D23</span></a>
+    </div>
+  </div>
+
+  <!-- Category 9: Behavior -->
+  <div class="category cat-behavior">
+    <h3>Behavior & Psychology</h3>
+    <div class="scenario">"How do I build good habits?" · "Why do I always give up halfway?" · "How do I get into a high-performance state?"</div>
+    <div class="model-tags">
+      <a class="tag" href="psychology-behavior-day09.en.html">Habit Loop<span class="day-ref">D9</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Flow State<span class="day-ref">D9</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Peak-End Rule<span class="day-ref">D9</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Loss Aversion<span class="day-ref">D9</span></a>
+      <a class="tag" href="communication-day05.en.html">Framing Effect<span class="day-ref">D5</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Mindful Awareness<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <!-- Category 10: Business -->
+  <div class="category cat-business">
+    <h3>Business & Product</h3>
+    <div class="scenario">"Can this business model work?" · "How do I find product-market fit?" · "How do I design a growth engine?"</div>
+    <div class="model-tags">
+      <a class="tag" href="business-models-day10.en.html">Network Effects<span class="day-ref">D10</span></a>
+      <a class="tag" href="business-models-day10.en.html">Platform Thinking<span class="day-ref">D10</span></a>
+      <a class="tag" href="business-models-day10.en.html">Long Tail<span class="day-ref">D10</span></a>
+      <a class="tag" href="business-models-day10.en.html">Marginal Cost<span class="day-ref">D10</span></a>
+      <a class="tag" href="product-thinking-day19.en.html">User Journey<span class="day-ref">D19</span></a>
+      <a class="tag" href="product-thinking-day19.en.html">Product-Market Fit<span class="day-ref">D19</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Compound Effect<span class="day-ref">D14</span></a>
+    </div>
+  </div>
+
+  <!-- Category 11: Invest -->
+  <div class="category cat-invest">
+    <h3>Investment & Personal Finance</h3>
+    <div class="scenario">"Should I buy or sell?" · "How do I evaluate a target?" · "How do I build a resilient portfolio?"</div>
+    <div class="model-tags">
+      <a class="tag" href="investment-wealth-day14.en.html">Margin of Safety<span class="day-ref">D14</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Mean Reversion<span class="day-ref">D14</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Compound Effect<span class="day-ref">D14</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Asset Allocation<span class="day-ref">D14</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Antifragile<span class="day-ref">D7</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Lindy Effect<span class="day-ref">D20</span></a>
+      <a class="tag" href="leadership-day15.en.html">Circle of Competence<span class="day-ref">D15</span></a>
+    </div>
+  </div>
+
+  <!-- Category 12: Leadership -->
+  <div class="category cat-leadership">
+    <h3>Leadership & Management</h3>
+    <div class="scenario">"How do I lead a team well?" · "When should I delegate, and when should I do it myself?" · "How do I unlock the team's potential?"</div>
+    <div class="model-tags">
+      <a class="tag" href="leadership-day15.en.html">Servant Leadership<span class="day-ref">D15</span></a>
+      <a class="tag" href="leadership-day15.en.html">Situational Leadership<span class="day-ref">D15</span></a>
+      <a class="tag" href="leadership-day15.en.html">Circle of Competence<span class="day-ref">D15</span></a>
+      <a class="tag" href="leadership-day15.en.html">Delegation & Trust<span class="day-ref">D15</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Complex Adaptive Systems<span class="day-ref">D20</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Leverage Points<span class="day-ref">D3</span></a>
+    </div>
+  </div>
+
+  <!-- Category 13: Philosophy -->
+  <div class="category cat-negotiate">
+    <h3>Philosophy & Metacognition</h3>
+    <div class="scenario">"Am I deceiving myself?" · "Where are the limits of my knowledge?" · "How do I think about 'thinking itself'?"</div>
+    <div class="model-tags">
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Socratic Questioning<span class="day-ref">D11</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Raft of Knowledge<span class="day-ref">D11</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Knowing Your Ignorance<span class="day-ref">D11</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+      <a class="tag" href="scientific-method-day12.en.html">Correlation ≠ Causation<span class="day-ref">D12</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <!-- Category 14: Time -->
+  <div class="category cat-time">
+    <h3>Time & Long-Term Thinking</h3>
+    <div class="scenario">"Will this still matter in 10 years?" · "What will endure?" · "How do early choices shape long-term outcomes?"</div>
+    <div class="model-tags">
+      <a class="tag" href="time-complexity-day20.en.html">Lindy Effect<span class="day-ref">D20</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Path Dependence<span class="day-ref">D20</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Butterfly Effect<span class="day-ref">D20</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Compound Effect<span class="day-ref">D14</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Red Queen Effect<span class="day-ref">D18</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Symbiosis<span class="day-ref">D18</span></a>
+    </div>
+  </div>
+
+  <!-- Category 15: Consciousness -->
+  <div class="category cat-conscious">
+    <h3>Consciousness & Awareness</h3>
+    <div class="scenario">"Is my judgment objective, or a projection of the mind?" · "How do I create a gap of awareness before reacting?" · "How does observation change what is observed?"</div>
+    <div class="model-tags">
+      <a class="tag" href="consciousness-awareness-day21.en.html">Mindful Awareness<span class="day-ref">D21</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Yogācāra (Consciousness-Only)<span class="day-ref">D21</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Observer Effect<span class="day-ref">D21</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+    </div>
+  </div>
+
+  <!-- Category 16: Relationships -->
+  <div class="category cat-relate">
+    <h3>Relationships & Trust</h3>
+    <div class="scenario">"How do I repair a strained relationship?" · "How do I get the other person to truly trust me?" · "Why is my goodwill always misread?"</div>
+    <div class="model-tags">
+      <a class="tag" href="relationships-day22.en.html">Emotional Bank Account<span class="day-ref">D22</span></a>
+      <a class="tag" href="relationships-day22.en.html">Nonviolent Communication<span class="day-ref">D22</span></a>
+      <a class="tag" href="relationships-day22.en.html">Empathy Map<span class="day-ref">D22</span></a>
+      <a class="tag" href="relationships-day22.en.html">Trust Equation<span class="day-ref">D22</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Mindful Awareness<span class="day-ref">D21</span></a>
+      <a class="tag" href="leadership-day15.en.html">Delegation & Trust<span class="day-ref">D15</span></a>
+    </div>
+  </div>
+
+  <!-- Category 17: Information & Knowledge -->
+  <div class="category cat-info">
+    <h3>Information & Knowledge Management</h3>
+    <div class="scenario">"How do I filter through information overload?" · "What do I do when I keep forgetting what I learn?" · "How do I turn fragments of knowledge into a system?"</div>
+    <div class="model-tags">
+      <a class="tag" href="information-knowledge-day23.en.html">Signal-to-Noise Ratio<span class="day-ref">D23</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Feynman Technique<span class="day-ref">D23</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Knowledge Graph<span class="day-ref">D23</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Forgetting Curve<span class="day-ref">D23</span></a>
+    </div>
+  </div>
+
+  <!-- Category 18: Ethics & Values -->
+  <div class="category cat-ethics">
+    <h3>Ethics & Values</h3>
+    <div class="scenario">"When every option is wrong, how do I choose?" · "Is this rule really fair?" · "Should I trust my 'something feels off' intuition?"</div>
+    <div class="model-tags">
+      <a class="tag" href="ethics-values-day24.en.html">Trolley Problem<span class="day-ref">D24</span></a>
+      <a class="tag" href="ethics-values-day24.en.html">Utilitarianism vs Deontology<span class="day-ref">D24</span></a>
+      <a class="tag" href="ethics-values-day24.en.html">Veil of Ignorance<span class="day-ref">D24</span></a>
+      <a class="tag" href="ethics-values-day24.en.html">Moral Intuition<span class="day-ref">D24</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <!-- Category 19: AI & Super-Individual -->
+  <div class="category cat-ai">
+    <h3>AI & the Super-Individual</h3>
+    <div class="scenario">"How do I truly collaborate with AI instead of being replaced?" · "How do I use AI to amplify my abilities 100x?" · "How do I keep sovereignty over my own judgment in the AI era?"</div>
+    <div class="model-tags">
+      <a class="tag" href="ai-superindividual-day25.en.html">Human-AI Collaboration<span class="day-ref">D25</span></a>
+      <a class="tag" href="ai-superindividual-day25.en.html">Prompt Engineering Mindset<span class="day-ref">D25</span></a>
+      <a class="tag" href="ai-superindividual-day25.en.html">AI-Augmented Cognition<span class="day-ref">D25</span></a>
+      <a class="tag" href="ai-superindividual-day25.en.html">Compute Leverage<span class="day-ref">D25</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">Cross-Domain Transfer<span class="day-ref">D6</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <!-- Category 20: Cross-Disciplinary Transfer -->
+  <div class="category cat-cross">
+    <h3>Cross-Disciplinary Transfer</h3>
+    <div class="scenario">"Can a problem in this field be illuminated by a framework from another discipline?" · "How do I spot problems that look different on the surface but share the same structure?" · "How do I crystallize scattered knowledge into transferable models?"</div>
+    <div class="model-tags">
+      <a class="tag" href="cross-disciplinary-day26.en.html">Physics Metaphors<span class="day-ref">D26</span></a>
+      <a class="tag" href="cross-disciplinary-day26.en.html">Biological Analogies<span class="day-ref">D26</span></a>
+      <a class="tag" href="cross-disciplinary-day26.en.html">Historical Rhythms<span class="day-ref">D26</span></a>
+      <a class="tag" href="cross-disciplinary-day26.en.html">Mathematical Modeling<span class="day-ref">D26</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">Cross-Domain Transfer<span class="day-ref">D6</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">Analogical Thinking<span class="day-ref">D6</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Complex Adaptive Systems<span class="day-ref">D20</span></a>
+    </div>
+  </div>
+
+  <!-- Category 21: Energy & Attention -->
+  <div class="category cat-energy">
+    <h3>Energy & Attention Management</h3>
+    <div class="scenario">"Why does task-switching leave me exhausted?" · "How do I stay productive throughout the day?" · "How do I get into deep work?"</div>
+    <div class="model-tags">
+      <a class="tag" href="energy-attention-day27.en.html">Attention Residue<span class="day-ref">D27</span></a>
+      <a class="tag" href="energy-attention-day27.en.html">Decision Fatigue<span class="day-ref">D27</span></a>
+      <a class="tag" href="energy-attention-day27.en.html">Energy Management<span class="day-ref">D27</span></a>
+      <a class="tag" href="energy-attention-day27.en.html">Deep Work<span class="day-ref">D27</span></a>
+      <a class="tag" href="efficiency-execution-day08.en.html">Time Blocking<span class="day-ref">D8</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Flow State<span class="day-ref">D9</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Mindful Awareness<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <!-- Category 22: Games & Cooperation -->
+  <div class="category cat-game">
+    <h3>Games & Cooperation</h3>
+    <div class="scenario">"Why is everyone unhappy yet no one wants to move first?" · "How do I foster long-term cooperation?" · "How do I recognize and break out of a prisoner's dilemma?"</div>
+    <div class="model-tags">
+      <a class="tag" href="game-cooperation-day28.en.html">Prisoner's Dilemma<span class="day-ref">D28</span></a>
+      <a class="tag" href="game-cooperation-day28.en.html">Nash Equilibrium<span class="day-ref">D28</span></a>
+      <a class="tag" href="game-cooperation-day28.en.html">Repeated Games<span class="day-ref">D28</span></a>
+      <a class="tag" href="game-cooperation-day28.en.html">Tit-for-Tat<span class="day-ref">D28</span></a>
+      <a class="tag" href="strategy-day04.en.html">Game Theory<span class="day-ref">D4</span></a>
+      <a class="tag" href="economics-day13.en.html">Externalities<span class="day-ref">D13</span></a>
+      <a class="tag" href="relationships-day22.en.html">Trust Equation<span class="day-ref">D22</span></a>
+    </div>
+  </div>
+
+  <!-- Category 23: Cognitive Upgrade -->
+  <div class="category cat-upgrade">
+    <h3>Cognitive Upgrade</h3>
+    <div class="scenario">"Does my worldview still hold?" · "How do I catch myself rationalizing?" · "How do I keep rewriting my own operating system in the AI era?"</div>
+    <div class="model-tags">
+      <a class="tag" href="cognitive-upgrade-day29.en.html">Mental Model Updating<span class="day-ref">D29</span></a>
+      <a class="tag" href="cognitive-upgrade-day29.en.html">Paradigm Shift<span class="day-ref">D29</span></a>
+      <a class="tag" href="cognitive-upgrade-day29.en.html">Cognitive Dissonance<span class="day-ref">D29</span></a>
+      <a class="tag" href="cognitive-upgrade-day29.en.html">Growth Mindset<span class="day-ref">D29</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">Deliberate Practice<span class="day-ref">D6</span></a>
+    </div>
+  </div>
+
+  <!-- Category 24: Eastern Wisdom -->
+  <div class="category cat-eastern">
+    <h3>Eastern Wisdom</h3>
+    <div class="scenario">"How do I go with the flow instead of forcing it?" · "What is true 'balance' as opposed to 'mediocrity'?" · "Why do I know but fail to act?" · "How do I break free from the illusion of a fixed self?"</div>
+    <div class="model-tags">
+      <a class="tag" href="eastern-wisdom-day30.en.html">Dao Follows Nature (Wuwei)<span class="day-ref">D30</span></a>
+      <a class="tag" href="eastern-wisdom-day30.en.html">Doctrine of the Mean (Zhongyong)<span class="day-ref">D30</span></a>
+      <a class="tag" href="eastern-wisdom-day30.en.html">Unity of Knowing-Acting<span class="day-ref">D30</span></a>
+      <a class="tag" href="eastern-wisdom-day30.en.html">Emptiness & Dependent Origination<span class="day-ref">D30</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Yogācāra (Consciousness-Only)<span class="day-ref">D21</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Mindful Awareness<span class="day-ref">D21</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Raft of Knowledge<span class="day-ref">D11</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Leverage Points<span class="day-ref">D3</span></a>
+    </div>
+  </div>
+
+  <!-- Category 25: Military Strategy -->
+  <div class="category cat-military">
+    <h3>Military Strategic Thinking</h3>
+    <div class="scenario">"How do I decide decisively with incomplete information?" · "How do I identify the system's key pivot?" · "How do I avoid a head-on fight and build structural advantage?"</div>
+    <div class="model-tags">
+      <a class="tag" href="military-strategy-day31.en.html">OODA Loop<span class="day-ref">D31</span></a>
+      <a class="tag" href="military-strategy-day31.en.html">Center of Gravity (Clausewitz)<span class="day-ref">D31</span></a>
+      <a class="tag" href="military-strategy-day31.en.html">Fog of War<span class="day-ref">D31</span></a>
+      <a class="tag" href="military-strategy-day31.en.html">Indirect Approach<span class="day-ref">D31</span></a>
+      <a class="tag" href="strategy-day04.en.html">Competitive Advantage<span class="day-ref">D4</span></a>
+      <a class="tag" href="strategy-day04.en.html">Moats<span class="day-ref">D4</span></a>
+      <a class="tag" href="decision-making-day01.en.html">Inversion<span class="day-ref">D1</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+    </div>
+  </div>
+
+  <!-- Category 27: Engineering Philosophy -->
+  <div class="category cat-engineering">
+    <h3>Engineering Philosophy & Software Design</h3>
+    <div class="scenario">"Which layer should this abstraction live at?" · "Why did the system grow into this shape?" · "Should I pay down this technical debt?" · "Should I leave room for future extension?"</div>
+    <div class="model-tags">
+      <a class="tag" href="engineering-philosophy-day33.en.html">Levels of Abstraction<span class="day-ref">D33</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">Conway's Law<span class="day-ref">D33</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">Technical Debt<span class="day-ref">D33</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">YAGNI / Premature Abstraction<span class="day-ref">D33</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Theory of Constraints<span class="day-ref">D3</span></a>
+      <a class="tag" href="product-thinking-day19.en.html">Iterative Thinking<span class="day-ref">D19</span></a>
+      <a class="tag" href="efficiency-execution-day08.en.html">MVP Thinking<span class="day-ref">D8</span></a>
+      <a class="tag" href="decision-making-day01.en.html">Occam's Razor<span class="day-ref">D1</span></a>
+    </div>
+  </div>
+
+  <!-- Category 26: Entrepreneurship & 0→1 -->
+  <div class="category cat-entrepreneur">
+    <h3>Entrepreneurship & 0→1</h3>
+    <div class="scenario">"Is my idea genuinely contrarian, or just wrong?" · "Is this 0→1 or 1→N?" · "Why do I 'look like I'm going backwards' right now?"</div>
+    <div class="model-tags">
+      <a class="tag" href="entrepreneurship-day32.en.html">Contrarian Truth<span class="day-ref">D32</span></a>
+      <a class="tag" href="entrepreneurship-day32.en.html">0→1 vs 1→N<span class="day-ref">D32</span></a>
+      <a class="tag" href="entrepreneurship-day32.en.html">Founder-Market Fit<span class="day-ref">D32</span></a>
+      <a class="tag" href="entrepreneurship-day32.en.html">J-Curve<span class="day-ref">D32</span></a>
+      <a class="tag" href="strategy-day04.en.html">Moats<span class="day-ref">D4</span></a>
+      <a class="tag" href="product-thinking-day19.en.html">Product-Market Fit<span class="day-ref">D19</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Antifragile<span class="day-ref">D7</span></a>
+      <a class="tag" href="ai-superindividual-day25.en.html">Compute Leverage<span class="day-ref">D25</span></a>
+    </div>
+  </div>
+
+  <!-- Category 28: Parenting & Developmental Psychology -->
+  <div class="category cat-parenting">
+    <h3>Parenting & Developmental Psychology</h3>
+    <div class="scenario">"What should be learned at what age? Is that window still open?" · "Should I help, or let them do it themselves?" · "Have I damaged my child's intrinsic motivation?" · "Am I replaying the template of my own childhood?"</div>
+    <div class="model-tags">
+      <a class="tag" href="parenting-development-day34.en.html">Critical & Sensitive Periods<span class="day-ref">D34</span></a>
+      <a class="tag" href="parenting-development-day34.en.html">ZPD & Scaffolding<span class="day-ref">D34</span></a>
+      <a class="tag" href="parenting-development-day34.en.html">Secure Attachment<span class="day-ref">D34</span></a>
+      <a class="tag" href="parenting-development-day34.en.html">Self-Determination Theory<span class="day-ref">D34</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Flow State<span class="day-ref">D9</span></a>
+      <a class="tag" href="cognitive-upgrade-day29.en.html">Growth Mindset<span class="day-ref">D29</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">Deliberate Practice<span class="day-ref">D6</span></a>
+      <a class="tag" href="relationships-day22.en.html">Emotional Bank Account<span class="day-ref">D22</span></a>
+    </div>
+  </div>
+
+  <!-- Category 29: Neuroscience & Brain Foundations -->
+  <div class="category cat-neuro">
+    <h3>Neuroscience & Brain Foundations</h3>
+    <div class="scenario">"Why do I 'know but can't do'?" · "Has my attention been hijacked?" · "Why do I feel empty after reaching a goal?" · "Is mind-wandering a waste or a source of creativity?" · "Where do emotions actually come from?"</div>
+    <div class="model-tags">
+      <a class="tag" href="neuroscience-day35.en.html">Neuroplasticity<span class="day-ref">D35</span></a>
+      <a class="tag" href="neuroscience-day35.en.html">Predictive Processing<span class="day-ref">D35</span></a>
+      <a class="tag" href="neuroscience-day35.en.html">Default Mode Network<span class="day-ref">D35</span></a>
+      <a class="tag" href="neuroscience-day35.en.html">Dopamine RPE<span class="day-ref">D35</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Habit Loop<span class="day-ref">D9</span></a>
+      <a class="tag" href="energy-attention-day27.en.html">Deep Work<span class="day-ref">D27</span></a>
+      <a class="tag" href="innovation-learning-day06.en.html">Deliberate Practice<span class="day-ref">D6</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-science">
+    <h3>Thinking in Physics</h3>
+    <div class="scenario">"Why does order require a continuous input of energy?" · "Why are some changes abrupt rather than gradual?" · "How do I spot a system's critical point?" · "Should I bet early or preserve optionality?" · "How does a tiny shared frequency amplify into resonance?"</div>
+    <div class="model-tags">
+      <a class="tag" href="physics-thinking-day36.en.html">Entropy & Dissipative Structures<span class="day-ref">D36</span></a>
+      <a class="tag" href="physics-thinking-day36.en.html">Phase Transitions<span class="day-ref">D36</span></a>
+      <a class="tag" href="physics-thinking-day36.en.html">Resonance<span class="day-ref">D36</span></a>
+      <a class="tag" href="physics-thinking-day36.en.html">Superposition & Optionality<span class="day-ref">D36</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Complex Adaptive Systems<span class="day-ref">D20</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Emergence<span class="day-ref">D3</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Antifragile<span class="day-ref">D7</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-system">
+    <h3>Distributed Systems Thinking</h3>
+    <div class="scenario">"How do I trade off consistency and availability?" · "How do I design an operation that's safe to retry?" · "What do I do when the system is overloaded?" · "Why is strong consistency so expensive?" · "When does data 'eventually' align?"</div>
+    <div class="model-tags">
+      <a class="tag" href="distributed-systems-day37.en.html">CAP Theorem<span class="day-ref">D37</span></a>
+      <a class="tag" href="distributed-systems-day37.en.html">Eventual Consistency<span class="day-ref">D37</span></a>
+      <a class="tag" href="distributed-systems-day37.en.html">Idempotency<span class="day-ref">D37</span></a>
+      <a class="tag" href="distributed-systems-day37.en.html">Backpressure<span class="day-ref">D37</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Theory of Constraints<span class="day-ref">D3</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Feedback Loops<span class="day-ref">D3</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Path Dependence<span class="day-ref">D20</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-network">
+    <h3>Network Science Thinking</h3>
+    <div class="scenario">"Why is the world so small?" · "Which relationship do new opportunities come from?" · "Which node is the network's weak point?" · "Am I trapped in an echo chamber?" · "Should influence be concentrated or spread out?"</div>
+    <div class="model-tags">
+      <a class="tag" href="network-science-day38.en.html">Small-World Networks<span class="day-ref">D38</span></a>
+      <a class="tag" href="network-science-day38.en.html">Strength of Weak Ties<span class="day-ref">D38</span></a>
+      <a class="tag" href="network-science-day38.en.html">Scale-Free Networks & Preferential Attachment<span class="day-ref">D38</span></a>
+      <a class="tag" href="network-science-day38.en.html">Homophily & Echo Chambers<span class="day-ref">D38</span></a>
+      <a class="tag" href="business-models-day10.en.html">Network Effects<span class="day-ref">D10</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Emergence<span class="day-ref">D3</span></a>
+      <a class="tag" href="mathematical-thinking-day17.en.html">Power Law<span class="day-ref">D17</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Signal-to-Noise Ratio<span class="day-ref">D23</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-algo">
+    <h3>Algorithmic Thinking</h3>
+    <div class="scenario">"How do I split this big problem to genuinely save effort?" · "Am I re-deriving the same thing every time?" · "Why am I stuck on this 'local peak'?" · "What do I do when the optimal solution is intractable?" · "Can my intuition actually be trusted?"</div>
+    <div class="model-tags">
+      <a class="tag" href="algorithmic-thinking-day39.en.html">Divide and Conquer<span class="day-ref">D39</span></a>
+      <a class="tag" href="algorithmic-thinking-day39.en.html">Dynamic Programming & Memoization<span class="day-ref">D39</span></a>
+      <a class="tag" href="algorithmic-thinking-day39.en.html">Greedy & Local Optima Trap<span class="day-ref">D39</span></a>
+      <a class="tag" href="algorithmic-thinking-day39.en.html">Heuristics & Approximation<span class="day-ref">D39</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">Levels of Abstraction<span class="day-ref">D33</span></a>
+      <a class="tag" href="mathematical-thinking-day17.en.html">Nonlinear Thinking<span class="day-ref">D17</span></a>
+      <a class="tag" href="decision-making-day01.en.html">Occam's Razor<span class="day-ref">D1</span></a>
+      <a class="tag" href="ai-superindividual-day25.en.html">Compute Leverage<span class="day-ref">D25</span></a>
+      <a class="tag" href="efficiency-execution-day08.en.html">MVP Thinking<span class="day-ref">D8</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-munger">
+    <h3>Munger's Psychology of Human Misjudgment (Part 1)</h3>
+    <div class="scenario">"Why does condemning the other side accomplish nothing?" · "Am I filtering out the truth at the level of perception itself?" · "How did one vivid image hijack my judgment?" · "How did gradual change become irreversible right under my nose?"</div>
+    <div class="model-tags">
+      <a class="tag" href="munger-misjudgment-day40.en.html">Incentive Super-Response<span class="day-ref">D40</span></a>
+      <a class="tag" href="munger-misjudgment-day40.en.html">Pain-Avoiding Denial<span class="day-ref">D40</span></a>
+      <a class="tag" href="munger-misjudgment-day40.en.html">Availability-Misweighing<span class="day-ref">D40</span></a>
+      <a class="tag" href="munger-misjudgment-day40.en.html">Contrast-Misreaction<span class="day-ref">D40</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Confirmation Bias<span class="day-ref">D2</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Anchoring<span class="day-ref">D2</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Loss Aversion<span class="day-ref">D9</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-munger2">
+    <h3>Munger's Psychology of Human Misjudgment (Part 2)</h3>
+    <div class="scenario">"Am I overrating my own plan?" · "Why am I always competing with the people around me?" · "Am I persevering, or just refusing to admit I'm wrong?" · "Why does this opportunity feel so 'smooth' that I lose my judgment?"</div>
+    <div class="model-tags">
+      <a class="tag" href="munger-misjudgment-day41.en.html">Excessive Self-Regard<span class="day-ref">D41</span></a>
+      <a class="tag" href="munger-misjudgment-day41.en.html">Envy / Jealousy<span class="day-ref">D41</span></a>
+      <a class="tag" href="munger-misjudgment-day41.en.html">Commitment & Consistency<span class="day-ref">D41</span></a>
+      <a class="tag" href="munger-misjudgment-day41.en.html">The Lollapalooza Effect<span class="day-ref">D41</span></a>
+      <a class="tag" href="munger-misjudgment-day40.en.html">Incentive Super-Response<span class="day-ref">D40</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Confirmation Bias<span class="day-ref">D2</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Sunk Cost<span class="day-ref">D9</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+      <a class="tag" href="network-science-day38.en.html">Scale-Free Networks & Preferential Attachment<span class="day-ref">D38</span></a>
+      <a class="tag" href="physics-thinking-day36.en.html">Phase Transitions<span class="day-ref">D36</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-toolbox">
+    <h3>Decision-Making Toolbox</h3>
+    <div class="scenario">"How do I foresee failure before I start?" · "I understand it all, so why did I still miss the key step?" · "Who is responsible for tearing my plan apart?" · "Did I actually judge it right, or did I just get lucky?"</div>
+    <div class="model-tags">
+      <a class="tag" href="decision-toolbox-day42.en.html">Checklists<span class="day-ref">D42</span></a>
+      <a class="tag" href="decision-toolbox-day42.en.html">Pre-mortem<span class="day-ref">D42</span></a>
+      <a class="tag" href="decision-toolbox-day42.en.html">Red Teaming<span class="day-ref">D42</span></a>
+      <a class="tag" href="decision-toolbox-day42.en.html">Decision Journal<span class="day-ref">D42</span></a>
+      <a class="tag" href="decision-making-day01.en.html">Inversion<span class="day-ref">D1</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="munger-misjudgment-day41.en.html">Excessive Self-Regard<span class="day-ref">D41</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Sunk Cost<span class="day-ref">D9</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-laws">
+    <h3>Selected Laws of Thinking</h3>
+    <div class="scenario">"Am I mistaking the model in my head for reality itself?" · "Is the other person really targeting me, or did I misread it?" · "Why can't I maintain this many relationships?" · "Why do these rules/metrics always have loopholes they can't close?"</div>
+    <div class="model-tags">
+      <a class="tag" href="thinking-laws-day43.en.html">Map Is Not the Territory<span class="day-ref">D43</span></a>
+      <a class="tag" href="thinking-laws-day43.en.html">Hanlon's Razor<span class="day-ref">D43</span></a>
+      <a class="tag" href="thinking-laws-day43.en.html">Dunbar's Number<span class="day-ref">D43</span></a>
+      <a class="tag" href="thinking-laws-day43.en.html">Gödel's Incompleteness<span class="day-ref">D43</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Knowing Your Ignorance<span class="day-ref">D11</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Confirmation Bias<span class="day-ref">D2</span></a>
+      <a class="tag" href="munger-misjudgment-day40.en.html">Incentive Super-Response<span class="day-ref">D40</span></a>
+      <a class="tag" href="network-science-day38.en.html">Small-World Networks<span class="day-ref">D38</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-laws">
+    <h3>Taleb Advanced</h3>
+    <div class="scenario">"What does the person giving advice lose if they're wrong?" · "To improve, should I add or subtract?" · "How do I cap the downside while keeping the upside open?" · "Would doing nothing actually be better?"</div>
+    <div class="model-tags">
+      <a class="tag" href="taleb-advanced-day44.en.html">Skin in the Game<span class="day-ref">D44</span></a>
+      <a class="tag" href="taleb-advanced-day44.en.html">Via Negativa<span class="day-ref">D44</span></a>
+      <a class="tag" href="taleb-advanced-day44.en.html">Barbell Strategy<span class="day-ref">D44</span></a>
+      <a class="tag" href="taleb-advanced-day44.en.html">Naive Interventionism<span class="day-ref">D44</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Antifragile<span class="day-ref">D7</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Black Swan<span class="day-ref">D7</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Margin of Safety<span class="day-ref">D14</span></a>
+      <a class="tag" href="eastern-wisdom-day30.en.html">Dao Follows Nature (Wuwei)<span class="day-ref">D30</span></a>
+      <a class="tag" href="physics-thinking-day36.en.html">Superposition & Optionality<span class="day-ref">D36</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-forecast">
+    <h3>The Science of Superforecasting</h3>
+    <div class="scenario">"Is my '80% confidence' actually accurate?" · "How do I score a probability judgment objectively?" · "Why are the most confident, certain experts often the least accurate?" · "What do I do when schedules/estimates are always optimistic?"</div>
+    <div class="model-tags">
+      <a class="tag" href="superforecasting-day45.en.html">Calibration vs Resolution<span class="day-ref">D45</span></a>
+      <a class="tag" href="superforecasting-day45.en.html">Brier Score<span class="day-ref">D45</span></a>
+      <a class="tag" href="superforecasting-day45.en.html">Fox vs Hedgehog<span class="day-ref">D45</span></a>
+      <a class="tag" href="superforecasting-day45.en.html">Outside View & Base Rate<span class="day-ref">D45</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="decision-toolbox-day42.en.html">Decision Journal<span class="day-ref">D42</span></a>
+      <a class="tag" href="munger-misjudgment-day41.en.html">Excessive Self-Regard<span class="day-ref">D41</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Survivorship Bias<span class="day-ref">D2</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-forecast">
+    <h3>Explore vs Exploit</h3>
+    <div class="scenario">"Should I double down on the known best, or try new options?" · "When you decide each option on sight and can't go back, when should you stop?" · "How do I allocate trial-and-error resources wisely?" · "How should the exploration budget adjust over time?"</div>
+    <div class="model-tags">
+      <a class="tag" href="explore-exploit-day46.en.html">Multi-Armed Bandit<span class="day-ref">D46</span></a>
+      <a class="tag" href="explore-exploit-day46.en.html">Optimal Stopping<span class="day-ref">D46</span></a>
+      <a class="tag" href="explore-exploit-day46.en.html">UCB & Thompson Sampling<span class="day-ref">D46</span></a>
+      <a class="tag" href="explore-exploit-day46.en.html">ε-Greedy & Annealing<span class="day-ref">D46</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="physics-thinking-day36.en.html">Superposition & Optionality<span class="day-ref">D36</span></a>
+      <a class="tag" href="algorithmic-thinking-day39.en.html">Greedy & Local Optima Trap<span class="day-ref">D39</span></a>
+      <a class="tag" href="superforecasting-day45.en.html">Outside View & Base Rate<span class="day-ref">D45</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-behavior">
+    <h3>Behavioral Economics Advanced (Thaler)</h3>
+    <div class="scenario">"Why do I spend the same money differently depending on where it came from?" · "Why do I cling to something I should let go of?" · "Why does something feel especially good just because I made it?" · "How do I change behavior without relying on willpower?"</div>
+    <div class="model-tags">
+      <a class="tag" href="behavioral-economics-day47.en.html">Mental Accounting<span class="day-ref">D47</span></a>
+      <a class="tag" href="behavioral-economics-day47.en.html">Endowment Effect<span class="day-ref">D47</span></a>
+      <a class="tag" href="behavioral-economics-day47.en.html">The IKEA Effect<span class="day-ref">D47</span></a>
+      <a class="tag" href="behavioral-economics-day47.en.html">Default Options & Nudge<span class="day-ref">D47</span></a>
+      <a class="tag" href="psychology-behavior-day09.en.html">Loss Aversion<span class="day-ref">D9</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Sunk Cost Fallacy<span class="day-ref">D2</span></a>
+      <a class="tag" href="communication-day05.en.html">Framing Effect<span class="day-ref">D5</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Anchoring<span class="day-ref">D2</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-game">
+    <h3>Public Choice & Collective Action</h3>
+    <div class="scenario">"When we aggregate everyone's preferences by vote/score, why is someone always unhappy?" · "Why do shared resources always get depleted?" · "When everyone should act, why does no one?" · "When everyone wants something, why is no one willing to build it?"</div>
+    <div class="model-tags">
+      <a class="tag" href="public-choice-day48.en.html">Arrow's Impossibility Theorem<span class="day-ref">D48</span></a>
+      <a class="tag" href="public-choice-day48.en.html">Tragedy of the Commons<span class="day-ref">D48</span></a>
+      <a class="tag" href="public-choice-day48.en.html">The Logic of Collective Action<span class="day-ref">D48</span></a>
+      <a class="tag" href="public-choice-day48.en.html">The Public Goods Paradox<span class="day-ref">D48</span></a>
+      <a class="tag" href="game-cooperation-day28.en.html">Prisoner's Dilemma<span class="day-ref">D28</span></a>
+      <a class="tag" href="economics-day13.en.html">Externalities<span class="day-ref">D13</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Symbiosis<span class="day-ref">D18</span></a>
+      <a class="tag" href="game-cooperation-day28.en.html">Repeated Games<span class="day-ref">D28</span></a>
+    </div>
+  </div>
+
+  <!-- Category 42: Mechanism Design & Incentives -->
+  <div class="category cat-game">
+    <h3>Mechanism Design & Incentives</h3>
+    <div class="scenario">"How do I design rules so that everyone's self-interested behavior leads exactly to the outcome I want?" · "How do I get people to tell the truth and put in effort?" · "When I hire someone to act for me, how do I prevent shirking and goal drift?" · "How do I credibly prove my abilities without being confused with a fake?"</div>
+    <div class="model-tags">
+      <a class="tag" href="mechanism-design-day49.en.html">Incentive Compatibility<span class="day-ref">D49</span></a>
+      <a class="tag" href="mechanism-design-day49.en.html">Principal-Agent Problem<span class="day-ref">D49</span></a>
+      <a class="tag" href="mechanism-design-day49.en.html">Auction Theory<span class="day-ref">D49</span></a>
+      <a class="tag" href="mechanism-design-day49.en.html">Signaling<span class="day-ref">D49</span></a>
+      <a class="tag" href="game-cooperation-day28.en.html">Nash Equilibrium<span class="day-ref">D28</span></a>
+      <a class="tag" href="economics-day13.en.html">Externalities<span class="day-ref">D13</span></a>
+      <a class="tag" href="taleb-advanced-day44.en.html">Skin in the Game<span class="day-ref">D44</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Signal-to-Noise Ratio<span class="day-ref">D23</span></a>
+    </div>
+  </div>
+
+  <!-- Category 43: Metric Traps -->
+  <div class="category cat-game">
+    <h3>Metric Traps</h3>
+    <div class="scenario">"Why do my metrics get gamed the moment they're used for evaluation?" · "Scores/KPIs went up, so why did the actual thing get worse?" · "Has the number I'm watching already replaced the real goal?" · "Why does adding rewards/check-ins kill the passion?"</div>
+    <div class="model-tags">
+      <a class="tag" href="metric-traps-day50.en.html">Goodhart's Law<span class="day-ref">D50</span></a>
+      <a class="tag" href="metric-traps-day50.en.html">Campbell's Law<span class="day-ref">D50</span></a>
+      <a class="tag" href="metric-traps-day50.en.html">Surrogation<span class="day-ref">D50</span></a>
+      <a class="tag" href="metric-traps-day50.en.html">Motivation Crowding<span class="day-ref">D50</span></a>
+      <a class="tag" href="mechanism-design-day49.en.html">Incentive Compatibility<span class="day-ref">D49</span></a>
+      <a class="tag" href="thinking-laws-day43.en.html">Map Is Not the Territory<span class="day-ref">D43</span></a>
+      <a class="tag" href="parenting-development-day34.en.html">Self-Determination Theory<span class="day-ref">D34</span></a>
+      <a class="tag" href="behavioral-economics-day47.en.html">Default Options & Nudge<span class="day-ref">D47</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Convex Bets & Hedging -->
+  <div class="category cat-risk">
+    <h3>Convex Bets & Hedging</h3>
+    <div class="scenario">"If the expected value is positive, should I bet it all?" · "How do I set up a bet with capped downside and open upside?" · "Which risks should I bear myself, and which should I insure?" · "How do I make sure a single disaster can't wipe me out?"</div>
+    <div class="model-tags">
+      <a class="tag" href="convex-betting-day51.en.html">Kelly Criterion<span class="day-ref">D51</span></a>
+      <a class="tag" href="convex-betting-day51.en.html">Convex Betting<span class="day-ref">D51</span></a>
+      <a class="tag" href="convex-betting-day51.en.html">Tail-Risk Hedging<span class="day-ref">D51</span></a>
+      <a class="tag" href="convex-betting-day51.en.html">Insurance Thinking<span class="day-ref">D51</span></a>
+      <a class="tag" href="taleb-advanced-day44.en.html">Barbell Strategy<span class="day-ref">D44</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Antifragile<span class="day-ref">D7</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Black Swan<span class="day-ref">D7</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Margin of Safety<span class="day-ref">D14</span></a>
+      <a class="tag" href="mathematical-thinking-day17.en.html">Power Law<span class="day-ref">D17</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Money & Finance Foundations -->
+  <div class="category cat-invest">
+    <h3>Money & Finance Foundations</h3>
+    <div class="scenario">"What do rising and falling interest rates actually change?" · "Under inflation, am I truly richer or does the number just look good?" · "When should I use leverage, and when will leverage kill me?" · "Am I being framed by a pretty nominal number?"</div>
+    <div class="model-tags">
+      <a class="tag" href="monetary-finance-day52.en.html">Interest Rates<span class="day-ref">D52</span></a>
+      <a class="tag" href="monetary-finance-day52.en.html">Inflation<span class="day-ref">D52</span></a>
+      <a class="tag" href="monetary-finance-day52.en.html">Leverage & the Debt Cycle<span class="day-ref">D52</span></a>
+      <a class="tag" href="monetary-finance-day52.en.html">Money Illusion<span class="day-ref">D52</span></a>
+      <a class="tag" href="convex-betting-day51.en.html">Kelly Criterion<span class="day-ref">D51</span></a>
+      <a class="tag" href="investment-wealth-day14.en.html">Compound Effect<span class="day-ref">D14</span></a>
+      <a class="tag" href="economics-day13.en.html">Opportunity Cost<span class="day-ref">D13</span></a>
+      <a class="tag" href="metric-traps-day50.en.html">Goodhart's Law<span class="day-ref">D50</span></a>
+      <a class="tag" href="behavioral-economics-day47.en.html">Mental Accounting<span class="day-ref">D47</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-evopsych">
+    <h3>Evolutionary Psychology</h3>
+    <div class="scenario">"This seemingly irrational reaction — what problem did it originally evolve to solve?" · "Why can't I control my cravings for sugar/phone/short video?" · "Who is this showing-off / self-sacrifice really signaling to, and what?" · "Is my loyalty to this group truly deserved, or has it been hijacked?"</div>
+    <div class="model-tags">
+      <a class="tag" href="evolutionary-psychology-day53.en.html">Adaptationist Perspective<span class="day-ref">D53</span></a>
+      <a class="tag" href="evolutionary-psychology-day53.en.html">Evolutionary Mismatch<span class="day-ref">D53</span></a>
+      <a class="tag" href="evolutionary-psychology-day53.en.html">Sexual Selection<span class="day-ref">D53</span></a>
+      <a class="tag" href="evolutionary-psychology-day53.en.html">Kin Selection<span class="day-ref">D53</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Survival of the Fittest<span class="day-ref">D18</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Red Queen Effect<span class="day-ref">D18</span></a>
+      <a class="tag" href="neuroscience-day35.en.html">Dopamine RPE<span class="day-ref">D35</span></a>
+      <a class="tag" href="munger-misjudgment-day40.en.html">Incentive Super-Response<span class="day-ref">D40</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-org">
+    <h3>Organizational & Bureaucratic Laws</h3>
+    <div class="scenario">"Why doesn't adding people rescue a late project?" · "Why do capable people become useless once promoted?" · "How does an organization slowly betray its mission?" · "Why do meetings always argue over the least important things?"</div>
+    <div class="model-tags">
+      <a class="tag" href="organizational-laws-day54.en.html">Brooks's Law<span class="day-ref">D54</span></a>
+      <a class="tag" href="organizational-laws-day54.en.html">The Peter Principle<span class="day-ref">D54</span></a>
+      <a class="tag" href="organizational-laws-day54.en.html">Pournelle's Iron Law of Bureaucracy<span class="day-ref">D54</span></a>
+      <a class="tag" href="organizational-laws-day54.en.html">Parkinson's Law of Triviality<span class="day-ref">D54</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">Conway's Law<span class="day-ref">D33</span></a>
+      <a class="tag" href="efficiency-execution-day08.en.html">Parkinson's Law<span class="day-ref">D8</span></a>
+      <a class="tag" href="metric-traps-day50.en.html">Goodhart's Law<span class="day-ref">D50</span></a>
+      <a class="tag" href="mechanism-design-day49.en.html">Principal-Agent Problem<span class="day-ref">D49</span></a>
+      <a class="tag" href="public-choice-day48.en.html">The Logic of Collective Action<span class="day-ref">D48</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-swlaw">
+    <h3>Selected Laws of Software Engineering</h3>
+    <div class="scenario">"How should a complex system be built up?" · "How tolerant should an interface be?" · "Why has this legacy system become impossible to change?" · "As hardware gets faster, why does software keep getting slower?"</div>
+    <div class="model-tags">
+      <a class="tag" href="software-laws-day55.en.html">Gall's Law<span class="day-ref">D55</span></a>
+      <a class="tag" href="software-laws-day55.en.html">Postel's Robustness Principle<span class="day-ref">D55</span></a>
+      <a class="tag" href="software-laws-day55.en.html">Hyrum's Law<span class="day-ref">D55</span></a>
+      <a class="tag" href="software-laws-day55.en.html">Wirth's Law<span class="day-ref">D55</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">Levels of Abstraction<span class="day-ref">D33</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">Technical Debt<span class="day-ref">D33</span></a>
+      <a class="tag" href="organizational-laws-day54.en.html">Brooks's Law<span class="day-ref">D54</span></a>
+      <a class="tag" href="thinking-laws-day43.en.html">Map Is Not the Territory<span class="day-ref">D43</span></a>
+      <a class="tag" href="efficiency-execution-day08.en.html">Parkinson's Law<span class="day-ref">D8</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Writing & Thinking -->
+  <div class="category cat-comm">
+    <h3>Writing & Thinking on the Page</h3>
+    <div class="scenario">"Have I actually thought it through?" · "Why can't readers understand what I wrote?" · "How do I revise this passage to make it forceful?" · "AI wrote a whole pile — what should I keep?"</div>
+    <div class="model-tags">
+      <a class="tag" href="writing-thinking-day56.en.html">Writing Is Thinking<span class="day-ref">D56</span></a>
+      <a class="tag" href="writing-thinking-day56.en.html">One Idea at a Time<span class="day-ref">D56</span></a>
+      <a class="tag" href="writing-thinking-day56.en.html">Active Voice<span class="day-ref">D56</span></a>
+      <a class="tag" href="writing-thinking-day56.en.html">Subtraction Beats Addition<span class="day-ref">D56</span></a>
+      <a class="tag" href="communication-day05.en.html">Pyramid Principle<span class="day-ref">D5</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Feynman Technique<span class="day-ref">D23</span></a>
+      <a class="tag" href="taleb-advanced-day44.en.html">Via Negativa<span class="day-ref">D44</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">YAGNI & Premature Abstraction<span class="day-ref">D33</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Causal Inference -->
+  <div class="category cat-science">
+    <h3>Causal Inference</h3>
+    <div class="scenario">"Is this correlation or causation?" · "When I can't run an experiment, how do I verify that X really causes Y?" · "Who is actually to blame for this failure?" · "Why does the overall trend contradict the per-group conclusion?"</div>
+    <div class="model-tags">
+      <a class="tag" href="causal-inference-day57.en.html">Ladder of Causation<span class="day-ref">D57</span></a>
+      <a class="tag" href="causal-inference-day57.en.html">Counterfactual Reasoning<span class="day-ref">D57</span></a>
+      <a class="tag" href="causal-inference-day57.en.html">Instrumental Variables<span class="day-ref">D57</span></a>
+      <a class="tag" href="causal-inference-day57.en.html">Simpson's Paradox<span class="day-ref">D57</span></a>
+      <a class="tag" href="scientific-method-day12.en.html">Correlation ≠ Causation<span class="day-ref">D12</span></a>
+      <a class="tag" href="scientific-method-day12.en.html">Controlled Variables<span class="day-ref">D12</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="decision-toolbox-day42.en.html">Pre-mortem<span class="day-ref">D42</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Information Theory -->
+  <div class="category cat-science">
+    <h3>Information-Theoretic Thinking</h3>
+    <div class="scenario">"Does this piece of information have any value?" · "Why does communication always lose information?" · "Do I truly understand it, or have I just memorized it?" · "Is this metric worth watching?"</div>
+    <div class="model-tags">
+      <a class="tag" href="information-theory-day58.en.html">Shannon Entropy<span class="day-ref">D58</span></a>
+      <a class="tag" href="information-theory-day58.en.html">Channel Capacity<span class="day-ref">D58</span></a>
+      <a class="tag" href="information-theory-day58.en.html">Coding & Compression<span class="day-ref">D58</span></a>
+      <a class="tag" href="information-theory-day58.en.html">Mutual Information<span class="day-ref">D58</span></a>
+      <a class="tag" href="information-knowledge-day23.en.html">Signal-to-Noise Ratio<span class="day-ref">D23</span></a>
+      <a class="tag" href="metric-traps-day50.en.html">Goodhart's Law<span class="day-ref">D50</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="distributed-systems-day37.en.html">Backpressure<span class="day-ref">D37</span></a>
+    </div>
+  </div>
+
+  <div class="category cat-system">
+    <h3>Cybernetics & Feedback Regulation</h3>
+    <div class="scenario">"Why does a system spin out of control?" · "Why do I overcorrect and swing back and forth?" · "What does it actually take to stabilize a complex situation?" · "How do I ignite a virtuous cycle and brake a vicious one?"</div>
+    <div class="model-tags">
+      <a class="tag" href="cybernetics-feedback-day59.en.html">Negative Feedback<span class="day-ref">D59</span></a>
+      <a class="tag" href="cybernetics-feedback-day59.en.html">Positive Feedback / Runaway<span class="day-ref">D59</span></a>
+      <a class="tag" href="cybernetics-feedback-day59.en.html">Delay & Oscillation<span class="day-ref">D59</span></a>
+      <a class="tag" href="cybernetics-feedback-day59.en.html">Requisite Variety<span class="day-ref">D59</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Feedback Loops<span class="day-ref">D3</span></a>
+      <a class="tag" href="systems-thinking-day03.en.html">Leverage Points<span class="day-ref">D3</span></a>
+      <a class="tag" href="distributed-systems-day37.en.html">Backpressure<span class="day-ref">D37</span></a>
+      <a class="tag" href="metric-traps-day50.en.html">Goodhart's Law<span class="day-ref">D50</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Diffusion of Innovations -->
+  <div class="category cat-business">
+    <h3>Diffusion of Innovations</h3>
+    <div class="scenario">"Why can't a good thing gain traction?" · "It was hot early on, so why can't it cross into the mass market?" · "How do I actually reach the tipping point?" · "How long can rapid growth last?"</div>
+    <div class="model-tags">
+      <a class="tag" href="innovation-diffusion-day60.en.html">Early Adopters<span class="day-ref">D60</span></a>
+      <a class="tag" href="innovation-diffusion-day60.en.html">Crossing the Chasm<span class="day-ref">D60</span></a>
+      <a class="tag" href="innovation-diffusion-day60.en.html">Tipping Point Threshold<span class="day-ref">D60</span></a>
+      <a class="tag" href="innovation-diffusion-day60.en.html">S-Curve Saturation<span class="day-ref">D60</span></a>
+      <a class="tag" href="cybernetics-feedback-day59.en.html">Positive Feedback / Runaway<span class="day-ref">D59</span></a>
+      <a class="tag" href="network-science-day38.en.html">Scale-Free Networks & Preferential Attachment<span class="day-ref">D38</span></a>
+      <a class="tag" href="business-models-day10.en.html">Network Effects<span class="day-ref">D10</span></a>
+      <a class="tag" href="ecology-evolution-day18.en.html">Ecological Niche<span class="day-ref">D18</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Cognitive Diversity -->
+  <div class="category cat-cross">
+    <h3>Cognitive Diversity</h3>
+    <div class="scenario">"Why can a group of experts still fail to crack it?" · "Who can solve a problem the insiders are stuck on?" · "How do you cross disciplines in a way that actually adds value?" · "Does my judgment truly have an edge, or am I just being contrarian for its own sake?"</div>
+    <div class="model-tags">
+      <a class="tag" href="cognitive-diversity-day61.en.html">Diversity Trumps Ability (Page)<span class="day-ref">D61</span></a>
+      <a class="tag" href="cognitive-diversity-day61.en.html">Outsider Perspective Dividend<span class="day-ref">D61</span></a>
+      <a class="tag" href="cognitive-diversity-day61.en.html">Hybrid Vigor (Heterosis)<span class="day-ref">D61</span></a>
+      <a class="tag" href="cognitive-diversity-day61.en.html">Contrarian Value<span class="day-ref">D61</span></a>
+      <a class="tag" href="cross-disciplinary-day26.en.html">Biological Analogies<span class="day-ref">D26</span></a>
+      <a class="tag" href="network-science-day38.en.html">Homophily & Echo Chambers<span class="day-ref">D38</span></a>
+      <a class="tag" href="startup-zero-to-one-day32.en.html">Contrarian Truth<span class="day-ref">D32</span></a>
+      <a class="tag" href="convex-betting-day51.en.html">Convex Betting<span class="day-ref">D51</span></a>
+      <a class="tag" href="algorithmic-thinking-day39.en.html">Heuristics & Approximation<span class="day-ref">D39</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Collective Intelligence -->
+  <div class="category cat-cross">
+    <h3>Collective Intelligence & Collaboration</h3>
+    <div class="scenario">"How do I extract genuine wisdom from a crowd rather than a mob?" · "Everyone says there's no problem — what's the real probability?" · "With no commander, how do a group of people/agents coordinate?" · "How do I make a knowledge base/community get better through the crowd?"</div>
+    <div class="model-tags">
+      <a class="tag" href="collective-intelligence-day62.en.html">Wisdom of Crowds<span class="day-ref">D62</span></a>
+      <a class="tag" href="collective-intelligence-day62.en.html">Prediction Markets<span class="day-ref">D62</span></a>
+      <a class="tag" href="collective-intelligence-day62.en.html">Swarm Intelligence (Stigmergy)<span class="day-ref">D62</span></a>
+      <a class="tag" href="collective-intelligence-day62.en.html">The Wiki Model<span class="day-ref">D62</span></a>
+      <a class="tag" href="cognitive-diversity-day61.en.html">Diversity Trumps Ability (Page)<span class="day-ref">D61</span></a>
+      <a class="tag" href="distributed-systems-day37.en.html">Emergence & Leaderless Coordination<span class="day-ref">D37</span></a>
+      <a class="tag" href="mechanism-design-day49.en.html">Incentive Compatibility<span class="day-ref">D49</span></a>
+      <a class="tag" href="convex-betting-day51.en.html">Convex Betting<span class="day-ref">D51</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">No-Self & Emergence<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Metaphor & Framing -->
+  <div class="category cat-cross">
+    <h3>Metaphor & Framing Wars</h3>
+    <div class="scenario">"Am I letting a metaphor think for me without noticing?" · "Why does rebutting the other side only make their claim stick harder?" · "Could the same hard problem suddenly become solvable if I reframe the question?" · "Which 'that's just what it means' words are secretly presupposing the conclusion?"</div>
+    <div class="model-tags">
+      <a class="tag" href="metaphor-framing-day63.en.html">Conceptual Metaphor<span class="day-ref">D63</span></a>
+      <a class="tag" href="metaphor-framing-day63.en.html">Framing Wars<span class="day-ref">D63</span></a>
+      <a class="tag" href="metaphor-framing-day63.en.html">Reframing<span class="day-ref">D63</span></a>
+      <a class="tag" href="metaphor-framing-day63.en.html">Dead Metaphor<span class="day-ref">D63</span></a>
+      <a class="tag" href="cognitive-biases-day02.en.html">Framing Effect<span class="day-ref">D2</span></a>
+      <a class="tag" href="thinking-laws-day43.en.html">Map Is Not the Territory<span class="day-ref">D43</span></a>
+      <a class="tag" href="cross-disciplinary-day26.en.html">Biological Analogies<span class="day-ref">D26</span></a>
+      <a class="tag" href="writing-thinking-day56.en.html">Writing Is Thinking<span class="day-ref">D56</span></a>
+      <a class="tag" href="consciousness-awareness-day21.en.html">Metacognition<span class="day-ref">D21</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Fuzzy & Grayscale -->
+  <div class="category cat-cross">
+    <h3>Fuzzy & Grayscale Thinking</h3>
+    <div class="scenario">"Does this really have a clean boundary, or is it a matter of degree?" · "This 'X percent' — is it whether it will happen, or how much it resembles?" · "Am I rushing to a conclusion just because I can't stand uncertainty?" · "When forced into a binary, can I dial in the setting that's most right for this moment?"</div>
+    <div class="model-tags">
+      <a class="tag" href="fuzzy-gray-thinking-day64.en.html">Fuzzy Sets<span class="day-ref">D64</span></a>
+      <a class="tag" href="fuzzy-gray-thinking-day64.en.html">Vagueness ≠ Uncertainty<span class="day-ref">D64</span></a>
+      <a class="tag" href="fuzzy-gray-thinking-day64.en.html">Tolerance of Ambiguity<span class="day-ref">D64</span></a>
+      <a class="tag" href="fuzzy-gray-thinking-day64.en.html">Grayscale Judgment<span class="day-ref">D64</span></a>
+      <a class="tag" href="eastern-wisdom-day30.en.html">Doctrine of the Mean (Zhongyong)<span class="day-ref">D30</span></a>
+      <a class="tag" href="risk-probability-day07.en.html">Bayesian Thinking<span class="day-ref">D7</span></a>
+      <a class="tag" href="explore-exploit-day46.en.html">Multi-Armed Bandit<span class="day-ref">D46</span></a>
+      <a class="tag" href="philosophy-metacognition-day11.en.html">Intellectual Humility<span class="day-ref">D11</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Mechanisms of Creativity -->
+  <div class="category cat-cross">
+    <h3>The Mechanisms of Creativity</h3>
+    <div class="scenario">"Can I push this premise to its limit in my head and see if it breaks?" · "When stuck, which unrelated field can I borrow an image from to build a bridge?" · "Rather than demanding infinite freedom, should I impose a constraint that forces out novelty?" · "I don't have to create from nothing — which parts on hand has no one combined yet?"</div>
+    <div class="model-tags">
+      <a class="tag" href="creativity-mechanisms-day65.en.html">Thought Experiments<span class="day-ref">D65</span></a>
+      <a class="tag" href="creativity-mechanisms-day65.en.html">Remote Association<span class="day-ref">D65</span></a>
+      <a class="tag" href="creativity-mechanisms-day65.en.html">Constraint-Driven Creativity<span class="day-ref">D65</span></a>
+      <a class="tag" href="creativity-mechanisms-day65.en.html">Combinatorial Innovation<span class="day-ref">D65</span></a>
+      <a class="tag" href="cross-disciplinary-day26.en.html">Biological Analogies<span class="day-ref">D26</span></a>
+      <a class="tag" href="metaphor-framing-day63.en.html">Reframing<span class="day-ref">D63</span></a>
+      <a class="tag" href="cognitive-diversity-day61.en.html">Hybrid Vigor (Heterosis)<span class="day-ref">D61</span></a>
+      <a class="tag" href="decision-making-day01.en.html">First Principles<span class="day-ref">D1</span></a>
+      <a class="tag" href="startup-zero-to-one-day32.en.html">Contrarian Truth<span class="day-ref">D32</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Legal & Contract Thinking -->
+  <div class="category cat-cross">
+    <h3>Legal & Contract Thinking</h3>
+    <div class="scenario">"Should I let opposing sides fight it out to force out the truth, or have a neutral party verify directly?" · "I thought I offered a choice, but is the default value what really determines the outcome?" · "This agreement can never be fully written — who gets to decide on what it doesn't cover?" · "This looks redundant, but do I really know why it was put there in the first place?"</div>
+    <div class="model-tags">
+      <a class="tag" href="law-contracts-day66.en.html">Adversarial vs Cooperative<span class="day-ref">D66</span></a>
+      <a class="tag" href="law-contracts-day66.en.html">Default Rules<span class="day-ref">D66</span></a>
+      <a class="tag" href="law-contracts-day66.en.html">Incomplete Contracts<span class="day-ref">D66</span></a>
+      <a class="tag" href="law-contracts-day66.en.html">Chesterton's Fence<span class="day-ref">D66</span></a>
+      <a class="tag" href="behavioral-economics-day47.en.html">Default Effect & Nudge<span class="day-ref">D47</span></a>
+      <a class="tag" href="mechanism-design-day49.en.html">Principal-Agent Problem<span class="day-ref">D49</span></a>
+      <a class="tag" href="software-laws-day55.en.html">Hyrum's Law<span class="day-ref">D55</span></a>
+      <a class="tag" href="game-cooperation-day28.en.html">Repeated Games & Trust<span class="day-ref">D28</span></a>
+      <a class="tag" href="eastern-wisdom-day30.en.html">Wuwei & Following the Existing<span class="day-ref">D30</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Mathematical Structures as Mind -->
+  <div class="category cat-cross">
+    <h3>Mathematical Structures as Mind</h3>
+    <div class="scenario">"Is this hard problem hard only because I'm standing on the wrong axes — would a change of basis solve it automatically?" · "Which are the details that vary, and which is the skeleton that only breaks if you tear it?" · "Never mind how it works inside — do its interfaces compose cleanly?" · "By scoring it along a few axes, have I dropped precisely the most crucial dimension?"</div>
+    <div class="model-tags">
+      <a class="tag" href="mathematical-structures-day67.en.html">Basis & Transformation<span class="day-ref">D67</span></a>
+      <a class="tag" href="mathematical-structures-day67.en.html">Continuity & Invariants<span class="day-ref">D67</span></a>
+      <a class="tag" href="mathematical-structures-day67.en.html">Composition & Isomorphism<span class="day-ref">D67</span></a>
+      <a class="tag" href="mathematical-structures-day67.en.html">Dimensionality & Similarity<span class="day-ref">D67</span></a>
+      <a class="tag" href="decision-making-day01.en.html">First Principles<span class="day-ref">D1</span></a>
+      <a class="tag" href="engineering-philosophy-day33.en.html">Levels of Abstraction<span class="day-ref">D33</span></a>
+      <a class="tag" href="cross-disciplinary-day26.en.html">Mathematical Modeling<span class="day-ref">D26</span></a>
+      <a class="tag" href="information-theory-day58.en.html">Coding & Compression<span class="day-ref">D58</span></a>
+      <a class="tag" href="physics-thinking-day36.en.html">Superposition & Optionality<span class="day-ref">D36</span></a>
+    </div>
+  </div>
+
+  <!-- Category: Dynamic Thinking -->
+  <div class="category cat-cross">
+    <h3>Dynamic Thinking: Time · Accumulation · Path</h3>
+    <div class="scenario">"I'm firm from afar but defect up close — who is seizing power inside me?" · "By pouring resources into one input, have I long crossed the inflection point into futile piling-on?" · "Is something 'worse but ten times cheaper' climbing up from below to eat me?" · "On this bet, am I averaging over parallel worlds, or over my one and only life?"</div>
+    <div class="model-tags">
+      <a class="tag" href="dynamic-thinking-day68.en.html">Present Bias (Hyperbolic Discounting)<span class="day-ref">D68</span></a>
+      <a class="tag" href="dynamic-thinking-day68.en.html">Diminishing Marginal Utility<span class="day-ref">D68</span></a>
+      <a class="tag" href="dynamic-thinking-day68.en.html">Disruptive Innovation<span class="day-ref">D68</span></a>
+      <a class="tag" href="dynamic-thinking-day68.en.html">Ergodicity<span class="day-ref">D68</span></a>
+      <a class="tag" href="time-complexity-day20.en.html">Path Dependence<span class="day-ref">D20</span></a>
+      <a class="tag" href="convex-betting-day51.en.html">Kelly Criterion<span class="day-ref">D51</span></a>
+      <a class="tag" href="taleb-advanced-day44.en.html">Skin in the Game<span class="day-ref">D44</span></a>
+      <a class="tag" href="behavioral-economics-day47.en.html">Default Options & Nudge<span class="day-ref">D47</span></a>
+      <a class="tag" href="innovation-diffusion-day60.en.html">Crossing the Chasm<span class="day-ref">D60</span></a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="index.en.html">&larr; Back to Home</a>
+  </footer>
+
+</div>
+
+<script>
+function copyById(id, btn) {
+  const box = document.getElementById(id);
+  const text = box.textContent.replace('Copy', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+<script src="https://cissy0802.github.io/comments.js" defer></script>
+<script src="https://cissy0802.github.io/search.js" defer></script>
+<script src="https://cissy0802.github.io/index-button.js" defer></script>
+<script src="i18n-tts.js" defer></script>
+</body>
+</html>
