@@ -226,15 +226,21 @@ def collect_groups(soup) -> list[tuple]:
             # Skip elements inside a diagram/SVG, footers, anything purely decorative
             if node.find_parent("svg") or node.find_parent("style") or node.find_parent("script"):
                 continue
-            # Only direct visible text — skip elements that wrap richer structures
-            # whose text we already collected from children
+            # Only direct visible text — skip divs that WRAP block-level children
+            # (their text is captured via those inner elements). Include divs whose
+            # direct children are inline only (bare text, <strong>, <em>, <span>) —
+            # these are "leaf" divs holding real content.
             classes = node.get("class") or []
-            if node.name == "div" and not any(
-                c in classes
-                for c in ("prompt-item", "prompt-block", "prompt-box", "subtitle", "label",
-                          "section-label", "example-label", "lang", "english-summary")
-            ):
-                continue
+            _BLOCK_TAGS = ("div", "p", "h1", "h2", "h3", "h4", "h5", "h6",
+                           "ul", "ol", "li", "section", "article", "table",
+                           "tr", "td", "th", "pre", "blockquote")
+            if node.name == "div":
+                has_block_children = any(
+                    getattr(child, "name", None) in _BLOCK_TAGS
+                    for child in node.children
+                )
+                if has_block_children:
+                    continue
             # Skip elements explicitly tagged as the opposite language
             if lang == "zh" and "en" in classes:
                 continue
