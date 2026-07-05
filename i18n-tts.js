@@ -325,6 +325,7 @@
   function injectStyles() {
     const css = `
 body{padding-bottom:96px!important}
+body.mmd-tts-on #search-fab{bottom:78px!important}
 .mmd-controls{position:fixed;bottom:18px;right:18px;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:28px;box-shadow:0 6px 24px rgba(0,0,0,0.15);padding:6px;display:flex;align-items:center;gap:2px;z-index:9999;font-family:-apple-system,"Noto Sans SC","Segoe UI",Roboto,sans-serif;border:1px solid rgba(0,0,0,0.06);user-select:none}
 .mmd-controls button{background:transparent;border:none;cursor:pointer;padding:8px 11px;border-radius:18px;color:#2d3436;font-size:14px;font-weight:600;line-height:1;display:flex;align-items:center;justify-content:center;transition:background 0.15s,color 0.15s;min-width:36px;min-height:36px}
 .mmd-controls button:hover{background:#f0f0f4}
@@ -401,6 +402,7 @@ body{padding-bottom:96px!important}
       <button class="rate" data-action="rate" title="语速 / Speed" aria-label="Playback speed">1×</button>
     `;
     document.body.appendChild(bar);
+    document.body.classList.add('mmd-tts-on');
 
     langBar.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-action]');
