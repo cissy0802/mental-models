@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#00b894;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -206,6 +213,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>假说-验证是科学方法的核心循环：先提出可测试的假设，再用实验数据判断它被支持还是被推翻。</li>
+<li>假说-验证最常见的错误是验证了错误的假说，正确顺序是先检验最基础、推翻成本最低的前提。</li>
+<li>塞麦尔维斯要求医生接生前用含氯石灰水洗手，产褥热死亡率随之骤降，验证了“尸体微粒”假说。</li>
+<li>波普尔提出科学理论必须可证伪：“所有天鹅都是白的”能被一只黑天鹅推翻，所以是科学命题。</li>
+<li>检验一个信念是否可证伪，就问什么证据会让我放弃它；答不出来，这个信念就已脱离理性。</li>
+<li>控制变量要求研究 A 对 B 的影响时让其他因素保持不变，否则分不清变化究竟由谁引起。</li>
+<li>随机对照实验是因果推断的金标准，因为随机化能让未知的混杂变量在两组间均匀分布。</li>
+<li>1747 年林德把 12 名坏血病船员分成 6 组，只换补充物，结果只有吃柑橘的一组迅速康复。</li>
+<li>相关不等于因果：两个变量同步变化，可能是 A 导致 B、B 导致 A，或第三变量同时驱动二者。</li>
+<li>冰淇淋销量与溺水事故高度相关，真正的原因是夏季高温这个同时推高两者的混杂因子。</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.html">← 返回目录 / Back to Index</a>
 </nav>

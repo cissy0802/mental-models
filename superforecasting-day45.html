@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -270,6 +275,21 @@
 1. Propose 2–3 suitable reference classes and explain the relevant similarity of each.
 2. Give the historical base rate of each as a prior starting point.
 3. Starting from the base rate, make a disciplined adjustment for this case's genuine specifics, give a final probability/range, and warn me if I'm sliding back into the inside view.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>预测质量有两种彼此独立的美德：校准是概率说实话，锐度是敢于离开基础率给出果断的概率。</li>
+<li>永远报基础率的预测者校准完美却毫无锐度；到处喊 95% 显得果断，又会摧毁校准。</li>
+<li>预测误差可分解为校准项和锐度项：校准差靠记录反馈来治，锐度差靠积累领域知识来治。</li>
+<li>天气预报员校准极好，因为每天都拿到次日的真实反馈；反馈周期长的职业往往校准糟糕。</li>
+<li>布里尔分数是概率与实际结果（发生记 1，未发生记 0）之差的平方，一批预测取平均，越低越好。</li>
+<li>布里尔分数是恰当评分规则：要让期望得分最好，唯一策略就是报出你真实相信的概率。</li>
+<li>布里尔分数的平方惩罚让自信地说错远比老实承认不确定受罚更重，因而天然压制过度自信。</li>
+<li>刺猬用一套宏大理论解释万物，狐狸同时持有许多相互竞争的小模型；长期看狐狸预测更准。</li>
+<li>狐狸的优势相当于集成模型，多个有偏视角平均后方差相抵；刺猬失败于强先验拒绝被数据更新。</li>
+<li>外视要求先找参照类、锚定基础率，再按本案特殊性微调；基础率就是贝叶斯更新里的先验。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -273,6 +278,21 @@
 1. Sketch the expected J-curve (depth, time at bottom, recovery shape).
 2. Find 3 real precedents who walked the same J — what did they decide at the bottom?
 3. Give me 3 diagnostic questions that distinguish "still inside the J" from "wrong direction entirely."</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>创业的边际收益不在共识里：共识赛道永远拥挤、回报趋零，机会在市场聚合判断出错的地方。</li>
+<li>Thiel 认为真正的反共识真理要同时满足两条：你有强证据，而主流仍坚定持反方。</li>
+<li>只是“反着主流做”不算反共识真理：没有证据是妄想，没人反对的只是已被消化的常识。</li>
+<li>零到一是创造新事物的垂直进步，一到N是复制已有做法的水平进步，两者根本不同。</li>
+<li>判别零到一：竞品要重建整套基础设施才追得上你；只需加营销预算就能追上，那是一到N。</li>
+<li>用一到N的量化指标评估零到一会杀死小苗，用零到一的耐心做一到N则是在烧钱。</li>
+<li>创始人-市场契合指创始人对特定市场的结构性优势，如领域知识、亲历痛点、稀有访问和人脉。</li>
+<li>热情只是入门票；创始人-市场契合要求你在某个具体维度上比99%的玩家更懂，且会随时间积累。</li>
+<li>J 曲线指任何有意义的转型都会先变差再变好，因为重组系统必须先打破旧的局部均衡。</li>
+<li>多数人在 J 曲线底部放弃，因为站在底部看不到右半；判断依据是下行是否仍在事前估计范围内。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

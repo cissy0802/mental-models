@@ -149,6 +149,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -282,6 +287,22 @@
       Design a flywheel for [business / project / personal growth system]. Identify 4-6 reinforcing components and map their closed-loop relationships. Define a key metric for each node, isolate the weakest link, and propose three concrete leverage actions to accelerate it. Additionally, surface any latent reverse-flywheel risk and the early warning indicators that would signal it is spinning the wrong direction.
     </div>
   </section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Game theory studies interdependent rational decisions: your best move depends on your opponent's choice, which in turn depends on how they read you.</li>
+<li>A Nash equilibrium is a state no player wants to leave unilaterally, yet it need not be optimal; the Prisoner's Dilemma shows individual rationality producing collective irrationality.</li>
+<li>In repeated games, cooperation can emerge on its own when the shadow of the future is long; commitment devices gain bargaining power by deliberately cutting one's own options.</li>
+<li>Competitive advantage is the ability to earn above-average returns over time, rooted in structural difference through cost leadership, differentiation or focus rather than effort.</li>
+<li>Sustainable competitive advantage must be hard to imitate and hard to substitute; network effects, scale, switching costs and learning curves deepen it over time.</li>
+<li>The VRIO framework asks whether a core resource is valuable, rare, inimitable and organizationally supported, and whether the advantage will grow or fade in five years.</li>
+<li>An economic moat, popularized by Buffett, is a structural barrier against competitive erosion that measures how long profits can last, not how large they are today.</li>
+<li>Economic moats are dynamic and can widen or dry up, as Kodak's film moat did in the digital shift; technology and regulation reshape them most often.</li>
+<li>The flywheel effect, described by Jim Collins, is a closed loop of mutually reinforcing parts that feels heavy early on and accelerates itself past a tipping point.</li>
+<li>A flywheel spinning in reverse collapses just as self-reinforcingly, so measure flywheel velocity rather than point output and strengthen the weakest link first.</li>
+</ol>
+</section>
+
 
   <footer class="footer">
     <a href="index.en.html">← Back to Index</a>

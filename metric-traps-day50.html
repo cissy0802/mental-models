@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -272,6 +277,21 @@
 1. How likely is this mechanism to rewrite "doing it because I love it" into "doing it for the reward"? How big is the risk?
 2. How exactly would I redesign it from controlling to informational feedback?
 3. Give me one meaning-anchoring narrative to protect intrinsic motivation even with measurement present.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>古德哈特定律：一个指标一旦被设成考核目标，被考核者就沿着指标而非真实目标优化，两者的相关性随之失效。</li>
+<li>大模型训练里的奖励黑客与工人钻考核空子是同一件事，指标越单一、奖励越强，失真越快。</li>
+<li>对付古德哈特定律，要用一组互相制衡的指标，并把指标和重奖重罚解耦：指标用来感知，不用来发奖。</li>
+<li>坎贝尔定律：量化指标在决策中的权重越高，受到的腐蚀压力越大，失真程度与所挂的赌注成正比。</li>
+<li>坎贝尔定律指出的腐蚀有两层：浅层是造假与博弈，深层是把学校、医院真正改造成为指标而生的样子。</li>
+<li>把指标当仪表盘而非方向盘，重大决策中只让指标占一票，再配上定性判断、现场观察和同行评议。</li>
+<li>代理指标失真发生在自己脑中：不需任何作弊动机，具体的指标就会在认知里悄悄顶替抽象的目标。</li>
+<li>富国银行把深度客户关系替换成人均开户数，最终员工开出约 350 万个虚假账户。</li>
+<li>外在奖励与考核会挤出内在动机：做一件出于热爱的事被挂上奖励，撤掉奖励后行为反而低于原来。</li>
+<li>同一个数字被体验为控制会挤出内在动机，被体验为帮人精进的信息则会滋养它，以色列托儿所罚款反增迟到是反面例子。</li>
+</ol>
 </section>
 </div>
 <script defer="" src="https://hub.cissychen.com/comments.js"></script>

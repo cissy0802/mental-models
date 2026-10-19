@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -271,6 +276,21 @@
 1. Which signals are cost-asymmetric — cheap for the real me, prohibitively expensive for a fake to imitate?
 2. Are my current signals "cheap signals" (anyone can claim / mass-produce them) and therefore depreciating?
 3. Give me 2 hard-to-fake high-credibility signals (e.g., skin in the game, a verifiable track record, doing a small sample first), and rank them by ROI.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>机制设计是反向的博弈论：先定好想要的结果，再倒推出让每个人自利的动作恰好通向它的规则。</li>
+<li>显示原理表明，任何机制能达成的结果，都能由一个“讲真话就是最优”的简单机制复现。</li>
+<li>激励不相容时，人们会优化指标本身而非背后的真实目的，这正是古德哈特定律描述的机制失败。</li>
+<li>委托代理问题源于目标不一致和信息不对称两道裂缝，衍生出事后的道德风险和事前的逆向选择。</li>
+<li>把代理人报酬挂到可观测结果上能补缝，但会把风险转嫁给代理人，强激励与风险承担之间必须权衡。</li>
+<li>委托代理链层层嵌套时，每一环都漏一层激励，代理链越长，目标漂移得越远。</li>
+<li>次价（Vickrey）拍卖中赢家只付第二高价，出价与付款脱钩，照实出价成了占优策略。</li>
+<li>收益等价定理指出，理想条件下英式、荷式、首价、次价拍卖给卖家带来的期望收益相同。</li>
+<li>在真实价值人人未知的共同价值拍卖里，赢家往往是高估最离谱的人，这就是赢家诅咒。</li>
+<li>可信的信号必须成本不对称：对真货便宜、对冒牌货贵到学不来，所以空口承诺一文不值。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       I have a gut-level discomfort about this decision but can't articulate why: [describe the decision, the current rational analysis, and the "off" feeling]. Help me decode the intuition into analyzable signals: (1) Which dimension am I reacting to — fairness, harm, betrayal, dignity, instrumentalization? (2) Which signals are valid versus possibly biased (tribalism, availability, personal trauma)? (3) If the intuition is correct, what unstated value is it protecting? (4) Respecting the intuition, is there an alternative path that satisfies the rational objective while resolving the intuitive alarm?
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>电车问题由英国哲学家菲利帕·福特在 1967 年提出：拉杆让失控电车改道，牺牲一人救下五人，你拉不拉？</li>
+<li>电车问题的天桥变体里，多数人愿意拉杆却拒绝推人下桥，结果相同、直觉相反，这正是问题的精髓。</li>
+<li>后果论看结果，道义论看行为本身；把「结果不好」和「行为本身有错」混为一谈，伦理争论就会鸡同鸭讲。</li>
+<li>自动驾驶、医疗资源分配、AI 信贷审批让电车问题从思想实验变成工程参数，必须由算法预先做出选择。</li>
+<li>功利主义以「最大多数人的最大幸福」判断对错；义务论认为说谎、把人当工具这类行为无论后果多好都不可为。</li>
+<li>功利主义适合大规模、可量化的决策，义务论适合涉及承诺、信任和尊严的决策，成熟的做法是按情境调用框架。</li>
+<li>罗尔斯在《正义论》（1971）中提出无知之幕：不知道自己将成为社会里的谁，再来设计规则。</li>
+<li>无知之幕是对付位置偏见的过滤器，要问：如果不知道自己站在哪一边，我还会赞成这条规则吗？</li>
+<li>无知之幕的局限在于完全的无知做不到，而且「保护最弱势者」本身是一种高度风险规避的偏好。</li>
+<li>道德直觉是先于推理的判断，既能识破推出荒谬结论的严密论证，也会被群体偏好和个人经验扭曲。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

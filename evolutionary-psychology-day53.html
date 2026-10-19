@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -299,6 +304,21 @@
 1. Is the "recipient" actual kin, or a non-relative activated by "fictive-kin cues" (shared language/identity/flag)?
 2. Apply the rB &gt; C intuition: is my cost C worth the recipient's benefit B? Who actually profits from this loyalty?
 3. Which loyalties do I want to consciously keep and extend, and which are hijacked fictive-kin triggers I should step back from?</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>适应器视角把心智看作一组专用模块，理解一个心理特征要先问它当年为解决哪个祖先问题而被选择出来。</li>
+<li>沃森选择任务换成“喝酒须满 18 岁”的社会契约版后正确率骤升，提示人脑有专用的欺骗者侦测模块。</li>
+<li>并非每个特征都是适应器，有些只是副产品或随机漂变；该提出可证伪的功能假说，而不是事后编演化故事。</li>
+<li>进化失配指基因演化太慢、环境变化太快，祖先环境里适应的回路在现代环境里系统性地误触发。</li>
+<li>超常刺激把祖先环境里的真实信号夸张放大，垃圾食品、点赞和短视频都靠它劫持奖赏回路。</li>
+<li>应对进化失配，最有效的是设计环境、改变自己暴露在什么刺激下，而不是死磕意志力。</li>
+<li>达尔文的性选择优化“传下去”而非“活下去”，所以孔雀尾巴虽然拖累逃命，仍被雌性偏好持续放大。</li>
+<li>累赘原理指出，昂贵到只有真正强壮者才负担得起的信号才是诚实信号，能伪造的信号没有信息量。</li>
+<li>汉密尔顿法则说，当 rB &gt; C 时利他基因就会扩散，因为帮助亲属就是在传播自己也携带的基因。</li>
+<li>部落主义和“公司是一家人”之类的号召，是亲缘回路被共同语言、身份等拟亲线索在非亲属身上误触发。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

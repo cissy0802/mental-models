@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -273,6 +278,21 @@
 1. How do non-excludability and non-rivalry show up here, and why does it collapse into everyone free-riding and no one providing?
 2. Give me 2 provisioning fixes: how to manufacture "excludability" or coordinate payment (tie it to evaluation / authorship &amp; reputation / an assurance-contract-style "only if enough commit" / matching funds)?
 3. Who is the key person most worth incentivizing to provide it, and what exclusive reward should they get?</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>阿罗不可能定理：选项和投票人都在三个以上时，没有投票规则能同时满足全体一致、无关选项独立和非独裁。</li>
+<li>孔多塞悖论说明，每个人的偏好都理性，多数投票的集体结果却可能循环：A 胜 B、B 胜 C、C 又胜 A。</li>
+<li>搅局者效应让一个注定落选的候选人翻转胜负，所以集体决策的真正权力常在设置议程和投票顺序的人手里。</li>
+<li>公地悲剧中，共享资源因每个人理性地多占一点而被耗尽：收益归个人独享，损耗却由全体分摊。</li>
+<li>毁掉公地的是激励结构而不是坏人，因此靠劝诫和自觉无效，解法必须是结构性的。</li>
+<li>奥斯特罗姆发现，社区能靠清晰边界、低成本监督和逐级惩罚自治公地，私有化与管制并非仅有的两条路。</li>
+<li>反公地悲剧是公地悲剧的镜像：否决权被太多人持有时，资源谁都用不了，只能白白闲置。</li>
+<li>奥尔森的集体行动逻辑指出，共同利益不会自动带来共同行动，群体越大，每个人越倾向搭便车。</li>
+<li>小而集中的利益往往打败大而分散的利益；破解搭便车要靠只给参与者的选择性激励。</li>
+<li>公共品非排他又非竞争，市场因此系统性供给不足；知识是终极公共品，付费墙则是人为制造排他。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

@@ -149,6 +149,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,22 @@
       <span class="prompt-label">English Template</span><br>
       Analyze [team / market / educational environment / AI workflow] as a Complex Adaptive System. (1) Identify the main adaptive agents and their local rules; (2) Map 2-3 key feedback loops (positive and negative); (3) Assess where the system sits on the order-chaos spectrum and whether it's near the optimal "edge of chaos"; (4) Flag any "illusion of control" — management measures likely to be adaptively circumvented; (5) Design 3 concise interaction rules to replace detailed directives, enabling better outcomes to emerge naturally.
     </div>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>The Lindy Effect says that for non-perishable things such as technologies, books and ideas, the longer they have survived, the longer they are expected to last.</li>
+  <li>The Lindy Effect applies only to informational, cultural and technical entities, not to things that wear out physically, like a bridge.</li>
+  <li>The Butterfly Effect comes from Edward Lorenz's 1963 finding that in nonlinear systems tiny differences in initial conditions grow exponentially.</li>
+  <li>In 1961 Lorenz rounded 0.506127 to 0.506 when rerunning a weather simulation, and within a few simulated months the results had fully diverged.</li>
+  <li>Complex systems have a horizon of predictability; precise forecasts beyond it are impossible, so scenario planning should replace prediction.</li>
+  <li>Path dependence means that in systems with positive feedback, early chance choices create lock-in, and a better alternative may never take over.</li>
+  <li>Every investment in adapting to the current path deepens lock-in: each decision is rational on its own, but together they produce suboptimal lock-in.</li>
+  <li>The QWERTY layout was designed in 1873 to stop mechanical typewriters from jamming, and survives because typists, makers and schools reinforce each other.</li>
+  <li>A Complex Adaptive System is made of many adaptive agents interacting by local rules, and the whole produces patterns no single agent can foresee.</li>
+  <li>In a Complex Adaptive System control is an illusion: agents adapt to control signals, and a measure that becomes a target stops being a good measure.</li>
+  </ol>
   </section>
 
   <footer class="footer">

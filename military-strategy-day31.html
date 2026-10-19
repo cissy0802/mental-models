@@ -35,6 +35,11 @@
   footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   footer a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -119,6 +124,21 @@ Reframe via Fog of War: 1) List what I don't know now and won't know within [tim
 <div class="prompt-block"><span class="tag">English Template</span>
 The challenge/competition I face: [context]. My current frontal approach: [approach].
 Apply Liddell Hart's Indirect Approach: 1) Where is the opponent/system best prepared (strongest point)? Why is direct attack there a bad idea? 2) Propose 3 indirect angles — flank, unguarded, outside their strategy space. 3) Before contact, how can I create "dislocation" (movement, tempo, deception, cognitive misalignment)? 4) Identify one path where going around once yields more ROI than three direct pushes.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>Boyd 的 OODA 循环是观察、定向、决策、行动的连续回路，胜负在整圈更快，不在每步更准。</li>
+<li>OODA 循环的核心是定向：同样的观察，套上不同的心智模型，会得出完全相反的判断。</li>
+<li>韩战中 F-86 靠气泡座舱和液压助力缩短整圈 OODA 循环，对 MiG-15 战损比约 10:1。</li>
+<li>重心是支撑系统稳定的枢纽，打掉它系统就瓦解；它未必最显眼，联盟的重心是团结本身。</li>
+<li>多数努力失败不是因为不够用力，而是倒在了非重心上；而且重心会随战争阶段移动。</li>
+<li>乌尔姆战役中拿破仑迂回切断奥军补给与通讯，拆掉其指挥统一这个重心，几乎不战而下 6 万人。</li>
+<li>克劳塞维茨的战争迷雾指对抗中多数信息错误、不全或滞后，这是本征属性，不是能修掉的缺陷。</li>
+<li>面对战争迷雾，要设计在信息残缺时仍能执行的决策原则，并把小代价的行动当作最便宜的探针。</li>
+<li>迷雾也能当武器：1862 年河谷战役中，杰克逊行踪不定的急行军让 1.7 万南军牵制了 6 万联邦军。</li>
+<li>间接路线主张先让对手心理失衡再从预期外切入，如 1940 年德军穿越阿登森林绕过马奇诺防线。</li>
+</ol>
 </section>
 <footer>
 <a href="index.html">← 返回首页</a>

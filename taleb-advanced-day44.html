@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -276,6 +281,21 @@
 1. What happens if I do nothing? Can this system self-heal, or is it a genuine emergency?
 2. What delayed, invisible iatrogenic side effects might my intervention cause? Could it create the very problem it aims to prevent?
 3. Judge whether this is a "fragile situation demanding decisive action" or a "robust system demanding restraint," and propose the minimal necessary intervention (or "stand pat").</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>风险共担是一个过滤器：决策者承担下行后果，系统才能淘汰坏主意、坏策略和坏人。</li>
+<li>只享上行不担下行、私有化收益而社会化亏损，系统会悄悄积累隐性脆弱性，直到尾部风险引爆。</li>
+<li>评估任何建议前先问：给建议的人如果错了会损失什么？答案是「什么都不损失」就大幅调低权重。</li>
+<li>《汉谟拉比法典》规定房屋坍塌压死屋主时处死建筑师，把风险对称直接写进了法律。</li>
+<li>否定之道主张通过移除而非添加来改进，因为关于「什么有害」的知识比关于「什么有效」的更稳健。</li>
+<li>移除已知有害之物的副作用是有界的，添加看似有益之物却会引入算不清的下游耦合。</li>
+<li>人有强烈的加法偏误，面对问题几乎只想「再加点什么」，所以改进系统时要先问「能删掉什么」。</li>
+<li>杠铃策略把约 90% 放在极度安全处、约 10% 押高凸性赌注，刻意避开「稳健的中间」。</li>
+<li>塔勒布认为「中等风险」是陷阱：尾部风险算不准，一篮子中等风险资产会在危机中联动崩盘。</li>
+<li>朴素干预主义忽视医源性伤害：扑灭每场小火，燃料越积越多，最终酿成无法控制的超级大火。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

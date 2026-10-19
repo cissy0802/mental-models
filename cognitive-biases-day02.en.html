@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#d63031;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -187,6 +194,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Confirmation bias is the tendency to seek out, favor and remember information that supports existing beliefs while discounting contradictory evidence.</li>
+<li>Confirmation bias works most quietly not by rejecting counter-evidence but by tilting search terms, sources and attention toward confirmation.</li>
+<li>In Wason's 2-4-6 task, subjects tested only sequences that fit their hypothesis and so never found the real rule: any three ascending numbers.</li>
+<li>Counter confirmation bias with a red team, deliberately opposing search terms, and steel-manning the strongest version of the other side.</li>
+<li>The anchoring effect is over-reliance on the first information received; even a random anchor pulls judgment, and adjustment from it is almost always too small.</li>
+<li>In Kahneman and Tversky's wheel experiment, a random 10 or 65 shifted estimates of African nations' share of the UN by about 20 points.</li>
+<li>Survivorship bias arises because failures systematically vanish from the visible sample, making successful strategies look more reliable than they are.</li>
+<li>Abraham Wald argued that returning bombers needed armor where they had no bullet holes, since planes hit there never made it back.</li>
+<li>Survivorship bias can reverse causality: a "strategy" distilled from winners may just be a trait the survival filter selected for.</li>
+<li>The sunk cost fallacy means continuing something you should abandon because of past investment; rational decisions weigh only future costs and benefits.</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.en.html">← Back to Index</a>
 </nav>

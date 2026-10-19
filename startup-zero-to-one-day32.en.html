@@ -95,6 +95,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -239,6 +244,22 @@
 2. Find 3 real precedents who walked the same J — what did they decide at the bottom?
 3. Give me 3 diagnostic questions that distinguish "still inside the J" from "wrong direction entirely."</div>
   </section>
+
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>A startup's edge doesn't live in consensus: consensus markets are crowded with returns near zero, so opportunity lies where the market's aggregate judgment is wrong.</li>
+<li>For Peter Thiel, a real contrarian truth needs two things at once: strong evidence on your side, and a mainstream that still firmly believes the opposite.</li>
+<li>Simply doing the opposite of the mainstream isn't a contrarian truth: without evidence it is delusion, and without opposition it is already conventional wisdom.</li>
+<li>Zero to one is vertical progress that creates something new; one to N is horizontal progress that copies what already works, and the two are fundamentally different.</li>
+<li>A test for zero to one: if a copycat must rebuild an entire infrastructure to catch you, it's 0 to 1; if more ad spend would do, it's 1 to N.</li>
+<li>Judging zero-to-one work by one-to-N metrics like KPIs and ROI kills the seedling, while bringing zero-to-one patience to one-to-N execution just burns money.</li>
+<li>Founder-market fit is a founder's structural edge in a specific market: domain depth, lived pain, rare access and network, distinct from product-market fit.</li>
+<li>Passion is only an entry ticket; founder-market fit means knowing one specific dimension better than 99% of players, and it compounds over the years.</li>
+<li>The J-curve says any meaningful transition gets worse before it gets better, because restructuring a system first breaks its old local equilibrium.</li>
+<li>Most people quit at the bottom of a J-curve because the right half is invisible from there; the real test is whether the dip stays within your prior estimate.</li>
+</ol>
+</section>
 
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>

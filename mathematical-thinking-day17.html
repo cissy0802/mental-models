@@ -41,6 +41,11 @@ footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
   .card-header h2 .en{display:block;margin-left:0;margin-top:4px}
   .divider{margin:0 18px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -177,6 +182,26 @@ footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
     </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-header">
+<h2>十条要点</h2>
+</div>
+<div class="card-body">
+<ol class="takeaways">
+<li>大数定律指出：独立重复试验次数足够多时，样本均值会趋近于总体期望值，短期随机、长期确定。</li>
+<li>大数定律的反面是小样本极不可靠：试两三次就下结论，是日常最常见的过度归纳错误。</li>
+<li>大数定律不是赌徒谬误：它不保证短期回本或平衡，只保证足够长的周期里均值收敛。</li>
+<li>赌场靠微小但确定的庄家优势（如轮盘赌约 2.7%）和数百万局的样本量稳赢，而不是赢下每一局。</li>
+<li>回归均值：极端表现之后，下一次往往更接近平均，因为极端值里含有难以重复的随机波动。</li>
+<li>高尔顿研究身高时发现，特别高或特别矮的父母，子女身高都更接近平均，他称之为「回归平庸」。</li>
+<li>回归均值最大的陷阱是因果误判：以色列空军教官以为批评比表扬有效，卡尼曼指出那只是统计回归。</li>
+<li>幂律分布中极少数事件占据大部分影响，平均值几乎没有意义，常由「富者越富」的优先连接驱动。</li>
+<li>在幂律世界里，策略应是集中资源押注少数高杠杆机会；风险投资中一笔最好的投资可能抵过其余全部。</li>
+<li>非线性系统有阈值、指数增长、敏感依赖和涌现，线性外推会失效，疫情初期低估指数传播就是代价。</li>
+</ol>
+</div>
+</section>
+
 <nav>
 <a href="index.html">← 返回目录 Back to Index</a>
 </nav>

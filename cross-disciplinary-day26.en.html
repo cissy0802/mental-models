@@ -35,6 +35,11 @@
   .footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   .footer a:hover { text-decoration: underline; }
   @media (max-width: 640px) { .container { padding: 28px 14px 48px; } .card { padding: 24px 20px; } .page-header h1 { font-size: 24px; } .card h2 { font-size: 20px; } }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -167,6 +172,22 @@
       <span class="prompt-label">English Template</span><br>
       Build a minimum mathematical model for the following problem: [describe problem]. Steps: (1) List 3-5 core variables with units and measurability. (2) Specify the relationships among them (linear, exponential, logarithmic, threshold, or feedback loop). (3) Declare which variables you deliberately omit and why — this is the critical modeling step. (4) Clarify the model's layer (descriptive / predictive / explanatory / normative). (5) State the conditions under which the model breaks down. (6) Use the model to derive 2-3 counterintuitive insights or decision recommendations.
     </div>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>The value of a physics metaphor is not sounding scientific but forcing you to find a system's conserved quantities, flows, potential gaps and thresholds.</li>
+  <li>Breaking a team's "momentum" into mass and velocity turns a physics metaphor into a structured checklist of questions to ask.</li>
+  <li>Physics describes unconscious matter while people can choose to change, so a physics metaphor works best as quick scaffolding for analysis.</li>
+  <li>Biological analogies treat organizations as organisms: complex systems are rarely designed, they are selected through variation, selection and retention.</li>
+  <li>Geoffrey West's scaling laws warn that when an organization grows, not every function scales linearly; communication and coordination costs can grow faster.</li>
+  <li>Reading "survival of the fittest" as winner-takes-all is the Social Darwinism trap; evolution also favors those who fit their environment and those who cooperate.</li>
+  <li>Historical rhythms are recurring structural patterns across eras, and their main value is correcting the illusion that the present will last forever, not predicting events.</li>
+  <li>Historical rhythms are a risk map, not destiny; Ray Dalio also stresses that cycles give a sense of direction and risk, not a precise market-timing tool.</li>
+  <li>The heart of mathematical modeling is choosing what to ignore: keep the core mechanism and the problem clarifies, drop a key variable and the model fails.</li>
+  <li>Descriptive, predictive, explanatory and normative models must not be mixed up; using a descriptive model as an explanation mistakes correlation for causation.</li>
+  </ol>
   </section>
 
   <footer class="footer">

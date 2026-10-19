@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -299,6 +304,21 @@
 1. Is this signal's mutual information with the outcome I truly care about high, medium, or near zero?
 2. Is there a "looks linearly correlated but barely dependent" mismatch, or the reverse?
 3. If it's low, tell me whether I've fallen into a Goodhart trap, and propose a substitute signal with higher mutual information with the goal.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>香农熵是概率分布的平均意外度，度量的是揭晓结果时消除了多少不确定性，而不是信息内容有多重要。</li>
+<li>一个事件的意外度等于 −log p：越罕见的事件携带越多信息，但高信息量并不等于高价值。</li>
+<li>判断一条信息有没有价值，就看它让你心里的概率分布变了多少；纹丝不动，信息量就是零。</li>
+<li>香农证明含噪信道都有容量上限 C：速率低于 C 时错误率可压到任意低，超过则无法消除。</li>
+<li>逼近信道容量要靠冗余和更长的编码，代价是延迟；靠提高信噪比扩容，回报只按对数增长。</li>
+<li>沟通反复失败时，先查是不是超了信道容量；解法是一次少讲几件事或换角度重复，而不是说得更大声。</li>
+<li>信源编码定理规定，无损压缩的平均码长不可能低于熵，纯随机数据根本无法压缩。</li>
+<li>压缩即理解：死记硬背是零压缩，抓住数据背后的生成规则才能把它压短，抽象则是有损压缩。</li>
+<li>互信息 I(X;Y) 度量知道 X 后对 Y 的不确定性减少多少，能捕捉相关系数漏掉的非线性依赖。</li>
+<li>一个指标或问题的价值取决于它与真实决策目标的互信息；代理指标与目标脱钩就落入古德哈特陷阱。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

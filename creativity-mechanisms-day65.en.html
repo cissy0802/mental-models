@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -262,6 +267,21 @@
 1. List the mature "building blocks" in this field (technologies, methods, concepts, resources).
 2. Then pull in a set of blocks from an unrelated field in my background.
 3. Give me 3 cross-domain combinations no one has tried yet, and point out which is most likely to sit in the "adjacent possible" — buildable now, yet opening into new space.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>A thought experiment builds an idealized world in the mind that isolates one variable; it adds no new information, only surfaces conclusions already latent in the premises.</li>
+<li>Galileo tied a heavy and a light stone together, derived a contradiction, and showed without dropping a stone that fall rate does not depend on weight.</li>
+<li>The weapon of a thought experiment is the limit: push a parameter to zero or infinity and structures and hidden premises masked at everyday scales are exposed.</li>
+<li>Remote association means linking two concepts that sit far apart in your semantic network, unexpectedly yet aptly; that is where novelty comes from.</li>
+<li>Far and apt is creative, far and inapt is gibberish, near and apt is cliché; a good idea is both surprising and obvious in hindsight.</li>
+<li>Ideas often surface in the shower or on a walk because the relaxed default mode network wanders and throws up remote associative candidates.</li>
+<li>Unlimited freedom pushes people back to the most familiar default, while an apt constraint cuts off the obvious paths and forces genuine search.</li>
+<li>Constraints have a sweet spot between too loose and too tight; Apollo 13 engineers built a CO2 scrubber using only what was already aboard.</li>
+<li>Combinatorial innovation holds that most new things recombine old building blocks, and each new combination opens a new adjacent possible, so timing matters.</li>
+<li>Combinations explode as building blocks multiply, so the real bottleneck of combinatorial innovation is not raw material but recognizing the rare, valuable pairing.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

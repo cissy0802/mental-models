@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -236,6 +241,21 @@
 1. How likely is this mechanism to rewrite "doing it because I love it" into "doing it for the reward"? How big is the risk?
 2. How exactly would I redesign it from controlling to informational feedback?
 3. Give me one meaning-anchoring narrative to protect intrinsic motivation even with measurement present.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Goodhart's Law: once a metric becomes a target, people optimize the metric instead of the real goal, and the correlation between them breaks.</li>
+<li>Reward hacking in model training and workers gaming a quota are the same failure; the more single-minded the metric and the stronger the reward, the faster it breaks.</li>
+<li>The defense against Goodhart's Law is a basket of balancing metrics, decoupled from big rewards: use metrics to sense, not to pay out.</li>
+<li>Campbell's Law: the more weight a quantitative indicator carries in decisions, the more corruption pressure it faces, in proportion to the stakes.</li>
+<li>The corruption Campbell describes has two layers: shallow gaming and fraud, and a deeper reshaping of schools or hospitals to serve the metric.</li>
+<li>Treat a metric as a dashboard, not a steering wheel: give it one vote in big decisions, alongside judgment, direct observation and peer review.</li>
+<li>Surrogation happens inside your own head: with no intent to cheat, a concrete metric quietly replaces the abstract goal it stood for.</li>
+<li>Wells Fargo swapped deep customer relationships for accounts opened per employee, and staff ended up opening about 3.5 million fake accounts.</li>
+<li>Motivation crowding: attaching rewards or scoring to something done for love can erode intrinsic motivation, leaving behavior below its original level once rewards stop.</li>
+<li>The same number crowds out motivation when felt as control but feeds it when felt as information; an Israeli daycare's late-pickup fine increased lateness.</li>
+</ol>
 </section>
 
 </div>

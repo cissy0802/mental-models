@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#d63031;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -203,6 +210,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>确认偏误是倾向于搜寻、偏好和记住支持既有信念的信息，同时轻视与之矛盾的证据。</li>
+<li>确认偏误最隐蔽之处不在拒绝反证，而在搜索关键词、信息源和注意力早已无意识地偏向确认。</li>
+<li>沃森的 2-4-6 实验中，受试者只测试符合假说的序列，始终没发现规则只是“任意递增的三个数”。</li>
+<li>对抗确认偏误可以设红队、用反面关键词搜索，并用钢人论证先复述对立观点的最强版本。</li>
+<li>锚定效应指判断过度依赖最先获得的信息，即使锚点随机无关，从它出发的调整也几乎总是不够。</li>
+<li>卡尼曼与特沃斯基的轮盘实验中，随机的 10 或 65 让人对非洲国家占联合国比例的估计相差约 20 个百分点。</li>
+<li>幸存者偏差源于失败案例从可观测样本中系统性消失，使成功策略看起来比实际更可靠。</li>
+<li>沃尔德指出返航轰炸机上没有弹孔的部位才最该加固，因为那些部位中弹的飞机已经坠毁。</li>
+<li>幸存者偏差还会颠倒因果：从成功案例提炼的“策略”，可能只是幸存条件筛选出的特征。</li>
+<li>沉没成本谬误是因为已经投入而继续本应放弃的事；理性决策只该看从今往后的成本和收益。</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.html">← 返回目录 / Back to Index</a>
 </nav>

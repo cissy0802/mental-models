@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       Design a 4-week iteration plan for [project / product / learning goal]. ① Decompose the big goal into 4 testable hypotheses (one per week); ② Design a minimum viable experiment for each; ③ Define quantitative success/failure criteria; ④ Create a "learning log" template for capturing iteration insights; ⑤ Pre-plan a pivot direction if the first two hypotheses are both falsified.
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>用户旅程把用户与产品的完整交互画成一条时间线，在每个阶段标出行为、情绪、痛点和机会点。</li>
+<li>按峰终定律，用户记住的是体验的情绪高峰和结尾，所以与其均匀改进，不如集中打造一个 Wow 时刻和好结尾。</li>
+<li>用户旅程不止于产品边界：Airbnb 派摄影师免费给房东拍照，修好旅程之外的痛点，预订量随之翻倍。</li>
+<li>产品-市场契合（PMF）指产品与真实需求共振，市场在拉产品，而不是团队在推产品。</li>
+<li>Sean Ellis 测试：超过 40% 的用户说不能再用会“非常失望”，就说明产品已达到产品-市场契合。</li>
+<li>产品-市场契合多半是迭代中发现的，而且是光谱、会消退；在契合之前烧钱扩张是创业公司的头号死因。</li>
+<li>奥卡姆设计主张满足核心需求的最简方案就是最优方案，因为每加一个功能都带来隐性的复杂性成本。</li>
+<li>功能之间的交互随数量非线性增长，10 个功能就有 45 种两两组合，组织却习惯奖励加功能、忽视删功能。</li>
+<li>迭代思维靠“构建—测量—学习”循环逼近最优解，关键是学习效率，每轮都要检验一个可证伪的假设。</li>
+<li>迭代要找粒度甜点，每次改动小到能快速测试、大到能出信号，并在清晰的长期愿景下灵活调整短期路径。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

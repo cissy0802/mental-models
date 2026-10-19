@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -279,6 +284,22 @@
 2. Find where I'm overpaying for small certainties and where I'm bare against large tails.
 3. Propose an adjustment: how much cash buffer to build first, then which unbearable tails to transfer out.</div>
   </section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>The Kelly criterion maximizes the long-run geometric growth rate of wealth, not the arithmetic expectation of a single bet.</li>
+<li>Ruin is an absorbing state, so repeatedly going all-in on a positive-EV bet with any chance of zero almost surely ends in bankruptcy.</li>
+<li>The Kelly bet fraction equals edge divided by odds: bet more when your edge is larger and less when variance is higher.</li>
+<li>People systematically overestimate their edge, and overbetting is punished far more than underbetting, so half-Kelly is the practical choice.</li>
+<li>Convex betting is not about predicting right but about building a payoff with capped downside and open upside, so volatility works for you.</li>
+<li>Many strategies that look safe are actually concave: they earn small, steady gains until one black swan wipes everything out.</li>
+<li>A barbell puts most resources in an ultra-safe position and a small slice in extremely convex bets, skipping the falsely safe middle.</li>
+<li>Tail-risk hedging pays a small, long-run negative-EV premium for convex payoffs in rare disasters, with the goal of staying in the game.</li>
+<li>Ergodicity means a positive group-average return does not guarantee an individual survives over time, so hedge only unrecoverable losses.</li>
+<li>Insurance thinking says to insure rare losses that would take you out of the game and self-insure affordable ones with your own cash buffer.</li>
+</ol>
+</section>
+
 
 </div>
 <script src="https://hub.cissychen.com/comments.js" defer></script>

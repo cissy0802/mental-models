@@ -138,6 +138,11 @@
     .card { padding: 22px 20px; }
     header.page-header h1 { font-size: 22px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -221,6 +226,21 @@
 <hr/>
 <pre class="prompt"><span class="tag">中文模板</span>我需要向 [目标听众，描述其已有知识背景] 解释这个概念：[概念名称及核心要点]。请生成 5 个候选类比，每个类比包含：①锚点（听众已熟悉的事物）；②映射的关系结构；③一句话点出"但不同的是……"以防类比的暴政。最后帮我按"理解效率"排序并推荐最优一个。</pre>
 <pre class="prompt"><span class="tag">English Template</span>I need to explain [concept + key points] to [audience and their prior knowledge]. Generate 5 candidate analogies. For each, specify: (a) the familiar anchor; (b) the relational mapping that carries the load; (c) a one-sentence "but unlike X…" disclaimer that marks where the analogy breaks. Rank them by comprehension efficiency for this audience and recommend the strongest single choice.</pre>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>Ericsson 提出的刻意练习，是在“学习区”里做目标明确、即时反馈、不断纠错的训练，而非舒适区重复。</li>
+<li>刻意练习的神经基础是髓鞘化：反复激活的轴突被包上绝缘层，技能是“长”出来的物理结构。</li>
+<li>一万小时是中位数而不是门槛；专家与普通人的最大差别在于心理表征的颗粒度，而不只是动作熟练度。</li>
+<li>T 型人才由一个领域的纵深专长加上跨多个领域的广度组成：只有深度易陷专家盲点，只有广度难以落地。</li>
+<li>T 型人才的那一横要懂到能与该领域专家有效对话；两条以上深柱再加一横，就是 π 型或梳子型人才。</li>
+<li>按 Gentner 的结构映射理论，跨界迁移搬到异域的是关系结构，而不是表层属性。</li>
+<li>跨界迁移的最大障碍往往不是知识不够，而是大脑按学科存储知识、加上专业身份认同筑起的“领域围墙”。</li>
+<li>跨界迁移要警惕虚假迁移：表层相似但结构不同的类比，会带来灾难性的误用。</li>
+<li>类比思维靠把新事物映射到已知结构上来理解它；好类比的标准是听众脑中是否已有那个被类比的对象。</li>
+<li>流行的类比一旦扎根会限制思考边界，比如“大脑像计算机”；每用一个类比都该补一句“但不一样的是……”。</li>
+</ol>
 </section>
 <a class="back-link" href="index.html">← 返回思维模型首页</a>
 </div>

@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#00b894;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -190,6 +197,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Hypothesis-testing is the core loop of the scientific method: state a testable hypothesis, then let experimental data support or overturn it.</li>
+<li>The most common hypothesis-testing error is testing the wrong hypothesis; start with the most basic premise that is cheapest to disprove.</li>
+<li>Semmelweis had doctors wash their hands in chlorinated lime before deliveries, and childbed fever deaths plunged, confirming his cadaver-particle hypothesis.</li>
+<li>Popper held that a scientific theory must be falsifiable: “all swans are white” is scientific because a single black swan can refute it.</li>
+<li>To test whether a belief is falsifiable, ask what evidence would make you abandon it; if you cannot answer, the belief has left the realm of reason.</li>
+<li>Controlling variables means holding everything else constant while studying how A affects B, or you cannot tell what actually caused the change.</li>
+<li>Randomized controlled trials are the gold standard of causal inference because randomization spreads unknown confounders evenly across groups.</li>
+<li>In 1747 Lind split 12 scurvy-stricken sailors into 6 pairs that differed only in their supplement, and only the citrus pair recovered quickly.</li>
+<li>Correlation is not causation: two variables moving together may mean A causes B, B causes A, or a third variable drives both.</li>
+<li>Ice cream sales and drowning deaths are highly correlated because summer heat, a hidden confounder, pushes both of them up.</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.en.html">← Back to Index</a>
 </nav>

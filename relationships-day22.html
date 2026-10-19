@@ -146,6 +146,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -277,6 +282,21 @@
 <span class="prompt-label">English Template</span><br/>
       Please diagnose the trust state between me and [person] using Trust = (Credibility × Reliability × Intimacy) / Self-Orientation. Context: [purpose, duration, recent key events]. My self-scores (0-10): Credibility [X], Reliability [X], Intimacy [X], Self-Orientation [X]. Please: (1) flag the dimension I'm most likely over- or under-rating; (2) infer where the other person's scores of me would diverge from mine; (3) name 3 behaviors over the past 6 months that may have inadvertently inflated my Self-Orientation denominator; (4) give a concrete 30-day plan: one move to lift Intimacy, one to lower Self-Orientation.
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>柯维的情感账户把每段关系看成隐形账户：理解、守约、道歉是存款，忽视、违诺、批评是取款。</li>
+<li>情感账户的存取严重不对称，稳定关系约需 5:1 的正负互动比，一次重大取款要多次存款才能抵消。</li>
+<li>存款必须用对方在乎的「币种」，错币种的存款只让自己感觉良好；长期不存款，关系也会慢慢贬值。</li>
+<li>罗森博格的非暴力沟通把对话拆成四步：观察、感受、需要、请求，把焦点从评判对错转到表达需要。</li>
+<li>非暴力沟通要求区分观察与评价、感受与伪装成感受的想法；可以被拒绝的才是请求，否则就是要求。</li>
+<li>愤怒通常是未被识别的需要的信号，把「你让我生气」改说成「我有未满足的需要」，行动空间就会打开。</li>
+<li>同理心地图用说、做、想、感受、痛点、期望六格来理解他人，深层作用是对抗把自己投射到别人身上。</li>
+<li>同理心地图里，说和做可以观察，想、感受、痛点、期望只能推断，必须靠提问验证；说与想的落差最有杠杆。</li>
+<li>迈斯特的信任方程式把信任拆成可信度、可靠度、亲近度三个分子，再除以自利倾向这个分母。</li>
+<li>信任方程式的分母自利倾向最致命，自评又常低于他人所见；亲近度最稀缺，靠主动暴露真实顾虑来赢得。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

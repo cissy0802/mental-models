@@ -35,6 +35,11 @@
   footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   footer a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -122,6 +127,21 @@ Analyze: 1) Is it fragile, robust, or antifragile, and why? 2) Which hidden over
 <div class="prompt-block"><span class="tag">English Template</span>
 Run an expected-value analysis on this decision: [decision]
 Please: 1) Enumerate 3-5 possible outcomes with probability and payoff; 2) Compute the EV and flag the most uncertain input; 3) Assess whether the structure is asymmetric (bounded downside, uncapped upside); 4) If the decision is one-shot/irreversible, re-evaluate under a ruin-avoidance lens and recommend a sizing/exposure level.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>贝叶斯思维把信念看成概率分布而不是对错判断，新证据到来时按后验 ∝ 先验 × 似然度来更新。</li>
+<li>先验越极端越难被单一证据撼动，先验越模糊越容易被噪音绑架；没看到的证据同样在更新信念。</li>
+<li>罕见病检测的例子：发病率 0.1%、准确率 99% 时，阳性者真实患病概率不到 10%，因为假阳性远多于真阳性。</li>
+<li>黑天鹅事件有三个特征：极度罕见、冲击巨大、事后被合理化；根源是世界常呈幂律分布而非正态分布。</li>
+<li>风险管理要问的不是什么最可能发生，而是万一发生自己会不会被一击毙命：只要一次破产就清零的策略长期注定失败。</li>
+<li>2008 年次贷危机前，银行模型只看历史窗口，认为房价大跌近乎不可能，忽视了系统的结构性脆弱。</li>
+<li>Taleb 区分脆弱、坚韧、反脆弱三种状态：反脆弱系统对波动的响应是凸函数，上行收益的斜率大于下行损失。</li>
+<li>过度保护反而制造脆弱：表面稳定会把小风险积压成大风险，反脆弱的做法是控制下行、主动接受小剂量可恢复的压力。</li>
+<li>期望值思维把决策质量和单次结果分开：正期望值的决策也可能输，长期看只有期望值才能复利。</li>
+<li>期望值为正也不等于可以重注：可重复决策看期望值，一次性不可逆决策看最大可承受损失，下注比例参考凯利公式。</li>
+</ol>
 </section>
 <footer>
 <a href="index.html">← 返回首页</a>

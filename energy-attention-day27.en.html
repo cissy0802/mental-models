@@ -35,6 +35,11 @@
   .footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   .footer a:hover { text-decoration: underline; }
   @media (max-width: 640px) { .container { padding: 28px 14px 48px; } .card { padding: 24px 20px; } .page-header h1 { font-size: 24px; } .card h2 { font-size: 20px; } }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -168,6 +173,22 @@
       Design a 4-week "deep work training program" for me. I can currently sustain focus for about [X] minutes before distraction. My work environment is [describe] and biggest distraction sources are [list]. Please design: (1) Weekly deep-work duration targets (progressive) (2) A concrete "deep work ritual" (start cue, environment setup, shutdown ceremony) (3) Pre-commitment strategies to eliminate major distractions (4) Tracking metrics and weekly self-assessment checklist.
     </div>
   </section>
+
+  <section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Attention residue, identified by Sophie Leroy, means an unfinished task A keeps occupying working memory after you switch to task B, dragging down performance on B.</li>
+<li>The main source of attention residue is the sense of incompleteness described by the Zeigarnik effect, so frequent task switching costs quality as well as efficiency.</li>
+<li>To reduce attention residue, encapsulate a task before switching: write down progress, open questions and the next step, so the brain knows it is safely parked.</li>
+<li>Decision fatigue is the drop in decision quality after many decisions in a row; a tired brain falls back on defaults, shortcuts or procrastination.</li>
+<li>Danziger and colleagues examined 1,112 Israeli parole rulings and found approvals fell from about 65% to near zero within each session, recovering after breaks.</li>
+<li>Trivial and major decisions draw on the same pool of cognitive resources, so put key decisions in peak hours and replace trivial ones with rules and defaults.</li>
+<li>The energy management framework of Jim Loehr and Tony Schwartz splits energy into physical, emotional, mental and spiritual dimensions, each limited and interlinked.</li>
+<li>Energy management holds that not all hours are equal: the key is matching high-energy windows to high-value tasks, not packing the calendar.</li>
+<li>Deep work, as defined by Cal Newport, is distraction-free, cognitively demanding work that is growing both rarer and more valuable in the knowledge economy.</li>
+<li>Deep work is scarce because workplaces treat instant replies and constant meetings as signs of effort, and attention stamina for it must be trained like a muscle.</li>
+</ol>
+</section>
 
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>

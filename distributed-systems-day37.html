@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -291,6 +296,22 @@
 2. Design a concrete backpressure mechanism: where to set the intake limit, and how to push back when full (reject / defer / drop low-priority).
 3. Compare "greedily accept everything" vs "deliberately slow down" and estimate the sustainable throughput of each.</div>
 </section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>Brewer 提出的 CAP 定理说：网络分区发生时，系统只能在一致性和可用性之间二选一。</li>
+<li>把 CAP 读成「三选二」是误读：分区是物理必然，真正的问题是分区时选一致性还是可用性。</li>
+<li>CAP 的取舍按操作粒度做：账户余额宁可拒绝也要一致，点赞计数晚几秒一致也无妨。</li>
+<li>ATM 断网时仍允许限额取款、事后对账，是一道明码标价的可用性优先的商业权衡。</li>
+<li>最终一致性把一致从「每个时间点」放松成「停止写入后终将收敛」，以此换来可用性和可扩展性。</li>
+<li>最终一致不会自动发生，必须设计收敛机制，如最后写入胜出、版本向量或 CRDT 来裁决冲突。</li>
+<li>DNS 改一条记录要几分钟到几十小时才全球生效，整个互联网命名系统都建在最终一致之上。</li>
+<li>幂等性指一个操作执行一次和执行多次对系统状态的影响相同，因此网络不可靠时重试才安全。</li>
+<li>分布式下「恰好一次」几乎做不到，「至少一次 + 幂等键去重」合起来就等效于恰好一次。</li>
+<li>背压让跟不上的下游向上游回传「慢一点」，把无界队列的雪崩式崩溃变成优雅降级。</li>
+</ol>
+</section>
+
 <footer class="footer">
 <a href="index.html">← 返回首页</a>
 </footer>

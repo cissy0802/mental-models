@@ -94,6 +94,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -219,6 +224,22 @@
 2. Provide 2 unrelated external anchors (annual salary, opportunity cost, long-term base rate) and show how the decision structure shifts.
 3. Is this domain prone to a gradient blind spot? If I snapshot today vs 6 months ago, what slow drift would jump out?</div>
   </section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Munger put incentive super-response first on his list: incentives shape behavior far more than most people estimate.</li>
+<li>Incentives shape belief as well as behavior: people sincerely believe that what they are paid to do is right, which Munger calls incentive-caused bias.</li>
+<li>Moralizing cannot beat a bad incentive structure; when desired behavior runs against the payoff function, redraw the function instead of blaming people.</li>
+<li>FedEx switched night-shift sorters from hourly pay to going home on full pay once the sort was done, and the delays vanished overnight.</li>
+<li>Pain-avoiding psychological denial is not lying: the brain filters painful information at the level of perception, so the denier is sincere.</li>
+<li>The closer a threatening fact sits to your self-narrative, the bigger the blind spot; what you least want to admit is often most likely true.</li>
+<li>Kodak invented the first digital camera in 1975, yet collective denial about its film profits led to bankruptcy in 2012.</li>
+<li>Availability bias swaps frequency for ease of recall, so recent, vivid and repeatedly broadcast events get systematically overweighted.</li>
+<li>After 9/11 many Americans drove instead of flying, and roughly 1,500 extra people died on the roads: vivid images became decision weights.</li>
+<li>Contrast-misreaction comes from perception encoding relative change: small differences beside a big anchor look trivial, and gradual drift goes unnoticed.</li>
+</ol>
+</section>
+
 
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>

@@ -35,6 +35,11 @@
   .footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   .footer a:hover { text-decoration: underline; }
   @media (max-width: 640px) { .container { padding: 28px 14px 48px; } .card { padding: 24px 20px; } .page-header h1 { font-size: 24px; } .card h2 { font-size: 20px; } }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -167,6 +172,22 @@
       <span class="prompt-label">English Template</span><br>
       I have a gut-level discomfort about this decision but can't articulate why: [describe the decision, the current rational analysis, and the "off" feeling]. Help me decode the intuition into analyzable signals: (1) Which dimension am I reacting to — fairness, harm, betrayal, dignity, instrumentalization? (2) Which signals are valid versus possibly biased (tribalism, availability, personal trauma)? (3) If the intuition is correct, what unstated value is it protecting? (4) Respecting the intuition, is there an alternative path that satisfies the rational objective while resolving the intuitive alarm?
     </div>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Philippa Foot posed the Trolley Problem in 1967: would you pull a lever so a runaway trolley kills one person instead of five?</li>
+  <li>In the footbridge variant of the Trolley Problem, most people pull the lever but refuse to push a man, though the outcome is identical.</li>
+  <li>Consequentialism judges outcomes and deontology judges the act itself; confusing "the result is bad" with "the act is wrong" derails ethical debate.</li>
+  <li>Self-driving cars, medical triage and AI credit scoring turn the Trolley Problem into engineering parameters that algorithms must settle in advance.</li>
+  <li>Utilitarianism seeks the greatest good for the greatest number; deontology holds that lying or using people as tools is wrong whatever the payoff.</li>
+  <li>Utilitarianism suits large, quantifiable decisions and deontology suits ones about promises, trust and dignity; maturity means matching framework to context.</li>
+  <li>In A Theory of Justice (1971), John Rawls proposed the Veil of Ignorance: design society's rules without knowing who you will be in it.</li>
+  <li>The Veil of Ignorance filters out positional bias by asking: would I still accept this rule if I did not know which side I would be on?</li>
+  <li>The Veil of Ignorance has limits: total ignorance is impossible, and protecting the worst-off reflects a strongly risk-averse preference.</li>
+  <li>Moral intuition is judgment that arrives before reasoning; it can expose arguments that reach monstrous conclusions, yet tribalism and personal experience distort it.</li>
+  </ol>
   </section>
 
   <footer class="footer">

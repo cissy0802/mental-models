@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -271,6 +276,21 @@
 1. Convert the nominal number to real value (strip inflation/costs) — is the real change positive or negative?
 2. Am I emotionally captured by the nominal frame? How would I see it in a real frame?
 3. Is there a "big number masquerading as real value" trap here (KPI, followers, valuation)? Has real value decoupled from the nominal metric?</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>利率是时间的价格：它把未来的钱折算成现在的钱，是人偏好“现在”胜过“未来”的市场定价。</li>
+<li>利率是整个经济的折现率，加息会把未来狠狠打折，“故事在远方”的成长资产最先下跌。</li>
+<li>2022 年美联储激进加息，纳斯达克成长股一年腰斩，公司基本面没怎么变，变的是折现率。</li>
+<li>通胀的本质不是东西变贵，而是钱印得比真实财富增长更快，货币这把价值的尺子在变短。</li>
+<li>新钱有注入顺序，靠近印钞机的人先用旧物价买入，所以通胀首先是一场隐秘的财富转移。</li>
+<li>通胀给价格信号叠加噪声，扭曲资源配置；恶性通胀一旦预期自我强化，货币的储值功能就会崩溃。</li>
+<li>杠杆对称地放大收益与亏损，却不对称地放大风险，因为强制平仓会把暂时浮亏变成永久出局。</li>
+<li>债务把花钱和还钱在时间上分开，借债期繁荣、还债期萧条；短债周期叠加在数十年的长债周期之上。</li>
+<li>去杠杆是反身性的下行螺旋：卖资产还债压低价格，抵押品缩水又逼人再卖，2008 年金融危机即是如此。</li>
+<li>货币幻觉是把名义数字当成真实价值：人们更能接受加薪 2% 加通胀 4%，而不是零通胀下降薪 2%。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

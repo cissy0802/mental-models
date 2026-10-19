@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -237,6 +242,21 @@
 1. Flag items where "discussion time ÷ real importance" is badly skewed (the bikeshedding targets).
 2. Explain why exactly these trivial items captured the attention (accessibility / desire to leave a mark / risk of exposing ignorance).
 3. Propose a structural fix: which debates to kill outright with tooling/defaults, and which to timebox and hand to a small expert group.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Brooks's Law: adding people to a late software project makes it later, because people and months are not interchangeable.</li>
+<li>Extra headcount slows a project through ramp-up drag on veterans, communication lines growing as n(n-1)/2, and tasks that cannot be split.</li>
+<li>Brooks's Law mirrors Amdahl's Law: the serial bottleneck that cannot be parallelized caps any speedup from more people or more cores.</li>
+<li>The cure for a late project is a smaller communication surface, through modularity, clean interfaces and cut scope, not more people or coordinating agents.</li>
+<li>The Peter Principle: promotion rewards performance in the current role, so people keep rising until they reach a job they cannot do well.</li>
+<li>The Peter Principle is Goodhart's Law inside an organization: once current results become the promotion target, they stop predicting fitness for the next role.</li>
+<li>Countering the Peter Principle means changing selection: dual technical and management ladders, promotion on demonstrated next-level ability, and trial periods.</li>
+<li>Pournelle's Iron Law of Bureaucracy holds that people loyal to the institution eventually outrank people devoted to its mission, since internal games decide internal power.</li>
+<li>Resisting bureaucratic drift requires steady external pressure: stay small, tie the organization to real market feedback, and keep founder-level mission intensity.</li>
+<li>Parkinson's Law of Triviality: debate time runs inverse to importance because trivial items are easy to grasp and safe to opine on; tools like linters remove the argument.</li>
+</ol>
 </section>
 </div>
 <script src="https://hub.cissychen.com/comments.js" defer></script>

@@ -117,6 +117,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -286,6 +291,21 @@
 1. Separate skill from luck — how much of the outcome came from correct reasoning vs chance?
 2. Was my stated confidence calibrated (over- or under-confident)?
 3. Did my emotional state systematically bias this decision, and what trigger should I set to flag it next time?</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>检查清单针对的不是知识缺口，而是人在疲劳、压力或分心时跳过明明知道的步骤。</li>
+<li>检查清单必须短，每个暂停点只放 5–9 个漏掉会致命、又最容易被遗忘的关键项。</li>
+<li>检查清单还有社会功能：它制造合法的暂停点，让地位较低的成员敢于指出遗漏。</li>
+<li>Gary Klein 提出的预先验尸，先假设项目已经惨败，再让每个人独立写下失败原因。</li>
+<li>预先验尸把找失败原因变成被授权的任务，让质疑从社会惩罚反转为社会奖励。</li>
+<li>把“可能会失败”改写成“已经失败了”，大脑会从抽象概率切到具体叙事，更容易找出原因。</li>
+<li>红队是被正式指派、持续攻击方案的对抗角色，把唱反调从个人勇气变成有授权的日常工作。</li>
+<li>红队不同于临时的魔鬼代言人，需要结构性独立和真实的获胜激励，一旦被收编就失去价值。</li>
+<li>决策日记在决策当下记下预期、理由、情绪和置信度，用来对抗后见之明偏误和结果偏误。</li>
+<li>好决策不等于好结果；决策日记是区分实力与运气、检验置信度是否校准的数据来源。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

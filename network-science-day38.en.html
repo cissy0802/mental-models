@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -241,6 +246,21 @@
 1. How diverse are my main information sources in [stance/background/perspective]? Where is it highly homogeneous?
 2. Which signals that look "widely endorsed" are actually redundant echoes of a single source?
 3. Give 3 concrete counter-homophily moves: which heterogeneous sources would most effectively pop my filter bubble?</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>A small-world network combines high clustering with short paths: tight local circles plus quick routes to distant parts of the network.</li>
+<li>Watts and Strogatz showed that rewiring about 1% of local links into long-range shortcuts collapses average path length while clustering barely changes.</li>
+<li>Short paths are not findable paths: six-degree chains ran about six steps, yet people could not see them, so reachability is not navigability.</li>
+<li>The same long-range shortcuts that spread innovation and information quickly also spread viruses, rumors and financial risk just as fast.</li>
+<li>Granovetter's job-search study found that most job leads came from weak ties people rarely saw, not from close friends.</li>
+<li>Weak ties matter because they bridge structural holes and carry non-redundant information, while strong ties provide support and trust.</li>
+<li>Scale-free networks have power-law degree distributions that emerge from growth plus preferential attachment, a rich-get-richer feedback loop.</li>
+<li>Scale-free networks shrug off random failures but collapse under targeted attacks on hubs, so hubs are both leverage points and single points of failure.</li>
+<li>Homophily draws people toward similar others, and many mild individual preferences add up to large-scale segregation and polarization nobody intended.</li>
+<li>Echo chambers feel like broad agreement but are redundant echoes of one signal, and engagement-optimizing recommenders accelerate the narrowing.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Back to index</a>

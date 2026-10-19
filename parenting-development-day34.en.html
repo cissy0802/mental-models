@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -252,6 +257,21 @@
 2. Am I applying extrinsic rewards to something already intrinsically motivated (overjustification risk)?
 3. Distinguish whether I'm using "structure" or "control," and give an autonomy-supportive alternative (rationale + choice + informational feedback).</div>
   </section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>A critical period is a hard window and a sensitive period a soft one; true hard windows are rare, mostly in the senses and native-language phonetics.</li>
+<li>The brain actively closes plasticity windows with inhibitory circuits and perineuronal nets to stabilize what it has learned, much like learning-rate annealing.</li>
+<li>A kitten with one eye covered during the visual critical period loses sight in that eye for good; the same covering does nothing to an adult cat.</li>
+<li>Vygotsky's zone of proximal development is the gap between what a learner can do alone and with guidance, and learning happens only inside it.</li>
+<li>The defining feature of scaffolding is fading: support aims to make itself unnecessary, and support that is never withdrawn becomes dependence.</li>
+<li>An AI that hands over answers lets skills atrophy; an AI that gives hints, asks questions and steadily gives less is scaffolding within your ZPD.</li>
+<li>Secure attachment makes the caregiver both a secure base for exploration and a safe haven after setbacks, so felt security makes children explore further.</li>
+<li>The core of secure attachment is not constant presence but reliable repair: repeated experience that ruptures get mended builds a child's resilience.</li>
+<li>Self-Determination Theory holds that intrinsic motivation rests on three basic needs: autonomy, competence and relatedness.</li>
+<li>Rewarding an activity someone already loves can crowd out intrinsic motivation (the overjustification effect); control, not structure, is what kills motivation.</li>
+</ol>
+</section>
 
 </div>
 <script src="https://hub.cissychen.com/comments.js" defer></script>

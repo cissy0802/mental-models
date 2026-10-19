@@ -26,6 +26,11 @@ footer{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}
   header h1{font-size:1.4rem}
   .card{padding:24px 18px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -143,6 +148,21 @@ footer{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}
   </div>
 </div>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Margin of safety, from Graham's value investing, means acting only when price sits well below intrinsic value, leaving a buffer for error.</li>
+<li>Graham systematically bought stocks priced far below net assets, so even an inflated valuation would not lose money, and he came through the Depression.</li>
+<li>Mean reversion is the tendency of extremes to drift back to the long-run average: peaks are often followed by declines, troughs by recovery.</li>
+<li>After a streak of made shots, a player's shooting percentage tends to fall back to his long-run average, because extreme performance contains random noise.</li>
+<li>Mean reversion holds only when fundamentals are unchanged, so first separate a temporary deviation from a genuine structural change.</li>
+<li>The compound effect is growth acting on growth; what matters most is not the size of each gain but how long the process runs.</li>
+<li>A dollar doubled daily passes one million only on day 20 and one billion by day 30: exponential growth is slow early and explosive late.</li>
+<li>Interruption is the great enemy of compounding: a big loss, quitting midway, or constantly switching strategies can wipe out years of gains.</li>
+<li>Asset allocation spreads resources across weakly correlated classes, aiming not for the optimal portfolio but for one that survives many scenarios.</li>
+<li>Swensen's Yale model spread the endowment across six weakly correlated asset classes and held up well in the dot-com bust and 2008.</li>
+</ol>
+</section>
 <a class="back" href="index.en.html">← Back to Index</a>
 <footer>Powered by curiosity &amp; first principles.</footer>
 </div>

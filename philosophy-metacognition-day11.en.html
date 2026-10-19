@@ -38,6 +38,13 @@ nav a:hover{text-decoration:underline}
   .card-body{padding:20px}
   .card-header{padding:18px 20px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -200,6 +207,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Socratic questioning tests assumptions and exposes blind spots through persistent follow-up questions, letting questions rather than answers drive the dialogue.</li>
+<li>Socratic questioning uses six kinds of questions: clarifying, probing assumptions, seeking evidence, examining viewpoints, exploring consequences, and questioning the question itself.</li>
+<li>Letting people discover their own contradictions works better than telling them they are wrong, which triggers defensiveness; Socrates called his method midwifery.</li>
+<li>The Buddha's raft parable treats knowledge as a tool: a raft carries you across the river, but carrying it on your back afterward is a burden.</li>
+<li>Functional fixedness turns a framework that once worked from a tool into an identity, and that shift is where rigid thinking begins.</li>
+<li>You must let go not only of wrong rafts but of once-correct ones, just as relativity redrew the boundaries where Newtonian mechanics applies.</li>
+<li>Your cognitive ceiling depends less on how many frameworks you know than on how quickly you can set down the one you are using.</li>
+<li>Knowing that you don't know means clearly mapping the edges of your knowledge; it is the starting point of real learning, not a show of modesty.</li>
+<li>The Dunning-Kruger effect shows that the least competent people, unaware of what they don't know, overestimate their performance the most.</li>
+<li>Intellectual humility is admitting your beliefs may be wrong and staying open to revision; its biggest obstacle is not pride but the need for cognitive closure.</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.en.html">← Back to Index</a>
 </nav>

@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -282,6 +287,22 @@
       Design a 4-week "deep work training program" for me. I can currently sustain focus for about [X] minutes before distraction. My work environment is [describe] and biggest distraction sources are [list]. Please design: ① Weekly deep-work duration targets (progressive) ② A concrete "deep work ritual" (start cue, environment setup, shutdown ceremony) ③ Pre-commitment strategies to eliminate major distractions ④ Tracking metrics and weekly self-assessment checklist.
     </div>
 </section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>注意力残留由 Sophie Leroy 提出：切到新任务后，未完成的旧任务仍占着工作记忆，拖低新任务表现。</li>
+<li>注意力残留的主要来源是蔡格尼克效应带来的未完成感，所以频繁切换任务既损效率也损质量。</li>
+<li>减轻注意力残留的办法是切换前做封装：写下进度、未解决的问题和下一步，让大脑确认任务已被安置。</li>
+<li>决策疲劳是指连续做了大量决策之后，后续决策的质量会明显下降，疲劳的大脑倾向于默认、走捷径或拖延。</li>
+<li>以色列法官的 1,112 件假释裁决里，批准率在每个时段内从约 65% 降到近零，休息用餐后恢复。</li>
+<li>琐碎决策和重大决策共用一池认知资源，应把重要决策放进精力峰值，用规则和默认选项消掉琐碎决策。</li>
+<li>Loehr 和 Schwartz 的能量管理把精力分为身体、情绪、心智、精神四个维度，各有上限且互相牵连。</li>
+<li>能量管理认为每小时的价值并不相等，高效的关键是让高能量时段对准高价值任务，而不是塞满时间表。</li>
+<li>Cal Newport 的深度工作指无干扰的高认知负荷活动，在知识经济里越来越稀缺，也越来越值钱。</li>
+<li>深度工作稀缺，是因为职场把即时回复和频繁开会当成努力信号；专注耐力则要像肌肉一样逐步训练。</li>
+</ol>
+</section>
+
 <footer class="footer">
 <a href="index.html">← 返回首页</a>
 </footer>

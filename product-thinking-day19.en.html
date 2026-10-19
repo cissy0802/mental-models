@@ -149,6 +149,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -283,6 +288,21 @@
     </div>
   </section>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>A user journey maps the whole interaction between a user and a product as a timeline, marking behaviors, emotions, pain points and opportunities at each stage.</li>
+<li>Under the peak-end rule, users remember emotional peaks and endings, so concentrate effort on one Wow moment and a strong finish rather than improving everything evenly.</li>
+<li>A user journey extends past the product's edge: Airbnb doubled bookings by sending professional photographers to shoot hosts' listings for free.</li>
+<li>Product-market fit is resonance between a product and real demand, felt when the market pulls the product instead of the team pushing it.</li>
+<li>The Sean Ellis test says a product has product-market fit when over 40% of users would be "very disappointed" to lose it.</li>
+<li>Product-market fit is usually discovered through iteration, sits on a spectrum and can erode; scaling before reaching it is the top startup killer.</li>
+<li>Occam's Design holds that the simplest solution meeting the core need is best, because every added feature carries hidden complexity costs.</li>
+<li>Feature interactions grow nonlinearly, with 10 features yielding 45 pairs, yet organizations reward adding features and ignore removing them.</li>
+<li>Iterative thinking approaches the best solution through Build-Measure-Learn cycles; what matters is learning efficiency, with a falsifiable hypothesis each round.</li>
+<li>Good iteration finds a granularity sweet spot, changes small enough to test fast yet big enough to signal, under a clear long-term vision.</li>
+</ol>
+</section>
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>
   </footer>

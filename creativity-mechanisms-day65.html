@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -302,6 +307,21 @@
 1. List the mature "building blocks" in this field (technologies, methods, concepts, resources).
 2. Then pull in a set of blocks from an unrelated field in my background.
 3. Give me 3 cross-domain combinations no one has tried yet, and point out which is most likely to sit in the "adjacent possible" — buildable now, yet opening into new space.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>思想实验在头脑里搭出理想世界、单独拎出一个变量，不引入新信息，只逼出前提里潜伏的结论。</li>
+<li>伽利略把一重一轻两块石头绑在一起推出自相矛盾，一块石头没扔就证明了落速与重量无关。</li>
+<li>思想实验的武器是极限：把参数推到 0 或无穷大，被日常尺度掩盖的结构和隐藏前提就会暴露。</li>
+<li>远距离联想是把语义网络里平时离得很远的两个概念，意外却恰当地连在一起，新颖由此而来。</li>
+<li>远而恰当是创造，远而不恰当是胡言，近而恰当是陈词滥调；好创意既出人意料，又事后看来理所当然。</li>
+<li>好点子常在洗澡、散步时冒出，因为放松时默认模式网络四处游走，抛出远距离的联想候选。</li>
+<li>无限自由会让人退回最熟悉的默认选项，恰当的约束砍掉显而易见的老路，逼出真正的搜索。</li>
+<li>约束有甜区，太松等于没有、太紧塞不进；阿波罗 13 号工程师只用舱内现有物品拼出了滤毒装置。</li>
+<li>组合式创新认为创新多是旧积木的重新组合，每个新组合又打开新的「相邻可能」，所以时机至关重要。</li>
+<li>积木的组合数随数量爆炸式增长，组合式创新的真正瓶颈不是原料，而是识别稀有而有价值的搭配。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

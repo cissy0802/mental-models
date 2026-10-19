@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -232,6 +237,21 @@
 1. How do non-excludability and non-rivalry show up here, and why does it collapse into everyone free-riding and no one providing?
 2. Give me 2 provisioning fixes: how to manufacture "excludability" or coordinate payment (tie it to evaluation / authorship &amp; reputation / an assurance-contract-style "only if enough commit" / matching funds)?
 3. Who is the key person most worth incentivizing to provide it, and what exclusive reward should they get?</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Arrow's Impossibility Theorem: with three or more options and voters, no voting rule can satisfy unanimity, independence of irrelevant alternatives, and non-dictatorship at once.</li>
+<li>The Condorcet paradox shows that individually rational voters can produce a cyclical majority: A beats B, B beats C, and C beats A.</li>
+<li>Because a doomed spoiler candidate can flip an election, the real power in collective choice often lies with whoever sets the agenda and voting order.</li>
+<li>In the tragedy of the commons, a shared resource is depleted because each user rationally takes a bit more: private gain, socialized cost.</li>
+<li>The commons is ruined by its incentive structure, not by bad people, so moral appeals fail and the fix has to be structural.</li>
+<li>Ostrom showed that communities can govern a commons through clear boundaries, cheap monitoring, and graduated sanctions, beyond the privatize-or-regulate binary.</li>
+<li>The anticommons is the mirror image of the commons: when too many people hold a veto, nobody can use the resource and it sits idle.</li>
+<li>Olson's logic of collective action: shared interest does not produce shared action, and the larger the group, the stronger the pull to free-ride.</li>
+<li>Small, concentrated interests organize easily and often beat large, diffuse majorities; free-riding is countered with selective incentives reserved for participants.</li>
+<li>Public goods are non-excludable and non-rival, so markets under-provide them; knowledge is the extreme case, and paywalls manufacture artificial excludability.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">&larr; Back to Index</a>

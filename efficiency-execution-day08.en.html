@@ -35,6 +35,11 @@
   footer.page a { color: #6c5ce7; text-decoration: none; }
   footer.page a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .wrap { padding: 28px 16px 60px; } .card { padding: 22px 20px; } header.page h1 { font-size: 22px; } .card h2 { font-size: 19px; } }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -145,6 +150,22 @@ Using MVP thinking, design:
 1) The smallest validation action executable within one week (non-code formats welcome);
 2) The quantitative and qualitative signals I should collect;
 3) Red / yellow / green outcome bands mapped to kill / pivot / persevere decisions.</pre>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>The Pareto Principle, or 80/20 rule, says roughly 20% of inputs produce 80% of outputs, a power law created when feedback and compounding amplify a few factors.</li>
+  <li>The 80/20 rule is recursive, so about 4% of inputs often drive 64% of results, yet the long-tail 80% remains a stable base worth keeping.</li>
+  <li>The critical 20% is hard to spot because people allocate attention by felt effort rather than output; a weekly output audit exposes it.</li>
+  <li>Parkinson's Law holds that work expands to fill the time available, which makes a deadline a creative catalyst as well as a constraint.</li>
+  <li>To counter Parkinson's Law, set challenge deadlines at about 60-70% of your gut estimate, while avoiding over-compression that collapses quality.</li>
+  <li>Time blocking replaces to-do lists with calendar appointments, giving every task a start time, an end time and an energy level.</li>
+  <li>Scheduling a task on the calendar releases the working-memory load of the Zeigarnik effect and spares you constant decisions about what to do next.</li>
+  <li>Good time blocking separates deep, shallow and transition blocks, aligns them with your energy peaks and troughs, and keeps about 20% as buffer.</li>
+  <li>The minimum viable product, systematized by Eric Ries in The Lean Startup, is the cheapest complete build-measure-learn loop, and its output is validated learning.</li>
+  <li>An MVP should test exactly one hypothesis with the smallest possible action, with pivot, persevere and kill thresholds set in advance.</li>
+  </ol>
   </section>
 
   <footer class="page">

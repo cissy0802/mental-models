@@ -36,6 +36,11 @@
   footer.page a { color: #6c5ce7; text-decoration: none; }
   footer.page a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .wrap { padding: 28px 16px 60px; } .card { padding: 22px 20px; } header.page h1 { font-size: 22px; } .card h2 { font-size: 19px; } }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -169,6 +174,21 @@ Using MVP thinking, design:
 1) The smallest validation action executable within one week (non-code formats welcome);
 2) The quantitative and qualitative signals I should collect;
 3) Red / yellow / green outcome bands mapped to kill / pivot / persevere decisions.</pre>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>帕累托法则指出约 20% 的输入产生约 80% 的输出，根源是少数因子被反馈与复利放大的幂律分布。</li>
+<li>80/20 可以递归，约 4% 的输入常贡献 64% 的结果；但长尾的 80% 是系统的稳定底座，不能简单砍掉。</li>
+<li>找关键 20% 的难点在于人们按努力感而非输出感分配注意力；每周按结果给任务排序，能把它找出来。</li>
+<li>帕金森定律指出，工作会自动膨胀，直到占满所有可用时间；截止日期因此不只是约束，也是催化剂。</li>
+<li>对抗帕金森定律，可把挑战截止时间设在直觉估计的 60–70%，但过度压缩会让质量塌陷。</li>
+<li>时间块理论主张不写待办清单，而是把每个任务直接约进日历，给它起点、终点和能量等级。</li>
+<li>任务一旦写进日历，蔡格尼克效应带来的认知负荷就会暂时释放，也省掉了反复决定下一步做什么的消耗。</li>
+<li>安排时间块时要区分深度块、浅度块和过渡块，匹配个人能量峰谷，并预留约 20% 的缓冲。</li>
+<li>Eric Ries 系统化的 MVP，本质是以最小代价跑完一轮构建—测量—学习，产出是经过验证的认知。</li>
+<li>做 MVP 时只挑一个最想验证的假设，用最小动作去测，并预先定好转向、坚持或放弃的红绿线。</li>
+</ol>
 </section>
 <footer class="page">
 <a href="index.html">← 返回首页 Index</a>

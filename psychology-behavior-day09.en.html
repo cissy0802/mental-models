@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#e17055;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -187,6 +194,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Loss aversion, from Kahneman and Tversky's prospect theory, means losing 100 dollars hurts about 2 to 2.5 times as much as gaining 100 feels good.</li>
+<li>Loss aversion applies not only to what you own but to what you mentally treat as yours, which is why free trials and "reserved for you" work.</li>
+<li>A simple check against loss aversion: if I did not have this right now, would I buy it back at today's price?</li>
+<li>The peak-end rule says we judge an experience mainly by its most intense moment and its ending, heavily discounting the middle and the total duration.</li>
+<li>The experiencing self feels every moment while the remembering self decides whether to come back, and the two often disagree about the same experience.</li>
+<li>In Kahneman's colonoscopy research, an 8-minute exam that ended painfully was remembered as worse than a 24-minute exam with a gentler ending.</li>
+<li>Flow, described by Csikszentmihalyi, is the optimal state where challenge slightly exceeds skill, attention is fully absorbed, and self-consciousness fades.</li>
+<li>The real enemy of flow is interruption, not difficulty, so output depends on your longest uninterrupted block rather than total hours worked.</li>
+<li>The habit loop runs cue, routine, reward; repeated often enough, the basal ganglia automate it and bypass deliberate prefrontal decisions.</li>
+<li>Habits cannot be deleted, only replaced: keep the original cue and reward, swap the routine in the middle, and rely on environment design over willpower.</li>
+</ol>
+</div>
+</section>
 <nav><a href="index.en.html">← Back to Index</a></nav>
 </div>
 <script src="https://hub.cissychen.com/comments.js" defer></script>

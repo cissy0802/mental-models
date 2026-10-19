@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -289,6 +294,21 @@
 1. Before judging whether to remove it, help me reconstruct the reasons it may have been put there in the first place (even if invisible now).
 2. List the second-order effects and hidden dependencies that could erupt if I remove it rashly.
 3. Give a verdict: does that original reason still hold today? If it has vanished, then tell me I can safely remove it.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>对抗制不信任任何单方，而是让控辩双方的偏见在中立裁判和规则约束下互相对冲，从冲突中逼出真相。</li>
+<li>对抗制的隐形支柱是元层面的中立与规则；裁判被收买或规则失效，对抗就退化成比嗓门和资源的斗殴。</li>
+<li>各方利益对立、可能有人作恶时用对抗制更稳健；各方真心共享目标时，合作制更高效，省掉对抗的内耗。</li>
+<li>生成对抗网络、代码评审和 AI 红队都是对抗式求真：扛得住最锋利反方攻击的方案才可信。</li>
+<li>默认规则在当事人不另行约定时自动适用；因为绝大多数人从不改默认值，默认是什么，结果就几乎是什么。</li>
+<li>器官捐献采用默认同意还是默认不同意，相近的人群捐献率就天差地别，差的只是默认方向。</li>
+<li>惩罚性默认故意把缺省设成没人想要的结果，逼掌握信息的一方开口，把私有信息亮出来。</li>
+<li>任何契约都必然不完全，关键问题从怎样写出完美条款，变成没写到的情形归谁说了算。</li>
+<li>所有权的本质是对契约未覆盖情形的剩余控制权；越长期、越难预见的关系，越该用薄合同加厚机制。</li>
+<li>切斯特顿栅栏：看不出一道规则的用处是自己无知的证据，先弄清它为何而立，理由已不成立再拆。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

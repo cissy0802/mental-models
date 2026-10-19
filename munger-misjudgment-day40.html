@@ -105,6 +105,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -253,6 +258,22 @@
 2. Provide 2 unrelated external anchors (annual salary, opportunity cost, long-term base rate) and show how the decision structure shifts.
 3. Is this domain prone to a gradient blind spot? If I snapshot today vs 6 months ago, what slow drift would jump out?</div>
 </section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>芒格把激励超敏感列为误判清单第一条：激励对行为的影响远超大多数人的估计。</li>
+<li>激励不只塑造行为，还塑造信念：人会真诚地相信自己拿钱做的事是正当的，即「激励引起的偏见」。</li>
+<li>对抗错误激励不能靠道德说教；目标行为与奖惩函数相反时，应重画函数而不是谴责人。</li>
+<li>联邦快递把夜班分拣从按小时计酬改成分完即可下班领全薪，拖延问题当晚就消失了。</li>
+<li>痛苦回避型否认不是说谎：大脑在感知层过滤掉痛苦信息，否认者主观上完全真诚。</li>
+<li>否认的事实越靠近自我核心叙事，盲点越大；自己最不愿承认的事，往往最可能是真的。</li>
+<li>柯达 1975 年发明了第一台数码相机，却因组织对胶卷利润的集体否认，于 2012 年破产。</li>
+<li>可得性偏差让大脑用「想起来有多容易」代替频率，近因、鲜活度和重复曝光都会抬高权重。</li>
+<li>9/11 后许多美国人改坐飞机为开车，额外约 1500 人死于车祸，可怕画面直接变成了决策权重。</li>
+<li>对比误反应源于感知只编码相对变化：巨锚旁的小差被低估，缓慢的渐变则完全察觉不到。</li>
+</ol>
+</section>
+
 <footer class="footer">
 <a href="index.html">← 返回首页</a>
 </footer>

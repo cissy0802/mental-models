@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -300,6 +305,22 @@
 2. Find where I'm overpaying for small certainties and where I'm bare against large tails.
 3. Propose an adjustment: how much cash buffer to build first, then which unbearable tails to transfer out.</div>
 </section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>凯利公式要最大化的是财富的长期几何增长率，而不是单次下注的算术期望。</li>
+<li>破产是回不来的吸收态，全押正期望赌注只要有归零可能，重复下去几乎必然破产。</li>
+<li>凯利最优下注比例等于优势除以赔率：优势越大押越多，波动越大押越少。</li>
+<li>人们系统性高估自己的优势，而过押的惩罚远重于欠押，所以现实中宜用半凯利。</li>
+<li>凸性下注不靠预测准，而是布置下行封顶、上行开放的收益形状，让波动替你创造价值。</li>
+<li>许多看似稳健的策略其实是凹的：平时稳赚小钱，一次黑天鹅就全部赔光。</li>
+<li>杠铃策略把大部分资源放在极度保守的一端，一小部分押极度凸性的赌注，避开中间的伪安全地带。</li>
+<li>灾难尾对冲是长期支付负期望的小额保费，换取罕见巨灾发生时的凸性赔付，目的是留在牌桌上。</li>
+<li>遍历性意味着群体平均收益为正，不等于单个个体在时间上能活下来，所以只为不可恢复的损失对冲。</li>
+<li>保险思维要求为会让你出局的低频巨损投保，对亏得起的小风险用自己的现金缓冲自保。</li>
+</ol>
+</section>
+
 </div>
 <script defer="" src="https://hub.cissychen.com/comments.js"></script>
 <script defer="" src="https://hub.cissychen.com/search.js"></script>

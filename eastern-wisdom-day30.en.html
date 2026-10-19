@@ -34,6 +34,11 @@
   footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   footer a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -101,6 +106,22 @@ Apply Wang Yangming's Unity of Knowing and Doing audit: 1) Which specific action
     <div class="prompt-block"><span class="tag">English Template</span>
 I'm holding an essence-style judgment: [person/project/self/situation] — specifically the label: [X IS Y].
 Reframe via Emptiness &amp; Dependent Origination: 1) Translate "X is Y" into "under which conditions does X manifest as Y" — enumerate 5 condition dimensions (situation, body state, history, relations, interpretation). 2) Which 2-3 of these conditions are directly within my influence? 3) Design a minimal experiment that varies one condition to see Y shift. 4) What observation has my attachment to this essence-judgment caused me to miss?</div>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Dao Follows Nature and wu wei do not mean doing nothing; they mean not pushing against a system's natural gradient, then nudging its direction.</li>
+  <li>Effort against a system's natural gradient mostly dissolves into friction tax; the most effective intervention is often removing an obstacle, not adding force.</li>
+  <li>Cook Ding's knife stayed sharp for nineteen years because he cut along the gaps between joints: the same work, done with the grain instead of against it.</li>
+  <li>The Doctrine of the Mean is not splitting the difference; it is finding the context-dependent optimum between two failure modes, excess and deficiency.</li>
+  <li>The optimum of the Mean drifts with context, like a variable setpoint in a control system; a common failure is carrying over last stage's optimum.</li>
+  <li>Confucius judged one disciple as overshooting and another as falling short, and said overshooting is as bad as falling short: there is no safe margin in excess.</li>
+  <li>Wang Yangming's Unity of Knowing and Doing defines knowledge: only what changes your action is real knowing; the rest is a memory about knowing.</li>
+  <li>To audit any claim of knowledge, ask which action it last changed; if you cannot name one, downgrade it to something you merely heard about.</li>
+  <li>Buddhist emptiness does not mean nothing exists; it means nothing has independent self-nature, since every phenomenon is a temporary pattern arising from conditions.</li>
+  <li>Rewriting "X is Y" as "under current conditions, X shows up as Y" turns an essence-style label into conditions you can actually change.</li>
+  </ol>
   </section>
 
   <footer>

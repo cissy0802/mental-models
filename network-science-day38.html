@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -292,6 +297,21 @@
 1. How diverse are my main information sources in [stance/background/perspective]? Where is it highly homogeneous?
 2. Which signals that look "widely endorsed" are actually redundant echoes of a single source?
 3. Give 3 concrete counter-homophily moves: which heterogeneous sources would most effectively pop my filter bubble?</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>小世界网络同时具备高聚类和短路径：既有紧密的小圈子，也有通往远方的近路。</li>
+<li>Watts 和 Strogatz 发现，只需把约 1% 的本地连接重连成长程捷径，平均路径就骤然变短而聚类几乎不变。</li>
+<li>短路径不等于找得到路径：六度分隔的链条约 6 步，但人们看不见那条路，可达不等于可导航。</li>
+<li>让创新和信息高速扩散的长程捷径，同样会让病毒、谣言和金融风险高速扩散。</li>
+<li>Granovetter 的找工作研究显示，多数职位线索来自不常见面的弱连接，而不是天天见面的密友。</li>
+<li>弱连接的价值在于桥接结构洞、带来非冗余信息；强连接提供的是支持与信任，两者功能不同。</li>
+<li>无标度网络的连接度服从幂律分布，由增长加偏好依附的「富者愈富」正反馈自然涌现。</li>
+<li>无标度网络对随机故障极其鲁棒，却对定向攻击 hub 极其脆弱，hub 既是杠杆点也是单点故障。</li>
+<li>同质相吸让人偏好连接相似的人，个体的轻微偏好叠加起来，就会自发涌现宏观的群体隔离与极化。</li>
+<li>回音室里看似人人认同，其实是同一信号的冗余回响；以参与度为目标的推荐算法还会加速这种窄化。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -289,6 +294,21 @@
 1. Which 2-3 axes am I implicitly scoring them on? Does this set omit the dimension most critical to the goal?
 2. In the space I chose, "similar / better" holds — would the conclusion flip in another reasonable space?
 3. Name one dimension I've projected away that could be decisive, and how to fold it back into the decision.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>对象本身不变，但选哪组基（坐标轴）去描述它，决定了它看起来有多复杂；换基就是换视角。</li>
+<li>特征向量是一个变换只拉伸、不旋转的方向；换到特征基做对角化，耦合的变换就拆成互不干扰的缩放。</li>
+<li>傅里叶变换、主成分分析和词向量嵌入本质是同一件事：换到一组让问题变线性、变可分的基。</li>
+<li>拓扑学研究连续形变下不变的性质：咖啡杯能被捏成甜甜圈，因为两者都只有一个洞。</li>
+<li>连通性、洞的数量这类拓扑不变量只在撕裂时才跳变，所以对噪声天然鲁棒，要变就是质变。</li>
+<li>欧拉解柯尼斯堡七桥问题时抹掉形状和距离、只留连接图，答案立刻清楚：不可能一次走遍。</li>
+<li>范畴论不看对象的内部构造，只看对象之间的箭头怎样组合，这是「看接口、不看实现」的数学源头。</li>
+<li>可组合性是模块化的核心：A→B 和 B→C 能可靠拼成 A→C，系统才能无限堆叠而不失控。</li>
+<li>同构是类比的严格版本：认出排班问题与图着色问题同构，就能整套搬用后者已有的解法。</li>
+<li>相似必须指定空间和度量才有意义；降维是有损的地图，被压掉的那一维往往正是最该看的一维。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

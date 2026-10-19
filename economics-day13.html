@@ -49,6 +49,11 @@
     .card h2 { font-size: 1.3rem; }
     .prompt { font-size: 0.8rem; padding: 14px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -164,6 +169,21 @@ Apply the supply-demand equilibrium model to [market/resource]. Identify the dom
 请帮我审视[行为 / 项目 / 内容输出]：(1) 它产生了哪些显性的、未被定价的负外部性？(2) 它产生了哪些被低估的正外部性？(3) 我可以采取哪些具体动作，将负外部性内部化、将正外部性放大并捕获更多二阶收益？</div>
 <div class="prompt"><span class="tag">English Template</span>
 Audit [activity / project / output] for externalities. List the unpriced negative spillovers it creates, the underestimated positive spillovers, and propose concrete actions to internalize the negatives and amplify the positives so I can capture more second-order returns.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>机会成本是为了得到一个选项而放弃的所有备选项中价值最高的那一个，它不会出现在会计账本上。</li>
+<li>在 AI 时代机会成本正在膨胀：同样两小时，放弃的已不是一部电影，而是十次并行实验或一个商业假设的验证。</li>
+<li>巴菲特用复利解释机会成本：一笔支出的真正价格，是这笔钱几十年里本可以带来的最佳替代收益。</li>
+<li>比较优势由李嘉图提出：分工合作的依据不是绝对优势，而是谁放弃这件事的机会成本更低。</li>
+<li>葡萄牙酿酒和织布都比英国强，但两国各自专注机会成本更低的产品再自由贸易，总产出比闭门造车更高。</li>
+<li>即使 AI 在写代码、查资料上有绝对优势，人在提出原创问题、价值判断和跨领域整合上仍保有比较优势。</li>
+<li>供需均衡中价格在供给曲线与需求曲线的交点形成，它把无数决策者的私有信息压缩成一个数字。</li>
+<li>均衡不等于静止：价格总在追赶移动中的真值，Uber 在暴雨时的动态加价就是供需实时重新出清的演示。</li>
+<li>外部性是一项经济活动落到第三方身上、未被价格机制反映的成本或收益，没有被内部化是市场失灵的主要来源之一。</li>
+<li>庇古税对排污工厂征税，把它转嫁给下游渔民的污染成本内部化到损益表里，让价格重新反映真实成本。</li>
+</ol>
 </section>
 <footer>
 <a href="index.html">← 返回目录</a>

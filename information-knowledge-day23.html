@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       I'm systematically studying [topic/field]. Design a learning plan based on the Forgetting Curve and spaced repetition: (1) Break core knowledge into memorizable units; (2) Distinguish between "must internalize" and "can outsource to AI"; (3) For each must-remember unit, create an active retrieval test question (free recall, not multiple choice); (4) Provide a 30-day spaced repetition schedule (Day 1, 2, 4, 7...).
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>信噪比源自信息论：现代人的核心困境不是信息不足，而是噪声过载淹没了有用的信号。</li>
+<li>最危险的噪声是伪装成信号的热点和似是而非的分析；不改变任何决策或行动的信息就是噪声。</li>
+<li>提高信噪比靠减噪而不是多看，可以把信息源分成行动信号、背景信号和噪声三层来管理。</li>
+<li>费曼学习法要求用不带术语的大白话向外行讲清一个概念，讲不通的卡点就是理解的缺口。</li>
+<li>能认出答案只是识别性理解，能从空白重新构建才是生成性理解，费曼学习法逼人切换到后者。</li>
+<li>把复杂讲简单需要看穿底层结构，所以简单不等于浅显；教别人是检验和深化理解的好办法。</li>
+<li>知识图谱思维认为，知识的价值不在孤立的事实节点，而在节点之间的连接和结构。</li>
+<li>跨领域的远程连接最容易产生突破：达尔文把马尔萨斯的人口论接上物种观察，得出了自然选择。</li>
+<li>艾宾浩斯 1885 年提出遗忘曲线：没有复习时，新学的信息会随时间按指数式迅速衰减。</li>
+<li>对抗遗忘要在快忘时做间隔重复，并合上书主动回忆；主动检索比反复重读更能巩固记忆。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -253,6 +258,21 @@
 1. Which 2-3 axes am I implicitly scoring them on? Does this set omit the dimension most critical to the goal?
 2. In the space I chose, "similar / better" holds — would the conclusion flip in another reasonable space?
 3. Name one dimension I've projected away that could be decisive, and how to fold it back into the decision.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>An object stays the same, but the basis you describe it in decides how complex it looks; changing basis means changing perspective.</li>
+<li>Eigenvectors are the directions a transformation only stretches, never rotates; diagonalizing turns a coupled transformation into independent scalings.</li>
+<li>Fourier transforms, PCA and word embeddings all make the same move: switch to a basis where the problem becomes linear and separable.</li>
+<li>Topology studies what survives continuous deformation: a coffee mug can be squeezed into a donut because both have exactly one hole.</li>
+<li>Topological invariants such as connectedness and number of holes jump only at a tear, so they shrug off noise and change only qualitatively.</li>
+<li>Euler solved the Königsberg bridges problem by erasing shapes and distances and keeping only the graph of connections: no single walk works.</li>
+<li>Category theory ignores an object's internals and studies how the arrows between objects compose, the math behind programming to interfaces.</li>
+<li>Composability is the core of modularity: if A→B and B→C reliably chain into A→C, a system can stack up without spinning out of control.</li>
+<li>Isomorphism is analogy made rigorous: spotting that a scheduling problem is isomorphic to graph coloring lets you import its known solutions.</li>
+<li>Similarity means nothing without a space and a metric; dimensionality reduction is a lossy map, and the dropped axis is often the one that mattered.</li>
+</ol>
 </section>
 
 <footer class="footer">

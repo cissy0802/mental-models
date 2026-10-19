@@ -40,6 +40,11 @@ footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
   .card-header h2 .en{display:block;margin-left:0;margin-top:4px}
   .divider{margin:0 18px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -170,6 +175,23 @@ footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
   </div>
 </div>
 
+<section class="card tk">
+<div class="card-body">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>BATNA, the Best Alternative to a Negotiated Agreement, is your best fallback if talks fail, a concept from the Harvard Negotiation Project.</li>
+<li>A strong BATNA gives you the leverage to walk away, while a weak BATNA pushes you into accepting unfavorable terms.</li>
+<li>A BATNA is not fixed: before negotiating, actively build and strengthen your alternatives and estimate the other side's BATNA too.</li>
+<li>The anchoring effect means whoever names the first number frames the whole negotiation, because people adjust from the anchor too little.</li>
+<li>Concessions should shrink each round to signal you are nearing your limit; equal-sized concessions suggest plenty of room is left.</li>
+<li>Tie every concession to a reciprocal ask, because unilateral concessions read as retreat and erode your negotiating position.</li>
+<li>Win-win thinking rejects the zero-sum view: each side values issues differently, and that difference is room to create extra value.</li>
+<li>Practical routes to win-win include bundling several issues into one deal, learning the other side's real needs, and inventing new options.</li>
+<li>Getting to Yes separates positions from interests: a position is what you want, while an interest is why you want it.</li>
+<li>The Camp David Accords returned the Sinai to Egypt as a demilitarized zone, meeting Egypt's interest in sovereignty and Israel's interest in security.</li>
+</ol>
+</div>
+</section>
 <nav>
   <a href="index.en.html">← Back to Index</a>
 </nav>

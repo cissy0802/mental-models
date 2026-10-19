@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -248,6 +253,21 @@
 1. Which "cue" is hijacking me right now (a notification, the moment I open an app)? How do I sever or reset it?
 2. Is my reward fully predictable (no signal) or variable-addictive (signal never dies)? How do I tune the curve into the healthy middle?
 3. Design a milestone cadence that manufactures sustainable positive prediction errors to keep motivation alive.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Neuroplasticity is competitive: cortical real estate is allocated by use, so frequently used functions expand while abandoned ones are reclaimed.</li>
+<li>Neuroplasticity is morally neutral: the mechanism that teaches you piano also carves chronic pain, addiction and trauma into deeper grooves.</li>
+<li>Rewiring the brain needs attention, effort and an error signal at once; passive exposure, like background language audio, barely changes it.</li>
+<li>London taxi drivers have a larger posterior hippocampus that grows with years on the job and shrinks after retirement: experience becomes grey matter.</li>
+<li>Predictive processing holds that the brain constantly predicts its sensory input from the top down, and only prediction errors travel upward.</li>
+<li>Prediction error can be cancelled two ways: by updating the model through perception and learning, or by acting to make the world match the prediction.</li>
+<li>In the hollow-mask illusion, the prior that faces are convex overrides the depth data from your eyes, letting you watch a prior beat the evidence.</li>
+<li>The Default Mode Network grows more active during mind-wandering, recalling the past, imagining the future and self-rumination; it underlies a continuous sense of self.</li>
+<li>The Default Mode Network and the task-positive network inhibit each other: focus suppresses it, mind-wandering releases it, and the skill is toggling it on purpose.</li>
+<li>Dopamine encodes reward prediction error, actual minus expected reward, not pleasure; fully predicted rewards cause no spike, which makes variable rewards the most addictive.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Back to index</a>

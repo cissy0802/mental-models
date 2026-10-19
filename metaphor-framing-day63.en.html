@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -265,6 +270,21 @@
 1. Point out which are actually dead metaphors and what their original source-domain mapping was.
 2. What assumptions does each smuggle in that I'm now treating as "reality itself"?
 3. Revive or replace one or two of them and show how my intuition about the matter would shift.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Lakoff and Johnson's conceptual metaphor theory holds that metaphor is not decoration but the structure of thought, mapping a concrete source domain onto an abstract target.</li>
+<li>Under ARGUMENT IS WAR we attack, defend, win and lose; switch to ARGUMENT IS DANCE and the goal becomes coordination, changing the whole space of available actions.</li>
+<li>Conceptual metaphor is core evidence for embodied cognition: mappings like "important is big" and "intimate is close" are grounded in sensorimotor experience.</li>
+<li>A frame is the default structure for understanding something, and framing wars are fought less over facts than over which frame becomes the unthinking default.</li>
+<li>Negating a frame activates it: every time you argue against an opponent's term in their own words, you expose and reinforce their frame.</li>
+<li>The "estate tax" versus "death tax" fight shows stances are settled at the naming stage; framing shifts the whole problem space, deeper than anchoring shifting one number.</li>
+<li>Reframing is the constructive use of framing: when stuck, stop trying harder inside the old frame and change the frame that organizes the problem.</li>
+<li>The slow-elevator problem was solved by reframing "the elevator is too slow" as "the wait is too boring," which made near-free mirrors a candidate solution.</li>
+<li>Honest reframing keeps the same facts true under the new frame; once it slides into denying the real problem it becomes toxic positivity rather than opening options.</li>
+<li>Dead metaphors such as "time is money," and nominalizations that freeze processes into things, escape scrutiny because they no longer look figurative; the cure is to revive them.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

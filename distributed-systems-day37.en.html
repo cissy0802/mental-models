@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -268,6 +273,22 @@
 1. Identify the "unbounded queue" — what piles up here with no cap?
 2. Design a concrete backpressure mechanism: where to set the intake limit, and how to push back when full (reject / defer / drop low-priority).
 3. Compare "greedily accept everything" vs "deliberately slow down" and estimate the sustainable throughput of each.</div>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Brewer's CAP theorem says that when a network partition occurs, a system must choose between consistency and availability.</li>
+  <li>Reading CAP as "pick two of three" is a mistake: partitions are physically inevitable, so the real question is C or A during one.</li>
+  <li>The CAP trade-off is made per operation: a bank balance should refuse rather than be wrong, while a like-count can lag a few seconds.</li>
+  <li>An ATM that keeps dispensing capped cash while cut off from the bank, reconciling later, is a priced business bet on availability.</li>
+  <li>Eventual consistency relaxes agreement from every instant to convergence once writes stop, buying availability and scalability.</li>
+  <li>Eventual consistency never happens by itself: it needs a convergence rule such as last-write-wins, version vectors or CRDTs.</li>
+  <li>A DNS change takes minutes to tens of hours to propagate worldwide, and the internet's naming system is built on eventual consistency.</li>
+  <li>An idempotent operation has the same effect on state whether applied once or many times, which is what makes retries safe.</li>
+  <li>Exactly-once delivery is nearly impossible in distributed systems, but at-least-once retries plus idempotency keys add up to the same thing.</li>
+  <li>Backpressure lets a slow consumer tell the producer to slow down, turning an unbounded queue's collapse into graceful degradation.</li>
+  </ol>
   </section>
 
   <footer class="footer">

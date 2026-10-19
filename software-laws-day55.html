@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -292,6 +297,21 @@
 1. List the top 3 sources eating the performance dividend (abstraction layers, dependencies, redundant calls, complexity creep), ranked by cost.
 2. Propose a quantifiable performance budget for the critical path (concrete metrics + thresholds) that can be guarded as a failing test.
 3. Give 2 anti-entropy moves: which steps to cut/merge for the biggest immediate speed-back without sacrificing core value.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>高尔定律：能运转的复杂系统，都是从一个能运转的简单系统演化而来的。</li>
+<li>从零设计的复杂系统无法一次跑通，也救不活，只能退回能跑的简单版本重新生长。</li>
+<li>按高尔定律，大爆炸式重写几乎必败；每一步都要问：系统现在还跑得起来吗？</li>
+<li>Postel 的健壮性原则：发送时保守、接收时宽容，这让早期互联网的各种实现得以互通。</li>
+<li>宽容接收会让规范慢慢腐烂，bug 沉淀成事实标准，所以 HTTP/2、QUIC 等新协议转向严格。</li>
+<li>运用健壮性原则的纪律：在边界把脏输入归一化成干净的内部表示，出口则严格按规范输出。</li>
+<li>海勒姆定律：接口用户足够多时，系统所有可观测行为都会被某人依赖，不管文档承诺过什么。</li>
+<li>想保住接口的改动自由，要么主动注入随机性阻止依赖，要么趁用户还少时尽早锁定语义。</li>
+<li>沃斯定律：软件变慢的速度比硬件变快还快，算力红利被抽象层和臃肿依赖吃掉了。</li>
+<li>性能不会自动改善，要靠给关键路径设性能预算、当作会失败的测试持续守护来夺回。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

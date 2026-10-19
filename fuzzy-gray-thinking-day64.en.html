@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -253,6 +258,21 @@
 1. Reframe the either/or as a 0–100 slider — what pure extreme does each end represent?
 2. Given the actual context (risk, maturity, reversibility, etc.), roughly which notch is optimal right now, and why that one?
 3. Give me 1–2 observable signals telling me when to slide the setting left or right.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Fuzzy set theory, proposed by Zadeh in 1965, relaxes membership from a strict 0-or-1 to any degree between 0 and 1.</li>
+<li>The sorites paradox shows that blurry boundaries of words like "tall" or "heap" belong to the concept, not to imprecise measurement.</li>
+<li>Fuzzy is not wishy-washy: fuzzy controllers turn degree rules like "if somewhat hot, reduce a little" into exact actions.</li>
+<li>Most either/or disputes slice a continuous spectrum in two, and the real question is where to place the cut.</li>
+<li>Probability asks whether something happens and collapses once you know; fuzziness asks how much something belongs and never collapses.</li>
+<li>In AI, separate epistemic uncertainty, which more data can reduce, from aleatoric uncertainty, which no amount of data removes.</li>
+<li>Ambiguity tolerance is the capacity to sit with the unresolved: a disciplined deferral of closure, not indecision.</li>
+<li>Premature closure stops the brain from collecting counter-evidence, the shared mechanism behind dogma, prejudice, and stereotype.</li>
+<li>Grayscale judgment is not fence-sitting: it picks a precise intermediate setting and can explain why that notch and not another.</li>
+<li>Control and trust are never yes-or-no; turning a binary choice into a 0-to-100 slider shifts you from taking sides to tuning.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

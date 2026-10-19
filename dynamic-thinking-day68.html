@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -295,6 +300,21 @@
 1. Is this an average over parallel worlds or over my own time? Do the two conclusions diverge?
 2. Is there an absorbing barrier on the path (ruin, getting knocked out, reputation collapse, irreversible health harm)? If so, expected value misleads.
 3. Give the geometric-growth / "survive first" version: how to shrink the bet size, or simply decline.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>双曲贴现指人对越近的延迟扣得越狠、对越远的延迟几乎不扣，而不是以恒定利率匀速贴现未来。</li>
+<li>双曲贴现会造成偏好反转：远看时选更大更晚的回报，诱惑逼近时却当场改选更小更快的那个。</li>
+<li>对抗现时偏误靠意志力必输，有效的是承诺装置：让远见的自我提前锁住冲动自我的选择权。</li>
+<li>边际效用递减指每多一单位带来的新增满足都更小，效用曲线是上凸的，第一口水救命、第十杯无感。</li>
+<li>风险厌恶、分散投资、金钱价值近似对数，都可以从边际效用递减这一条凹曲线推出来。</li>
+<li>大脑编码的是变化量而非绝对水平，稳定不变的好处会被享乐适应吃掉，新异与多样能把曲线拨回陡峭。</li>
+<li>克里斯坦森的颠覆式创新指新进者从低端或新市场切入，产品在主流指标上更差，却更便宜、更简单。</li>
+<li>在位者被颠覆往往不是因为犯错，而是因为倾听最好客户、追逐最高毛利，每一步都理性却合力自杀。</li>
+<li>遍历性指时间均值等于群体均值；乘法性动态加上破产、死亡这类吸收壁时，过程就是非遍历的。</li>
+<li>在非遍历的世界里，应以几何增长率而非算术期望做决定，只要路径上有归零点，先活下来就压倒最大化期望。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

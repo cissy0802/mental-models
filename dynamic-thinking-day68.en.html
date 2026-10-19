@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -253,6 +258,21 @@
 1. Is this an average over parallel worlds or over my own time? Do the two conclusions diverge?
 2. Is there an absorbing barrier on the path (ruin, getting knocked out, reputation collapse, irreversible health harm)? If so, expected value misleads.
 3. Give the geometric-growth / "survive first" version: how to shrink the bet size, or simply decline.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Hyperbolic discounting means near delays are penalized steeply and distant ones barely at all, unlike discounting the future at one constant rate.</li>
+<li>Hyperbolic discounting causes preference reversal: from afar you choose the larger-later reward, then defect to the smaller-sooner one as it approaches.</li>
+<li>Willpower loses against present bias; what works is a precommitment device that lets the farsighted self lock the impulsive self out of the choice.</li>
+<li>Diminishing marginal utility means each extra unit adds less satisfaction: the first sip of water saves your life, the tenth glass barely registers.</li>
+<li>Risk aversion, diversification, and the roughly logarithmic value of money all follow from the single concave curve of diminishing marginal utility.</li>
+<li>The brain encodes changes rather than levels, so hedonic adaptation erodes any constant good, while novelty and variety make the curve steep again.</li>
+<li>In Christensen's disruptive innovation, entrants come in at the low end or a new market with products that are worse on mainstream metrics but cheaper and simpler.</li>
+<li>Incumbents are disrupted not by mistakes but by listening to their best customers and chasing the highest margins, each step rational, the sum suicidal.</li>
+<li>A process is ergodic when its time average equals its ensemble average; multiplicative dynamics plus an absorbing barrier like ruin make it non-ergodic.</li>
+<li>In a non-ergodic world, decide by geometric growth rate rather than arithmetic expectation: if ruin is possible, surviving beats maximizing expected value.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

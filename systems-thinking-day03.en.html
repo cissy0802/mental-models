@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#0984e3;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -187,6 +194,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Feedback loops come in two kinds: reinforcing (positive) loops amplify change, while balancing (negative) loops damp deviations and keep a system stable.</li>
+<li>A reinforcing loop drives both growth and collapse; once it overpowers the balancing loops, the system crosses a tipping point into exponential change.</li>
+<li>Balancing feedback often lags behind reinforcing feedback, which is why systems like credit bubbles feel fine right up until they collapse.</li>
+<li>Donella Meadows ranked leverage points from weak to strong: parameters, feedback strength, rules, goals, and the paradigm, which has the most leverage.</li>
+<li>Most people intervene at the parameter level because it is intuitive, measurable, and safe, yet changing rules, goals, or paradigms can shift a system far more.</li>
+<li>The leverage paradox: the higher the leverage point, the bigger the impact and the stronger the resistance, because it threatens participants' identities and interests.</li>
+<li>Goldratt's Theory of Constraints holds that a system's output is capped by its bottleneck, so improving non-bottleneck steps is an illusion of optimization.</li>
+<li>The five focusing steps of the Theory of Constraints are identify, exploit, subordinate, elevate, and repeat, because the bottleneck keeps moving.</li>
+<li>Emergence means a whole shows properties none of its parts have, as when connected neurons produce consciousness; it requires nonlinear interactions between components.</li>
+<li>Emergent behavior cannot be precisely controlled by top-down micro-instructions; it can only be steered by designing the interaction rules between components.</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.en.html">← Back to Index</a>
 </nav>

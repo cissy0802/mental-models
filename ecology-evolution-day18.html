@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       Conduct a "niche analysis" for me. ① Map competitors' ecological niches in [my industry / domain] along 2-3 key dimensions; ② Plot my current position and identify major niche overlaps; ③ Spot "white space" — dimensional combinations with no strong occupants; ④ Design a "niche construction" plan — what actions can I take to reshape the environment so that the white space becomes a new niche where my unique capabilities are the defining advantage?
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>“适者生存”的“适”指与特定环境的契合度而非绝对强大，环境一变，最适者可能变成最不适者。</li>
+<li>过度特化是隐蔽的脆弱：越完美适应当前环境，剧变时损失越大，真正的优势是保持适应能力。</li>
+<li>格兰特夫妇追踪达尔文雀发现，一次严重旱灾就能让平均喙深在两年内发生可测量的偏移。</li>
+<li>红皇后效应：竞争者在同步进化，物种必须持续进步才能维持相对位置，停滞就等于退步。</li>
+<li>红皇后效应也解释了有性生殖为何延续：基因重组制造变异，让物种在与寄生虫的竞赛中跟上节奏。</li>
+<li>跳出红皇后军备竞赛的办法不是跑得更快，而是换赛道，进入竞争者尚未到达的生态位。</li>
+<li>共生分互利、偏利和寄生三类；马古利斯的内共生理论指出，线粒体和叶绿体原本是独立的细菌。</li>
+<li>竞争带来优化，共生带来创新；但互利共生会随权力不对称滑向寄生，需要持续校准价值交换。</li>
+<li>竞争排斥原则指生态位完全相同的物种不能长期共存，只能分化或被淘汰。</li>
+<li>生态位构建理论指出，物种不只被动适应，还能像海狸筑坝那样改造环境，开辟新的生态位。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

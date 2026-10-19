@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -299,6 +304,21 @@
 1. What kinds of "disturbances" does this environment throw out, and roughly how many kinds?
 2. How many does my current "repertoire of responses" cover? Where are the gaps?
 3. Give me two routes: one to "raise my response variety" (which tools / perspectives / people to add) and one to "lower the environment's disturbance variety" (how to simplify or narrow the problem).</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>负反馈持续测量当前状态与目标之间的误差，再朝缩小误差的方向出力，是一切稳定的引擎。</li>
+<li>负反馈说明目标导向不需要意图：纯机械的反馈环也能表现出目的性，蒸汽机的离心调速器就是原型。</li>
+<li>强负反馈抵抗一切变化，包括你想要的改变，这正是组织里「政策阻力」的根源。</li>
+<li>正反馈让输出反过来增强输入，同一个雪球机制朝上是良性循环，朝下就是恶性循环。</li>
+<li>纯正反馈既罕见又短命，要么撞上资源天花板被负反馈接管拐成 S 曲线，要么把系统烧穿。</li>
+<li>正反馈驱动网络效应和马太效应，对良性循环要找低成本点火点，对恶性循环要装负反馈断路器。</li>
+<li>负反馈一旦带上时滞，纠偏就会过冲、回摆、来回振荡，延迟够长甚至会发散失稳。</li>
+<li>在有时滞的系统里，高增益加长延迟会放大振荡，正确做法是降低增益或缩短延迟，而不是更用力。</li>
+<li>阿什比的必要多样性定律指出，控制器能产生的应对种类必须不少于系统可能出现的扰动种类。</li>
+<li>按必要多样性定律，要稳住局面只能提升控制器的多样性或降低环境的多样性，自动化之外仍需人兜底。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

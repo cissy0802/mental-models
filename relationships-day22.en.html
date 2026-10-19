@@ -140,6 +140,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -257,6 +262,22 @@
       Please diagnose the trust state between me and [person] using Trust = (Credibility × Reliability × Intimacy) / Self-Orientation. Context: [purpose, duration, recent key events]. My self-scores (0-10): Credibility [X], Reliability [X], Intimacy [X], Self-Orientation [X]. Please: (1) flag the dimension I'm most likely over- or under-rating; (2) infer where the other person's scores of me would diverge from mine; (3) name 3 behaviors over the past 6 months that may have inadvertently inflated my Self-Orientation denominator; (4) give a concrete 30-day plan: one move to lift Intimacy, one to lower Self-Orientation.
     </div>
   </section>
+
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Covey's Emotional Bank Account treats every relationship as a hidden balance: listening, keeping promises and apologizing are deposits; neglect, broken promises and criticism are withdrawals.</li>
+<li>Deposits and withdrawals are asymmetric: stable relationships need roughly five positive interactions for every negative one, and a single major withdrawal takes many deposits to offset.</li>
+<li>Relationship deposits only count in the currency the other person values; wrong-currency deposits mostly make the giver feel good, and a relationship with no deposits slowly depreciates.</li>
+<li>Rosenberg's Nonviolent Communication breaks any conversation into Observation, Feeling, Need and Request, shifting the focus from judging who is right to expressing needs.</li>
+<li>Nonviolent Communication separates observation from evaluation and real feelings from judgments disguised as feelings; a request that cannot be declined is really a demand.</li>
+<li>Anger usually signals an unrecognized need: turning "you made me angry" into "I have an unmet need" puts the subject back on yourself and opens room to act.</li>
+<li>The Empathy Map sorts understanding of another person into Say, Do, Think, Feel, Pain and Gain, and its deeper job is to guard against projecting yourself onto them.</li>
+<li>On an Empathy Map, Say and Do are observable while Think, Feel, Pain and Gain are inferences to verify by asking; the gap between Say and Think carries the most leverage.</li>
+<li>Maister's Trust Equation builds trust from three numerators, Credibility, Reliability and Intimacy, all divided by a single denominator, Self-Orientation.</li>
+<li>In the Trust Equation, Self-Orientation in the denominator does the most damage and people underrate their own; Intimacy is scarcest and is earned by voicing a real concern.</li>
+</ol>
+</section>
 
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>

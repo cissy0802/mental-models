@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -240,6 +245,21 @@
 3. Among the options I'm maintaining, which are the most convex (limited downside, large upside) and worth the maintenance cost — and which should I deliberately drop?</div>
 </section>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Life, organizations, and knowledge are open systems that keep internal order by importing energy and exporting even more entropy.</li>
+<li>In Prigogine's dissipative structures, order is a flow rather than a state: a whirlpool, a flame, or a cell exists only while energy passes through.</li>
+<li>Local order costs greater disorder elsewhere; if you can't see where the entropy goes, it is likely piling up inside as hidden debt or burnout.</li>
+<li>Universality: near a critical point, unrelated systems such as magnets and fluids share the same scaling laws, and only symmetry and dimension matter.</li>
+<li>Critical slowing down is an early warning of a phase transition: near the tipping point, recovery from perturbations slows and autocorrelation rises.</li>
+<li>Phase transitions show hysteresis: the threshold differs by direction, so once trust, reputation, or a habit flips, reverting means going past the original threshold.</li>
+<li>Resonance is narrow-band: when the drive matches the natural frequency, a small sustained input builds into a large amplitude, while off-frequency force is dissipated.</li>
+<li>Damping shapes the resonance peak: low damping gives a tall, narrow peak with little tolerance; high damping gives a short, broad, gentle but robust one.</li>
+<li>Using superposition as a mental model: an irreversible commitment acts as a measurement that collapses optionality, so staying uncollapsed has value while information is scarce.</li>
+<li>Decoherence means optionality decays on its own as you commit and couple to the world; options cost upkeep, so keep only the few most convex ones.</li>
+</ol>
+</section>
 <footer class="footer">
 <a href="index.en.html">&larr; Back to Index</a>
 </footer>

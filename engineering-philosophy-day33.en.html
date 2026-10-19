@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -260,6 +265,21 @@
 3. Classify the decision as implementation-layer vs architecture-layer. If architecture-layer, name the minimal set of decisions that must be made now.</div>
   </section>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Abstraction is not omitting detail; it is choosing invariants sufficient for the current problem and encapsulating everything else one layer down.</li>
+<li>Every abstraction layer compresses information, and whatever gets compressed away eventually returns as a bug or a leaky abstraction.</li>
+<li>An abstraction is healthy if you can debug the upper layer without opening the lower one; constantly diving through layers means the boundary is wrong.</li>
+<li>Conway's Law says system architecture mirrors the organization's communication structure, so high-friction team boundaries harden into defensive interfaces.</li>
+<li>The Inverse Conway Maneuver reshapes the org into the architecture you want first; splitting services without splitting teams yields a distributed monolith.</li>
+<li>Amazon's API-only mandate, forcing teams to communicate solely through service interfaces, is the classic example of the Inverse Conway Maneuver.</li>
+<li>Cunningham's original technical-debt metaphor means shipping with incomplete understanding and refactoring in what you learn later, not writing hacky code.</li>
+<li>Technical debt carries uneven interest: a wrong data model or core abstraction can stall a team within months, so repay high-rate debt before the ugliest debt.</li>
+<li>The deeper point of YAGNI is that abstraction needs data: abstracting after one or two real variants is fitting on too few samples and will overfit.</li>
+<li>The wrong abstraction costs far more than duplication, but YAGNI governs the implementation layer; architecture decisions like data models and core APIs must anticipate the future.</li>
+</ol>
+</section>
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>
   </footer>

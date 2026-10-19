@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -247,6 +252,22 @@
 1. Using the S-curve, where are we: slow start, explosion, inflection, or near saturation? On what evidence?
 2. If in the explosion phase, am I dangerously extrapolating linearly? Roughly where is the ceiling?
 3. If near saturation, what could my "second curve" be, and how much should I invest now to incubate it?</div>
+</section>
+
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Rogers' diffusion curve splits people by adoption timing into five segments: innovators, early adopters, early majority, late majority and laggards.</li>
+<li>Adopter categories are not permanent personality labels but a person's position relative to one specific innovation.</li>
+<li>Each segment adopts for different reasons: early adopters bet on vision and tolerate roughness, while the early majority trusts only proven, peer-tested utility.</li>
+<li>To spread something new, win over the few early adopters first and let these opinion leaders vouch for it, rather than arguing with laggards.</li>
+<li>Moore's chasm model holds that a gap separates early adopters from the early majority, and many acclaimed products die in it.</li>
+<li>The chasm exists because the pragmatic early majority wants a complete solution and peer precedent, a deadlock where the majority waits for the majority.</li>
+<li>Crossing the chasm means narrowing, not broadening: dominate one tight beachhead niche, then knock over adjacent segments like bowling pins.</li>
+<li>The threshold model says everyone adopts only after enough others do, so ignition depends on whether those thresholds link into an unbroken chain.</li>
+<li>Tipping depends on local density, not global reach: push adoption past critical mass in one small network to trigger a self-sustaining cascade.</li>
+<li>Cumulative adoption traces an S-curve; growth already slows past the inflection point, so avoid linear extrapolation and launch a second curve before saturation.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

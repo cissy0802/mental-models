@@ -30,6 +30,11 @@ footer{text-align:center;padding:36px 0 12px;font-size:0.82rem;color:#b2bec3}
   .card h2{font-size:1.15rem}
   .card h2 .en{display:block;margin-left:0;margin-top:4px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -164,6 +169,21 @@ footer{text-align:center;padding:36px 0 12px;font-size:0.82rem;color:#b2bec3}
   </div>
 </div>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Servant leadership, proposed by Robert Greenleaf in the 1970s, holds that a leader's first job is to serve the team's growth, not to give orders.</li>
+<li>A servant leader influences through listening, empathy and persuasion; power flows bottom-up as the leader clears obstacles and supplies resources.</li>
+<li>Southwest Airlines CEO Herb Kelleher put employees first, customers second and shareholders third, and the airline stayed profitable 47 years straight.</li>
+<li>Situational leadership says no single style always works; the right one depends on a person's ability and willingness on the specific task.</li>
+<li>Situational leadership's four styles, directing, coaching, supporting and delegating, should track the person's growth: let go too early and things crash, too late and growth stalls.</li>
+<li>The circle of competence matters less for its size than for knowing exactly where its edge lies; outside it, even brilliant people make basic mistakes.</li>
+<li>Buffett refused tech stocks he could not judge during the dot-com bubble and only bought Apple in 2016, once it looked more like a consumer brand.</li>
+<li>Getting AI to write a quant trading script does not mean you understand quant investing: AI extends your reach, not your circle of competence.</li>
+<li>Stewardship delegation defines the goal, standards and consequences and leaves the method to the doer, unlike step-by-step gofer delegation.</li>
+<li>Delegating to people or to AI works best through incremental trust: test reliability on low-stakes tasks first, then widen the scope of autonomy.</li>
+</ol>
+</section>
 <div class="nav">
   <a href="index.en.html">← Back to Index</a>
 </div>

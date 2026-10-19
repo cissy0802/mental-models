@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       Evaluate my behavioral pattern in [scenario: team management / client relationships / parenting / partnership negotiation] against the four Tit-for-Tat principles — nice, retaliatory, forgiving, and clear. Identify which dimensions I'm strong in and which are lacking, with specific behavioral adjustments. Also assess the "noise level" in this context (probability of misreading actions), and if high, recommend how to introduce a "generous" error-tolerance mechanism to prevent retaliatory spirals.
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>囚徒困境中，无论对方怎么选，背叛都是个体的占优策略，但双方都背叛的结局劣于双方都合作。</li>
+<li>跳出囚徒困境的杠杆包括：把单次博弈变成重复博弈、建立声誉机制、引入制度约束、缩小群体规模。</li>
+<li>纳什均衡是指每个参与者在别人策略不变时，都没有动机单方面改变自己策略的稳定状态。</li>
+<li>纳什均衡稳定不等于最优：囚徒困境里双方背叛就是均衡，系统可能长期卡在人人不满却没人先动的状态。</li>
+<li>现实中常有多个纳什均衡，落在哪个往往取决于历史路径、文化和焦点效应，比如靠左还是靠右行驶。</li>
+<li>无名氏定理表明，只要参与者足够耐心、交互足够长久，单次博弈中维持不了的合作也能成为均衡。</li>
+<li>重复博弈里「未来的影子」越长合作越稳；一旦知道哪轮是最后一轮，背叛会从终局向前逆推。</li>
+<li>阿克塞尔罗德锦标赛中，「先合作、再照抄对方上一步」的以牙还牙策略击败了所有复杂策略。</li>
+<li>以牙还牙胜在四个特质：善良不先背叛、遭背叛立即回应、对方改正就原谅、行为透明易懂。</li>
+<li>在行为容易被误读的噪声环境里，以牙还牙会陷入报复循环，慷慨的以牙还牙以一定概率继续合作来容错。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

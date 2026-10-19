@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -282,6 +287,22 @@
       Design a flywheel for [business / project / personal growth system]. Identify 4-6 reinforcing components and map their closed-loop relationships. Define a key metric for each node, isolate the weakest link, and propose three concrete leverage actions to accelerate it. Additionally, surface any latent reverse-flywheel risk and the early warning indicators that would signal it is spinning the wrong direction.
     </div>
 </section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>博弈论研究相互依存的理性决策：你的最优选择取决于对手怎么选，对手的选择又取决于他对你的预判。</li>
+<li>纳什均衡是无人愿单方面偏离的稳态，但未必最优，囚徒困境就是个体理性导致集体非理性。</li>
+<li>在重复博弈中，未来的影子足够长时合作会自发涌现；承诺机制则靠主动削减自己的选项来增强谈判力。</li>
+<li>竞争优势是长期获得高于行业平均回报的能力，根源是成本领先、差异化或聚焦，而不是努力。</li>
+<li>可持续的竞争优势必须难模仿、难替代，网络效应、规模经济和转换成本会让优势随时间加深。</li>
+<li>VRIO 框架检验核心资源是否有价值、稀缺、难模仿、有组织支撑，再问优势五年后是强是弱。</li>
+<li>巴菲特推广的护城河是抵御竞争侵蚀的壁垒，衡量的不是现在多赚钱，而是还能这样赚多久。</li>
+<li>护城河会加深也会干涸，柯达的胶片护城河在数字化浪潮中蒸发，技术和监管最常重塑护城河。</li>
+<li>飞轮效应由柯林斯提出，指各环节相互强化形成正反馈闭环，早期推动沉重，越过临界点后自我加速。</li>
+<li>飞轮反向旋转同样会自加速崩塌，因此衡量飞轮要看转速而非单点产出，并优先加强最弱的环节。</li>
+</ol>
+</section>
+
 <footer class="footer">
 <a href="index.html">← 返回首页</a>
 </footer>

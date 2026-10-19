@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -262,6 +267,21 @@
 3. If I removed each hook one by one, how much real value remains? Give me an action that keeps me calm amid the frenzy.</div>
   </section>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>The Excessive Self-Regard Tendency makes people systematically overrate themselves and anything tagged "mine," a mechanism akin to the endowment effect.</li>
+<li>Overconfidence is the fuel for action, so the goal is calibration, not elimination; it is deadliest where feedback is slow and noisy, like investing or parenting.</li>
+<li>To calibrate overconfidence, attach probabilities to predictions and keep a scorecard, or ask someone indifferent to your ego to red-team your plan.</li>
+<li>Munger held that envy, not greed, drives the world; envy is relative and local, aimed at the person just one rung above you.</li>
+<li>Envy usually disguises itself as "this isn't fair"; the antidote is swapping your reference group and practicing muditā, sincere joy at others' good fortune.</li>
+<li>The Commitment and Consistency Tendency locks in a position once you've declared it or worked for it, and cults and pyramid schemes exploit exactly this.</li>
+<li>To counter consistency bias, delay taking public sides and pre-write kill criteria: the evidence that would make you admit you were wrong.</li>
+<li>The Lollapalooza Effect is what happens when several tendencies push the same way: their effects multiply rather than add, producing bubbles, panics and manias.</li>
+<li>Munger's favorite example, the home sales party, pulls five or six hooks at once (liking, reciprocity, social proof, scarcity, commitment): an engineered Lollapalooza.</li>
+<li>Checking biases one at a time misses their confluence, so scan with a whole checklist; a sense that something is overwhelmingly compelling is itself an alarm.</li>
+</ol>
+</section>
   <footer class="footer">
     <a href="index.en.html">← Back to Index</a>
   </footer>

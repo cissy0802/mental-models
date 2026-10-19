@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -270,6 +275,21 @@
 1. On what kind of boundary cases is this system most likely unable to decide from within?
 2. Where does it try to "self-certify consistency" — verify itself using its own rules? Name the risk.
 3. Propose one concrete meta-level backstop: which external perspective / new premise / outside arbitration would patch the blind spot.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>地图非疆域：概念、语言和模型都是地图，几乎所有认知失误都出在把地图误当成疆域本身。</li>
+<li>评判一张地图的标准不是它是否等于现实，而是结构是否相似、对眼下的目的够不够用。</li>
+<li>地图会自我强化，跳出来的办法是主动寻找地图预测失败的地方，而不是找它成立的证据。</li>
+<li>伦敦地铁图为了换乘这个目的牺牲地理保真度，拿它估算步行距离就会被误导。</li>
+<li>汉隆剃刀：能用愚蠢或疏忽充分解释的坏结果，就不要归因于恶意，这是对先验概率的校正。</li>
+<li>升级版汉隆剃刀：优先把他人行为归因于看不见的约束与激励，而不是归因于品性。</li>
+<li>汉隆剃刀不是免罪符：当“疏忽”稳定地朝对某人有利的方向出现，就该更新先验。</li>
+<li>邓巴数：稳定社会关系约以 150 为上限，呈 5、15、50、150 的同心圆，越往外越浅。</li>
+<li>组织超过约 150 人，人人相识的默契就撑不住协调，戈尔公司因此把每座工厂封顶在约 150 人。</li>
+<li>哥德尔不完全性：足够强的一致形式系统必有真而不可证的命题，也无法在内部自证一致。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

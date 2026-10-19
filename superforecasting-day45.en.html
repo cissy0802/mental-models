@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -233,6 +238,21 @@
 1. Propose 2–3 suitable reference classes and explain the relevant similarity of each.
 2. Give the historical base rate of each as a prior starting point.
 3. Starting from the base rate, make a disciplined adjustment for this case's genuine specifics, give a final probability/range, and warn me if I'm sliding back into the inside view.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Forecast quality has two independent virtues: calibration means your probabilities tell the truth; resolution means daring to move off the base rate.</li>
+<li>A forecaster who always reports the base rate is perfectly calibrated but useless; shouting 95% everywhere to seem bold destroys calibration.</li>
+<li>Forecast error splits into a calibration term and a resolution term: feedback cures poor calibration, domain knowledge cures poor resolution.</li>
+<li>Weather forecasters are among the best-calibrated people because they get next-day feedback; professions with slow, sparse feedback calibrate poorly.</li>
+<li>The Brier score is the squared gap between your probability and the outcome (1 or 0), averaged over many forecasts; lower is better.</li>
+<li>The Brier score is a proper scoring rule: the only way to maximize your expected score is to report what you truly believe.</li>
+<li>Because the Brier score squares the error, being confidently wrong costs far more than admitting uncertainty, which suppresses overconfidence.</li>
+<li>Hedgehogs force everything into one grand theory; foxes juggle many competing small models, and over the long run foxes forecast better.</li>
+<li>The fox works like an ensemble model whose biased views average out; the hedgehog fails because a strong prior refuses to update on data.</li>
+<li>The outside view picks a reference class, anchors on its base rate, then adjusts for specifics; the base rate is the Bayesian prior.</li>
+</ol>
 </section>
 
 <footer class="footer">

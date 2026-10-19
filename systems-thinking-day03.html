@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#0984e3;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -203,6 +210,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>反馈循环分两类：正反馈（增强循环）放大变化，负反馈（调节循环）抑制偏差、维持系统稳定。</li>
+<li>正反馈既能驱动增长也能引发崩溃；当它压过负反馈的约束，系统就越过临界点，进入指数级变化。</li>
+<li>负反馈的效果常常滞后于正反馈，所以信用泡沫这类系统会让人在崩溃前一直感觉一切正常。</li>
+<li>Donella Meadows 把系统的杠杆点由低到高排为参数、反馈强度、规则、目标和范式，范式层杠杆最大。</li>
+<li>多数人只在参数层面干预，因为它直观、可量化又安全；改变规则、目标或范式带来的系统变化往往大得多。</li>
+<li>杠杆悖论：杠杆点越高影响越大，遭遇的抵制也越强，因为它挑战了参与者的身份认同和利益结构。</li>
+<li>高德拉特的瓶颈理论认为，系统产出上限由瓶颈环节决定，优化非瓶颈环节只是一种优化幻觉。</li>
+<li>瓶颈理论的五步聚焦法是识别、利用、服从、提升瓶颈，再回头找新瓶颈，因为瓶颈会不断转移。</li>
+<li>涌现指整体出现部分不具备的特性，比如神经元连接产生意识，前提是组件之间存在非线性相互作用。</li>
+<li>涌现行为无法靠自上而下的微观指令精确控制，只能通过设计组件之间的交互规则来引导它的方向。</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.html">← 返回目录 / Back to Index</a>
 </nav>

@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       Analyze [team / market / educational environment / AI workflow] as a Complex Adaptive System. ① Identify the main adaptive agents and their local rules; ② Map 2-3 key feedback loops (positive and negative); ③ Assess where the system sits on the order-chaos spectrum and whether it's near the optimal "edge of chaos"; ④ Flag any "illusion of control" — management measures likely to be adaptively circumvented; ⑤ Design 3 concise interaction rules to replace detailed directives, enabling better outcomes to emerge naturally.
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>林迪效应指出：技术、书籍、思想这类非易腐事物已存活越久，预期剩余寿命就越长。</li>
+<li>林迪效应只适用于信息、文化和技术类实体，桥梁这类会受物理磨损的东西并不适用。</li>
+<li>蝴蝶效应来自洛伦兹 1963 年的发现：非线性系统里，初始条件的微小差异会被指数级放大。</li>
+<li>1961 年洛伦兹把 0.506127 舍入成 0.506 重跑天气模拟，结果几个模拟月后完全走样。</li>
+<li>复杂系统有预测视界，超出视界的长期精确预测是不可能的，应改用情景规划来做准备。</li>
+<li>路径依赖指在有正反馈的系统里，早期的偶然选择会造成锁定，更优的替代方案可能永远进不来。</li>
+<li>每一次适应现有路径的投资都在加深锁定，单次看都理性，累积起来却造成次优锁定。</li>
+<li>QWERTY 布局为防 1873 年机械打字机卡键而生，靠打字员、厂商和学校互相强化沿用至今。</li>
+<li>复杂适应系统由大量按局部规则互动的适应性主体组成，整体会涌现出任何单个主体都无法预见的模式。</li>
+<li>复杂适应系统里控制是一种幻觉：主体会适应控制信号，指标一旦成为目标就不再是好指标。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

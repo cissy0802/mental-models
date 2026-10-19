@@ -27,6 +27,11 @@ footer{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}
   header h1{font-size:1.4rem}
   .card{padding:24px 18px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -143,6 +148,21 @@ footer{text-align:center;padding:40px 0 12px;font-size:0.82rem;color:#b2bec3}
     Apply Asset Allocation thinking to my current [portfolio/time budget/energy distribution]. Identify concentration risks, suggest uncorrelated hedging categories, and stress-test whether this allocation survives the worst-case scenario.
   </div>
 </div>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>安全边际出自格雷厄姆的价值投资：只在价格显著低于内在价值时出手，为估算误差留出缓冲。</li>
+<li>格雷厄姆系统地买入股价远低于净资产的股票，即使估值偏高也不至于亏损，由此穿越了大萧条。</li>
+<li>均值回归指极端值往往向长期平均靠拢：最好的时期之后常有回落，最糟的时期之后更可能复苏。</li>
+<li>篮球运动员连续命中后，投篮命中率往往回到球员的长期平均，因为极端表现里含有随机波动的成分。</li>
+<li>均值回归只在基本面不变时成立，用它判断前必须先区分「暂时偏离」和「结构性变化」。</li>
+<li>复利效应是增长作用于增长本身，决定结果的关键不是单次增幅，而是持续的时间。</li>
+<li>1 美元每天翻倍，第 20 天才过 100 万，第 30 天超过 10 亿：指数增长前期慢、后期快。</li>
+<li>复利最大的敌人是中断：大幅亏损、中途放弃或频繁换策略，都会让多年的积累前功尽弃。</li>
+<li>资产配置把资源分散到相关性低的类别里，追求的不是最优解，而是在多种情境下都能存活的稳健解。</li>
+<li>斯文森的耶鲁模型把捐赠基金分散到六大类低相关资产，在互联网泡沫和 2008 年危机中都很抗跌。</li>
+</ol>
+</section>
 <a class="back" href="index.html">← 返回目录</a>
 <footer>Powered by curiosity &amp; first principles.</footer>
 </div>

@@ -35,6 +35,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#6c5ce7;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -204,6 +211,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>第一性原理是把论断拆到无法再推导的公理层，再从公理重新推演，而不是照着现有方案做类比。</li>
+<li>第一性原理最常见的误用是「假拆解」：只拆到自己习惯的那一层就停下，却以为已经拆到了底。</li>
+<li>真正的第一性原理推理通常会跨越学科边界，「行业惯例」「大家都这么做」是滑入类比的信号。</li>
+<li>二阶思维在问完「接下来会怎样」后继续追问「然后呢」，霍华德·马克斯认为只靠一阶超不过平均。</li>
+<li>二阶思维的杠杆不在于想得更远，而在于看到反身性：你的决策会改变系统状态和其他参与者的行为。</li>
+<li>眼镜蛇效应说明，悬赏死蛇的激励会被民众养蛇套利，忽视二阶反应的政策可能制造比原问题更大的问题。</li>
+<li>可逆且影响小的决策用一阶思维就够，不可逆且系统性的决策必须推演到二阶甚至三阶。</li>
+<li>逆向思维是反向求解同一个问题：想知道如何成功，先列出如何必然失败，芒格把它视为最被低估的思维工具。</li>
+<li>逆向思维有效，是因为失败路径少而明显、成功路径多而依赖判断，避开必败行为比追逐成功更可行。</li>
+<li>奥卡姆剃刀主张解释力相同时选假设更少的那个，它不是「越简单越对」，而是一种贝叶斯先验。</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.html">← 返回目录 / Back to Index</a>
 </nav>

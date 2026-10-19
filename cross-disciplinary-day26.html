@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       Build a minimum mathematical model for the following problem: [describe problem]. Steps: (1) List 3-5 core variables with units and measurability. (2) Specify the relationships among them (linear, exponential, logarithmic, threshold, or feedback loop). (3) Declare which variables you deliberately omit and why — this is the critical modeling step. (4) Clarify the model's layer (descriptive / predictive / explanatory / normative). (5) State the conditions under which the model breaks down. (6) Use the model to derive 2-3 counterintuitive insights or decision recommendations.
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>物理学隐喻的价值不在听起来科学，而在逼人识别系统里的守恒量、流向、势差和阈值。</li>
+<li>把团队的“动量”拆成质量和速度逐项追问，物理学隐喻就变成一套结构化的提问清单。</li>
+<li>物理学描述无意识的物质，人却能主动选择改变，所以物理学隐喻只宜当快速分析的脚手架。</li>
+<li>生物学类比把组织看作有机体：复杂系统往往不是设计出来的，而是在变异、选择、保留中被选出来的。</li>
+<li>Geoffrey West 的规模法则提醒我们，组织变大时并非所有功能线性放大，沟通与协调成本可能增长更快。</li>
+<li>把“适者生存”读成强者通吃是社会达尔文主义陷阱，进化同样青睐适合环境者和善于合作者。</li>
+<li>历史韵律识别跨时代重复的结构性模式，最大价值是矫正“当下即永恒”的错觉，而不是预测具体事件。</li>
+<li>历史韵律不是宿命而是风险地图，Ray Dalio 也强调周期只给方向感，不能当精确的择时工具。</li>
+<li>数学建模的精髓在于选择忽略什么：保留核心机制，问题瞬间清晰；忽略关键变量，模型就会失效。</li>
+<li>描述、预测、解释、规范四类数学模型不能混用，把描述性模型当解释性模型用，就会把相关误当因果。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

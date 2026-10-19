@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -298,6 +303,22 @@
 1. Using the S-curve, where are we: slow start, explosion, inflection, or near saturation? On what evidence?
 2. If in the explosion phase, am I dangerously extrapolating linearly? Roughly where is the ceiling?
 3. If near saturation, what could my "second curve" be, and how much should I invest now to incubate it?</div>
+</section>
+
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>罗杰斯的创新扩散曲线把人群按采纳先后分成五段：创新者、早期采纳者、早期大众、晚期大众和落后者。</li>
+<li>采纳者类别不是永久的性格标签，而是一个人相对于某项具体创新所处的位置。</li>
+<li>每一段人群采纳的理由不同：早期采纳者赌远见、能容忍粗糙，早期大众只信别人用过的实用结果。</li>
+<li>推广新事物应先找到少数早期采纳者，让这些意见领袖替你向大众背书，而不是去说服落后者。</li>
+<li>摩尔的鸿沟理论指出，早期采纳者与早期大众之间有一道鸿沟，许多叫好的新产品死在这里。</li>
+<li>鸿沟存在是因为务实的早期大众要完整方案和同行先例，形成「大众要等大众先用」的死结。</li>
+<li>跨越鸿沟要收窄而非铺开：先在一个最窄最痛的滩头市场做到第一，再像保龄球一样撞倒邻近市场。</li>
+<li>阈值模型认为每人都有「多少人先做我才做」的阈值，能否引爆取决于这些阈值能否连成一条链。</li>
+<li>引爆靠局部密度而非全局广度：在一个小网络里把采纳堆过临界质量，才能引发自我维持的级联。</li>
+<li>扩散的累计采纳呈 S 曲线，拐点后增速已放缓，别线性外推，应在饱和前提前启动第二曲线。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

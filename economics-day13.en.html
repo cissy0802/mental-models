@@ -48,6 +48,11 @@
     .card h2 { font-size: 1.3rem; }
     .prompt { font-size: 0.8rem; padding: 14px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -160,6 +165,22 @@ Apply the supply-demand equilibrium model to [market/resource]. Identify the dom
     <div class="section-divider"><span class="label">AI Prompts</span><hr></div>
     <div class="prompt"><span class="tag">English Template</span>
 Audit [activity / project / output] for externalities. List the unpriced negative spillovers it creates, the underestimated positive spillovers, and propose concrete actions to internalize the negatives and amplify the positives so I can capture more second-order returns.</div>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Opportunity cost is the value of the best alternative you give up when you choose one option, and it never appears in the accounting books.</li>
+  <li>Opportunity cost is inflating in the AI era: two hours spent no longer forgo just a movie, but ten parallel experiments or a tested business hypothesis.</li>
+  <li>Buffett explains opportunity cost through compounding: the real price of a purchase is the best return that money could have earned over decades.</li>
+  <li>Ricardo's comparative advantage says specialization should follow the lowest opportunity cost, not who holds the absolute advantage.</li>
+  <li>Portugal beat England at both wine and cloth, yet when each country specialized in its lower-cost product and traded, total output rose for both.</li>
+  <li>Even if AI holds the absolute advantage in coding and research, humans keep a comparative advantage in original questions, value judgments and cross-domain synthesis.</li>
+  <li>In supply and demand equilibrium, price forms where the two curves cross and compresses countless people's private information into one number.</li>
+  <li>Equilibrium is not stillness: prices keep chasing a moving truth, and Uber's surge pricing in a rainstorm shows supply and demand re-clearing in real time.</li>
+  <li>An externality is a cost or benefit that spills onto third parties without passing through the price system, and failing to internalize it is a major cause of market failure.</li>
+  <li>A Pigouvian tax on a polluting factory internalizes the cost it pushed onto downstream fishermen, so prices once again tell the truth about cost.</li>
+  </ol>
   </section>
 
   <footer>

@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -291,6 +296,21 @@
 1. How many <em>real observed</em> variants do I have? If &lt; 3 → YAGNI trigger; argue me into duplicating first.
 2. If I abstract now, which feature am I most likely overfitting to, and how does it break when variant #3 arrives?
 3. Classify the decision as implementation-layer vs architecture-layer. If architecture-layer, name the minimal set of decisions that must be made now.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>抽象不是省略细节，而是选一组对当前问题足够的不变量，把其余信息封装到下一层。</li>
+<li>每加一层抽象都在压缩信息，被压掉的那部分迟早会以 bug 或抽象泄露的形式反扑。</li>
+<li>判断抽象是否健康，看上层能否不打开下层就独立调试；每次都要下沉几层，说明边界选错了。</li>
+<li>康威定律：系统架构是组织沟通结构的同构投影，沟通成本高的团队之间会长出防御性接口。</li>
+<li>逆康威操作是先把组织重组成目标架构的形状；组织不拆而强拆服务，只会得到分布式单体。</li>
+<li>Amazon 的 API-only 备忘录要求团队间只通过服务接口通信，是逆康威操作的经典案例。</li>
+<li>Cunningham 的技术债原意是带着不完全的理解先发布，再把学到的洞见重构回去，而不是烂代码。</li>
+<li>技术债利率并不匀速：错的数据模型或核心抽象几个月就拖垮团队，应先还高利率债而非最丑的债。</li>
+<li>YAGNI 的深层含义是抽象需要数据：只见过一两个真实变体就抽象，等于样本不足时拟合，必然过拟合。</li>
+<li>错误的抽象比重复代码贵得多，但 YAGNI 只管实现层；数据模型、核心 API 等架构层决策必须预判未来。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

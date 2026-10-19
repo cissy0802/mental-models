@@ -35,6 +35,11 @@
   .footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   .footer a:hover { text-decoration: underline; }
   @media (max-width: 640px) { .container { padding: 28px 14px 48px; } .card { padding: 24px 20px; } .page-header h1 { font-size: 24px; } .card h2 { font-size: 20px; } }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -169,6 +174,21 @@
     </div>
   </section>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>In the Prisoner's Dilemma, defection is each player's dominant strategy, yet mutual defection leaves both worse off than mutual cooperation.</li>
+<li>Levers for escaping a Prisoner's Dilemma include repeating the game, building reputation, adding institutional constraints and shrinking group size.</li>
+<li>A Nash equilibrium is a state where no player gains by unilaterally changing strategy while everyone else's strategy stays fixed.</li>
+<li>A Nash equilibrium is stable but not necessarily optimal: a system can sit for years in a state everyone dislikes but nobody will leave first.</li>
+<li>Many games have multiple Nash equilibria, and which one wins often depends on history, culture and focal points, as with driving on the left or right.</li>
+<li>The Folk Theorem of repeated games shows that patient players in long-running interactions can sustain cooperation impossible in a one-shot game.</li>
+<li>In repeated games, the longer the shadow of the future, the sturdier cooperation; once players know which round is last, backward induction unravels it.</li>
+<li>In Axelrod's tournaments, Tit-for-Tat, which cooperates first and then copies the opponent's last move, beat every sophisticated strategy.</li>
+<li>Tit-for-Tat wins through four traits: nice (never defects first), retaliatory, forgiving once the other side cooperates again, and clear enough to read.</li>
+<li>Where actions are easily misread, two Tit-for-Tat players can spiral into retaliation; Generous Tit-for-Tat sometimes cooperates anyway to break the loop.</li>
+</ol>
+</section>
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>
   </footer>

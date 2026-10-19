@@ -105,6 +105,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -253,6 +258,22 @@
       <div class="prompt-label">English Prompt</div>
       <p>I'm designing a metric to measure <code>[target behavior]</code> for <code>[team / child / myself]</code>; the candidate metric is <code>[metric]</code>. Evaluate via the observer effect and Goodhart's law: (1) Once this becomes the target, what behavior will actually be optimized? (2) How far will that drift from my true goal? (3) Is there a harder-to-game composite metric or audit method closer to my intent? Propose an improved version.</p>
     </div>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Mindfulness is not thinking nothing; it is non-judgmental awareness of the present that separates thoughts and feelings from facts.</li>
+  <li>In the two-arrow model, the first arrow is the bare fact and the second is the story you add; mindfulness pulls only the second.</li>
+  <li>Mindfulness practice does not chase an empty mind: the labeling technique tags each thought as planning, judging or worry and lets it fade.</li>
+  <li>Metacognition is awareness and regulation of your own thinking, with two layers: knowledge of your strengths and real-time strategy adjustment.</li>
+  <li>Flavell first defined metacognition in 1979; teaching students to question themselves lifts long-term results more than adding subject content.</li>
+  <li>AI can take over first-order skills like writing code or prose, but it cannot decide when you should stop and switch strategies.</li>
+  <li>Yogācāra holds that the world you experience is not the outside world directly, but seeds in the storehouse consciousness manifesting under conditions.</li>
+  <li>In Yogācāra, seeds can be rewritten through repeated action, so changing a reaction pattern means planting new seeds rather than suppressing old ones.</li>
+  <li>The observer effect appears alike in quantum measurement, the Hawthorne effect and introspection: observing is never neutral sampling, it is intervening.</li>
+  <li>Goodhart's law warns that a metric turned into a target gets gamed, so designing a metric means designing the behavior you will get.</li>
+  </ol>
   </section>
 
 </div>

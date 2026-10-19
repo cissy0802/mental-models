@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -247,6 +252,21 @@
 3. Is there a "big number masquerading as real value" trap here (KPI, followers, valuation)? Has real value decoupled from the nominal metric?</div>
   </section>
 
+  <section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>The interest rate is the price of time: it converts future money into present money and prices our preference for now over later.</li>
+<li>The interest rate is the economy's universal discount rate, so a rate hike marks down the future and hits story-in-the-distance growth assets first.</li>
+<li>In the Fed's aggressive 2022 hikes, Nasdaq growth stocks halved in a year; fundamentals barely moved, the discount rate did.</li>
+<li>Inflation is not things getting pricier but the ruler of value shrinking, because money is printed faster than real wealth grows.</li>
+<li>New money has an injection order: those nearest the printer buy at old prices, so inflation is first a hidden transfer of wealth.</li>
+<li>Inflation adds noise to price signals and distorts allocation; once expectations self-reinforce, hyperinflation destroys money's store of value.</li>
+<li>Leverage amplifies gains and losses symmetrically but risk asymmetrically, since a forced liquidation turns a paper loss into permanent ruin.</li>
+<li>Debt separates spending from repaying in time, creating boom and bust; short debt cycles ride atop a decades-long debt cycle.</li>
+<li>Deleveraging is a reflexive spiral: selling to repay drives prices down, shrinking collateral forces more selling, as in the 2008 crisis.</li>
+<li>Money illusion mistakes nominal numbers for real value: people accept a 2% raise with 4% inflation far more readily than a 2% pay cut.</li>
+</ol>
+</section>
   <footer class="footer">
     <a href="index.en.html">← Back to index</a>
   </footer>

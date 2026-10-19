@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -290,6 +295,21 @@ Run a "voice and accountability" audit:
 1. Mark deletable filler, clichés, and empty transitions sentence by sentence, and show the trimmed version.
 2. Identify 1–2 passages I'm probably proudest of that don't serve the main line — recommend cutting them and explain why the piece is stronger without them.
 3. Return the tightened full text and tell me how many words it dropped.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>「写作即思考」：写作不是誊写想好的东西，而是把模糊想法变清楚的过程本身。</li>
+<li>写作强制串行化，把脑中并行的联想网压成一条线，从而戳破「理解的错觉」。</li>
+<li>纸面是一块不会衰减的外置工作记忆，让人驾驭远超三四个组块的复杂论证。</li>
+<li>费曼说草稿不是思考的记录，纸上发生的就是思考本身；写不清楚往往说明还没真懂。</li>
+<li>「一次只说一件事」的约束来自读者：工作记忆一次只握得住三四个组块，一句塞三个想法就逼人回读。</li>
+<li>复杂度守恒：写者没理顺的纠缠会原样转嫁给每一位读者，再乘以读者人数。</li>
+<li>每句以旧信息开头、以新信息结尾，新知识才能挂靠在刚立住的旧知识上。</li>
+<li>主动语态「施事→动作→受事」对齐因果结构，被动语态则让该负责的人从句子里消失。</li>
+<li>语态的规则是默认主动、刻意被动：受事才是话题或施事者无关时，被动句才是对的。</li>
+<li>「删除胜增补」：人改进东西本能地去加，但写作主要靠删变好，每个多余的字都在向读者收税。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

@@ -38,6 +38,13 @@ nav a:hover{text-decoration:underline}
   .card-body{padding:20px}
   .card-header{padding:18px 20px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -216,6 +223,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>苏格拉底式提问用连续追问检验假设、揭示知识盲区，不急于给答案，而是让问题驱动对话。</li>
+<li>苏格拉底式提问的六类问题是：澄清、探究假设、寻找证据、考察观点、探索影响、质疑问题本身。</li>
+<li>让对方自己走到矛盾面前，比直接说他错了更有效，因为后者会触发防御；苏格拉底因此称自己的方法为助产术。</li>
+<li>佛陀的筏喻说明知识是工具：渡河需要竹筏，上岸后仍把竹筏扛在肩上，它就成了负累。</li>
+<li>功能固着会让一个成功用过的框架从工具升级为身份，这种转变是思维固化的起点。</li>
+<li>该放下的不只是错误的筏，也包括曾经正确的筏，就像牛顿力学的适用边界被相对论重新划定。</li>
+<li>认知天花板往往不取决于掌握多少框架，而取决于能多快放下正在使用的那个框架。</li>
+<li>无知之知是清楚画出自己知识的边界，它是真正学习的起点，价值不在心理上的谦虚感。</li>
+<li>达克-克鲁格效应显示，能力最低的人因为不知道自己不知道什么，反而最高估自己的表现。</li>
+<li>认知谦逊是承认信念可能有错并保持修正的开放，它的最大障碍不是骄傲，而是厌恶不确定性的认知闭合需求。</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.html">← 返回目录 / Back to Index</a>
 </nav>

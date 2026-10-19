@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -288,6 +293,21 @@
 1. Flag items where "discussion time ÷ real importance" is badly skewed (the bikeshedding targets).
 2. Explain why exactly these trivial items captured the attention (accessibility / desire to leave a mark / risk of exposing ignorance).
 3. Propose a structural fix: which debates to kill outright with tooling/defaults, and which to timebox and hand to a small expert group.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>布鲁克斯定律指出，给已经延期的软件项目加人只会更晚，因为人和时间不能互换。</li>
+<li>加人拖慢进度有三个机制：新人爬坡耗老人时间、沟通线按 n(n-1)/2 平方增长、有些任务无法切分。</li>
+<li>布鲁克斯定律与 Amdahl 定律同构：不可并行的串行瓶颈，决定了加人或加核的提速上限。</li>
+<li>对抗布鲁克斯定律的办法是缩小沟通面——模块化、清晰接口、缩减范围，而不是继续加人或加互相协调的 agent。</li>
+<li>彼得原理说，层级组织里晋升奖励的是当前岗位表现，于是人会一路升到自己不能胜任的位置。</li>
+<li>彼得原理是古德哈特定律的组织版：把当前业绩当晋升靶子，它就不再能预测新岗位的胜任度。</li>
+<li>化解彼得原理靠改变选拔方式：技术轨与管理轨双通道、按已展现的下一级能力提拔、先试岗再转正。</li>
+<li>Pournelle 的官僚铁律认为，组织里效忠机构本身的人终将压过献身使命的人，因为内部权力由内部博弈决定。</li>
+<li>抵抗官僚铁律要持续注入外部压力：保持小规模、绑定真实市场反馈、维持创始人式的使命强度。</li>
+<li>帕金森琐碎法则说明，讨论时间与议题重要性成反比，因为琐事人人能懂、插嘴不会暴露无知；对策是用 linter 和默认值消灭可争论性。</li>
+</ol>
 </section>
 </div>
 <script defer="" src="https://hub.cissychen.com/comments.js"></script>

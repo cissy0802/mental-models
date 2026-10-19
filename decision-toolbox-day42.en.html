@@ -106,6 +106,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -235,6 +240,21 @@ Earlier issues covered <em>how to think</em>; this one covers <em>how to turn go
 1. Separate skill from luck — how much of the outcome came from correct reasoning vs chance?
 2. Was my stated confidence calibrated (over- or under-confident)?
 3. Did my emotional state systematically bias this decision, and what trigger should I set to flag it next time?</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>A checklist targets not knowledge gaps but skipping steps you already know when tired, pressured, or distracted.</li>
+<li>A checklist must be short: 5–9 killer items per pause point, the steps that are fatal if skipped and easiest to forget.</li>
+<li>A checklist also has a social function: it creates a legitimate pause that lets lower-status members point out a missed step.</li>
+<li>The pre-mortem, proposed by Gary Klein, assumes the project has already failed and has everyone independently write down why.</li>
+<li>A pre-mortem turns finding failure causes into an authorized task, flipping dissent from social punishment to social reward.</li>
+<li>Rewriting "might fail" as "has failed" shifts the brain from abstract probability to concrete narrative, making causes easier to spot.</li>
+<li>A red team is a formally assigned, standing adversarial role that turns dissent from personal courage into an authorized job.</li>
+<li>Unlike a temporary devil's advocate, a red team needs structural independence and a real incentive to win; once co-opted, it is worthless.</li>
+<li>A decision journal records expectation, reasoning, emotion, and confidence at the moment of choice to counter hindsight and outcome bias.</li>
+<li>A good decision is not the same as a good outcome; a decision journal is the data for separating skill from luck and checking calibration.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Back to Index</a>

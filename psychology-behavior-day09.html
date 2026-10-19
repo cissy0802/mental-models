@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#e17055;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -203,6 +210,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>损失厌恶出自 Kahneman 与 Tversky 的前景理论：损失带来的痛苦约是同等收益快乐的 2 到 2.5 倍。</li>
+<li>损失厌恶也作用于心理上默认拥有的东西，免费试用和“已为你保留”正是利用这一点。</li>
+<li>对抗损失厌恶可以反问一句：如果此刻没有这个东西，我会按现在的价格把它买回来吗？</li>
+<li>峰终定律指出，人对一段经历的评价主要取决于情绪峰值和结尾，中间过程与总时长被大幅折扣。</li>
+<li>经历自我实时感受每一秒，记忆自我决定下次还来不来，两个自我对同一段经历常常给出不同的判断。</li>
+<li>Kahneman 的肠镜研究里，8 分钟但结尾很痛的检查，被记得比 24 分钟但末段缓和的检查更糟。</li>
+<li>心流由 Csikszentmihalyi 提出，指挑战略高于技能、注意力被完全吸收、自我意识消失的最佳体验状态。</li>
+<li>心流最大的敌人不是难度而是打断，决定产出的是不被打断的最长时间块，而不是总工作时长。</li>
+<li>习惯回路由触发、行为、奖励三环构成，反复执行后交给基底神经节自动运行，绕开前额叶的有意决策。</li>
+<li>习惯无法删除只能替换：保留原来的触发和奖励，换掉中间的行为，并用环境设计代替意志力。</li>
+</ol>
+</div>
+</section>
 <nav><a href="index.html">← 返回目录</a></nav>
 </div>
 <script defer="" src="https://hub.cissychen.com/comments.js"></script>

@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -268,6 +273,21 @@
 3. Which loyalties do I want to consciously keep and extend, and which are hijacked fictive-kin triggers I should step back from?</div>
   </section>
 
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>The adaptationist perspective treats the mind as a set of specialized modules: to understand a trait, first ask which ancestral problem it was selected to solve.</li>
+  <li>Accuracy on the Wason selection task soars once it is reframed as a social contract ("you must be 18 to drink"), pointing to a dedicated cheater-detection module.</li>
+  <li>Not every trait is an adaptation; some are byproducts or random drift, so propose falsifiable functional hypotheses instead of after-the-fact just-so stories.</li>
+  <li>Evolutionary mismatch arises because genes evolve slowly while environments change fast, so circuits adapted to ancestral settings misfire systematically today.</li>
+  <li>Supernormal stimuli exaggerate real ancestral signals; junk food, likes, and short videos all use them to hijack the reward circuitry.</li>
+  <li>The most effective response to evolutionary mismatch is designing your environment and what you are exposed to, not fighting it with willpower.</li>
+  <li>Darwin's sexual selection optimizes for passing genes on rather than staying alive, which is why the peacock's tail grows despite hampering escape.</li>
+  <li>The handicap principle says only a signal so costly that just the truly fit can afford it is honest; a fakeable signal carries no information.</li>
+  <li>Hamilton's rule says an altruistic gene spreads when rB &gt; C, because helping relatives propagates the very genes you also carry.</li>
+  <li>Tribalism and "we're a family" corporate appeals are kin circuits misfiring on non-relatives, triggered by fictive-kin cues like shared language or identity.</li>
+  </ol>
+  </section>
   <footer class="footer">
     <a href="index.en.html">← Back to index</a>
   </footer>

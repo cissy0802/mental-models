@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -282,6 +287,21 @@
 1. Which 3–5 psychological tendencies are stacking in the same direction right now (social proof, scarcity, authority, commitment/consistency, overconfidence, envy)?
 2. Is this a natural confluence, or has someone deliberately engineered the hooks together?
 3. If I removed each hook one by one, how much real value remains? Give me an action that keeps me calm amid the frenzy.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>过度自信倾向让人系统性高估自己和一切贴上“我的”标签的东西，机制与禀赋效应同源。</li>
+<li>过度自信是行动的燃料，问题在于校准而非消灭；它在投资、育儿这类反馈慢而嘈杂的领域最致命。</li>
+<li>校准过度自信的办法，是给预测标概率、记台账事后对账，或请不在乎你面子的人做红队拆台。</li>
+<li>芒格认为驱动世界的是嫉妒而非贪婪；嫉妒相对且就近，人只嫉妒身边比自己高半级的人。</li>
+<li>嫉妒常伪装成“这不公平”；解药是换掉参照系，并练习为他人之好由衷欢喜的随喜。</li>
+<li>一致性倾向让人在公开表态或付出努力后锁死立场，承诺越公开、越费力，锁得越死，邪教和传销正靠这一点留人。</li>
+<li>对付一致性偏见，要推迟公开站队，并提前写下“出现什么证据我就认错”的杀死条件。</li>
+<li>Lollapalooza 效应指多个心理倾向同向叠加时结果相乘而非相加，泡沫、恐慌和狂热大多是这种合流。</li>
+<li>芒格常举的家庭售货会同时挂上喜爱、互惠、社会认同、稀缺和承诺五六个钩子，是被刻意工程化的 Lollapalooza。</li>
+<li>逐个检查偏差抓不住合流，要用清单整体扫描；一件事显得压倒性地诱人时，这种感觉本身就是报警器。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

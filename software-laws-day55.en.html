@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -246,6 +251,21 @@
 1. List the top 3 sources eating the performance dividend (abstraction layers, dependencies, redundant calls, complexity creep), ranked by cost.
 2. Propose a quantifiable performance budget for the critical path (concrete metrics + thresholds) that can be guarded as a failing test.
 3. Give 2 anti-entropy moves: which steps to cut/merge for the biggest immediate speed-back without sacrificing core value.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Gall's Law: every complex system that works evolved from a simple system that worked.</li>
+<li>A complex system designed from scratch never works and can't be patched into working; restart from a simple working version and grow it.</li>
+<li>Big-bang rewrites almost always fail; the test at every step is whether the system still runs.</li>
+<li>Postel's Robustness Principle, conservative in what you send and liberal in what you accept, let early Internet implementations interoperate.</li>
+<li>Liberal acceptance slowly erodes a spec until bugs become de-facto standards, which is why protocols like HTTP/2 and QUIC swing strict.</li>
+<li>The discipline behind the Robustness Principle: normalize dirty input into a clean internal representation at the boundary, and emit strictly.</li>
+<li>Hyrum's Law: with enough users of an API, every observable behavior gets depended on by somebody, whatever the docs promise.</li>
+<li>To keep the freedom to change an interface, inject randomness so nobody depends on a behavior, or lock semantics early while users are few.</li>
+<li>Wirth's Law: software slows down faster than hardware speeds up, as abstraction layers and bloated dependencies eat the hardware dividend.</li>
+<li>Performance never improves on its own; win it back with performance budgets on critical paths, guarded like tests that can fail.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Back to Index</a>

@@ -149,6 +149,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -283,6 +288,21 @@
     </div>
   </section>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>In “survival of the fittest,” fitness means fit with a particular environment, not raw strength, so yesterday’s fittest can become today’s least fit.</li>
+<li>Over-specialization is a hidden fragility: the more perfectly you fit today’s environment, the more you lose when it shifts, so the real edge is staying adaptable.</li>
+<li>Peter and Rosemary Grant’s long study of Darwin’s finches showed that a single severe drought could measurably shift average beak depth within two years.</li>
+<li>The Red Queen effect means competitors coevolve in parallel, so a species must keep improving just to hold its relative position, and standing still means falling behind.</li>
+<li>The Red Queen effect also helps explain why costly sexual reproduction persists: genetic recombination keeps generating variation, letting a species keep pace in its arms race with parasites.</li>
+<li>The way out of a Red Queen arms race is not running faster but switching tracks, moving into a niche competitors have not yet reached.</li>
+<li>Symbiosis spans mutualism, commensalism and parasitism, and Lynn Margulis’s endosymbiotic theory holds that mitochondria and chloroplasts began as free-living bacteria.</li>
+<li>Competition drives optimization while symbiosis drives innovation, but mutualism can drift into parasitism as power becomes lopsided, so the exchange needs constant recalibration.</li>
+<li>The competitive exclusion principle says two species with identical niches cannot coexist for long: one must differentiate or be eliminated.</li>
+<li>Niche construction theory holds that species do not merely adapt but reshape their environment, as beavers do with dams, to create new niches.</li>
+</ol>
+</section>
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>
   </footer>

@@ -34,6 +34,11 @@
   footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   footer a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -111,6 +116,21 @@ Analyze: 1) Is it fragile, robust, or antifragile, and why? 2) Which hidden over
     <div class="prompt-block"><span class="tag">English Template</span>
 Run an expected-value analysis on this decision: [decision]
 Please: 1) Enumerate 3-5 possible outcomes with probability and payoff; 2) Compute the EV and flag the most uncertain input; 3) Assess whether the structure is asymmetric (bounded downside, uncapped upside); 4) If the decision is one-shot/irreversible, re-evaluate under a ruin-avoidance lens and recommend a sizing/exposure level.</div>
+  </section>
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Bayesian thinking treats beliefs as probability distributions, not verdicts, and updates them by the rule: posterior is proportional to prior times likelihood.</li>
+  <li>Extreme priors resist any single piece of evidence, vague priors get hijacked by noise, and evidence you fail to see also updates a belief.</li>
+  <li>In the rare-disease test, with 0.1% prevalence and 99% accuracy, a positive result means under a 10% chance of illness, because false positives swamp true ones.</li>
+  <li>A Black Swan is extremely rare, hugely consequential and rationalized after the fact; it arises because the world often follows power laws rather than a normal curve.</li>
+  <li>Risk management should ask not what is most likely, but whether an event would wipe you out: any strategy that one ruin resets to zero fails in the long run.</li>
+  <li>Before the 2008 subprime crisis, bank models relied on historical windows and rated a deep house-price fall as near impossible, missing the system's structural fragility.</li>
+  <li>Taleb separates the fragile, the robust and the antifragile; an antifragile system has a convex response to volatility, gaining more on the upside than it loses on the downside.</li>
+  <li>Overprotection breeds fragility, since surface stability piles small risks into big ones; antifragility means capping the downside and seeking small, recoverable stressors.</li>
+  <li>Expected-value thinking separates decision quality from a single outcome: a positive-EV choice can still lose, but only expected value compounds over time.</li>
+  <li>A positive expected value does not justify betting big: use EV for repeatable decisions, maximum tolerable loss for one-shot irreversible ones, and the Kelly criterion for bet size.</li>
+  </ol>
   </section>
 
   <footer>

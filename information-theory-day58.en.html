@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -248,6 +253,21 @@
 1. Is this signal's mutual information with the outcome I truly care about high, medium, or near zero?
 2. Is there a "looks linearly correlated but barely dependent" mismatch, or the reverse?
 3. If it's low, tell me whether I've fallen into a Goodhart trap, and propose a substitute signal with higher mutual information with the goal.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Shannon entropy is the average surprise of a probability distribution: it measures how much uncertainty an outcome resolves, not how important the content is.</li>
+<li>The surprise of an event is −log p, so rarer events carry more information, but high information content is not the same as high value.</li>
+<li>To judge whether a message has value, ask how far it moved your probability estimates; if they did not move, it carried zero information.</li>
+<li>Shannon proved every noisy channel has a capacity C: below C, coding can push errors arbitrarily low; above C, errors cannot be removed.</li>
+<li>Approaching channel capacity takes redundancy and longer codes, paid for in latency, while raising signal-to-noise adds capacity only logarithmically.</li>
+<li>When communication keeps failing, check whether the channel is over capacity, then send less at once or repeat from new angles instead of talking louder.</li>
+<li>The source-coding theorem says lossless compression cannot shorten average code length below the entropy, and truly random data cannot be compressed at all.</li>
+<li>Compression is comprehension: rote memorization compresses nothing, grasping the generating rule makes data short, and abstraction is a form of lossy compression.</li>
+<li>Mutual information I(X;Y) measures how much knowing X reduces uncertainty about Y, and it catches nonlinear dependence that correlation misses.</li>
+<li>A metric or question is worth as much as its mutual information with the real decision; when a proxy decouples from the goal, Goodhart's Law takes over.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Back to index</a>

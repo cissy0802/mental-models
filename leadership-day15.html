@@ -31,6 +31,11 @@ footer{text-align:center;padding:36px 0 12px;font-size:0.82rem;color:#b2bec3}
   .card h2{font-size:1.15rem}
   .card h2 .en{display:block;margin-left:0;margin-top:4px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -163,6 +168,21 @@ footer{text-align:center;padding:36px 0 12px;font-size:0.82rem;color:#b2bec3}
     </div>
 </div>
 </div>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>仆人式领导由格林利夫在 1970 年代提出：领导者的首要角色是服务团队成员的成长，而不是发号施令。</li>
+<li>仆人式领导靠倾听、共情和说服影响他人，权力自下而上流动，领导者负责扫清障碍、提供资源。</li>
+<li>西南航空 CEO 凯莱赫奉行「员工第一、客户第二、股东第三」，在他带领下公司连续 47 年盈利。</li>
+<li>情境领导认为没有万能的领导风格，最有效的方式取决于下属在具体任务上的能力和意愿。</li>
+<li>情境领导的指令、教练、支持、授权四种风格要随对方成长切换：放手太快会出事，太慢会扼杀成长。</li>
+<li>能力圈的关键不在圈子有多大，而在清楚边界在哪里；一旦越界，再聪明的人也会犯低级错误。</li>
+<li>巴菲特在互联网泡沫中拒绝买看不懂的科技股，直到 2016 年才买入已更像消费品公司的苹果。</li>
+<li>用 AI 生成一段量化策略代码不等于懂了量化投资：AI 能延伸你的手，却替代不了能力圈里的理解。</li>
+<li>责任型授权只明确目标、标准和后果，把实现方法交给执行者，比逐步下指令的指令型授权更高效。</li>
+<li>无论授权给人还是 AI，都适合渐进信任：先在低风险任务上验证可靠性，再逐步扩大授权范围。</li>
+</ol>
+</section>
 <div class="nav">
 <a href="index.html">← 返回目录</a>
 </div>

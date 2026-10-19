@@ -137,6 +137,11 @@
     .card { padding: 22px 20px; }
     header.page-header h1 { font-size: 22px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -233,6 +238,22 @@
     <div class="section-label">AI Prompts</div>
     <hr>
     <pre class="prompt"><span class="tag">English Template</span>I need to explain [concept + key points] to [audience and their prior knowledge]. Generate 5 candidate analogies. For each, specify: (a) the familiar anchor; (b) the relational mapping that carries the load; (c) a one-sentence "but unlike X…" disclaimer that marks where the analogy breaks. Rank them by comprehension efficiency for this audience and recommend the strongest single choice.</pre>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Deliberate practice, as systematized by Ericsson, is structured training in the learning zone with clear goals, immediate feedback and constant error correction, not repetition in the comfort zone.</li>
+  <li>The neural basis of deliberate practice is myelination: repeatedly fired axons get wrapped in insulation, so a skill is a physical structure that grows.</li>
+  <li>Ten thousand hours is a median, not a threshold; experts differ from amateurs mainly in the granularity of their mental representations, not motor fluency.</li>
+  <li>A T-shaped person pairs deep expertise in one domain with breadth across many; depth alone breeds blind spots, breadth alone fails to ship.</li>
+  <li>The horizontal bar of a T only counts if you can hold a real conversation with experts in that field; two or more deep pillars plus a bar make a π- or comb-shaped profile.</li>
+  <li>Per Gentner's Structure-Mapping Theory, what cross-domain transfer carries into a new field is relational structure, not surface features.</li>
+  <li>The main barrier to cross-domain transfer is rarely missing knowledge but the wall built by storing knowledge by discipline and clinging to a professional identity.</li>
+  <li>Cross-domain transfer must guard against false transfer: analogies whose surfaces match but whose structures differ lead to disastrous misuse.</li>
+  <li>Analogical thinking grasps something new by mapping it onto a known structure; a good analogy is judged by whether the audience already holds the source in mind.</li>
+  <li>A popular analogy, once entrenched, caps later thinking, as "the brain is a computer" did; every analogy should come with a "but unlike X..." caveat.</li>
+  </ol>
   </section>
 
   <a href="index.en.html" class="back-link">← Back to Mental Models index</a>

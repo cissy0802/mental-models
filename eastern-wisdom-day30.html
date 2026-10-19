@@ -35,6 +35,11 @@
   footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   footer a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -120,6 +125,22 @@ Apply Wang Yangming's Unity of Knowing and Doing audit: 1) Which specific action
 I'm holding an essence-style judgment: [person/project/self/situation] — specifically the label: [X IS Y].
 Reframe via Emptiness &amp; Dependent Origination: 1) Translate "X is Y" into "under which conditions does X manifest as Y" — enumerate 5 condition dimensions (situation, body state, history, relations, interpretation). 2) Which 2-3 of these conditions are directly within my influence? 3) Design a minimal experiment that varies one condition to see Y shift. 4) What observation has my attachment to this essence-judgment caused me to miss?</div>
 </section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>“道法自然”与“无为”不是什么都不做，而是不施加与系统自然梯度相反的力，顺势再轻推方向。</li>
+<li>逆着系统自然梯度的努力大多被稀释成摩擦税；最有效的干预往往是移除一个阻碍，而非添加推力。</li>
+<li>庖丁解牛的刀用了十九年仍如新，因为他沿筋骨缝隙下刀：同样的工作，差别在顺势还是逆势。</li>
+<li>“中庸之道”不是折中和稀泥，而是在“过”与“不及”两个失败模式之间，找当下情境的动态最优点。</li>
+<li>中庸讲“时中”：最优点随情境漂移，像控制系统的变设定点；常见的失败是沿用上一阶段的最优点。</li>
+<li>孔子评子张与子夏“过犹不及”：过头和不足同样糟糕，并不存在“宁可过一点”的安全边。</li>
+<li>王阳明的“知行合一”是在定义什么算知：能改变行动的才是真知，不能驱动行动的只是关于知的记忆。</li>
+<li>检验一项“已知”，就问它最近一次改变了你的哪个行动；说不出来，就降级为“听过”。</li>
+<li>佛学“空性”不是什么都没有，而是没有独立自存的东西：一切现象都是条件聚合的暂时显现，即“缘起”。</li>
+<li>把“X 是 Y”改成“X 在当前条件下显现为 Y”，就能从实体式标签中看见可以干预的条件。</li>
+</ol>
+</section>
+
 <footer>
 <a href="index.html">← 返回首页</a>
 </footer>

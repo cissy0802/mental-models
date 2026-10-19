@@ -34,6 +34,13 @@ nav{text-align:center;margin-top:48px;padding-top:28px;border-top:1px solid #eee
 nav a{color:#6c5ce7;text-decoration:none;font-weight:600;font-size:0.95rem}
 nav a:hover{text-decoration:underline}
 @media(max-width:600px){header h1{font-size:1.5rem}.card-body{padding:20px}.card-header{padding:18px 20px}}
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
+.card.tk { border-left: 4px solid #0a6fb8; }
+.card.tk h2 { font-size: 1.35rem; font-weight: 800; color: #1a1a2e; line-height: 1.3; }
 </style>
 </head>
 <body>
@@ -176,6 +183,23 @@ nav a:hover{text-decoration:underline}
 </div>
 </div>
 
+<section class="card tk">
+<div class="card-body">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>First-principles thinking strips an argument down to axioms that cannot be derived from anything else, then rebuilds from them instead of reasoning by analogy.</li>
+<li>The most common misuse of first principles is fake decomposition: stopping at the layer you already know and believing you have hit bottom.</li>
+<li>Real first-principles reasoning usually crosses a discipline boundary; phrases like "industry convention" or "everybody does it" signal a slide into analogy.</li>
+<li>Second-order thinking keeps asking "and then what?" after "what happens next?"; Howard Marks argues first-order thinking alone can never beat the average.</li>
+<li>The leverage of second-order thinking is not seeing further ahead but seeing reflexivity: your decision changes the system and how other players behave.</li>
+<li>The cobra effect shows how a bounty on dead snakes led people to breed snakes for profit, so ignoring second-order reactions can make the original problem worse.</li>
+<li>Reversible, low-impact decisions can run on first-order thinking, but irreversible, systemic decisions must be projected to the second or third order.</li>
+<li>Inversion solves the same problem backward: to learn how to succeed, first list how to guarantee failure, a tool Munger counts among the most underrated.</li>
+<li>Inversion works because failure paths are few and obvious while success paths are many and judgment-heavy, so avoiding sure failures beats chasing success.</li>
+<li>Occam's Razor prefers the explanation with fewer assumptions when predictive power is equal; it is a Bayesian prior, not "simpler is always true."</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.en.html">← Back to Index</a>
 </nav>

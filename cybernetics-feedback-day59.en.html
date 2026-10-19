@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -258,6 +263,21 @@
 1. What kinds of "disturbances" does this environment throw out, and roughly how many kinds?
 2. How many does my current "repertoire of responses" cover? Where are the gaps?
 3. Give me two routes: one to "raise my response variety" (which tools / perspectives / people to add) and one to "lower the environment's disturbance variety" (how to simplify or narrow the problem).</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Negative feedback measures the error between a system's current state and its target, then acts to shrink it; it is the engine of stability.</li>
+<li>Negative feedback shows that goal-directed behavior needs no intention: a purely mechanical loop such as the steam engine's centrifugal governor can act purposefully.</li>
+<li>Strong negative feedback resists all change, including change you want, which is the root of policy resistance in organizations.</li>
+<li>In positive feedback, output reinforces input: the same snowball mechanism is a virtuous circle going up and a vicious circle going down.</li>
+<li>Pure positive feedback is rare and short-lived: it either hits a resource ceiling, bending into an S-curve, or burns the system out.</li>
+<li>Positive feedback drives network effects and Matthew effects; ignite virtuous loops at their cheapest spark and fit vicious ones with a circuit-breaker.</li>
+<li>When negative feedback carries a delay, correction overshoots, swings back, and oscillates, and a long enough delay can make the system diverge.</li>
+<li>In a delayed system, high gain plus long delay amplifies oscillation, so the fix is lower gain or a shorter delay, not pushing harder.</li>
+<li>Ashby's Law of Requisite Variety says a controller must be able to produce at least as many responses as the disturbances it faces.</li>
+<li>Under requisite variety, staying in control means raising the controller's variety or lowering the environment's, and automation still needs a human beyond its design range.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

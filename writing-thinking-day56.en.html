@@ -98,6 +98,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -237,6 +242,21 @@ Run a "voice and accountability" audit:
 1. Mark deletable filler, clichés, and empty transitions sentence by sentence, and show the trimmed version.
 2. Identify 1–2 passages I'm probably proudest of that don't serve the main line — recommend cutting them and explain why the piece is stronger without them.
 3. Return the tightened full text and tell me how many words it dropped.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Writing is thinking: writing does not transcribe finished thoughts; it is the process that turns fuzzy thoughts into clear ones.</li>
+<li>Writing forces serialization, flattening the mind's parallel web of associations into a single line and exposing the illusion of understanding.</li>
+<li>The page is an external working memory that never decays, letting you handle arguments far beyond the three or four chunks your head can hold.</li>
+<li>Feynman insisted his drafts were not a record of thinking but the thinking itself; if you cannot write it clearly, you probably do not understand it yet.</li>
+<li>One idea at a time is a constraint set by the reader: working memory holds only three or four chunks, so a sentence packing three ideas forces a reread.</li>
+<li>Complexity is conserved: any tangle the writer leaves unresolved is passed on to every reader, multiplied by the number of readers.</li>
+<li>Start each sentence with old information and end with new, so fresh knowledge hooks onto an anchor the reader already holds.</li>
+<li>Active voice runs actor, action, object, matching causal structure, while passive voice lets the responsible party vanish from the sentence.</li>
+<li>The rule for voice is default active, deliberate passive: passive is right when the object is the topic or the actor is unknown or irrelevant.</li>
+<li>Subtraction beats addition: people instinctively improve things by adding, yet writing gets better mostly by cutting, since every needless word taxes the reader.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Back to Index</a>

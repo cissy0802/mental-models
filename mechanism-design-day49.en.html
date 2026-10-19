@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -231,6 +236,21 @@
 1. Which signals are cost-asymmetric — cheap for the real me, prohibitively expensive for a fake to imitate?
 2. Are my current signals "cheap signals" (anyone can claim / mass-produce them) and therefore depreciating?
 3. Give me 2 hard-to-fake high-credibility signals (e.g., skin in the game, a verifiable track record, doing a small sample first), and rank them by ROI.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Mechanism design is reverse game theory: fix the outcome you want first, then derive rules under which everyone's self-interested move leads there.</li>
+<li>The revelation principle says any outcome a mechanism can achieve can also be reached by a simple mechanism in which telling the truth is optimal.</li>
+<li>When incentives are not compatible, people optimize the metric itself rather than its real purpose, the failure Goodhart's Law describes.</li>
+<li>The principal-agent problem comes from two gaps, misaligned goals and asymmetric information, which produce moral hazard after the contract and adverse selection before it.</li>
+<li>Tying an agent's pay to observable outcomes narrows the gaps but shifts risk onto the agent, so strong incentives always trade off against risk-bearing.</li>
+<li>In nested principal-agent chains every link leaks some incentive, so the longer the chain, the further the goals drift.</li>
+<li>In a second-price (Vickrey) auction the winner pays the second-highest bid, which decouples price from bid and makes bidding your true value the dominant strategy.</li>
+<li>The revenue equivalence theorem says that under ideal conditions English, Dutch, first-price and second-price auctions give the seller the same expected revenue.</li>
+<li>In common-value auctions, where no one knows the true value, the winner is often whoever overestimated most, which is the winner's curse.</li>
+<li>A credible signal needs cost asymmetry: cheap for the genuine article and too expensive for a fake to copy, which is why verbal promises are worthless.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Back to Index</a>

@@ -34,6 +34,11 @@
   footer a { color: #0a6fb8; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   footer a:hover { text-decoration: underline; }
   @media (max-width: 600px) { .container { padding: 24px 16px 60px; } header.page-header h1 { font-size: 24px; } .card { padding: 22px 20px; } .card h2 { font-size: 20px; } }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -103,6 +108,21 @@ The challenge/competition I face: [context]. My current frontal approach: [appro
 Apply Liddell Hart's Indirect Approach: 1) Where is the opponent/system best prepared (strongest point)? Why is direct attack there a bad idea? 2) Propose 3 indirect angles — flank, unguarded, outside their strategy space. 3) Before contact, how can I create "dislocation" (movement, tempo, deception, cognitive misalignment)? 4) Identify one path where going around once yields more ROI than three direct pushes.</div>
   </section>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Boyd's OODA Loop of Observe, Orient, Decide, Act is a continuous cycle; the edge comes from a faster full loop, not more precise steps.</li>
+<li>Orient is the core of the OODA Loop: the same observations run through different mental models yield opposite judgments.</li>
+<li>In the Korean War, the F-86's wider canopy view and lighter controls shortened the pilot's whole OODA loop, beating the MiG-15 roughly 10:1.</li>
+<li>A center of gravity is the hinge holding a system together; it is not necessarily the largest part, and an alliance's center is its unity.</li>
+<li>Most effort fails not for lack of force but because it lands off the center of gravity, which also shifts as a war moves through phases.</li>
+<li>At Ulm, Napoleon swung around the Austrian rear to cut supply and communications, breaking their unified command and taking some 60,000 men almost without a fight.</li>
+<li>Clausewitz's fog of war means most information in conflict is wrong, incomplete or stale, an intrinsic property rather than a fixable bug.</li>
+<li>Under the fog of war, build decision rules that still work with missing information, and treat small, cheap actions as the best probes.</li>
+<li>Fog can be a weapon: in the 1862 Shenandoah Valley campaign, Jackson's elusive forced marches let 17,000 men tie down 60,000 Union troops.</li>
+<li>Liddell Hart's indirect approach unbalances the opponent first and strikes where unexpected, as when German armor in 1940 went through the Ardennes around the Maginot Line.</li>
+</ol>
+</section>
   <footer>
     <a href="index.en.html">← Back to Home</a>
   </footer>

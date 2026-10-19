@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -293,6 +298,21 @@
 1. Reframe the either/or as a 0–100 slider — what pure extreme does each end represent?
 2. Given the actual context (risk, maturity, reversibility, etc.), roughly which notch is optimal right now, and why that one?
 3. Give me 1–2 observable signals telling me when to slide the setting left or right.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>模糊集合由扎德在 1965 年提出，把隶属度从「0 或 1」放宽到 0 到 1 之间的连续程度。</li>
+<li>沙堆悖论说明，「高」「成堆」这类概念的边界模糊是概念本身的属性，不是测量不够精确。</li>
+<li>模糊不等于含糊：模糊控制器用「偏高就调小一点」这类程度规则，给出空调、刹车的精确动作。</li>
+<li>多数非此即彼的争论是把连续光谱硬切两半，真正该讨论的是切口放在哪里。</li>
+<li>概率谈事件会不会发生、信息补全后会坍缩成是非；模糊谈属于的程度，信息再全也不消失。</li>
+<li>AI 里要分清认知不确定性（数据不够，可消除）和偶然不确定性（世界本身模糊，加数据也压不下）。</li>
+<li>歧义容忍度是承受悬而未决而不慌乱的能力，它是有纪律地推迟结论，不是优柔寡断。</li>
+<li>过早闭合会让大脑停止收集反例，这是教条、偏见和刻板印象共同的心理机制。</li>
+<li>灰度判断不是和稀泥：要精确选定一个中间档位，并说清为什么是这一档而不是别的。</li>
+<li>控制多紧、信任多少都不是是非题；把二选一还原成 0 到 100 的滑杆，从「站队」改成「调参」。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

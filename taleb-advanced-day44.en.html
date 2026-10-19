@@ -98,6 +98,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -222,6 +227,21 @@
 1. What happens if I do nothing? Can this system self-heal, or is it a genuine emergency?
 2. What delayed, invisible iatrogenic side effects might my intervention cause? Could it create the very problem it aims to prevent?
 3. Judge whether this is a "fragile situation demanding decisive action" or a "robust system demanding restraint," and propose the minimal necessary intervention (or "stand pat").</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Skin in the game works as a filter: when decision-makers bear the downside, the system weeds out bad ideas, bad strategies and bad actors.</li>
+<li>Privatizing gains while socializing losses lets a system quietly accumulate hidden fragility until tail risk detonates all at once.</li>
+<li>Before weighing any advice, ask what the advisor loses if wrong; if the answer is nothing, sharply down-weight that advice.</li>
+<li>The Code of Hammurabi put the builder to death if a house collapsed and killed its owner, writing risk symmetry straight into law.</li>
+<li>Via negativa improves things by removal rather than addition, because knowledge of what harms is sturdier than knowledge of what works.</li>
+<li>Removing a known harm has bounded side effects, while adding something that looks beneficial injects downstream couplings no one can compute.</li>
+<li>People have a strong addition bias and rarely think of removing anything, so improving a system should start with asking what can be deleted.</li>
+<li>The barbell strategy puts resources at two extremes, roughly 90% in maximal safety and 10% in high-convexity bets, leaving the middle empty.</li>
+<li>Taleb treats medium risk as a trap: tail risk cannot be measured, and a basket of medium-risk assets crashes together in a crisis.</li>
+<li>Naive interventionism ignores iatrogenics: suppressing every small fire lets fuel pile up until an uncontrollable megafire breaks out.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

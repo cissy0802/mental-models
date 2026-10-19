@@ -40,6 +40,11 @@ footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
   .card-header h2 .en{display:block;margin-left:0;margin-top:4px}
   .divider{margin:0 18px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -173,6 +178,26 @@ footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
     </div>
   </div>
 </div>
+
+<section class="card tk">
+<div class="card-header">
+<h2>Ten takeaways</h2>
+</div>
+<div class="card-body">
+<ol class="takeaways">
+<li>The law of large numbers says that with enough independent repeated trials, the sample mean converges to the expected value: random in the short run, predictable in the long run.</li>
+<li>The flip side of the law of large numbers is that small samples are unreliable; concluding from two or three tries is the most common everyday overgeneralization.</li>
+<li>The law of large numbers is not the gambler's fallacy: it promises no short-run evening out, only convergence of the average over a long enough run.</li>
+<li>Casinos win through a small but certain house edge, about 2.7% in roulette, multiplied over millions of rounds, not by winning every single game.</li>
+<li>Regression to the mean: after an extreme result, the next one usually lands closer to average, because extremes contain random noise that rarely repeats.</li>
+<li>Studying the heights of parents and children, Francis Galton found that children of very tall or very short parents drift toward the average, which he called regression toward mediocrity.</li>
+<li>The biggest trap of regression to the mean is false causation: Israeli flight instructors credited criticism over praise, and Kahneman showed it was mere statistics.</li>
+<li>In a power law distribution a tiny minority of events captures most of the impact, so the average means little; preferential attachment, the rich getting richer, usually drives it.</li>
+<li>In a power law world the strategy is to concentrate on a few high-leverage bets; in venture capital the single best investment can outweigh all the rest combined.</li>
+<li>Nonlinear systems have thresholds, exponential growth, sensitive dependence and emergence, so linear extrapolation fails, as underestimating early COVID-19 spread showed.</li>
+</ol>
+</div>
+</section>
 
 <nav>
   <a href="index.en.html">← Back to Index</a>

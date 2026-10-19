@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -285,6 +290,21 @@
 1. Is this a reversible (two-way door) or irreversible (one-way door) decision? Collapse the former fast; keep the latter in superposition.
 2. Which options am I still holding open? Which have already "decohered" away due to commitments I've made?
 3. Among the options I'm maintaining, which are the most convex (limited downside, large upside) and worth the maintenance cost — and which should I deliberately drop?</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>生命、组织和知识都是开放系统，靠持续吸入能量、再排出更多的熵，来维持内部的低熵秩序。</li>
+<li>在普里高津的耗散结构里，秩序是一种流而不是状态：漩涡、烛焰、细胞都只在能量穿流时存在。</li>
+<li>局部有序的代价是别处更大的无序；看不见熵排往何处，它多半正在系统内部累积成隐性债务或倦怠。</li>
+<li>相变的普适性：临界点附近，磁体和流体等微观上无关的系统遵循相同标度律，只剩对称性和维度起作用。</li>
+<li>临界慢化是相变的预警信号：越接近临界点，系统从扰动中恢复得越慢，自相关也随之上升。</li>
+<li>相变有滞后效应：上去和下来的阈值不同，信任、声誉和习惯一旦翻转，回退要退得比原阈值更远。</li>
+<li>共振是窄带的：驱动频率对上固有频率时，小而持续的输入逐周期累积成大振幅，错频的蛮力则被耗散掉。</li>
+<li>阻尼决定共振峰的形状：低阻尼系统峰又高又窄、容错极小，高阻尼系统峰矮而宽、响应温和但鲁棒。</li>
+<li>把量子叠加当思维模型：不可逆承诺就是一次测量，会让可选性坍缩，信息不足时保持不坍缩本身有价值。</li>
+<li>退相干意味着可选性会随不断承诺、对外耦合而自行衰减；维持选项有成本，只值得留下行有限、上行巨大的几个。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

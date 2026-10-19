@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -249,6 +254,21 @@
 1. Before judging whether to remove it, help me reconstruct the reasons it may have been put there in the first place (even if invisible now).
 2. List the second-order effects and hidden dependencies that could erupt if I remove it rashly.
 3. Give a verdict: does that original reason still hold today? If it has vanished, then tell me I can safely remove it.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>The adversarial system trusts no single party; it lets opposed biases cancel out under a neutral arbiter and rules, so truth emerges from conflict.</li>
+<li>The hidden pillar of the adversarial system is meta-level neutrality: capture the referee or drop the rules and it becomes a brawl won by the loudest.</li>
+<li>Use the adversarial system when parties may act in bad faith; use the cooperative system when goals are genuinely shared, since it skips costly conflict.</li>
+<li>GANs, code review and AI red teams all seek truth adversarially: a plan that survives the sharpest opposing attack earns trust.</li>
+<li>Default rules apply unless parties contract around them, and since almost no one changes a default, the default effectively becomes the outcome.</li>
+<li>Opt-in versus opt-out organ donation produces wildly different rates among near-identical populations; only the direction of the default differs.</li>
+<li>A penalty default is deliberately set to what nobody wants, forcing the informed party to speak up and reveal private information.</li>
+<li>Every contract is necessarily incomplete, so the key question shifts from writing perfect clauses to who decides when the contract is silent.</li>
+<li>Ownership is residual control over situations a contract leaves uncovered; the longer and less foreseeable a relationship, the thinner the contract and thicker the mechanism.</li>
+<li>Chesterton's Fence: failing to see a rule's purpose is evidence of your ignorance, so learn why it was built and remove it only if that reason is gone.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

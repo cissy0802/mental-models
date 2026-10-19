@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -289,6 +294,21 @@
 1. Which "cue" is hijacking me right now (a notification, the moment I open an app)? How do I sever or reset it?
 2. Is my reward fully predictable (no signal) or variable-addictive (signal never dies)? How do I tune the curve into the healthy middle?
 3. Design a milestone cadence that manufactures sustainable positive prediction errors to keep motivation alive.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>神经可塑性是竞争性的：皮层地盘按使用量分配，常用的功能扩张领地，废弃的功能被回收。</li>
+<li>神经可塑性不分好坏：让人练会钢琴的同一机制，也会把慢性疼痛、成瘾和创伤刻成越来越深的沟。</li>
+<li>大脑重新布线需要注意力、努力和误差信号同时在场，背景里放外语音频这类被动曝露几乎不改写大脑。</li>
+<li>伦敦出租车司机的海马体后部明显大于常人，且从业越久越大、退休后回缩，经验能变成可测量的灰质体积。</li>
+<li>预测加工认为大脑不停自上而下地预测感官输入，只有预测与现实之间的误差才会向上传递。</li>
+<li>消除预测误差有两条路：更新模型（感知与学习），或者用行动改变世界去符合预测。</li>
+<li>凹脸面具错觉里，「人脸是凸的」这条先验强到压过双眼的深度数据，让人亲眼看到先验覆盖证据。</li>
+<li>默认模式网络在人走神、回忆过去、想象未来和反刍自我时更活跃，是持续「自我」感的神经基础。</li>
+<li>默认模式网络与任务正网络互相抑制，深度专注压制它、走神释放它，真正的技巧是按需切换。</li>
+<li>多巴胺编码的是奖赏预测误差（实际减预期），不是快乐；完全可预测的奖赏不引发峰值，可变奖赏因此最易成瘾。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

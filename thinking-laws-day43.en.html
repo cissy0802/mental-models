@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -225,6 +230,21 @@
 3. Propose one concrete meta-level backstop: which external perspective / new premise / outside arbitration would patch the blind spot.</div>
 </section>
 
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Map Is Not the Territory: concepts, language and models are all maps, and most cognitive errors come from mistaking the map for the territory.</li>
+<li>A map is judged not by whether it equals reality but by whether its structure is similar enough to serve the purpose at hand.</li>
+<li>Maps reinforce themselves, so the way out is to actively look for where the map predicts wrongly, not for evidence that it holds.</li>
+<li>The London Tube map sacrifices geographic accuracy for the purpose of changing lines, and misleads anyone who uses it to estimate walking distance.</li>
+<li>Hanlon's Razor: never attribute to malice a bad outcome that negligence or incompetence adequately explains; it corrects your prior probabilities.</li>
+<li>The upgraded Hanlon's Razor explains other people's behavior first by constraints and incentives you cannot see, not by their character.</li>
+<li>Hanlon's Razor is no absolution: when "mistakes" form a stable pattern that always favors one person, update your prior.</li>
+<li>Dunbar's Number says the neocortex caps stable relationships at about 150, arranged in concentric circles of roughly 5, 15, 50 and 150 that fade outward.</li>
+<li>Past about 150 people, implicit everyone-knows-everyone trust cannot sustain coordination, which is why Gore capped each plant at around 150 people.</li>
+<li>Gödel's Incompleteness: a strong enough consistent formal system has true but unprovable statements and cannot prove its own consistency.</li>
+</ol>
+</section>
 <footer class="footer">
 <a href="index.en.html">&larr; Back to Index</a>
 </footer>

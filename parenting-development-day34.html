@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -273,6 +278,21 @@
 1. Does it satisfy or thwart autonomy, competence, and relatedness? Score each.
 2. Am I applying extrinsic rewards to something already intrinsically motivated (overjustification risk)?
 3. Distinguish whether I'm using "structure" or "control," and give an autonomy-supportive alternative (rationale + choice + informational feedback).</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>关键期是硬窗、敏感期是软窗；真正的硬窗很少，主要在感官和母语语音，多数技能终身可塑。</li>
+<li>大脑用抑制性回路和神经周网主动关窗，为的是稳定已学会的结构，就像深度学习里的学习率退火。</li>
+<li>幼猫在视觉关键期被遮住一只眼，那只眼会永久失明；成年猫做同样遮蔽却毫无影响。</li>
+<li>维果茨基的最近发展区，是独自能做与有人引导能做之间的差距，学习只发生在这条缝里。</li>
+<li>鹰架的定义性特征是逐步撤除：支撑的目标是让自己变得多余，永不撤除的支撑只是依赖。</li>
+<li>让 AI 直接给答案会使技能萎缩；让 AI 给提示、反问并逐步少给，才是在最近发展区内搭鹰架。</li>
+<li>安全依恋让照护者既是探索的安全基地，又是受挫时的避风港，安全感反而让孩子探索得更远。</li>
+<li>安全依恋的核心不是时刻在场，而是可靠的修复：反复经历裂痕能修好，孩子才内化出韧性。</li>
+<li>自决理论认为，内在动机依赖自主、胜任、关系三种基本心理需求，被满足才有持久动力。</li>
+<li>给本已热爱的事加外部奖励会挤掉内在动机，即过度理由效应；真正杀死动机的是控制，而非结构。</li>
+</ol>
 </section>
 </div>
 <script defer="" src="https://hub.cissychen.com/comments.js"></script>

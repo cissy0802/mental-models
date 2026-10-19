@@ -41,6 +41,11 @@ footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
   .card-header h2 .en{display:block;margin-left:0;margin-top:4px}
   .divider{margin:0 18px}
 }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -173,6 +178,23 @@ footer{text-align:center;padding:32px 0 8px;font-size:0.8rem;color:#b2bec3}
     </div>
 </div>
 </div>
+<section class="card tk">
+<div class="card-body">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>BATNA 即谈判达成协议的最佳替代方案，指谈判破裂时你能采取的最好备选，由哈佛谈判项目提出。</li>
+<li>BATNA 越强，越敢对不利条件说“不”；BATNA 越弱，越容易被迫接受对方开出的条件。</li>
+<li>BATNA 不是固定值，谈判前应主动构建和强化自己的备选，同时评估对方的 BATNA。</li>
+<li>锚定效应让先出价的一方设定整场谈判的参考框架，人脑围绕锚点调整，而调整幅度往往不够。</li>
+<li>让步应逐轮递减，向对方传递“已接近底线”的信号；等幅让步会让对方以为你还有很大空间。</li>
+<li>每一次让步都应附带对等的交换条件，单方面让步只会被对方视为退让，削弱自己的谈判地位。</li>
+<li>双赢思维否认谈判是零和博弈：双方对不同议题的重视程度不同，这种差异正是创造额外价值的空间。</li>
+<li>实现双赢的做法包括多议题打包谈判、深入了解对方真实需求，以及创造性地引入新选项。</li>
+<li>《Getting to Yes》区分立场与利益：立场是“我要什么”，利益是“我为什么要”。</li>
+<li>戴维营协议把西奈半岛归还埃及并设为非军事区，同时满足了埃及的主权利益和以色列的安全利益。</li>
+</ol>
+</div>
+</section>
 <nav>
 <a href="index.html">← 返回目录 Back to Index</a>
 </nav>
