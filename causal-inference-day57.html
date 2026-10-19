@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -314,6 +319,21 @@
 1. List 2–3 lurking grouping variables most likely to tell the opposite story within subgroups (user type, department, time period).
 2. For each, decide whether it's a confounder or a mediator — and thus whether to stratify.
 3. Give a minimal stratified-check plan, and tell me the correct action if the conclusion reverses.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>Pearl 的因果阶梯把因果问题分成三层：关联 P(Y|X)、干预 P(Y|do(X))、反事实，每层都需要下一层给不了的信息。</li>
+<li>纯观察数据爬不上因果阶梯：再多 P(Y|X) 也推不出 P(Y|do(X))，必须额外注入一张因果图，所以大数据不等于因果知识。</li>
+<li>当今深度学习几乎都停在关联层，拟合的是联合分布，而不是改变机制后的世界，因此被称为高级曲线拟合。</li>
+<li>面对任何“X 导致 Y”的说法，先问它是观察到的相关，还是干预验证过的因果；媒体标题常把前者偷换成后者。</li>
+<li>反事实推理针对已发生的个案追问“若当初没做 X，结果会不同吗”，归因、责任、后悔和公平判断都属于这一层。</li>
+<li>因果推断的根本问题是缺失数据：同一个人只能观察到一种结果，个体反事实看不见，只能借对照和随机化估计平均效应。</li>
+<li>若非检验（but-for test）：抽掉某个因素后结果照样发生，它就只是伴随或扳机，而不是真正的原因。</li>
+<li>工具变量 Z 要满足三条：影响处理 X、只经 X 影响结果 Y、与看不见的混杂无关，相当于一次老天替你做的自然实验。</li>
+<li>工具变量最脆弱的是排他性假设，数据无法检验；弱工具比没有工具更危险，估出的也只是局部平均处理效应 LATE。</li>
+<li>辛普森悖论指各子群内的趋势合并后可能反转；该分层还是看合并，数据本身说了不算，要由因果图判断分组变量是混杂还是中介。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

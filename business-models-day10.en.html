@@ -149,6 +149,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -283,6 +288,21 @@
     </div>
   </section>
 
+  <section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Network effects mean a product grows more valuable to each user as others join, amplifying demand-side value rather than cutting supply-side cost like economies of scale.</li>
+<li>Network effects start out negative: a product must first cross the cold-start valley, and an overcrowded network can drive away its most valuable users with noise.</li>
+<li>The moat of a network-effects business is not the user count itself but the density of high-quality connections and the filters that protect them.</li>
+<li>Once eBay's buyers and sellers were attracting each other, Amazon's better-funded 1999 push into auctions could not break that cross-side loop.</li>
+<li>Platform thinking shifts a business from producing value itself to building a stage for others and taking a cut, trading in rules, trust and distribution rather than inventory.</li>
+<li>Good platforms practice restraint, refusing to compete with their own suppliers and trading short-term margin for long-term ecosystem depth.</li>
+<li>Chris Anderson's long tail theory holds that when storage and distribution costs approach zero, countless niche demands add up to rival the hits.</li>
+<li>The long tail only appears when zero-cost inventory, frictionless discovery and on-demand delivery coexist, and generative AI now pushes it down to the individual.</li>
+<li>Marginal cost, the cost of one more unit, shapes a business: high-marginal-cost firms scale with capital and labor, while near-zero-marginal-cost firms compound.</li>
+<li>Technology can reshape marginal cost: AI is pushing expert services like consulting, design and teaching toward the near-zero marginal cost of software.</li>
+</ol>
+</section>
   <footer class="footer">
     <a href="index.en.html">&larr; Back to Index</a>
   </footer>

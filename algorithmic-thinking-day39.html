@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -272,6 +277,22 @@
 2. Which training distribution did my current heuristic learn from? Is the present problem inside that distribution? Flag 2 out-of-distribution warning signs.
 3. Propose one strategy with explicit approximation-ratio awareness — what factor of optimum am I targeting, and how much buffer do I need against bias?</div>
 </section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>分治法要求子问题与原问题结构同构、彼此相对独立，两条同时成立，递归求解才真正降低复杂度。</li>
+<li>主定理表明分治划不划算看合并成本；归并排序合并只需 O(n)，整体才是 O(n log n)。</li>
+<li>伪分治的判别法：子问题能否由两个人在两个房间独立完成；协调会议越开越多，就该重画边界。</li>
+<li>动态规划要同时具备重叠子问题和最优子结构，缺一条就退化成普通递归或贪心。</li>
+<li>动态规划成败在状态定义：状态每多一维，表就指数级变大，超过三维应先压缩再动手。</li>
+<li>0-1 背包的朴素递归是 O(2ⁿ)，用物品×容量的二维表记忆化后压到 O(n·W)。</li>
+<li>多数人生问题缺少最优子结构，环境一漂移，记忆化的旧答案就过期，缓存要标有效期并定期重填。</li>
+<li>贪心算法只在具备拟阵结构的少数问题上严格最优，多数时候会停在离起点最近的局部山顶。</li>
+<li>模拟退火、束搜索和随机重启跳出局部最优的共同办法，都是允许结果暂时变差。</li>
+<li>面对 NP 难问题要拿最优性换可解性；好的启发式带近似比保证，坏的只是瞎猜。</li>
+</ol>
+</section>
+
 </div>
 <script defer="" src="https://hub.cissychen.com/comments.js"></script>
 <script defer="" src="https://hub.cissychen.com/search.js"></script>

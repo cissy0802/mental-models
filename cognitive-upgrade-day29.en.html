@@ -164,6 +164,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -337,6 +342,22 @@
       <span class="prompt-label">English Template</span><br>
       Conduct a growth-vs-fixed-mindset audit on me. My patterns and inner language across five domains: (1) work/career: [describe]; (2) relationships: [describe]; (3) fitness/health: [describe]; (4) AI/new-tech learning: [describe]; (5) parenting/family role: [describe]. Please: (a) identify fixed-mindset language signals in each domain ("I'm not the X type," "I'm naturally Y"); (b) assess how I process failure and negative feedback; (c) provide a concrete "language replacement" list per domain (old phrasing → new phrasing); (d) design a 7-day micro-practice targeting the most fixed domain.
     </div>
+  </section>
+
+  <section class="card tk">
+    <h2>Ten takeaways</h2>
+    <ol class="takeaways">
+    <li>A mental model is a simplified map the brain draws from past experience; the map is not the territory, yet it drives every judgment.</li>
+    <li>By default the brain protects its existing models, so when a prediction fails it first looks for a special explanation of reality.</li>
+    <li>What separates experts is not model accuracy but update velocity: how quickly and accurately they revise the map when new evidence arrives.</li>
+    <li>Mental models come in layers (opinions, frameworks, worldviews); surface updates are easy, while a deep update reshapes everything above it.</li>
+    <li>Thomas Kuhn described paradigm shifts: when anomalies pile up beyond what the old paradigm can explain, a new framework replaces it wholesale.</li>
+    <li>Old and new paradigms are incommensurable, using different concepts and standards, which is why masters of the old paradigm often resist the shift most.</li>
+    <li>Leon Festinger's cognitive dissonance theory says that when belief and behavior clash, people change one of them or invent rationalizations.</li>
+    <li>The more people have invested, the harder they cling: doomsday believers grew more devout after the prophecy failed, much like sunk-cost stubbornness.</li>
+    <li>In the boring-task experiment, people paid $1 to lie believed the task was more enjoyable than those paid $20, showing behavior can reshape attitudes.</li>
+    <li>Carol Dweck's growth mindset is not "effort solves everything"; it needs strategy and feedback, and praising strategies beats praising a child as smart.</li>
+    </ol>
   </section>
 
   <footer class="footer">

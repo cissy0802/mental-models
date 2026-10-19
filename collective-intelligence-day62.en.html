@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -228,6 +233,21 @@
 1. Diagnose whether my contribution cost or my error-correction (revert) cost is too high, and how to lower it.
 2. Check whether contributions are modular and independently submittable; if not, how to break them down.
 3. Design a convergence norm (standard / consensus mechanism) to keep openness from degrading into chaos.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Crowd wisdom needs four conditions at once: diversity, independence, decentralization, and an aggregation mechanism.</li>
+<li>Independence is the load-bearing wall of crowd wisdom: once people see each other's answers, errors correlate and the crowd drifts together.</li>
+<li>Discussing before deciding often lowers collective intelligence, because deliberation correlates errors; simultaneous anonymous votes and medians protect independence.</li>
+<li>Prediction markets let people bet on events; the contract price becomes a probability that weights information rather than counting heads.</li>
+<li>Bets are costly, so prediction markets force people to turn private information and real confidence into positions, filtering out cheap talk.</li>
+<li>Prediction markets echo Hayek's idea of price as information: no one sees the whole, yet the price compresses dispersed knowledge into one number.</li>
+<li>A prediction market is no crystal ball: thin markets are manipulable, only resolvable questions work, and long-shot bias persists.</li>
+<li>Swarm intelligence has no central controller; global intelligence emerges from simple agents following local rules, coordinated through stigmergy.</li>
+<li>Ant trails grow through pheromone reinforcement (positive feedback) and fade through evaporation (negative feedback), so forgetting prevents premature lock-in.</li>
+<li>The wiki model improves through asymmetry: bad edits are cheaply reverted, good ones persist, provided contributions are modular and a convergence norm exists.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

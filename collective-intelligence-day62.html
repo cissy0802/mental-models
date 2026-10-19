@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -279,6 +284,21 @@
 1. Diagnose whether my contribution cost or my error-correction (revert) cost is too high, and how to lower it.
 2. Check whether contributions are modular and independently submittable; if not, how to break them down.
 3. Design a convergence norm (standard / consensus mechanism) to keep openness from degrading into chaos.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>群体智慧要四个条件同时成立：多样性、独立性、分散性，以及把碎片合成判断的聚合机制。</li>
+<li>独立性是群体智慧的承重墙：一旦互相看到答案，误差就会相关化，整群人一起滑向同一偏差。</li>
+<li>先讨论再决定常常降低群体智慧，因为讨论制造相关性；同时匿名投票、取中位数更能保住独立性。</li>
+<li>预测市场让人为事件下注，合约价格就是市场估计的概率，按信息含量加权而不是简单数人头。</li>
+<li>下注有成本，逼人把私有信息和真实信心换成头寸，于是预测市场能过滤掉廉价的场面话。</li>
+<li>预测市场呼应哈耶克「价格即信息」：没人掌握全貌，价格却把分散知识压缩成一个数字。</li>
+<li>预测市场并非水晶球：薄市场易被操纵，只适用于可裁决的问题，还存在系统性的热门偏差。</li>
+<li>蜂群智能没有中央指挥，全局智能从简单个体按局部规则的交互中涌现，核心机制是共识主动性。</li>
+<li>蚁群靠信息素累积的正反馈强化好路，靠蒸发的负反馈防止过早锁死，遗忘在这里是功能。</li>
+<li>维基模式靠不对称变好：坏编辑能廉价撤销、好编辑永久留存，前提是贡献模块化且有收敛规范。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

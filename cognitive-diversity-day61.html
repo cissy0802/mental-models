@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -278,6 +283,21 @@
 1. Which cell is it in (right/wrong × consensus/contrarian)? State the current mainstream consensus.
 2. If I claim "right + contrarian," force me to name my concrete edge: what information or sharper model do I actually have that others don't?
 3. Honestly assess whether I'm being contrarian for identity's sake; if so, warn me where I'm most likely landing in "wrong + contrarian."</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>Page 多样性定理的核心是一个恒等式：群体预测误差等于成员平均误差减去成员之间的多样性。</li>
+<li>由最强个体的克隆组成的团队，多样性项为零，群体误差就等于个体误差，聚合毫无增益。</li>
+<li>集成学习跑赢单一强模型，靠的是把误差去相关的弱学习器平均起来，让错误彼此抵消。</li>
+<li>评估团队别只问平均水平多高，要问成员的错误会不会一起犯；错误高度相关，人再多也等于一个人。</li>
+<li>异类视角红利：同一领域的专家共享同一组盲区，本领域无解的难题换一套工具箱常是常规题。</li>
+<li>外行的红利真实但含噪声，需要把问题广播给多元人群再筛出罕见的好答案，而不是寄望某个外行必然对。</li>
+<li>杂交优势是生成式重组，不同于 Page 定理的预测聚合；同温层回音室则是思想上的近交衰退。</li>
+<li>跨界组合存在最佳遗传距离：太近杂不出优势，太远又无转译桥则不亲和，甜区是近到能整合、远到不冗余。</li>
+<li>反共识价值只诞生于「判断正确且很少人同意」那一格；正确而已成共识的判断早已被定价或被做完。</li>
+<li>绝大多数反共识观点本身就是错的，宣称反共识价值前必须说清自己掌握的具体信息或模型优势。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

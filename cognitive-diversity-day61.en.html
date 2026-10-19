@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -227,6 +232,21 @@
 1. Which cell is it in (right/wrong × consensus/contrarian)? State the current mainstream consensus.
 2. If I claim "right + contrarian," force me to name my concrete edge: what information or sharper model do I actually have that others don't?
 3. Honestly assess whether I'm being contrarian for identity's sake; if so, warn me where I'm most likely landing in "wrong + contrarian."</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Page's Diversity Theorem rests on an identity: crowd prediction error equals average individual error minus the diversity among members.</li>
+<li>A team made of clones of the best performer has zero diversity, so its group error equals individual error and aggregation adds nothing.</li>
+<li>Ensemble methods beat a single strong model by averaging weak learners whose errors are decorrelated, so the errors cancel out.</li>
+<li>When judging a team, ask not just how able members are but whether their errors correlate; correlated errors make many people reason like one.</li>
+<li>The outsider perspective dividend: experts in one field share the same blind spots, and a problem unsolvable with its toolkit can be routine with another field's.</li>
+<li>The outsider dividend is real but noisy, so it works by broadcasting a problem to a diverse crowd and filtering for rare gems, not by trusting any one outsider.</li>
+<li>Hybrid vigor is generative recombination, unlike the prediction aggregation of Page's theorem; echo chambers are a form of intellectual inbreeding.</li>
+<li>Cross-field combinations have an optimal genetic distance: too close yields no vigor, too far without a bridge is incompatible; aim for close enough to integrate, far enough to be non-redundant.</li>
+<li>Contrarian value exists only where a judgment is both right and non-consensus; a right view everyone shares is already priced in or already built.</li>
+<li>Most contrarian views are contrarian because they are wrong, so claiming contrarian value requires naming a concrete informational or model edge.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">← Home</a>

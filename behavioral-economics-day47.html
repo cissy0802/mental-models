@@ -108,6 +108,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -272,6 +277,21 @@
 1. What are the current defaults and friction distribution? Which way are they silently pushing people?
 2. Give 2 concrete moves to change defaults / adjust friction: make A the path of least resistance, add friction to B (no lectures, no willpower).
 3. Ethics check on three lines: is this nudge for their benefit, is it transparent and reversible, does it respect their right to say no? Flag any risk of crossing into manipulation.</div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>Thaler 的心理账户：大脑把钱分进互不相通的账本，同一笔钱标签不同，花法就天差地别。</li>
+<li>心理账户既扭曲理性，也是一种自控工具：把钱分桶隔离，是用心理边界对抗意志力薄弱。</li>
+<li>丢票实验里，丢了现金的人照常买票，丢了已买好的票的人多半不再补票，只因损失记进了不同账本。</li>
+<li>禀赋效应：一旦拥有某物，对它的估值立刻上升，马克杯实验里的卖价常是买价的两倍。</li>
+<li>禀赋效应的根源是损失厌恶，它也作用于观点、身份和现状，免费试用正是在人为制造禀赋。</li>
+<li>零基重估法问「如果现在不拥有它，我愿花多少钱买回来」，买回价与卖出价的差额就是禀赋效应的加成。</li>
+<li>IKEA 效应：人对亲手参与创造的东西估值系统性偏高，付出努力的过程本身就制造了意义和依恋。</li>
+<li>IKEA 效应只在成功完成时生效，半途而废的作品不会增值；评估自己的作品时可用「换人测试」去偏。</li>
+<li>助推不强制、不改激励、只改默认值：器官捐献默认捐献、可退出的国家，登记率远高于需主动加入的国家。</li>
+<li>没有中立的默认；助推与操纵的分界在于是否为对方利益、是否透明可逆、是否尊重对方自主选择。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

@@ -35,6 +35,11 @@
   .footer a { color: #6c5ce7; text-decoration: none; font-size: 14px; letter-spacing: 1px; }
   .footer a:hover { text-decoration: underline; }
   @media (max-width: 640px) { .container { padding: 28px 14px 48px; } .card { padding: 24px 20px; } .page-header h1 { font-size: 24px; } .card h2 { font-size: 20px; } }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -167,6 +172,22 @@
       <span class="prompt-label">English Template</span><br>
       Help me build a "compute leverage strategy map." My core interests and ambitions are [describe your domain and aspirations]. Please: (1) identify 5 high-leverage projects that are "impossible alone, possible with AI"; (2) estimate the potential impact multiplier for each (10x / 100x / 1000x); (3) design a 90-day MVP path for the first one, specifying which steps AI handles and which I must do personally; (4) flag the trap where I might use AI for linear optimization rather than nonlinear capability breakthroughs, and how to avoid it.
     </div>
+  </section>
+
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Human-AI collaboration is a division of cognitive labor: humans define problems, judge value and own the ethics, while AI extends memory, speeds generation and explores in parallel.</li>
+  <li>What makes human-AI collaboration pay off is fine-grained handoffs, with lead switching at every thinking step, not "AI drafts, I polish."</li>
+  <li>Freestyle chess showed that ordinary players with ordinary computers and a good process could beat the strongest engines, so process design decided the outcome.</li>
+  <li>The prompt engineering mindset turns vague problems into structured instructions built from five dimensions: role, context, task, constraints and evaluation criteria.</li>
+  <li>Writing a prompt is itself an act of self-clarification, because breaking down a need and defining its boundaries is often worth more than the AI's answer.</li>
+  <li>Brown and colleagues found in 2020 that two or three examples in a prompt let GPT-3 handle new tasks without task-specific fine-tuning.</li>
+  <li>Human working memory holds only about four chunks at once, and AI-augmented cognition uses external systems to relieve limits on memory, retrieval and perspective-taking.</li>
+  <li>The biggest trap of AI-augmented cognition is cognitive offloading: the AI is right but you never truly understood, and long-term dependence erodes your own abilities.</li>
+  <li>To tell whether AI amplifies or replaces you, ask whether you would be stronger or weaker if AI vanished tomorrow.</li>
+  <li>Compute leverage is a fifth lever after labor, capital, code and media, and what is scarce is not compute but the judgment to know what it should be aimed at.</li>
+  </ol>
   </section>
 
   <footer class="footer">

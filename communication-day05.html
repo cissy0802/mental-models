@@ -138,6 +138,11 @@
     .card { padding: 22px 20px; }
     header.page-header h1 { font-size: 22px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -221,6 +226,21 @@
 <hr/>
 <pre class="prompt"><span class="tag">中文模板</span>我想向 [受众] 传递这个核心信念：[一句话信念]。请基于"渴望-障碍-行动-转变"四要素，帮我设计 3 个备选故事（最好基于以下我提供的真实素材：[素材片段]）。每个故事要求：包含至少 2 个感官细节，长度 150-250 字，结尾不直接点题。</pre>
 <pre class="prompt"><span class="tag">English Template</span>I want to plant this single belief in [audience]: [belief in one sentence]. Using the desire–obstacle–action–transformation arc, generate 3 candidate stories (preferably grounded in this raw material: [paste]). Each story: 120-200 words, contains at least 2 concrete sensory details, ends without stating the moral explicitly.</pre>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>金字塔原理由 Barbara Minto 在麦肯锡总结而成：结论先行、以上统下、归类分组、逻辑递进。</li>
+<li>金字塔原理的价值在思考而非写作：逼自己把结论压成一句话，往往会暴露自己其实没想清楚。</li>
+<li>金字塔的同一组论据只能全用演绎或全用归纳，混用会让读者在两种推理间来回切换、负荷骤升。</li>
+<li>Cialdini 的影响力原则包括互惠、承诺一致、社会认同、喜好、权威、稀缺，后来又补上统一感。</li>
+<li>影响力原则的威力在组合与时序：先送小礼、再请小承诺、再展示同类人已采纳，效果会叠加。</li>
+<li>运用稀缺原则必须诚实，刻意制造伪稀缺会反噬信任。</li>
+<li>框架效应指同一信息用获得或损失来表述会导致不同选择，根源是损失的痛感约为同等收益的两倍多。</li>
+<li>框架不只有得失一种，还有时间、数量、类比和身份框架；高手会主动重设对方的参照点。</li>
+<li>故事思维的依据是神经耦合：听好故事时，听众的大脑活动会与讲述者同步，数据做不到这一点。</li>
+<li>故事的最小单元是渴望、障碍、行动、转变四要素，配上具体的感官细节、结尾留白，才最容易被记住。</li>
+</ol>
 </section>
 <a class="back-link" href="index.html">← 返回思维模型首页</a>
 </div>

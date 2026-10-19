@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+.card.tk { border-left-color: #0a6fb8; }
+.takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+.takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+.takeaways li:first-child { border-top: none; }
+.takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -239,6 +244,22 @@
 2. Which training distribution did my current heuristic learn from? Is the present problem inside that distribution? Flag 2 out-of-distribution warning signs.
 3. Propose one strategy with explicit approximation-ratio awareness — what factor of optimum am I targeting, and how much buffer do I need against bias?</div>
   </section>
+  <section class="card tk">
+  <h2>Ten takeaways</h2>
+  <ol class="takeaways">
+  <li>Divide and conquer only cuts complexity when subproblems are structurally isomorphic to the original and relatively independent of each other.</li>
+  <li>The Master Theorem says merge cost decides whether dividing pays; merge sort's O(n) merge keeps the whole sort at O(n log n).</li>
+  <li>Test for pseudo-divide: could two people solve the subproblems in two separate rooms? Multiplying coordination meetings mean the boundaries are wrong.</li>
+  <li>Dynamic programming needs both overlapping subproblems and optimal substructure; without either it collapses into plain recursion or greedy.</li>
+  <li>In dynamic programming, state definition is the lever: each added dimension grows the table exponentially, so compress anything beyond three.</li>
+  <li>Naive recursion on 0-1 knapsack costs O(2ⁿ); memoizing in an items-by-capacity table brings it down to O(n·W).</li>
+  <li>Most life problems lack optimal substructure, so cached answers expire as the environment drifts; date each entry and rebuild periodically.</li>
+  <li>Greedy algorithms are strictly optimal only on problems with matroid structure; elsewhere they stall on the hilltop nearest the start.</li>
+  <li>Simulated annealing, beam search and random restarts all escape local optima the same way: by tolerating temporary worsening.</li>
+  <li>For NP-hard problems, trade optimality for tractability; good heuristics carry approximation guarantees, bad ones are guesses dressed up.</li>
+  </ol>
+  </section>
+
 
 
 </div>

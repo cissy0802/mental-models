@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       Audit [my business or role] for the three highest-marginal-cost activities. For each, design an AI-leveraged workflow or reusable asset that transforms it from labor-priced service into near-zero-MC product, with a 90-day rollout plan.
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>网络效应指产品对每位用户的价值随其他用户加入而递增，放大的是需求侧价值，不同于降低供给侧成本的规模经济。</li>
+<li>网络效应在早期是负的，产品必须先穿越冷启动死亡谷；网络过密时，噪音和低质内容还会逼走高价值用户。</li>
+<li>网络效应的护城河不是用户数本身，而是高质量连接的密度和过滤机制。</li>
+<li>eBay 的买家和卖家互相吸引，跨边网络效应成型后，亚马逊 1999 年带着更多资源进军拍卖也没能撼动它。</li>
+<li>平台思维是从自己生产价值转为给别人搭舞台并抽成，平台经营的是规则、信任和分发，而不是库存。</li>
+<li>好平台要刻意克制，不下场和自己的供给方竞争，用短期利润换取参与者的长期投入和生态厚度。</li>
+<li>Chris Anderson 的长尾理论指出，当存储和分发成本趋近于零，众多小众需求加总起来能与头部爆款抗衡。</li>
+<li>长尾需要零边际成本库存、零摩擦发现和即时分发同时具备，生成式 AI 把长尾推到了单个人的颗粒度。</li>
+<li>边际成本是多生产一个单位所新增的成本：高边际成本业务靠资本和人力扩张，低边际成本业务能持续复利。</li>
+<li>边际成本可以被技术重塑：AI 正把咨询、设计、教育等智力服务的边际成本压向接近软件的水平。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>

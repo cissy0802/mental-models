@@ -107,6 +107,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -228,6 +233,21 @@
 1. What are the current defaults and friction distribution? Which way are they silently pushing people?
 2. Give 2 concrete moves to change defaults / adjust friction: make A the path of least resistance, add friction to B (no lectures, no willpower).
 3. Ethics check on three lines: is this nudge for their benefit, is it transparent and reversible, does it respect their right to say no? Flag any risk of crossing into manipulation.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Mental accounting, from Richard Thaler's behavioral economics, says the brain files money into separate ledgers, so identical sums get spent differently under different labels.</li>
+<li>Mental accounting distorts rationality but also works as a self-control device: splitting money into buckets uses mental boundaries against weak willpower.</li>
+<li>In the lost-ticket study, people who lose cash still buy the ticket, but those who lose the ticket rarely rebuy, because the loss lands in a different ledger.</li>
+<li>The endowment effect means owning something instantly raises its value to you; in the mug experiment, the selling price is often double the buying price.</li>
+<li>The endowment effect is rooted in loss aversion, extends to beliefs, identity and the status quo, and is what free trials deliberately manufacture.</li>
+<li>Zero-based revaluation asks what you would pay to buy something back if you didn't own it; the gap from your selling price is the endowment effect.</li>
+<li>The IKEA effect means people systematically overvalue what they helped create, because the effort itself generates meaning and attachment.</li>
+<li>The IKEA effect only fires on successful completion, so abandoned projects gain no value; the swap test helps you judge your own work fairly.</li>
+<li>A nudge changes only the default, without force or new incentives: opt-out organ-donation countries register far more donors than opt-in ones.</li>
+<li>No default is neutral, and a nudge becomes manipulation unless it serves the person, stays transparent and reversible, and respects their autonomy.</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.en.html">&larr; Back to Index</a>

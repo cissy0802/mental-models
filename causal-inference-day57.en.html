@@ -97,6 +97,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -267,6 +272,21 @@
 1. List 2–3 lurking grouping variables most likely to tell the opposite story within subgroups (user type, department, time period).
 2. For each, decide whether it's a confounder or a mediator — and thus whether to stratify.
 3. Give a minimal stratified-check plan, and tell me the correct action if the conclusion reverses.</div>
+</section>
+<section class="card tk">
+<h2>Ten takeaways</h2>
+<ol class="takeaways">
+<li>Pearl's Ladder of Causation sorts causal questions into three rungs: association P(Y|X), intervention P(Y|do(X)), and counterfactuals, each needing information the rung below lacks.</li>
+<li>Observational data alone cannot climb the ladder: no amount of P(Y|X) yields P(Y|do(X)) without an injected causal diagram, so big data is not causal knowledge.</li>
+<li>Today's deep learning mostly stays on the association rung, fitting joint distributions rather than worlds with changed mechanisms, which is why it gets called advanced curve-fitting.</li>
+<li>For any claim that X causes Y, first ask whether it was merely observed or verified by intervention; headlines routinely pass off correlation as causation.</li>
+<li>Counterfactual reasoning asks of a past event whether the outcome would differ had X not happened; attribution, blame, regret and fairness all live on this rung.</li>
+<li>The fundamental problem of causal inference is missing data: each person shows only one outcome, so individual counterfactuals are estimated as averages via controls and randomization.</li>
+<li>The but-for test: if the outcome still happens after removing a factor, that factor is mere accompaniment or a trigger, not a real cause.</li>
+<li>An instrumental variable Z must move the treatment X, affect the outcome Y only through X, and be unrelated to hidden confounders, like a natural experiment run for you.</li>
+<li>The exclusion restriction is the weakest link of instrumental variables and cannot be tested by data; weak instruments are worse than none, and the estimate is only a LATE.</li>
+<li>Simpson's Paradox: a trend inside every subgroup can reverse when pooled, and only the causal diagram, not the data, says whether the grouping variable is a confounder or a mediator.</li>
+</ol>
 </section>
 
 <footer class="footer">

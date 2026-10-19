@@ -150,6 +150,11 @@
     .page-header h1 { font-size: 24px; }
     .card h2 { font-size: 20px; }
   }
+  .card.tk { border-left-color: #0a6fb8; }
+  .takeaways { counter-reset: tk; list-style: none; margin: 14px 0 0; padding: 0; border: 1px solid rgba(10,111,184,0.22); border-radius: 8px; background: #f5f9fd; }
+  .takeaways li { counter-increment: tk; position: relative; margin: 0; padding: 10px 16px 10px 50px; border-top: 1px solid rgba(10,111,184,0.12); font-size: 15px; line-height: 1.75; color: #2d3436; }
+  .takeaways li:first-child { border-top: none; }
+  .takeaways li::before { content: counter(tk, decimal-leading-zero); position: absolute; left: 16px; top: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; font-weight: 600; color: #0a6fb8; }
 </style>
 </head>
 <body>
@@ -281,6 +286,21 @@
 <span class="prompt-label">English Template</span><br/>
       Help me build a "compute leverage strategy map." My core interests and ambitions are [describe your domain and aspirations]. Please: (1) identify 5 high-leverage projects that are "impossible alone, possible with AI"; (2) estimate the potential impact multiplier for each (10x / 100x / 1000x); (3) design a 90-day MVP path for the first one, specifying which steps AI handles and which I must do personally; (4) flag the trap where I might use AI for linear optimization rather than nonlinear capability breakthroughs, and how to avoid it.
     </div>
+</section>
+<section class="card tk">
+<h2>十条要点</h2>
+<ol class="takeaways">
+<li>人机协同是一种认知分工：人负责定义问题、判断价值、承担伦理，AI 负责扩展记忆、加速生成和并行探索。</li>
+<li>人机协同的效果取决于分工颗粒度：在每个思考步骤里人与 AI 轮流主导，远胜「AI 写初稿、人来润色」。</li>
+<li>自由式国际象棋显示，普通棋手加普通电脑加好流程能击败最强引擎，决定胜负的是协同流程的设计。</li>
+<li>提示工程思维是把模糊问题转成结构化指令的能力，好的提示包含角色、上下文、任务、约束和评价标准五个维度。</li>
+<li>写提示的过程本身就是自我澄清：被迫拆解需求、定义边界，往往比 AI 给出的答案更有价值。</li>
+<li>Brown 等人 2020 年发现，在提示里给出两三个示例，GPT-3 就能完成新任务，不必专门微调模型。</li>
+<li>人的工作记忆只能同时持有约 4 个信息组块，AI 增强认知就是用外部系统补上记忆、检索和视角切换的瓶颈。</li>
+<li>AI 增强认知的最大陷阱是认知卸载：AI 答对了但你没真正理解，长期依赖会让内在能力萎缩。</li>
+<li>检验 AI 是放大还是替代你的标准是：如果明天 AI 消失，你的能力是变强了还是变弱了。</li>
+<li>算力杠杆是继劳动力、资本、代码、媒体之后的第五种杠杆，真正稀缺的不是算力，而是知道该让算力做什么的判断力。</li>
+</ol>
 </section>
 <footer class="footer">
 <a href="index.html">← 返回首页</a>
